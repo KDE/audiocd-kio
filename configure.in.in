@@ -269,7 +269,7 @@ if test "x$with_vorbis" = "xCHECK" ; then
           VORBIS_LIBS="-L$vorbis_libdir "
           test "$USE_RPATH" = yes && VORBIS_RPATH="-R $vorbis_libdir"
         fi
-        VORBIS_LIBS="${VORBIS_LIBS}-lvorbis -lm"
+        VORBIS_LIBS="${VORBIS_LIBS}-lvorbis -logg -lm"
         with_vorbis=FOUND
         break
       fi
