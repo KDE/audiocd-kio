@@ -1317,13 +1317,9 @@ AudioCDProtocol::listDir(const KURL & url)
                 }
                 break;
 #endif
-
-#ifdef HAVE_VORBIS
               case Vorbis:
                 addEntry(d->titles[i - 1], FileTypeOggVorbis, drive, i);
                 break;
-#endif
-
               case ByName:
               case Title:
                 addEntry(d->titles[i - 1], FileTypeWAV, drive, i);
@@ -1349,6 +1345,20 @@ AudioCDProtocol::listDir(const KURL & url)
   void
 AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, struct cdrom_drive * drive, int trackNo)
 {
+  // now we check if we were compiled with or without
+  // ogg/mp3 support. we will not add the file if it's
+  // of type ogg/mp3 and that we were not compiled with
+  // support of those formats.
+  // => less work/less possibility of mistake/less #ifdef
+  // ugliness for the caller.
+#ifndef HAVE_LAME
+  if (fileType == FileTypeMP3)
+    return;
+#endif
+#ifndef HAVE_VORBIS
+  if (fileType == FileTypeOggVorbis)
+    return;
+#endif
   long theFileSize = 0;
   if (trackNo == -1)
   { // adding entry for the full CD

@@ -114,6 +114,10 @@ class AudioCDProtocol : public KIO::SlaveBase
      * to be calculated.
      * NOTE: if you want to add a file which is the whole CD, give
      * trackNo = -1
+     * NOTE2: you can safely add MP3 or OGG files always. the function
+     * will check if kio_audiocd was compiled with support for those,
+     * so NO NEED to wrap your calls with #ifdef for lame or vorbis.
+     * this function will do the right thing.
      */
     void addEntry(const QString& trackTitle, enum FileType fileType, struct cdrom_drive * drive, int trackNo);
     FileType fileType(const QString & filename);
