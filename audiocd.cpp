@@ -299,7 +299,7 @@ class AudioCDProtocol::Private
       s_info = i18n("Information");
       s_mp3  = "MP3";
       s_vorbis = "Ogg Vorbis";
-      s_fullCD = "Full CD";
+      s_fullCD = i18n("Full CD");
     }
 
     void clear()
@@ -742,7 +742,7 @@ AudioCDProtocol::initRequest(const KURL & url)
     d->which_dir = MP3;
   else if (dname == d->s_vorbis)
     d->which_dir = Vorbis;
-  else if (dname == d->s_fullCD)
+  else if (dname == d->s_fullCD || dname == QFL1("Full CD"))
     d->which_dir = FullCD;
   else if (dname.left(4) == QFL1("dev/"))
     {
@@ -798,7 +798,7 @@ AudioCDProtocol::initRequest(const KURL & url)
 
   // are we in the directory that lists "full CD"
   // files?
-  d->req_allTracks = dname.contains(d->s_fullCD);
+  d->req_allTracks = (dname.contains(d->s_fullCD) || dname.contains(QFL1("Full CD")));
   
   kdDebug(7117) << "audiocd: dir=" << dname << " file=" << d->fname
     << " req_track=" << d->req_track << " which_dir=" << d->which_dir << " rip full CD?=" << d->req_allTracks << endl;
