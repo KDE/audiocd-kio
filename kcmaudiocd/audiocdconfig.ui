@@ -232,7 +232,7 @@ The following macros will be expanded:
 %{year}		Year
 %{genre}	Genre
 %{albumtitle}	Album Title
-%{albumartist}	Track Artist</string>
+%{albumartist}	Album Artist</string>
                                 </property>
                             </widget>
                             <widget class="KLineEdit">
