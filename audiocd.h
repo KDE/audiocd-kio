@@ -79,7 +79,7 @@ class AudioCDProtocol : public KIO::SlaveBase
     FileType determineFiletype(const QString & filename);
 
     struct cdrom_drive *  findDrive(bool &noPermission);
-    void                  parseArgs(const KURL &);
+    void                  parseURLArgs(const KURL &);
 
     void getParameters();
 
