@@ -76,17 +76,18 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect( example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
 
     KAboutData *about =
-    new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio-CD Slave Control Module"),
+    new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio CD IO Slave"),
                    0, 0, KAboutData::License_GPL,
-                   I18N_NOOP("(c) 2000 - 2001 Carsten Duvenhorst"));
+                   I18N_NOOP("(c) 2000 - 2005 Audio CD developers"));
 
+    about->addAuthor("Benjamin C. Meyer", I18N_NOOP("Current Maintainer"), "ben+audiocd@meyerhome.net");
     about->addAuthor("Carsten Duvenhorst", 0, "duvenhorst@duvnet.de");
     setAboutData(about);
 }
 
 KAudiocdModule::~KAudiocdModule()
 {
-	delete config;
+    delete config;
 }
 
 void KAudiocdModule::updateExample()
