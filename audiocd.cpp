@@ -481,7 +481,7 @@ AudioCDProtocol::initRequest(const KURL & url)
     if(it.data()->type() == d->fname){
       dname = d->fname;
       d->fname = "";
-      qDebug("Found a match for : %s, %s", dname.latin1(), it.data()->type().latin1());
+      //qDebug("Found a match for : %s, %s", dname.latin1(), it.data()->type().latin1());
       break;
     }
   }
@@ -503,7 +503,7 @@ AudioCDProtocol::initRequest(const KURL & url)
     if(it.data()->type() == dname){
       d->which_dir = EncoderDir;
       d->encoder_dir_type = it.key();
-      qDebug("Found a match for : %s, %s", dname.latin1(), it.data()->type().latin1());
+      //qDebug("Found a match for : %s, %s", dname.latin1(), it.data()->type().latin1());
       encoderdir = true;
       break;
     }
@@ -891,7 +891,7 @@ AudioCDProtocol::listDir(const KURL & url)
       QMap<FileType, Encoder*>::Iterator it;
       for ( it = encoders.begin(); it != encoders.end(); ++it ) {
         QString name = it.data()->type();
-	qDebug("Adding %s to virtual directory", name.latin1());
+	//qDebug("Adding %s to virtual directory", name.latin1());
 	if(!name.isEmpty()){
 	  app_dir(entry, name, d->tracks);
           listEntry(entry, false);
