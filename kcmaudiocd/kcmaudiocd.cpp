@@ -73,6 +73,14 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
 		connect( kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
+
+    KAboutData *about =
+    new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio-CD Slave Control Module"),
+                   0, 0, KAboutData::License_GPL,
+                   I18N_NOOP("(c) 2000 - 2001 Carsten Duvenhorst"));
+
+    about->addAuthor("Carsten Duvenhorst", 0, "duvenhorst@duvnet.de");
+    setAboutData(about);
 }
 
 KAudiocdModule::~KAudiocdModule()
@@ -200,19 +208,6 @@ QString KAudiocdModule::quickHelp() const
               " encoding, and device settings. Note that MP3 and Ogg"
               " Vorbis encoding are only available if KDE was built with a recent"
               " version of the LAME or Ogg Vorbis libraries.");
-}
-
-const KAboutData* KAudiocdModule::aboutData() const
-{
-
-    KAboutData *about =
-    new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio-CD Slave Control Module"),
-                   0, 0, KAboutData::License_GPL,
-                   I18N_NOOP("(c) 2000 - 2001 Carsten Duvenhorst"));
-
-    about->addAuthor("Carsten Duvenhorst", 0, "duvenhorst@duvnet.de");
-
-    return about;
 }
 
 extern "C"

@@ -39,7 +39,6 @@ public:
     ~KAudiocdModule();
 
   QString quickHelp() const;
-  const KAboutData* aboutData() const;
 
 public slots:
 
