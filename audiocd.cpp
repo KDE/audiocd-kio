@@ -1060,7 +1060,10 @@ AudioCDProtocol::paranoiaRead(
       totalSize(processed+1);
     processedSize(processed);
   }
-
+  
+	if(processed > size)
+    totalSize(processed);
+      
   long encoderProcessed = encoder->readCleanup();
   if ( encoderProcessed >= 0 ) {
       processed += encoderProcessed;
