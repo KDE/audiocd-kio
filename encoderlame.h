@@ -33,7 +33,7 @@ class KLibrary;
  * MP3 encoder using the LAME encoding library.
  * Go to http://lame.sourceforge.net/ for lots of information.
  */ 
-class EncoderLame : public Encoder {
+class EncoderLame : public AudioCDEncoder {
 
 public:
   EncoderLame(KIO::SlaveBase *slave);

@@ -24,7 +24,7 @@
 
 #include <kio/slavebase.h>
 
-class Encoder;
+class AudioCDEncoder;
 
 struct cdrom_drive;
 
@@ -47,9 +47,8 @@ class AudioCDProtocol : public KIO::SlaveBase
     virtual void listDir(const KURL &);
 
   protected:
-    QString extension(int Encoder);
-    int encoderFromExtension(const QString& extension);
-    int determineEncoder(const QString & filename);
+    AudioCDEncoder *encoderFromExtension(const QString& extension);
+    AudioCDEncoder *determineEncoder(const QString & filename);
 
     struct cdrom_drive *  findDrive(bool &noPermission);
     void                  parseURLArgs(const KURL &);
@@ -68,13 +67,13 @@ class AudioCDProtocol : public KIO::SlaveBase
      * Give the size in bytes of this track, depending on
      * its file type.
      */
-    long fileSize(struct cdrom_drive* drive, int trackNumber, int encoder);
+    long fileSize(struct cdrom_drive* drive, int trackNumber, AudioCDEncoder *encoder);
 
     /**
      * Give the size in bytes of the space between those two
      * sectors, depending on the file type.
      */
-    long fileSize(long firstSector, long lastSector, int encoder);
+    long fileSize(long firstSector, long lastSector, AudioCDEncoder *encoder);
 
     /**
      * The heart of this ioslave.
@@ -84,7 +83,7 @@ class AudioCDProtocol : public KIO::SlaveBase
         struct cdrom_drive  * drive,
         long                  firstSector,
         long                  lastSector,
-        int                   encoderId
+        AudioCDEncoder*       encoder
     );
 
     struct cdrom_drive *  initRequest(const KURL &);
@@ -103,15 +102,21 @@ class AudioCDProtocol : public KIO::SlaveBase
      * so NO NEED to wrap your calls with #ifdef for lame or vorbis.
      * this function will do the right thing.
      */
-    void addEntry(const QString& trackTitle, int encoder, struct cdrom_drive * drive, int trackNo);
+    void addEntry(const QString& trackTitle, AudioCDEncoder *encoder,
+		    struct cdrom_drive * drive, int trackNo);
 
     class Private;
     Private * d;
 
   private:
-    QMap<int, Encoder*> encoders;
+    QPtrList<AudioCDEncoder> encoders;
     cdrom_drive * pickDrive();
     unsigned int get_discid(cdrom_drive *);
+    
+    // These are the only garenteed encoders to be built, the rest
+    // are dynamic depending on other libraries on the system
+    AudioCDEncoder *encoderTypeCDA;
+    AudioCDEncoder *encoderTypeWAV;
 };
 
 } // end namespace AudioCD

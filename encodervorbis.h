@@ -36,7 +36,7 @@
  * This encoder is only enabled when HAVE_VORBIS is set.
  * Check out http://www.vorbis.com/ for lots of information.
  */ 
-class EncoderVorbis : public Encoder {
+class EncoderVorbis : public AudioCDEncoder {
 
 public:
   EncoderVorbis(KIO::SlaveBase *slave);

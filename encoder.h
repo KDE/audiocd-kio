@@ -24,7 +24,7 @@
 
 class KConfig;
 
-class Encoder {
+class AudioCDEncoder {
 
 public:
   /**
@@ -32,12 +32,12 @@ public:
    * @param slave parent that this classes can use to call data() with
    * when finished encoding bits.
    */ 
-  explicit Encoder(KIO::SlaveBase *slave) : ioslave(slave) {};
+  explicit AudioCDEncoder(KIO::SlaveBase *slave) : ioslave(slave) {};
   
   /**
    * Deconstructor.
    */
-  virtual ~Encoder(){};
+  virtual ~AudioCDEncoder(){};
   
   /**
    * Initiallizes the decoder, loading libraries, etc.  Encoders

@@ -35,10 +35,10 @@
  * Does little more then copy the data and make sure it is in the right
  * endian.
  */ 
-class EncoderCda : public Encoder {
+class EncoderCda : public AudioCDEncoder {
 
 public:
-  EncoderCda(KIO::SlaveBase *slave) : Encoder(slave) {};
+  EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {};
   ~EncoderCda(){};
   virtual bool init(){ return true; };
   virtual void loadSettings(KConfig *){};

@@ -54,7 +54,7 @@ public:
   int vorbis_bitrate;
 };
 
-EncoderVorbis::EncoderVorbis(KIO::SlaveBase *slave) : Encoder(slave) {
+EncoderVorbis::EncoderVorbis(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
   d = new Private();
 }
 

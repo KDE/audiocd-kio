@@ -127,7 +127,7 @@ class EncoderLame::Private
     bool write_id3;
 };
 
-EncoderLame::EncoderLame(KIO::SlaveBase *slave) : Encoder(slave) {
+EncoderLame::EncoderLame(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
   d = new Private();
 }
 
