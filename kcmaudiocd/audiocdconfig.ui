@@ -988,9 +988,6 @@
                                 <property name="text">
                                     <string>Avera&amp;ge bitrate:</string>
                                 </property>
-                                <property name="accel">
-                                    <string>Alt+G</string>
-                                </property>
                                 <property name="checked">
                                     <bool>true</bool>
                                 </property>
@@ -1088,9 +1085,6 @@
                                 </property>
                                 <property name="text">
                                     <string>Maximal bi&amp;trate:</string>
-                                </property>
-                                <property name="accel">
-                                    <string>Alt+T</string>
                                 </property>
                                 <property name="whatsThis" stdset="0">
                                     <string>This selects the maximal bitrate used for encoding.</string>
@@ -1208,9 +1202,6 @@
                                 </property>
                                 <property name="text">
                                     <string>Minimal &amp;bitrate:</string>
-                                </property>
-                                <property name="accel">
-                                    <string>Alt+B</string>
                                 </property>
                                 <property name="whatsThis" stdset="0">
                                     <string>This selects the minimal bitrate used for encoding.</string>
