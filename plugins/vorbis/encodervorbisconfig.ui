@@ -35,7 +35,7 @@
                         <cstring>vorbis_enc_quality</cstring>
                     </property>
                     <property name="text">
-                        <string>Quality Based</string>
+                        <string>Quality based</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>
@@ -46,7 +46,7 @@
                         <cstring>vorbis_enc_bitrate</cstring>
                     </property>
                     <property name="text">
-                        <string>Bitrate Based</string>
+                        <string>Bitrate based</string>
                     </property>
                 </widget>
             </hbox>
