@@ -192,6 +192,11 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     slotServerSelectionChanged();
 };
 
+KAudiocdModule::~KAudiocdModule()
+{
+    delete config;
+}
+
 void KAudiocdModule::slotServerSelectionChanged()
 {
     cddbserver_del_push->setEnabled(cddb_server_listbox->currentItem()!=-1);

@@ -37,9 +37,10 @@ class KAudiocdModule : public KCModule
 public:
 
   KAudiocdModule(QWidget *parent=0, const char *name=0);
+    ~KAudiocdModule();
 
   QString quickHelp() const;
-  const KAboutData* aboutData() const;    
+  const KAboutData* aboutData() const;
 
 public slots:
 
@@ -87,7 +88,7 @@ private:
   QComboBox *enc_method, *cbr_bitrate, *vbr_min_brate, *vbr_max_brate, *vbr_mean_brate, *stereo;
 
   QGroupBox *cbr_settings, *vbr_settings;
-  
+
   QSlider *quality;
 
   QSpinBox *lowfilterfreq, *lowfilterwidth, *highfilterfreq, *highfilterwidth;
