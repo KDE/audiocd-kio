@@ -86,6 +86,7 @@ using namespace KIO;
 
 #define QFL1(x) QString::fromLatin1(x)
 #define DEFAULT_CD_DEVICE "/dev/cdrom"
+#define CDDB_INFORMATION "CDDB Information.txt"
 
 int start_of_first_data_as_in_toc;
 int hack_track;
@@ -213,7 +214,7 @@ enum Which_dir { Unknown = 0, // Error
 	         Device, // Show which device it is?
 		 ByTrack, // Always static Track %X file
 		 Title, // Folder with the name of the album so users can copy
-		 Info, // CDDB info |TODO implement|
+		 Info, // CDDB info
 		 Root, // The root directory, shows all these :)
 		 FullCD, // Show a single file containing all of the data
                  EncoderDir // A directory created by an encoder
@@ -244,7 +245,8 @@ class AudioCDProtocol::Private
     QString path;
     int paranoiaLevel;
     unsigned int discid;
-    int tracks;
+    uint tracks;
+    QString cddb_info;
     QString cd_title;
     QString cd_artist;
     QString cd_category;
@@ -420,7 +422,7 @@ AudioCDProtocol::initRequest(const KURL & url)
       name.truncate(dot);
     
     // See if it matches a cddb title
-    int trackNumber;
+    uint trackNumber;
     for (trackNumber = 0; trackNumber < d->tracks; trackNumber++){
       if (d->templateTitles[trackNumber] == name)
         break;
@@ -450,7 +452,7 @@ AudioCDProtocol::initRequest(const KURL & url)
       }
     }
   }
-  if (d->req_track >= d->tracks)
+  if (d->req_track >= (int)d->tracks)
     d->req_track = -1;
 
   // Are we in the directory that lists "full CD" files?
@@ -485,17 +487,28 @@ void AudioCDProtocol::get(const KURL & url)
   struct cdrom_drive * drive = initRequest(url);
   if (!drive)
     return;
+  
+  if( d->fname == i18n(CDDB_INFORMATION)){
+    mimeType("text/html");
+    data(QCString(d->cddb_info.latin1()));
+    finished();
+    cdda_close(drive);
+    return;
+  }
 
   long firstSector, lastSector;
   if (!getSectorsForRequest(drive, firstSector, lastSector))
   {
     error(KIO::ERR_DOES_NOT_EXIST, url.path());
+    cdda_close(drive);
     return;
   }
 
  AudioCDEncoder *encoder = determineEncoder(d->fname);
- if(!encoder)
+ if(!encoder){
+   cdda_close(drive);
    return;
+ }
 
  if(d->based_on_cddb){
     QString trackName;
@@ -538,7 +551,7 @@ AudioCDProtocol::stat(const KURL & url)
 
   // the track number. 0 if ripping
   // the whole CD.
-  int trackNumber = d->req_track + 1;
+  uint trackNumber = d->req_track + 1;
 
   if (!d->req_allTracks)
   { // we only want to rip one track.
@@ -623,10 +636,10 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
   d->track_titles.clear();
   KCDDB::TrackOffsetList qvl;
 
-  for (int i = 0; i < d->tracks; i++)
+  for (uint i = 0; i < d->tracks; i++)
     {
       d->is_audio[i] = cdda_track_audiop(drive, i + 1);
-      if (i+1 != hack_track)
+      if (((int)i+1) != hack_track)
         qvl.append(cdda_track_firstsector(drive, i + 1) + 150);
       else
         qvl.append(start_of_first_data_as_in_toc + 150);
@@ -644,6 +657,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
     {
       d->based_on_cddb = true;
       KCDDB::CDInfo info = c.bestLookupResponse();
+      d->cddb_info = info.toString();
       d->cd_title = info.title;
       d->cd_artist = info.artist;
       d->cd_category = info.genre;
@@ -656,7 +670,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
     }
 
   d->based_on_cddb = false;
-  for (int i = 0; i < d->tracks; i++)
+  for (uint i = 0; i < d->tracks; i++)
     {
       QString num;
       int ti = i + 1;
@@ -787,7 +801,9 @@ AudioCDProtocol::listDir(const KURL & url)
       do_tracks = false;
     }
   else if (d->which_dir == Info){
-    // TODO List some text file CDDB file perhaps?
+    UDSEntry entry;
+    app_file(entry, i18n(CDDB_INFORMATION), (d->cddb_info.length()));
+    listEntry(entry, false);
     do_tracks = false;
   }
 
@@ -806,7 +822,7 @@ AudioCDProtocol::listDir(const KURL & url)
     }
     else
     { // listing another dir than the "FullCD" one.
-      for (int trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
+      for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
       {
         if (!d->is_audio[trackNumber-1])
           continue;
