@@ -972,7 +972,7 @@ AudioCDProtocol::get_discid(struct cdrom_drive * drive)
           n /= 10;
         }
     }
-  unsigned int l = my_last_sector(drive) / 75;
+  unsigned int l = (my_last_sector(drive) + 1) / 75;
   l -= my_first_sector(drive) / 75;
   id = ((id % 255) << 24) | (l << 8) | drive->tracks;
   return id;
