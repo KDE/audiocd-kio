@@ -15,6 +15,6 @@ messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kcmaudiocd.pot
 
 data_DATA = audiocd.desktop
-datadir = $(kde_appsdir)/Settings/Sound
+datadir = $(kde_appsdir)/Settings/FileBrowsing
 
 audiocdconfig.cpp: audiocdconfig.h
