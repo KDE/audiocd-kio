@@ -999,6 +999,8 @@ AudioCDProtocol::parseURLArgs(const KURL & url)
 	}
 }
 
+int paranoia_read_limited_error;
+
 void
 AudioCDProtocol::paranoiaRead(
 		struct cdrom_drive * drive,
@@ -1054,7 +1056,13 @@ AudioCDProtocol::paranoiaRead(
 
 	while (currentSector <= lastSector)
 	{
-		int16_t * buf = paranoia_read(paranoia, paranoiaCallback);
+		// TODO make the 5 configurable?  The default is 20
+		paranoia_read_limited_error = 0;
+		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback,5);
+		if(paranoia_read_limited_error >= 5){
+			// TODO add post 3.3
+			//warning(i18n("AudioCD: Disk damage detected - risk of data corruption"));
+		}
 		if (0 == buf) {
 			kdDebug(7117) << "Unrecoverable error in paranoia_read" << endl;
 			ok = false;
@@ -1202,10 +1210,66 @@ void AudioCDProtocol::generateTemplateTitles()
 	}
 }
 
-void paranoiaCallback(long, int)
+/**
+ * From the cdparinoia rip app
+ * Only output BAD stuff
+ * The higher the paranoia_read_limited_error the worse it is
+ * PARANOIA_CB_READ & PARANOIA_CB_VERIFY happen continusly fyi
+ */
+void paranoiaCallback(long, int function)
 {
-	// Do we want to show info somewhere ?
-	// Not yet.
-	// Why not?
+	switch(function){
+		case PARANOIA_CB_VERIFY:
+			//kdDebug(7117) << "PARANOIA_CB_VERIFY" << endl;
+			break;
+
+		case PARANOIA_CB_READ:
+			//kdDebug(7117) << "PARANOIA_CB_READ" << endl;
+			break;
+
+		case PARANOIA_CB_FIXUP_EDGE:
+			//kdDebug(7117) << "PARANOIA_CB_FIXUP_EDGE" << endl;
+			paranoia_read_limited_error = 2;
+			break;
+
+		case PARANOIA_CB_FIXUP_ATOM:
+			//kdDebug(7117) << "PARANOIA_CB_FIXUP_ATOM" << endl;
+			paranoia_read_limited_error = 6;
+			break;
+
+		case PARANOIA_CB_READERR:
+			kdDebug(7117) << "PARANOIA_CB_READERR" << endl;
+			paranoia_read_limited_error = 6;
+			break;
+
+		case PARANOIA_CB_SKIP:
+			kdDebug(7117) << "PARANOIA_CB_SKIP" << endl;
+			paranoia_read_limited_error = 8;
+			break;
+
+		case PARANOIA_CB_OVERLAP:
+			//kdDebug(7117) << "PARANOIA_CB_OVERLAP" << endl;
+			break;
+
+		case PARANOIA_CB_SCRATCH:
+			kdDebug(7117) << "PARANOIA_CB_SCRATCH" << endl;
+			paranoia_read_limited_error = 7;
+			break;
+
+		case PARANOIA_CB_DRIFT:
+			//kdDebug(7117) << "PARANOIA_CB_DRIFT" << endl;
+			paranoia_read_limited_error = 4;
+			break;
+
+		case PARANOIA_CB_FIXUP_DROPPED:
+			kdDebug(7117) << "PARANOIA_CB_FIXUP_DROPPED" << endl;
+			paranoia_read_limited_error = 5;
+			break;
+
+		case PARANOIA_CB_FIXUP_DUPED:
+			kdDebug(7117) << "PARANOIA_CB_FIXUP_DUPED" << endl;
+			paranoia_read_limited_error = 5;
+			break;
+	}
 }
 
