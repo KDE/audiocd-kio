@@ -70,7 +70,7 @@ NOTFOUND) AC_MSG_RESULT(searched but not found) ;;
         CDPARANOIA_RPATH="-R ${CDPARANOIA_ROOT}/lib"
       fi
     fi
-    CDPARANOIA_LIBS="${CDPARANOIA_LIBS}-lcdda_paranoia -lcdda_interface"
+    CDPARANOIA_LIBS="${CDPARANOIA_LIBS} -lcdda_paranoia -lcdda_interface"
   fi
   AC_DEFINE_UNQUOTED(HAVE_CDPARANOIA, 1, [Define if you have cdparanoia])
   AUDIOCD_SUBDIR="audiocd"
