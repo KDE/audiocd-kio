@@ -29,20 +29,23 @@
  * @returns pointer to the symbol or NULL
  */  
 void* loadPlugin( const QString &libFileName ){
+#ifdef DEBUG
+  kdDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\"." << endl;
+#endif  
   KLibLoader *loader = KLibLoader::self(); 
   if( !loader ) return NULL;
 #ifdef DEBUG
-  kdDebug(7117) << "We have a loader. File: " << libFileName.latin1() << "." << endl;
+  kdDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\"." << endl;
 #endif  
   KLibrary *lib = loader->library(libFileName.latin1());
   if( !lib ) return NULL;
 #ifdef DEBUG
-  kdDebug(7117) << "We have a library. File: " << libFileName.latin1() << "." << endl;
+  kdDebug(7117) << "We have a library. File: \"" << libFileName.latin1() << "\"." << endl;
 #endif
   void *cplugin = lib->symbol("create_audiocd_encoders");
   if( !cplugin ) return NULL;
 #ifdef DEBUG
-  kdDebug(7117) << "We have a plugin. File: " << libFileName.latin1() << "." << endl;
+  kdDebug(7117) << "We have a plugin. File:  \"" << libFileName.latin1() << "\"." << endl;
 #endif
   return cplugin;
 }
@@ -62,7 +65,7 @@ void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEnc
       kdDebug(7117) << "Directory given by KStandardDirs: " << d.path().latin1() << " doesn't exists!" << endl;
       continue;
     }
-    d.setFilter( QDir::Files | QDir::Hidden | QDir::NoSymLinks );
+    d.setFilter( QDir::Files | QDir::Hidden );
     
     const QFileInfoList *list = d.entryInfoList();
     QFileInfoListIterator it( *list );
@@ -70,7 +73,8 @@ void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEnc
     
     while ( (fi = it.current()) != 0 ) {
       if(0 < fi->fileName().contains(QRegExp( "^libaudiocd_encoder_.*.so$" ))){
-        void *function = loadPlugin(fi->fileName());
+        QString fileName = (fi->fileName().mid(0,fi->fileName().find('.')));
+        void *function = loadPlugin(fileName);
         if(function){
           void (*functionPointer)(KIO::SlaveBase *, QPtrList<AudioCDEncoder> &) = (void (*)(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)) function;
           functionPointer(slave, encoders);
