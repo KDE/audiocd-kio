@@ -567,7 +567,7 @@
                                     <string>Add &amp;track information</string>
                                 </property>
                                 <property name="whatsThis" stdset="0">
-                                    <string>Add a description of the Song to the Fileheader. This makes it easy for the user to get advanced song information shown by his media player. You can get this information automatically via the Internet. Look at the &lt;i&gt;"CDDB Retrieval"&lt;/i&gt; control module for details.</string>
+                                    <string>Add a description of the song to the file header. This makes it easy for the user to get advanced song information shown by his media player. You can get this information automatically via the Internet. Look at the &lt;i&gt;"CDDB Retrieval"&lt;/i&gt; control module for details.</string>
                                 </property>
                             </widget>
                         </vbox>

@@ -651,7 +651,7 @@ AudioCDProtocol::initRequest(const KURL & url)
   if (url.hasHost()) 
   {
     error(KIO::ERR_UNSUPPORTED_ACTION,
-	  i18n("You cannot specify a host with this protocol.  "
+	  i18n("You cannot specify a host with this protocol. "
 	       "Please use the audiocd:/ format instead."));
     return 0;
   }
