@@ -4,6 +4,7 @@
   Copyright (C) 2001 Carsten Duvenhorst <duvenhorst@m2.uni-hannover.de>
   Copyright (C) 2001 Adrian Schroeter <adrian@suse.de>
   Copyright (C) 2003 Richard Lärkäng <richard@goteborg.utfors.se>
+  Copyright (C) 2003 Scott Wheeler <wheeler@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -643,6 +644,13 @@ bool AudioCDProtocol::initLameLib(){
 struct cdrom_drive *
 AudioCDProtocol::initRequest(const KURL & url)
 {
+
+  if (url.hasHost()) 
+  {
+    error(KIO::ERR_DOES_NOT_EXIST, url.path());
+    return 0;
+  }
+
 #ifdef HAVE_LAME
   initLameLib();
 #endif
