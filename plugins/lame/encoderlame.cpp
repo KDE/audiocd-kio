@@ -35,6 +35,10 @@
 #include <klibloader.h>
 #include <kdebug.h>
 #include <qgroupbox.h>
+
+#include <kglobal.h>  
+#include <klocale.h>
+
 extern "C"
 {
   KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
@@ -168,6 +172,7 @@ EncoderLame::~EncoderLame(){
 
 QWidget* EncoderLame::getConfigureWidget(KConfigSkeleton** manager) const {
   (*manager) = Settings::self();
+  KGlobal::locale()->insertCatalogue("audiocd_encoder_lame");
   EncoderLameConfig *config = new EncoderLameConfig();
   config->cbr_settings->hide();
   return config;
