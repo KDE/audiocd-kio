@@ -83,10 +83,11 @@ extern "C"
 #include <client.h>
 
 using namespace KIO;
+using namespace KCDDB;
 
 #define QFL1(x) QString::fromLatin1(x)
 #define DEFAULT_CD_DEVICE "/dev/cdrom"
-#define CDDB_INFORMATION "CDDB Information.txt"
+#define CDDB_INFORMATION "CDDB Information"
 
 int start_of_first_data_as_in_toc;
 int hack_track;
@@ -246,7 +247,7 @@ class AudioCDProtocol::Private
     int paranoiaLevel;
     unsigned int discid;
     uint tracks;
-    QString cddb_info;
+    CDInfoList cddb_info;
     QString cd_title;
     QString cd_artist;
     QString cd_category;
@@ -487,10 +488,22 @@ void AudioCDProtocol::get(const KURL & url)
   struct cdrom_drive * drive = initRequest(url);
   if (!drive)
     return;
-  
-  if( d->fname == i18n(CDDB_INFORMATION)){
+ 
+  if( d->fname.contains(i18n(CDDB_INFORMATION))){
     mimeType("text/html");
-    data(QCString(d->cddb_info.latin1()));
+    uint choice = 1;
+    if(d->fname != QString("%1.txt").arg(i18n(CDDB_INFORMATION))){
+      choice= d->fname.section('_',1,1).section('.',0,0).toInt();
+    }
+    uint count = 1;
+    CDInfoList::iterator it;
+    for ( it = d->cddb_info.begin(); it != d->cddb_info.end(); ++it ){
+      if(count == choice){
+        data(QCString( (*it).toString().latin1() ));
+        break;
+      }
+      count++;
+    }
     finished();
     cdda_close(drive);
     return;
@@ -657,7 +670,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
     {
       d->based_on_cddb = true;
       KCDDB::CDInfo info = c.bestLookupResponse();
-      d->cddb_info = info.toString();
+      d->cddb_info = c.lookupResponse();
       d->cd_title = info.title;
       d->cd_artist = info.artist;
       d->cd_category = info.genre;
@@ -777,9 +790,17 @@ AudioCDProtocol::listDir(const KURL & url)
     list_tracks = false; 
   }
   else if (d->which_dir == Info){
-    UDSEntry entry;
-    app_file(entry, i18n(CDDB_INFORMATION), (d->cddb_info.length()));
-    listEntry(entry, false);
+    CDInfoList::iterator it;
+    uint count = 1;
+    for ( it = d->cddb_info.begin(); it != d->cddb_info.end(); ++it ){
+      (*it).toString();
+      if(count == 1)
+        app_file(entry, QString("%1.txt").arg(i18n(CDDB_INFORMATION)), ((*it).toString().length()));
+      else
+        app_file(entry, QString("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(count), ((*it).toString().length()));
+      count++;
+      listEntry(entry, false);
+    }
     list_tracks = false;
   }
   
