@@ -328,6 +328,7 @@ int main ()
      VORBISFILE_LIBS="-lvorbisfile"
      VORBISENC_LIBS="-lvorbisenc -lvorbis"
      KCM_AUDIOCD="kcmaudiocd"	
+     KAUDIOCREATOR="kaudiocreator"
   else
      AC_MSG_RESULT(no (but first try gave $msg))
      echo "*** Could not run Vorbis test program, checking why..."
@@ -366,4 +367,7 @@ AC_SUBST(VORBISFILE_LIBS)
 AC_SUBST(VORBISENC_LIBS)
 
 AM_CONDITIONAL(include_kcm_audiocd, test -n "$KCM_AUDIOCD")
+if test -z "$KAUDIOCREATOR"; then
+    DO_NOT_COMPILE="$DO_NOT_COMPILE kaudiocreator"
+fi
 
