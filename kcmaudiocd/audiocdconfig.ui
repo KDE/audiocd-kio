@@ -1481,7 +1481,7 @@
                                             </size>
                                         </property>
                                         <property name="whatsThis" stdset="0">
-                                            <string>List all directories, where local CDDB entries are search also.  The first in this list is the directory where entries are saved.</string>
+                                            <string>List all directories where local CDDB entries are also searched. The first in this list is the directory where entries are saved.</string>
                                         </property>
                                     </widget>
                                     <widget class="QPushButton" row="0" column="1">
