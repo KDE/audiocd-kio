@@ -106,7 +106,16 @@ class AudioCDProtocol : public KIO::SlaveBase
     struct cdrom_drive *  initRequest(const KURL &);
     uint                  discid(struct cdrom_drive *);
     void                  updateCD(struct cdrom_drive *);
-
+    
+    /**
+     * Add an entry in the KIO directory, using the title you give,
+     * it will set the extension itself depending on the fileType.
+     * You must also give the trackNumber for the size of the file
+     * to be calculated.
+     * NOTE: if you want to add a file which is the whole CD, give
+     * trackNo = -1
+     */
+    void addEntry(const QString& trackTitle, enum FileType fileType, struct cdrom_drive * drive, int trackNo);
     FileType fileType(const QString & filename);
 
     class Private;

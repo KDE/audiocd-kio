@@ -281,7 +281,7 @@ kdemain(int argc, char ** argv)
 }
 
 enum Which_dir { Unknown = 0, Device, ByName, ByTrack, Title, Info, Root,
-                 MP3, Vorbis };
+                 MP3, Vorbis, FullCD };
 
 class AudioCDProtocol::Private
 {
@@ -299,6 +299,7 @@ class AudioCDProtocol::Private
       s_info = i18n("Information");
       s_mp3  = "MP3";
       s_vorbis = "Ogg Vorbis";
+      s_fullCD = "Full CD";
     }
 
     void clear()
@@ -330,6 +331,7 @@ class AudioCDProtocol::Private
     QString s_info;
     QString s_mp3;
     QString s_vorbis;
+    QString s_fullCD;
 
 #ifdef HAVE_LAME
   lame_global_flags *gf;
@@ -711,11 +713,6 @@ AudioCDProtocol::initRequest(const KURL & url)
   if (!dname.isEmpty() && dname[0] == '/')
     dname = dname.mid(1);
 
-  // are we ripping the full CD?
-  if (url.fileName().contains(QString::fromLatin1("FullCD"))) {
-    d->req_allTracks = true;
-  }
-
   /* A hack, for when konqi wants to list the directory audiocd:/Bla
      it really submits this URL, instead of audiocd:/Bla/ to us. We could
      send (in listDir) the UDS_NAME as "Bla/" for directories, but then
@@ -725,7 +722,7 @@ AudioCDProtocol::initRequest(const KURL & url)
        d->fname == d->s_bytrack || d->fname == d->s_info ||
        d->fname == QFL1("By Name") || d->fname == QFL1("By Track") ||
        d->fname == QFL1("Information") ||
-       d->fname == d->s_mp3 || d->fname == d->s_vorbis || d->fname == QFL1("dev")))
+       d->fname == d->s_mp3 || d->fname == d->s_vorbis || d->fname == d->s_fullCD || d->fname == QFL1("dev")))
     {
       dname = d->fname;
       d->fname = "";
@@ -745,6 +742,8 @@ AudioCDProtocol::initRequest(const KURL & url)
     d->which_dir = MP3;
   else if (dname == d->s_vorbis)
     d->which_dir = Vorbis;
+  else if (dname == d->s_fullCD)
+    d->which_dir = FullCD;
   else if (dname.left(4) == QFL1("dev/"))
     {
       d->which_dir = Device;
@@ -797,6 +796,10 @@ AudioCDProtocol::initRequest(const KURL & url)
   if (d->req_track >= d->tracks)
     d->req_track = -1;
 
+  // are we in the directory that lists "full CD"
+  // files?
+  d->req_allTracks = dname.contains(d->s_fullCD);
+  
   kdDebug(7117) << "audiocd: dir=" << dname << " file=" << d->fname
     << " req_track=" << d->req_track << " which_dir=" << d->which_dir << " rip full CD?=" << d->req_allTracks << endl;
   return drive;
@@ -1233,7 +1236,23 @@ AudioCDProtocol::listDir(const KURL & url)
       app_dir(entry, d->s_vorbis, d->tracks);
       listEntry(entry, false);
 #endif
-
+      
+      // add the directory for "fullCD" files
+      int numberOfFullCDFiles = 1 /* fullCD.wav */
+      #ifdef HAVE_LAME
+                              + 1 /* fullCD.mp3 */
+      #endif
+      #ifdef HAVE_VORBIS
+                              + 1 /* fullCD.ogg */
+      #endif
+                              ;
+      if (d->based_on_cddb)
+      { // we are using CDDB. there will
+        // be twice as much files (also <cd_title>.{wav,mp3,ogg})
+        numberOfFullCDFiles = numberOfFullCDFiles * 2;
+      }
+      app_dir(entry, d->s_fullCD, numberOfFullCDFiles);
+      listEntry(entry, false);
     }
   else if (d->which_dir == Device && url.path().length() <= 5) // "/dev{/}"
     {
@@ -1250,103 +1269,69 @@ AudioCDProtocol::listDir(const KURL & url)
 
   if (do_tracks)
   {
-    enum FileType fileType = FileTypeUnknown;
-    QString fullCDTrack(QFL1("FullCD"));
-    switch (d->which_dir)
-    {
-      case Device:
-      case Root: break;
-      case ByTrack:
-        fileType = FileTypeWAV;
-        break;
-#ifdef HAVE_LAME
-      case MP3:
-        fileType = FileTypeMP3;
-        break;
-#endif
+    QString fullCDTrack(QFL1("Full CD"));
 
-#ifdef HAVE_VORBIS
-      case Vorbis:
-        fileType = FileTypeOggVorbis;
-        break;
-#endif
-
-      case ByName:
-      case Title:
-        fileType = FileTypeWAV;
-        break;
-      case Info:
-      case Unknown:
-      default:
-        error(KIO::ERR_INTERNAL, url.path());
-        return;
-    };
-
-    // if we're not listing the root dir..
-    if ( (d->which_dir == ByTrack)
-#ifdef HAVE_LAME
-          || (d->which_dir == MP3)
-#endif
-#ifdef HAVE_VORBIS
-          || (d->which_dir == Vorbis)
-#endif
-      )
-    { // already add the entry for the
-      // full CD track.
-      long fileSizeFullCD = fileSize(cdda_track_firstsector(drive, 1),
-                                        cdda_track_lastsector(drive, cdda_tracks(drive)),
-                                        fileType);
-      app_file(entry, fullCDTrack + extension(fileType), fileSizeFullCD);
-      listEntry(entry, false);
+    // if we're listing the "full CD" subdirectory :
+    if ( (d->which_dir == FullCD) )
+    { // add the entries for the
+      // full CD.
+      addEntry(fullCDTrack, FileTypeOggVorbis, drive, -1);
+      addEntry(fullCDTrack, FileTypeMP3, drive, -1);
+      addEntry(fullCDTrack, FileTypeWAV, drive, -1);
+      addEntry(d->cd_title, FileTypeOggVorbis, drive, -1);
+      addEntry(d->cd_title, FileTypeMP3, drive, -1);
+      addEntry(d->cd_title, FileTypeWAV, drive, -1);
     }
-
-    for (int i = 1; i <= d->tracks; i++)
-    {
-      if (d->is_audio[i-1])
+    else
+    { // listing another dir than the "FullCD" one.
+      for (int i = 1; i <= d->tracks; i++)
       {
-        long firstSector    = cdda_track_firstsector(drive, i);
-        long lastSector     = cdda_track_lastsector(drive, i);
+        if (d->is_audio[i-1])
+        {
 
-        QString s;
-        /*if (i==1)
-          s.sprintf("_%08x.wav", d->discid);
-        else*/
-        QString num2;
-        num2.sprintf("%02d", i);
+          QString s;
+          /*if (i==1)
+            s.sprintf("_%08x.wav", d->discid);
+          else*/
+          QString num2;
+          num2.sprintf("%02d", i);
+          QString name;
 
-        
-        QString name;
-        switch (d->which_dir)
-          {
-            case Device:
-            case Root: name.sprintf("track%02d.cda", i); break;
-            case ByTrack: name = d->s_track.arg(num2) + extension(fileType); break;
+          switch (d->which_dir)
+            {
+              case Device:
+              case Root:
+                name.sprintf("track%02d", i);
+                addEntry(name, FileTypeCDA, drive, i);
+                break;
+              case ByTrack:
+                addEntry(d->s_track.arg(num2), FileTypeWAV, drive, i); 
+                break;
 #ifdef HAVE_LAME
-            case MP3:
-              if ( initLameLib() == true ){
-                name = d->titles[i - 1] + extension(fileType);
-              };
-              break;
+              case MP3:
+                if ( initLameLib() == true ){
+                  addEntry(d->titles[i - 1], FileTypeMP3, drive, i);
+                }
+                break;
 #endif
 
 #ifdef HAVE_VORBIS
-            case Vorbis:
-              name = d->titles[i - 1] + extension(fileType);
-              break;
+              case Vorbis:
+                addEntry(d->titles[i - 1], FileTypeOggVorbis, drive, i);
+                break;
 #endif
 
-            case ByName:
-            case Title:
-              name = d->titles[i - 1] + extension(fileType);
-              break;
-            case Info:
-            case Unknown:
-            default:
-              error(KIO::ERR_INTERNAL, url.path());
-              return;
-          }
-        app_file(entry, name, fileSize(firstSector, lastSector, fileType));
-        listEntry(entry, false);
+              case ByName:
+              case Title:
+                addEntry(d->titles[i - 1], FileTypeWAV, drive, i);
+                break;
+              case Info:
+              case Unknown:
+              default:
+                error(KIO::ERR_INTERNAL, url.path());
+                return;
+            }
+        }
       }
     }
   }
@@ -1356,6 +1341,27 @@ AudioCDProtocol::listDir(const KURL & url)
   cdda_close(drive);
 
   finished();
+}
+
+  void
+AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, struct cdrom_drive * drive, int trackNo)
+{
+  long theFileSize = 0;
+  if (trackNo == -1)
+  { // adding entry for the full CD
+    theFileSize = fileSize(cdda_track_firstsector(drive, 1),
+                                      cdda_track_lastsector(drive, cdda_tracks(drive)),
+                                      fileType);
+  }
+  else
+  { // adding one regular track
+    long firstSector    = cdda_track_firstsector(drive, trackNo);
+    long lastSector     = cdda_track_lastsector(drive, trackNo);
+    theFileSize = fileSize(firstSector, lastSector, fileType);
+  }
+  UDSEntry entry;
+  app_file(entry, trackTitle + extension(fileType), theFileSize);
+  listEntry(entry, false);
 }
 
   void
