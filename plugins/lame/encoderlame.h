@@ -25,7 +25,7 @@
 #ifndef ENCODER_LAME_H
 #define ENCODER_LAME_H
 
-#include "encoder.h"
+#include "audiocdencoder.h"
 
 class KLibrary;
 
@@ -41,7 +41,7 @@ public:
 
   virtual QString type() const { return "MP3"; };
   virtual bool init();
-  virtual void loadSettings(KConfig *config);
+  virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;
   virtual const char * fileType() const { return "mp3"; };
   virtual const char * mimeType() const;
@@ -58,6 +58,8 @@ public:
   virtual long read(int16_t * buf, int frames);
   virtual long readCleanup();
   
+   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
+
 private:
   class Private;
   Private * d;

@@ -26,6 +26,7 @@
 #ifndef KAUDIOCDCONFIG_H
 #define KAUDIOCDCONFIG_H
 
+class KConfigDialogManager;
 
 #include "audiocdconfig.h"
 class KAudiocdModule : public AudiocdConfig
@@ -48,11 +49,7 @@ public slots:
 
 private slots:
 
-  void slotSelectMethod(int);
-  void slotSelectVorbisMethod(int);
-  void slotUpdateVBRWidgets();
   void slotConfigChanged();
-  void slotChangeFilter();
   void slotEcEnable();
 private:
 
@@ -60,8 +57,8 @@ private:
   bool configChanged;
 
   int getBitrateIndex(int value);
-  int getVorbisBitrateIndex(int value);
-  int getVorbisNominalBitrateIndex(int value);
+
+  QPtrList<KConfigDialogManager> encoderSettings;
 };
 
 #endif

@@ -22,7 +22,7 @@
 #include <sys/types.h>
 #include <kio/slavebase.h>
 
-class KConfig;
+class KConfigSkeleton;
 
 class AudioCDEncoder {
 
@@ -48,12 +48,8 @@ public:
 
   /**
    * The encoder should read in its config data here.
-   * When possible using the type() for the group is best.
-   * config is shared with all plugins so stay in your own
-   * group.
-   * @param config pointer to active KConfig object. 
    */ 
-  virtual void loadSettings(KConfig *config) = 0;
+  virtual void loadSettings() = 0;
 
   /**
    * Helper function to determine the end size of a
@@ -117,6 +113,22 @@ public:
    * @return size of the data that was created by this function.
    */ 
   virtual long readCleanup() = 0;
+
+  /**
+   * Returns a configure widget for the encoder
+   */ 
+  virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const
+                   { return NULL; }; 
+ 
+  /**
+   * Helper function to load all of the AudioCD Encoders from libraries.
+   * Uses KStandardDirs to find where libraries could be, opens all of the ones
+   * that we might own audiocd_encoder_* and then uses the symbol 
+   * create_audiocd_encoders to obtain the encoders from that library.
+   * @param slave ioslave needed if the plugin is going to be used to encode something.
+   * @param encoders container for new encoders.
+   */
+  static void find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders);
 
 protected:
   /**

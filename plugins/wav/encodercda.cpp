@@ -22,53 +22,46 @@
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef ENCODER_VORBIS_H
-#define ENCODER_VORBIS_H
+#include "encodercda.h"
 
-#include <config.h>
-
-#ifdef HAVE_VORBIS
-
-#include "encoder.h"
-
-/**
- * Ogg Vorbis encoder.
- * This encoder is only enabled when HAVE_VORBIS is set.
- * Check out http://www.vorbis.com/ for lots of information.
- */ 
-class EncoderVorbis : public AudioCDEncoder {
-
-public:
-  EncoderVorbis(KIO::SlaveBase *slave);
-  ~EncoderVorbis();
+class EncoderCda::Private
+{
+  public:
   
-  virtual QString type() const { return "Ogg  Vorbis"; };
-  virtual bool init();
-  virtual void loadSettings(KConfig *config);
-  virtual unsigned long size(long time_secs) const;
-  virtual const char * fileType() const { return "ogg"; };
-  virtual const char * mimeType() const;
-
-  virtual void fillSongInfo(QString trackName,
-		            QString cdArtist,
-			    QString cdTitle,
-			    QString cdCategory,
-			    int trackNumber,
-			    int cdYear);
-  
-  virtual long readInit(long size);
-  virtual long read(int16_t * buf, int frames);
-  virtual long readCleanup();
-  
-private:
-  long flush_vorbis();
-  
-  class Private;
-  Private * d;
-    
 };
 
-#endif // HAVE_VORBIS
+unsigned long EncoderCda::size(long time_secs) const {
+  //return (time_secs *   (44100 * 2 * 16))/8;
+  return (time_secs) * 176400;
+}
 
-#endif // ENCODER_VORBIS_H
+const char * EncoderCda::mimeType() const {
+  return "audio/x-cda";
+}
+
+// Remove this by calculating CD_FRAMESIZE_RAW from the frames
+extern "C"
+{
+  #include <cdda_interface.h>
+}
+
+inline int16_t swap16 (int16_t i)
+{
+  return (((i >> 8) & 0xFF) | ((i << 8) & 0xFF00));
+}
+
+long EncoderCda::read(int16_t * buf, int frames){ 
+  QByteArray output;
+  int16_t i16 = 1;
+  /* WAV is defined to be little endian, so we need to swap it
+     on big endian platforms.  */
+  if (((char*)&i16)[0] == 0)
+    for (int i=0; i < 2 * frames; i++)
+       buf[i] = swap16 (buf[i]);
+  char * cbuf = reinterpret_cast<char *>(buf);
+  output.setRawData(cbuf, CD_FRAMESIZE_RAW);
+  ioslave->data(output);
+  output.resetRawData(cbuf, CD_FRAMESIZE_RAW);
+  return CD_FRAMESIZE_RAW;
+};
 

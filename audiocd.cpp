@@ -69,9 +69,7 @@ extern "C"
 
 #include "audiocd.h"
 
-#include "encoderlame.h"
-#include "encoderwav.h"
-#include "encodervorbis.h"
+#include <audiocdencoder.h>
 
 #include <sys/stat.h>
 #include <unistd.h>
@@ -281,26 +279,10 @@ AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
   d = new Private;
   
   // Add encoders
-  AudioCDEncoder *lame = new EncoderLame(this);
-  if ( ! lame->init() ){
-    delete lame;
-    lame = NULL;
-  }
-  else
-    encoders.append(lame);
-#ifdef HAVE_VORBIS
-  AudioCDEncoder *vorbis = new EncoderVorbis(this);
-  encoders.append(vorbis);
-#endif
-  AudioCDEncoder *wav = new EncoderWav(this);
-  encoders.append(wav);
-  AudioCDEncoder *cda = new EncoderCda(this);
-  encoders.append(cda);
-  
+  AudioCDEncoder::find_all_plugins(this, encoders);
   encoderTypeCDA = encoderFromExtension(".cda");
   encoderTypeWAV = encoderFromExtension(".wav");
   encoders.setAutoDelete(true);
-  
 }
 
 AudioCDProtocol::~AudioCDProtocol()
@@ -1069,7 +1051,7 @@ void AudioCDProtocol::loadSettings() {
   // Tell the encoders to load their settings
   AudioCDEncoder *encoder;
   for ( encoder = encoders.first(); encoder; encoder = encoders.next() )
-    encoder->loadSettings(config);
+    encoder->loadSettings();
 
   delete config;
 }

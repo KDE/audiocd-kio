@@ -22,45 +22,55 @@
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef ENCODER_CDA_H
-#define ENCODER_CDA_H
+#ifndef ENCODER_VORBIS_H
+#define ENCODER_VORBIS_H
 
-#include "encoder.h"
-#include <sys/stat.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include <config.h>
+
+#ifdef HAVE_VORBIS
+
+#include <audiocdencoder.h>
 
 /**
- * Raw cd "encoder"
- * Does little more then copy the data and make sure it is in the right
- * endian.
+ * Ogg Vorbis encoder.
+ * This encoder is only enabled when HAVE_VORBIS is set.
+ * Check out http://www.vorbis.com/ for lots of information.
  */ 
-class EncoderCda : public AudioCDEncoder {
+class EncoderVorbis : public AudioCDEncoder {
 
 public:
-  EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {};
-  ~EncoderCda(){};
-  virtual bool init(){ return true; };
-  virtual void loadSettings(KConfig *){};
+  EncoderVorbis(KIO::SlaveBase *slave);
+  ~EncoderVorbis();
+  
+  virtual QString type() const { return "Ogg  Vorbis"; };
+  virtual bool init();
+  virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;
-  virtual QString type() const { return "CDA"; };
+  virtual const char * fileType() const { return "ogg"; };
   virtual const char * mimeType() const;
-  virtual const char * fileType() const { return "cda"; };
-  virtual void fillSongInfo(QString,
-		            QString,
-			    QString,
-			    QString,
-			    int,
-			    int){};
-  virtual long readInit(long){ return 0; };
+
+  virtual void fillSongInfo(QString trackName,
+		            QString cdArtist,
+			    QString cdTitle,
+			    QString cdCategory,
+			    int trackNumber,
+			    int cdYear);
+  
+  virtual long readInit(long size);
   virtual long read(int16_t * buf, int frames);
-  virtual long readCleanup(){ return 0; };
+  virtual long readCleanup();
+
+  virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
 
 private:
+  long flush_vorbis();
+  
   class Private;
   Private * d;
     
 };
 
-#endif // ENCODER_CDA_H
+#endif // HAVE_VORBIS
+
+#endif // ENCODER_VORBIS_H
 
