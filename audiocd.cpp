@@ -960,7 +960,7 @@ void AudioCDProtocol::paranoiaRead(
 
 	long currentSector(firstSector);
 
-	unsigned long processed = encoder->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector));
+	unsigned long processed = encoder->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector + 1));
 	// TODO test for errors (processed<0)?
 	processedSize(processed);
 	bool ok = true;
