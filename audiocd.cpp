@@ -60,7 +60,7 @@ extern "C"
 #include <sys/cdio.h>
 #endif
 
-	void paranoiaCallback(long, int);
+void paranoiaCallback(long, int);
 	int kdemain(int argc, char ** argv);
 #ifndef CDPARANOIA_STATIC
 	int FixupTOC(cdrom_drive *d, int tracks);
@@ -269,6 +269,9 @@ public:
 
 	KCDDB::CDDB::Result cddbResult;
 };
+
+int paranoia_read_limited_error;
+
 
 AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
 	: SlaveBase("audiocd", pool, app)
@@ -575,8 +578,7 @@ void AudioCDProtocol::get(const KURL & url)
 	finished();
 }
 
-	void
-AudioCDProtocol::stat(const KURL & url)
+void AudioCDProtocol::stat(const KURL & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 	if (!drive)
@@ -639,8 +641,7 @@ AudioCDProtocol::stat(const KURL & url)
 	finished();
 }
 
-void
-AudioCDProtocol::updateCD(struct cdrom_drive * drive)
+void AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 {
 	d->tracks = cdda_tracks(drive);
 
@@ -708,8 +709,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 		}
 }
 
-static void
-app_entry(UDSEntry& e, unsigned int uds, const QString& str)
+static void app_entry(UDSEntry& e, unsigned int uds, const QString& str)
 {
 	UDSAtom a;
 	a.m_uds = uds;
@@ -717,8 +717,7 @@ app_entry(UDSEntry& e, unsigned int uds, const QString& str)
 	e.append(a);
 }
 
-static void
-app_entry(UDSEntry& e, unsigned int uds, long l)
+static void app_entry(UDSEntry& e, unsigned int uds, long l)
 {
 	UDSAtom a;
 	a.m_uds = uds;
@@ -726,8 +725,7 @@ app_entry(UDSEntry& e, unsigned int uds, long l)
 	e.append(a);
 }
 
-static void
-app_dir(UDSEntry& e, const QString & n, size_t s)
+static void app_dir(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
 	app_entry(e, KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
@@ -736,8 +734,7 @@ app_dir(UDSEntry& e, const QString & n, size_t s)
 	app_entry(e, KIO::UDS_SIZE, s);
 }
 
-static void
-app_file(UDSEntry& e, const QString & n, size_t s)
+static void app_file(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
 	app_entry(e, KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
@@ -746,8 +743,7 @@ app_file(UDSEntry& e, const QString & n, size_t s)
 	app_entry(e, KIO::UDS_SIZE, s);
 }
 
-	void
-AudioCDProtocol::listDir(const KURL & url)
+void AudioCDProtocol::listDir(const KURL & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 
@@ -894,8 +890,7 @@ AudioCDProtocol::listDir(const KURL & url)
 	finished();
 }
 
-	void
-AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encoder, struct cdrom_drive * drive, int trackNo)
+void AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encoder, struct cdrom_drive * drive, int trackNo)
 {
 	if(!encoder || !drive) return;
 
@@ -965,8 +960,7 @@ AudioCDProtocol::pickDrive()
 	return drive;
 }
 
-	void
-AudioCDProtocol::parseURLArgs(const KURL & url)
+void AudioCDProtocol::parseURLArgs(const KURL & url)
 {
 	d->clearargs();
 
@@ -1000,10 +994,7 @@ AudioCDProtocol::parseURLArgs(const KURL & url)
 	}
 }
 
-int paranoia_read_limited_error;
-
-void
-AudioCDProtocol::paranoiaRead(
+void AudioCDProtocol::paranoiaRead(
 		struct cdrom_drive * drive,
 		long firstSector,
 		long lastSector,
@@ -1062,8 +1053,9 @@ AudioCDProtocol::paranoiaRead(
 		// TODO make the 5 configurable? The default in the lib is 20 fyi
 		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback, 5);
 		if( warned == 0 && paranoia_read_limited_error >= 5 ){
-			// TODO enable post 3.3 when we can add strings again.
-			//warning(i18n("AudioCD: Disk damage detected on this track, risk of data corruption."));
+#if KDE_IS_VERSION (3, 2, 89)
+			warning(i18n("AudioCD: Disk damage detected on this track, risk of data corruption."));
+#endif
 			warned = 1;
 		}
 		if (0 == buf) {
@@ -1159,9 +1151,12 @@ AudioCDProtocol::paranoiaRead(
 	paranoia = 0;
 }
 
-void AudioCDProtocol::loadSettings() {
-	KConfig *config;
-	config = new KConfig(QFL1("kcmaudiocdrc"));
+/**
+ * Read the settings set by the kcm modules
+ */ 
+void AudioCDProtocol::loadSettings()
+{
+	KConfig *config = new KConfig(QFL1("kcmaudiocdrc"));
 
 	config->setGroup(QFL1("CDDA"));
 
@@ -1180,44 +1175,48 @@ void AudioCDProtocol::loadSettings() {
 		// never skip on errors of the medium, should be default for high quality
 	}
 
+	// The default track filename template
 	config->setGroup("FileName");
 	d->fileNameTemplate = config->readEntry("file_name_template", "%{albumartist} - %{title}");
 
 	// Tell the encoders to load their settings
 	AudioCDEncoder *encoder;
-	for ( encoder = encoders.first(); encoder; encoder = encoders.next() )
+	for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
 		encoder->loadSettings();
+	}
 
 	delete config;
 }
 
+/**
+ * Generates the track titles from the template using the cddb information.
+ */
 void AudioCDProtocol::generateTemplateTitles()
 {
-	if (d->based_on_cddb){
-		d->templateTitles.clear();
-		for (uint i = 0; i < d->tracks; i++) {
-			QString n;
-			n.sprintf("%02d", i + 1);
+	if (!d->based_on_cddb)
+		return;
 
-			QMap<QString, QString> macros;
-			macros["albumartist"] = d->cd_artist;
-			macros["albumtitle"] = d->cd_title;
-			macros["title"] = d->track_titles[i];
-			macros["number"] = n;
-			macros["genre"] = d->cd_category;
-			macros["year"] = QString::number(d->cd_year);
+	d->templateTitles.clear();
+	for (uint i = 0; i < d->tracks; i++) {
+		QMap<QString, QString> macros;
+		macros["albumartist"] = d->cd_artist;
+		macros["albumtitle"] = d->cd_title;
+		macros["title"] = d->track_titles[i];
+		QString n;
+		macros["number"] = n.sprintf("%02d", i + 1);
+		macros["genre"] = d->cd_category;
+		macros["year"] = QString::number(d->cd_year);
 
-			QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
-			d->templateTitles.append(title);
-		}
+		QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
+		d->templateTitles.append(title);
 	}
 }
 
 /**
- * From the cdparinoia rip app
+ * Based upon the cdparinoia ripping application
  * Only output BAD stuff
- * The higher the paranoia_read_limited_error the worse it is
- * PARANOIA_CB_READ & PARANOIA_CB_VERIFY happen continusly fyi
+ * The higher the paranoia_read_limited_error the worse the problem is
+ * FYI: PARANOIA_CB_READ & PARANOIA_CB_VERIFY happen continusly when ripping
  */
 void paranoiaCallback(long, int function)
 {
