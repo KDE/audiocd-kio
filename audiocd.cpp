@@ -941,7 +941,7 @@ AudioCDProtocol::get(const KURL & url)
   }
 #endif
 
-  long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector);
+  long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
   long time_secs      = (8 * totalByteCount) / (44100 * 2 * 16);
 
   if ( initLameLib() ){
@@ -1453,7 +1453,7 @@ AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDProtocol::Fi
 
   long filesize = CD_FRAMESIZE_RAW * (
         lastSector -
-        firstSector
+        firstSector + 1 
   );
 
   long length_seconds = (filesize) / 176400;
@@ -1643,7 +1643,7 @@ static char mp3buffer[mp3buffer_size];
   QTime timer;
   timer.start();
 
-  while (currentSector < lastSector)
+  while (currentSector <= lastSector)
   {
     int16_t * buf = paranoia_read(paranoia, paranoiaCallback);
 
