@@ -1152,7 +1152,7 @@ void AudioCDProtocol::loadSettings()
 	
 	// The default track filename template
 	config->setGroup("FileName");
-	d->fileNameTemplate = config->readEntry("file_name_template", "%{albumartist} - %{title}");
+	d->fileNameTemplate = config->readEntry("file_name_template", "%{albumartist} - %{number} - %{title}");
 	d->albumTemplate = config->readEntry("album_template", "%{albumartist} - %{albumtitle}");
 	d->rsearch = config->readEntry("regexp_search");
 	d->rreplace = config->readEntry("regexp_replace");
