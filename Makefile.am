@@ -9,7 +9,7 @@ kde_module_LTLIBRARIES = kio_audiocd.la
 
 kio_audiocd_la_SOURCES = audiocd.cpp
 
-kio_audiocd_la_LDFLAGS = $(all_libraries) $(CDPARANOIA_RPATH) $(KDE_PLUGIN)
+kio_audiocd_la_LDFLAGS = $(all_libraries) $(CDPARANOIA_RPATH) -module $(KDE_PLUGIN)
 
 kio_audiocd_la_LIBADD = ./plugins/libaudiocdplugins.la $(LIB_KIO) $(CDPARANOIA_LIBS) $(top_builddir)/libkcddb/libkcddb.la
 
