@@ -5,6 +5,8 @@ SUBDIRS = plugins $(AUDIO_CD_SUBDIRS)
 
 INCLUDES = $(CDPARANOIA_INCS) -I$(top_srcdir)/libkcddb -I$(srcdir)/plugins $(all_includes)
 
+KDE_CXXFLAGS=$(ENABLE_PERMISSIVE_FLAG)
+
 kde_module_LTLIBRARIES = kio_audiocd.la
 
 kio_audiocd_la_SOURCES = audiocd.cpp
