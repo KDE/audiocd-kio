@@ -1374,6 +1374,11 @@ AudioCDProtocol::parseArgs(const KURL & url)
 
 }
 
+inline int16_t swap16 (int16_t i)
+{
+  return (((i >> 8) & 0xFF) | ((i << 8) & 0xFF00));
+}
+
   void
 AudioCDProtocol::paranoiaRead(
     struct cdrom_drive * drive,
@@ -1553,6 +1558,12 @@ static char mp3buffer[mp3buffer_size];
 
       if (filetype == "wav" || filetype == "cda") {
         QByteArray output;
+        int16_t i16 = 1;
+        /* WAV is defined to be little endian, so we need to swap it
+           on big endian platforms.  */
+        if (((char*)&i16)[0] == 0)
+          for (int i=0; i < 2 * CD_FRAMESAMPLES; i++)
+            buf[i] = swap16 (buf[i]);
         char * cbuf = reinterpret_cast<char *>(buf);
         output.setRawData(cbuf, CD_FRAMESIZE_RAW);
         data(output);
