@@ -69,7 +69,8 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
 
     // File Name
     connect(fileNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
-    connect( kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
+    connect(albumNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
+		connect( kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
 }
@@ -103,6 +104,7 @@ void KAudiocdModule::defaults() {
 	}
 
 	fileNameLineEdit->setText("%{albumartist} - %{title}");
+	albumNameLineEdit->setText("%{albumartist} - %{albumtitle}");
 }
 
 void KAudiocdModule::save() {
@@ -121,6 +123,7 @@ void KAudiocdModule::save() {
   {
     KConfigGroupSaver saver(config, "FileName");
     config->writeEntry("file_name_template", fileNameLineEdit->text());
+  	config->writeEntry("album_name_template", albumNameLineEdit->text());
   	config->writeEntry("regexp_search",kcfg_replaceInput->text());
 		config->writeEntry("regexp_replace", kcfg_replaceOutput->text());
 		config->writeEntry("regexp_example", example->text());
@@ -152,6 +155,7 @@ void KAudiocdModule::load() {
   {
     KConfigGroupSaver saver(config, "FileName");
     fileNameLineEdit->setText(config->readEntry("file_name_template", "%{albumartist} - %{title}"));
+  	albumNameLineEdit->setText(config->readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
   	kcfg_replaceInput->setText(config->readEntry("regexp_search"));
 		kcfg_replaceOutput->setText(config->readEntry("regexp_replace"));
 		example->setText(config->readEntry("example", i18n("Cool artist - example audio file.wav")));

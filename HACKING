@@ -1,9 +1,25 @@
-audiocd.[h,cpp] - The main ioslave code.  It contains the logic to rip audio from cd's.  It loads all of the plugins that it can find.  When it needs to encode, generate directories (and names of directories) it goes through it's list.
+// CODE LAYOUT
+
+audiocd.[h,cpp] - The main ioslave code.  It contains the logic to rip audio from cd's.  It loads all of the plugins that it can find.  When it needs to encode, generate directories (and names of directories) it goes through it's list. audiocd uses libkcddb to retrieve its cddb entries and cdparinoia to retrieve the audio from the CD.
 
 plugins/audiocdencoder.[h,cpp] - The base class for all of the encoder plugins
 
+plugins/wav/* - The cda and wav "encoders"
+plugins/flac/* - the flac encoder
 plugins/lame/* - The mp3 encoder 
 plugins/vorbis/* - The ogg encoder
-plugins/wav/* - The cda and wav "encoders"
 
-kcmaudiocd - kcm configure dialog for the audiocd ioslave.  It also loads the plugins and gets their configure dialogs and puts them into the tab dialog.
+kcmaudiocd/ - kcm configure dialog for the audiocd ioslave.  It also loads the plugins and gets their configure dialogs and puts them into the tab dialog.
+
+// USERS
+
+Audiocd's "interface" is presented first to the users,  It should be simple.  The number of files/directories should be kept to a minimum.
+
+// APP SKIMMING
+
+Audiocd also has the ability to be "skimmed" by other tools.  For example an outside application could retrieve the second track with: 
+
+audiocd:/Wav/Track 02.wav?device=/dev/hd2&fileNameTemplate=Track %{number}&cddbChoice=1
+
+This way apps can just query audiocd:/ for CDDB, present them to the users, and rip the tracks all without having to impliment it themselves.
+

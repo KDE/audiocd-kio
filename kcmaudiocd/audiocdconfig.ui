@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>474</width>
-            <height>462</height>
+            <width>575</width>
+            <height>537</height>
         </rect>
     </property>
     <property name="caption">
@@ -50,7 +50,7 @@
                     <cstring>tab</cstring>
                 </property>
                 <attribute name="title">
-                    <string>&amp;CDDA Settings</string>
+                    <string>&amp;General</string>
                 </attribute>
                 <vbox>
                     <property name="name">
@@ -264,7 +264,7 @@
                     <cstring>tab</cstring>
                 </property>
                 <attribute name="title">
-                    <string>File Names</string>
+                    <string>&amp;Names</string>
                 </attribute>
                 <vbox>
                     <property name="name">
@@ -275,7 +275,7 @@
                             <cstring>fileNameGroupBox</cstring>
                         </property>
                         <property name="title">
-                            <string>File Name Settings</string>
+                            <string>File Name (without extension)</string>
                         </property>
                         <vbox>
                             <property name="name">
@@ -286,16 +286,13 @@
                                     <cstring>fileNameLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Please enter the filename without an extension that should be used.
-
-The following macros will be expanded:
-
+                                    <string>The following macros will be expanded:
 %{title}  		Track Title
 %{number}	Track Number
-%{year}		Year
-%{genre}	Genre
 %{albumtitle}	Album Title
-%{albumartist}	Album Artist</string>
+%{albumartist}	Album Artist
+%{year}		Year
+%{genre}	Genre</string>
                                 </property>
                             </widget>
                             <widget class="KLineEdit">
@@ -307,10 +304,40 @@ The following macros will be expanded:
                     </widget>
                     <widget class="QGroupBox">
                         <property name="name">
+                            <cstring>fileNameGroupBox_2</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Album Name</string>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>fileNameLabel_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>The following macros will be expanded:
+%{albumtitle}	Album Title
+%{albumartist}	Album Artist
+%{year}		Year
+%{genre}	Genre</string>
+                                </property>
+                            </widget>
+                            <widget class="KLineEdit">
+                                <property name="name">
+                                    <cstring>albumNameLineEdit</cstring>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                    <widget class="QGroupBox">
+                        <property name="name">
                             <cstring>groupBox2</cstring>
                         </property>
                         <property name="title">
-                            <string>File Regular Expression Replacement</string>
+                            <string>Name Regular Expression Replacement</string>
                         </property>
                         <grid>
                             <property name="name">
@@ -452,6 +479,7 @@ The following macros will be expanded:
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>kcmodule.h</includehint>
+    <includehint>klineedit.h</includehint>
     <includehint>klineedit.h</includehint>
 </includehints>
 </UI>
