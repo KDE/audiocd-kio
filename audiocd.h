@@ -83,7 +83,9 @@ class AudioCDProtocol : public KIO::SlaveBase
         struct cdrom_drive  * drive,
         long                  firstSector,
         long                  lastSector,
-        AudioCDEncoder*       encoder
+        AudioCDEncoder*       encoder,
+        const QString&        fileName
+
     );
 
     struct cdrom_drive *  initRequest(const KURL &);

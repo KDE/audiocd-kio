@@ -556,7 +556,7 @@ void AudioCDProtocol::get(const KURL & url)
   emit mimeType(QFL1(encoder->mimeType()));
   
   // Read data (track/disk) from the cd 
-  paranoiaRead(drive, firstSector, lastSector, encoder);
+  paranoiaRead(drive, firstSector, lastSector, encoder, url.fileName());
 
   // send an empty QByteArray to signal end of data.
   data(QByteArray());
@@ -999,7 +999,8 @@ AudioCDProtocol::paranoiaRead(
     struct cdrom_drive * drive,
     long firstSector,
     long lastSector,
-    AudioCDEncoder*       encoder
+    AudioCDEncoder*       encoder,
+    const QString& fileName
  )
 {
   if(!encoder || !drive)
@@ -1035,25 +1036,30 @@ AudioCDProtocol::paranoiaRead(
 
   paranoia_seek(paranoia, firstSector, SEEK_SET);
 
-  long processed(0);
   long currentSector(firstSector);
 
-  processed += encoder->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector));
+  long processed = encoder->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector));
+  // TODO test for errors (processed<0)?
   processedSize(processed);
-  
+  bool ok = true;
+
   while (currentSector <= lastSector)
   {
     int16_t * buf = paranoia_read(paranoia, paranoiaCallback);
     if (0 == buf) {
       kdDebug(7117) << "Unrecoverable error in paranoia_read" << endl;
+      ok = false;
+      error( ERR_SLAVE_DEFINED, i18n( "Error reading audio data for %1 from the CD" ).arg( fileName ) );
       break;
     }
-    
+
     ++currentSector;
 
-    int encoderProcessed=encoder->read(buf, CD_FRAMESAMPLES);
+    int encoderProcessed = encoder->read(buf, CD_FRAMESAMPLES);
     if(encoderProcessed == -1){
       kdDebug(7117) << "Encoder processing error, stopping." << endl;
+      ok = false;
+      error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
       break;
     }
     processed += encoderProcessed;
@@ -1061,8 +1067,13 @@ AudioCDProtocol::paranoiaRead(
     processedSize(processed);
   }
 
-  processed += encoder->readCleanup();
-  processedSize(processed);
+  long encoderProcessed = encoder->readCleanup();
+  if ( encoderProcessed > 0 ) {
+      processed += encoderProcessed;
+      processedSize(processed);
+  }
+  else if ( ok ) // i.e. no error message already emitted
+      error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
 
   paranoia_free(paranoia);
   paranoia = 0;
