@@ -797,26 +797,20 @@ AudioCDProtocol::listDir(const KURL & url)
       app_dir(entry, QFL1("dev"), 1);
       listEntry(entry, false);
 
-      // add the directory for "fullCD" files
-      int numberOfFullCDFiles = 1;
-      
       QMap<int, Encoder*>::Iterator it;
       for ( it = encoders.begin(); it != encoders.end(); ++it ) {
         QString name = it.data()->type();
-	//qDebug("Adding %s to virtual directory", name.latin1());
-	if(!name.isEmpty()){
-	  app_dir(entry, name, d->tracks);
-          listEntry(entry, false);
-          numberOfFullCDFiles++;
-        }
+        app_dir(entry, name, d->tracks);
+        listEntry(entry, false);
       }
-	
+
+      // If we are using CDDB. there will be twice as many files
+      // Example: Full CD.wav &  Album Title.wav
+      int numberOfFullCDFiles = encoders.count();
       if (d->based_on_cddb)
-      { // we are using CDDB. there will
-        // be twice as much files (also <cd_title>.{wav,mp3,ogg})
         numberOfFullCDFiles = numberOfFullCDFiles * 2;
-      }
       app_dir(entry, d->s_fullCD, numberOfFullCDFiles);
+      
       listEntry(entry, false);
     }
   else if (d->which_dir == Device && url.path().length() <= 5) // "/dev{/}"
@@ -893,23 +887,6 @@ AudioCDProtocol::listDir(const KURL & url)
   void
 AudioCDProtocol::addEntry(const QString& trackTitle, int encoder, struct cdrom_drive * drive, int trackNo)
 {
-  // now we check if we were compiled with or without
-  // ogg/mp3 support. we will not add the file if it's
-  // of type ogg/mp3 and that we were not compiled with
-  // support of those formats.
-  // => less work/less possibility of mistake/less #ifdef
-  // ugliness for the caller.
-  QMap<int, Encoder*>::Iterator it;
-  bool found = false;
-  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
-    if( it.key() == encoder )
-      found = true;
-  }
-  if(!found){
-    //qDebug("Unable to find encoder for %s", extension(encoder).latin1());
-    return;
-  }
-  
   long theFileSize = 0;
   if (trackNo == -1)
   { // adding entry for the full CD
