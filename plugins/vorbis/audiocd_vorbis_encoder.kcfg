@@ -28,7 +28,7 @@
       <label>Add Comments</label>
       <default>true</default>
     </entry>
-    <entry name="vorbis_quality" type="Int">
+    <entry name="vorbis_quality" type="Double">
       <label>Quality</label>
       <default>3</default>
       <min>-1</min>
