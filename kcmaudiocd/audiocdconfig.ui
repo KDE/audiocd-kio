@@ -8,9 +8,12 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>429</width>
-            <height>400</height>
+            <width>474</width>
+            <height>462</height>
         </rect>
+    </property>
+    <property name="caption">
+        <string>AudiocdConfig</string>
     </property>
     <property name="layoutMargin" stdset="0">
     </property>
@@ -302,6 +305,111 @@ The following macros will be expanded:
                             </widget>
                         </vbox>
                     </widget>
+                    <widget class="QGroupBox">
+                        <property name="name">
+                            <cstring>groupBox2</cstring>
+                        </property>
+                        <property name="title">
+                            <string>File Regular Expression Replacement</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel" row="1" column="0">
+                                <property name="name">
+                                    <cstring>textLabel2_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Selection:</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="0" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>textLabel1</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Regular expression used on all file names. For example using selection " " and replace with "_" would replace all the spaces with underlines.
+</string>
+                                </property>
+                                <property name="alignment">
+                                    <set>WordBreak|AlignVCenter</set>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="5" column="0">
+                                <property name="name">
+                                    <cstring>inputlabel</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Input:</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="6" column="0">
+                                <property name="name">
+                                    <cstring>outputLabel</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Output:</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>exampleLabel</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Example</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="6" column="1" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>exampleOutput</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Cool artist - example audio file.wav</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit" row="5" column="1" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>example</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Cool artist - example audio file.wav</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit" row="2" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>kcfg_replaceInput</cstring>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit" row="2" column="2">
+                                <property name="name">
+                                    <cstring>kcfg_replaceOutput</cstring>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="1" column="2">
+                                <property name="name">
+                                    <cstring>textLabel3_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Replace with:</string>
+                                </property>
+                            </widget>
+                            <widget class="Line" row="3" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>line1</cstring>
+                                </property>
+                                <property name="frameShape">
+                                    <enum>HLine</enum>
+                                </property>
+                                <property name="frameShadow">
+                                    <enum>Sunken</enum>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
                     <spacer>
                         <property name="name">
                             <cstring>spacer4</cstring>
@@ -315,7 +423,7 @@ The following macros will be expanded:
                         <property name="sizeHint">
                             <size>
                                 <width>21</width>
-                                <height>141</height>
+                                <height>20</height>
                             </size>
                         </property>
                     </spacer>

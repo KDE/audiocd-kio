@@ -48,11 +48,11 @@ public slots:
   void load();
 
 private slots:
-
+	void updateExample();
   void slotConfigChanged();
   void slotEcEnable();
-private:
 
+private:
   KConfig *config;
   bool configChanged;
 
