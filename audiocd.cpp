@@ -759,14 +759,15 @@ AudioCDProtocol::listDir(const KURL & url)
       QString n;
       n.sprintf("%02d", i + 1);
 
-      QMap<QChar, QString> macros;
-      macros['A'] = d->cd_artist;
-      macros['a'] = d->cd_title;
-      macros['t'] = d->track_titles[i];
-      macros['n'] = n;
-      macros['g'] = d->cd_category;
-      macros['y'] = QString::number(d->cd_year);
-      QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
+      QMap<QString, QString> macros;
+		  macros["albumartist"] = d->cd_artist;
+      macros["albumtitle"] = d->cd_title;
+      macros["title"] = d->track_titles[i];
+      macros["number"] = n;
+      macros["genre"] = d->cd_category;
+      macros["year"] = QString::number(d->cd_year);
+
+			QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
       d->templateTitles.append(title);
     }
   }
@@ -1100,7 +1101,7 @@ void AudioCDProtocol::loadSettings() {
   }
 
   config->setGroup("FileName");
-  d->fileNameTemplate = config->readEntry("file_name_template", "%n %t");
+  d->fileNameTemplate = config->readEntry("file_name_template", "%{albumartist} - %{title}");
 
   // Tell the encoders to load their settings
   AudioCDEncoder *encoder;

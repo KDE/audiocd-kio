@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>AudiocdConfig</class>
 <widget class="KCModule">
     <property name="name">
@@ -8,9 +8,12 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>719</width>
-            <height>779</height>
+            <width>429</width>
+            <height>400</height>
         </rect>
+    </property>
+    <property name="caption">
+        <string>AudiocdConfig</string>
     </property>
     <property name="layoutMargin" stdset="0">
     </property>
@@ -227,13 +230,12 @@
 
 The following macros will be expanded:
 
-%A	Artist
-%a	Album name
-%t	Track name
-%n	Track number
-%g	Genre
-%y	Year
-</string>
+%{title}  		Track Title
+%{number}	Track Number
+%{year}		Year
+%{genre}	Genre
+%{albumtitle}	Album Title
+%{albumartist}	Track Artist</string>
                                 </property>
                             </widget>
                             <widget class="KLineEdit">

@@ -86,7 +86,7 @@ void KAudiocdModule::defaults() {
     widget->updateWidgetsDefault();
   }
   
-  fileNameLineEdit->setText("%n %t");
+  fileNameLineEdit->setText("%{albumartist} - %{title}");
 }
 
 void KAudiocdModule::save() {
@@ -130,7 +130,7 @@ void KAudiocdModule::load() {
 
   {
     KConfigGroupSaver saver(config, "FileName");
-    fileNameLineEdit->setText(config->readEntry("file_name_template", "%n %t"));
+    fileNameLineEdit->setText(config->readEntry("file_name_template", "%{albumartist} - %{title}"));
   }
   
   KConfigDialogManager *widget;
