@@ -1,25 +1,16 @@
-<?xml version="1.0" ?>
-<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
-<!ENTITY % addindex "IGNORE">
-<!ENTITY % English "INCLUDE" > <!-- change language only here -->
-]>
-
 <article lang="&language;" id="audiocd">
-
+<title>audiocd</title>
 <articleinfo>
 <authorgroup>
-<author><firstname>Rik</firstname><surname>Helmsley</surname>
+<author><firstname>Rik</firstname><surname>Hemsley</surname>
 <affiliation><address><email>rik@kde.org</email></address></affiliation>
+</author>
 </authorgroup>
 
 <date>2001-07-14</date>
 <releaseinfo>2.20.00</releaseinfo>
 
 </articleinfo>
-
-<title>audiocd</title>
-
-Slave: audiocd
 
 <para>Allows treating audio <acronym>CD</acronym>s like a
 <quote>real</quote> filesystem, where tracks are represented as files
@@ -28,7 +19,7 @@ and, when copied from the directory, are digitally extracted from the
 data.</para>
 
 <para>To see how this slave works, insert an audio <acronym>CD</acronym>
-in your &CDROM; drive and type <userinput>audiocd:/</userinput> into
+in your &CD-ROM; drive and type <userinput>audiocd:/</userinput> into
 &konqueror;. Within a few seconds you should see a list of tracks and
 some directories.</para>
 
@@ -165,22 +156,20 @@ contact. By default, this is
 <variablelist>
 <title>Examples</title>
 <varlistentry>
-<term><userinput>audiocd:/?device=/dev/scd0?paranoia_level=0&use_cddb=0</userinput></term>
+<term><userinput>audiocd:/?device=/dev/scd0?paranoia_level=0&amp;use_cddb=0</userinput></term>
 <listitem>
 <para>Gives a listing of the tracks on the audio <acronym>CD</acronym>
 inserted in <filename class="devicefile">/dev/scd0</filename>, which on
-&Linux; specifies the first &SCSI; &CD-ROM; device. If you copy tracks
-from the <acronym>CD</acronym>, digital extraction will be performed
-without error correction or detection. No Internet <acronym>CD</acronym>
-Database will be contacted.</para>
+&Linux; specifies the first <acronym>SCSI</acronym> &CD-ROM; device. If
+you copy tracks from the <acronym>CD</acronym>, digital extraction will
+be performed without error correction or detection. No Internet
+<acronym>CD</acronym> Database will be contacted.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
-<section>
-<title>Frequently Asked Question</title>
-
 <qandaset>
+<title>Frequently Asked Question</title>
 <qandaentry>
 <question>
 <para>I get <errorname>The file or directory / does not
@@ -193,15 +182,17 @@ exist</errorname>.  How do I fix that? I have an audio
 <option>-vsQ</option></userinput> as yourself (not <systemitem
 class="username">root</systemitem>). Do you see a track list? If not,
 make sure you have permission to access the <acronym>CD</acronym>
-device. If you're using &SCSI; emulation (possible if you have an
-<acronym>IDE</acronym> <acronym>CD</acronym> writer) then make sure you
-check permissions on the generic <acronym>SCSI</acronym> device, which
-is probably <filename class="devicefile">/dev/sg0</filename>, <filename
+device. If you're using <acronym>SCSI</acronym> emulation (possible if
+you have an <acronym>IDE</acronym> <acronym>CD</acronym> writer) then
+make sure you check permissions on the generic <acronym>SCSI</acronym>
+device, which is probably <filename
+class="devicefile">/dev/sg0</filename>, <filename
 class="devicefile">/dev/sg1</filename>, &etc;. If it still doesn't work,
 try typing <userinput>audiocd:/?device=/dev/sg0</userinput> (or similar)
-to tell kio_audiocd which device your &CD-ROM; is.</para>
+to tell kio_audiocd which device your &CD-ROM; is.</para> 
 </answer>
 </qandaentry>
 </qandaset>
+
 
 </article>
