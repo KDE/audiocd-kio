@@ -364,7 +364,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 	// Determine what file or folder that is wanted.
 	//
 
-	d->fname = url.filename(false);
+	d->fname = url.fileName(false);
 	QString dname = url.directory(true, false);
 	if (!dname.isEmpty() && dname[0] == '/')
 		dname = dname.mid(1);
