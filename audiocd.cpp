@@ -31,6 +31,7 @@
 #include <kmacroexpander.h>
 
 #include <qfile.h>
+#include <qfileinfo.h>
 #include <qstrlist.h>
 #include <qdatetime.h>
 #include <qregexp.h>
@@ -728,7 +729,16 @@ AudioCDProtocol::initRequest(const KURL & url)
 
   if (0 == drive)
   {
-    error(KIO::ERR_DOES_NOT_EXIST, url.path());
+    if(!QFile::exists(d->path))
+      error(KIO::ERR_DOES_NOT_EXIST, d->path);
+    else {
+      QFileInfo fi(d->path);
+      if(!fi.isReadable())
+        error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->path);
+      else if(!fi.isWritable())
+	 error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->path);
+      else error(KIO::ERR_ACCESS_DENIED, d->path);
+    }
     return 0;
   }
 
