@@ -930,7 +930,7 @@ AudioCDProtocol::get(const KURL & url)
 #ifdef HAVE_VORBIS
   if (filetype == FileTypeOggVorbis) {
     totalSize( vorbisSize(time_secs) );
-    mimeType(QFL1("application/x-ogg"));
+    mimeType(QFL1("application/ogg"));
   }
 #endif
 
