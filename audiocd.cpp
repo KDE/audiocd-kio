@@ -605,8 +605,11 @@ AudioCDProtocol::stat(const KURL & url)
   atom.m_long = isFile ? S_IFREG : S_IFDIR;
   entry.append(atom);
 
+  const mode_t _umask = ::umask(0);
+  ::umask(_umask);
+
   atom.m_uds = KIO::UDS_ACCESS;
-  atom.m_long = 0400;
+  atom.m_long = 0666 & (~_umask);
   entry.append(atom);
 
   atom.m_uds = KIO::UDS_SIZE;
