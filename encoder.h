@@ -32,7 +32,7 @@ public:
    * @param slave parent that this classes can use to call data() with
    * when finished encoding bits.
    */ 
-  Encoder(KIO::SlaveBase *slave) : ioslave(slave) {};
+  explicit Encoder(KIO::SlaveBase *slave) : ioslave(slave) {};
   
   /**
    * Deconstructor.
