@@ -111,6 +111,9 @@ class AudioCDProtocol : public KIO::SlaveBase
     Private * d;
 
   private:
+
+    void generateTemplateTitles();
+
     QPtrList<AudioCDEncoder> encoders;
     cdrom_drive * pickDrive();
     

@@ -673,6 +673,8 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
       KCDDB::TrackInfoList t = info.trackInfoList;
       for (uint i = 0; i < t.count(); i++)
 	  d->track_titles.append(t[i].title);
+
+      generateTemplateTitles();
       return;
     }
 
@@ -688,6 +690,9 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
       else
         s.sprintf("data%02d", ti);
       d->templateTitles.append( s );
+
+      // keep both lists in sync
+      d->track_titles.append( QString::null );
     }
 }
 
@@ -753,25 +758,8 @@ AudioCDProtocol::listDir(const KURL & url)
 
   // Generate templated names every time
   // because the template might have changed.
-  if (d->based_on_cddb){
-    d->templateTitles.clear();
-    for (uint i = 0; i < d->tracks; i++) {
-      QString n;
-      n.sprintf("%02d", i + 1);
+  generateTemplateTitles();
 
-      QMap<QString, QString> macros;
-		  macros["albumartist"] = d->cd_artist;
-      macros["albumtitle"] = d->cd_title;
-      macros["title"] = d->track_titles[i];
-      macros["number"] = n;
-      macros["genre"] = d->cd_category;
-      macros["year"] = QString::number(d->cd_year);
-
-			QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
-      d->templateTitles.append(title);
-    }
-  }
-  
   UDSEntry entry;
   // If the tracks should be listed in this directory
   bool list_tracks = true; 
@@ -1109,6 +1097,28 @@ void AudioCDProtocol::loadSettings() {
     encoder->loadSettings();
 
   delete config;
+}
+
+void AudioCDProtocol::generateTemplateTitles()
+{
+  if (d->based_on_cddb){
+    d->templateTitles.clear();
+    for (uint i = 0; i < d->tracks; i++) {
+      QString n;
+      n.sprintf("%02d", i + 1);
+
+      QMap<QString, QString> macros;
+      macros["albumartist"] = d->cd_artist;
+      macros["albumtitle"] = d->cd_title;
+      macros["title"] = d->track_titles[i];
+      macros["number"] = n;
+      macros["genre"] = d->cd_category;
+      macros["year"] = QString::number(d->cd_year);
+
+      QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
+      d->templateTitles.append(title);
+    }
+  }
 }
 
 void paranoiaCallback(long, int)
