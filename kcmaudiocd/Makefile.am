@@ -2,7 +2,7 @@ kde_module_LTLIBRARIES = kcm_audiocd.la
 
 kcm_audiocd_la_SOURCES = audiocdconfig.ui kcmaudiocd.cpp
 
-kcm_audiocd_la_LDFLAGS  =  $(all_libraries) -module -avoid-version -no-undefined
+kcm_audiocd_la_LDFLAGS  =  $(all_libraries) $(KDE_PLUGIN) -module
 kcm_audiocd_la_LIBADD = $(LIB_KDEUI)
 
 INCLUDES = $(all_includes)
