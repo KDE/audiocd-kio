@@ -586,13 +586,11 @@ bool AudioCDProtocol::initLameLib(){
             _lamelib_lame_set_highpassfreq == NULL ||
             _lamelib_lame_set_highpasswidth == NULL
            ){
-            error(KIO::ERR_DOES_NOT_EXIST, "A symbol in this library was not found");
            _lamelibMissing = true;
            return false;
        }
        if ( NULL == (d->gf = (_lamelib_lame_init)()) )
        { // init the lame_global_flags structure with defaults
-          error(KIO::ERR_DOES_NOT_EXIST, "" );
           _lamelibMissing = true;
           return false;
        }
