@@ -860,14 +860,6 @@ void AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encode
 	listEntry(entry, false);
 }
 
-long
-AudioCDProtocol::fileSize(struct cdrom_drive* drive, int trackNumber,
-	AudioCDEncoder *encoder)
-{
-	return fileSize(cdda_track_firstsector(drive, trackNumber),
-		  cdda_track_lastsector(drive, trackNumber), encoder);
-}
-
 long AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder *encoder)
 {
 	if(!encoder)

@@ -68,13 +68,6 @@ class AudioCDProtocol : public KIO::SlaveBase
 	                          long & firstSector, long & lastSector) const;
 
 	/**
-	 * Give the size in bytes of this track, depending on
-	 * its file type.
-	 */
-	long fileSize(struct cdrom_drive* drive, int trackNumber,
-	              AudioCDEncoder *encoder);
-
-	/**
 	 * Give the size in bytes of the space between those two
 	 * sectors, depending on the file type.
 	 */
