@@ -198,10 +198,7 @@ kdemain(int argc, char ** argv)
 
   if (argc != 4)
   {
-     fprintf(stderr,
-         "Usage: kio_audiocd protocol domain-socket1 domain-socket2\n"
-     );
-
+     kdError(7117) << "Usage: kio_audiocd protocol domain-socket1 domain-socket2" << endl;
      exit(-1);
   }
 
@@ -252,7 +249,7 @@ class AudioCDProtocol::Private
     QString cd_artist;
     QString cd_category;
     QStringList track_titles;
-    QStringList titles;
+    QStringList templateTitles;
     int cd_year;
     bool is_audio[100];
     bool based_on_cddb;
@@ -425,7 +422,7 @@ AudioCDProtocol::initRequest(const KURL & url)
     // See if it matches a cddb title
     int trackNumber;
     for (trackNumber = 0; trackNumber < d->tracks; trackNumber++){
-      if (d->titles[trackNumber] == name)
+      if (d->templateTitles[trackNumber] == name)
         break;
     }
     if (trackNumber < d->tracks)
@@ -507,6 +504,7 @@ void AudioCDProtocol::get(const KURL & url)
       // YES => the title of the file is the title of the CD
       trackName = d->cd_title.utf8().data();
     else
+      // Passing the actual track title and not the template to the encoder for id3 type info
       // NO => title of the track.
       trackName = d->track_titles[d->req_track];
 
@@ -621,7 +619,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
   d->discid = id;
   d->tracks = cdda_tracks(drive);
   d->cd_title = i18n("No Title");
-  d->titles.clear();
+  d->templateTitles.clear();
   d->track_titles.clear();
   KCDDB::TrackOffsetList qvl;
 
@@ -653,22 +651,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 
       KCDDB::TrackInfoList t = info.trackInfoList;
       for (uint i = 0; i < t.count(); i++)
-        {
-          QString n;
-          n.sprintf("%02d", i + 1);
-
-	  QMap<QChar, QString> macros;
-	  macros['A'] = d->cd_artist;
-	  macros['a'] = d->cd_title;
-	  macros['t'] = t[i].title;
-	  macros['n'] = n;
-	  macros['g'] = d->cd_category;
-	  macros['y'] = QString::number(d->cd_year);
-
-	  QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
-          d->titles.append(title);
 	  d->track_titles.append(t[i].title);
-        }
       return;
     }
 
@@ -683,7 +666,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
         s = d->s_track.arg(num);
       else
         s.sprintf("data%02d", ti);
-      d->titles.append( s );
+      d->templateTitles.append( s );
     }
 }
 
@@ -728,6 +711,26 @@ app_file(UDSEntry& e, const QString & n, size_t s)
   void
 AudioCDProtocol::listDir(const KURL & url)
 {
+  // Generate templated names every time
+  // because the template might have changed.
+  if (d->based_on_cddb){
+    d->templateTitles.clear();
+    for (uint i = 0; i < d->tracks; i++) {
+      QString n;
+      n.sprintf("%02d", i + 1);
+
+      QMap<QChar, QString> macros;
+      macros['A'] = d->cd_artist;
+      macros['a'] = d->cd_title;
+      macros['t'] = d->track_titles[i];
+      macros['n'] = n;
+      macros['g'] = d->cd_category;
+      macros['y'] = QString::number(d->cd_year);
+      QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
+      d->templateTitles.append(title);
+    }
+  }
+  
   struct cdrom_drive * drive = initRequest(url);
   if (!drive)
     return;
@@ -747,7 +750,6 @@ AudioCDProtocol::listDir(const KURL & url)
     }
 
   /* TODO We can't handle which_dir == Device for now */
-
   bool do_tracks = true;
 
   if (d->which_dir == Root)
@@ -824,12 +826,12 @@ AudioCDProtocol::listDir(const KURL & url)
             break;
           }
           case Title:
-            addEntry(d->titles[trackNumber - 1],
+            addEntry(d->templateTitles[trackNumber - 1],
 			    encoderTypeWAV, drive, trackNumber);
             break;
               
 	  case EncoderDir:
-	    addEntry(d->titles[trackNumber - 1],
+	    addEntry(d->templateTitles[trackNumber - 1],
 			    d->encoder_dir_type, drive, trackNumber);
 	    break;
 	  case Info:
@@ -950,6 +952,9 @@ AudioCDProtocol::parseURLArgs(const KURL & url)
       d->path = value;
     else if (attribute == QFL1("paranoia_level"))
       d->paranoiaLevel = value.toInt();
+    else if (attribute == QFL1("fileNameTemplate")){
+      d->fileNameTemplate = value;
+    }
   }
 }
 
