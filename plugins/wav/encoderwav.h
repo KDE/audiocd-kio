@@ -45,12 +45,13 @@ public:
   virtual const char * fileType() const { return "wav"; };
   virtual const char * mimeType() const;
   
-  virtual void fillSongInfo(QString ,
-		            QString ,
-			    QString ,
-			    QString ,
+  virtual void fillSongInfo(const QString &,
+		            const QString &,
+			    const QString &,
+			    const QString &,
 			    int ,
-			    int ){};
+			    int,
+					const QString &){};
 
   virtual long readInit(long size);
   

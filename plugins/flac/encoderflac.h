@@ -44,12 +44,13 @@ public:
   virtual const char * fileType() const { return "flac"; };
   virtual const char * mimeType() const { return "audio/x-flac"; }
 
-  virtual void fillSongInfo(QString trackName,
-		            QString cdArtist,
-			    QString cdTitle,
-			    QString cdCategory,
+  virtual void fillSongInfo(const QString &trackName,
+		            const QString &cdArtist,
+			    const QString &cdTitle,
+			    const QString &cdCategory,
 			    int trackNumber,
-			    int cdYear);
+			    int cdYear,
+					const QString &comment);
   
   virtual long readInit(long size);
   virtual long read(int16_t * buf, int frames);

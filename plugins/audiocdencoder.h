@@ -84,12 +84,13 @@ public:
    * information if they want to so it can be inserted 
    * where neccessary (start, middle, end, or combos etc).
    */ 
-  virtual void fillSongInfo(QString trackName,
-		            QString cdArtist,
-			    QString cdTitle,
-			    QString cdCategory,
+  virtual void fillSongInfo( const QString &trackName,
+		      const QString &cdArtist,
+			    const QString &cdTitle,
+			    const QString &cdCategory,
 			    int trackNumber,
-			    int cdYear) = 0;
+			    int cdYear,
+					const QString &comment ) = 0;
   
   /**
    * Perform any initial file creation necessary for a new song (that

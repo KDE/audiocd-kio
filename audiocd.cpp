@@ -557,7 +557,10 @@ void AudioCDProtocol::get(const KURL & url)
 			// NO => title of the track.
 			trackName = d->track_titles[d->req_track];
 
-		encoder->fillSongInfo(trackName, d->cd_artist, d->cd_title, d->cd_category, d->req_track+1, d->cd_year);
+		encoder->fillSongInfo(trackName, d->cd_artist, d->cd_title, d->cd_category, d->req_track+1, d->cd_year, "");
+	}
+	else {
+		encoder->fillSongInfo("", "", "", "", d->req_track+1, 0, QString("CDDBDISCID=%1").arg(d->discid));
 	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);

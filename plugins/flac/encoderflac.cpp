@@ -152,9 +152,9 @@ long EncoderFLAC::readCleanup()
     return 0;
 }
 
-void EncoderFLAC::fillSongInfo(QString trackName, QString cdArtist,
-			       QString cdTitle,   QString cdCategory,
-			       int trackNumber, int cdYear)
+void EncoderFLAC::fillSongInfo(const QString &trackName, const QString &cdArtist,
+			       const QString &cdTitle,   const QString &cdCategory,
+			       int trackNumber, int cdYear, const QString &comment)
 {
     d->metadata = new FLAC__StreamMetadata*[1];
     d->metadata[0] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_VORBIS_COMMENT);
@@ -162,16 +162,16 @@ void EncoderFLAC::fillSongInfo(QString trackName, QString cdArtist,
 //    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
     typedef QPair<QString, QString> Comment;
-    Comment comments[6] = { Comment("Title", trackName),
+    Comment comments[7] = { Comment("Title", trackName),
 	    	    	    Comment("Artist", cdArtist),
 	    	    	    Comment("Album",  cdTitle),
 	    	    	    Comment("Genre",  cdCategory),
 	    	    	    Comment("Tracknumber", QString::number(trackNumber)),
-	    	    	    Comment("Date", QString::null) };
-
+									Comment("Comment", comment),
+	    	    	    Comment("Date", QString::null )};
     if (cdYear > 0) {
     	QDateTime dt = QDate(cdYear, 1, 1);
-    	comments[5] = Comment("Date", dt.toString(Qt::ISODate));
+    	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
     }
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
@@ -179,7 +179,7 @@ void EncoderFLAC::fillSongInfo(QString trackName, QString cdArtist,
     QCString cfield;
     int num_comments = 0;
 
-    for(int i=0; i<6; i++) {
+    for(int i=0; i<7; i++) {
 	if (!comments[i].second.isEmpty()) {
 	    field = comments[i].first+"="+comments[i].second;
 	    cfield = field.utf8();
