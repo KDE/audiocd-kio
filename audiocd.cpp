@@ -115,11 +115,11 @@ typedef enum MPEG_mode_e {
 
 void paranoiaCallback(long, int);
 }
+#include <kapplication.h>
 #include <kconfig.h>
 #include <kdebug.h>
 #include <kurl.h>
 #include <kprotocolmanager.h>
-#include <kinstance.h>
 #include <klocale.h>
 
 #include "audiocd.h"
@@ -293,7 +293,9 @@ using namespace AudioCD;
 int
 kdemain(int argc, char ** argv)
 {
-  KInstance instance("kio_audiocd");
+  // KApplication is used as libkcddb uses ioslaves which need a valid
+  // kapp pointer
+  KApplication app(argc, argv, "kio_audiocd", false, true);
 
   kdDebug(7117) << "Starting " << getpid() << endl;
 
@@ -1003,8 +1005,8 @@ AudioCDProtocol::stat(const KURL & url)
 
   UDSAtom atom;
   atom.m_uds = KIO::UDS_NAME;
-  atom.m_str = url.filename().replace('/', QFL1("%2F"));
-  kdDebug() << k_funcinfo << atom.m_str << endl;
+  atom.m_str = url.fileName().replace('/', QFL1("%2F"));
+  kdDebug(7117) << k_funcinfo << atom.m_str << endl;
   entry.append(atom);
 
   atom.m_uds = KIO::UDS_FILE_TYPE;
