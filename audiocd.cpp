@@ -240,13 +240,16 @@ public:
 		req_allTracks = false;
 		which_dir = Unknown;
 		req_track = -1;
+		cddbChoice = -1;
 	}
 
+	int cddbChoice;
 	QString path;
 	int paranoiaLevel;
 	QString discid;
 	uint tracks;
 	CDInfoList cddb_info;
+	KCDDB::CDInfo cddb_best;
 	QString cd_title;
 	QString cd_artist;
 	QString cd_category;
@@ -277,7 +280,7 @@ AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
 	: SlaveBase("audiocd", pool, app)
 {
 	d = new Private;
-
+	
 	// Add encoders
 	AudioCDEncoder::find_all_plugins(this, encoders);
 	encoderTypeCDA = encoderFromExtension(".cda");
@@ -676,17 +679,8 @@ void AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 	if (d->cddbResult == KCDDB::CDDB::Success)
 		{
 			d->based_on_cddb = true;
-			KCDDB::CDInfo info = c.bestLookupResponse();
 			d->cddb_info = c.lookupResponse();
-			d->cd_title = info.title;
-			d->cd_artist = info.artist;
-			d->cd_category = info.genre;
-			d->cd_year = info.year;
-
-			KCDDB::TrackInfoList t = info.trackInfoList;
-			for (uint i = 0; i < t.count(); i++)
-				d->track_titles.append(t[i].title);
-
+			d->cddb_best = c.bestLookupResponse();
 			generateTemplateTitles();
 			return;
 		}
@@ -960,40 +954,6 @@ AudioCDProtocol::pickDrive()
 	return drive;
 }
 
-void AudioCDProtocol::parseURLArgs(const KURL & url)
-{
-	d->clearargs();
-
-	QString query(KURL::decode_string(url.query()));
-
-	if (query.isEmpty() || query[0] != '?')
-		return;
-
-	query = query.mid(1); // Strip leading '?'.
-
-	QStringList tokens(QStringList::split('&', query));
-
-	for (QStringList::ConstIterator it(tokens.begin()); it != tokens.end(); ++it)
-	{
-		QString token(*it);
-
-		int equalsPos(token.find('='));
-		if (-1 == equalsPos)
-			continue;
-
-		QString attribute(token.left(equalsPos));
-		QString value(token.mid(equalsPos + 1));
-
-		if (attribute == QFL1("device"))
-			d->path = value;
-		else if (attribute == QFL1("paranoia_level"))
-			d->paranoiaLevel = value.toInt();
-		else if (attribute == QFL1("fileNameTemplate")){
-			d->fileNameTemplate = value;
-		}
-	}
-}
-
 void AudioCDProtocol::paranoiaRead(
 		struct cdrom_drive * drive,
 		long firstSector,
@@ -1152,7 +1112,49 @@ void AudioCDProtocol::paranoiaRead(
 }
 
 /**
+ * Read the settings from the URL
+ * @see loadSettings()
+ */
+void AudioCDProtocol::parseURLArgs(const KURL & url)
+{
+	d->clearargs();
+
+	QString query(KURL::decode_string(url.query()));
+
+	if (query.isEmpty() || query[0] != '?')
+		return;
+
+	query = query.mid(1); // Strip leading '?'.
+
+	QStringList tokens(QStringList::split('&', query));
+
+	for (QStringList::ConstIterator it(tokens.begin()); it != tokens.end(); ++it)
+	{
+		QString token(*it);
+
+		int equalsPos(token.find('='));
+		if (-1 == equalsPos)
+			continue;
+
+		QString attribute(token.left(equalsPos));
+		QString value(token.mid(equalsPos + 1));
+
+		if (attribute == QFL1("device"))
+			d->path = value;
+		else if (attribute == QFL1("paranoia_level"))
+			d->paranoiaLevel = value.toInt();
+		else if (attribute == QFL1("fileNameTemplate"))
+			d->fileNameTemplate = value;
+		else if (attribute == QFL1("cddbChoice")){
+			d->cddbChoice = value.toInt();
+		}
+
+	}
+}
+
+/**
  * Read the settings set by the kcm modules
+ * @see parseURLArgs()
  */ 
 void AudioCDProtocol::loadSettings()
 {
@@ -1196,6 +1198,21 @@ void AudioCDProtocol::generateTemplateTitles()
 	if (!d->based_on_cddb)
 		return;
 
+	KCDDB::CDInfo info = d->cddb_best;
+	if(d->cddbChoice >= 0 && (((uint)d->cddbChoice) < d->cddb_info.count()))
+		info = d->cddb_info[d->cddbChoice];
+	
+	// First save it for the encoders
+	// Might it be easier to just save the whole thing?
+	d->cd_title = info.title;
+	d->cd_artist = info.artist;
+	d->cd_category = info.genre;
+	d->cd_year = info.year;
+	KCDDB::TrackInfoList t = info.trackInfoList;
+	for (uint i = 0; i < t.count(); i++)
+		d->track_titles.append(t[i].title);
+
+	// Then generate the templates
 	d->templateTitles.clear();
 	for (uint i = 0; i < d->tracks; i++) {
 		QMap<QString, QString> macros;
