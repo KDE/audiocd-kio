@@ -104,6 +104,7 @@ extern "C"
   static void (*_lamelib_id3tag_set_album)(lame_global_flags*, const char*) = NULL;
   static void (*_lamelib_id3tag_set_artist)(lame_global_flags*, const char*) = NULL;
   static void (*_lamelib_id3tag_set_title)(lame_global_flags*, const char*) = NULL;
+  static void (*_lamelib_id3tag_set_track)(lame_global_flags*, const char*) = NULL;
   static int  (*_lamelib_lame_encode_buffer_interleaved) (
           lame_global_flags*, short int*, int, unsigned char*, int) = NULL;
   static int  (*_lamelib_lame_encode_finish) (
@@ -472,6 +473,9 @@ bool AudioCDProtocol::initLameLib(){
      _lamelib_id3tag_set_title =
            (void (*) (lame_global_flags*, const char*))
            _lamelib->symbol("id3tag_set_title");
+     _lamelib_id3tag_set_track =
+           (void (*) (lame_global_flags*, const char*))
+           _lamelib->symbol("id3tag_set_track");
      _lamelib_lame_init_params =
            (int (*) (lame_global_flags*))
            _lamelib->symbol("lame_init_params");
@@ -552,6 +556,7 @@ bool AudioCDProtocol::initLameLib(){
             _lamelib_id3tag_set_album == NULL ||
             _lamelib_id3tag_set_artist == NULL ||
             _lamelib_id3tag_set_title == NULL ||
+            _lamelib_id3tag_set_track == NULL ||
             _lamelib_lame_init_params == NULL ||
             _lamelib_lame_encode_buffer_interleaved == NULL ||
             _lamelib_lame_set_VBR == NULL ||
@@ -769,6 +774,9 @@ AudioCDProtocol::get(const KURL & url)
        (_lamelib_id3tag_set_album)  (d->gf, d->cd_title.latin1());
        (_lamelib_id3tag_set_artist) (d->gf, d->cd_artist.latin1());
        (_lamelib_id3tag_set_title)  (d->gf, tname+3); // since titles has preleading tracknumbers, start at position 3
+       QString tn;
+       tn.sprintf("%02d",trackNumber);
+       (_lamelib_id3tag_set_track) (d->gf, tn.latin1());
      }
     
      if ( (_lamelib_lame_init_params) (d->gf) < 0) { // tell lame the new parameters
