@@ -37,11 +37,11 @@
 
 extern "C"
 {
-  void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
+  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
   {
     encoders.append(new EncoderVorbis(slave));
   }
-};
+}
 
 // these are the approx. bitrates for the current 5 Vorbis modes
 static int vorbis_nominal_bitrates[] = { 128, 160, 192, 256, 350 };

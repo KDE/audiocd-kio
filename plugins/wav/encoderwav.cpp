@@ -26,12 +26,12 @@
 
 extern "C"
 {
-  void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
+  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
   {
     encoders.append( new EncoderWav(slave));
     encoders.append( new EncoderCda(slave));
   }
-};
+}
 
 class EncoderWav::Private
 {

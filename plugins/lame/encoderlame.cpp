@@ -32,7 +32,7 @@
 #include <qgroupbox.h>
 extern "C"
 {
-  void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
+  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
   {
     AudioCDEncoder *lame = new EncoderLame(slave);
     if ( ! lame->init() ){
@@ -42,7 +42,7 @@ extern "C"
     else
       encoders.append(lame);
   }
-};
+}
 
 static int bitrates[] = { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
 

@@ -63,5 +63,5 @@ long EncoderCda::read(int16_t * buf, int frames){
   ioslave->data(output);
   output.resetRawData(cbuf, CD_FRAMESIZE_RAW);
   return CD_FRAMESIZE_RAW;
-};
+}
 
