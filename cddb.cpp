@@ -186,9 +186,8 @@ CDDB::get_discid(QValueList<int>& track_ofs)
 	    n /= 10;
 	  }
       }
-    unsigned int l = track_ofs[num_tracks + 1];
-    l -= track_ofs[num_tracks];
-    l /= 75;
+    unsigned int l = track_ofs[num_tracks + 1] / 75;
+    l -= track_ofs[num_tracks] / 75;
     id = ((id % 255) << 24) | (l << 8) | num_tracks;
     return id;
 } 
