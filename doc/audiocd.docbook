@@ -55,7 +55,7 @@ Player, &noatun;. In this case, the procedure that happens behind the
 scenes is similar, except that instead of encoding the audio data in Ogg
 Vorbis format, it is put through a very simple conversion, from raw
 binary data (which the <literal role="extension">.cda</literal> files in
-the toplevel directory represent) to <quote>RIFF WAV</quote> format, an
+the toplevel directory represent) to <quote>RIFF WAV</quote> format, a
 non-compressed format that most media players understand.</para>
 
 <para>&noatun; should quite happily play the <literal
