@@ -210,11 +210,13 @@ kdemain(int argc, char ** argv)
 {
 	// KApplication is used as libkcddb uses ioslaves which need a valid
 	// kapp pointer
+	// GUIenabled must be true as libkcddb sometimes wants to communicate
+	// with the user
 	putenv(strdup("SESSION_MANAGER="));
 	KApplication::disableAutoDcopRegistration();
 	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, 0, 0, 0);
 	KCmdLineArgs::addCmdLineOptions(options);
-	KApplication app(false, false);
+	KApplication app(false, true);
 
 	kdDebug(7117) << "Starting " << getpid() << endl;
 
