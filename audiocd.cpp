@@ -93,7 +93,9 @@ using namespace KIO;
 extern "C"
 {
   int kdemain(int argc, char ** argv);
+#ifndef CDPARANOIA_STATIC
   int FixupTOC(cdrom_drive *d, int tracks);
+#endif
 
 #ifdef HAVE_LAME
   static int _lamelibMissing = false;
@@ -151,6 +153,9 @@ extern "C"
 
 int start_of_first_data_as_in_toc;
 int hack_track;
+
+/* Only do this if we have shared libcdda_cdparanoia.  */
+#ifndef CDPARANOIA_STATIC
 /* Mega hack.  This function comes from libcdda_interface, and is called by
    it.  We need to override it, so we implement it ourself in the hope, that
    shared lib semantics make the calls in libcdda_interface to FixupTOC end
@@ -221,6 +226,7 @@ int FixupTOC(cdrom_drive *d, int tracks)
   }
   return 0;
 }
+#endif
 
 /* libcdda returns for cdda_disc_lastsector() the last sector of the last
    _audio_ track.  How broken.  For CDDB Disc-ID we need the real last sector

@@ -54,6 +54,11 @@ if test "x$with_cdparanoia" = "xCHECK" ; then
   fi
 fi
 
+if test "x$cdparanoia_only_static" = xyes; then
+  AC_DEFINE_UNQUOTED(CDPARANOIA_STATIC, 1,
+    [Define if you only have a static cdparanoia])
+fi
+
 case "$with_cdparanoia" in
 no) AC_MSG_RESULT(no) ;;
 NOTFOUND) AC_MSG_RESULT(searched but not found) ;;
