@@ -212,14 +212,14 @@ kdemain(int argc, char ** argv)
 }
 
 enum Which_dir { Unknown = 0, // Error 
-	         Device, // Show which device it is?
-		 ByTrack, // Always static Track %X file
-		 Title, // Folder with the name of the album so users can copy
-		 Info, // CDDB info
-		 Root, // The root directory, shows all these :)
-		 FullCD, // Show a single file containing all of the data
-                 EncoderDir // A directory created by an encoder
-	       };
+		Device, // Show which device it is?
+		ByTrack, // Always static Track %X file
+		Title, // Folder with the name of the album so users can copy
+		Info, // CDDB info
+		Root, // The root directory, shows all these :)
+		FullCD, // Show a single file containing all of the data
+		EncoderDir // A directory created by an encoder
+};
 
 class AudioCDProtocol::Private
 {
@@ -342,7 +342,7 @@ AudioCDProtocol::initRequest(const KURL & url)
       if(!fi.isReadable())
         error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->path);
       else if(!fi.isWritable())
-	      error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->path);
+        error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->path);
       else error(KIO::ERR_UNKNOWN, d->path);
     }
     return 0;
@@ -511,8 +511,8 @@ void AudioCDProtocol::get(const KURL & url)
         mimeType("text/html");
         data(QCString( (*it).toString().latin1() ));
         finished();
-	found = true;
-	break;
+        found = true;
+        break;
       }
       count++;
     }
@@ -552,11 +552,13 @@ void AudioCDProtocol::get(const KURL & url)
   long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
   long time_secs      = (8 * totalByteCount) / (44100 * 2 * 16);
 
-  totalSize(encoder->size(time_secs));
+
+  unsigned long size = encoder->size(time_secs);
+  totalSize(size);
   emit mimeType(QFL1(encoder->mimeType()));
   
   // Read data (track/disk) from the cd 
-  paranoiaRead(drive, firstSector, lastSector, encoder, url.fileName());
+  paranoiaRead(drive, firstSector, lastSector, encoder, url.fileName(), size);
 
   // send an empty QByteArray to signal end of data.
   data(QByteArray());
@@ -672,7 +674,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 
       KCDDB::TrackInfoList t = info.trackInfoList;
       for (uint i = 0; i < t.count(); i++)
-	  d->track_titles.append(t[i].title);
+        d->track_titles.append(t[i].title);
 
       generateTemplateTitles();
       return;
@@ -847,7 +849,7 @@ AudioCDProtocol::listDir(const KURL & url)
         }
         case ByTrack:{
           QString name;
-	  name.sprintf("%02d", trackNumber);
+          name.sprintf("%02d", trackNumber);
           addEntry(d->s_track.arg(name), encoderTypeWAV, drive, trackNumber);
           break;
         }
@@ -901,7 +903,7 @@ AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encoder, st
 
 long
 AudioCDProtocol::fileSize(struct cdrom_drive* drive, int trackNumber,
-		AudioCDEncoder *encoder)
+	AudioCDEncoder *encoder)
 {
   return fileSize(cdda_track_firstsector(drive, trackNumber),
                     cdda_track_lastsector(drive, trackNumber),
@@ -989,12 +991,13 @@ AudioCDProtocol::paranoiaRead(
     long firstSector,
     long lastSector,
     AudioCDEncoder*       encoder,
-    const QString& fileName
+    const QString& fileName,
+    unsigned long size
  )
 {
   if(!encoder || !drive)
     return;
-	
+
   cdrom_paranoia * paranoia = paranoia_init(drive);
   if (0 == paranoia) {
     kdDebug(7117) << "paranoia_init failed" << endl;
@@ -1053,12 +1056,16 @@ AudioCDProtocol::paranoiaRead(
     }
     processed += encoderProcessed;
 
+    if(processed > size)
+      totalSize(processed+1);
     processedSize(processed);
   }
 
   long encoderProcessed = encoder->readCleanup();
   if ( encoderProcessed >= 0 ) {
       processed += encoderProcessed;
+      if(processed > size)
+        totalSize(processed);
       processedSize(processed);
   }
   else if ( ok ) // i.e. no error message already emitted
