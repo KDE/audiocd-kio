@@ -31,7 +31,6 @@
 #include <unistd.h>
 #include <qdir.h>
 #include <qtextstream.h>
-#include <qregexp.h>
 #include <kdebug.h>
 #include <ksock.h>
 #include <kextsock.h>
@@ -39,10 +38,12 @@
 
 #include "cddb.h"
 
+#define QFL1(x) QString::fromLatin1(x)
+
 CDDB::CDDB()
   : ks(0), port(0), remote(false), save_local(false)
 {
-  cddb_dirs += ".cddb";
+  cddb_dirs += QFL1(".cddb");
 }
 
 CDDB::~CDDB()
@@ -63,7 +64,7 @@ CDDB::set_server(const char *hostname, unsigned short int _port)
   kdDebug(7117) << "CDDB: set_server, host=" << hostname << "port=" << _port << endl;
   if (remote)
     {
-      ks = new KExtendedSocket(hostname, _port);
+      ks = new KExtendedSocket(QFL1(hostname), _port);
       if (ks->connect() < 0)
 	{
 	  kdDebug(7117) << "CDDB: Can't connect!" << endl;
@@ -71,7 +72,7 @@ CDDB::set_server(const char *hostname, unsigned short int _port)
 	  ks = 0;
           return false;
 	}
-      
+
       h_name = hostname;
       port = _port;
       QCString r;
@@ -190,7 +191,7 @@ CDDB::get_discid(QValueList<int>& track_ofs)
     l -= track_ofs[num_tracks] / 75;
     id = ((id % 255) << 24) | (l << 8) | num_tracks;
     return id;
-} 
+}
 
 static int
 get_code (const QCString &s)
@@ -240,7 +241,7 @@ CDDB::parse_read_resp(QTextStream *stream, QTextStream *write_stream)
   /* Fill table, so we can index it below.  */
   for (int i = 0; i < m_tracks; i++)
     {
-      m_names.append("");
+      m_names.append(QFL1(""));
     }
   while (1)
     {
@@ -306,22 +307,22 @@ CDDB::parse_read_resp(QTextStream *stream, QTextStream *write_stream)
       m_title.remove(0, si+1);
       m_title = m_title.stripWhiteSpace();
     }
-  
+
   if (m_title.isEmpty())
     m_title = i18n("No Title");
   else
-    m_title.replace(QRegExp("/"), "%2f");
+    m_title.replace('/', QFL1("%2f"));
   if (m_artist.isEmpty())
     m_artist = i18n("Unknown");
   else
-    m_artist.replace(QRegExp("/"), "%2f");
+    m_artist.replace('/', QFL1("%2f"));
 
   kdDebug(7117) << "CDDB: found Title: `" << m_title << "'" << endl;
   for (int i = 0; i < m_tracks; i++)
     {
       if (m_names[i].isEmpty())
         m_names[i] += i18n("Track %1").arg(i);
-      m_names[i].replace(QRegExp("/"), "%2f");
+      m_names[i].replace('/', QFL1("%2f"));
       kdDebug(7117) << "CDDB: found Track " << i+1 << ": `" << m_names[i]
         << "'" << endl;
     }
@@ -333,7 +334,7 @@ CDDB::add_cddb_dirs(const QStringList& list)
 {
   cddb_dirs = list;
   if (cddb_dirs.isEmpty())
-    cddb_dirs += ".cddb";
+    cddb_dirs += QFL1(".cddb");
 }
 
 /* Locates and opens the local file corresponding to that discid.
@@ -346,7 +347,7 @@ CDDB::searchLocal(unsigned int id, QFile *ret_file)
 {
   QDir dir;
   QString filename;
-  filename = QString("%1").arg(id, 0, 16).rightJustify(8, '0');
+  filename = QString::number(id, 16).rightJustify(8, '0');
   QStringList::ConstIterator it;
   for (it = cddb_dirs.begin(); it != cddb_dirs.end(); ++it)
     {
@@ -354,7 +355,7 @@ CDDB::searchLocal(unsigned int id, QFile *ret_file)
       if (!dir.exists())
         continue;
       /* First look in dir directly.  */
-      ret_file->setName (*it + "/" + filename);
+      ret_file->setName (*it + QFL1("/") + filename);
       if (ret_file->exists() && ret_file->open(IO_ReadOnly))
         return true;
       /* And then in the subdirs of dir (representing the categories normally).
@@ -364,7 +365,7 @@ CDDB::searchLocal(unsigned int id, QFile *ret_file)
       QFileInfo *fi;
       while ((fi = fiit.current()) != 0)
         {
-	  ret_file->setName (*it + "/" + fi->fileName() + "/" + filename);
+	  ret_file->setName (*it + QFL1("/") + fi->fileName() + QFL1("/") + filename);
 	  if (ret_file->exists() && ret_file->open(IO_ReadOnly))
 	    return true;
 	  ++fiit;
@@ -372,7 +373,7 @@ CDDB::searchLocal(unsigned int id, QFile *ret_file)
     }
   QString pid;
   pid.setNum(::getpid());
-  ret_file->setName (cddb_dirs[0] + "/" + filename + "." + pid);
+  ret_file->setName (cddb_dirs[0] + QFL1("/") + filename + QFL1(".") + pid);
   /* Try to create the save location.  */
   dir.setPath(cddb_dirs[0]);
   if (save_local && !dir.exists())

@@ -2,6 +2,8 @@ if include_kcm_audiocd
 SUBDIRS = kcmaudiocd
 endif
 
+KDE_CXXFLAGS = -DQT_NO_CAST_ASCII
+
 INCLUDES = $(all_includes) $(CDPARANOIA_INCS) $(LAME_INCS) $(VORBIS_INCS)
 
 kde_module_LTLIBRARIES = kio_audiocd.la
