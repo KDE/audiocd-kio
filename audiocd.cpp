@@ -837,7 +837,7 @@ AudioCDProtocol::get(const KURL & url)
       (
        &d->vc,
        const_cast<char *>("date"),
-       const_cast<char *>(dt.toString(QDate::ISODate).utf8().data())
+       const_cast<char *>(dt.toString(Qt::ISODate).utf8().data())
       );
   }
 #endif
