@@ -1268,7 +1268,7 @@ void AudioCDProtocol::getParameters() {
       
     }
 
-    if ( config->readBoolEntry("write_xing_tag",true) ) lame_set_bWriteVbrTag(d->gf, 1);
+    lame_set_bWriteVbrTag(d->gf, config->readBoolEntry("write_xing_tag",true));
 
   }
 

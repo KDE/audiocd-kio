@@ -50,6 +50,7 @@ private slots:
 
  void slotSelectMethod(int);
  void slotUpdateVBRWidgets();
+ void slotUpdateVBRCombos();
  void slotConfigChanged();
  void slotChangeFilter();
  void slotEcDisable();

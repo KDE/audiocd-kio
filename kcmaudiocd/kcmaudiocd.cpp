@@ -148,10 +148,10 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     //MP3 VBR Groupbox
     connect(vbr_average_br,SIGNAL(clicked()),this,SLOT(slotUpdateVBRWidgets()));
     connect(vbr_min_hard,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
-    connect(vbr_min_br,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
+    connect(vbr_min_br,SIGNAL(clicked()),this,SLOT(slotUpdateVBRCombos()));
     connect(vbr_min_brate,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
 
-    connect(vbr_max_br,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
+    connect(vbr_max_br,SIGNAL(clicked()),this,SLOT(slotUpdateVBRCombos()));
     connect(vbr_max_brate,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
 
     connect(vbr_xing_tag,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
@@ -593,9 +593,22 @@ void KAudiocdModule::slotUpdateVBRWidgets() {
     }
   }
 
-  slotConfigChanged();
+  slotUpdateVBRCombos();
 
   return;
+}
+
+//
+// slot for enabling and disabling VBR bitrate combo's
+//
+
+void KAudiocdModule::slotUpdateVBRCombos() {
+
+  vbr_min_brate->setEnabled((vbr_min_br->isEnabled())&&(vbr_min_br->isChecked())?true:false);
+  vbr_max_brate->setEnabled((vbr_max_br->isEnabled())&&(vbr_max_br->isChecked())?true:false);
+
+  slotConfigChanged();
+
 }
 
 QString KAudiocdModule::quickHelp() const
