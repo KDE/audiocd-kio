@@ -214,7 +214,7 @@ kdemain(int argc, char ** argv)
   return 0;
 }
 
-enum Which_dir { Unknown = 0, Device, ByName, ByTrack, Title, Info, Root,
+enum Which_dir { Unknown = 0, Device, ByTrack, Title, Info, Root,
                  EncoderDir, FullCD };
 
 class AudioCDProtocol::Private
@@ -226,7 +226,6 @@ class AudioCDProtocol::Private
       clearargs();
       discid = 0;
       based_on_cddb = false;
-      s_byname = i18n("By Name");
       s_bytrack = i18n("By Track");
       s_track = i18n("Track %1");
       s_info = i18n("Information");
@@ -252,7 +251,6 @@ class AudioCDProtocol::Private
     int cd_year;
     bool is_audio[100];
     bool based_on_cddb;
-    QString s_byname;
     QString s_bytrack;
     QString s_track;
     QString s_info;
@@ -434,9 +432,9 @@ AudioCDProtocol::initRequest(const KURL & url)
   }
   // Other Hard coded directories
   if (dname.isEmpty() &&
-      (d->fname == d->cd_title || d->fname == d->s_byname ||
+      (d->fname == d->cd_title  ||
        d->fname == d->s_bytrack || d->fname == d->s_info ||
-       d->fname == QFL1("By Name") || d->fname == QFL1("By Track") ||
+       d->fname == QFL1("By Track") ||
        d->fname == QFL1("Information") ||
        d->fname == d->s_fullCD || d->fname == QFL1("dev")))
     {
@@ -461,8 +459,6 @@ AudioCDProtocol::initRequest(const KURL & url)
     d->which_dir = Root;
   else if (dname == d->cd_title)
     d->which_dir = Title;
-  else if (dname == d->s_byname || dname == QFL1("By Name"))
-    d->which_dir = ByName;
   else if (dname == d->s_bytrack || dname == QFL1("By Track"))
     d->which_dir = ByTrack;
   else if (dname == d->s_info || dname == QFL1("Information"))
@@ -822,11 +818,6 @@ AudioCDProtocol::listDir(const KURL & url)
   if (d->which_dir == Root)
     {
       /* List our virtual directories.  */
-      if (d->based_on_cddb)
-        {
-          app_dir(entry, d->s_byname, d->tracks);
-          listEntry(entry, false);
-        }
       app_dir(entry, d->s_info, 1);
       listEntry(entry, false);
       app_dir(entry, d->cd_title, d->tracks);
@@ -903,7 +894,6 @@ AudioCDProtocol::listDir(const KURL & url)
             addEntry(d->s_track.arg(num2), FileTypeWAV, drive, trackNumber);
             break;
           }
-          case ByName:
           case Title:
             addEntry(d->titles[trackNumber - 1],
 			    FileTypeWAV, drive, trackNumber);
@@ -1117,7 +1107,7 @@ AudioCDProtocol::paranoiaRead(
     processedSize(processed);
   }
 
-  encoder->readCleanup();
+  processed += encoder->readCleanup();
   processedSize(processed);
 
   paranoia_free(paranoia);

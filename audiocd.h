@@ -61,19 +61,6 @@ class AudioCDProtocol : public KIO::SlaveBase
       FileTypeCDA
     };
 
-    enum DirType
-    {
-      DirTypeUnknown,
-      DirTypeDevice,
-      DirTypeByName,
-      DirTypeByTrack,
-      DirTypeTitle,
-      DirTypeInfo,
-      DirTypeRoot,
-      DirTypeMP3,
-      DirTypeVorbis
-    };
-
     QString extension(enum FileType fileType);
     FileType fileTypeFromExtension(const QString& extension);
     FileType determineFiletype(const QString & filename);
@@ -147,5 +134,5 @@ class AudioCDProtocol : public KIO::SlaveBase
 
 } // end namespace AudioCD
 
-#endif
+#endif // AUDIO_CD_H
 // vim:ts=2:sw=2:tw=78:et:
