@@ -56,6 +56,10 @@ extern "C"
    need the swab routines.  */
 #define _LINUX_BYTEORDER_SWAB_H
 #endif
+#include <linux/version.h>
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,50)
+typedef unsigned long long __u64;
+#endif
 #include <linux/cdrom.h>
 #endif
 #include <sys/ioctl.h>
