@@ -124,6 +124,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(ec_disable_check,SIGNAL(clicked()),this,SLOT(slotEcDisable()));
     connect(ec_neverskip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
+    connect(cd_device_string,SIGNAL(textChanged ( const QString & )),this,SLOT(slotConfigChanged()));
 
     //CDDB Options
     connect(cddb_enable, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
@@ -141,6 +142,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(original,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(iso,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(id3_tag,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
+    connect(crc, SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
 
     //MP3 CBR Settings
     connect(cbr_bitrate,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
@@ -174,7 +176,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(vorbis_min_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(vorbis_max_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(vorbis_nominal_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
-
+    connect(vorbis_comments,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
 };
 
 void KAudiocdModule::slotServerTextChanged(const QString &_text )
