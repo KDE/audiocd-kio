@@ -3,7 +3,8 @@ AUDIO_CD_SUBDIRS = kcmaudiocd
 endif
 SUBDIRS = plugins $(AUDIO_CD_SUBDIRS)
 
-INCLUDES = $(CDPARANOIA_INCS) -I$(top_srcdir)/libkcddb -I$(srcdir)/plugins $(all_includes)
+INCLUDES = $(CDPARANOIA_INCS) -I$(top_srcdir)/libkcddb \
+		   -I$(top_builddir)/libkcddb -I$(srcdir)/plugins $(all_includes)
 
 KDE_CXXFLAGS=$(ENABLE_PERMISSIVE_FLAG)
 
