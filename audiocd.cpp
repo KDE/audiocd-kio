@@ -3,6 +3,7 @@
   Copyright (C) 2000, 2001, 2002 Michael Matz <matz@kde.org>
   Copyright (C) 2001 Carsten Duvenhorst <duvenhorst@m2.uni-hannover.de>
   Copyright (C) 2001 Adrian Schroeter <adrian@suse.de>
+  Copyright (C) 2003 Richard Lärkäng <richard@goteborg.utfors.se>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -86,15 +87,13 @@ void paranoiaCallback(long, int);
 #include <klocale.h>
 
 #include "audiocd.h"
-#include "cddb.h"
+#include "client.h"
 
 using namespace KIO;
 
 #define MAX_IPC_SIZE (1024*32)
 
 #define DEFAULT_CD_DEVICE "/dev/cdrom"
-
-#define DEFAULT_CDDB_SERVER "freedb.freedb.org:8880"
 
 extern "C"
 {
@@ -291,7 +290,6 @@ class AudioCDProtocol::Private
     {
       clear();
       discid = 0;
-      cddb = 0;
       based_on_cddb = false;
       s_byname = i18n("By Name");
       s_bytrack = i18n("By Track");
@@ -311,10 +309,6 @@ class AudioCDProtocol::Private
 
     QString path;
     int paranoiaLevel;
-    bool useCDDB;
-    bool remoteCDDB;
-    QString cddbServer;
-    int cddbPort;
     unsigned int discid;
     int tracks;
     QString cd_title;
@@ -323,7 +317,6 @@ class AudioCDProtocol::Private
     QStringList titles;
     int cd_year;
     bool is_audio[100];
-    CDDB *cddb;
     bool based_on_cddb;
     QString s_byname;
     QString s_bytrack;
@@ -372,12 +365,10 @@ AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
   : SlaveBase("audiocd", pool, app)
 {
   d = new Private;
-  d->cddb = new CDDB;
 }
 
 AudioCDProtocol::~AudioCDProtocol()
 {
-  delete d->cddb;
   delete d;
 }
 
@@ -388,7 +379,7 @@ AudioCDProtocol::~AudioCDProtocol()
     case FileTypeOggVorbis:
       return QString::fromLatin1(".ogg");
     case FileTypeMP3:
-      return QString::fromLatin1(".mp3");        
+      return QString::fromLatin1(".mp3");
     case FileTypeWAV:
       return QString::fromLatin1(".wav");
     case FileTypeCDA:
@@ -413,7 +404,7 @@ AudioCDProtocol::~AudioCDProtocol()
     return FileTypeCDA;
   Q_ASSERT(false);
   return FileTypeUnknown;
-} 
+}
 
 /*static*/ AudioCDProtocol::FileType AudioCDProtocol::determineFiletype(const QString & filename)
 {
@@ -799,7 +790,7 @@ AudioCDProtocol::initRequest(const KURL & url)
   // are we in the directory that lists "full CD"
   // files?
   d->req_allTracks = (dname.contains(d->s_fullCD) || dname.contains(QFL1("Full CD")));
-  
+
   kdDebug(7117) << "audiocd: dir=" << dname << " file=" << d->fname
     << " req_track=" << d->req_track << " which_dir=" << d->which_dir << " rip full CD?=" << d->req_allTracks << endl;
   return drive;
@@ -1057,7 +1048,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
   d->tracks = cdda_tracks(drive);
   d->cd_title = i18n("No Title");
   d->titles.clear();
-  QValueList<int> qvl;
+  KCDDB::TrackOffsetList qvl;
 
   for (int i = 0; i < d->tracks; i++)
     {
@@ -1072,26 +1063,27 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
   qvl.append(my_first_sector(drive) + 150);
   qvl.append(my_last_sector(drive) + 150);
 
-  if (d->useCDDB)
-    {
-      if (d->remoteCDDB)
-        d->cddb->set_server(d->cddbServer.latin1(), d->cddbPort);
+  KCDDB::Client c;
 
-      if (d->cddb->queryCD(qvl))
+  KCDDB::CDDB::Result result = c.lookup(qvl);
+
+  if (result == KCDDB::CDDB::Success)
+    {
+      d->based_on_cddb = true;
+      KCDDB::CDInfo info = c.lookupResponse().first();
+      d->cd_title = info.title;
+      d->cd_artist = info.artist;
+      d->cd_category = info.genre;
+      d->cd_year = info.year;
+
+      KCDDB::TrackInfoList t = info.trackInfoList;
+      for (uint i = 0; i < t.count(); i++)
         {
-          d->based_on_cddb = true;
-          d->cd_title = d->cddb->title();
-          d->cd_artist = d->cddb->artist();
-          d->cd_category = d->cddb->category();
-          d->cd_year = d->cddb->year();
-          for (int i = 0; i < d->tracks; i++)
-            {
-              QString n;
-              n.sprintf("%02d ", i + 1);
-              d->titles.append (n + d->cddb->track(i));
-            }
-          return;
+          QString n;
+          n.sprintf("%02d ", i + 1);
+          d->titles.append (n + t[i].title);
         }
+      return;
     }
 
   d->based_on_cddb = false;
@@ -1161,11 +1153,11 @@ AudioCDProtocol::vorbisSize(long time_secs)
   {
     // Estimated numbers based on the Vorbis FAQ:
     // http://www.xiph.org/archives/vorbis-faq/200203/0030.html
-    
-    static long vorbis_q_bitrate[] = { 60,  74,  86,  106, 120, 152, 
+
+    static long vorbis_q_bitrate[] = { 60,  74,  86,  106, 120, 152,
 				       183, 207, 239, 309, 440 };
     long quality = static_cast<long>(d->vorbis_quality);
-    if (quality < 0 || quality > 10) 
+    if (quality < 0 || quality > 10)
       quality = 3;
     vorbis_size = (time_secs * vorbis_q_bitrate[quality] * 1000) / 8;
 
@@ -1236,7 +1228,7 @@ AudioCDProtocol::listDir(const KURL & url)
       app_dir(entry, d->s_vorbis, d->tracks);
       listEntry(entry, false);
 #endif
-      
+
       // add the directory for "fullCD" files
       int numberOfFullCDFiles = 1 /* fullCD.wav */
       #ifdef HAVE_LAME
@@ -1308,7 +1300,7 @@ AudioCDProtocol::listDir(const KURL & url)
                 addEntry(name, FileTypeCDA, drive, i);
                 break;
               case ByTrack:
-                addEntry(d->s_track.arg(num2), FileTypeWAV, drive, i); 
+                addEntry(d->s_track.arg(num2), FileTypeWAV, drive, i);
                 break;
 #ifdef HAVE_LAME
               case MP3:
@@ -1427,10 +1419,10 @@ long
 AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDProtocol::FileType filetype)
 {
   long result = 0; // the value we're searching for.
-  
+
   long filesize = CD_FRAMESIZE_RAW * (
         lastSector -
-        firstSector 
+        firstSector
   );
 
   long length_seconds = (filesize) / 176400;
@@ -1483,10 +1475,6 @@ AudioCDProtocol::pickDrive()
   void
 AudioCDProtocol::parseArgs(const KURL & url)
 {
-  QString old_cddb_server = d->cddbServer;
-  int old_cddb_port = d->cddbPort;
-  bool old_use_cddb = d->remoteCDDB;
-
   d->clear();
 
   QString query(KURL::decode_string(url.query()));
@@ -1519,35 +1507,15 @@ AudioCDProtocol::parseArgs(const KURL & url)
     {
       d->paranoiaLevel = value.toInt();
     }
-    else if (attribute == QFL1("use_cddb"))
-    {
-      d->remoteCDDB = (0 != value.toInt());
-    }
-    else if (attribute == QFL1("cddb_server"))
-    {
-      int portPos = value.find(':');
-
-      if (-1 == portPos)
-        d->cddbServer = value;
-
-      else
-      {
-        d->cddbServer = value.left(portPos);
-        d->cddbPort = value.mid(portPos + 1).toInt();
-      }
-    }
   }
 
-  /* We need to recheck the CD, if the user either enabled CDDB now, or
-     changed the server (port).  We simply reset the saved discid, which
-     forces a reread of CDDB information.  */
+  /* We need to recheck the CD, if the user enabled CDDB now.
+     We simply reset the saved discid, which
+     forces a reread of CDDB information.
+     FIXME Check if libkcddb config has changed */
 
-  if ((old_use_cddb != d->remoteCDDB && d->remoteCDDB == true)
-      || old_cddb_server != d->cddbServer
-      || old_cddb_port != d->cddbPort)
-    d->discid = 0;
-
-  kdDebug(7117) << "CDDB: use_cddb = " << d->remoteCDDB << endl;
+//  if ((old_use_cddb != d->useCDDB ))
+//    d->discid = 0;
 
 }
 
@@ -1793,22 +1761,6 @@ void AudioCDProtocol::getParameters() {
 
   if (config->readBoolEntry("never_skip",true)) {
     d->paranoiaLevel = 2;  // never skip on errors of the medium, should be default for high quality
-  }
-
-  config->setGroup("CDDB");
-
-  d->useCDDB = !config->readBoolEntry("dont_use_cddb", false);
-  d->remoteCDDB = config->readBoolEntry("enable_cddb",true);
-  d->cddb->add_cddb_dirs (config->readListEntry("local_cddb_dirs"));
-  d->cddb->save_cddb (config->readBoolEntry("save_cddb", true));
-
-  QString cddbserver = config->readEntry("cddb_server",QFL1(DEFAULT_CDDB_SERVER));
-  int portPos = cddbserver.find(':');
-  if (-1 == portPos) {
-    d->cddbServer = cddbserver;
-  } else {
-    d->cddbServer = cddbserver.left(portPos);
-    d->cddbPort = cddbserver.mid(portPos + 1).toInt();
   }
 
 #ifdef HAVE_LAME

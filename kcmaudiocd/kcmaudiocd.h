@@ -56,12 +56,6 @@ private slots:
   void slotConfigChanged();
   void slotChangeFilter();
   void slotEcEnable();
-  void slotAddCDDBServer();
-  void slotDelCDDBServer();
-  void slotServerTextChanged(const QString & );
-  void slotAddCDDBDir();
-  void slotDelCDDBDir();
-  void slotServerSelectionChanged();
 private:
 
   AudiocdConfig *audiocdConfig;
@@ -70,14 +64,6 @@ private:
 
   QCheckBox *ec_enable_check,*ec_skip_check,*cd_autosearch_check;
   QLineEdit *cd_device_string;
-
-  QCheckBox *cddb_enable;
-  QCheckBox *cddb_save_local;
-  QLineEdit *cddb_server, *cddbdir;
-  QListBox *cddb_server_listbox, *cddbdir_listbox;
-  QStringList cddbserverlist, cddbdirlist;
-  QPushButton *cddbserver_add_push,*cddbserver_del_push;
-  QPushButton *cddbdir_add_push, *cddbdir_del_push;
 
   QCheckBox *vbr_min_br, *vbr_min_hard, *vbr_max_br, *vbr_average_br, *vbr_xing_tag;
 

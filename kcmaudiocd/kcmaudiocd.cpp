@@ -34,9 +34,6 @@
 
 #include "kcmaudiocd.moc"
 
-#define CDDB_DEFAULT_DIR ".cddb/"
-#define CDDB_DEFAULT_SERVER "freedb.freedb.org:8880"
-
 // MPEG Layer 3 Bitrates
 static int bitrates[] = { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
 
@@ -118,43 +115,15 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     ec_enable_check = audiocdConfig->ec_enable_check;
     ec_skip_check = audiocdConfig->ec_skip_check;
 
-    cddb_enable = audiocdConfig->cddb_enable;
-    cddb_save_local = audiocdConfig->cddb_save_local;
-    cddb_server = audiocdConfig->cddb_server;
-    cddbdir = audiocdConfig->cddbdir;
-
-    cddb_server_listbox = audiocdConfig->cddb_server_listbox;
-    cddbdir_listbox = audiocdConfig->cddbdir_listbox;
-    cddbserver_add_push = audiocdConfig->cddbserver_add_push;
-    cddbserver_del_push = audiocdConfig->cddbserver_del_push;
-    cddbdir_add_push = audiocdConfig->cddbdir_add_push;
-    cddbdir_del_push = audiocdConfig->cddbdir_del_push;
-
     config = new KConfig("kcmaudiocdrc");
 
     load();
-
-    cddbserver_add_push->setEnabled(!cddb_server->text().isEmpty());
-
-    connect(cddb_server_listbox,SIGNAL(selectionChanged()),this,SLOT(slotServerSelectionChanged()));
-
-    connect(cddb_server, SIGNAL(textChanged ( const QString & )),this,SLOT(slotServerTextChanged(const QString & )));
 
     //CDDA Options
     connect(cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
     connect(ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
     connect(cd_device_string,SIGNAL(textChanged(const QString &)),SLOT(slotConfigChanged()));
-
-    //CDDB Options
-    connect(cddb_enable, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
-    connect(cddb_save_local, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
-    connect(cddbserver_add_push,SIGNAL(clicked()), this, SLOT(slotAddCDDBServer()));
-    connect(cddbserver_del_push,SIGNAL(clicked()), this, SLOT(slotDelCDDBServer()));
-    connect(cddbdir_add_push, SIGNAL(clicked()), this, SLOT(slotAddCDDBDir()));
-    connect(cddbdir_del_push, SIGNAL(clicked()), this, SLOT(slotDelCDDBDir()));
-    connect(cddb_server,SIGNAL(textChanged(const QString &)),this,SLOT(slotConfigChanged()));
-    connect(cddbdir, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
 
     //MP3 Encoding Method
     connect(enc_method,SIGNAL(activated(int)),SLOT(slotSelectMethod(int)));
@@ -206,7 +175,6 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(vorbis_enc_method,SIGNAL(activated(int)),this,SLOT(slotSelectVorbisMethod(int)));
     connect(vorbis_quality,SIGNAL(valueChanged(double)),this,SLOT(slotConfigChanged()));
     connect( vorbis_comments, SIGNAL( clicked ()),SLOT( slotConfigChanged()));
-    slotServerSelectionChanged();
 };
 
 KAudiocdModule::~KAudiocdModule()
@@ -214,26 +182,7 @@ KAudiocdModule::~KAudiocdModule()
     delete config;
 }
 
-void KAudiocdModule::slotServerSelectionChanged()
-{
-    cddbserver_del_push->setEnabled(cddb_server_listbox->currentItem()!=-1);
-}
-
-void KAudiocdModule::slotServerTextChanged(const QString &_text )
-{
-    cddbserver_add_push->setEnabled(!_text.isEmpty());
-}
-
 void KAudiocdModule::defaults() {
-
-  cddbserverlist = CDDB_DEFAULT_SERVER;
-  cddbdirlist = CDDB_DEFAULT_DIR;
-
-  cddb_enable->setChecked(true);
-  cddb_server->setText(CDDB_DEFAULT_SERVER);
-  cddb_server_listbox->clear();
-  cddb_server_listbox->insertStringList(cddbserverlist);
-
   cd_autosearch_check->setChecked(true);
   cd_device_string->setText("/dev/cdrom");
 
@@ -333,15 +282,6 @@ void KAudiocdModule::save() {
   config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
   config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
 
-  config->setGroup("CDDB");
-  config->writeEntry("dont_use_cddb", false);
-  config->writeEntry("enable_cddb",cddb_enable->isChecked());
-  config->writeEntry("save_cddb", cddb_save_local->isChecked());
-  config->writeEntry("cddb_server",cddb_server->text());
-  config->writeEntry("cddb_server_list",cddbserverlist);
-  config->writeEntry("cddbdir", cddbdir->text());
-  config->writeEntry("local_cddb_dirs", cddbdirlist);
-
   config->setGroup("MP3");
 
   config->writeEntry("mode",mode);
@@ -400,20 +340,6 @@ void KAudiocdModule::load() {
   cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
   ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
   ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
-
-  config->setGroup("CDDB");
-
-  cddb_enable->setChecked(config->readBoolEntry("enable_cddb",true));
-  cddb_save_local->setChecked(config->readBoolEntry("save_cddb", true));
-  cddb_server->setText(config->readEntry("cddb_server",CDDB_DEFAULT_SERVER));
-  cddbdir->setText(config->readEntry("cddbdir", CDDB_DEFAULT_DIR));
-  cddbserverlist = config->readListEntry("cddb_server_list",',');
-  cddbdirlist = config->readListEntry("local_cddb_dirs", ',');
-  if (!cddbdirlist.isEmpty()) cddbdir->setText(cddbdirlist[0]);
-  cddb_server_listbox->clear();
-  cddb_server_listbox->insertStringList(cddbserverlist);
-  cddbdir_listbox->clear();
-  cddbdir_listbox->insertStringList(cddbdirlist);
 
   config->setGroup("MP3");
 
@@ -515,63 +441,6 @@ void KAudiocdModule::slotConfigChanged() {
   emit changed(true);
   return;
 }
-
-void KAudiocdModule::slotAddCDDBServer() {
-
-    QString strCddb=cddb_server->text();
-    if(strCddb.isEmpty() || (cddbserverlist.find(strCddb) != cddbserverlist.end())) return;
-
-  cddbserverlist.append(cddb_server->text());
-  cddbserverlist.sort();
-
-  cddb_server_listbox->clear();
-  cddb_server_listbox->insertStringList(cddbserverlist);
-
-  slotConfigChanged();
-
-}
-
-void KAudiocdModule::slotAddCDDBDir() {
-  if(cddbdirlist.find(cddbdir->text()) != cddbdirlist.end()) return;
-
-  cddbdirlist.append(cddbdir->text());
-
-  cddbdir_listbox->clear();
-  cddbdir_listbox->insertStringList(cddbdirlist);
-
-  slotConfigChanged();
-}
-
-void KAudiocdModule::slotDelCDDBServer() {
-    QStringList::Iterator it =  cddbserverlist.find(cddb_server_listbox->currentText ());
-
-    if( it == cddbserverlist.end()) return;
-
-    cddbserverlist.remove(it);
-    cddbserverlist.sort();
-
-    cddb_server->clear();
-    cddb_server_listbox->clear();
-    cddb_server_listbox->insertStringList(cddbserverlist);
-
-    slotConfigChanged();
-    slotServerSelectionChanged();
-}
-
-void KAudiocdModule::slotDelCDDBDir() {
-  QStringList::Iterator it =  cddbdirlist.find(cddbdir->text());
-
-  if( it == cddbdirlist.end()) return;
-
-  cddbdirlist.remove(it);
-
-  cddbdir->clear();
-  cddbdir_listbox->clear();
-  cddbdir_listbox->insertStringList(cddbdirlist);
-
-  slotConfigChanged();
-}
-
 
 /*
 #    slot for the error correction settings
@@ -715,7 +584,7 @@ QString KAudiocdModule::quickHelp() const
                         " create wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs."
                         " The slave is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location"
                         " bar. In this module, you can configure"
-                        " encoding, CDDB lookup and device settings. Note that MP3 and Ogg"
+                        " encoding, and device settings. Note that MP3 and Ogg"
                         " Vorbis encoding are only available if KDE was built with a recent"
                         " version of the LAME or Ogg Vorbis libraries.");
 }
