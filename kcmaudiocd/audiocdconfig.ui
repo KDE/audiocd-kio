@@ -12,9 +12,6 @@
             <height>537</height>
         </rect>
     </property>
-    <property name="caption">
-        <string>AudiocdConfig</string>
-    </property>
     <property name="layoutMargin" stdset="0">
     </property>
     <property name="layoutSpacing" stdset="0">
@@ -167,9 +164,6 @@
                                 </property>
                                 <property name="text">
                                     <string>&amp;Skip on errors</string>
-                                </property>
-                                <property name="accel">
-                                    <string>Alt+S</string>
                                 </property>
                                 <property name="checked">
                                     <bool>false</bool>
