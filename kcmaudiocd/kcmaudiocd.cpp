@@ -677,29 +677,29 @@ void KAudiocdModule::slotSelectMethod(int index) {
 void KAudiocdModule::slotUpdateVBRWidgets() {
 
   if(vbr_average_br->isEnabled() && vbr_average_br->isChecked()) {
-    
+
     vbr_min_br->setChecked(false);
     vbr_min_br->setDisabled(true);
     vbr_min_brate->setDisabled(true);
-    
+
     vbr_min_hard->setChecked(false);
-    
+
     vbr_max_br->setChecked(false);
     vbr_max_br->setDisabled(true);
     vbr_max_brate->setDisabled(true);
-    
+
     vbr_mean_brate->setEnabled(true);
 
   } else {
 
     vbr_min_br->setEnabled(true);
     vbr_max_br->setEnabled(true);
-    
+
     bool usingMinMaxBitrate = vbr_min_br->isChecked() || vbr_max_br->isChecked();
     vbr_average_br->setEnabled(!usingMinMaxBitrate);
 
     vbr_mean_brate->setDisabled(true);
-    
+
     vbr_min_brate->setEnabled(vbr_min_br->isChecked());
     vbr_max_brate->setEnabled(vbr_max_br->isChecked());
   }
@@ -735,7 +735,7 @@ const KAboutData* KAudiocdModule::aboutData() const
 
 extern "C"
 {
-    KCModule *create_audiocd(QWidget *parent, const char *name)
+    KCModule *create_audiocd(QWidget *parent, const char */*name*/)
     {
         return new KAudiocdModule(parent, "kcmaudiocd");
     }

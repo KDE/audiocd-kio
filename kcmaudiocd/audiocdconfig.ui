@@ -507,6 +507,9 @@
                         <property name="title">
                             <string>Vorbis &amp;Quality Setting</string>
                         </property>
+                        <property name="whatsThis" stdset="0">
+                            <string>You can set the quality of the encoded stream here. A higher value implies a higher quality but encodes slower.</string>
+                        </property>
                         <hbox>
                             <property name="name">
                                 <cstring>unnamed</cstring>
@@ -529,6 +532,9 @@
                                 </property>
                                 <property name="maxValue">
                                     <number>10</number>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Higher is better but slower</string>
                                 </property>
                             </widget>
                         </hbox>
@@ -1822,4 +1828,8 @@
     <slot>toggleLowpass()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>knuminput.h</includehint>
+    <includehint>knuminput.h</includehint>
+</includehints>
 </UI>
