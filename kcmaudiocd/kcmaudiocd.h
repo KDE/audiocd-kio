@@ -30,7 +30,7 @@
 #include <kcmodule.h>
 
 #include "audiocdconfig.h"
-class KAudiocdModule : public KCModule
+class KAudiocdModule : public AudiocdConfig
 {
   Q_OBJECT
 
@@ -58,30 +58,8 @@ private slots:
   void slotEcEnable();
 private:
 
-  AudiocdConfig *audiocdConfig;
   KConfig *config;
   bool configChanged;
-
-  QCheckBox *ec_enable_check,*ec_skip_check,*cd_autosearch_check;
-  QLineEdit *cd_device_string;
-
-  QCheckBox *vbr_min_br, *vbr_min_hard, *vbr_max_br, *vbr_average_br, *vbr_xing_tag;
-
-  QCheckBox *copyright, *original, *iso, *id3_tag, *crc;
-
-  QCheckBox *set_vorbis_min_br, *set_vorbis_max_br, *set_vorbis_nominal_br, *vorbis_comments;
-  QComboBox *vorbis_min_br, *vorbis_max_br, *vorbis_nominal_br, *vorbis_enc_method;
-  KDoubleNumInput *vorbis_quality;
-  QGroupBox *vorbis_bitrate_settings, *vorbis_quality_settings;
-
-  QCheckBox *enable_lowpass, *enable_highpass, *set_lpf_width, *set_hpf_width;
-  QComboBox *enc_method, *cbr_bitrate, *vbr_min_brate, *vbr_max_brate, *vbr_mean_brate, *stereo;
-
-  QGroupBox *cbr_settings, *vbr_settings;
-
-  QSlider *quality;
-
-  QSpinBox *lowfilterfreq, *lowfilterwidth, *highfilterfreq, *highfilterwidth;
 
   int getBitrateIndex(int value);
   int getVorbisBitrateIndex(int value);

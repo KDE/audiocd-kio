@@ -42,78 +42,15 @@ static int vorbis_nominal_bitrates[] = { 128, 160, 192, 256, 350 };
 static int vorbis_bitrates[] = { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 350 };
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
-  : KCModule(parent, name), configChanged(false)
+  : AudiocdConfig(parent, name), configChanged(false)
 {
 
     setButtons(Default|Apply);
-
-    QVBoxLayout *layout = new QVBoxLayout(this, 10);
-
-    audiocdConfig = new AudiocdConfig(this);
-
-    layout->addWidget(audiocdConfig);
-    layout->setMargin(0);
-
-    enc_method = audiocdConfig->enc_method;
-    vbr_settings = audiocdConfig->vbr_settings;
-    cbr_settings = audiocdConfig->cbr_settings;
-    stereo = audiocdConfig->stereo;
-    quality = audiocdConfig->quality;
-    copyright = audiocdConfig->copyright;
-    original = audiocdConfig->original;
-    iso = audiocdConfig->iso;
-    crc = audiocdConfig->crc;
-
-    id3_tag = audiocdConfig->id3_tag;
-
-    cbr_bitrate = audiocdConfig->cbr_bitrate;
-
-    vbr_average_br = audiocdConfig->vbr_average_br;
-    vbr_mean_brate = audiocdConfig->vbr_mean_brate;
-
-    vbr_min_br = audiocdConfig->vbr_min_br;
-    vbr_min_brate = audiocdConfig->vbr_min_brate;
-    vbr_min_hard = audiocdConfig->vbr_min_hard;
-
-    vbr_max_br = audiocdConfig->vbr_max_br;
-    vbr_max_brate = audiocdConfig->vbr_max_brate;
-
-    vbr_xing_tag = audiocdConfig->vbr_xing_tag;
-
-    enable_lowpass = audiocdConfig->enable_lowpass;
-    enable_highpass = audiocdConfig->enable_highpass;
-    set_lpf_width = audiocdConfig->set_lpf_width;
-    set_hpf_width = audiocdConfig->set_hpf_width;
-    lowfilterfreq = audiocdConfig->lowfilterfreq;
-    highfilterfreq = audiocdConfig->highfilterfreq;
-    lowfilterwidth = audiocdConfig->lowfilterwidth;
-    highfilterwidth = audiocdConfig->highfilterwidth;
-
-    set_vorbis_min_br = audiocdConfig->set_vorbis_min_br;
-    set_vorbis_max_br = audiocdConfig->set_vorbis_max_br;
-    set_vorbis_nominal_br = audiocdConfig->set_vorbis_nominal_br;
-
-    vorbis_min_br = audiocdConfig->vorbis_min_br;
-    vorbis_max_br = audiocdConfig->vorbis_max_br;
-    vorbis_nominal_br = audiocdConfig->vorbis_nominal_br;
-
-    vorbis_enc_method = audiocdConfig->vorbis_enc_method;
-
-    vorbis_bitrate_settings = audiocdConfig->vorbis_bitrate_settings;
-    vorbis_quality_settings = audiocdConfig->vorbis_quality_settings;
-    vorbis_quality = audiocdConfig->vorbis_quality;
-    vorbis_comments = audiocdConfig->vorbis_comments;
 
     /* This should be in audiocdConfig, but I can't figure out how to
      * make Qt Designer display KDE specific widget properties. */
     vorbis_quality->setPrecision(1);
     vorbis_quality->setRange(0.0, 10.0, 0.2, true);
-
-    cd_autosearch_check = audiocdConfig->cd_autosearch_check;
-    cd_device_string = audiocdConfig->cd_device_string;
-
-    ec_enable_check = audiocdConfig->ec_enable_check;
-    ec_skip_check = audiocdConfig->ec_skip_check;
 
     config = new KConfig("kcmaudiocdrc");
 
@@ -174,7 +111,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(vorbis_nominal_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(vorbis_enc_method,SIGNAL(activated(int)),this,SLOT(slotSelectVorbisMethod(int)));
     connect(vorbis_quality,SIGNAL(valueChanged(double)),this,SLOT(slotConfigChanged()));
-    connect( vorbis_comments, SIGNAL( clicked ()),SLOT( slotConfigChanged()));
+    connect(vorbis_comments, SIGNAL( clicked ()),SLOT( slotConfigChanged()));
 };
 
 KAudiocdModule::~KAudiocdModule()
