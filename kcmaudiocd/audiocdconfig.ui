@@ -164,7 +164,7 @@
                                     <bool>true</bool>
                                 </property>
                                 <property name="whatsThis" stdset="0">
-                                    <string>If you check this option, the slave won't try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
+                                    <string>If you check this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
                                 </property>
                             </widget>
                             <widget class="QCheckBox">
