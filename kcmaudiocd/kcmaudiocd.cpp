@@ -169,7 +169,7 @@ void KAudiocdModule::load() {
 
 void KAudiocdModule::slotConfigChanged() {
 
-  if (!configChanged) configChanged = true;
+  configChanged = true;
   emit changed(true);
   return;
 }
