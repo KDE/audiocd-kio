@@ -239,3 +239,4 @@ if test -z "$KAUDIOCREATOR"; then
     DO_NOT_COMPILE="$DO_NOT_COMPILE kaudiocreator"
 fi
 
+

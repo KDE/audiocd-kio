@@ -27,3 +27,5 @@ messages:
 updatedir = $(kde_datadir)/kconf_update
 update_DATA = audiocd.upd
 update_SCRIPTS = upgrade-metadata.sh
+
+audiocd.lo: ../../libkcddb/configbase.h
