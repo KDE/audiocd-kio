@@ -3,7 +3,7 @@ AUDIO_CD_SUBDIRS = kcmaudiocd
 endif
 SUBDIRS = plugins $(AUDIO_CD_SUBDIRS)
 
-INCLUDES = $(CDPARANOIA_INCS) -I$(top_srcdir)/libkcddb -Iplugins $(all_includes)
+INCLUDES = $(CDPARANOIA_INCS) -I$(top_srcdir)/libkcddb -I$(srcdir)/plugins $(all_includes)
 
 kde_module_LTLIBRARIES = kio_audiocd.la
 

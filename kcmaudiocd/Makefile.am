@@ -5,7 +5,7 @@ kcm_audiocd_la_SOURCES = audiocdconfig.ui kcmaudiocd.cpp
 kcm_audiocd_la_LDFLAGS  =  $(all_libraries) $(KDE_PLUGIN) -module
 kcm_audiocd_la_LIBADD = ../plugins/libaudiocdplugins.la $(LIB_KDEUI)
 
-INCLUDES = -I../plugins $(all_includes)
+INCLUDES = -I$(srcdir)/../plugins $(all_includes)
 
 kcm_audiocd_la_METASOURCES = AUTO
 

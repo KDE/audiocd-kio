@@ -1,6 +1,6 @@
-AM_CPPFLAGS = -I../ $(all_includes)
+AM_CPPFLAGS = -I$(srcdir)/.. $(all_includes)
 
-INCLUDES = $(LAME_INCS) $(all_includes)
+INCLUDES = $(all_includes)
 
 kde_module_LTLIBRARIES = libaudiocd_encoder_wav.la
 

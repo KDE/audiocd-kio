@@ -23,7 +23,6 @@
 */
 
 #include "encodervorbis.h"
-#include "audiocdencodersettings.h"
 #include "audiocd_vorbis_encoder.h"
 #include "encodervorbisconfig.h"
 
