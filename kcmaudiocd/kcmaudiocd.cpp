@@ -189,6 +189,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(vorbis_min_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(vorbis_max_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(vorbis_nominal_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
+    connect( vorbis_comments, SIGNAL( clicked ()),SLOT( slotConfigChanged()));
     slotServerSelectionChanged();
 };
 
