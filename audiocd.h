@@ -137,7 +137,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 #endif
 };
 
-}; // end namespace AudioCD
+} // end namespace AudioCD
 
 #endif
 // vim:ts=2:sw=2:tw=78:et:

@@ -116,7 +116,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
 
     // File Name
     connect(fileNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
-};
+}
 
 KAudiocdModule::~KAudiocdModule()
 {
