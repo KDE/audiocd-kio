@@ -43,9 +43,6 @@
                     <property name="text">
                         <string>Cop&amp;yrighted</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+Y</string>
-                    </property>
                     <property name="toolTip" stdset="0">
                         <string>Mark MP3 file as copyrighted</string>
                     </property>
@@ -59,9 +56,6 @@
                     </property>
                     <property name="text">
                         <string>Origi&amp;nal</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+N</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>
@@ -80,9 +74,6 @@
                     <property name="text">
                         <string>&amp;ISO encoding</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+I</string>
-                    </property>
                     <property name="toolTip" stdset="0">
                         <string>Try to use strict ISO encoding</string>
                     </property>
@@ -97,9 +88,6 @@
                     <property name="text">
                         <string>&amp;Error protection</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+E</string>
-                    </property>
                 </widget>
                 <widget class="QCheckBox">
                     <property name="name">
@@ -107,9 +95,6 @@
                     </property>
                     <property name="text">
                         <string>&amp;Write ID3 tag</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+W</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>
@@ -296,9 +281,6 @@
                     <property name="text">
                         <string>Specify avera&amp;ge bitrate:</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+G</string>
-                    </property>
                     <property name="whatsThis" stdset="0">
                         <string>This selects the maximal bitrate used for encoding.</string>
                     </property>
@@ -394,9 +376,6 @@
                     <property name="text">
                         <string>Maximal bi&amp;trate:</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+T</string>
-                    </property>
                     <property name="whatsThis" stdset="0">
                         <string>This selects the maximal bitrate used for encoding.</string>
                     </property>
@@ -407,9 +386,6 @@
                     </property>
                     <property name="text">
                         <string>Write &amp;Xing VBR tag</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+X</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>
@@ -509,9 +485,6 @@
                     <property name="text">
                         <string>Minimal &amp;value is a hard limit</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+V, Left, Esc, Esc</string>
-                    </property>
                 </widget>
                 <widget class="QCheckBox" row="0" column="0">
                     <property name="name">
@@ -522,9 +495,6 @@
                     </property>
                     <property name="text">
                         <string>Minimal &amp;bitrate:</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+B</string>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>This selects the minimal bitrate used for encoding.</string>
@@ -755,9 +725,6 @@
                     <property name="text">
                         <string>&amp;Lowpass filter cutoff above</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+L</string>
-                    </property>
                 </widget>
                 <widget class="QSpinBox" row="1" column="0">
                     <property name="name">
@@ -779,9 +746,6 @@
                     </property>
                     <property name="text">
                         <string>&amp;Highpass filter cutoff below</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+H</string>
                     </property>
                 </widget>
                 <widget class="QSpinBox" row="3" column="0">
@@ -808,9 +772,6 @@
                     <property name="text">
                         <string>Low&amp;pass filter width</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+P</string>
-                    </property>
                 </widget>
                 <widget class="QSpinBox" row="1" column="1">
                     <property name="name">
@@ -835,9 +796,6 @@
                     </property>
                     <property name="text">
                         <string>Highpa&amp;ss filter width</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+S</string>
                     </property>
                 </widget>
                 <widget class="QSpinBox" row="3" column="1">

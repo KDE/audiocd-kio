@@ -243,9 +243,6 @@
                     <property name="text">
                         <string>M&amp;inimal bitrate:</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+I</string>
-                    </property>
                 </widget>
                 <widget class="QCheckBox" row="1" column="0">
                     <property name="name">
@@ -256,9 +253,6 @@
                     </property>
                     <property name="text">
                         <string>Ma&amp;ximal bitrate:</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+X</string>
                     </property>
                 </widget>
                 <widget class="QComboBox" row="2" column="1">
@@ -300,9 +294,6 @@
                     </property>
                     <property name="text">
                         <string>A&amp;verage bitrate:</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+V</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>
@@ -378,9 +369,6 @@
                     </property>
                     <property name="text">
                         <string>Add &amp;track information</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+T</string>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>Add a description of the song to the file header. This makes it easy for the user to get advanced song information shown by his media player. You can get this information automatically via the Internet. Look at the &lt;i&gt;"CDDB Retrieval"&lt;/i&gt; control module for details.</string>
