@@ -11,3 +11,4 @@ deleting=false
 linking=false
 moving=false
 Icon=cdaudio_unmount
+DocPath=kioslave/audiocd.html
