@@ -324,7 +324,7 @@ AudioCDProtocol::initRequest(const KURL & url)
     encoder->init();
   }
 
-  // First get the parameters (settings).
+  // First get the Settings.
   loadSettings();
 
   // Then these parameters can be overruled by args in the URL.
@@ -725,6 +725,25 @@ app_file(UDSEntry& e, const QString & n, size_t s)
   void
 AudioCDProtocol::listDir(const KURL & url)
 {
+  struct cdrom_drive * drive = initRequest(url);
+  
+  // Some error checking before proceeding
+  if (!drive){
+    return;
+  }
+  
+  if (d->which_dir == Unknown){
+    error(KIO::ERR_DOES_NOT_EXIST, url.path());
+    cdda_close(drive);
+    return;
+  }
+
+  if (!d->fname.isEmpty() && d->which_dir != Device){
+    error(KIO::ERR_IS_FILE, url.path());
+    cdda_close(drive);
+    return;
+  }
+
   // Generate templated names every time
   // because the template might have changed.
   if (d->based_on_cddb){
@@ -745,125 +764,111 @@ AudioCDProtocol::listDir(const KURL & url)
     }
   }
   
-  struct cdrom_drive * drive = initRequest(url);
-  if (!drive)
-    return;
-
   UDSEntry entry;
-
-  if (d->which_dir == Unknown)
-    {
-      error(KIO::ERR_DOES_NOT_EXIST, url.path());
-      return;
-    }
-
-  if (!d->fname.isEmpty() && d->which_dir != Device)
-    {
-      error(KIO::ERR_IS_FILE, url.path());
-      return;
-    }
-
+  // If the tracks should be listed in this directory
+  bool list_tracks = true; 
+  
+  // The non track based directorys first
   /* TODO We can't handle which_dir == Device for now */
-  bool do_tracks = true;
-
-  if (d->which_dir == Root)
-    {
-      /* List our virtual directories.  */
-      app_dir(entry, d->s_info, 1);
-      listEntry(entry, false);
-      app_dir(entry, d->cd_title, d->tracks);
-      listEntry(entry, false);
-      app_dir(entry, d->s_bytrack, d->tracks);
-      listEntry(entry, false);
-      app_dir(entry, QFL1("dev"), 1);
-      listEntry(entry, false);
-
-      AudioCDEncoder *encoder;
-      for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
-        QString name = encoder->type();
-        app_dir(entry, name, d->tracks);
-        listEntry(entry, false);
-      }
-
-      // If we are using CDDB. there will be twice as many files
-      // Example: Full CD.wav &  Album Title.wav
-      int numberOfFullCDFiles = encoders.count();
-      if (d->based_on_cddb)
-        numberOfFullCDFiles = numberOfFullCDFiles * 2;
-      app_dir(entry, d->s_fullCD, numberOfFullCDFiles);
-      
-      listEntry(entry, false);
-    }
-  else if (d->which_dir == Device && url.path().length() <= 5) // "/dev{/}"
-    {
-      app_dir(entry, QFL1("cdrom"), d->tracks);
-      listEntry(entry, false);
-      do_tracks = false;
-    }
+  if (d->which_dir == Device && url.path().length() <= 5) // "/dev{/}"
+  {
+    app_dir(entry, QFL1("cdrom"), d->tracks);
+    listEntry(entry, false);
+    list_tracks = false; 
+  }
   else if (d->which_dir == Info){
     UDSEntry entry;
     app_file(entry, i18n(CDDB_INFORMATION), (d->cddb_info.length()));
     listEntry(entry, false);
-    do_tracks = false;
+    list_tracks = false;
   }
+  
+  if (d->which_dir == Root){
+    /* List our virtual directories.  */
+    app_dir(entry, d->s_info, 1);
+    listEntry(entry, false);
+    app_dir(entry, d->cd_title, d->tracks);
+    listEntry(entry, false);
+    app_dir(entry, d->s_bytrack, d->tracks);
+    listEntry(entry, false);
+    app_dir(entry, QFL1("dev"), 1);
+    listEntry(entry, false);
 
-  if (do_tracks)
-  {
-    QString fullCDTrack(QFL1("Full CD"));
+    AudioCDEncoder *encoder;
+    for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
+      QString name = encoder->type();
+      app_dir(entry, name, d->tracks);
+      listEntry(entry, false);
+    }
 
+    // If we are using CDDB. there will be twice as many files
+    // Example: Full CD.wav &  Album Title.wav
+    int numberOfFullCDFiles = encoders.count();
+    if (d->based_on_cddb)
+      numberOfFullCDFiles = numberOfFullCDFiles * 2;
+    app_dir(entry, d->s_fullCD, numberOfFullCDFiles);
+     
+    listEntry(entry, false);
+  }
+ 
+  // Now fill in the tracks for the current directory
+  
+  if (list_tracks && d->which_dir == FullCD) {
     // if we're listing the "full CD" subdirectory :
     if ( (d->which_dir == FullCD) ) {
       AudioCDEncoder *encoder;
       for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
-        addEntry(fullCDTrack, encoder, drive, -1);
+        addEntry(QFL1("Full CD"), encoder, drive, -1);
         if (d->based_on_cddb)
           addEntry(d->cd_title, encoder, drive, -1);
       }
     }
-    else
-    { // listing another dir than the "FullCD" one.
-      for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
-      {
-        if (!d->is_audio[trackNumber-1])
-          continue;
+  }
+ 
+  if (list_tracks && d->which_dir != FullCD) {
+    // listing another dir than the "FullCD" one.
+    for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
+    {
+      // Skip data tracks
+      if (!d->is_audio[trackNumber-1])
+        continue;
 
-        switch (d->which_dir) {
-          case Device:
-          case Root:{
-            QString name;
-	    name.sprintf("track%02d", trackNumber);
-            addEntry(name, encoderTypeCDA, drive, trackNumber);
-            break;
-          }
-          case ByTrack:{
-            QString num2;
-            num2.sprintf("%02d", trackNumber);
-            addEntry(d->s_track.arg(num2), encoderTypeWAV, drive, trackNumber);
-            break;
-          }
-          case Title:
-            addEntry(d->templateTitles[trackNumber - 1],
-			    encoderTypeWAV, drive, trackNumber);
-            break;
-              
-	  case EncoderDir:
-	    addEntry(d->templateTitles[trackNumber - 1],
-			    d->encoder_dir_type, drive, trackNumber);
-	    break;
-	  case Info:
-          case Unknown:
-          default:
-            error(KIO::ERR_INTERNAL, url.path());
-            return;
+      switch (d->which_dir) {
+        case Device:
+        case Root:{
+          QString name;
+          name.sprintf("track%02d", trackNumber);
+          addEntry(name, encoderTypeCDA, drive, trackNumber);
+          break;
         }
+        case ByTrack:{
+          QString name;
+	  name.sprintf("%02d", trackNumber);
+          addEntry(d->s_track.arg(name), encoderTypeWAV, drive, trackNumber);
+          break;
+        }
+        case Title:{
+          addEntry(d->templateTitles[trackNumber - 1],
+            encoderTypeWAV, drive, trackNumber);
+          break;
+	}
+	case EncoderDir:
+	  addEntry(d->templateTitles[trackNumber - 1],
+	     d->encoder_dir_type, drive, trackNumber);
+	  break;
+	case Info:
+        case Unknown:
+        default:
+          error(KIO::ERR_INTERNAL, url.path());
+          cdda_close(drive);
+          return;
       }
     }
   }
+
   totalSize(entry.count());
   listEntry(entry, true);
-
   cdda_close(drive);
-
   finished();
 }
 
