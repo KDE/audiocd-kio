@@ -342,8 +342,8 @@ AudioCDProtocol::initRequest(const KURL & url)
       if(!fi.isReadable())
         error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->path);
       else if(!fi.isWritable())
-	 error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->path);
-      else error(KIO::ERR_ACCESS_DENIED, d->path);
+	      error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->path);
+      else error(KIO::ERR_UNKNOWN, d->path);
     }
     return 0;
   }
