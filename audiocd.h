@@ -49,7 +49,8 @@ class AudioCDProtocol : public KIO::SlaveBase
       FileTypeUnknown,
       FileTypeOggVorbis,
       FileTypeMP3,
-      FileTypeWAV
+      FileTypeWAV,
+      FileTypeCDA
     };
 
     enum DirType
@@ -65,17 +66,41 @@ class AudioCDProtocol : public KIO::SlaveBase
       DirTypeVorbis
     };
 
+    static QString extension(enum FileType fileType);
+    static FileType fileTypeFromExtension(const QString& extension);
+    static FileType determineFiletype(const QString & filename);
+
     void                  writeHeader(long);
     struct cdrom_drive *  findDrive(bool &noPermission);
     void                  parseArgs(const KURL &);
 
     void getParameters();
 
+    /**
+     * From the request information (Private member "d"),
+     * get the first and last sector for the request.
+     * return false if the parameters are invalid (for instance,
+     * track number which does not exist on this CD)
+     */
+    bool getSectorsForRequest(struct cdrom_drive * drive, long & firstSector, long & lastSector) const;
+
+    /**
+     * Give the size in bytes of this track, depending on
+     * its file type.
+     */
+    long fileSize(struct cdrom_drive* drive, int trackNumber, FileType fileType);
+
+    /**
+     * Give the size in bytes of the space between those two
+     * sectors, depending on the file type.
+     */
+    long fileSize(long firstSector, long lastSector, FileType fileType);
+
     void paranoiaRead(
         struct cdrom_drive  * drive,
         long                  firstSector,
         long                  lastSector,
-        QString               fileType
+        FileType              fileType
     );
 
     struct cdrom_drive *  initRequest(const KURL &);

@@ -303,6 +303,7 @@ class AudioCDProtocol::Private
 
     void clear()
     {
+      req_allTracks = false;
       which_dir = Unknown;
       req_track = -1;
     }
@@ -356,6 +357,11 @@ class AudioCDProtocol::Private
 #endif
 
     Which_dir which_dir;
+    /**
+     * Do we want to rip all
+     * tracks in one big file?
+     */
+    bool req_allTracks;
     int req_track;
     QString fname;
 };
@@ -373,11 +379,45 @@ AudioCDProtocol::~AudioCDProtocol()
   delete d;
 }
 
-static QString determineFiletype(QString filename)
+/*static*/ QString AudioCDProtocol::extension(enum AudioCDProtocol::FileType fileType)
+{
+  switch (fileType)
+  {
+    case FileTypeOggVorbis:
+      return QString::fromLatin1(".ogg");
+    case FileTypeMP3:
+      return QString::fromLatin1(".mp3");        
+    case FileTypeWAV:
+      return QString::fromLatin1(".wav");
+    case FileTypeCDA:
+      return QString::fromLatin1(".cda");
+    case FileTypeUnknown:
+    default:
+      Q_ASSERT(false);
+      break;
+  };
+  return QString::fromLatin1("");
+}
+
+/*static*/ AudioCDProtocol::FileType AudioCDProtocol::fileTypeFromExtension(const QString& extension)
+{
+  if (extension == QString::fromLatin1(".wav"))
+    return FileTypeWAV;
+  if (extension == QString::fromLatin1(".mp3"))
+    return FileTypeMP3;
+  if (extension == QString::fromLatin1(".ogg"))
+    return FileTypeOggVorbis;
+  if (extension == QString::fromLatin1(".cda"))
+    return FileTypeCDA;
+  Q_ASSERT(false);
+  return FileTypeUnknown;
+} 
+
+/*static*/ AudioCDProtocol::FileType AudioCDProtocol::determineFiletype(const QString & filename)
 {
     int len = filename.length();
-    int pos = filename.findRev('.',-1);
-    return filename.right(len - pos - 1);
+    int pos = filename.findRev('.');
+    return fileTypeFromExtension(filename.right(len - pos));
 }
 
 #ifdef __OpenBSD__
@@ -610,7 +650,6 @@ bool AudioCDProtocol::initLameLib(){
 struct cdrom_drive *
 AudioCDProtocol::initRequest(const KURL & url)
 {
-
 #ifdef HAVE_LAME
   initLameLib();
 #endif
@@ -634,7 +673,6 @@ AudioCDProtocol::initRequest(const KURL & url)
 
 	// then these parameters can be overruled by args in the URL
   parseArgs(url);
-
 
 #ifdef HAVE_VORBIS
 
@@ -672,6 +710,11 @@ AudioCDProtocol::initRequest(const KURL & url)
   QString dname = url.directory(true, false);
   if (!dname.isEmpty() && dname[0] == '/')
     dname = dname.mid(1);
+
+  // are we ripping the full CD?
+  if (url.fileName().contains(QString::fromLatin1("FullCD"))) {
+    d->req_allTracks = true;
+  }
 
   /* A hack, for when konqi wants to list the directory audiocd:/Bla
      it really submits this URL, instead of audiocd:/Bla/ to us. We could
@@ -755,8 +798,27 @@ AudioCDProtocol::initRequest(const KURL & url)
     d->req_track = -1;
 
   kdDebug(7117) << "audiocd: dir=" << dname << " file=" << d->fname
-    << " req_track=" << d->req_track << " which_dir=" << d->which_dir << endl;
+    << " req_track=" << d->req_track << " which_dir=" << d->which_dir << " rip full CD?=" << d->req_allTracks << endl;
   return drive;
+}
+
+bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & firstSector, long & lastSector) const
+{
+  if (d->req_allTracks)
+  { // we rip all the tracks of the CD
+    firstSector = cdda_track_firstsector(drive, 1);
+    lastSector  = cdda_track_lastsector(drive, cdda_tracks(drive));
+  }
+  else
+  { // we only rip the selected track
+    int trackNumber = d->req_track + 1;
+
+    if (trackNumber <= 0 || trackNumber > cdda_tracks(drive))
+      return false;
+    firstSector    = cdda_track_firstsector(drive, trackNumber);
+    lastSector     = cdda_track_lastsector(drive, trackNumber);
+  }
+  return true;
 }
 
   void
@@ -766,26 +828,32 @@ AudioCDProtocol::get(const KURL & url)
   if (!drive)
     return;
 
-  int trackNumber = d->req_track + 1;
-
-  if (trackNumber <= 0 || trackNumber > cdda_tracks(drive))
+  long firstSector, lastSector;
+  if (!getSectorsForRequest(drive, firstSector, lastSector))
   {
     error(KIO::ERR_DOES_NOT_EXIST, url.path());
     return;
   }
 
- QString filetype = determineFiletype(d->fname);
+ FileType filetype = determineFiletype(d->fname);
 
 #ifdef HAVE_LAME
   if ( initLameLib() == true ){
-     if (filetype == QFL1("mp3") && d->based_on_cddb && d->write_id3) {
+     if (filetype == FileTypeMP3 && d->based_on_cddb && d->write_id3) {
        /* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
-       const char *tname =   d->titles[trackNumber-1].latin1();    // set trackname
+       const char *tname;
+       // do we rip the whole CD?
+       if (d->req_allTracks)
+         // YES => the title of the file is the title of the CD
+         tname = d->cd_title.latin1();
+       else
+         // NO => title of the track.
+         tname  = d->titles[d->req_track].latin1();    // set trackname
        (_lamelib_id3tag_set_album)  (d->gf, d->cd_title.latin1());
        (_lamelib_id3tag_set_artist) (d->gf, d->cd_artist.latin1());
        (_lamelib_id3tag_set_title)  (d->gf, tname+3); // since titles has preleading tracknumbers, start at position 3
        QString tn;
-       tn.sprintf("%02d",trackNumber);
+       tn.sprintf("%02d", d->req_track+1);
        (_lamelib_id3tag_set_track) (d->gf, tn.latin1());
      }
 
@@ -798,9 +866,16 @@ AudioCDProtocol::get(const KURL & url)
 
 #ifdef HAVE_VORBIS
 
-  if (filetype == QFL1("ogg") && d->based_on_cddb && d->write_vorbis_comments)
+  if (filetype == FileTypeOggVorbis && d->based_on_cddb && d->write_vorbis_comments)
   {
-    QString trackName(d->titles[trackNumber - 1].mid(3));
+    QString trackName;
+    // do we rip the whole CD?
+    if (d->req_allTracks)
+      // YES => the title of the file is the title of the CD
+      trackName = d->cd_title.utf8().data();
+    else
+      // NO => title of the track.
+      trackName = d->titles[d->req_track].mid(3);
 
     vorbis_comment_add_tag
       (
@@ -834,7 +909,7 @@ AudioCDProtocol::get(const KURL & url)
       (
        &d->vc,
        const_cast<char *>("tracknumber"),
-       const_cast<char *>(QString::number(trackNumber).utf8().data())
+       const_cast<char *>(QString::number(d->req_track+1).utf8().data())
       );
 
      QDateTime dt = QDate(d->cd_year, 1, 1);
@@ -847,15 +922,12 @@ AudioCDProtocol::get(const KURL & url)
   }
 #endif
 
-
-  long firstSector    = cdda_track_firstsector(drive, trackNumber);
-  long lastSector     = cdda_track_lastsector(drive, trackNumber);
   long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector);
   long time_secs      = (8 * totalByteCount) / (44100 * 2 * 16);
 
 #ifdef HAVE_LAME
   if ( initLameLib() == true ){
-    if (filetype == QFL1("mp3")) {
+    if (filetype == FileTypeMP3) {
       totalSize((time_secs * d->bitrate * 1000)/8);
       mimeType(QFL1("audio/x-mp3"));
     }
@@ -863,19 +935,19 @@ AudioCDProtocol::get(const KURL & url)
 #endif
 
 #ifdef HAVE_VORBIS
-  if (filetype == QFL1("ogg")) {
+  if (filetype == FileTypeOggVorbis) {
     totalSize( vorbisSize(time_secs) );
     mimeType(QFL1("application/x-ogg"));
   }
 #endif
 
-  if (filetype == QFL1("wav")) {
+  if (filetype == FileTypeWAV) {
     totalSize(44 + totalByteCount); // Include RIFF header length.
     writeHeader(totalByteCount);    // Write RIFF header.
     mimeType(QFL1("audio/x-wav"));
   }
 
-  if (filetype == QFL1("cda")) {
+  if (filetype == FileTypeCDA) {
     totalSize(totalByteCount);      // CDA is raw interleaved PCM Data with SampleRate 44100 and 16 Bit res.
     mimeType(QFL1("application/x-cda"));
   }
@@ -898,13 +970,19 @@ AudioCDProtocol::stat(const KURL & url)
 
   bool isFile = !d->fname.isEmpty();
 
+  // the track number. 0 if ripping
+  // the whole CD.
   int trackNumber = d->req_track + 1;
 
-  if (isFile && (trackNumber < 1 || trackNumber > d->tracks))
+  if (!d->req_allTracks)
+  { // we only want to rip one track.
+    // does this track exist?
+    if (isFile && (trackNumber < 1 || trackNumber > d->tracks))
     {
       error(KIO::ERR_DOES_NOT_EXIST, url.path());
       return;
     }
+  }
 
   UDSEntry entry;
 
@@ -929,27 +1007,10 @@ AudioCDProtocol::stat(const KURL & url)
   }
   else
   {
-      QString filetype = determineFiletype(d->fname);
-
-      long filesize = CD_FRAMESIZE_RAW * (
-            cdda_track_lastsector(drive, trackNumber) -
-            cdda_track_firstsector(drive, trackNumber)
-      );
-
-      long length_seconds = (filesize) / 176400;
-#ifdef HAVE_LAME
-      if ( initLameLib() == true && filetype == QFL1("mp3"))
-          atom.m_long = (length_seconds * d->bitrate*1000) / 8;
-#endif
-
-#ifdef HAVE_VORBIS
-      if (filetype == QFL1("ogg"))
-        atom.m_long = vorbisSize(length_seconds);
-#endif
-
-      if (filetype == QFL1("cda")) atom.m_long = filesize;
-
-      if (filetype == QFL1("wav")) atom.m_long = filesize + 44;
+      FileType fileType = determineFiletype(d->fname);
+      long firstSector, lastSector;
+      getSectorsForRequest(drive, firstSector, lastSector);
+      atom.m_long = fileSize(firstSector, lastSector, fileType);
   }
 
   entry.append(atom);
@@ -1188,59 +1249,107 @@ AudioCDProtocol::listDir(const KURL & url)
     }
 
   if (do_tracks)
+  {
+    enum FileType fileType = FileTypeUnknown;
+    QString fullCDTrack(QFL1("FullCD"));
+    switch (d->which_dir)
+    {
+      case Device:
+      case Root: break;
+      case ByTrack:
+        fileType = FileTypeWAV;
+        break;
+#ifdef HAVE_LAME
+      case MP3:
+        fileType = FileTypeMP3;
+        break;
+#endif
+
+#ifdef HAVE_VORBIS
+      case Vorbis:
+        fileType = FileTypeOggVorbis;
+        break;
+#endif
+
+      case ByName:
+      case Title:
+        fileType = FileTypeWAV;
+        break;
+      case Info:
+      case Unknown:
+      default:
+        error(KIO::ERR_INTERNAL, url.path());
+        return;
+    };
+
+    // if we're not listing the root dir..
+    if ( (d->which_dir == ByTrack)
+#ifdef HAVE_LAME
+          || (d->which_dir == MP3)
+#endif
+#ifdef HAVE_VORBIS
+          || (d->which_dir == Vorbis)
+#endif
+      )
+    { // already add the entry for the
+      // full CD track.
+      long fileSizeFullCD = fileSize(cdda_track_firstsector(drive, 1),
+                                        cdda_track_lastsector(drive, cdda_tracks(drive)),
+                                        fileType);
+      app_file(entry, fullCDTrack + extension(fileType), fileSizeFullCD);
+      listEntry(entry, false);
+    }
+
     for (int i = 1; i <= d->tracks; i++)
     {
       if (d->is_audio[i-1])
       {
-        long size = CD_FRAMESIZE_RAW *
-          ( cdda_track_lastsector(drive, i) - cdda_track_firstsector(drive, i));
-        long length_seconds = size / 176400;
+        long firstSector    = cdda_track_firstsector(drive, i);
+        long lastSector     = cdda_track_lastsector(drive, i);
 
         QString s;
         /*if (i==1)
           s.sprintf("_%08x.wav", d->discid);
         else*/
-          s = QFL1(".wav");
-        QString s2 = QFL1(".mp3");
-        QString s3 = QFL1(".ogg");
         QString num2;
         num2.sprintf("%02d", i);
 
+        
         QString name;
         switch (d->which_dir)
           {
             case Device:
             case Root: name.sprintf("track%02d.cda", i); break;
-            case ByTrack: name = d->s_track.arg(num2) + s; break;
+            case ByTrack: name = d->s_track.arg(num2) + extension(fileType); break;
 #ifdef HAVE_LAME
             case MP3:
               if ( initLameLib() == true ){
-                name = d->titles[i - 1] + s2;
-                size = (length_seconds * d->bitrate*1000) / 8; // length * bitrate / 8;
+                name = d->titles[i - 1] + extension(fileType);
               };
               break;
 #endif
 
 #ifdef HAVE_VORBIS
             case Vorbis:
-              name = d->titles[i - 1] + s3;
-              size = vorbisSize(length_seconds); 
+              name = d->titles[i - 1] + extension(fileType);
               break;
 #endif
 
             case ByName:
-            case Title: name = d->titles[i - 1] + s; break;
+            case Title:
+              name = d->titles[i - 1] + extension(fileType);
+              break;
             case Info:
             case Unknown:
             default:
               error(KIO::ERR_INTERNAL, url.path());
               return;
           }
-        app_file(entry, name, size);
+        app_file(entry, name, fileSize(firstSector, lastSector, fileType));
         listEntry(entry, false);
       }
     }
-
+  }
   totalSize(entry.count());
   listEntry(entry, true);
 
@@ -1285,6 +1394,42 @@ AudioCDProtocol::writeHeader(long byteCount)
   data(output);
   output.resetRawData(riffHeader, 44);
   processedSize(44);
+}
+
+long
+AudioCDProtocol::fileSize(struct cdrom_drive* drive, int trackNumber, AudioCDProtocol::FileType fileType)
+{
+  return fileSize(cdda_track_firstsector(drive, trackNumber),
+                    cdda_track_lastsector(drive, trackNumber),
+                    fileType);
+}
+
+long
+AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDProtocol::FileType filetype)
+{
+  long result = 0; // the value we're searching for.
+  
+  long filesize = CD_FRAMESIZE_RAW * (
+        lastSector -
+        firstSector 
+  );
+
+  long length_seconds = (filesize) / 176400;
+#ifdef HAVE_LAME
+  if ( initLameLib() == true && filetype == FileTypeMP3)
+      result = (length_seconds * d->bitrate*1000) / 8;
+#endif
+
+#ifdef HAVE_VORBIS
+  if (filetype == FileTypeOggVorbis)
+    result = vorbisSize(length_seconds);
+#endif
+
+  if (filetype == FileTypeCDA) result = filesize;
+
+  if (filetype == FileTypeWAV) result = filesize + 44;
+
+  return result;
 }
 
   struct cdrom_drive *
@@ -1392,7 +1537,7 @@ AudioCDProtocol::paranoiaRead(
     struct cdrom_drive * drive,
     long firstSector,
     long lastSector,
-    QString filetype
+    AudioCDProtocol::FileType filetype
 )
 {
   cdrom_paranoia * paranoia = paranoia_init(drive);
@@ -1437,7 +1582,7 @@ static char mp3buffer[mp3buffer_size];
   long currentSector(firstSector);
 
 #ifdef HAVE_VORBIS
-  if (filetype == QFL1("ogg")) {
+  if (filetype == FileTypeOggVorbis) {
     ogg_packet header;
     ogg_packet header_comm;
     ogg_packet header_code;
@@ -1492,7 +1637,7 @@ static char mp3buffer[mp3buffer_size];
       ++currentSector;
 
 #ifdef HAVE_LAME
-      if ( initLameLib() == true && filetype == QFL1("mp3") ){
+      if ( initLameLib() == true && filetype == FileTypeMP3 ){
          int mp3bytes =
            (_lamelib_lame_encode_buffer_interleaved)
             (d->gf,buf,CD_FRAMESAMPLES,(unsigned char *)mp3buffer,(int)mp3buffer_size) ;
@@ -1514,7 +1659,7 @@ static char mp3buffer[mp3buffer_size];
 #endif
 
 #ifdef HAVE_VORBIS
-      if (filetype == QFL1("ogg")) {
+      if (filetype == FileTypeOggVorbis) {
         int i;
         float **buffer=vorbis_analysis_buffer(&d->vd,CD_FRAMESAMPLES);
 
@@ -1564,7 +1709,7 @@ static char mp3buffer[mp3buffer_size];
       }
 #endif
 
-      if (filetype == QFL1("wav") || filetype == QFL1("cda")) {
+      if (filetype == FileTypeWAV || filetype == FileTypeCDA) {
         QByteArray output;
         char * cbuf = reinterpret_cast<char *>(buf);
         output.setRawData(cbuf, CD_FRAMESIZE_RAW);
@@ -1577,7 +1722,7 @@ static char mp3buffer[mp3buffer_size];
     }
   }
 #ifdef HAVE_LAME
-  if ( initLameLib() == true && filetype == QFL1("mp3")) {
+  if ( initLameLib() == true && filetype == FileTypeMP3) {
      int mp3bytes = _lamelib_lame_encode_finish(d->gf,(unsigned char *)mp3buffer,(int)mp3buffer_size);
 
      if (mp3bytes < 0 ) {
@@ -1597,7 +1742,7 @@ static char mp3buffer[mp3buffer_size];
 #endif
 
 #ifdef HAVE_VORBIS
-  if (filetype == QFL1("ogg")) {
+  if (filetype == FileTypeOggVorbis) {
     ogg_stream_clear(&d->os);
     vorbis_block_clear(&d->vb);
     vorbis_dsp_clear(&d->vd);
