@@ -716,6 +716,7 @@ static void app_dir(UDSEntry& e, const QString & n, size_t s)
 	app_entry(e, KIO::UDS_FILE_TYPE, S_IFDIR);
 	app_entry(e, KIO::UDS_ACCESS, 0400);
 	app_entry(e, KIO::UDS_SIZE, s);
+	app_entry(e, KIO::UDS_MIME_TYPE, "inode/directory");
 }
 
 static void app_file(UDSEntry& e, const QString & n, size_t s)
