@@ -2,7 +2,7 @@
 #AUDIOCD_PLUGINS_SUBDIR=vorbis
 #endif
 
-SUBDIRS = . wav vorbis lame
+SUBDIRS = . wav vorbis lame flac
 
 INCLUDES = $(all_includes)
 
