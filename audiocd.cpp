@@ -1069,6 +1069,7 @@ AudioCDProtocol::paranoiaRead(
 		 * 2) Only increase in size unless the decrease is %5 of last estimate.
 		 * This prevents continues small changes which is just annoying.
 		 */
+		/*
 		unsigned long end = lastSector - firstSector;
 		unsigned long cur = currentSector - firstSector;
 		unsigned long estSize = (processed / cur ) * end;
@@ -1111,7 +1112,7 @@ AudioCDProtocol::paranoiaRead(
 					lastSize = estSize;
 				}
 			}
-		}
+		}*/
 		/**
 		 * End estimation.
 		 */
