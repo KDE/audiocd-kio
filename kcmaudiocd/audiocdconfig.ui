@@ -129,7 +129,7 @@
                                             <string>/dev/cdrom</string>
                                         </property>
                                         <property name="whatsThis" stdset="0">
-                                            <string>Specify a location for the drive you want to use. Normally, this is a file inside the /dev directory representing your CD or DVD drive.</string>
+                                            <string>Specify a location for the drive you want to use. Normally, this is a file inside the /dev folder representing your CD or DVD drive.</string>
                                         </property>
                                     </widget>
                                 </hbox>
