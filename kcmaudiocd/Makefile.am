@@ -1,13 +1,13 @@
-kde_module_LTLIBRARIES = libkcm_audiocd.la
+kde_module_LTLIBRARIES = kcm_audiocd.la
 
-libkcm_audiocd_la_SOURCES = audiocdconfig.ui kcmaudiocd.cpp
+kcm_audiocd_la_SOURCES = audiocdconfig.ui kcmaudiocd.cpp
 
-libkcm_audiocd_la_LDFLAGS  = $(all_libraries) -module -avoid-version -no-undefined
-libkcm_audiocd_la_LIBADD = -lkdeui
+kcm_audiocd_la_LDFLAGS  = $(KDE_PLUGIN) -module
+kcm_audiocd_la_LIBADD = -lkdeui
 
 INCLUDES = $(all_includes)
 
-libkcm_audiocd_la_METASOURCES = AUTO
+kcm_audiocd_la_METASOURCES = AUTO
 
 KDE_ICON = cdrom_unmount
 
