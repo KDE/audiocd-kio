@@ -104,8 +104,8 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     cd_autosearch_check = audiocdConfig->cd_autosearch_check;
     cd_device_string = audiocdConfig->cd_device_string;
 
-    ec_disable_check = audiocdConfig->ec_disable_check;
-    ec_neverskip_check = audiocdConfig->ec_neverskip_check;
+    ec_enable_check = audiocdConfig->ec_enable_check;
+    ec_skip_check = audiocdConfig->ec_skip_check;
 
     cddb_enable = audiocdConfig->cddb_enable;
     cddb_save_local = audiocdConfig->cddb_save_local;
@@ -131,8 +131,8 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
 
     //CDDA Options
     connect(cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
-    connect(ec_disable_check,SIGNAL(clicked()),this,SLOT(slotEcDisable()));
-    connect(ec_neverskip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
+    connect(ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
+    connect(ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
 
     //CDDB Options
     connect(cddb_enable, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
@@ -214,8 +214,8 @@ void KAudiocdModule::defaults() {
   cd_autosearch_check->setChecked(true);
   cd_device_string->setText("/dev/cdrom");
 
-  ec_disable_check->setChecked(false);
-  ec_neverskip_check->setChecked(true);
+  ec_enable_check->setChecked(true);
+  ec_skip_check->setChecked(false);
 
   enc_method->setCurrentItem(0);
   slotSelectMethod(0);
@@ -305,8 +305,8 @@ void KAudiocdModule::save() {
   config->setGroup("CDDA");
   config->writeEntry("autosearch",cd_autosearch_check->isChecked());
   config->writeEntry("device",cd_device_string->text());
-  config->writeEntry("disable_paranoia",ec_disable_check->isChecked());
-  config->writeEntry("never_skip",ec_neverskip_check->isChecked());
+  config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
+  config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
 
   config->setGroup("CDDB");
   config->writeEntry("dont_use_cddb", false);
@@ -371,8 +371,8 @@ void KAudiocdModule::load() {
 
   cd_autosearch_check->setChecked(config->readBoolEntry("autosearch",true));
   cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
-  ec_disable_check->setChecked(config->readBoolEntry("disable_paranoia",false));
-  ec_neverskip_check->setChecked(config->readBoolEntry("never_skip",true));
+  ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
+  ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
 
   config->setGroup("CDDB");
 
@@ -546,13 +546,13 @@ void KAudiocdModule::slotDelCDDBDir() {
 /*
 #    slot for the error correction settings
 */
-void KAudiocdModule::slotEcDisable() {
+void KAudiocdModule::slotEcEnable() {
 
-  if (ec_neverskip_check->isChecked()) {
-    ec_neverskip_check->setChecked(false);
+  if (!(ec_skip_check->isChecked())) {
+    ec_skip_check->setChecked(true);
   } else {
-    if (ec_neverskip_check->isEnabled()) {
-      ec_neverskip_check->setChecked(true);
+    if (ec_skip_check->isEnabled()) {
+      ec_skip_check->setChecked(false);
     }
   }
 

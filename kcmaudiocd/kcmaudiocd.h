@@ -46,14 +46,14 @@ public slots:
   void defaults();
   void save();
   void load();
- 
+
 private slots:
 
   void slotSelectMethod(int);
   void slotUpdateVBRWidgets();
   void slotConfigChanged();
   void slotChangeFilter();
-  void slotEcDisable();
+  void slotEcEnable();
   void slotAddCDDBServer();
   void slotDelCDDBServer();
   void slotServerTextChanged(const QString & );
@@ -66,7 +66,7 @@ private:
   KConfig *config;
   bool configChanged;
 
-  QCheckBox *ec_disable_check,*ec_neverskip_check,*cd_autosearch_check;
+  QCheckBox *ec_enable_check,*ec_skip_check,*cd_autosearch_check;
   QLineEdit *cd_device_string;
 
   QCheckBox *cddb_enable;
