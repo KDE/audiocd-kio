@@ -1429,6 +1429,72 @@
                     </spacer>
                 </vbox>
             </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>File Names</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QGroupBox">
+                        <property name="name">
+                            <cstring>fileNameGroupBox</cstring>
+                        </property>
+                        <property name="title">
+                            <string>File Name Settings</string>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>fileNameLabel</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Please enter the filename without an extension that should be used.
+
+The following macros will be expanded:
+
+%A	Artist
+%a	Album name
+%t	Track name
+%n	Track number
+%g	Genre
+%y	Year
+</string>
+                                </property>
+                            </widget>
+                            <widget class="KLineEdit">
+                                <property name="name">
+                                    <cstring>fileNameLineEdit</cstring>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                    <spacer>
+                        <property name="name">
+                            <cstring>spacer4</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>21</width>
+                                <height>141</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </vbox>
+            </widget>
         </widget>
     </vbox>
 </widget>
@@ -1487,7 +1553,9 @@
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
+    <includehint>kcmodule.h</includehint>
     <includehint>knuminput.h</includehint>
     <includehint>knuminput.h</includehint>
+    <includehint>klineedit.h</includehint>
 </includehints>
 </UI>

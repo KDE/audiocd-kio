@@ -29,6 +29,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#include <kmacroexpander.h>
+
 #include <qfile.h>
 #include <qstrlist.h>
 #include <qdatetime.h>
@@ -360,6 +362,7 @@ class AudioCDProtocol::Private
     bool req_allTracks;
     int req_track;
     QString fname;
+    QString fileNameTemplate;
 };
 
 AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
@@ -1074,8 +1077,19 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
       for (uint i = 0; i < t.count(); i++)
         {
           QString n;
-          n.sprintf("%02d ", i + 1);
-          d->titles.append (n + t[i].title);
+          n.sprintf("%02d", i + 1);
+
+	  QMap<QChar, QString> macros;
+	  macros['A'] = d->cd_artist;
+	  macros['a'] = d->cd_title;
+	  macros['t'] = t[i].title;
+	  macros['n'] = n;
+	  macros['g'] = d->cd_category;
+	  macros['y'] = QString::number(d->cd_year);
+
+	  QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%');
+
+          d->titles.append(title);
         }
       return;
     }
@@ -1349,8 +1363,8 @@ AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, str
   if (trackNo == -1)
   { // adding entry for the full CD
     theFileSize = fileSize(cdda_track_firstsector(drive, 1),
-                                      cdda_track_lastsector(drive, cdda_tracks(drive)),
-                                      fileType);
+			   cdda_track_lastsector(drive, cdda_tracks(drive)),
+			   fileType);
   }
   else
   { // adding one regular track
@@ -1901,6 +1915,10 @@ void AudioCDProtocol::getParameters() {
 
 
 #endif // HAVE_VORBIS
+
+  config->setGroup("FileName");
+  d->fileNameTemplate = config->readEntry("file_name_template", "%n %i");
+
   delete config;
   return;
 }

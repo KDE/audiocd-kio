@@ -19,6 +19,7 @@
 #include <kconfig.h>
 #include <klocale.h>
 #include <kglobal.h>
+#include <klineedit.h>
 
 #include <qlayout.h>
 #include <qcheckbox.h>
@@ -112,6 +113,9 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(vorbis_enc_method,SIGNAL(activated(int)),this,SLOT(slotSelectVorbisMethod(int)));
     connect(vorbis_quality,SIGNAL(valueChanged(double)),this,SLOT(slotConfigChanged()));
     connect(vorbis_comments, SIGNAL( clicked ()),SLOT( slotConfigChanged()));
+
+    // File Name
+    connect(fileNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
 };
 
 KAudiocdModule::~KAudiocdModule()
@@ -176,6 +180,8 @@ void KAudiocdModule::defaults() {
   vorbis_comments->setChecked(true);
   vorbis_enc_method->setCurrentItem(0);
   slotSelectVorbisMethod(0);
+
+  fileNameLineEdit->setText("%n %t");
 }
 
 void KAudiocdModule::save() {
@@ -213,55 +219,67 @@ void KAudiocdModule::save() {
   int vorbis_nominal_bitrate = vorbis_nominal_br->currentItem();
   vorbis_nominal_bitrate = vorbis_nominal_bitrates[vorbis_nominal_bitrate];
 
-  config->setGroup("CDDA");
-  config->writeEntry("autosearch",cd_autosearch_check->isChecked());
-  config->writeEntry("device",cd_device_string->text());
-  config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
-  config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
+  {
+    KConfigGroupSaver saver(config, "CDDA");
 
-  config->setGroup("MP3");
+    config->writeEntry("autosearch",cd_autosearch_check->isChecked());
+    config->writeEntry("device",cd_device_string->text());
+    config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
+    config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
+  }
+  
+  {
+    KConfigGroupSaver saver(config, "MP3");
 
-  config->writeEntry("mode",mode);
-  config->writeEntry("quality",encquality);
-  config->writeEntry("encmethod",encmethod);
+    config->writeEntry("mode",mode);
+    config->writeEntry("quality",encquality);
+    config->writeEntry("encmethod",encmethod);
+    
+    config->writeEntry("copyright",copyright->isChecked());
+    config->writeEntry("original",original->isChecked());
+    config->writeEntry("iso",iso->isChecked());
+    config->writeEntry("crc",crc->isChecked());
+    config->writeEntry("id3",id3_tag->isChecked());
+    
+    config->writeEntry("cbrbitrate",cbrbrate);
+    
+    config->writeEntry("set_vbr_min",vbr_min_br->isChecked());
+    config->writeEntry("set_vbr_max",vbr_max_br->isChecked());
+    config->writeEntry("set_vbr_avr",vbr_average_br->isChecked());
+    config->writeEntry("vbr_min_hard",vbr_min_hard->isChecked());
+    config->writeEntry("vbr_min_bitrate",vbrminbrate);
+    config->writeEntry("vbr_max_bitrate",vbrmaxbrate);
+    config->writeEntry("vbr_average_bitrate",vbravrbrate);
+    config->writeEntry("write_xing_tag",vbr_xing_tag->isChecked());
+    
+    config->writeEntry("enable_lowpassfilter",enable_lowpass->isChecked());
+    config->writeEntry("enable_highpassfilter",enable_highpass->isChecked());
+    config->writeEntry("set_highpassfilter_width",set_hpf_width->isChecked());
+    config->writeEntry("set_lowpassfilter_width",set_lpf_width->isChecked());
+    config->writeEntry("lowpassfilter_freq",lpf_freq);
+    config->writeEntry("lowpassfilter_width",lpf_width);
+    config->writeEntry("highpassfilter_freq",hpf_freq);
+    config->writeEntry("highpassfilter_width",hpf_width);
+  }
 
-  config->writeEntry("copyright",copyright->isChecked());
-  config->writeEntry("original",original->isChecked());
-  config->writeEntry("iso",iso->isChecked());
-  config->writeEntry("crc",crc->isChecked());
-  config->writeEntry("id3",id3_tag->isChecked());
+  {
+    KConfigGroupSaver saver(config, "Vorbis");
 
-  config->writeEntry("cbrbitrate",cbrbrate);
+    config->writeEntry("set_vorbis_min_bitrate",set_vorbis_min_br->isChecked());
+    config->writeEntry("set_vorbis_max_bitrate",set_vorbis_max_br->isChecked());
+    config->writeEntry("set_vorbis_nominal_bitrate",set_vorbis_nominal_br->isChecked());
+    config->writeEntry("vorbis_comments",vorbis_comments->isChecked());
+    config->writeEntry("vorbis_min_bitrate",vorbis_min_bitrate);
+    config->writeEntry("vorbis_max_bitrate",vorbis_max_bitrate);
+    config->writeEntry("vorbis_nominal_bitrate",vorbis_nominal_bitrate);
+    config->writeEntry("encmethod", vorbis_enc_method->currentItem());
+    config->writeEntry("quality", vorbis_quality->value());
+  }
 
-  config->writeEntry("set_vbr_min",vbr_min_br->isChecked());
-  config->writeEntry("set_vbr_max",vbr_max_br->isChecked());
-  config->writeEntry("set_vbr_avr",vbr_average_br->isChecked());
-  config->writeEntry("vbr_min_hard",vbr_min_hard->isChecked());
-  config->writeEntry("vbr_min_bitrate",vbrminbrate);
-  config->writeEntry("vbr_max_bitrate",vbrmaxbrate);
-  config->writeEntry("vbr_average_bitrate",vbravrbrate);
-  config->writeEntry("write_xing_tag",vbr_xing_tag->isChecked());
-
-  config->writeEntry("enable_lowpassfilter",enable_lowpass->isChecked());
-  config->writeEntry("enable_highpassfilter",enable_highpass->isChecked());
-  config->writeEntry("set_highpassfilter_width",set_hpf_width->isChecked());
-  config->writeEntry("set_lowpassfilter_width",set_lpf_width->isChecked());
-  config->writeEntry("lowpassfilter_freq",lpf_freq);
-  config->writeEntry("lowpassfilter_width",lpf_width);
-  config->writeEntry("highpassfilter_freq",hpf_freq);
-  config->writeEntry("highpassfilter_width",hpf_width);
-
-  config->setGroup("Vorbis");
-
-  config->writeEntry("set_vorbis_min_bitrate",set_vorbis_min_br->isChecked());
-  config->writeEntry("set_vorbis_max_bitrate",set_vorbis_max_br->isChecked());
-  config->writeEntry("set_vorbis_nominal_bitrate",set_vorbis_nominal_br->isChecked());
-  config->writeEntry("vorbis_comments",vorbis_comments->isChecked());
-  config->writeEntry("vorbis_min_bitrate",vorbis_min_bitrate);
-  config->writeEntry("vorbis_max_bitrate",vorbis_max_bitrate);
-  config->writeEntry("vorbis_nominal_bitrate",vorbis_nominal_bitrate);
-  config->writeEntry("encmethod", vorbis_enc_method->currentItem());
-  config->writeEntry("quality", vorbis_quality->value());
+  {
+    KConfigGroupSaver saver(config, "FileName");
+    config->writeEntry("file_name_template", fileNameLineEdit->text());
+  }
 
   config->sync();
 
@@ -271,81 +289,94 @@ void KAudiocdModule::save() {
 
 void KAudiocdModule::load() {
 
-  config->setGroup("CDDA");
+  {
+    KConfigGroupSaver saver(config, "CDDA");
 
-  cd_autosearch_check->setChecked(config->readBoolEntry("autosearch",true));
-  cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
-  ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
-  ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
+    cd_autosearch_check->setChecked(config->readBoolEntry("autosearch",true));
+    cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
+    ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
+    ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
+  }
 
-  config->setGroup("MP3");
+  int brate;
 
-  int encmethod = config->readNumEntry("encmethod",0);
-  enc_method->setCurrentItem(encmethod);
-  slotSelectMethod(encmethod);
+  {
+    KConfigGroupSaver saver(config, "MP3");
+    
+    int encmethod = config->readNumEntry("encmethod",0);
+    enc_method->setCurrentItem(encmethod);
+    slotSelectMethod(encmethod);
+    
+    stereo->setCurrentItem(config->readNumEntry("mode",0));
+    quality->setValue(config->readNumEntry("quality",2));
 
-  stereo->setCurrentItem(config->readNumEntry("mode",0));
-  quality->setValue(config->readNumEntry("quality",2));
+    copyright->setChecked(config->readBoolEntry("copyright",false));
+    original->setChecked(config->readBoolEntry("original",true));
+    iso->setChecked(config->readBoolEntry("iso",false));
+    crc->setChecked(config->readBoolEntry("crc",false));
+    id3_tag->setChecked(config->readBoolEntry("id3",true));
+    
+    
+    brate = config->readNumEntry("cbrbitrate",160);
+    cbr_bitrate->setCurrentItem(getBitrateIndex(brate));
+    
+    vbr_min_br->setChecked(config->readBoolEntry("set_vbr_min",false));
+    vbr_min_hard->setChecked(config->readBoolEntry("vbr_min_hard",false));
+    vbr_max_br->setChecked(config->readBoolEntry("set_vbr_max",false));
+    vbr_average_br->setChecked(config->readBoolEntry("set_vbr_avr",true));
+    
+    brate = config->readNumEntry("vbr_min_bitrate",40);
+    vbr_min_brate->setCurrentItem(getBitrateIndex(brate));
+    brate = config->readNumEntry("vbr_max_bitrate",320);
+    vbr_max_brate->setCurrentItem(getBitrateIndex(brate));
+    brate = config->readNumEntry("vbr_average_bitrate",160);
+    vbr_mean_brate->setCurrentItem(getBitrateIndex(brate));
+    
+    vbr_xing_tag->setChecked(config->readBoolEntry("write_xing_tag",true));
+    
+    slotUpdateVBRWidgets();
+    
+    enable_lowpass->setChecked(config->readBoolEntry("enable_lowpassfilter",false));
+    enable_highpass->setChecked(config->readBoolEntry("enable_highpassfilter",false));
+    set_lpf_width->setChecked(config->readBoolEntry("set_lowpassfilter_width",false));
+    set_hpf_width->setChecked(config->readBoolEntry("set_highpassfilter_width",false));
+    
+    lowfilterfreq->setValue(config->readNumEntry("lowpassfilter_freq",18000));
+    lowfilterwidth->setValue(config->readNumEntry("lowpassfilter_width",900));
+    highfilterfreq->setValue(config->readNumEntry("highpassfilter_freq",0));
+    highfilterwidth->setValue(config->readNumEntry("highpassfilter_width",0));
 
-  copyright->setChecked(config->readBoolEntry("copyright",false));
-  original->setChecked(config->readBoolEntry("original",true));
-  iso->setChecked(config->readBoolEntry("iso",false));
-  crc->setChecked(config->readBoolEntry("crc",false));
-  id3_tag->setChecked(config->readBoolEntry("id3",true));
+    slotChangeFilter();
+  }
 
+  {
+    KConfigGroupSaver saver(config, "Vorbis");
 
-  int brate = config->readNumEntry("cbrbitrate",160);
-  cbr_bitrate->setCurrentItem(getBitrateIndex(brate));
+    brate = config->readNumEntry("vorbis_min_bitrate",40);
+    vorbis_min_br->setCurrentItem(getVorbisBitrateIndex(brate));
+    
+    brate = config->readNumEntry("vorbis_max_bitrate",350);
+    vorbis_max_br->setCurrentItem(getVorbisBitrateIndex(brate));
+    
+    brate = config->readNumEntry("vorbis_nominal_bitrate",160);
+    vorbis_nominal_br->setCurrentItem(getVorbisNominalBitrateIndex(brate));
+    
+    set_vorbis_min_br->setChecked(config->readBoolEntry("set_vorbis_min_bitrate",false));
+    set_vorbis_max_br->setChecked(config->readBoolEntry("set_vorbis_max_bitrate",false));
+    set_vorbis_nominal_br->setChecked(config->readBoolEntry("set_vorbis_nominal_bitrate",true));
+    
+    int vorbis_encmethod = config->readNumEntry("encmethod", 0);
+    vorbis_enc_method->setCurrentItem(vorbis_encmethod);
+    slotSelectVorbisMethod(vorbis_encmethod);
+    
+    vorbis_quality->setValue(config->readDoubleNumEntry("quality", 3.0));
+    vorbis_comments->setChecked(config->readBoolEntry("vorbis_comments",true));
+  }
 
-  vbr_min_br->setChecked(config->readBoolEntry("set_vbr_min",false));
-  vbr_min_hard->setChecked(config->readBoolEntry("vbr_min_hard",false));
-  vbr_max_br->setChecked(config->readBoolEntry("set_vbr_max",false));
-  vbr_average_br->setChecked(config->readBoolEntry("set_vbr_avr",true));
-
-  brate = config->readNumEntry("vbr_min_bitrate",40);
-  vbr_min_brate->setCurrentItem(getBitrateIndex(brate));
-  brate = config->readNumEntry("vbr_max_bitrate",320);
-  vbr_max_brate->setCurrentItem(getBitrateIndex(brate));
-  brate = config->readNumEntry("vbr_average_bitrate",160);
-  vbr_mean_brate->setCurrentItem(getBitrateIndex(brate));
-
-  vbr_xing_tag->setChecked(config->readBoolEntry("write_xing_tag",true));
-
-  slotUpdateVBRWidgets();
-
-  enable_lowpass->setChecked(config->readBoolEntry("enable_lowpassfilter",false));
-  enable_highpass->setChecked(config->readBoolEntry("enable_highpassfilter",false));
-  set_lpf_width->setChecked(config->readBoolEntry("set_lowpassfilter_width",false));
-  set_hpf_width->setChecked(config->readBoolEntry("set_highpassfilter_width",false));
-
-  lowfilterfreq->setValue(config->readNumEntry("lowpassfilter_freq",18000));
-  lowfilterwidth->setValue(config->readNumEntry("lowpassfilter_width",900));
-  highfilterfreq->setValue(config->readNumEntry("highpassfilter_freq",0));
-  highfilterwidth->setValue(config->readNumEntry("highpassfilter_width",0));
-
-  slotChangeFilter();
-
-  config->setGroup("Vorbis");
-
-  brate = config->readNumEntry("vorbis_min_bitrate",40);
-  vorbis_min_br->setCurrentItem(getVorbisBitrateIndex(brate));
-
-  brate = config->readNumEntry("vorbis_max_bitrate",350);
-  vorbis_max_br->setCurrentItem(getVorbisBitrateIndex(brate));
-
-  brate = config->readNumEntry("vorbis_nominal_bitrate",160);
-  vorbis_nominal_br->setCurrentItem(getVorbisNominalBitrateIndex(brate));
-
-  set_vorbis_min_br->setChecked(config->readBoolEntry("set_vorbis_min_bitrate",false));
-  set_vorbis_max_br->setChecked(config->readBoolEntry("set_vorbis_max_bitrate",false));
-  set_vorbis_nominal_br->setChecked(config->readBoolEntry("set_vorbis_nominal_bitrate",true));
-
-  int vorbis_encmethod = config->readNumEntry("encmethod", 0);
-  vorbis_enc_method->setCurrentItem(vorbis_encmethod);
-  slotSelectVorbisMethod(vorbis_encmethod);
-
-  vorbis_quality->setValue(config->readDoubleNumEntry("quality", 3.0));
-  vorbis_comments->setChecked(config->readBoolEntry("vorbis_comments",true));
+  {
+    KConfigGroupSaver saver(config, "FileName");
+    fileNameLineEdit->setText(config->readEntry("file_name_template", "%n %t"));
+  }
 }
 
 int KAudiocdModule::getBitrateIndex(int value) {
@@ -517,13 +548,13 @@ void KAudiocdModule::slotUpdateVBRWidgets() {
 
 QString KAudiocdModule::quickHelp() const
 {
-    return i18n("<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily"
-                        " create wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs."
-                        " The slave is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location"
-                        " bar. In this module, you can configure"
-                        " encoding, and device settings. Note that MP3 and Ogg"
-                        " Vorbis encoding are only available if KDE was built with a recent"
-                        " version of the LAME or Ogg Vorbis libraries.");
+  return i18n("<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily"
+              " create wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs."
+              " The slave is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location"
+              " bar. In this module, you can configure"
+              " encoding, and device settings. Note that MP3 and Ogg"
+              " Vorbis encoding are only available if KDE was built with a recent"
+              " version of the LAME or Ogg Vorbis libraries.");
 }
 
 const KAboutData* KAudiocdModule::aboutData() const
@@ -531,8 +562,8 @@ const KAboutData* KAudiocdModule::aboutData() const
 
     KAboutData *about =
     new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio-CD Slave Control Module"),
-                  0, 0, KAboutData::License_GPL,
-                  I18N_NOOP("(c) 2000 - 2001 Carsten Duvenhorst"));
+                   0, 0, KAboutData::License_GPL,
+                   I18N_NOOP("(c) 2000 - 2001 Carsten Duvenhorst"));
 
     about->addAuthor("Carsten Duvenhorst", 0, "duvenhorst@duvnet.de");
 
