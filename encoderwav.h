@@ -54,8 +54,6 @@ public:
 			    int ){};
 
   virtual long readInit(long size);
-  virtual long read(int16_t * buf, int frames){ return 0; };
-  virtual long readCleanup(){ return 0; };
   
 private:
   class Private;
