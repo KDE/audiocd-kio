@@ -871,7 +871,7 @@ AudioCDProtocol::get(const KURL & url)
 
   if (filetype == "cda") {
     totalSize(totalByteCount);      // CDA is raw interleaved PCM Data with SampleRate 44100 and 16 Bit res. 
-    mimeType("audio/x-cda");
+    mimeType("application/x-cda");
   }
 
   paranoiaRead(drive, firstSector, lastSector, filetype);
