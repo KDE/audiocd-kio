@@ -26,6 +26,8 @@
 #include <qtabwidget.h>
 #include <kaboutdata.h>
 #include <knuminput.h>
+#include <qregexp.h>
+#include <qlabel.h>
 
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"
@@ -67,6 +69,10 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
 
     // File Name
     connect(fileNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
+    connect(albumNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
+		connect( kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
+    connect( kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
+    connect( example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
 }
 
 KAudiocdModule::~KAudiocdModule()
@@ -74,37 +80,54 @@ KAudiocdModule::~KAudiocdModule()
     delete config;
 }
 
-void KAudiocdModule::defaults() {
-  cd_autosearch_check->setChecked(true);
-  cd_device_string->setText("/dev/cdrom");
+void KAudiocdModule::updateExample()
+{
+  QString text = example->text();
+  text.replace( QRegExp(kcfg_replaceInput->text()), kcfg_replaceOutput->text() );
+  exampleOutput->setText(text);
+}
 
-  ec_enable_check->setChecked(true);
-  ec_skip_check->setChecked(false);
- 
-  KConfigDialogManager *widget;
-  for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-    widget->updateWidgetsDefault();
-  }
-  
-  fileNameLineEdit->setText("%{albumartist} - %{title}");
+void KAudiocdModule::defaults() {
+	cd_autosearch_check->setChecked(true);
+	cd_device_string->setText("/dev/cdrom");
+
+	ec_enable_check->setChecked(true);
+	ec_skip_check->setChecked(false);
+	niceLevel->setValue(0);
+	
+	kcfg_replaceInput->setText("");
+	kcfg_replaceOutput->setText("");
+	example->setText(i18n("Cool artist - example audio file.wav"));	
+	KConfigDialogManager *widget;
+	for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
+		widget->updateWidgetsDefault();
+	}
+
+	fileNameLineEdit->setText("%{albumartist} - %{title}");
+	albumNameLineEdit->setText("%{albumartist} - %{albumtitle}");
 }
 
 void KAudiocdModule::save() {
-  if (!configChanged ) return;
+	if (!configChanged ) return;
 
-   {
-    KConfigGroupSaver saver(config, "CDDA");
+	{
+		KConfigGroupSaver saver(config, "CDDA");
 
     config->writeEntry("autosearch",cd_autosearch_check->isChecked());
     config->writeEntry("device",cd_device_string->text());
     config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
     config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
-  }
+		config->writeEntry("niceLevel", niceLevel->value());
+	}
   
   {
     KConfigGroupSaver saver(config, "FileName");
     config->writeEntry("file_name_template", fileNameLineEdit->text());
-  }
+  	config->writeEntry("album_name_template", albumNameLineEdit->text());
+  	config->writeEntry("regexp_search",kcfg_replaceInput->text());
+		config->writeEntry("regexp_replace", kcfg_replaceOutput->text());
+		config->writeEntry("regexp_example", example->text());
+	}
 
   KConfigDialogManager *widget;
   for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
@@ -126,12 +149,17 @@ void KAudiocdModule::load() {
     cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
     ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
     ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
-  }
+  	niceLevel->setValue(config->readNumEntry("niceLevel", 0));
+	}
 
   {
     KConfigGroupSaver saver(config, "FileName");
     fileNameLineEdit->setText(config->readEntry("file_name_template", "%{albumartist} - %{title}"));
-  }
+  	albumNameLineEdit->setText(config->readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
+  	kcfg_replaceInput->setText(config->readEntry("regexp_search"));
+		kcfg_replaceOutput->setText(config->readEntry("regexp_replace"));
+		example->setText(config->readEntry("example", i18n("Cool artist - example audio file.wav")));
+	}
   
   KConfigDialogManager *widget;
   for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
