@@ -47,19 +47,9 @@ class AudioCDProtocol : public KIO::SlaveBase
     virtual void listDir(const KURL &);
 
   protected:
-
-    enum FileType
-    {
-      FileTypeUnknown,
-      FileTypeOggVorbis,
-      FileTypeMP3,
-      FileTypeWAV,
-      FileTypeCDA
-    };
-
-    QString extension(enum FileType fileType);
-    FileType fileTypeFromExtension(const QString& extension);
-    FileType determineFiletype(const QString & filename);
+    QString extension(int Encoder);
+    int encoderFromExtension(const QString& extension);
+    int determineEncoder(const QString & filename);
 
     struct cdrom_drive *  findDrive(bool &noPermission);
     void                  parseURLArgs(const KURL &);
@@ -78,19 +68,19 @@ class AudioCDProtocol : public KIO::SlaveBase
      * Give the size in bytes of this track, depending on
      * its file type.
      */
-    long fileSize(struct cdrom_drive* drive, int trackNumber, FileType fileType);
+    long fileSize(struct cdrom_drive* drive, int trackNumber, int encoder);
 
     /**
      * Give the size in bytes of the space between those two
      * sectors, depending on the file type.
      */
-    long fileSize(long firstSector, long lastSector, FileType fileType);
+    long fileSize(long firstSector, long lastSector, int encoder);
 
     void paranoiaRead(
         struct cdrom_drive  * drive,
         long                  firstSector,
         long                  lastSector,
-        FileType              fileType
+        int                   encoder
     );
 
     struct cdrom_drive *  initRequest(const KURL &);
@@ -109,14 +99,13 @@ class AudioCDProtocol : public KIO::SlaveBase
      * so NO NEED to wrap your calls with #ifdef for lame or vorbis.
      * this function will do the right thing.
      */
-    void addEntry(const QString& trackTitle, enum FileType fileType, struct cdrom_drive * drive, int trackNo);
-    FileType fileType(const QString & filename);
+    void addEntry(const QString& trackTitle, int encoder, struct cdrom_drive * drive, int trackNo);
 
     class Private;
     Private * d;
 
   private:
-    QMap<FileType, Encoder*> encoders;
+    QMap<int, Encoder*> encoders;
     cdrom_drive * pickDrive();
     unsigned int get_discid(cdrom_drive *);
 };

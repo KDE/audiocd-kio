@@ -214,8 +214,15 @@ kdemain(int argc, char ** argv)
   return 0;
 }
 
-enum Which_dir { Unknown = 0, Device, ByTrack, Title, Info, Root,
-                 EncoderDir, FullCD };
+enum Which_dir { Unknown = 0, // Error 
+	         Device, // Show which device it is?
+		 ByTrack, // Always static Track %X file
+		 Title, // Folder with the name of the album so users can copy
+		 Info, // CDDB info |TODO implement|
+		 Root, // The root directory, shows all these :)
+		 FullCD, // Show a single file containing all of the data
+                 EncoderDir // A directory created by an encoder
+	       };
 
 class AudioCDProtocol::Private
 {
@@ -257,7 +264,7 @@ class AudioCDProtocol::Private
     QString s_fullCD;
 
     Which_dir which_dir;
-    FileType encoder_dir_type;
+    int encoder_dir_type;
     /**
      * Do we want to rip all
      * tracks in one big file?
@@ -268,10 +275,16 @@ class AudioCDProtocol::Private
     QString fileNameTemplate;
 };
 
+// These are the only garenteed encoders to be built, the rest
+// are dynamic and thus are little more then numbers.
+#define FileTypeCDA 1
+#define FileTypeWAV 2
+
 AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
   : SlaveBase("audiocd", pool, app)
 {
   d = new Private;
+  
   // Add encoders
   Encoder *lame = new EncoderLame(this);
   if ( ! lame->init() ){
@@ -279,10 +292,10 @@ AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
     lame = NULL;
   }
   else
-    encoders.insert(FileTypeMP3, lame);
+    encoders.insert(4, lame);
 #ifdef HAVE_VORBIS
   Encoder *vorbis = new EncoderVorbis(this);
-  encoders.insert(FileTypeOggVorbis, vorbis);
+  encoders.insert(3, vorbis);
 #endif
   Encoder *wav = new EncoderWav(this);
   encoders.insert(FileTypeWAV, wav);
@@ -294,40 +307,39 @@ AudioCDProtocol::~AudioCDProtocol()
 {
   delete d;
   
-  QMap<FileType, Encoder*>::Iterator it;
+  QMap<int, Encoder*>::Iterator it;
   for ( it = encoders.begin(); it != encoders.end(); ++it ) {
     //qDebug("Deleteing %s", it.data()->type().latin1());
     delete it.data();
     encoders.remove(it);
   }
-  return;
 }
 
-QString AudioCDProtocol::extension(enum AudioCDProtocol::FileType fileType)
+QString AudioCDProtocol::extension(int encoder)
 {
-  if(encoders.contains(fileType))
-    return QString(".")+encoders[fileType]->fileType();
+  if(encoders.contains(encoder))
+    return QString(".")+encoders[encoder]->fileType();
 
   Q_ASSERT(false);
   return QString::fromLatin1("");
 }
 
-AudioCDProtocol::FileType AudioCDProtocol::fileTypeFromExtension(const QString& extension)
+int AudioCDProtocol::encoderFromExtension(const QString& extension)
 {
-  QMap<FileType, Encoder*>::Iterator it;
+  QMap<int, Encoder*>::Iterator it;
   for ( it = encoders.begin(); it != encoders.end(); ++it ) {
     if(QString(".")+it.data()->fileType() == extension)
       return it.key();
   }
   Q_ASSERT(false);
-  return FileTypeUnknown;
+  return -1;
 }
 
-AudioCDProtocol::FileType AudioCDProtocol::determineFiletype(const QString & filename)
+int AudioCDProtocol::determineEncoder(const QString & filename)
 {
   int len = filename.length();
   int pos = filename.findRev('.');
-  return fileTypeFromExtension(filename.right(len - pos));
+  return encoderFromExtension(filename.right(len - pos));
 }
 
 struct cdrom_drive *
@@ -342,7 +354,7 @@ AudioCDProtocol::initRequest(const KURL & url)
   }
 
   // Tell encoders to read their settings.
-  QMap<FileType, Encoder*>::Iterator it;
+  QMap<int, Encoder*>::Iterator it;
   for ( it = encoders.begin(); it != encoders.end(); ++it ) {
     it.data()->init();
   }
@@ -518,7 +530,7 @@ void AudioCDProtocol::get(const KURL & url)
     return;
   }
 
- FileType filetype = determineFiletype(d->fname);
+ int filetype = determineEncoder(d->fname);
 
  if(d->based_on_cddb){
     QString trackName;
@@ -598,7 +610,7 @@ AudioCDProtocol::stat(const KURL & url)
   }
   else
   {
-      FileType fileType = determineFiletype(d->fname);
+      int fileType = determineEncoder(d->fname);
       long firstSector, lastSector;
       getSectorsForRequest(drive, firstSector, lastSector);
       atom.m_long = fileSize(firstSector, lastSector, fileType);
@@ -788,7 +800,7 @@ AudioCDProtocol::listDir(const KURL & url)
       // add the directory for "fullCD" files
       int numberOfFullCDFiles = 1;
       
-      QMap<FileType, Encoder*>::Iterator it;
+      QMap<int, Encoder*>::Iterator it;
       for ( it = encoders.begin(); it != encoders.end(); ++it ) {
         QString name = it.data()->type();
 	//qDebug("Adding %s to virtual directory", name.latin1());
@@ -824,7 +836,7 @@ AudioCDProtocol::listDir(const KURL & url)
 
     // if we're listing the "full CD" subdirectory :
     if ( (d->which_dir == FullCD) ) {
-      QMap<FileType, Encoder*>::Iterator it;
+      QMap<int, Encoder*>::Iterator it;
       for ( it = encoders.begin(); it != encoders.end(); ++it ) {
         addEntry(fullCDTrack, it.key(), drive, -1);
         if (d->based_on_cddb)
@@ -879,7 +891,7 @@ AudioCDProtocol::listDir(const KURL & url)
 }
 
   void
-AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, struct cdrom_drive * drive, int trackNo)
+AudioCDProtocol::addEntry(const QString& trackTitle, int encoder, struct cdrom_drive * drive, int trackNo)
 {
   // now we check if we were compiled with or without
   // ogg/mp3 support. we will not add the file if it's
@@ -887,14 +899,14 @@ AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, str
   // support of those formats.
   // => less work/less possibility of mistake/less #ifdef
   // ugliness for the caller.
-  QMap<FileType, Encoder*>::Iterator it;
+  QMap<int, Encoder*>::Iterator it;
   bool found = false;
   for ( it = encoders.begin(); it != encoders.end(); ++it ) {
-    if( it.key() == fileType )
+    if( it.key() == encoder )
       found = true;
   }
   if(!found){
-    //qDebug("Unable to find encoder for %s", extension(fileType).latin1());
+    //qDebug("Unable to find encoder for %s", extension(encoder).latin1());
     return;
   }
   
@@ -903,38 +915,38 @@ AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, str
   { // adding entry for the full CD
     theFileSize = fileSize(cdda_track_firstsector(drive, 1),
 			   cdda_track_lastsector(drive, cdda_tracks(drive)),
-			   fileType);
+			   encoder);
   }
   else
   { // adding one regular track
     long firstSector    = cdda_track_firstsector(drive, trackNo);
     long lastSector     = cdda_track_lastsector(drive, trackNo);
-    theFileSize = fileSize(firstSector, lastSector, fileType);
+    theFileSize = fileSize(firstSector, lastSector, encoder);
   }
   UDSEntry entry;
-  app_file(entry, trackTitle + extension(fileType), theFileSize);
+  app_file(entry, trackTitle + extension(encoder), theFileSize);
   listEntry(entry, false);
 }
 
 long
 AudioCDProtocol::fileSize(struct cdrom_drive* drive, int trackNumber,
-		AudioCDProtocol::FileType fileType)
+		int encoder)
 {
   return fileSize(cdda_track_firstsector(drive, trackNumber),
                     cdda_track_lastsector(drive, trackNumber),
-                    fileType);
+                    encoder);
 }
 
 long
-AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDProtocol::FileType filetype)
+AudioCDProtocol::fileSize(long firstSector, long lastSector, int encoder)
 {
-  if(!encoders.contains(filetype))
+  if(!encoders.contains(encoder))
     return 0;
   
   long filesize = CD_FRAMESIZE_RAW * ( lastSector - firstSector );
   long length_seconds = (filesize) / 176400;
 
-  return encoders[filetype]->size(length_seconds);
+  return encoders[encoder]->size(length_seconds);
 }
 
   struct cdrom_drive *
@@ -1003,13 +1015,13 @@ AudioCDProtocol::paranoiaRead(
     struct cdrom_drive * drive,
     long firstSector,
     long lastSector,
-    AudioCDProtocol::FileType filetype
+    int encoderId
 )
 {
   // Because of the nice big while loop calculate this here.
-  if(!encoders.contains(filetype))
+  if(!encoders.contains(encoderId))
     return;
-  Encoder *encoder = encoders[filetype];
+  Encoder *encoder = encoders[encoderId];
 	
   cdrom_paranoia * paranoia = paranoia_init(drive);
   if (0 == paranoia) {
@@ -1097,7 +1109,7 @@ void AudioCDProtocol::getParameters() {
   d->fileNameTemplate = config->readEntry("file_name_template", "%n %t");
 
   // Tell the encoders to load their settings
-  QMap<FileType, Encoder*>::Iterator it;
+  QMap<int, Encoder*>::Iterator it;
   for ( it = encoders.begin(); it != encoders.end(); ++it )
     it.data()->getParameters(config);
 
