@@ -25,23 +25,6 @@
 
 #include <config.h>
 
-#include "encoderlame.h"
-#include "encoderwav.h"
-#include "encodervorbis.h"
-
-#include <sys/stat.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-#include <kmacroexpander.h>
-
-#include <qfile.h>
-
-typedef Q_INT16 size16;
-typedef Q_INT32 size32;
-
-#define QFL1(x) QString::fromLatin1(x)
-
 extern "C"
 {
 #include <cdda_interface.h>
@@ -76,10 +59,25 @@ extern "C"
 #include <sys/cdio.h>
 #endif
 
-void paranoiaCallback(long, int);
+  void paranoiaCallback(long, int);
+  int kdemain(int argc, char ** argv);
+#ifndef CDPARANOIA_STATIC
+  int FixupTOC(cdrom_drive *d, int tracks);
+#endif
+
 }
+
 #include "audiocd.h"
 
+#include "encoderlame.h"
+#include "encoderwav.h"
+#include "encodervorbis.h"
+
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <kmacroexpander.h>
+#include <qfile.h>
 #include <kdebug.h>
 #include <kprotocolmanager.h>
 #include <klocale.h>
@@ -88,17 +86,8 @@ void paranoiaCallback(long, int);
 
 using namespace KIO;
 
-#define MAX_IPC_SIZE (1024*32)
-
+#define QFL1(x) QString::fromLatin1(x)
 #define DEFAULT_CD_DEVICE "/dev/cdrom"
-
-extern "C"
-{
-  int kdemain(int argc, char ** argv);
-#ifndef CDPARANOIA_STATIC
-  int FixupTOC(cdrom_drive *d, int tracks);
-#endif
-}
 
 int start_of_first_data_as_in_toc;
 int hack_track;
