@@ -24,6 +24,11 @@
 
 #include <config.h>
 
+#include "encoderlame.h"
+#include "encoderwav.h"
+#include "encodervorbis.h"
+#include "encodercda.h"
+
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -108,11 +113,6 @@ typedef enum MPEG_mode_e {
 
 #endif
 
-#ifdef HAVE_VORBIS
-#include <time.h>
-#include <vorbis/vorbisenc.h>
-#endif
-
 void paranoiaCallback(long, int);
 }
 #include <kapplication.h>
@@ -138,56 +138,6 @@ extern "C"
   int FixupTOC(cdrom_drive *d, int tracks);
 #endif
 
-  static int _lamelibMissing = false;
-
-  static lame_global_flags* (*_lamelib_lame_init)(void) = NULL;
-  static int (*_lamelib_lame_init_params) (lame_global_flags*) = NULL;
-  static void (*_lamelib_id3tag_init)(lame_global_flags*) = NULL;
-  static void (*_lamelib_id3tag_set_album)(lame_global_flags*, const char*) = NULL;
-  static void (*_lamelib_id3tag_set_artist)(lame_global_flags*, const char*) = NULL;
-  static void (*_lamelib_id3tag_set_title)(lame_global_flags*, const char*) = NULL;
-  static void (*_lamelib_id3tag_set_track)(lame_global_flags*, const char*) = NULL;
-  static int  (*_lamelib_lame_encode_buffer_interleaved) (
-          lame_global_flags*, short int*, int, unsigned char*, int) = NULL;
-  static int  (*_lamelib_lame_encode_finish) (
-          lame_global_flags*, unsigned char*, int ) = NULL;
-  static int  (*_lamelib_lame_set_VBR) ( lame_global_flags*, vbr_mode ) = NULL;
-  static int  (*_lamelib_lame_get_VBR) ( lame_global_flags* ) = NULL;
-  static int  (*_lamelib_lame_set_brate) ( lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_get_brate) ( lame_global_flags* ) = NULL;
-  static int  (*_lamelib_lame_set_quality) ( lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_VBR_mean_bitrate_kbps) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_get_VBR_mean_bitrate_kbps) (
-          lame_global_flags* ) = NULL;
-  static int  (*_lamelib_lame_set_VBR_min_bitrate_kbps) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_VBR_hard_min) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_VBR_max_bitrate_kbps) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_VBR_q) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_bWriteVbrTag) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_mode) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_copyright) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_original) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_strict_ISO) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_error_protection) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_lowpassfreq) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_lowpasswidth) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_highpassfreq) (
-          lame_global_flags*, int ) = NULL;
-  static int  (*_lamelib_lame_set_highpasswidth) (
-          lame_global_flags*, int ) = NULL;
 }
 
 int start_of_first_data_as_in_toc;
@@ -316,7 +266,7 @@ kdemain(int argc, char ** argv)
 }
 
 enum Which_dir { Unknown = 0, Device, ByName, ByTrack, Title, Info, Root,
-                 MP3, Vorbis, FullCD };
+                 EncoderDir, FullCD };
 
 class AudioCDProtocol::Private
 {
@@ -331,8 +281,6 @@ class AudioCDProtocol::Private
       s_bytrack = i18n("By Track");
       s_track = i18n("Track %1");
       s_info = i18n("Information");
-      s_mp3  = "MP3";
-      s_vorbis = "Ogg Vorbis";
       s_fullCD = i18n("Full CD");
     }
 
@@ -359,34 +307,10 @@ class AudioCDProtocol::Private
     QString s_bytrack;
     QString s_track;
     QString s_info;
-    QString s_mp3;
-    QString s_vorbis;
     QString s_fullCD;
 
-    lame_global_flags *gf;
-    int bitrate;
-    bool write_id3;
-
-#ifdef HAVE_VORBIS
-  ogg_stream_state os; /* take physical pages, weld into a logical stream of packets */
-  ogg_page         og; /* one Ogg bitstream page.  Vorbis packets are inside */
-  ogg_packet       op; /* one raw packet of data for decode */
-
-  vorbis_info      vi; /* struct that stores all the static vorbis bitstream settings */
-  vorbis_comment   vc; /* struct that stores all the user comments */
-
-  vorbis_dsp_state vd; /* central working state for the packet->PCM decoder */
-  vorbis_block     vb; /* local working space for packet->PCM decode */
-  bool  write_vorbis_comments;
-  long vorbis_bitrate_lower;
-  long vorbis_bitrate_upper;
-  long vorbis_bitrate_nominal;
-  int  vorbis_encode_method;
-  double vorbis_quality;
-  int vorbis_bitrate;
-#endif
-
     Which_dir which_dir;
+    FileType encoder_dir_type;
     /**
      * Do we want to rip all
      * tracks in one big file?
@@ -401,52 +325,62 @@ AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
   : SlaveBase("audiocd", pool, app)
 {
   d = new Private;
+  // Add encoders
+  lame = new EncoderLame(this);
+  if ( ! lame->init() ){
+    delete lame;
+    lame = NULL;
+  }
+  else
+    encoders.insert(FileTypeMP3, lame);
+#ifdef HAVE_VORBIS
+  vorbis = new EncoderVorbis(this);
+  encoders.insert(FileTypeOggVorbis, vorbis);
+#endif
+  wav = new EncoderWav(this);
+  encoders.insert(FileTypeWAV, wav);
+  cda = new EncoderCda(this);
+  encoders.insert(FileTypeCDA, cda);
 }
 
 AudioCDProtocol::~AudioCDProtocol()
 {
   delete d;
+  if(lame) delete lame;
+#ifdef HAVE_VORBIS
+  delete vorbis;
+#endif
+  delete wav;
+  delete cda;
 }
 
-/*static*/ QString AudioCDProtocol::extension(enum AudioCDProtocol::FileType fileType)
+QString AudioCDProtocol::extension(enum AudioCDProtocol::FileType fileType)
 {
-  switch (fileType)
-  {
-    case FileTypeOggVorbis:
-      return QString::fromLatin1(".ogg");
-    case FileTypeMP3:
-      return QString::fromLatin1(".mp3");
-    case FileTypeWAV:
-      return QString::fromLatin1(".wav");
-    case FileTypeCDA:
-      return QString::fromLatin1(".cda");
-    case FileTypeUnknown:
-    default:
-      Q_ASSERT(false);
-      break;
-  };
+  if(encoders.contains(fileType))
+    return QString(".")+encoders[fileType]->fileType();
+
+  Q_ASSERT(false);
   return QString::fromLatin1("");
 }
 
-/*static*/ AudioCDProtocol::FileType AudioCDProtocol::fileTypeFromExtension(const QString& extension)
+AudioCDProtocol::FileType AudioCDProtocol::fileTypeFromExtension(const QString& extension)
 {
-  if (extension == QString::fromLatin1(".wav"))
-    return FileTypeWAV;
-  if (extension == QString::fromLatin1(".mp3"))
-    return FileTypeMP3;
-  if (extension == QString::fromLatin1(".ogg"))
-    return FileTypeOggVorbis;
-  if (extension == QString::fromLatin1(".cda"))
-    return FileTypeCDA;
+  QMap<FileType, Encoder*>::Iterator it;
+  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+    if(QString(".")+it.data()->fileType() == extension)
+      return it.key();
+  }
+  // hhmm What might it be.  Used for debugging.
+  // qDebug(extension.latin1());
   Q_ASSERT(false);
   return FileTypeUnknown;
 }
 
-/*static*/ AudioCDProtocol::FileType AudioCDProtocol::determineFiletype(const QString & filename)
+AudioCDProtocol::FileType AudioCDProtocol::determineFiletype(const QString & filename)
 {
-    int len = filename.length();
-    int pos = filename.findRev('.');
-    return fileTypeFromExtension(filename.right(len - pos));
+  int len = filename.length();
+  int pos = filename.findRev('.');
+  return fileTypeFromExtension(filename.right(len - pos));
 }
 
 #ifdef __OpenBSD__
@@ -494,186 +428,6 @@ static QString findMostRecentLib(QString dir, QString name)
 }
 #endif
 
-bool AudioCDProtocol::initLameLib(){
-   if ( _lamelib_lame_init != NULL )
-      return true;
-
-   if ( _lamelibMissing )  // we tried already, do not try again
-      return false;
-
-   // load the lame lib, if not done already
-   KLibLoader *LameLib = KLibLoader::self();
-
-#ifdef __OpenBSD__
-   {
-   QString libname = findMostRecentLib("/usr/local/lib", "mp3lame");
-   if (!libname.isNull())
-         _lamelib = LameLib->globalLibrary(libname.latin1());
-   }
-#else
-   QStringList libpaths, libnames;
-   libpaths << QFL1("/usr/lib/")
-            << QFL1("/usr/local/lib/")
-            << QString::null;
-
-   libnames << QFL1("libmp3lame.so.0")
-            << QFL1("libmp3lame.so.0.0.0")
-            << QFL1("libmp3lame.so");
-
-   for (QStringList::Iterator it = libpaths.begin();
-                              it != libpaths.end();
-                              ++it) {
-      for (QStringList::Iterator lit = libnames.begin();
-                                 lit != libnames.end();
-                                 ++lit) {
-         QString alib = *it+*lit;
-         _lamelib = LameLib->globalLibrary(alib.latin1());
-         if (_lamelib) break;
-      }
-      if (_lamelib) break;
-   }
-#endif
-
-  if ( _lamelib == NULL ){
-      _lamelibMissing = true;
-      return false;
-  }else{
-    _lamelib_lame_init =
-           (lame_t (*) (void))
-           _lamelib->symbol("lame_init");
-    _lamelib_id3tag_init =
-           (void (*) (lame_global_flags*))
-           _lamelib->symbol("id3tag_init");
-    _lamelib_id3tag_set_album =
-           (void (*) (lame_global_flags*, const char*))
-           _lamelib->symbol("id3tag_set_album");
-     _lamelib_id3tag_set_artist =
-           (void (*) (lame_global_flags*, const char*))
-           _lamelib->symbol("id3tag_set_artist");
-     _lamelib_id3tag_set_title =
-           (void (*) (lame_global_flags*, const char*))
-           _lamelib->symbol("id3tag_set_title");
-     _lamelib_id3tag_set_track =
-           (void (*) (lame_global_flags*, const char*))
-           _lamelib->symbol("id3tag_set_track");
-     _lamelib_lame_init_params =
-           (int (*) (lame_global_flags*))
-           _lamelib->symbol("lame_init_params");
-     _lamelib_lame_encode_buffer_interleaved =
-           (int (*) (
-                  lame_global_flags*, short int*, int, unsigned char*, int))
-           _lamelib->symbol("lame_encode_buffer_interleaved");
-     _lamelib_lame_encode_finish =
-           (int (*) (lame_global_flags*, unsigned char*, int))
-           _lamelib->symbol("lame_encode_finish");
-     _lamelib_lame_set_VBR =
-           (int (*) (lame_global_flags*, vbr_mode))
-           _lamelib->symbol("lame_set_VBR");
-     _lamelib_lame_get_VBR =
-           (int (*) (lame_global_flags*))
-           _lamelib->symbol("lame_get_VBR");
-     _lamelib_lame_set_brate =
-           (int (*) (lame_global_flags*, int))
-           _lamelib->symbol("lame_set_brate");
-     _lamelib_lame_get_brate =
-           (int (*) (lame_global_flags*))
-           _lamelib->symbol("lame_get_brate");
-     _lamelib_lame_set_quality =
-           (int (*) (lame_global_flags*, int))
-           _lamelib->symbol("lame_set_quality");
-     _lamelib_lame_set_VBR_mean_bitrate_kbps =
-           (int (*) (lame_global_flags*, int))
-           _lamelib->symbol("lame_set_VBR_mean_bitrate_kbps");
-     _lamelib_lame_get_VBR_mean_bitrate_kbps =
-           (int (*) ( lame_global_flags*))
-           _lamelib->symbol("lame_get_VBR_mean_bitrate_kbps");
-     _lamelib_lame_set_VBR_min_bitrate_kbps =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_VBR_min_bitrate_kbps");
-     _lamelib_lame_set_VBR_hard_min =
-           (int (*) (lame_global_flags*, int))
-           _lamelib->symbol("lame_set_VBR_hard_min");
-     _lamelib_lame_set_VBR_max_bitrate_kbps =
-           (int (*) (
-                  lame_global_flags*, int))
-           _lamelib->symbol("lame_set_VBR_max_bitrate_kbps");
-    _lamelib_lame_set_VBR_q =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_VBR_q");
-    _lamelib_lame_set_bWriteVbrTag =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_bWriteVbrTag");
-    _lamelib_lame_set_mode =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_mode");
-    _lamelib_lame_set_copyright =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_copyright");
-    _lamelib_lame_set_original =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_original");
-    _lamelib_lame_set_strict_ISO =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_strict_ISO");
-    _lamelib_lame_set_error_protection =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_error_protection");
-    _lamelib_lame_set_lowpassfreq =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_lowpassfreq");
-    _lamelib_lame_set_lowpasswidth =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_lowpasswidth");
-    _lamelib_lame_set_highpassfreq =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_highpassfreq");
-    _lamelib_lame_set_highpasswidth =
-           (int (*) ( lame_global_flags*, int))
-           _lamelib->symbol("lame_set_highpasswidth");
-
-    // protecting for a crash in case of older lame lib
-       if ( _lamelib_lame_init == NULL || _lamelib_id3tag_init == NULL ||
-            _lamelib_id3tag_set_album == NULL ||
-            _lamelib_id3tag_set_artist == NULL ||
-            _lamelib_id3tag_set_title == NULL ||
-            _lamelib_id3tag_set_track == NULL ||
-            _lamelib_lame_init_params == NULL ||
-            _lamelib_lame_encode_buffer_interleaved == NULL ||
-            _lamelib_lame_set_VBR == NULL ||
-            _lamelib_lame_get_VBR == NULL ||
-            _lamelib_lame_set_brate == NULL ||
-            _lamelib_lame_get_brate == NULL ||
-            _lamelib_lame_set_quality == NULL ||
-            _lamelib_lame_set_VBR_mean_bitrate_kbps == NULL ||
-            _lamelib_lame_get_VBR_mean_bitrate_kbps == NULL ||
-            _lamelib_lame_set_VBR_min_bitrate_kbps == NULL ||
-            _lamelib_lame_set_VBR_hard_min == NULL ||
-            _lamelib_lame_set_VBR_max_bitrate_kbps == NULL ||
-            _lamelib_lame_set_VBR_q == NULL ||
-            _lamelib_lame_set_mode == NULL ||
-            _lamelib_lame_set_copyright == NULL ||
-            _lamelib_lame_set_original == NULL ||
-            _lamelib_lame_set_strict_ISO == NULL ||
-            _lamelib_lame_set_error_protection == NULL ||
-            _lamelib_lame_set_lowpassfreq == NULL ||
-            _lamelib_lame_set_lowpasswidth == NULL ||
-            _lamelib_lame_set_highpassfreq == NULL ||
-            _lamelib_lame_set_highpasswidth == NULL
-           ){
-           _lamelibMissing = true;
-           return false;
-       }
-       if ( NULL == (d->gf = (_lamelib_lame_init)()) )
-       { // init the lame_global_flags structure with defaults
-          _lamelibMissing = true;
-          return false;
-       }
-   }
-
-   (void) ((_lamelib_id3tag_init)(d->gf));
-   return true;
-}
-
 struct cdrom_drive *
 AudioCDProtocol::initRequest(const KURL & url)
 {
@@ -686,43 +440,16 @@ AudioCDProtocol::initRequest(const KURL & url)
     return 0;
   }
 
-  initLameLib();
-
-#ifdef HAVE_VORBIS
-
-  vorbis_info_init(&d->vi);
-  vorbis_comment_init(&d->vc);
-
-  vorbis_comment_add_tag
-    (
-     &d->vc,
-     const_cast<char *>("kde-encoder"),
-     const_cast<char *>("kio_audiocd")
-    );
-
-#endif
-
-	// first get the parameters from the Kontrol Center Module
-  getParameters();
-
-	// then these parameters can be overruled by args in the URL
-  parseArgs(url);
-
-#ifdef HAVE_VORBIS
-
-  switch (d->vorbis_encode_method) {
-       case 0:
-/* Support very old libvorbis by simply falling through.  */
-#if HAVE_VORBIS >= 2
-       vorbis_encode_init_vbr(&d->vi, 2, 44100, d->vorbis_quality/10.0);
-       break;
-#endif
-       case 1:
-       vorbis_encode_init(&d->vi, 2, 44100, d->vorbis_bitrate_upper, d->vorbis_bitrate_nominal, d->vorbis_bitrate_lower);
-       break;
+  QMap<FileType, Encoder*>::Iterator it;
+  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+    it.data()->init();
   }
 
-#endif
+  // first get the parameters from the Kontrol Center Module
+  getParameters();
+
+  // then these parameters can be overruled by args in the URL
+  parseArgs(url);
 
   struct cdrom_drive * drive = pickDrive();
 
@@ -749,17 +476,40 @@ AudioCDProtocol::initRequest(const KURL & url)
      it really submits this URL, instead of audiocd:/Bla/ to us. We could
      send (in listDir) the UDS_NAME as "Bla/" for directories, but then
      konqi shows them as "Bla//" in the status line.  */
+  // See if it is an encoder directory
+  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+    if(it.data()->type() == d->fname){
+      dname = d->fname;
+      d->fname = "";
+      qDebug("Found a match for : %s, %s", dname.latin1(), it.data()->type().latin1());
+      break;
+    }
+  }
+  // Other Hard coded directories
   if (dname.isEmpty() &&
       (d->fname == d->cd_title || d->fname == d->s_byname ||
        d->fname == d->s_bytrack || d->fname == d->s_info ||
        d->fname == QFL1("By Name") || d->fname == QFL1("By Track") ||
        d->fname == QFL1("Information") ||
-       d->fname == d->s_mp3 || d->fname == d->s_vorbis || d->fname == d->s_fullCD || d->fname == QFL1("dev")))
+       d->fname == d->s_fullCD || d->fname == QFL1("dev")))
     {
       dname = d->fname;
       d->fname = "";
     }
-
+  /** end hack */
+  
+  bool encoderdir = false;
+  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+    if(it.data()->type() == dname){
+      d->which_dir = EncoderDir;
+      d->encoder_dir_type = it.key();
+      qDebug("Found a match for : %s, %s", dname.latin1(), it.data()->type().latin1());
+      encoderdir = true;
+      break;
+    }
+  }
+  
+  if (!encoderdir)
   if (dname.isEmpty())
     d->which_dir = Root;
   else if (dname == d->cd_title)
@@ -770,10 +520,6 @@ AudioCDProtocol::initRequest(const KURL & url)
     d->which_dir = ByTrack;
   else if (dname == d->s_info || dname == QFL1("Information"))
     d->which_dir = Info;
-  else if (dname == d->s_mp3)
-    d->which_dir = MP3;
-  else if (dname == d->s_vorbis)
-    d->which_dir = Vorbis;
   else if (dname == d->s_fullCD || dname == QFL1("Full CD"))
     d->which_dir = FullCD;
   else if (dname.left(4) == QFL1("dev/"))
@@ -856,8 +602,7 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
   return true;
 }
 
-  void
-AudioCDProtocol::get(const KURL & url)
+void AudioCDProtocol::get(const KURL & url)
 {
   struct cdrom_drive * drive = initRequest(url);
   if (!drive)
@@ -872,35 +617,7 @@ AudioCDProtocol::get(const KURL & url)
 
  FileType filetype = determineFiletype(d->fname);
 
-  if ( initLameLib() ){
-     if (filetype == FileTypeMP3 && d->based_on_cddb && d->write_id3) {
-       /* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
-       const char *tname;
-       // do we rip the whole CD?
-       if (d->req_allTracks)
-         // YES => the title of the file is the title of the CD
-         tname = d->cd_title.latin1();
-       else
-         // NO => title of the track.
-         tname  = d->track_titles[d->req_track].latin1();    // set trackname
-       (_lamelib_id3tag_set_album)  (d->gf, d->cd_title.latin1());
-       (_lamelib_id3tag_set_artist) (d->gf, d->cd_artist.latin1());
-       (_lamelib_id3tag_set_title)  (d->gf, tname);
-       QString tn;
-       tn.sprintf("%02d", d->req_track+1);
-       (_lamelib_id3tag_set_track) (d->gf, tn.latin1());
-     }
-
-     if ( (_lamelib_lame_init_params) (d->gf) < 0) { // tell lame the new parameters
-       kdDebug(7117) << "lame init params failed" << endl;
-       return;
-     }
-  }
-
-#ifdef HAVE_VORBIS
-
-  if (filetype == FileTypeOggVorbis && d->based_on_cddb && d->write_vorbis_comments)
-  {
+ if(d->based_on_cddb){
     QString trackName;
     // do we rip the whole CD?
     if (d->req_allTracks)
@@ -910,65 +627,17 @@ AudioCDProtocol::get(const KURL & url)
       // NO => title of the track.
       trackName = d->track_titles[d->req_track];
 
-    typedef QPair<QCString, QString> CommentField;
-    QValueList<CommentField> commentFields;
-
-    commentFields.append(CommentField("title", trackName));
-    commentFields.append(CommentField("artist", d->cd_artist));
-    commentFields.append(CommentField("album", d->cd_title));
-    commentFields.append(CommentField("genre", d->cd_category));
-    commentFields.append(CommentField("tracknumber", QString::number(d->req_track+1)));
-
-    if (d->cd_year > 0) {
-      QDateTime dt = QDate(d->cd_year, 1, 1);
-      commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));
-    }
-
-    for(QValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
-
-      // if the value is not empty
-      if(!(*it).second.isEmpty()) {
-
-        char *key = qstrdup((*it).first);
-        char *value = qstrdup((*it).second.utf8().data());
-
-        vorbis_comment_add_tag(&d->vc, key, value);
-
-        delete [] key;
-        delete [] value;
-      }
-    }
+    if(encoders.contains(filetype))
+      encoders[filetype]->fillSongInfo(trackName, d->cd_artist, d->cd_title, d->cd_category, d->req_track+1, d->cd_year);
   }
-#endif
-
   long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector);
   long time_secs      = (8 * totalByteCount) / (44100 * 2 * 16);
 
-  if ( initLameLib() ){
-    if (filetype == FileTypeMP3) {
-      totalSize((time_secs * d->bitrate * 1000)/8);
-      mimeType(QFL1("audio/x-mp3"));
-    }
+  if(encoders.contains(filetype)){
+     totalSize(encoders[filetype]->size(time_secs));
+     emit mimeType(QFL1(encoders[filetype]->mimeType()));
   }
-
-#ifdef HAVE_VORBIS
-  if (filetype == FileTypeOggVorbis) {
-    totalSize( vorbisSize(time_secs) );
-    mimeType(QFL1("audio/vorbis"));
-  }
-#endif
-
-  if (filetype == FileTypeWAV) {
-    totalSize(44 + totalByteCount); // Include RIFF header length.
-    writeHeader(totalByteCount);    // Write RIFF header.
-    mimeType(QFL1("audio/x-wav"));
-  }
-
-  if (filetype == FileTypeCDA) {
-    totalSize(totalByteCount);      // CDA is raw interleaved PCM Data with SampleRate 44100 and 16 Bit res.
-    mimeType(QFL1("application/x-cda"));
-  }
-
+  
   paranoiaRead(drive, firstSector, lastSector, filetype);
 
   data(QByteArray());   // send an empty QByteArray to signal end of data.
@@ -1174,42 +843,6 @@ app_file(UDSEntry& e, const QString & n, size_t s)
   app_entry(e, KIO::UDS_SIZE, s);
 }
 
-#ifdef HAVE_VORBIS
-  long
-AudioCDProtocol::vorbisSize(long time_secs)
-{
-  long vorbis_size;
-  switch (d->vorbis_encode_method)
-  {
-  case 0: // quality based encoding
-
-#if HAVE_VORBIS >= 2 // If really old Vorbis is being used, skip this nicely.
-
-  {
-    // Estimated numbers based on the Vorbis FAQ:
-    // http://www.xiph.org/archives/vorbis-faq/200203/0030.html
-
-    static long vorbis_q_bitrate[] = { 60,  74,  86,  106, 120, 152,
-				       183, 207, 239, 309, 440 };
-    long quality = static_cast<long>(d->vorbis_quality);
-    if (quality < 0 || quality > 10)
-      quality = 3;
-    vorbis_size = (time_secs * vorbis_q_bitrate[quality] * 1000) / 8;
-
-    break;
-  }
-
-#endif // HAVE_VORBIS >= 2
-
-  default: // bitrate based encoding
-    vorbis_size = (time_secs * d->vorbis_bitrate/8);
-    break;
-  }
-
-  return vorbis_size;
-}
-#endif
-
   void
 AudioCDProtocol::listDir(const KURL & url)
 {
@@ -1252,26 +885,20 @@ AudioCDProtocol::listDir(const KURL & url)
       app_dir(entry, QFL1("dev"), 1);
       listEntry(entry, false);
 
-      if ( initLameLib() ){
-         app_dir(entry, d->s_mp3, d->tracks);
-         listEntry(entry, false);
-      }
-
-#ifdef HAVE_VORBIS
-      app_dir(entry, d->s_vorbis, d->tracks);
-      listEntry(entry, false);
-#endif
-
       // add the directory for "fullCD" files
-      int numberOfFullCDFiles = 1 /* fullCD.wav */
-      #ifdef HAVE_VORBIS
-                              + 1 /* fullCD.ogg */
-      #endif
-                              ;
-
-      if ( ! _lamelibMissing )
-	  numberOfFullCDFiles++;
-
+      int numberOfFullCDFiles = 1;
+      
+      QMap<FileType, Encoder*>::Iterator it;
+      for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+        QString name = it.data()->type();
+	qDebug("Adding %s to virtual directory", name.latin1());
+	if(!name.isEmpty()){
+	  app_dir(entry, name, d->tracks);
+          listEntry(entry, false);
+          numberOfFullCDFiles++;
+        }
+      }
+	
       if (d->based_on_cddb)
       { // we are using CDDB. there will
         // be twice as much files (also <cd_title>.{wav,mp3,ogg})
@@ -1298,17 +925,12 @@ AudioCDProtocol::listDir(const KURL & url)
     QString fullCDTrack(QFL1("Full CD"));
 
     // if we're listing the "full CD" subdirectory :
-    if ( (d->which_dir == FullCD) )
-    { // add the entries for the
-      // full CD.
-      addEntry(fullCDTrack, FileTypeOggVorbis, drive, -1);
-      addEntry(fullCDTrack, FileTypeMP3, drive, -1);
-      addEntry(fullCDTrack, FileTypeWAV, drive, -1);
-      if (d->based_on_cddb)
-      {
-        addEntry(d->cd_title, FileTypeOggVorbis, drive, -1);
-        addEntry(d->cd_title, FileTypeMP3, drive, -1);
-        addEntry(d->cd_title, FileTypeWAV, drive, -1);
+    if ( (d->which_dir == FullCD) ) {
+      QMap<FileType, Encoder*>::Iterator it;
+      for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+        addEntry(fullCDTrack, it.key(), drive, -1);
+        if (d->based_on_cddb)
+          addEntry(d->cd_title, it.key(), drive, -1);
       }
     }
     else
@@ -1336,18 +958,15 @@ AudioCDProtocol::listDir(const KURL & url)
               case ByTrack:
                 addEntry(d->s_track.arg(num2), FileTypeWAV, drive, i);
                 break;
-              case MP3:
-		if ( initLameLib() )
-                  addEntry(d->titles[i - 1], FileTypeMP3, drive, i);
-                break;
-              case Vorbis:
-                addEntry(d->titles[i - 1], FileTypeOggVorbis, drive, i);
-                break;
               case ByName:
               case Title:
                 addEntry(d->titles[i - 1], FileTypeWAV, drive, i);
                 break;
-              case Info:
+              
+	      case EncoderDir:
+		addEntry(d->titles[i - 1], d->encoder_dir_type, drive, i);
+	        break;
+	      case Info:
               case Unknown:
               default:
                 error(KIO::ERR_INTERNAL, url.path());
@@ -1374,14 +993,17 @@ AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, str
   // support of those formats.
   // => less work/less possibility of mistake/less #ifdef
   // ugliness for the caller.
-
-  if ( _lamelibMissing && fileType == FileTypeMP3)
+  QMap<FileType, Encoder*>::Iterator it;
+  bool found = false;
+  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+    if( it.key() == fileType )
+      found = true;
+  }
+  if(!found){
+    //qDebug("Unable to find encoder for %s", extension(fileType).latin1());
     return;
-
-#ifndef HAVE_VORBIS
-  if (fileType == FileTypeOggVorbis)
-    return;
-#endif
+  }
+  
   long theFileSize = 0;
   if (trackNo == -1)
   { // adding entry for the full CD
@@ -1400,44 +1022,6 @@ AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, str
   listEntry(entry, false);
 }
 
-  void
-AudioCDProtocol::writeHeader(long byteCount)
-{
-  static char riffHeader[] =
-  {
-    0x52, 0x49, 0x46, 0x46, // 0  "AIFF"
-    0x00, 0x00, 0x00, 0x00, // 4  wavSize
-    0x57, 0x41, 0x56, 0x45, // 8  "WAVE"
-    0x66, 0x6d, 0x74, 0x20, // 12 "fmt "
-    0x10, 0x00, 0x00, 0x00, // 16
-    0x01, 0x00, 0x02, 0x00, // 20
-    0x44, 0xac, 0x00, 0x00, // 24
-    0x10, 0xb1, 0x02, 0x00, // 28
-    0x04, 0x00, 0x10, 0x00, // 32
-    0x64, 0x61, 0x74, 0x61, // 36 "data"
-    0x00, 0x00, 0x00, 0x00  // 40 byteCount
-  };
-
-  Q_INT32 wavSize(byteCount + 44 - 8);
-
-
-  riffHeader[4]   = (wavSize   >> 0 ) & 0xff;
-  riffHeader[5]   = (wavSize   >> 8 ) & 0xff;
-  riffHeader[6]   = (wavSize   >> 16) & 0xff;
-  riffHeader[7]   = (wavSize   >> 24) & 0xff;
-
-  riffHeader[40]  = (byteCount >> 0 ) & 0xff;
-  riffHeader[41]  = (byteCount >> 8 ) & 0xff;
-  riffHeader[42]  = (byteCount >> 16) & 0xff;
-  riffHeader[43]  = (byteCount >> 24) & 0xff;
-
-  QByteArray output;
-  output.setRawData(riffHeader, 44);
-  data(output);
-  output.resetRawData(riffHeader, 44);
-  processedSize(44);
-}
-
 long
 AudioCDProtocol::fileSize(struct cdrom_drive* drive, int trackNumber, AudioCDProtocol::FileType fileType)
 {
@@ -1449,28 +1033,13 @@ AudioCDProtocol::fileSize(struct cdrom_drive* drive, int trackNumber, AudioCDPro
 long
 AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDProtocol::FileType filetype)
 {
-  long result = 0; // the value we're searching for.
-
-  long filesize = CD_FRAMESIZE_RAW * (
-        lastSector -
-        firstSector
-  );
-
+  long filesize = CD_FRAMESIZE_RAW * ( lastSector - firstSector );
   long length_seconds = (filesize) / 176400;
 
-  if ( initLameLib() && filetype == FileTypeMP3)
-      result = (length_seconds * d->bitrate*1000) / 8;
-
-#ifdef HAVE_VORBIS
-  if (filetype == FileTypeOggVorbis)
-    result = vorbisSize(length_seconds);
-#endif
-
-  if (filetype == FileTypeCDA) result = filesize;
-
-  if (filetype == FileTypeWAV) result = filesize + 44;
-
-  return result;
+  if(!encoders.contains(filetype))
+    return 0;
+  
+  return encoders[filetype]->size(length_seconds);
 }
 
   struct cdrom_drive *
@@ -1549,11 +1118,6 @@ AudioCDProtocol::parseArgs(const KURL & url)
 
 }
 
-inline int16_t swap16 (int16_t i)
-{
-  return (((i >> 8) & 0xFF) | ((i << 8) & 0xFF00));
-}
-
   void
 AudioCDProtocol::paranoiaRead(
     struct cdrom_drive * drive,
@@ -1595,51 +1159,12 @@ AudioCDProtocol::paranoiaRead(
 
   paranoia_seek(paranoia, firstSector, SEEK_SET);
 
-#define mp3buffer_size  8000
-static char mp3buffer[mp3buffer_size];
-
   long processed(0);
   long currentSector(firstSector);
 
-#ifdef HAVE_VORBIS
-  if (filetype == FileTypeOggVorbis) {
-    ogg_packet header;
-    ogg_packet header_comm;
-    ogg_packet header_code;
-
-    vorbis_analysis_init(&d->vd,&d->vi);
-    vorbis_block_init(&d->vd,&d->vb);
-
-    srand(time(NULL));
-    ogg_stream_init(&d->os,rand());
-
-    vorbis_analysis_headerout(&d->vd,&d->vc,&header,&header_comm,&header_code);
-
-    ogg_stream_packetin(&d->os,&header);
-    ogg_stream_packetin(&d->os,&header_comm);
-    ogg_stream_packetin(&d->os,&header_code);
-
-    while (int result = ogg_stream_flush(&d->os,&d->og)) {
-
-      if (!result) break;
-
-      QByteArray output;
-
-      char * oggheader = reinterpret_cast<char *>(d->og.header);
-      char * oggbody = reinterpret_cast<char *>(d->og.body);
-
-      output.setRawData(oggheader, d->og.header_len);
-      data(output);
-      output.resetRawData(oggheader, d->og.header_len);
-
-      output.setRawData(oggbody, d->og.body_len);
-      data(output);
-      output.resetRawData(oggbody, d->og.body_len);
-
-    }
-  }
-#endif
-
+  if(encoders.contains(filetype))
+    processed += encoders[filetype]->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector));
+    
   QTime timer;
   timer.start();
 
@@ -1656,90 +1181,22 @@ static char mp3buffer[mp3buffer_size];
     {
       ++currentSector;
 
-      if ( initLameLib() && filetype == FileTypeMP3 ){
-         int mp3bytes =
-           (_lamelib_lame_encode_buffer_interleaved)
-            (d->gf,buf,CD_FRAMESAMPLES,(unsigned char *)mp3buffer,(int)mp3buffer_size) ;
-
-         if (mp3bytes < 0 ) {
-            kdDebug(7117) << "lame encoding failed" << endl;
-            break;
-         }
-
-         if (mp3bytes > 0) {
-           QByteArray output;
-
-           output.setRawData(mp3buffer, mp3bytes);
-           data(output);
-           output.resetRawData(mp3buffer, mp3bytes);
-           processed += mp3bytes;
-         }
-      }
-
-#ifdef HAVE_VORBIS
-      if (filetype == FileTypeOggVorbis) {
-        int i;
-        float **buffer=vorbis_analysis_buffer(&d->vd,CD_FRAMESAMPLES);
-
-        /* uninterleave samples */
-        for(i=0;i<CD_FRAMESAMPLES;i++){
-          buffer[0][i]=buf[2*i]/32768.0;
-          buffer[1][i]=buf[2*i+1]/32768.0;
-        }
-
-        /* process chunk of data */
-        vorbis_analysis_wrote(&d->vd,i);
-        processed += flush_vorbis();
-      }
-#endif
-
-      if (filetype == FileTypeWAV || filetype == FileTypeCDA) {
-        QByteArray output;
-        int16_t i16 = 1;
-        /* WAV is defined to be little endian, so we need to swap it
-           on big endian platforms.  */
-        if (((char*)&i16)[0] == 0)
-          for (int i=0; i < 2 * CD_FRAMESAMPLES; i++)
-            buf[i] = swap16 (buf[i]);
-        char * cbuf = reinterpret_cast<char *>(buf);
-        output.setRawData(cbuf, CD_FRAMESIZE_RAW);
-        data(output);
-        output.resetRawData(cbuf, CD_FRAMESIZE_RAW);
-        processed += CD_FRAMESIZE_RAW;
-      }
-
+      if(encoders.contains(filetype)){
+        int ret=encoders[filetype]->read(buf, CD_FRAMESAMPLES);
+        if(ret == -1)
+          break;
+	else
+	  processed += ret;
+      }	
+      
       processedSize(processed);
     }
   }
-  if ( initLameLib() && filetype == FileTypeMP3) {
-     int mp3bytes = _lamelib_lame_encode_finish(d->gf,(unsigned char *)mp3buffer,(int)mp3buffer_size);
 
-     if (mp3bytes < 0 ) {
-       kdDebug(7117) << "lame encoding failed" << endl;
-     }
-
-     if (mp3bytes > 0) {
-       QByteArray output;
-       output.setRawData(mp3buffer, mp3bytes);
-       data(output);
-       output.resetRawData(mp3buffer, mp3bytes);
-     }
-     // reinit lame after finish title
-     d->gf = (_lamelib_lame_init)();
-     (void) ((_lamelib_id3tag_init)(d->gf));
-  }
-
-#ifdef HAVE_VORBIS
-  if (filetype == FileTypeOggVorbis) {
-    // send end-of-stream and flush the encoder
-    vorbis_analysis_wrote(&d->vd,0);
-    processed += flush_vorbis();
-    ogg_stream_clear(&d->os);
-    vorbis_block_clear(&d->vb);
-    vorbis_dsp_clear(&d->vd);
-    vorbis_info_clear(&d->vi);
-  }
-#endif
+  if(encoders.contains(filetype))
+    encoders[filetype]->readCleanup();
+  
+  processedSize(processed);
 
   paranoia_free(paranoia);
   paranoia = 0;
@@ -1747,7 +1204,6 @@ static char mp3buffer[mp3buffer_size];
 
 
 void AudioCDProtocol::getParameters() {
-
   KConfig *config;
   config = new KConfig(QFL1("kcmaudiocdrc"));
 
@@ -1767,140 +1223,14 @@ void AudioCDProtocol::getParameters() {
     d->paranoiaLevel = 2;  // never skip on errors of the medium, should be default for high quality
   }
 
-  if ( initLameLib() ){
-
-     config->setGroup("MP3");
-
-     int quality = config->readNumEntry("quality",2);
-
-     if (quality < 0 ) quality = 0;
-     if (quality > 9) quality = 9;
-
-     int method = config->readNumEntry("encmethod",0);
-
-     if (method == 0) {
-
-       // Constant Bitrate Encoding
-       (_lamelib_lame_set_VBR)(d->gf, vbr_off);
-       (_lamelib_lame_set_brate)(d->gf,config->readNumEntry("cbrbitrate",160));
-       d->bitrate = (_lamelib_lame_get_brate)(d->gf);
-       (_lamelib_lame_set_quality)(d->gf, quality);
-
-     } else {
-
-       // Variable Bitrate Encoding
-
-       if (config->readBoolEntry("set_vbr_avr",true)) {
-
-         (_lamelib_lame_set_VBR)(d->gf,vbr_abr);
-         (_lamelib_lame_set_VBR_mean_bitrate_kbps)(d->gf, config->readNumEntry("vbr_average_bitrate",0));
-
-         d->bitrate = (_lamelib_lame_get_VBR_mean_bitrate_kbps)(d->gf);
-
-       } else {
-
-         if ((_lamelib_lame_get_VBR)(d->gf) == vbr_off) _lamelib_lame_set_VBR(d->gf, vbr_default);
-
-         if (config->readBoolEntry("set_vbr_min",true))
-     (_lamelib_lame_set_VBR_min_bitrate_kbps)(d->gf, config->readNumEntry("vbr_min_bitrate",0));
-         if (config->readBoolEntry("vbr_min_hard",true))
-     (_lamelib_lame_set_VBR_hard_min)(d->gf, 1);
-         if (config->readBoolEntry("set_vbr_max",true))
-     (_lamelib_lame_set_VBR_max_bitrate_kbps)(d->gf, config->readNumEntry("vbr_max_bitrate",0));
-
-         d->bitrate = 128;
-         (_lamelib_lame_set_VBR_q)(d->gf, quality);
-
-       }
-
-       if ( config->readBoolEntry("write_xing_tag",true) )
-            (_lamelib_lame_set_bWriteVbrTag)(d->gf, 1);
-
-     }
-
-     switch (   config->readNumEntry("mode",0) ) {
-
-       case 0: (_lamelib_lame_set_mode)(d->gf, STEREO);
-                   break;
-       case 1: (_lamelib_lame_set_mode)(d->gf, JOINT_STEREO);
-                   break;
-       case 2: (_lamelib_lame_set_mode)(d->gf,DUAL_CHANNEL);
-                   break;
-       case 3: (_lamelib_lame_set_mode)(d->gf,MONO);
-                   break;
-       default: (_lamelib_lame_set_mode)(d->gf,STEREO);
-                   break;
-     }
-
-     (_lamelib_lame_set_copyright)(d->gf, config->readBoolEntry("copyright",false));
-     (_lamelib_lame_set_original)(d->gf, config->readBoolEntry("original",true));
-     (_lamelib_lame_set_strict_ISO)(d->gf, config->readBoolEntry("iso",false));
-     (_lamelib_lame_set_error_protection)(d->gf, config->readBoolEntry("crc",false));
-
-     d->write_id3 = config->readBoolEntry("id3",true);
-
-     if ( config->readBoolEntry("enable_lowpassfilter",false) ) {
-
-       (_lamelib_lame_set_lowpassfreq)(d->gf, config->readNumEntry("lowpassfilter_freq",0));
-
-       if (config->readBoolEntry("set_lowpassfilter_width",false)) {
-         (_lamelib_lame_set_lowpasswidth)(d->gf, config->readNumEntry("lowpassfilter_width",0));
-       }
-
-     }
-
-     if ( config->readBoolEntry("enable_highpassfilter",false) ) {
-
-       (_lamelib_lame_set_highpassfreq)(d->gf, config->readNumEntry("highpassfilter_freq",0));
-
-       if (config->readBoolEntry("set_highpassfilter_width",false)) {
-         (_lamelib_lame_set_highpasswidth)(d->gf, config->readNumEntry("highpassfilter_width",0));
-       }
-
-     }
-  };
-
-#ifdef HAVE_VORBIS
-
-  config->setGroup("Vorbis");
-
-  d->vorbis_encode_method = config->readNumEntry("encmethod", 0); // 0 for quality, 1 for managed bitrate
-  d->vorbis_quality = config->readDoubleNumEntry("quality",3.0); // default quality level of 3, to match oggenc
-
-  if ( config->readBoolEntry("set_vorbis_min_bitrate",false) ) {
-    d->vorbis_bitrate_lower = config->readNumEntry("vorbis_min_bitrate",40) * 1000;
-  } else {
-    d->vorbis_bitrate_lower = -1;
-  }
-
-  if ( config->readBoolEntry("set_vorbis_max_bitrate",false) ) {
-    d->vorbis_bitrate_upper = config->readNumEntry("vorbis_max_bitrate",350) * 1000;
-  } else {
-    d->vorbis_bitrate_upper = -1;
-  }
-
-  // this is such a hack!
-  if ( d->vorbis_bitrate_upper != -1 && d->vorbis_bitrate_lower != -1 ) {
-    d->vorbis_bitrate = 104000; // empirically determined ...?!
-
-  } else {
-    d->vorbis_bitrate = 160 * 1000;
-  }
-
-  if ( config->readBoolEntry("set_vorbis_nominal_bitrate",true) ) {
-    d->vorbis_bitrate_nominal = config->readNumEntry("vorbis_nominal_bitrate",160) * 1000;
-    d->vorbis_bitrate = d->vorbis_bitrate_nominal;
-  } else {
-    d->vorbis_bitrate_nominal = -1;
-  }
-
-  d->write_vorbis_comments = config->readBoolEntry("vorbis_comments",true);
-
-
-#endif // HAVE_VORBIS
-
   config->setGroup("FileName");
   d->fileNameTemplate = config->readEntry("file_name_template", "%n %t");
+
+  // Tell the encoders to load their settings
+  QMap<FileType, Encoder*>::Iterator it;
+  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+    it.data()->getParameters(config);
+  }
 
   delete config;
 }
@@ -1909,50 +1239,7 @@ void paranoiaCallback(long, int)
 {
   // Do we want to show info somewhere ?
   // Not yet.
+  // Why not?
 }
-
-#ifdef HAVE_VORBIS
-long AudioCDProtocol::flush_vorbis(void)
-{
-  long processed(0);
-
-  while(vorbis_analysis_blockout(&d->vd,&d->vb)==1) {
-    /* Support ancient libvorbis (< RC3).  */
-#if HAVE_VORBIS >= 2
-    vorbis_analysis(&d->vb,NULL);
-    /* Non-ancient case.  */
-    vorbis_bitrate_addblock(&d->vb);
-
-    while(vorbis_bitrate_flushpacket(&d->vd, &d->op)) {
-#else
-      vorbis_analysis(&d->vb,&d->op);
-      /* Make a lexical block to place the #ifdef's nearby.  */
-      if (1) {
-#endif
-        ogg_stream_packetin(&d->os,&d->op);
-
-	while(int result=ogg_stream_pageout(&d->os,&d->og)) {
-
-          if (!result) break;
-
-	  QByteArray output;
-
-	  char * oggheader = reinterpret_cast<char *>(d->og.header);
-	  char * oggbody = reinterpret_cast<char *>(d->og.body);
-
-	  output.setRawData(oggheader, d->og.header_len);
-	  data(output);
-	  output.resetRawData(oggheader, d->og.header_len);
-
-	  output.setRawData(oggbody, d->og.body_len);
-	  data(output);
-	  output.resetRawData(oggbody, d->og.body_len);
-	  processed +=  d->og.header_len + d->og.body_len;
-	}
-      }
-    }
-    return processed;
-  }
-#endif
 
 // vim:ts=2:sw=2:tw=78:et:

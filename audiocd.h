@@ -21,6 +21,13 @@
 #ifndef AUDIO_CD_H
 #define AUDIO_CD_H
 
+#include <qmap.h>
+#include "encoder.h"
+class EncoderLame;
+class EncoderVorbis;
+class EncoderWav;
+class EncoderCda;
+
 #include <qstring.h>
 
 #include <kio/global.h>
@@ -31,6 +38,11 @@ struct cdrom_drive;
 
 namespace AudioCD {
 
+/**
+ * The core class of the audiocd:// ioslave.
+ * It has the iosalve login and the ripping logic. The actual encoding
+ * is done by encoders that are seperate objects.
+ */
 class AudioCDProtocol : public KIO::SlaveBase
 {
   public:
@@ -66,11 +78,10 @@ class AudioCDProtocol : public KIO::SlaveBase
       DirTypeVorbis
     };
 
-    static QString extension(enum FileType fileType);
-    static FileType fileTypeFromExtension(const QString& extension);
-    static FileType determineFiletype(const QString & filename);
+    QString extension(enum FileType fileType);
+    FileType fileTypeFromExtension(const QString& extension);
+    FileType determineFiletype(const QString & filename);
 
-    void                  writeHeader(long);
     struct cdrom_drive *  findDrive(bool &noPermission);
     void                  parseArgs(const KURL &);
 
@@ -126,14 +137,16 @@ class AudioCDProtocol : public KIO::SlaveBase
     Private * d;
 
   private:
+    QMap<FileType, Encoder*> encoders;
+    Encoder *lame;
+#ifdef HAVE_VORBIS
+    Encoder *vorbis;
+#endif
+    Encoder *wav;
+    Encoder *cda;
+
     cdrom_drive * pickDrive();
     unsigned int get_discid(cdrom_drive *);
-    KLibrary *_lamelib;
-    bool      initLameLib();
-#ifdef HAVE_VORBIS
-    long vorbisSize(long time_secs);
-    long flush_vorbis(void);
-#endif
 };
 
 } // end namespace AudioCD
