@@ -1705,7 +1705,7 @@ void AudioCDProtocol::getParameters() {
 
   config->setGroup("Vorbis");
 
-  d->vorbis_encode_method = config->readNumEntry("encmethod", 0); // 0 for quality, 1 for managed bitrate
+  d->vorbis_encode_method = config->readNumEntry("encmethod", 1); // 0 for quality, 1 for managed bitrate
   d->vorbis_quality = config->readDoubleNumEntry("quality",3.0); // default quality level of 3, to match oggenc
 
   if ( config->readBoolEntry("set_vorbis_min_bitrate",false) ) {
