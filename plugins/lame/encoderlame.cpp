@@ -512,11 +512,13 @@ long EncoderLame::readInit(long /*size*/){
 	}
 
 #if HAVE_TAGLIB
-	const TagLib::ByteVector data = d->tag.render();
-	QByteArray output;
-	output.setRawData(data.data(), data.size());
-	ioslave->data(output);
-	output.resetRawData(data.data(), data.size());
+	if ( d->write_id3 ) {
+		const TagLib::ByteVector data = d->tag.render();
+		QByteArray output;
+		output.setRawData(data.data(), data.size());
+		ioslave->data(output);
+		output.resetRawData(data.data(), data.size());
+	}
 #endif
 	return 0;
 }
