@@ -128,10 +128,8 @@ class AudioCDProtocol : public KIO::SlaveBase
   private:
     cdrom_drive * pickDrive();
     unsigned int get_discid(cdrom_drive *);
-#ifdef HAVE_LAME
     KLibrary *_lamelib;
     bool      initLameLib();
-#endif
 #ifdef HAVE_VORBIS
     long vorbisSize(long time_secs);
     long flush_vorbis(void);
