@@ -1,4 +1,4 @@
-AM_CPPFLAGS = $(CDPARANOIA_INCS) -I$(srcdir)/.. $(all_includes)
+AM_CPPFLAGS = -I$(srcdir)/.. $(CDPARANOIA_INCS) $(all_includes)
 
 kde_module_LTLIBRARIES = libaudiocd_encoder_wav.la
 
