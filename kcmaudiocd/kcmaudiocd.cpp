@@ -133,6 +133,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
     connect(ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
+    connect(cd_device_string,SIGNAL(textChanged(const QString &)),SLOT(slotConfigChanged()));
 
     //CDDB Options
     connect(cddb_enable, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
