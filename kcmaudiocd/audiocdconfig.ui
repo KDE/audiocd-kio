@@ -223,7 +223,7 @@
                                     <cstring>fileNameLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Please enter the filename without an extension that should be used.
+                                    <string>Please enter the file name without an extension that should be used.
 
 The following macros will be expanded:
 
