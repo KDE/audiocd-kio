@@ -26,8 +26,6 @@
 #ifndef KAUDIOCDCONFIG_H
 #define KAUDIOCDCONFIG_H
 
-#include <kapplication.h>
-#include <kcmodule.h>
 
 #include "audiocdconfig.h"
 class KAudiocdModule : public AudiocdConfig

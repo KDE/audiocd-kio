@@ -17,19 +17,12 @@
 */
 
 #include <kconfig.h>
-#include <klocale.h>
-#include <kglobal.h>
 #include <klineedit.h>
 
-#include <qlayout.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qgroupbox.h>
 #include <qslider.h>
-#include <qspinbox.h>
-#include <qlineedit.h>
-#include <qlistbox.h>
-#include <qpushbutton.h>
 #include <kaboutdata.h>
 #include <knuminput.h>
 
