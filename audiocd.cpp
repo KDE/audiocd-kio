@@ -29,8 +29,10 @@ extern "C"
 #include <cdda_interface.h>
 #include <cdda_paranoia.h>
 
-/* This is in support for the Mega Hack, if cdparanoia ever is fixed, or we
-   use another ripping library we can remove this. */
+/**
+ * This is in support for the Mega Hack, if cdparanoia ever is fixed, or we
+ * use another ripping library we can remove this.
+ **/
 #ifdef __linux__
 #ifdef __KCC
 /* KAI C++'s sys/types.h defines _I386_TYPES_H to get rid of non-ANSI things
@@ -482,7 +484,7 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
 		if (trackNumber <= 0 || trackNumber > cdda_tracks(drive))
 			return false;
 		firstSector = cdda_track_firstsector(drive, trackNumber);
-		lastSector  = cdda_track_lastsector(drive, trackNumber);
+		lastSector = cdda_track_lastsector(drive, trackNumber);
 	}
 	return true;
 }
@@ -535,13 +537,13 @@ void AudioCDProtocol::get(const KURL & url)
 		return;
 	}
 
- AudioCDEncoder *encoder = determineEncoder(d->fname);
- if(!encoder){
+	AudioCDEncoder *encoder = determineEncoder(d->fname);
+	if(!encoder){
 	 cdda_close(drive);
 	 return;
- }
+	}
 
- if(d->based_on_cddb){
+	if(d->based_on_cddb){
 		QString trackName;
 		// do we rip the whole CD?
 		if (d->req_allTracks)
@@ -907,7 +909,7 @@ AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encoder, st
 	else
 	{ // adding one regular track
 		long firstSector = cdda_track_firstsector(drive, trackNo);
-		long lastSector  = cdda_track_lastsector(drive, trackNo);
+		long lastSector = cdda_track_lastsector(drive, trackNo);
 		theFileSize = fileSize(firstSector, lastSector, encoder);
 	}
 	UDSEntry entry;
@@ -920,8 +922,7 @@ AudioCDProtocol::fileSize(struct cdrom_drive* drive, int trackNumber,
 	AudioCDEncoder *encoder)
 {
 	return fileSize(cdda_track_firstsector(drive, trackNumber),
-	   cdda_track_lastsector(drive, trackNumber),
-	   encoder);
+		  cdda_track_lastsector(drive, trackNumber), encoder);
 }
 
 long
@@ -1009,7 +1010,7 @@ AudioCDProtocol::paranoiaRead(
 		AudioCDEncoder* encoder,
 		const QString& fileName,
 		unsigned long size
- )
+	)
 {
 	if(!encoder || !drive)
 		return;
@@ -1054,14 +1055,16 @@ AudioCDProtocol::paranoiaRead(
 	unsigned long lastSize = size;
 	unsigned long diff = 0;
 
+	paranoia_read_limited_error = 0;
+	int warned = 0;
 	while (currentSector <= lastSector)
 	{
-		// TODO make the 5 configurable?  The default is 20
-		paranoia_read_limited_error = 0;
-		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback,5);
-		if(paranoia_read_limited_error >= 5){
-			// TODO add post 3.3
-			//warning(i18n("AudioCD: Disk damage detected - risk of data corruption"));
+		// TODO make the 5 configurable? The default in the lib is 20 fyi
+		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback, 5);
+		if( warned == 0 && paranoia_read_limited_error >= 5 ){
+			// TODO enable post 3.3 when we can add strings again.
+			//warning(i18n("AudioCD: Disk damage detected on this track, risk of data corruption."));
+			warned = 1;
 		}
 		if (0 == buf) {
 			kdDebug(7117) << "Unrecoverable error in paranoia_read" << endl;
