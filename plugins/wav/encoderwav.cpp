@@ -31,7 +31,7 @@ extern "C"
     encoders.append( new EncoderWav(slave));
     encoders.append( new EncoderCda(slave));
   }
-};
+}
 
 class EncoderWav::Private
 {
