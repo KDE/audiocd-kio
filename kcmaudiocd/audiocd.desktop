@@ -103,4 +103,4 @@ Keywords[sv]=ljud-cd,cd,Ogg,Vorbis,kodning,CDDA,bittakt
 Keywords[tr]=Ses CD,CD,Ogg,Vorbis,Kodlama,CDDA,Bitrate
 Keywords[xx]=xxAudio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitratexx
 
-Categories=Qt;KDE;Settings;X-KDE-settings-sound
+Categories=Qt;KDE;X-KDE-settings-sound
