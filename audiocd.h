@@ -21,18 +21,13 @@
 #ifndef AUDIO_CD_H
 #define AUDIO_CD_H
 
-#include <qmap.h>
-#include "encoder.h"
+#include <kio/slavebase.h>
+
+class Encoder;
 class EncoderLame;
 class EncoderVorbis;
 class EncoderWav;
 class EncoderCda;
-
-#include <qstring.h>
-
-#include <kio/global.h>
-#include <kio/slavebase.h>
-#include <klibloader.h>
 
 struct cdrom_drive;
 

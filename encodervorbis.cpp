@@ -28,6 +28,7 @@
 
 #include <vorbis/vorbisenc.h>
 #include <time.h>
+#include <stdlib.h>
 #include <kconfig.h>
 
 #include "audiocd.h"

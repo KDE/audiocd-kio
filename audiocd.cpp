@@ -27,7 +27,6 @@
 #include "encoderlame.h"
 #include "encoderwav.h"
 #include "encodervorbis.h"
-#include "encodercda.h"
 
 #include <sys/stat.h>
 #include <unistd.h>
@@ -36,9 +35,6 @@
 #include <kmacroexpander.h>
 
 #include <qfile.h>
-#include <qstrlist.h>
-#include <qdatetime.h>
-#include <qregexp.h>
 
 typedef Q_INT16 size16;
 typedef Q_INT32 size32;
@@ -115,10 +111,7 @@ typedef enum MPEG_mode_e {
 
 void paranoiaCallback(long, int);
 }
-#include <kapplication.h>
-#include <kconfig.h>
 #include <kdebug.h>
-#include <kurl.h>
 #include <kprotocolmanager.h>
 #include <klocale.h>
 
