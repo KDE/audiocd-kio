@@ -1051,8 +1051,10 @@ AudioCDProtocol::paranoiaRead(
     ++currentSector;
 
     int encoderProcessed=encoder->read(buf, CD_FRAMESAMPLES);
-    if(encoderProcessed == -1)
+    if(encoderProcessed == -1){
+      kdDebug(7117) << "Encoder processing error, stopping." << endl;
       break;
+    }
     processed += encoderProcessed;
 
     processedSize(processed);
