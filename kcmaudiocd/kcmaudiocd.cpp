@@ -80,7 +80,8 @@ void KAudiocdModule::defaults() {
 
   ec_enable_check->setChecked(true);
   ec_skip_check->setChecked(false);
- 
+	niceLevel->setValue(0);
+	
   KConfigDialogManager *widget;
   for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
     widget->updateWidgetsDefault();
@@ -99,7 +100,8 @@ void KAudiocdModule::save() {
     config->writeEntry("device",cd_device_string->text());
     config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
     config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
-  }
+		config->writeEntry("niceLevel", niceLevel->value());
+	}
   
   {
     KConfigGroupSaver saver(config, "FileName");
@@ -126,7 +128,8 @@ void KAudiocdModule::load() {
     cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
     ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
     ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
-  }
+  	niceLevel->setValue(config->readNumEntry("niceLevel", 0));
+	}
 
   {
     KConfigGroupSaver saver(config, "FileName");

@@ -75,13 +75,16 @@ void paranoiaCallback(long, int);
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+
 #include <kmacroexpander.h>
 #include <qfile.h>
 #include <qfileinfo.h>
 #include <kdebug.h>
 #include <kprotocolmanager.h>
 #include <klocale.h>
-// CDDB stuff
+// CDDB
 #include <client.h>
 
 using namespace KIO;
@@ -1145,17 +1148,20 @@ void AudioCDProtocol::parseURLArgs(const KURL & url)
 			d->paranoiaLevel = value.toInt();
 		else if (attribute == QFL1("fileNameTemplate"))
 			d->fileNameTemplate = value;
-		else if (attribute == QFL1("cddbChoice")){
+		else if (attribute == QFL1("cddbChoice"))
 			d->cddbChoice = value.toInt();
+		else if (attribute == QFL1("niceLevel")){
+			int niceLevel = value.toInt();
+			if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
+				kdDebug(7117) << "Setting nice level to (" << niceLevel << ") failed." << endl;
 		}
-
 	}
 }
 
 /**
  * Read the settings set by the kcm modules
  * @see parseURLArgs()
- */ 
+ */
 void AudioCDProtocol::loadSettings()
 {
 	KConfig *config = new KConfig(QFL1("kcmaudiocdrc"));
@@ -1177,6 +1183,12 @@ void AudioCDProtocol::loadSettings()
 		// never skip on errors of the medium, should be default for high quality
 	}
 
+	if(config->hasKey("niceLevel")) {
+		int niceLevel = config->readNumEntry("niceLevel", 0);
+		if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
+			kdDebug(7117) << "Setting nice level to (" << niceLevel << ") failed." << endl;
+	}
+	
 	// The default track filename template
 	config->setGroup("FileName");
 	d->fileNameTemplate = config->readEntry("file_name_template", "%{albumartist} - %{title}");

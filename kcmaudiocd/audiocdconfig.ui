@@ -53,12 +53,6 @@
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <property name="margin">
-                        <number>11</number>
-                    </property>
-                    <property name="spacing">
-                        <number>6</number>
-                    </property>
                     <widget class="QGroupBox">
                         <property name="name">
                             <cstring>GroupBox9</cstring>
@@ -171,11 +165,77 @@
                                 <property name="text">
                                     <string>&amp;Skip on errors</string>
                                 </property>
+                                <property name="accel">
+                                    <string>Alt+S</string>
+                                </property>
                                 <property name="checked">
                                     <bool>false</bool>
                                 </property>
                             </widget>
                         </vbox>
+                    </widget>
+                    <widget class="QGroupBox">
+                        <property name="name">
+                            <cstring>encoderPriority</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Encoder Priority</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QSlider" row="0" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>niceLevel</cstring>
+                                </property>
+                                <property name="minValue">
+                                    <number>-19</number>
+                                </property>
+                                <property name="maxValue">
+                                    <number>19</number>
+                                </property>
+                                <property name="lineStep">
+                                    <number>5</number>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="tickmarks">
+                                    <enum>NoMarks</enum>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="1" column="0">
+                                <property name="name">
+                                    <cstring>textLabel2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Highest</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="1" column="2">
+                                <property name="name">
+                                    <cstring>textLabel3</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Lowest</string>
+                                </property>
+                                <property name="alignment">
+                                    <set>AlignVCenter|AlignRight</set>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="1" column="1">
+                                <property name="name">
+                                    <cstring>textLabel4</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Normal</string>
+                                </property>
+                                <property name="alignment">
+                                    <set>AlignCenter</set>
+                                </property>
+                            </widget>
+                        </grid>
                     </widget>
                     <spacer>
                         <property name="name">
@@ -189,8 +249,8 @@
                         </property>
                         <property name="sizeHint">
                             <size>
-                                <width>0</width>
-                                <height>20</height>
+                                <width>20</width>
+                                <height>80</height>
                             </size>
                         </property>
                     </spacer>
