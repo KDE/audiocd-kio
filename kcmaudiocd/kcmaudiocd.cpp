@@ -37,7 +37,8 @@
 KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
   : AudiocdConfig(parent, name), configChanged(false)
 {
-
+    QString foo = i18n("Report errors found on the cd.");
+				
     setButtons(Default|Apply);
 
     config = new KConfig("kcmaudiocdrc");
