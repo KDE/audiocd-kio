@@ -37,7 +37,7 @@ class KAudiocdModule : public KCModule
 public:
 
   KAudiocdModule(QWidget *parent=0, const char *name=0);
-
+  ~KAudiocdModule();
   QString quickHelp() const;
   const KAboutData* aboutData() const;    
 
