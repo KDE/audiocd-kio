@@ -409,7 +409,7 @@ void EncoderLame::loadSettings(){
   Settings *settings = Settings::self();
 
   int quality = settings->quality();
-  if (quality < 0 ) quality = 0;
+  if (quality < 0 ) quality = quality *-1;
   if (quality > 9) quality = 9;
 
   int method = settings->bitrate_constant() ? 0 : 1 ;

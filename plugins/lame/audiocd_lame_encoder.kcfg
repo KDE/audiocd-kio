@@ -20,7 +20,7 @@
     </entry>
     <entry name="quality" type="Int">
       <label>Quality</label>
-      <default>2</default>
+      <default>-2</default>
     </entry>
 
 <!-- Options  -->
