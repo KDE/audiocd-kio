@@ -230,50 +230,63 @@ enum Which_dir {
 class AudioCDProtocol::Private {
 public:
 	Private() {
-		clearargs();
+		clearURLargs();
 		discid = "";
-		based_on_cddb = false;
 		s_bytrack = i18n("By Track");
 		s_track = i18n("Track %1");
 		s_info = i18n("Information");
 		s_fullCD = i18n("Full CD");
 	}
 
-	void clearargs() {
+	void clearURLargs() {
 		req_allTracks = false;
 		which_dir = Unknown;
 		req_track = -1;
-		cddbChoice = -1;
+		cddbUserChoice = -1;
 	}
 
-	int cddbChoice;
-	QString path;
-	int paranoiaLevel;
-	QString discid;
-	uint tracks;
-	CDInfoList cddb_info;
-	KCDDB::CDInfo cddb_best;
-	QString cd_title;
-	QString cd_artist;
-	QString cd_category;
-	QStringList track_titles;
-	QStringList templateTitles;
-	int cd_year;
-	bool is_audio[100];
-	bool based_on_cddb;
+	// The type/which of request
+	bool req_allTracks;
+	Which_dir which_dir;
+	int req_track;
+	QString fname;
+	AudioCDEncoder *encoder_dir_type;
+
+	// Misc settings
+	QString device; // URL settable
+	int paranoiaLevel; // URL settable
+
+	// Directory strings, never change after init
 	QString s_bytrack;
 	QString s_track;
 	QString s_info;
 	QString s_fullCD;
 
-	Which_dir which_dir;
-	AudioCDEncoder *encoder_dir_type;
-	bool req_allTracks;
-	int req_track;
-	QString fname;
-	QString fileNameTemplate;
+	// Current CD
+	QString discid;
+	uint tracks;
+	bool trackIsAudio[100];
 
+	// CDDB items
 	KCDDB::CDDB::Result cddbResult;
+	CDInfoList cddbList;
+	int cddbUserChoice; // URL settable
+	KCDDB::CDInfo cddbBestChoice;
+
+	// Template for ..
+	QString fileNameTemplate; // URL settable
+	QString rsearch;
+	QString rreplace;
+	
+	// Current strings for this CD and or cddb selection
+	QString cd_title;
+	QString cd_artist;
+	QString cd_category;
+	int cd_year;
+	QStringList templateTitles;
+	
+	// The current cddb title strings for id3
+	QStringList track_titles;
 };
 
 int paranoia_read_limited_error;
@@ -341,15 +354,15 @@ AudioCDProtocol::initRequest(const KURL & url)
 
 	if (0 == drive)
 	{
-		if(!QFile::exists(d->path))
-			error(KIO::ERR_DOES_NOT_EXIST, d->path);
+		if(!QFile::exists(d->device))
+			error(KIO::ERR_DOES_NOT_EXIST, d->device);
 		else {
-			QFileInfo fi(d->path);
+			QFileInfo fi(d->device);
 			if(!fi.isReadable())
-				error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->path);
+				error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
 			else if(!fi.isWritable())
-				error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->path);
-			else error(KIO::ERR_UNKNOWN, d->path);
+				error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->device);
+			else error(KIO::ERR_UNKNOWN, d->device);
 		}
 		return 0;
 	}
@@ -512,7 +525,7 @@ void AudioCDProtocol::get(const KURL & url)
 		uint count = 1;
 		CDInfoList::iterator it;
 		bool found = false;
-		for ( it = d->cddb_info.begin(); it != d->cddb_info.end(); ++it ){
+		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			if(count == choice){
 				mimeType("text/html");
 				data(QCString( (*it).toString().latin1() ));
@@ -552,7 +565,7 @@ void AudioCDProtocol::get(const KURL & url)
 	 return;
 	}
 
-	if(d->based_on_cddb){
+	if(d->cddbResult == KCDDB::CDDB::Success){
 		QString trackName;
 		// do we rip the whole CD?
 		if (d->req_allTracks)
@@ -567,7 +580,6 @@ void AudioCDProtocol::get(const KURL & url)
 	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);
-
 
 	unsigned long size = encoder->size(time_secs);
 	totalSize(size);
@@ -654,7 +666,7 @@ void AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 	KCDDB::TrackOffsetList qvl;
 
 	for(uint i=0; i< d->tracks; i++){
-			d->is_audio[i] = cdda_track_audiop(drive, i + 1);
+			d->trackIsAudio[i] = cdda_track_audiop(drive, i + 1);
 			// Does this ever happen??
 			// kdDebug(7117) << "Hack track: " << hack_track << endl;
 			if (((int)i+1) != hack_track)
@@ -680,30 +692,27 @@ void AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 	d->cddbResult = c.lookup(qvl);
 
 	if (d->cddbResult == KCDDB::CDDB::Success)
-		{
-			d->based_on_cddb = true;
-			d->cddb_info = c.lookupResponse();
-			d->cddb_best = c.bestLookupResponse();
-			generateTemplateTitles();
-			return;
-		}
+	{
+		d->cddbList = c.lookupResponse();
+		d->cddbBestChoice = c.bestLookupResponse();
+		generateTemplateTitles();
+		return;
+	}
 
-	d->based_on_cddb = false;
-	for (uint i = 0; i < d->tracks; i++)
-		{
-			QString num;
-			int ti = i + 1;
-			QString s;
-			num.sprintf("%02d", ti);
-			if (cdda_track_audiop(drive, ti))
-				s = d->s_track.arg(num);
-			else
-				s.sprintf("data%02d", ti);
-			d->templateTitles.append( s );
+	for (uint i = 1; i <= d->tracks; i++)
+	{
+		QString s;
+		QString num;
+		num.sprintf("%02d", i);
+		if (cdda_track_audiop(drive, i))
+			s = d->s_track.arg(num);
+		else
+			s.sprintf("data%02d", i);
+		d->templateTitles.append( s );
 
-			// keep both lists in sync
-			d->track_titles.append( QString::null );
-		}
+		// keep both lists in sync
+		d->track_titles.append( QString::null );
+	}
 }
 
 static void app_entry(UDSEntry& e, unsigned int uds, const QString& str)
@@ -780,7 +789,7 @@ void AudioCDProtocol::listDir(const KURL & url)
 	else if (d->which_dir == Info){
 		CDInfoList::iterator it;
 		uint count = 1;
-		for ( it = d->cddb_info.begin(); it != d->cddb_info.end(); ++it ){
+		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			(*it).toString();
 			if(count == 1)
 				app_file(entry, QString("%1.txt").arg(i18n(CDDB_INFORMATION)), ((*it).toString().length())+1);
@@ -819,7 +828,7 @@ void AudioCDProtocol::listDir(const KURL & url)
 		// If we are using CDDB. there will be twice as many files
 		// Example: Full CD.wav & Album Title.wav
 		int numberOfFullCDFiles = encoders.count();
-		if (d->based_on_cddb)
+		if (d->cddbResult == KCDDB::CDDB::Success)
 			numberOfFullCDFiles = numberOfFullCDFiles * 2;
 		app_dir(entry, d->s_fullCD, numberOfFullCDFiles);
 
@@ -834,7 +843,7 @@ void AudioCDProtocol::listDir(const KURL & url)
 			AudioCDEncoder *encoder;
 			for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
 				addEntry(QFL1("Full CD"), encoder, drive, -1);
-				if (d->based_on_cddb)
+				if (d->cddbResult == KCDDB::CDDB::Success)
 					addEntry(d->cd_title, encoder, drive, -1);
 			}
 		}
@@ -845,7 +854,7 @@ void AudioCDProtocol::listDir(const KURL & url)
 		for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
 		{
 			// Skip data tracks
-			if (!d->is_audio[trackNumber-1])
+			if (!d->trackIsAudio[trackNumber-1])
 				continue;
 
 			switch (d->which_dir) {
@@ -932,12 +941,12 @@ AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder *enc
 	struct cdrom_drive *
 AudioCDProtocol::pickDrive()
 {
-	QCString path(QFile::encodeName(d->path));
+	QCString device(QFile::encodeName(d->device));
 
 	struct cdrom_drive * drive = 0;
 
-	if (!path.isEmpty() && path != "/")
-		drive = cdda_identify(path, CDDA_MESSAGE_PRINTIT, 0);
+	if (!device.isEmpty() && device != "/")
+		drive = cdda_identify(device, CDDA_MESSAGE_PRINTIT, 0);
 	else
 	{
 		drive = cdda_find_a_cdrom(CDDA_MESSAGE_PRINTIT, 0);
@@ -950,9 +959,7 @@ AudioCDProtocol::pickDrive()
 	}
 
 	if (0 == drive)
-	{
 		kdDebug(7117) << "Can't find an audio CD" << endl;
-	}
 
 	return drive;
 }
@@ -1120,7 +1127,7 @@ void AudioCDProtocol::paranoiaRead(
  */
 void AudioCDProtocol::parseURLArgs(const KURL & url)
 {
-	d->clearargs();
+	d->clearURLargs();
 
 	QString query(KURL::decode_string(url.query()));
 
@@ -1143,18 +1150,19 @@ void AudioCDProtocol::parseURLArgs(const KURL & url)
 		QString value(token.mid(equalsPos + 1));
 
 		if (attribute == QFL1("device"))
-			d->path = value;
+			d->device = value;
 		else if (attribute == QFL1("paranoia_level"))
 			d->paranoiaLevel = value.toInt();
 		else if (attribute == QFL1("fileNameTemplate"))
 			d->fileNameTemplate = value;
 		else if (attribute == QFL1("cddbChoice"))
-			d->cddbChoice = value.toInt();
+			d->cddbUserChoice = value.toInt();
 		else if (attribute == QFL1("niceLevel")){
 			int niceLevel = value.toInt();
 			if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
 				kdDebug(7117) << "Setting nice level to (" << niceLevel << ") failed." << endl;
 		}
+
 	}
 }
 
@@ -1169,7 +1177,7 @@ void AudioCDProtocol::loadSettings()
 	config->setGroup(QFL1("CDDA"));
 
 	if (!config->readBoolEntry(QFL1("autosearch"),true)) {
-		d->path = config->readEntry(QFL1("device"),QFL1(DEFAULT_CD_DEVICE));
+		d->device = config->readEntry(QFL1("device"),QFL1(DEFAULT_CD_DEVICE));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
@@ -1192,7 +1200,9 @@ void AudioCDProtocol::loadSettings()
 	// The default track filename template
 	config->setGroup("FileName");
 	d->fileNameTemplate = config->readEntry("file_name_template", "%{albumartist} - %{title}");
-
+	d->rsearch = config->readEntry("regexp_search");
+	d->rreplace = config->readEntry("regexp_replace");
+	
 	// Tell the encoders to load their settings
 	AudioCDEncoder *encoder;
 	for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
@@ -1202,17 +1212,18 @@ void AudioCDProtocol::loadSettings()
 	delete config;
 }
 
+#include <qregexp.h>
 /**
  * Generates the track titles from the template using the cddb information.
  */
 void AudioCDProtocol::generateTemplateTitles()
 {
-	if (!d->based_on_cddb)
+	if (d->cddbResult != KCDDB::CDDB::Success)
 		return;
 
-	KCDDB::CDInfo info = d->cddb_best;
-	if(d->cddbChoice >= 0 && (((uint)d->cddbChoice) < d->cddb_info.count()))
-		info = d->cddb_info[d->cddbChoice];
+	KCDDB::CDInfo info = d->cddbBestChoice;
+	if(d->cddbUserChoice >= 0 && (((uint)d->cddbUserChoice) < d->cddbList.count()))
+		info = d->cddbList[d->cddbUserChoice];
 	
 	// First save it for the encoders
 	// Might it be easier to just save the whole thing?
@@ -1237,6 +1248,7 @@ void AudioCDProtocol::generateTemplateTitles()
 		macros["year"] = QString::number(d->cd_year);
 
 		QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
+		title.replace( QRegExp(d->rsearch), d->rreplace );
 		d->templateTitles.append(title);
 	}
 }
