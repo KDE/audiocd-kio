@@ -545,7 +545,7 @@ void AudioCDProtocol::get(const KURL & url)
 
     encoder->fillSongInfo(trackName, d->cd_artist, d->cd_title, d->cd_category, d->req_track+1, d->cd_year);
   }
-  long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector);
+  long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
   long time_secs      = (8 * totalByteCount) / (44100 * 2 * 16);
 
   totalSize(encoder->size(time_secs));
@@ -940,7 +940,7 @@ AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder *enc
   if(!encoder)
     return 0;
   
-  long filesize = CD_FRAMESIZE_RAW * ( lastSector - firstSector );
+  long filesize = CD_FRAMESIZE_RAW * ( lastSector - firstSector + 1 );
   long length_seconds = (filesize) / 176400;
 
   return encoder->size(length_seconds);
@@ -1056,7 +1056,7 @@ AudioCDProtocol::paranoiaRead(
   processed += encoder->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector));
   processedSize(processed);
   
-  while (currentSector < lastSector)
+  while (currentSector <= lastSector)
   {
     int16_t * buf = paranoia_read(paranoia, paranoiaCallback);
     if (0 == buf) {
