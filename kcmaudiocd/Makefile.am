@@ -14,7 +14,6 @@ KDE_ICON = cdrom_unmount
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kcmaudiocd.pot
 
-kioslave_audiocd_DATA = audiocd.desktop
-kioslave_audiocddir = $(kde_appsdir)/Settings/Sound
+xdg_apps_DATA = audiocd.desktop
 
 audiocdconfig.cpp: audiocdconfig.h
