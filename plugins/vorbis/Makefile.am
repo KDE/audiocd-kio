@@ -6,9 +6,9 @@ kde_module_LTLIBRARIES = libaudiocd_encoder_vorbis.la
 
 libaudiocd_encoder_vorbis_la_SOURCES = audiocd_vorbis_encoder.kcfgc encodervorbis.cpp encodervorbisconfig.ui
 
-libaudiocd_encoder_vorbis_la_LIBADD = $(VORBISENC_LIBS) $(VORBIS_LIBS) $(LIB_KIO) $(LIB_KDECORE) $(LIB_QT) ../libaudiocdplugins.la
+libaudiocd_encoder_vorbis_la_LIBADD = $(VORBISENC_LIBS) $(LIB_KIO) ../libaudiocdplugins.la
 
-libaudiocd_encoder_vorbis_la_LDFLAGS = -avoid-version -module -no-undefined $(all_libraries)
+libaudiocd_encoder_vorbis_la_LDFLAGS = $(VORBIS_RPATH) -avoid-version -module -no-undefined $(all_libraries)
 
 pluginsdir = $(kde_datadir)/audiocd/plugins
 

@@ -4,7 +4,7 @@ kde_module_LTLIBRARIES = libaudiocd_encoder_flac.la
 
 libaudiocd_encoder_flac_la_SOURCES = encoderflac.cpp
 
-libaudiocd_encoder_flac_la_LIBADD = $(LIBFLAC) $(LIB_KIO) $(LIB_KDECORE) ../libaudiocdplugins.la
+libaudiocd_encoder_flac_la_LIBADD = $(LIBFLAC) $(LIB_KIO) ../libaudiocdplugins.la
 
 libaudiocd_encoder_flac_la_LDFLAGS = -avoid-version -module -no-undefined $(all_libraries)
 

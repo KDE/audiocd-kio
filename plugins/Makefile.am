@@ -8,7 +8,7 @@ INCLUDES = $(all_includes)
 
 lib_LTLIBRARIES = libaudiocdplugins.la
 
-libaudiocdplugins_la_LIBADD =  $(LIB_QT) $(LIB_KDECORE)
+libaudiocdplugins_la_LIBADD =  $(LIB_KDECORE)
 
 libaudiocdplugins_la_LDFLAGS = $(all_libraries) -version-info 1:0:0 -no-undefined
 
