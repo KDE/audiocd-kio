@@ -2,13 +2,12 @@
 <title>audiocd</title>
 <articleinfo>
 <authorgroup>
-<author>&Rik.Hemsley; &Rik.Hemsley.mail;
-</author>
+<author>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
-<date>2001-07-14</date>
-<releaseinfo>2.20.00</releaseinfo>
+<date>2004-09-16</date>
+<releaseinfo>2.30.00</releaseinfo>
 
 </articleinfo>
 
@@ -65,6 +64,7 @@ below.</para>
 
 <variablelist>
 <title>Options</title>
+
 <varlistentry>
 <term><option>device</option></term>
 <listitem>
@@ -75,6 +75,30 @@ an audio <acronym>CD</acronym> inserted, but if it fails or you have
 more than one <acronym>CD</acronym> drive, you may want to try this
 option. Note that the configuration dialog allows you to set a default
 value for this option.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>fileNameTemplate</option></term>
+<listitem>
+<para>Set the file name template, &eg;
+<userinput>audiocd:/<option>?fileNameTemplate</option>=<parameter>Track %{number}</parameter></userinput>.  Note that the configuration dialog allows you to set a default value for this option. A warning that if you set it to an empty string no files will show up.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>albumNameTemplate</option></term>
+<listitem>
+<para>Set the album name template, &eg;
+<userinput>audiocd:/<option>?albumNameTemplate</option>=<parameter>%{albumartist} %{albumtitle}</parameter></userinput>.  Note that the configuration dialog allows you to set a default value for this option.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><option>niceLevel</option></term>
+<listitem>
+<para>Sets the process nice level for encoders, &eg;
+<userinput>audiocd:/<option>?albumNameTemplate</option>=<parameter>niceLevel=10</parameter></userinput>.  Note that the configuration dialog allows you to set a default value for this option.</para>
 </listitem>
 </varlistentry>
 
@@ -119,36 +143,21 @@ won't experience very slow extraction, but a poor drive may take days
 </varlistentry>
 
 <varlistentry>
-<term><option>use_cddb</option></term>
+<term><option>cddbChoice</option></term>
 <listitem>
 
-<para>Specify that track names for the inserted <acronym>CD</acronym>
-will be looked up on the Internet <acronym>CD</acronym> Database. Audio
+<para>Specify which Internet <acronym>CD</acronym> Database entry to use.  Audio
 <acronym>CD</acronym>s don't have track names, but the Internet
 <acronym>CD</acronym> Database is a clever system which uses a special
 unique identifier generated from the number and length of tracks on each
 <acronym>CD</acronym> to cross-reference a track listing. Track listings
 are contributed by the Internet community and made available to
-all.</para>
+all.  Occationally there will be multiple entries.  You can specify which one to use.</para>
 
 <para>You can submit your own track listings using &kscd;, the &kde;
 <acronym>CD</acronym> player.</para>
 
-<para>This option is on by default. If your Internet connection is not
-set up correctly, you may find that your <acronym>CD</acronym> tracks
-don't appear.  In this case, you can try
-<userinput>audiocd:/?<option>use_cddb</option>=<parameter>0</parameter></userinput>
-to switch this option off.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><option>cddb_server</option></term>
-<listitem>
-<para>Set the Internet <acronym>CD</acronym> Database server to
-contact. By default, this is
-<systemitem>freedb.freedb.org:888</systemitem>, which means server
-<systemitem>freedb.freedb.org</systemitem> at port 888.</para>
+<para>By default audiocd tries to pick the best one.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -156,14 +165,14 @@ contact. By default, this is
 <variablelist>
 <title>Examples</title>
 <varlistentry>
-<term><userinput>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;use_cddb=0</userinput></term>
+<term><userinput>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput></term>
 <listitem>
 <para>Gives a listing of the tracks on the audio <acronym>CD</acronym>
 inserted in <filename class="devicefile">/dev/scd0</filename>, which on
 &Linux; specifies the first <acronym>SCSI</acronym> &CD-ROM; device. If
 you copy tracks from the <acronym>CD</acronym>, digital extraction will
-be performed without error correction or detection. No Internet
-<acronym>CD</acronym> Database will be contacted.</para>
+be performed without error correction or detection. The 
+<acronym>CDDB</acronym> Database entry 0 will be used.</para>
 </listitem>
 </varlistentry>
 </variablelist>
