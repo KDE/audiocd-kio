@@ -36,20 +36,20 @@ class KAudiocdModule : public AudiocdConfig
 public:
 
   KAudiocdModule(QWidget *parent=0, const char *name=0);
-    ~KAudiocdModule();
+  ~KAudiocdModule();
 
   QString quickHelp() const;
 
 public slots:
-
   void defaults();
   void save();
   void load();
 
 private slots:
-	void updateExample();
+  void updateExample();
   void slotConfigChanged();
   void slotEcEnable();
+  void slotModuleChanged();
 
 private:
   KConfig *config;
@@ -60,5 +60,5 @@ private:
   QPtrList<KConfigDialogManager> encoderSettings;
 };
 
-#endif
+#endif // KAUDIOCDCONFIG_H
 

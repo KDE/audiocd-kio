@@ -58,7 +58,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
   
     KConfigDialogManager *widget;
     for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-      connect(widget, SIGNAL(widgetModified()), this, SLOT(slotConfigChanged()));
+      connect(widget, SIGNAL(widgetModified()), this, SLOT(slotModuleChanged()));
     }
    
     //CDDA Options
@@ -85,7 +85,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
 
 KAudiocdModule::~KAudiocdModule()
 {
-    delete config;
+	delete config;
 }
 
 void KAudiocdModule::updateExample()
@@ -175,17 +175,25 @@ void KAudiocdModule::load() {
   }
 }
 
+void KAudiocdModule::slotModuleChanged() {
+	KConfigDialogManager *widget;
+	for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
+		if(widget->hasChanged()){
+			slotConfigChanged();
+			break;
+		}
+	}
+}
+
 void KAudiocdModule::slotConfigChanged() {
-  configChanged = true;
-  emit changed(true);
-  return;
+	configChanged = true;
+	emit changed(true);
 }
 
 /*
 #    slot for the error correction settings
 */
 void KAudiocdModule::slotEcEnable() {
-
   if (!(ec_skip_check->isChecked())) {
     ec_skip_check->setChecked(true);
   } else {
