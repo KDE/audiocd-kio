@@ -40,7 +40,6 @@ public:
   EncoderWav(KIO::SlaveBase *slave) : EncoderCda(slave) {};
   ~EncoderWav(){};
   virtual bool init(){ return true; };
-  virtual void loadSettings(KConfig *){};
   virtual unsigned long size(long time_secs) const;
   virtual QString type() const { return "Wav"; };
   virtual const char * fileType() const { return "wav"; };

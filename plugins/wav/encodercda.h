@@ -41,7 +41,7 @@ public:
   EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {};
   ~EncoderCda(){};
   virtual bool init(){ return true; };
-  virtual void loadSettings(KConfig *){};
+  virtual void loadSettings(){};
   virtual unsigned long size(long time_secs) const;
   virtual QString type() const { return "CDA"; };
   virtual const char * mimeType() const;
