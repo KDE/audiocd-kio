@@ -903,7 +903,7 @@ struct cdrom_drive *AudioCDProtocol::pickDrive()
 				error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->device);
 #if KDE_IS_VERSION (3, 3, 89)
 			else error(KIO::ERR_SLAVE_DEFINED, 
-i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as yourself (not root). Do you see a track list? If not, make sure you have permission to access the CD device. If you're using SCSI emulation (possible if you have an IDE CD writer) then make sure you check that you have read and write permissions on the generic SCSI device, which is probably /dev/sg0, /dev/sg1, etc.. If it still doesn't work, try typing audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your CD-ROM is."));
+i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as yourself (not root). Do you see a track list? If not, make sure you have permission to access the CD device. If you are using SCSI emulation (possible if you have an IDE CD writer) then make sure you check that you have read and write permissions on the generic SCSI device, which is probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your CD-ROM is."));
 #else			
 			else error(KIO::ERR_UNKNOWN, d->device);
 #endif
