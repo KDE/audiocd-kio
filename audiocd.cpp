@@ -1917,7 +1917,7 @@ void AudioCDProtocol::getParameters() {
 #endif // HAVE_VORBIS
 
   config->setGroup("FileName");
-  d->fileNameTemplate = config->readEntry("file_name_template", "%n %i");
+  d->fileNameTemplate = config->readEntry("file_name_template", "%n %t");
 
   delete config;
   return;
