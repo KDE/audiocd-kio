@@ -1072,7 +1072,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
   if (result == KCDDB::CDDB::Success)
     {
       d->based_on_cddb = true;
-      KCDDB::CDInfo info = c.lookupResponse().first();
+      KCDDB::CDInfo info = c.bestLookupResponse();
       d->cd_title = info.title;
       d->cd_artist = info.artist;
       d->cd_category = info.genre;
