@@ -572,7 +572,7 @@
                                             <cstring>enc_method</cstring>
                                         </property>
                                         <property name="whatsThis" stdset="0">
-                                            <string>Choosing &lt;i&gt;Constant Bitrate&lt;/i&gt; is safe, while &lt;i&gt;Variable Bitrate&lt;/i&gt; encoding can cause trouble with some media players. However, choosing variable bitrates usually results in a better quality / size ratio for the file created.</string>
+                                            <string>Choosing &lt;i&gt;Constant Bitrate&lt;/i&gt; is safe, while &lt;i&gt;Variable Bitrate&lt;/i&gt; encoding can cause trouble with some media players. However, choosing variable bitrates usually results in a better quality/size ratio for the file created.</string>
                                         </property>
                                     </widget>
                                     <widget class="QComboBox">
