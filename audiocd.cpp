@@ -510,6 +510,8 @@ void AudioCDProtocol::get(const KURL & url)
       if(count == choice){
         mimeType("text/html");
         data(QCString( (*it).toString().latin1() ));
+        // send an empty QByteArray to signal end of data.
+        data(QByteArray());
         finished();
         found = true;
         break;

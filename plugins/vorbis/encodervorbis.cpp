@@ -171,13 +171,17 @@ long EncoderVorbis::flush_vorbis(void) {
         char * oggheader = reinterpret_cast<char *>(d->og.header);
         char * oggbody = reinterpret_cast<char *>(d->og.body);
 
-        output.setRawData(oggheader, d->og.header_len);
-        ioslave->data(output);
-        output.resetRawData(oggheader, d->og.header_len);
+        if (d->og.header_len) {
+          output.setRawData(oggheader, d->og.header_len);
+          ioslave->data(output);
+          output.resetRawData(oggheader, d->og.header_len);
+        }
 
-        output.setRawData(oggbody, d->og.body_len);
-        ioslave->data(output);
-        output.resetRawData(oggbody, d->og.body_len);
+        if (d->og.body_len) {
+          output.setRawData(oggbody, d->og.body_len);
+          ioslave->data(output);
+          output.resetRawData(oggbody, d->og.body_len);
+        }
         processed +=  d->og.header_len + d->og.body_len;
       }
     }
@@ -247,13 +251,17 @@ long EncoderVorbis::readInit(long size){
     char * oggheader = reinterpret_cast<char *>(d->og.header);
     char * oggbody = reinterpret_cast<char *>(d->og.body);
 
-    output.setRawData(oggheader, d->og.header_len);
-    ioslave->data(output);
-    output.resetRawData(oggheader, d->og.header_len);
+    if (d->og.header_len) {
+      output.setRawData(oggheader, d->og.header_len);
+      ioslave->data(output);
+      output.resetRawData(oggheader, d->og.header_len);
+    }
 
-    output.setRawData(oggbody, d->og.body_len);
-    ioslave->data(output);
-    output.resetRawData(oggbody, d->og.body_len);
+    if (d->og.body_len) {
+      output.setRawData(oggbody, d->og.body_len);
+      ioslave->data(output);
+      output.resetRawData(oggbody, d->og.body_len);
+    }
   }
   return 0;
 }
