@@ -545,7 +545,7 @@ void EncoderLame::fillSongInfo(QString trackName,
   (_lamelib_id3tag_set_album)  (d->gf, cdTitle.latin1());
   (_lamelib_id3tag_set_artist) (d->gf, cdArtist.latin1());
   (_lamelib_id3tag_set_title)  (d->gf, trackName.latin1());
-  (_lamelib_id3tag_set_year)   (d->gf, QString("%i").arg(cdYear).latin1());
+  (_lamelib_id3tag_set_year)   (d->gf, QString("%1").arg(cdYear).latin1());
   (_lamelib_id3tag_set_genre)  (d->gf, cdCategory.latin1());
   QString tn;
   tn.sprintf("%02d", trackNumber);
