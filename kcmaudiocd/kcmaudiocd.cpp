@@ -176,9 +176,11 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(vbr_average_br,SIGNAL(clicked()),this,SLOT(slotUpdateVBRWidgets()));
     connect(vbr_min_hard,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(vbr_min_br,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
+    connect(vbr_min_br,SIGNAL(clicked()),this,SLOT(slotUpdateVBRWidgets()));
     connect(vbr_min_brate,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
 
     connect(vbr_max_br,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
+    connect(vbr_max_br,SIGNAL(clicked()),this,SLOT(slotUpdateVBRWidgets()));
     connect(vbr_max_brate,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
 
     connect(vbr_xing_tag,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
@@ -674,23 +676,32 @@ void KAudiocdModule::slotSelectMethod(int index) {
 //
 void KAudiocdModule::slotUpdateVBRWidgets() {
 
-  if (vbr_average_br->isEnabled()) {
+  if(vbr_average_br->isEnabled() && vbr_average_br->isChecked()) {
+    
+    vbr_min_br->setChecked(false);
+    vbr_min_br->setDisabled(true);
+    vbr_min_brate->setDisabled(true);
+    
+    vbr_min_hard->setChecked(false);
+    
+    vbr_max_br->setChecked(false);
+    vbr_max_br->setDisabled(true);
+    vbr_max_brate->setDisabled(true);
+    
+    vbr_mean_brate->setEnabled(true);
 
-    if(vbr_average_br->isChecked()) {
+  } else {
 
-      vbr_min_br->setChecked(false);
-      vbr_min_br->setDisabled(true);
-      vbr_min_hard->setChecked(false);
-      vbr_max_br->setChecked(false);
-      vbr_max_br->setDisabled(true);
-      vbr_mean_brate->setEnabled(true);
+    vbr_min_br->setEnabled(true);
+    vbr_max_br->setEnabled(true);
+    
+    bool usingMinMaxBitrate = vbr_min_br->isChecked() || vbr_max_br->isChecked();
+    vbr_average_br->setEnabled(!usingMinMaxBitrate);
 
-    } else {
-
-       vbr_min_br->setEnabled(true);
-       vbr_max_br->setEnabled(true);
-       vbr_mean_brate->setDisabled(true);
-    }
+    vbr_mean_brate->setDisabled(true);
+    
+    vbr_min_brate->setEnabled(vbr_min_br->isChecked());
+    vbr_max_brate->setEnabled(vbr_max_br->isChecked());
   }
 
   slotConfigChanged();
