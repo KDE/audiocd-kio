@@ -237,12 +237,12 @@ long EncoderVorbis::readInit(long size){
   return 0;
 }
 
-long EncoderVorbis::read(int16_t * buf, int CD_FRAMESAMPLES){
+long EncoderVorbis::read(int16_t * buf, int frames){
   int i;
-  float **buffer=vorbis_analysis_buffer(&d->vd,CD_FRAMESAMPLES);
+  float **buffer=vorbis_analysis_buffer(&d->vd,frames);
 
   /* uninterleave samples */
-  for(i=0;i<CD_FRAMESAMPLES;i++){
+  for(i=0;i<frames;i++){
     buffer[0][i]=buf[2*i]/32768.0;
     buffer[1][i]=buf[2*i+1]/32768.0;
   }
