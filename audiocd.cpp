@@ -605,6 +605,12 @@ bool AudioCDProtocol::initLameLib(){
 struct cdrom_drive *
 AudioCDProtocol::initRequest(const KURL & url)
 {
+  if (url.hasHost())
+  {
+    error(KIO::ERR_DOES_NOT_EXIST, url.path());
+    return 0;
+  }
+
 
 #ifdef HAVE_LAME
   initLameLib();
