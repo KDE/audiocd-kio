@@ -436,8 +436,8 @@ void KAudiocdModule::load() {
   set_lpf_width->setChecked(config->readBoolEntry("set_lowpassfilter_width",false));
   set_hpf_width->setChecked(config->readBoolEntry("set_highpassfilter_width",false));
 
-  lowfilterfreq->setValue(config->readNumEntry("lowpassfilter_freq",0));
-  lowfilterwidth->setValue(config->readNumEntry("lowpassfilter_width",0));
+  lowfilterfreq->setValue(config->readNumEntry("lowpassfilter_freq",18000));
+  lowfilterwidth->setValue(config->readNumEntry("lowpassfilter_width",900));
   highfilterfreq->setValue(config->readNumEntry("highpassfilter_freq",0));
   highfilterwidth->setValue(config->readNumEntry("highpassfilter_width",0));
 
