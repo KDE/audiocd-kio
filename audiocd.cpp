@@ -60,8 +60,9 @@ extern "C"
 #include <sys/cdio.h>
 #endif
 
+#include <kdemacros.h>
 void paranoiaCallback(long, int);
-	int kdemain(int argc, char ** argv);
+KDE_EXPORT int kdemain(int argc, char ** argv);
 #ifndef CDPARANOIA_STATIC
 	int FixupTOC(cdrom_drive *d, int tracks);
 #endif
