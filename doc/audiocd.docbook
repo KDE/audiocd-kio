@@ -14,38 +14,38 @@
 
 <para>Allows treating audio <acronym>CD</acronym>s like a
 <quote>real</quote> filesystem, where tracks are represented as files
-and, when copied from the directory, are digitally extracted from the
+and, when copied from the folder, are digitally extracted from the
 <acronym>CD</acronym>. This ensures a perfect copy of the audio
 data.</para>
 
 <para>To see how this slave works, insert an audio <acronym>CD</acronym>
 in your &CD-ROM; drive and type <userinput>audiocd:/</userinput> into
 &konqueror;. Within a few seconds you should see a list of tracks and
-some directories.</para>
+some folders.</para>
 
-<para>Audio <acronym>CD</acronym>s don't really have directories, but
+<para>Audio <acronym>CD</acronym>s don't really have folders, but
 the audiocd slave provides them as a convenience. If you look inside
-these directories you will see that they all contain the same number of
-tracks. If you are connected to the Internet, some directories will have
+these folders you will see that they all contain the same number of
+tracks. If you are connected to the Internet, some folders will have
 the actual track titles shown as the filenames.</para>
 
-<para>The reason that these separate directories exist are so that you
+<para>The reason that these separate folders exist are so that you
 can choose in which format you would like to listen to (or copy) the
 tracks on the <acronym>CD</acronym>.</para>
 
 <para>If you drag a track from the <filename class="directory">Ogg
-Vorbis</filename> directory and drop it on another &konqueror; window
-open at your home directory, you should see a progress window showing
+Vorbis</filename> folder and drop it on another &konqueror; window
+open at your home folder, you should see a progress window showing
 you that the track is being extracted from the <acronym>CD</acronym> and
 saved to a file. Note that Ogg Vorbis is a compressed format, so the
-file in your home directory will appear a great deal smaller than it
+file in your home folder will appear a great deal smaller than it
 would have been if you had copied the raw data.</para>
 
 <para>The mechanism behind this is quite simple. When the audiocd slave
 is asked to retrieve a track from the <filename class="directory">Ogg
-Vorbis</filename> directory, it starts extracting the digital audio data
+Vorbis</filename> folder, it starts extracting the digital audio data
 from the <acronym>CD</acronym>. As it sends the data over to the file in
-your home directory, it simultaneously encodes it in Ogg Vorbis format
+your home folder, it simultaneously encodes it in Ogg Vorbis format
 (<acronym>CD</acronym> audio isn't in any particular format to start
 with, it's just raw binary data.)</para>
 
@@ -55,7 +55,7 @@ Player, &noatun;. In this case, the procedure that happens behind the
 scenes is similar, except that instead of encoding the audio data in Ogg
 Vorbis format, it is put through a very simple conversion, from raw
 binary data (which the <literal role="extension">.cda</literal> files in
-the toplevel directory represent) to <quote>RIFF WAV</quote> format, a
+the toplevel folder represent) to <quote>RIFF WAV</quote> format, a
 non-compressed format that most media players understand.</para>
 
 <para>&noatun; should quite happily play the <literal
@@ -172,7 +172,7 @@ be performed without error correction or detection. No Internet
 <title>Frequently Asked Question</title>
 <qandaentry>
 <question>
-<para>I get <errorname>The file or directory / does not
+<para>I get <errorname>The file or folder / does not
 exist</errorname>.  How do I fix that? I have an audio
 <acronym>CD</acronym> in my drive!</para>
 </question>
