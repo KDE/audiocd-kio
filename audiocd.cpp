@@ -630,6 +630,8 @@ AudioCDProtocol::stat(const KURL & url)
 void
 AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 {
+  d->tracks = cdda_tracks(drive);
+
   KCDDB::TrackOffsetList qvl;
 
   for(uint i=0; i< d->tracks; i++){
@@ -651,7 +653,6 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
     return;
   }
   d->discid = id;
-  d->tracks = cdda_tracks(drive);
   d->cd_title = i18n("No Title");
   d->templateTitles.clear();
   d->track_titles.clear();
