@@ -488,6 +488,16 @@ const char * EncoderLame::mimeType() const {
 #define mp3buffer_size  8000
 static char mp3buffer[mp3buffer_size];
 
+long EncoderLame::readInit(long size){
+	if ( !init() )
+		return -1;
+
+	if ( (_lamelib_lame_init_params) (d->gf) < 0) { // tell lame the new parameters
+		kdDebug(7117) << "lame init params failed" << endl;
+	}
+	return 0;
+}
+
 long EncoderLame::read(int16_t * buf, int frames){
   if ( !init() )
     return -1;
@@ -534,25 +544,25 @@ long EncoderLame::readCleanup(){
 
 // TEST to make sure YEAR is being set!
 void EncoderLame::fillSongInfo(QString trackName,
-		            QString cdArtist,
-			    QString cdTitle,
-			    QString cdCategory,
-			    int trackNumber,
-			    int cdYear){
-  if ( !init() || ! d->write_id3)
-    return;
-  /* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
-  (_lamelib_id3tag_set_album)  (d->gf, cdTitle.latin1());
-  (_lamelib_id3tag_set_artist) (d->gf, cdArtist.latin1());
-  (_lamelib_id3tag_set_title)  (d->gf, trackName.latin1());
-  (_lamelib_id3tag_set_year)   (d->gf, QString("%1").arg(cdYear).latin1());
-  (_lamelib_id3tag_set_genre)  (d->gf, cdCategory.latin1());
-  QString tn;
-  tn.sprintf("%02d", trackNumber);
-  (_lamelib_id3tag_set_track) (d->gf, tn.latin1());
- 
-  if ( (_lamelib_lame_init_params) (d->gf) < 0) { // tell lame the new parameters
-    kdDebug(7117) << "lame init params failed" << endl;
-  }
+			QString cdArtist,
+			QString cdTitle,
+			QString cdCategory,
+			int trackNumber,
+			int cdYear){
+	if ( !init() ) {
+		return;
+	}
+
+	if( d->write_id3 ){
+		/* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
+		(_lamelib_id3tag_set_album)  (d->gf, cdTitle.latin1());
+		(_lamelib_id3tag_set_artist) (d->gf, cdArtist.latin1());
+		(_lamelib_id3tag_set_title)  (d->gf, trackName.latin1());
+		(_lamelib_id3tag_set_year)   (d->gf, QString("%1").arg(cdYear).latin1());
+		(_lamelib_id3tag_set_genre)  (d->gf, cdCategory.latin1());
+		QString tn;
+		tn.sprintf("%02d", trackNumber);
+		(_lamelib_id3tag_set_track) (d->gf, tn.latin1());
+	}
 }
 
