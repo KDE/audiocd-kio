@@ -871,48 +871,34 @@ AudioCDProtocol::get(const KURL & url)
       // NO => title of the track.
       trackName = d->titles[d->req_track].mid(3);
 
-    vorbis_comment_add_tag
-      (
-       &d->vc,
-       const_cast<char *>("title"),
-       const_cast<char *>(trackName.utf8().data())
-      );
+    typedef QPair<QCString, QString> CommentField;
+    QValueList<CommentField> commentFields;
+    
+    commentFields.append(CommentField("title", trackName));
+    commentFields.append(CommentField("artist", d->cd_artist));
+    commentFields.append(CommentField("album", d->cd_title));
+    commentFields.append(CommentField("genre", d->cd_category));
+    commentFields.append(CommentField("tracknumber", QString::number(d->req_track+1)));
 
-    vorbis_comment_add_tag
-      (
-       &d->vc,
-       const_cast<char *>("artist"),
-       const_cast<char *>(d->cd_artist.utf8().data())
-      );
+    if (d->cd_year > 0) {
+      QDateTime dt = QDate(d->cd_year, 1, 1);
+      commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));
+    }
 
-    vorbis_comment_add_tag
-      (
-       &d->vc,
-       const_cast<char *>("album"),
-       const_cast<char *>(d->cd_title.utf8().data())
-      );
+    for(QValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
+      
+      // if the value is not empty
+      if(!(*it).second.isEmpty()) {
 
-    vorbis_comment_add_tag
-      (
-       &d->vc,
-       const_cast<char *>("genre"),
-       const_cast<char *>(d->cd_category.utf8().data())
-      );
+        char *key = qstrdup((*it).first);
+        char *value = qstrdup((*it).second.utf8().data());
 
-    vorbis_comment_add_tag
-      (
-       &d->vc,
-       const_cast<char *>("tracknumber"),
-       const_cast<char *>(QString::number(d->req_track+1).utf8().data())
-      );
-
-     QDateTime dt = QDate(d->cd_year, 1, 1);
-     vorbis_comment_add_tag
-      (
-       &d->vc,
-       const_cast<char *>("date"),
-       const_cast<char *>(dt.toString(Qt::ISODate).utf8().data())
-      );
+        vorbis_comment_add_tag(&d->vc, key, value);
+        
+        delete [] key;
+        delete [] value;
+      }
+    }
   }
 #endif
 
