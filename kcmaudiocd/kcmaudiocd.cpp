@@ -58,7 +58,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
   
     KConfigDialogManager *widget;
     for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-      connect(widget, SIGNAL(widgetModified()), this, SLOT(slotConfigChanged()));
+      connect(widget, SIGNAL(widgetModified()), this, SLOT(slotModuleChanged()));
     }
    
     //CDDA Options
@@ -139,6 +139,16 @@ void KAudiocdModule::load() {
   for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
     widget->updateWidgets();
   }
+}
+
+void KAudiocdModule::slotModuleChanged() {
+	KConfigDialogManager *widget;
+	for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
+		if(widget->hasChanged()){
+			slotConfigChanged();
+			break;
+		}
+	}
 }
 
 void KAudiocdModule::slotConfigChanged() {

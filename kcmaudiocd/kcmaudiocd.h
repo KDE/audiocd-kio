@@ -51,12 +51,11 @@ private slots:
 
   void slotConfigChanged();
   void slotEcEnable();
-private:
+  void slotModuleChanged();
 
+private:
   KConfig *config;
   bool configChanged;
-
-  int getBitrateIndex(int value);
 
   QPtrList<KConfigDialogManager> encoderSettings;
 };
