@@ -1,0 +1,9 @@
+audiocd.[h,cpp] - The main ioslave code.  It contains the logic to rip audio from cd's.  It loads all of the plugins that it can find.  When it needs to encode, generate directories (and names of directories) it goes through it's list.
+
+plugins/audiocdencoder.[h,cpp] - The base class for all of the encoder plugins
+
+plugins/lame/* - The mp3 encoder 
+plugins/vorbis/* - The ogg encoder
+plugins/wav/* - The cda and wav "encoders"
+
+kcmaudiocd - kcm configure dialog for the audiocd ioslave.  It also loads the plugins and gets their configure dialogs and puts them into the tab dialog.
