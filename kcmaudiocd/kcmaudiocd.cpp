@@ -711,7 +711,7 @@ void KAudiocdModule::slotUpdateVBRWidgets() {
 
 QString KAudiocdModule::quickHelp() const
 {
-    return i18n("<h1>Audio CD</h1> The Audio CD IO-Slave enables you to easily"
+    return i18n("<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily"
                         " create wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs."
                         " The slave is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location"
                         " bar. In this module, you can configure"
