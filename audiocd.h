@@ -134,6 +134,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 #endif
 #ifdef HAVE_VORBIS
     long vorbisSize(long time_secs);
+    long flush_vorbis(void);
 #endif
 };
 

@@ -320,6 +320,7 @@ class AudioCDProtocol::Private
     QString cd_title;
     QString cd_artist;
     QString cd_category;
+    QStringList track_titles;
     QStringList titles;
     int cd_year;
     bool is_audio[100];
@@ -858,10 +859,10 @@ AudioCDProtocol::get(const KURL & url)
          tname = d->cd_title.latin1();
        else
          // NO => title of the track.
-         tname  = d->titles[d->req_track].latin1();    // set trackname
+         tname  = d->track_titles[d->req_track].latin1();    // set trackname
        (_lamelib_id3tag_set_album)  (d->gf, d->cd_title.latin1());
        (_lamelib_id3tag_set_artist) (d->gf, d->cd_artist.latin1());
-       (_lamelib_id3tag_set_title)  (d->gf, tname+3); // since titles has preleading tracknumbers, start at position 3
+       (_lamelib_id3tag_set_title)  (d->gf, tname);
        QString tn;
        tn.sprintf("%02d", d->req_track+1);
        (_lamelib_id3tag_set_track) (d->gf, tn.latin1());
@@ -885,7 +886,7 @@ AudioCDProtocol::get(const KURL & url)
       trackName = d->cd_title.utf8().data();
     else
       // NO => title of the track.
-      trackName = d->titles[d->req_track].mid(3);
+      trackName = d->track_titles[d->req_track];
 
     typedef QPair<QCString, QString> CommentField;
     QValueList<CommentField> commentFields;
@@ -933,7 +934,7 @@ AudioCDProtocol::get(const KURL & url)
 #ifdef HAVE_VORBIS
   if (filetype == FileTypeOggVorbis) {
     totalSize( vorbisSize(time_secs) );
-    mimeType(QFL1("application/ogg"));
+    mimeType(QFL1("audio/vorbis"));
   }
 #endif
 
@@ -1050,6 +1051,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
   d->tracks = cdda_tracks(drive);
   d->cd_title = i18n("No Title");
   d->titles.clear();
+  d->track_titles.clear();
   KCDDB::TrackOffsetList qvl;
 
   for (int i = 0; i < d->tracks; i++)
@@ -1092,9 +1094,9 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 	  macros['g'] = d->cd_category;
 	  macros['y'] = QString::number(d->cd_year);
 
-	  QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%');
-
+	  QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QFL1("%2F"));
           d->titles.append(title);
+	  d->track_titles.append(t[i].title);
         }
       return;
     }
@@ -1674,43 +1676,9 @@ static char mp3buffer[mp3buffer_size];
           buffer[1][i]=buf[2*i+1]/32768.0;
         }
 
+        /* process chunk of data */
         vorbis_analysis_wrote(&d->vd,i);
-
-        while(vorbis_analysis_blockout(&d->vd,&d->vb)==1) {
-/* Support ancient libvorbis (< RC3).  */
-#if HAVE_VORBIS >= 2
-	  vorbis_analysis(&d->vb,NULL);
-          /* Non-ancient case.  */
-          vorbis_bitrate_addblock(&d->vb);
-
-          while(vorbis_bitrate_flushpacket(&d->vd, &d->op)) {
-#else
-          vorbis_analysis(&d->vb,&d->op);
-          /* Make a lexical block to place the #ifdef's nearby.  */
-          if (1) {
-#endif
-          ogg_stream_packetin(&d->os,&d->op);
-
-          while(int result=ogg_stream_pageout(&d->os,&d->og)) {
-
-            if (!result) break;
-
-            QByteArray output;
-
-            char * oggheader = reinterpret_cast<char *>(d->og.header);
-            char * oggbody = reinterpret_cast<char *>(d->og.body);
-
-	    output.setRawData(oggheader, d->og.header_len);
-            data(output);
-            output.resetRawData(oggheader, d->og.header_len);
-
-            output.setRawData(oggbody, d->og.body_len);
-            data(output);
-            output.resetRawData(oggbody, d->og.body_len);
-	    processed +=  d->og.header_len + d->og.body_len;
-          }
-        }
-      }
+        processed += flush_vorbis();
       }
 #endif
 
@@ -1754,6 +1722,9 @@ static char mp3buffer[mp3buffer_size];
 
 #ifdef HAVE_VORBIS
   if (filetype == FileTypeOggVorbis) {
+    // send end-of-stream and flush the encoder
+    vorbis_analysis_wrote(&d->vd,0);
+    processed += flush_vorbis();
     ogg_stream_clear(&d->os);
     vorbis_block_clear(&d->vb);
     vorbis_dsp_clear(&d->vd);
@@ -1933,5 +1904,49 @@ void paranoiaCallback(long, int)
   // Do we want to show info somewhere ?
   // Not yet.
 }
+
+#ifdef HAVE_VORBIS
+long AudioCDProtocol::flush_vorbis(void)
+{
+  long processed(0);
+
+  while(vorbis_analysis_blockout(&d->vd,&d->vb)==1) {
+    /* Support ancient libvorbis (< RC3).  */
+#if HAVE_VORBIS >= 2
+    vorbis_analysis(&d->vb,NULL);
+    /* Non-ancient case.  */
+    vorbis_bitrate_addblock(&d->vb);
+
+    while(vorbis_bitrate_flushpacket(&d->vd, &d->op)) {
+#else
+      vorbis_analysis(&d->vb,&d->op);
+      /* Make a lexical block to place the #ifdef's nearby.  */
+      if (1) {
+#endif
+        ogg_stream_packetin(&d->os,&d->op);
+
+	while(int result=ogg_stream_pageout(&d->os,&d->og)) {
+
+          if (!result) break;
+
+	  QByteArray output;
+
+	  char * oggheader = reinterpret_cast<char *>(d->og.header);
+	  char * oggbody = reinterpret_cast<char *>(d->og.body);
+
+	  output.setRawData(oggheader, d->og.header_len);
+	  data(output);
+	  output.resetRawData(oggheader, d->og.header_len);
+
+	  output.setRawData(oggbody, d->og.body_len);
+	  data(output);
+	  output.resetRawData(oggbody, d->og.body_len);
+	  processed +=  d->og.header_len + d->og.body_len;
+	}
+      }
+    }
+    return processed;
+  }
+#endif
 
 // vim:ts=2:sw=2:tw=78:et:
