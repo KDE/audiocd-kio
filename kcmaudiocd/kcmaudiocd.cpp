@@ -149,6 +149,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(enc_method,SIGNAL(activated(int)),SLOT(slotSelectMethod(int)));
     connect(stereo,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(quality,SIGNAL(valueChanged(int)),SLOT(slotConfigChanged()));
+    connect(crc, SIGNAL(clicked()), SLOT(slotConfigChanged()));
 
     //MP3 Options
     connect(copyright,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
