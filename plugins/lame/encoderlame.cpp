@@ -95,11 +95,12 @@ extern "C"
   static void (*_lamelib_id3tag_set_track)(lame_global_flags*, const char*) = NULL;
   static void (*_lamelib_id3tag_set_year)(lame_global_flags*, const char *) = NULL;
   static int  (*_lamelib_id3tag_set_genre)(lame_global_flags *, const char *) = NULL;
-  
+
+	static void (*_lamelib_lame_mp3_tags_fid)(lame_global_flags*, FILE *fpStream) = NULL;
   static int  (*_lamelib_lame_encode_buffer_interleaved) (
           lame_global_flags*, short int*, int, unsigned char*, int) = NULL;
-  static int  (*_lamelib_lame_encode_finish) (
-          lame_global_flags*, unsigned char*, int ) = NULL;
+  static int  (*_lamelib_lame_close) ( lame_global_flags* ) = NULL;
+  static int  (*_lamelib_lame_encode_flush) (lame_global_flags*, unsigned char * ,int) = NULL;
   static int  (*_lamelib_lame_set_VBR) ( lame_global_flags*, vbr_mode ) = NULL;
   static int  (*_lamelib_lame_get_VBR) ( lame_global_flags* ) = NULL;
   static int  (*_lamelib_lame_set_brate) ( lame_global_flags*, int ) = NULL;
@@ -277,7 +278,10 @@ bool EncoderLame::init(){
      _lamelib_id3tag_set_genre =
            (int (*) (lame_global_flags*, const char*))
            _lamelib->symbol("id3tag_set_genre");
-     
+     _lamelib_lame_mp3_tags_fid =
+           (void (*) (lame_global_flags*, FILE *))
+           _lamelib->symbol("lame_mp3_tags_fid");
+
      _lamelib_lame_init_params =
            (int (*) (lame_global_flags*))
            _lamelib->symbol("lame_init_params");
@@ -285,9 +289,10 @@ bool EncoderLame::init(){
            (int (*) (
                   lame_global_flags*, short int*, int, unsigned char*, int))
            _lamelib->symbol("lame_encode_buffer_interleaved");
-     _lamelib_lame_encode_finish =
-           (int (*) (lame_global_flags*, unsigned char*, int))
-           _lamelib->symbol("lame_encode_finish");
+     _lamelib_lame_encode_flush = (int (*) (lame_global_flags*, unsigned char*, int))
+           _lamelib->symbol("lame_encode_flush");
+     _lamelib_lame_close = (int (*) (lame_global_flags*))
+           _lamelib->symbol("lame_close");
      _lamelib_lame_set_VBR =
            (int (*) (lame_global_flags*, vbr_mode))
            _lamelib->symbol("lame_set_VBR");
@@ -433,8 +438,9 @@ void EncoderLame::loadSettings(){
       (_lamelib_lame_set_VBR_q)(d->gf, quality);
     }
 
-    if ( settings->vbr_xing_tag() )
+    //if ( settings->vbr_xing_tag() ){
        (_lamelib_lame_set_bWriteVbrTag)(d->gf, 1);
+    //}
   }
 
   switch ( settings->stereo() ) {
@@ -488,7 +494,7 @@ const char * EncoderLame::mimeType() const {
 #define mp3buffer_size  8000
 static char mp3buffer[mp3buffer_size];
 
-long EncoderLame::readInit(long size){
+long EncoderLame::readInit(long /*size*/){
 	if ( !init() )
 		return -1;
 
@@ -522,11 +528,17 @@ long EncoderLame::read(int16_t * buf, int frames){
 
 long EncoderLame::readCleanup(){
   if ( !init() )
-    return 0;
-  
-  int mp3bytes = _lamelib_lame_encode_finish(d->gf,(unsigned char *)mp3buffer,(int)mp3buffer_size);
+    return -1;
+
+  int mp3bytes = _lamelib_lame_encode_flush(d->gf,(unsigned char *)mp3buffer,(int)mp3buffer_size);
+ 
+  //if ( settings->vbr_xing_tag() ){
+    (_lamelib_lame_mp3_tags_fid)(d->gf, NULL);
+  //}
+
+  mp3bytes += _lamelib_lame_close(d->gf);
   if (mp3bytes <= 0 ) {
-    kdDebug(7117) << "lame encoding failed" << endl;
+    kdDebug(7117) << "lame encoding failed in readCleanup" << endl;
   }
 
   if (mp3bytes > 0) {
@@ -542,16 +554,15 @@ long EncoderLame::readCleanup(){
   return mp3bytes;
 }
 
-// TEST to make sure YEAR is being set!
 void EncoderLame::fillSongInfo(QString trackName,
 			QString cdArtist,
 			QString cdTitle,
 			QString cdCategory,
 			int trackNumber,
 			int cdYear){
-	if ( !init() ) {
+
+	if ( !init() )
 		return;
-	}
 
 	if( d->write_id3 ){
 		/* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
