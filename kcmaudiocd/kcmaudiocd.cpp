@@ -657,12 +657,12 @@ void KAudiocdModule::slotSelectVorbisMethod(int index) {
 // slot for switching between CBR and VBR
 //
 void KAudiocdModule::slotSelectMethod(int index) {
-  // constant bitrate selected
   if (index == 1 ) {
+    // variable bitrate selected
     vbr_settings->show();
     cbr_settings->hide();
   } else {
-    // variable bitrate selected
+    // constant bitrate selected
     vbr_settings->hide();
     cbr_settings->show();
   }
