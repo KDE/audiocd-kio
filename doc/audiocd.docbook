@@ -46,8 +46,8 @@ is asked to retrieve a track from the <filename class="directory">Ogg
 Vorbis</filename> folder, it starts extracting the digital audio data
 from the <acronym>CD</acronym>. As it sends the data over to the file in
 your home folder, it simultaneously encodes it in Ogg Vorbis format
-(<acronym>CD</acronym> audio isn't in any particular format to start
-with, it's just raw binary data.)</para>
+(<acronym>CD</acronym> audio is in an uncompressed format to start
+with).</para>
 
 <para>You could also try dragging a file ending in <literal
 role="extension">.wav</literal> and dropping it on the &kde; Media
