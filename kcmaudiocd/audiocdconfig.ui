@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>AudiocdConfig</class>
 <widget class="KCModule">
     <property name="name">
@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>509</width>
-            <height>639</height>
+            <width>719</width>
+            <height>770</height>
         </rect>
     </property>
     <property name="caption">
@@ -744,7 +744,7 @@
                                                     <enum>Horizontal</enum>
                                                 </property>
                                                 <property name="tickmarks">
-                                                    <enum>Right</enum>
+                                                    <enum>NoMarks</enum>
                                                 </property>
                                             </widget>
                                             <widget class="QLabel">
@@ -986,7 +986,10 @@
                                     <cstring>vbr_average_br</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Avera&amp;ge bitrate</string>
+                                    <string>Avera&amp;ge bitrate:</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+G</string>
                                 </property>
                                 <property name="checked">
                                     <bool>true</bool>
@@ -1084,7 +1087,10 @@
                                     <bool>false</bool>
                                 </property>
                                 <property name="text">
-                                    <string>Maximal bi&amp;trate</string>
+                                    <string>Maximal bi&amp;trate:</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+T</string>
                                 </property>
                                 <property name="whatsThis" stdset="0">
                                     <string>This selects the maximal bitrate used for encoding.</string>
@@ -1201,7 +1207,10 @@
                                     <bool>false</bool>
                                 </property>
                                 <property name="text">
-                                    <string>Minimal &amp;bitrate</string>
+                                    <string>Minimal &amp;bitrate:</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+B</string>
                                 </property>
                                 <property name="whatsThis" stdset="0">
                                     <string>This selects the minimal bitrate used for encoding.</string>
@@ -1498,6 +1507,8 @@ The following macros will be expanded:
         </widget>
     </vbox>
 </widget>
+<customwidgets>
+</customwidgets>
 <connections>
     <connection>
         <sender>set_vorbis_nominal_br</sender>
