@@ -24,7 +24,6 @@
 
 #include <config.h>
 
-#include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -61,11 +60,15 @@ extern "C"
 #define _LINUX_BYTEORDER_SWAB_H
 #endif
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,50)
-typedef unsigned long long __u64;
+
+#ifndef __GNUC__
+#define __GNUC__ 1
 #endif
+#undef __STRICT_ANSI__
+#include <asm/types.h>
 #include <linux/cdrom.h>
 #endif
+
 #include <sys/ioctl.h>
 #if defined(__NetBSD__) || defined(__OpenBSD__)
 #include <sys/cdio.h>
