@@ -8,9 +8,12 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>575</width>
-            <height>537</height>
+            <width>497</width>
+            <height>700</height>
         </rect>
+    </property>
+    <property name="caption">
+        <string>AudiocdConfig</string>
     </property>
     <property name="layoutMargin" stdset="0">
     </property>
@@ -277,17 +280,117 @@
                             </property>
                             <widget class="QLabel">
                                 <property name="name">
-                                    <cstring>fileNameLabel</cstring>
+                                    <cstring>textLabel1_2</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>The following macros will be expanded:
-%{title}  		Track Title
-%{number}	Track Number
-%{albumtitle}	Album Title
-%{albumartist}	Album Artist
-%{year}		Year
-%{genre}	Genre</string>
+                                    <string>The following macros will be expanded:</string>
                                 </property>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout7</cstring>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel" row="5" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel13</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Genre</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel7</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Track Number</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="0" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel2_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{title}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="4" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel11</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Year</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="0" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel3_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Track Title</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel9</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Album Artist</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="4" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel10</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{year}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="2" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel6</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{albumtitle}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="2" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel5</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Album Title</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="5" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel12</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{genre}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel8</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{albumartist}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel4_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{number}</string>
+                                        </property>
+                                    </widget>
+                                </grid>
                             </widget>
                             <widget class="KLineEdit">
                                 <property name="name">
@@ -312,12 +415,82 @@
                                     <cstring>fileNameLabel_2</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>The following macros will be expanded:
-%{albumtitle}	Album Title
-%{albumartist}	Album Artist
-%{year}		Year
-%{genre}	Genre</string>
+                                    <string>The following macros will be expanded:</string>
                                 </property>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout9</cstring>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel" row="2" column="1" rowspan="2" colspan="1">
+                                        <property name="name">
+                                            <cstring>textLabel20</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Year</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="0" rowspan="2" colspan="1">
+                                        <property name="name">
+                                            <cstring>textLabel15</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{albumartist}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel16</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{year}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="4" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel21</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Genre</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel19</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Album Artist</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="0" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel18</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Album Title</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="4" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel17</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{genre}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="0" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel14</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{albumtitle}</string>
+                                        </property>
+                                    </widget>
+                                </grid>
                             </widget>
                             <widget class="KLineEdit">
                                 <property name="name">
@@ -453,6 +626,8 @@
         </widget>
     </vbox>
 </widget>
+<customwidgets>
+</customwidgets>
 <connections>
     <connection>
         <sender>cd_autosearch_check</sender>
