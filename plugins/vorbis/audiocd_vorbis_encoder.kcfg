@@ -29,7 +29,7 @@
     <entry name="vorbis_quality" type="Int">
       <label>Quality</label>
       <default>3</default>
-      <min>0</min>
+      <min>-1</min>
       <max>10</max>
     </entry>
    
