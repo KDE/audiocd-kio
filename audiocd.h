@@ -2,6 +2,7 @@
   Copyright (C) 2000 Rik Hemsley (rikkus) <rik@kde.org>
   Copyright (C) 2001 Carsten Duvenhorst <duvenhorst@m2.uni-hannover.de>
   Copyright (C) 2001 Adrian Schroeter <adrian@suse.de>
+  Copyright (C) 2004 Benjamin Meyer <ben + audiocd at meyerhome dot net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
