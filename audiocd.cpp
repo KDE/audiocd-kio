@@ -49,11 +49,11 @@ extern "C"
    by linux/cdrom.h.  The only chance is to undef it again, so it gets
    included.  (matz) */
 #undef _I386_TYPES_H
+#endif
 /* And <linux/byteorder/swab.h> uses GNU C extensions without providing
    fallbacks for non-GNUisms.  Fortunately we (or other headers) don't
    need the swab routines.  */
 #define _LINUX_BYTEORDER_SWAB_H
-#endif
 #include <linux/cdrom.h>
 #endif
 #include <sys/ioctl.h>
