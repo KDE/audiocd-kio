@@ -331,7 +331,7 @@ int main ()
      AC_MSG_RESULT($msg)
      AC_DEFINE_UNQUOTED(HAVE_VORBIS, $have_vorbis_value, [Define if you have vorbis])
      VORBISFILE_LIBS="-lvorbisfile"
-     VORBISENC_LIBS="-lvorbisenc -lvorbis"
+     VORBISENC_LIBS="-lvorbisenc -lvorbis -logg"
      KCM_AUDIOCD="kcmaudiocd"	
      KAUDIOCREATOR="kaudiocreator"
   else
