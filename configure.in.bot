@@ -1,6 +1,7 @@
 if test "$with_lame" = "NOTFOUND"; then
         echo ""
-        echo "lame not found, audiocd:/ will be built without MP3 support"
+        echo "lame not found, MP3 support will be built into audiocd:/, but"
+	echo "if the library isn't present at runtime it will be disabled."
         echo "See http://lame.sourceforge.net/"
         echo ""
         all_tests=bad
