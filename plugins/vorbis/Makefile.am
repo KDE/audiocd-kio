@@ -13,3 +13,6 @@ libaudiocd_encoder_vorbis_la_LDFLAGS = $(VORBIS_RPATH) -avoid-version -module -n
 pluginsdir = $(kde_datadir)/audiocd/plugins
 
 METASOURCES = AUTO
+
+messages: rc.cpp
+	$(XGETTEXT) *.cpp -o $(podir)/audiocd_encoder_vorbis.pot
