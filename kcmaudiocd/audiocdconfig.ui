@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>509</width>
-            <height>639</height>
+            <height>631</height>
         </rect>
     </property>
     <property name="caption">
@@ -190,12 +190,6 @@
                         <property name="sizeType">
                             <enum>Expanding</enum>
                         </property>
-                        <property name="sizeHint">
-                            <size>
-                                <width>0</width>
-                                <height>20</height>
-                            </size>
-                        </property>
                     </spacer>
                 </vbox>
             </widget>
@@ -218,41 +212,7 @@
                     </property>
                     <widget class="QGroupBox">
                         <property name="name">
-                            <cstring>GroupBox193_2_2</cstring>
-                        </property>
-                        <property name="title">
-                            <string>&amp;Encoding Method</string>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>11</number>
-                            </property>
-                            <property name="spacing">
-                                <number>6</number>
-                            </property>
-                            <widget class="QComboBox">
-                                <item>
-                                    <property name="text">
-                                        <string>Quality Based</string>
-                                    </property>
-                                </item>
-                                <item>
-                                    <property name="text">
-                                        <string>Bitrate Based</string>
-                                    </property>
-                                </item>
-                                <property name="name">
-                                    <cstring>vorbis_enc_method</cstring>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QGroupBox">
-                        <property name="name">
-                            <cstring>vorbis_bitrate_settings</cstring>
+                            <cstring>ogg_settings</cstring>
                         </property>
                         <property name="enabled">
                             <bool>true</bool>
@@ -502,25 +462,6 @@
                     </widget>
                     <widget class="QGroupBox">
                         <property name="name">
-                            <cstring>vorbis_quality_settings</cstring>
-                        </property>
-                        <property name="title">
-                            <string>Vorbis &amp;Quality Setting</string>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>11</number>
-                            </property>
-                            <property name="spacing">
-                                <number>6</number>
-                            </property>
-                        </hbox>
-                    </widget>
-                    <widget class="QGroupBox">
-                        <property name="name">
                             <cstring>GroupBox193</cstring>
                         </property>
                         <property name="title">
@@ -561,12 +502,6 @@
                         </property>
                         <property name="sizeType">
                             <enum>Expanding</enum>
-                        </property>
-                        <property name="sizeHint">
-                            <size>
-                                <width>0</width>
-                                <height>230</height>
-                            </size>
                         </property>
                     </spacer>
                 </vbox>
@@ -1400,12 +1335,6 @@
                         <property name="sizeType">
                             <enum>Expanding</enum>
                         </property>
-                        <property name="sizeHint">
-                            <size>
-                                <width>0</width>
-                                <height>20</height>
-                            </size>
-                        </property>
                     </spacer>
                 </vbox>
             </widget>
@@ -1701,12 +1630,6 @@
                                                 <property name="sizeType">
                                                     <enum>Expanding</enum>
                                                 </property>
-                                                <property name="sizeHint">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>20</height>
-                                                    </size>
-                                                </property>
                                             </spacer>
                                         </vbox>
                                     </widget>
@@ -1723,12 +1646,6 @@
                         </property>
                         <property name="sizeType">
                             <enum>Expanding</enum>
-                        </property>
-                        <property name="sizeHint">
-                            <size>
-                                <width>0</width>
-                                <height>20</height>
-                            </size>
                         </property>
                     </spacer>
                 </vbox>
