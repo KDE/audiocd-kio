@@ -30,6 +30,7 @@
 #include <qlistbox.h>
 #include <qpushbutton.h>
 #include <kaboutdata.h>
+#include <knuminput.h>
 
 #include "kcmaudiocd.moc"
 
@@ -99,7 +100,17 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     vorbis_max_br = audiocdConfig->vorbis_max_br;
     vorbis_nominal_br = audiocdConfig->vorbis_nominal_br;
 
+    vorbis_enc_method = audiocdConfig->vorbis_enc_method;
+
+    vorbis_bitrate_settings = audiocdConfig->vorbis_bitrate_settings;
+    vorbis_quality_settings = audiocdConfig->vorbis_quality_settings;
+    vorbis_quality = audiocdConfig->vorbis_quality;
     vorbis_comments = audiocdConfig->vorbis_comments;
+
+    /* This should be in audiocdConfig, but I can't figure out how to
+     * make Qt Designer display KDE specific widget properties. */
+    vorbis_quality->setPrecision(1);
+    vorbis_quality->setRange(0.0, 10.0, 0.2, true);
 
     cd_autosearch_check = audiocdConfig->cd_autosearch_check;
     cd_device_string = audiocdConfig->cd_device_string;
@@ -190,6 +201,8 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect(vorbis_min_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(vorbis_max_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
     connect(vorbis_nominal_br,SIGNAL(activated(int)),SLOT(slotConfigChanged()));
+    connect(vorbis_enc_method,SIGNAL(activated(int)),this,SLOT(slotSelectVorbisMethod(int)));
+    connect(vorbis_quality,SIGNAL(valueChanged(double)),this,SLOT(slotConfigChanged()));
     connect( vorbis_comments, SIGNAL( clicked ()),SLOT( slotConfigChanged()));
     slotServerSelectionChanged();
 };
@@ -271,8 +284,10 @@ void KAudiocdModule::defaults() {
   vorbis_min_br->setCurrentItem(0);
   vorbis_max_br->setCurrentItem(13);
   vorbis_nominal_br->setCurrentItem(1);
-
+  vorbis_quality->setValue(3.0);
   vorbis_comments->setChecked(true);
+  vorbis_enc_method->setCurrentItem(0);
+  slotSelectVorbisMethod(0);
 }
 
 void KAudiocdModule::save() {
@@ -366,6 +381,8 @@ void KAudiocdModule::save() {
   config->writeEntry("vorbis_min_bitrate",vorbis_min_bitrate);
   config->writeEntry("vorbis_max_bitrate",vorbis_max_bitrate);
   config->writeEntry("vorbis_nominal_bitrate",vorbis_nominal_bitrate);
+  config->writeEntry("encmethod", vorbis_enc_method->currentItem());
+  config->writeEntry("quality", vorbis_quality->value());
 
   config->sync();
 
@@ -458,9 +475,12 @@ void KAudiocdModule::load() {
   set_vorbis_max_br->setChecked(config->readBoolEntry("set_vorbis_max_bitrate",false));
   set_vorbis_nominal_br->setChecked(config->readBoolEntry("set_vorbis_nominal_bitrate",true));
 
+  int vorbis_encmethod = config->readNumEntry("encmethod", 0);
+  vorbis_enc_method->setCurrentItem(vorbis_encmethod);
+  slotSelectVorbisMethod(vorbis_encmethod);
+
+  vorbis_quality->setValue(config->readDoubleNumEntry("quality", 3.0));
   vorbis_comments->setChecked(config->readBoolEntry("vorbis_comments",true));
-
-
 }
 
 int KAudiocdModule::getBitrateIndex(int value) {
@@ -611,6 +631,23 @@ void KAudiocdModule::slotChangeFilter() {
 
   slotConfigChanged();
 
+}
+
+//
+// slot for switching between quality and bitrate based encoding
+//
+void KAudiocdModule::slotSelectVorbisMethod(int index) {
+  if (index == 1 ) {
+    // bitrate based encoding selected
+    vorbis_bitrate_settings->show();
+    vorbis_quality_settings->hide();
+  } else {
+    // quality based encoding selected
+    vorbis_bitrate_settings->hide();
+    vorbis_quality_settings->show();
+  }
+  slotConfigChanged();
+  return;
 }
 
 

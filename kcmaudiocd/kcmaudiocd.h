@@ -51,6 +51,7 @@ public slots:
 private slots:
 
   void slotSelectMethod(int);
+  void slotSelectVorbisMethod(int);
   void slotUpdateVBRWidgets();
   void slotConfigChanged();
   void slotChangeFilter();
@@ -83,7 +84,10 @@ private:
   QCheckBox *copyright, *original, *iso, *id3_tag, *crc;
 
   QCheckBox *set_vorbis_min_br, *set_vorbis_max_br, *set_vorbis_nominal_br, *vorbis_comments;
-  QComboBox *vorbis_min_br, *vorbis_max_br, *vorbis_nominal_br;
+  QComboBox *vorbis_min_br, *vorbis_max_br, *vorbis_nominal_br, *vorbis_enc_method;
+  KDoubleNumInput *vorbis_quality;
+  QGroupBox *vorbis_bitrate_settings, *vorbis_quality_settings;
+
   QCheckBox *enable_lowpass, *enable_highpass, *set_lpf_width, *set_hpf_width;
   QComboBox *enc_method, *cbr_bitrate, *vbr_min_brate, *vbr_max_brate, *vbr_mean_brate, *stereo;
 
