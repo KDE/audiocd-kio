@@ -9,8 +9,6 @@ INCLUDES = -I$(srcdir)/../plugins $(all_includes)
 
 kcm_audiocd_la_METASOURCES = AUTO
 
-KDE_ICON = cdrom_unmount
-
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kcmaudiocd.pot
 
