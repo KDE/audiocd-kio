@@ -111,7 +111,6 @@ class AudioCDProtocol : public KIO::SlaveBase
   private:
     QPtrList<AudioCDEncoder> encoders;
     cdrom_drive * pickDrive();
-    unsigned int get_discid(cdrom_drive *);
     
     // These are the only garenteed encoders to be built, the rest
     // are dynamic depending on other libraries on the system

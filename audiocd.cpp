@@ -228,7 +228,7 @@ class AudioCDProtocol::Private
     Private()
     {
       clearargs();
-      discid = 0;
+      discid = "";
       based_on_cddb = false;
       s_bytrack = i18n("By Track");
       s_track = i18n("Track %1");
@@ -245,7 +245,7 @@ class AudioCDProtocol::Private
 
     QString path;
     int paranoiaLevel;
-    unsigned int discid;
+    QString discid;
     uint tracks;
     CDInfoList cddb_info;
     QString cd_title;
@@ -623,54 +623,34 @@ AudioCDProtocol::stat(const KURL & url)
   finished();
 }
 
-  unsigned int
-AudioCDProtocol::get_discid(struct cdrom_drive * drive)
-{
-  unsigned int id = 0;
-  for (int i = 1; i <= drive->tracks; i++)
-    {
-      unsigned int n = cdda_track_firstsector (drive, i) + 150;
-      if (i == hack_track)
-        n = start_of_first_data_as_in_toc + 150;
-      n /= 75;
-      while (n > 0)
-        {
-          id += n % 10;
-          n /= 10;
-        }
-    }
-  unsigned int l = (my_last_sector(drive) + 1) / 75;
-  l -= my_first_sector(drive) / 75;
-  id = ((id % 255) << 24) | (l << 8) | drive->tracks;
-  return id;
-}
-
 void
 AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 {
-  unsigned int id = get_discid(drive);
-  if (id == d->discid)
+  KCDDB::TrackOffsetList qvl;
+
+  for(int i=0; i< d->tracks; i++){
+      d->is_audio[i] = cdda_track_audiop(drive, i + 1);
+      // Does this ever happen??
+      //qDebug("%i", hack_track);
+      if (((int)i+1) != hack_track)
+        qvl.append(cdda_track_firstsector(drive, i + 1) + 150);
+      else
+        qvl.append(start_of_first_data_as_in_toc + 150);
+  }
+
+  qvl.append(my_first_sector(drive)+150);
+  qvl.append(my_last_sector(drive)+150);
+  
+  KCDDB::CDDB cddb;
+  QString id = cddb.trackOffsetListToId(qvl);
+  if (id == d->discid){
     return;
+  }
   d->discid = id;
   d->tracks = cdda_tracks(drive);
   d->cd_title = i18n("No Title");
   d->templateTitles.clear();
   d->track_titles.clear();
-  KCDDB::TrackOffsetList qvl;
-
-  for (uint i = 0; i < d->tracks; i++)
-    {
-      d->is_audio[i] = cdda_track_audiop(drive, i + 1);
-      if (((int)i+1) != hack_track)
-        qvl.append(cdda_track_firstsector(drive, i + 1) + 150);
-      else
-        qvl.append(start_of_first_data_as_in_toc + 150);
-    }
-  /* Here the + 150 isn't strictly needed, as internally both are subtracted
-     so it cancels out, but for consistency we add it here too.  */
-  qvl.append(my_first_sector(drive) + 150);
-  qvl.append(my_last_sector(drive) + 150);
-
   KCDDB::Client c;
 
   KCDDB::CDDB::Result result = c.lookup(qvl);
