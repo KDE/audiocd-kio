@@ -164,7 +164,7 @@ long EncoderVorbis::flush_vorbis(void) {
   return processed;
 }
 
-unsigned long EncoderVorbis::size(long time_secs){
+unsigned long EncoderVorbis::size(long time_secs) const {
   long vorbis_size;
   switch (d->vorbis_encode_method)
   {
@@ -196,7 +196,7 @@ unsigned long EncoderVorbis::size(long time_secs){
   return vorbis_size;
 }
 
-const char * EncoderVorbis::mimeType(){
+const char * EncoderVorbis::mimeType() const{
   return "audio/vorbis";
 }
 

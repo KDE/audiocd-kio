@@ -41,10 +41,10 @@ public:
   ~EncoderWav(){};
   virtual bool init(){ return true; };
   virtual void loadSettings(KConfig *){};
-  virtual unsigned long size(long time_secs);
-  virtual QString type(){ return "Wav"; };
-  virtual const char * fileType(){ return "wav"; };
-  virtual const char * mimeType();
+  virtual unsigned long size(long time_secs) const;
+  virtual QString type() const { return "Wav"; };
+  virtual const char * fileType() const { return "wav"; };
+  virtual const char * mimeType() const;
   
   virtual void fillSongInfo(QString ,
 		            QString ,

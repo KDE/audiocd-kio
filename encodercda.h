@@ -42,10 +42,10 @@ public:
   ~EncoderCda(){};
   virtual bool init(){ return true; };
   virtual void loadSettings(KConfig *){};
-  virtual unsigned long size(long time_secs);
-  virtual QString type(){ return "CDA"; };
-  virtual const char * mimeType();
-  virtual const char * fileType(){ return "cda"; };
+  virtual unsigned long size(long time_secs) const;
+  virtual QString type() const { return "CDA"; };
+  virtual const char * mimeType() const;
+  virtual const char * fileType() const { return "cda"; };
   virtual void fillSongInfo(QString,
 		            QString,
 			    QString,

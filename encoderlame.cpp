@@ -447,11 +447,11 @@ void EncoderLame::loadSettings(KConfig *config){
   }
 }
 
-unsigned long EncoderLame::size(long time_secs){
+unsigned long EncoderLame::size(long time_secs) const {
   return (time_secs * d->bitrate * 1000)/8;
 }
 
-const char * EncoderLame::mimeType(){
+const char * EncoderLame::mimeType() const {
   return "audio/x-mp3";
 }
 

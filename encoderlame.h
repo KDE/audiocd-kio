@@ -39,12 +39,12 @@ public:
   EncoderLame(KIO::SlaveBase *slave);
   ~EncoderLame();
 
-  virtual QString type(){ return "MP3"; };
+  virtual QString type() const { return "MP3"; };
   virtual bool init();
   virtual void loadSettings(KConfig *config);
-  virtual unsigned long size(long time_secs);
-  virtual const char * fileType(){ return "mp3"; };
-  virtual const char * mimeType();
+  virtual unsigned long size(long time_secs) const;
+  virtual const char * fileType() const { return "mp3"; };
+  virtual const char * mimeType() const;
 
   
   virtual void fillSongInfo(QString trackName,

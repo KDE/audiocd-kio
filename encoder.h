@@ -61,26 +61,26 @@ public:
    * @param time_secs the lengh of the audio track in seconds.
    * @returns the size of a file if it is time_secs in length.
    */ 
-  virtual unsigned long size(long time_secs) = 0;
+  virtual unsigned long size(long time_secs) const = 0;
 
   /**
    * @returns the generic user string type/name of this encoder
    * Examples: "MP3", "Ogg Vorbis", "Wav", "FID Level 2", etc
    */ 
-  virtual QString type() = 0;
+  virtual QString type() const = 0;
   
   /**
    * @returns the mime type for the files this encoder produces.
    * Example: "audio/x-wav"
    */ 
-  virtual const char * mimeType() = 0;
+  virtual const char * mimeType() const = 0;
 
   /**
    * @returns the file type for the files this encoder produces.
    * Used in naming of the file for example foo.mp3
    * Examples: "mp3", "ogg", "wav"
    */ 
-  virtual const char * fileType() = 0;
+  virtual const char * fileType() const = 0;
 
   /**
    * Before the read functions are called this is 

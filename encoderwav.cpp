@@ -30,11 +30,11 @@ class EncoderWav::Private
   
 };
 
-unsigned long EncoderWav::size(long time_secs){
+unsigned long EncoderWav::size(long time_secs) const {
   return (EncoderCda::size(time_secs) + 44);
 }
 
-const char * EncoderWav::mimeType(){
+const char * EncoderWav::mimeType() const {
   return "audio/x-wav";
 }
 

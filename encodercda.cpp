@@ -30,12 +30,12 @@ class EncoderCda::Private
   
 };
 
-unsigned long EncoderCda::size(long time_secs){
+unsigned long EncoderCda::size(long time_secs) const {
   //return (time_secs *   (44100 * 2 * 16))/8;
   return (time_secs) * 176400;
 }
 
-const char * EncoderCda::mimeType(){
+const char * EncoderCda::mimeType() const {
   return "audio/x-cda";
 }
 

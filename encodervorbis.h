@@ -42,12 +42,12 @@ public:
   EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis();
   
-  virtual QString type(){ return "Ogg  Vorbis"; };
+  virtual QString type() const { return "Ogg  Vorbis"; };
   virtual bool init();
   virtual void loadSettings(KConfig *config);
-  virtual unsigned long size(long time_secs);
-  virtual const char * fileType(){ return "ogg"; };
-  virtual const char * mimeType();
+  virtual unsigned long size(long time_secs) const;
+  virtual const char * fileType() const { return "ogg"; };
+  virtual const char * mimeType() const;
 
   virtual void fillSongInfo(QString trackName,
 		            QString cdArtist,
