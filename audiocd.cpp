@@ -76,6 +76,36 @@ extern "C"
 
 #ifdef HAVE_LAME
 #include <lame/lame.h>
+#else
+
+/*
+ * These are copied from lame.h and should allow lame support to be compiled in
+ * even if the headers are not available.  This was requested by the Debian
+ * packagers so that this can be compiled in and be purely a runtime dependancy.
+ */
+
+struct lame_global_flags;
+typedef lame_global_flags *lame_t;
+
+typedef enum vbr_mode_e {
+  vbr_off=0,
+  vbr_mt,
+  vbr_rh,
+  vbr_abr,
+  vbr_mtrh,
+  vbr_max_indicator,
+  vbr_default=vbr_rh
+} vbr_mode;
+
+typedef enum MPEG_mode_e {
+  STEREO = 0,
+  JOINT_STEREO,
+  DUAL_CHANNEL,
+  MONO,
+  NOT_SET,
+  MAX_INDICATOR
+} MPEG_mode;
+
 #endif
 
 #ifdef HAVE_VORBIS
@@ -108,7 +138,6 @@ extern "C"
   int FixupTOC(cdrom_drive *d, int tracks);
 #endif
 
-#ifdef HAVE_LAME
   static int _lamelibMissing = false;
 
   static lame_global_flags* (*_lamelib_lame_init)(void) = NULL;
@@ -159,7 +188,6 @@ extern "C"
           lame_global_flags*, int ) = NULL;
   static int  (*_lamelib_lame_set_highpasswidth) (
           lame_global_flags*, int ) = NULL;
-#endif
 }
 
 int start_of_first_data_as_in_toc;
@@ -333,11 +361,9 @@ class AudioCDProtocol::Private
     QString s_vorbis;
     QString s_fullCD;
 
-#ifdef HAVE_LAME
-  lame_global_flags *gf;
-  int bitrate;
-  bool write_id3;
-#endif
+    lame_global_flags *gf;
+    int bitrate;
+    bool write_id3;
 
 #ifdef HAVE_VORBIS
   ogg_stream_state os; /* take physical pages, weld into a logical stream of packets */
@@ -466,12 +492,11 @@ static QString findMostRecentLib(QString dir, QString name)
 }
 #endif
 
-#ifdef HAVE_LAME
 bool AudioCDProtocol::initLameLib(){
    if ( _lamelib_lame_init != NULL )
       return true;
 
-   if ( _lamelibMissing == true )  // we tried already, do not try again
+   if ( _lamelibMissing )  // we tried already, do not try again
       return false;
 
    // load the lame lib, if not done already
@@ -646,7 +671,6 @@ bool AudioCDProtocol::initLameLib(){
    (void) ((_lamelib_id3tag_init)(d->gf));
    return true;
 }
-#endif
 
 struct cdrom_drive *
 AudioCDProtocol::initRequest(const KURL & url)
@@ -660,9 +684,7 @@ AudioCDProtocol::initRequest(const KURL & url)
     return 0;
   }
 
-#ifdef HAVE_LAME
   initLameLib();
-#endif
 
 #ifdef HAVE_VORBIS
 
@@ -848,8 +870,7 @@ AudioCDProtocol::get(const KURL & url)
 
  FileType filetype = determineFiletype(d->fname);
 
-#ifdef HAVE_LAME
-  if ( initLameLib() == true ){
+  if ( initLameLib() ){
      if (filetype == FileTypeMP3 && d->based_on_cddb && d->write_id3) {
        /* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
        const char *tname;
@@ -872,8 +893,7 @@ AudioCDProtocol::get(const KURL & url)
        kdDebug(7117) << "lame init params failed" << endl;
        return;
      }
-  };
-#endif
+  }
 
 #ifdef HAVE_VORBIS
 
@@ -922,14 +942,12 @@ AudioCDProtocol::get(const KURL & url)
   long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector);
   long time_secs      = (8 * totalByteCount) / (44100 * 2 * 16);
 
-#ifdef HAVE_LAME
-  if ( initLameLib() == true ){
+  if ( initLameLib() ){
     if (filetype == FileTypeMP3) {
       totalSize((time_secs * d->bitrate * 1000)/8);
       mimeType(QFL1("audio/x-mp3"));
     }
-  };
-#endif
+  }
 
 #ifdef HAVE_VORBIS
   if (filetype == FileTypeOggVorbis) {
@@ -1232,12 +1250,10 @@ AudioCDProtocol::listDir(const KURL & url)
       app_dir(entry, QFL1("dev"), 1);
       listEntry(entry, false);
 
-#ifdef HAVE_LAME
-      if ( initLameLib() == true ){
+      if ( initLameLib() ){
          app_dir(entry, d->s_mp3, d->tracks);
          listEntry(entry, false);
-      };
-#endif
+      }
 
 #ifdef HAVE_VORBIS
       app_dir(entry, d->s_vorbis, d->tracks);
@@ -1246,13 +1262,14 @@ AudioCDProtocol::listDir(const KURL & url)
 
       // add the directory for "fullCD" files
       int numberOfFullCDFiles = 1 /* fullCD.wav */
-      #ifdef HAVE_LAME
-                              + 1 /* fullCD.mp3 */
-      #endif
       #ifdef HAVE_VORBIS
                               + 1 /* fullCD.ogg */
       #endif
                               ;
+
+      if ( ! _lamelibMissing )
+	  numberOfFullCDFiles++;
+
       if (d->based_on_cddb)
       { // we are using CDDB. there will
         // be twice as much files (also <cd_title>.{wav,mp3,ogg})
@@ -1317,13 +1334,10 @@ AudioCDProtocol::listDir(const KURL & url)
               case ByTrack:
                 addEntry(d->s_track.arg(num2), FileTypeWAV, drive, i);
                 break;
-#ifdef HAVE_LAME
               case MP3:
-                if ( initLameLib() == true ){
+		if ( initLameLib() )
                   addEntry(d->titles[i - 1], FileTypeMP3, drive, i);
-                }
                 break;
-#endif
               case Vorbis:
                 addEntry(d->titles[i - 1], FileTypeOggVorbis, drive, i);
                 break;
@@ -1358,10 +1372,10 @@ AudioCDProtocol::addEntry(const QString& trackTitle, enum FileType fileType, str
   // support of those formats.
   // => less work/less possibility of mistake/less #ifdef
   // ugliness for the caller.
-#ifndef HAVE_LAME
-  if (fileType == FileTypeMP3)
+
+  if ( _lamelibMissing && fileType == FileTypeMP3)
     return;
-#endif
+
 #ifndef HAVE_VORBIS
   if (fileType == FileTypeOggVorbis)
     return;
@@ -1441,10 +1455,9 @@ AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDProtocol::Fi
   );
 
   long length_seconds = (filesize) / 176400;
-#ifdef HAVE_LAME
-  if ( initLameLib() == true && filetype == FileTypeMP3)
+
+  if ( initLameLib() && filetype == FileTypeMP3)
       result = (length_seconds * d->bitrate*1000) / 8;
-#endif
 
 #ifdef HAVE_VORBIS
   if (filetype == FileTypeOggVorbis)
@@ -1580,10 +1593,8 @@ AudioCDProtocol::paranoiaRead(
 
   paranoia_seek(paranoia, firstSector, SEEK_SET);
 
-#ifdef HAVE_LAME
 #define mp3buffer_size  8000
 static char mp3buffer[mp3buffer_size];
-#endif
 
   long processed(0);
   long currentSector(firstSector);
@@ -1643,8 +1654,7 @@ static char mp3buffer[mp3buffer_size];
     {
       ++currentSector;
 
-#ifdef HAVE_LAME
-      if ( initLameLib() == true && filetype == FileTypeMP3 ){
+      if ( initLameLib() && filetype == FileTypeMP3 ){
          int mp3bytes =
            (_lamelib_lame_encode_buffer_interleaved)
             (d->gf,buf,CD_FRAMESAMPLES,(unsigned char *)mp3buffer,(int)mp3buffer_size) ;
@@ -1663,7 +1673,6 @@ static char mp3buffer[mp3buffer_size];
            processed += mp3bytes;
          }
       }
-#endif
 
 #ifdef HAVE_VORBIS
       if (filetype == FileTypeOggVorbis) {
@@ -1700,8 +1709,7 @@ static char mp3buffer[mp3buffer_size];
       processedSize(processed);
     }
   }
-#ifdef HAVE_LAME
-  if ( initLameLib() == true && filetype == FileTypeMP3) {
+  if ( initLameLib() && filetype == FileTypeMP3) {
      int mp3bytes = _lamelib_lame_encode_finish(d->gf,(unsigned char *)mp3buffer,(int)mp3buffer_size);
 
      if (mp3bytes < 0 ) {
@@ -1718,7 +1726,6 @@ static char mp3buffer[mp3buffer_size];
      d->gf = (_lamelib_lame_init)();
      (void) ((_lamelib_id3tag_init)(d->gf));
   }
-#endif
 
 #ifdef HAVE_VORBIS
   if (filetype == FileTypeOggVorbis) {
@@ -1758,8 +1765,7 @@ void AudioCDProtocol::getParameters() {
     d->paranoiaLevel = 2;  // never skip on errors of the medium, should be default for high quality
   }
 
-#ifdef HAVE_LAME
-  if ( initLameLib() == true ){
+  if ( initLameLib() ){
 
      config->setGroup("MP3");
 
@@ -1851,7 +1857,6 @@ void AudioCDProtocol::getParameters() {
 
      }
   };
-#endif // HAVE_LAME
 
 #ifdef HAVE_VORBIS
 
