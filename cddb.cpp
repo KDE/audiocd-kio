@@ -290,6 +290,11 @@ CDDB::parse_read_resp(QTextStream *stream, QTextStream *write_stream)
 		}
 	    }
 	}
+      else if (r.left(6) == "DYEAR=")
+      {
+	  r.remove(0, 6);
+	  m_year = r.toInt();
+      }
     }
 
   /* XXX We should canonicalize the strings ("\n" --> '\n' e.g.) */
@@ -403,6 +408,7 @@ CDDB::queryCD(QValueList<int>& track_ofs)
   m_category = "";
   m_names.clear();
   m_discid = id;
+  m_year = 0;
   if (local)
     {
       QTextStream stream(&file);

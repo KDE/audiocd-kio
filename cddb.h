@@ -40,6 +40,7 @@ public:
   QString category() const { return m_category; }
   int trackCount() const { return m_tracks; }
   QString track(int i) const;
+  int year() const { return m_year; }
 private:
   bool readLine(QCString& s);
   bool writeLine(const QCString& s);
@@ -60,6 +61,7 @@ private:
   QString m_artist;
   QString m_category;
   QStringList m_names;
+  int m_year;
 };
 
 #endif

@@ -313,6 +313,7 @@ class AudioCDProtocol::Private
     QString cd_artist;
     QString cd_category;
     QStringList titles;
+    int cd_year;
     bool is_audio[100];
     CDDB *cddb;
     bool based_on_cddb;
@@ -831,7 +832,7 @@ AudioCDProtocol::get(const KURL & url)
        const_cast<char *>(QString::number(trackNumber).utf8().data())
       );
 
-     QDateTime dt = QDateTime::currentDateTime();
+     QDateTime dt = QDate(d->cd_year, 1, 1);
      vorbis_comment_add_tag
       (
        &d->vc,
@@ -1012,6 +1013,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
           d->cd_title = d->cddb->title();
           d->cd_artist = d->cddb->artist();
           d->cd_category = d->cddb->category();
+          d->cd_year = d->cddb->year();
           for (int i = 0; i < d->tracks; i++)
             {
               QString n;
