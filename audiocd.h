@@ -42,7 +42,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 {
 	public:
 
-	AudioCDProtocol(const QCString & pool, const QCString & app);
+	AudioCDProtocol(const QCString & protocol, const QCString & pool, const QCString & app);
 	virtual ~AudioCDProtocol();
 
 	virtual void get(const KURL &);

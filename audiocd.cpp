@@ -82,6 +82,7 @@ KDE_EXPORT int kdemain(int argc, char ** argv);
 #include <kmacroexpander.h>
 #include <qfile.h>
 #include <qfileinfo.h>
+#include <kcmdlineargs.h>
 #include <kdebug.h>
 #include <kprotocolmanager.h>
 #include <klocale.h>
@@ -196,22 +197,29 @@ long my_first_sector(cdrom_drive *drive)
 
 using namespace AudioCD;
 
+static const KCmdLineOptions options[] =
+{
+    { "+protocol", I18N_NOOP("Protocol name"), 0 },
+    { "+pool", I18N_NOOP("Socket name"), 0 },
+    { "+app", I18N_NOOP("Socket name"), 0 },
+    KCmdLineLastOption
+};
+
 int
 kdemain(int argc, char ** argv)
 {
 	// KApplication is used as libkcddb uses ioslaves which need a valid
 	// kapp pointer
-	KApplication app(argc, argv, "kio_audiocd", false, true);
+	putenv(strdup("SESSION_MANAGER="));
+	KApplication::disableAutoDcopRegistration();
+	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, 0, 0, 0);
+	KCmdLineArgs::addCmdLineOptions(options);
+	KApplication app(false, false);
 
 	kdDebug(7117) << "Starting " << getpid() << endl;
 
-	if (argc != 4)
-	{
-		 kdError(7117) << "Usage: kio_audiocd protocol domain-socket1 domain-socket2" << endl;
-		 exit(-1);
-	}
-
-	AudioCDProtocol slave(argv[2], argv[3]);
+	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+	AudioCDProtocol slave(args->arg(0), args->arg(1), args->arg(2));
 	slave.dispatchLoop();
 
 	kdDebug(7117) << "Done" << endl;
@@ -289,8 +297,8 @@ public:
 int paranoia_read_limited_error;
 
 
-AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
-	: SlaveBase("audiocd", pool, app)
+AudioCDProtocol::AudioCDProtocol(const QCString & protocol, const QCString & pool, const QCString & app)
+	: SlaveBase(protocol, pool, app)
 {
 	d = new Private;
 
