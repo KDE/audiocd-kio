@@ -499,21 +499,25 @@ void AudioCDProtocol::get(const KURL & url)
     return;
  
   if( d->fname.contains(i18n(CDDB_INFORMATION))){
-    mimeType("text/html");
     uint choice = 1;
     if(d->fname != QString("%1.txt").arg(i18n(CDDB_INFORMATION))){
       choice= d->fname.section('_',1,1).section('.',0,0).toInt();
     }
     uint count = 1;
     CDInfoList::iterator it;
+    bool found = false;
     for ( it = d->cddb_info.begin(); it != d->cddb_info.end(); ++it ){
       if(count == choice){
+        mimeType("text/html");
         data(QCString( (*it).toString().latin1() ));
-        break;
+        finished();
+	found = true;
+	break;
       }
       count++;
     }
-    finished();
+    if(!found)
+      error(KIO::ERR_DOES_NOT_EXIST, url.path());
     cdda_close(drive);
     return;
   }
@@ -628,7 +632,7 @@ AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 {
   KCDDB::TrackOffsetList qvl;
 
-  for(int i=0; i< d->tracks; i++){
+  for(uint i=0; i< d->tracks; i++){
       d->is_audio[i] = cdda_track_audiop(drive, i + 1);
       // Does this ever happen??
       //qDebug("%i", hack_track);
@@ -784,9 +788,9 @@ AudioCDProtocol::listDir(const KURL & url)
     for ( it = d->cddb_info.begin(); it != d->cddb_info.end(); ++it ){
       (*it).toString();
       if(count == 1)
-        app_file(entry, QString("%1.txt").arg(i18n(CDDB_INFORMATION)), ((*it).toString().length()));
+        app_file(entry, QString("%1.txt").arg(i18n(CDDB_INFORMATION)), ((*it).toString().length())+1);
       else
-        app_file(entry, QString("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(count), ((*it).toString().length()));
+        app_file(entry, QString("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(count), ((*it).toString().length())+1);
       count++;
       listEntry(entry, false);
     }
