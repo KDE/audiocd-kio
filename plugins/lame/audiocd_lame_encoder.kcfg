@@ -59,7 +59,7 @@
       <default>false</default>
     </entry>
     <entry name="vbr_min_hard" type="Bool">
-      <label>Minima Vlaue is a ahrd limit</label>
+      <label>Minimal Value is a hard limit</label>
       <default>false</default>
     </entry>
     <entry name="vbr_max_br" type="Bool">
@@ -88,7 +88,7 @@
       <max>13</max>
     </entry>
     <entry name="vbr_mean_brate" type="Int">
-      <label>Averate bitrate value</label>
+      <label>Average bitrate value</label>
       <default>10</default>
       <min>0</min>
       <max>13</max>
