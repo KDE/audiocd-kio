@@ -42,7 +42,7 @@ public:
   EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis();
   
-  virtual QString type() const { return "Ogg  Vorbis"; };
+  virtual QString type() const { return "Ogg Vorbis"; };
   virtual bool init();
   virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;
