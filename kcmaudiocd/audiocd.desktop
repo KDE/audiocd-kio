@@ -141,4 +141,4 @@ Keywords[uk]=аудіо КД,КД,Ogg,Vorbis,кодування,CDDA,часто�
 Keywords[xx]=xxAudio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitratexx
 Keywords[zh_CN]=音频 CD,CD,Ogg,Vorbis,编码,CDDA,Bitrate
 
-Categories=Qt;KDE;X-KDE-settings-sound
+Categories=Qt;KDE;X-KDE-settings-sound;
