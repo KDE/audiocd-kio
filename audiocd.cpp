@@ -22,7 +22,6 @@
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-
 #include <config.h>
 
 extern "C"
@@ -76,6 +75,7 @@ extern "C"
 #include <stdlib.h>
 #include <kmacroexpander.h>
 #include <qfile.h>
+#include <qfileinfo.h>
 #include <kdebug.h>
 #include <kprotocolmanager.h>
 #include <klocale.h>
@@ -335,7 +335,16 @@ AudioCDProtocol::initRequest(const KURL & url)
 
   if (0 == drive)
   {
-    error(KIO::ERR_DOES_NOT_EXIST, url.path());
+    if(!QFile::exists(d->path))
+      error(KIO::ERR_DOES_NOT_EXIST, d->path);
+    else {
+      QFileInfo fi(d->path);
+      if(!fi.isReadable())
+        error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->path);
+      else if(!fi.isWritable())
+	 error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->path);
+      else error(KIO::ERR_ACCESS_DENIED, d->path);
+    }
     return 0;
   }
 
