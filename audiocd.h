@@ -25,10 +25,6 @@
 #include <kio/slavebase.h>
 
 class Encoder;
-class EncoderLame;
-class EncoderVorbis;
-class EncoderWav;
-class EncoderCda;
 
 struct cdrom_drive;
 
@@ -121,13 +117,6 @@ class AudioCDProtocol : public KIO::SlaveBase
 
   private:
     QMap<FileType, Encoder*> encoders;
-    Encoder *lame;
-#ifdef HAVE_VORBIS
-    Encoder *vorbis;
-#endif
-    Encoder *wav;
-    Encoder *cda;
-
     cdrom_drive * pickDrive();
     unsigned int get_discid(cdrom_drive *);
 };

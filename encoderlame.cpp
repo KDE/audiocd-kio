@@ -133,7 +133,54 @@ EncoderLame::EncoderLame(KIO::SlaveBase *slave) : Encoder(slave) {
 
 EncoderLame::~EncoderLame(){
   delete d;
+  // TODO Does this class need to clean up the KLib stuff?
 }
+
+#ifdef __OpenBSD__
+#include <qdir.h>
+#include <qstring.h>
+#include <qstringlist.h>
+
+static QString findMostRecentLib(QString dir, QString name)
+{
+       // Grab all shared libraries in the directory
+       QString filter = "lib"+name+".so.*";
+       QDir d(dir, filter);
+       if (!d.exists())
+               return NULL;
+       QStringList l = d.entryList();
+
+       // Find the best one
+       int bestmaj = -1;
+       int bestmin = -1;
+       QString best = NULL;
+       // where do we start
+       uint s = filter.length()-1;
+       for (QStringList::Iterator it = l.begin(); it != l.end(); ++it) {
+               QString numberpart = (*it).mid(s);
+               uint endmaj = numberpart.find('.');
+               if (endmaj == -1)
+                       continue;
+               bool ok;
+               int maj = numberpart.left(endmaj).toInt(&ok);
+               if (!ok)
+                       continue;
+               int min = numberpart.mid(endmaj+1).toInt(&ok);
+               if (!ok)
+                       continue;
+               if (maj > bestmaj || (maj == bestmaj && min > bestmin)) {
+                       bestmaj = maj;
+                       bestmin = min;
+                       best = (*it);
+               }
+       }
+       if (best.isNull())
+               return NULL;
+       else
+               return dir+"/"+best;
+}
+#endif
+
 
 bool EncoderLame::init(){
    if ( _lamelib_lame_init != NULL )

@@ -272,9 +272,8 @@ AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
   : SlaveBase("audiocd", pool, app)
 {
   d = new Private;
-  
   // Add encoders
-  lame = new EncoderLame(this);
+  Encoder *lame = new EncoderLame(this);
   if ( ! lame->init() ){
     delete lame;
     lame = NULL;
@@ -282,24 +281,26 @@ AudioCDProtocol::AudioCDProtocol (const QCString & pool, const QCString & app)
   else
     encoders.insert(FileTypeMP3, lame);
 #ifdef HAVE_VORBIS
-  vorbis = new EncoderVorbis(this);
+  Encoder *vorbis = new EncoderVorbis(this);
   encoders.insert(FileTypeOggVorbis, vorbis);
 #endif
-  wav = new EncoderWav(this);
+  Encoder *wav = new EncoderWav(this);
   encoders.insert(FileTypeWAV, wav);
-  cda = new EncoderCda(this);
+  Encoder *cda = new EncoderCda(this);
   encoders.insert(FileTypeCDA, cda);
 }
 
 AudioCDProtocol::~AudioCDProtocol()
 {
   delete d;
-  if(lame) delete lame;
-#ifdef HAVE_VORBIS
-  delete vorbis;
-#endif
-  delete wav;
-  delete cda;
+  
+  QMap<FileType, Encoder*>::Iterator it;
+  for ( it = encoders.begin(); it != encoders.end(); ++it ) {
+    //qDebug("Deleteing %s", it.data()->type().latin1());
+    delete it.data();
+    encoders.remove(it);
+  }
+  return;
 }
 
 QString AudioCDProtocol::extension(enum AudioCDProtocol::FileType fileType)
@@ -328,51 +329,6 @@ AudioCDProtocol::FileType AudioCDProtocol::determineFiletype(const QString & fil
   int pos = filename.findRev('.');
   return fileTypeFromExtension(filename.right(len - pos));
 }
-
-#ifdef __OpenBSD__
-#include <qdir.h>
-#include <qstring.h>
-#include <qstringlist.h>
-
-static QString findMostRecentLib(QString dir, QString name)
-{
-       // Grab all shared libraries in the directory
-       QString filter = "lib"+name+".so.*";
-       QDir d(dir, filter);
-       if (!d.exists())
-               return NULL;
-       QStringList l = d.entryList();
-
-       // Find the best one
-       int bestmaj = -1;
-       int bestmin = -1;
-       QString best = NULL;
-       // where do we start
-       uint s = filter.length()-1;
-       for (QStringList::Iterator it = l.begin(); it != l.end(); ++it) {
-               QString numberpart = (*it).mid(s);
-               uint endmaj = numberpart.find('.');
-               if (endmaj == -1)
-                       continue;
-               bool ok;
-               int maj = numberpart.left(endmaj).toInt(&ok);
-               if (!ok)
-                       continue;
-               int min = numberpart.mid(endmaj+1).toInt(&ok);
-               if (!ok)
-                       continue;
-               if (maj > bestmaj || (maj == bestmaj && min > bestmin)) {
-                       bestmaj = maj;
-                       bestmin = min;
-                       best = (*it);
-               }
-       }
-       if (best.isNull())
-               return NULL;
-       else
-               return dir+"/"+best;
-}
-#endif
 
 struct cdrom_drive *
 AudioCDProtocol::initRequest(const KURL & url)
@@ -490,9 +446,10 @@ AudioCDProtocol::initRequest(const KURL & url)
     
     // See if it matches a cddb title
     int trackNumber;
-    for (trackNumber = 0; trackNumber < d->tracks; trackNumber++)
+    for (trackNumber = 0; trackNumber < d->tracks; trackNumber++){
       if (d->titles[trackNumber] == name)
         break;
+    }
     if (trackNumber < d->tracks)
       d->req_track = trackNumber;
     else {
@@ -501,9 +458,10 @@ AudioCDProtocol::initRequest(const KURL & url)
       unsigned int start = 0;
       unsigned int end = 0;
       // Find where the numbers start
-      while (start < name.length())
+      while (start < name.length()){
         if (name[start++].isDigit())
           break;
+      }
       // Find where the numbers end
       for (end = start; end < name.length(); end++)
         if (!name[end].isDigit())
