@@ -12,3 +12,5 @@ linking=false
 moving=false
 Icon=cdaudio_unmount
 DocPath=kioslave/audiocd.html
+# This is to disable sound previews over audiocd:/
+Class=:internet
