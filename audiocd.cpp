@@ -987,7 +987,7 @@ AudioCDProtocol::parseURLArgs(const KURL & url)
   }
 }
 
-  void
+void
 AudioCDProtocol::paranoiaRead(
     struct cdrom_drive * drive,
     long firstSector,
@@ -997,87 +997,143 @@ AudioCDProtocol::paranoiaRead(
     unsigned long size
  )
 {
-  if(!encoder || !drive)
-    return;
+	if(!encoder || !drive)
+		return;
 
-  cdrom_paranoia * paranoia = paranoia_init(drive);
-  if (0 == paranoia) {
-    kdDebug(7117) << "paranoia_init failed" << endl;
-    return;
-  }
+	cdrom_paranoia * paranoia = paranoia_init(drive);
+	if (0 == paranoia) {
+		kdDebug(7117) << "paranoia_init failed" << endl;
+		return;
+	}
 
-  int paranoiaLevel = PARANOIA_MODE_FULL ^ PARANOIA_MODE_NEVERSKIP;
-  switch (d->paranoiaLevel)
-  {
-    case 0:
-      paranoiaLevel = PARANOIA_MODE_DISABLE;
-      break;
+	int paranoiaLevel = PARANOIA_MODE_FULL ^ PARANOIA_MODE_NEVERSKIP;
+	switch (d->paranoiaLevel)
+	{
+		case 0:
+			paranoiaLevel = PARANOIA_MODE_DISABLE;
+			break;
 
-    case 1:
-      paranoiaLevel |=  PARANOIA_MODE_OVERLAP;
-      paranoiaLevel &= ~PARANOIA_MODE_VERIFY;
-      break;
+		case 1:
+			paranoiaLevel |=  PARANOIA_MODE_OVERLAP;
+			paranoiaLevel &= ~PARANOIA_MODE_VERIFY;
+			break;
 
-    case 2:
-      paranoiaLevel |= PARANOIA_MODE_NEVERSKIP;
-    default:
-      break;
-  }
+		case 2:
+			paranoiaLevel |= PARANOIA_MODE_NEVERSKIP;
+		default:
+			break;
+	}
 
-  paranoia_modeset(paranoia, paranoiaLevel);
+	paranoia_modeset(paranoia, paranoiaLevel);
 
-  cdda_verbose_set(drive, CDDA_MESSAGE_PRINTIT, CDDA_MESSAGE_PRINTIT);
+	cdda_verbose_set(drive, CDDA_MESSAGE_PRINTIT, CDDA_MESSAGE_PRINTIT);
 
-  paranoia_seek(paranoia, firstSector, SEEK_SET);
+	paranoia_seek(paranoia, firstSector, SEEK_SET);
 
-  long currentSector(firstSector);
+	long currentSector(firstSector);
 
-  long processed = encoder->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector));
-  // TODO test for errors (processed<0)?
-  processedSize(processed);
-  bool ok = true;
+	unsigned long processed = encoder->readInit(CD_FRAMESIZE_RAW * (lastSector - firstSector));
+	// TODO test for errors (processed<0)?
+	processedSize(processed);
+	bool ok = true;
 
-  while (currentSector <= lastSector)
-  {
-    int16_t * buf = paranoia_read(paranoia, paranoiaCallback);
-    if (0 == buf) {
-      kdDebug(7117) << "Unrecoverable error in paranoia_read" << endl;
-      ok = false;
-      error( ERR_SLAVE_DEFINED, i18n( "Error reading audio data for %1 from the CD" ).arg( fileName ) );
-      break;
-    }
+	unsigned long lastSize = size;
+  unsigned long diff = 0;
 
-    ++currentSector;
+	while (currentSector <= lastSector)
+	{
+		int16_t * buf = paranoia_read(paranoia, paranoiaCallback);
+		if (0 == buf) {
+			kdDebug(7117) << "Unrecoverable error in paranoia_read" << endl;
+			ok = false;
+			error( ERR_SLAVE_DEFINED, i18n( "Error reading audio data for %1 from the CD" ).arg( fileName ) );
+			break;
+		}
 
-    int encoderProcessed = encoder->read(buf, CD_FRAMESAMPLES);
-    if(encoderProcessed == -1){
-      kdDebug(7117) << "Encoder processing error, stopping." << endl;
-      ok = false;
-      error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
-      break;
-    }
-    processed += encoderProcessed;
+		++currentSector;
 
-    if(processed > size)
-      totalSize(processed+1);
-    processedSize(processed);
-  }
-  
+		int encoderProcessed = encoder->read(buf, CD_FRAMESAMPLES);
+		if(encoderProcessed == -1){
+			kdDebug(7117) << "Encoder processing error, stopping." << endl;
+			ok = false;
+			error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
+			break;
+		}
+		processed += encoderProcessed;
+
+		/**
+		 * Because compression size is so 'unknown' use some guesswork
+		 * 
+		 * 1) First assume that the reported size is correct and
+		 * only change the totalSize if the guess it outside a range of %5.
+		 * 2) Only increase in size unless the decrease is %5 of last estimate.
+		 * This prevents continues small changes which is just annoying.
+		 */
+		unsigned long end = lastSector - firstSector;
+		unsigned long cur = currentSector - firstSector;
+		unsigned long estSize = (processed / cur ) * end;
+
+		// If our guess is within 5% of reported
+		// size then use the reported size.
+		unsigned long guess = (long)((100/(float)size)*estSize);
+		if((guess > 97 && guess < 103) || estSize == 0){
+			if(processed > lastSize){
+				totalSize(processed+1);
+				lastSize = processed;
+			}
+		}
+		else{
+			float percentDone = ((float)cur/(float)end);
+			// Calculate estimated amount that will be wrong
+			diff = estSize - lastSize;
+			diff = (diff*(unsigned long)((100/(float)end)*(end-cur)))/2;
+			// Need 1% of data calculated as initial buffer, use %2 to be safe
+			if( percentDone < .02 ){
+				//qDebug("val: %f, diff: %ld", ((float)cur/(float)end), diff);
+				diff = 0;
+			}
+				
+			// We are growing larger, increase total.
+			if(lastSize < estSize){
+				//qDebug("lastGuess: %ld, guess: %ld diff: %ld", lastSize, estSize, diff);
+				totalSize(estSize+diff);
+				lastSize = estSize+diff;
+			}
+			else{
+				int margin = (int)((percentDone)*75);
+				// Don't bother really trying until almost half way done.
+				if( percentDone <= .40 )
+					margin = 7;
+				unsigned long low = lastSize - lastSize/margin;
+				if(estSize < low){
+					//qDebug("low: %ld, estSize: %ld, num: %i", low, estSize, num);
+					totalSize( estSize );
+					lastSize = estSize;
+				}
+			}
+		}
+		/**
+		 * End estimation.
+		 */
+		
+		processedSize(processed);
+	}
+
 	if(processed > size)
-    totalSize(processed);
-      
-  long encoderProcessed = encoder->readCleanup();
-  if ( encoderProcessed >= 0 ) {
-      processed += encoderProcessed;
-      if(processed > size)
-        totalSize(processed);
-      processedSize(processed);
-  }
-  else if ( ok ) // i.e. no error message already emitted
-      error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
+		totalSize(processed);
 
-  paranoia_free(paranoia);
-  paranoia = 0;
+	long encoderProcessed = encoder->readCleanup();
+	if ( encoderProcessed >= 0 ) {
+		processed += encoderProcessed;
+		if(processed > size)
+			totalSize(processed);
+		processedSize(processed);
+	}
+	else if ( ok ) // i.e. no error message already emitted
+		error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
+
+	paranoia_free(paranoia);
+	paranoia = 0;
 }
 
 void AudioCDProtocol::loadSettings() {
