@@ -8,7 +8,7 @@ X-KDE-ModuleType=Library
 X-KDE-Library=audiocd
 
 Name=Audio CD IO-Slave
-Name[af]=audio cd IO-Slave
+Name[af]=Audio Cd IO-Slave
 Name[ar]=قرص صوت IO-Slave
 Name[bg]=Аудио CD IO Slave
 Name[cs]=Modul pro zvukové CD
@@ -17,7 +17,6 @@ Name[de]=Audio-CD
 Name[eo]=En/el-sklavo por muzikaj lumdiskoj
 Name[es]=IO-Slave de CD de audio
 Name[et]=Audio CD IO moodul
-Name[eu]=Audio CD IO Slave
 Name[fi]=Audiocd IO yhteyskäytäntö
 Name[fr]=Module pour CD audio
 Name[he]=תקליטורי שמע
@@ -45,7 +44,7 @@ Name[xh]=Icd Evakalayo Yesicaka Se IO
 Name[xx]=xx
 Name[zh_CN]=音频光盘 IO-Slave
 Comment=Audiocd IO Slave Configuration
-Comment[af]=klank cd io slaaf opstelling
+Comment[af]=Klank cd Io Slaaf Opstelling
 Comment[ar]=اعدادات Audiocd IO Slave
 Comment[az]=Name=Audiosd IO Kölələri Quraşdırması
 Comment[bg]=Настройки на протокола IO аудио CD
