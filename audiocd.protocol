@@ -13,3 +13,4 @@ moving=false
 Icon=cdaudio_unmount
 DocPath=kioslave/audiocd.html
 Class=:local
+ShowPreviews=false
