@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>AudiocdConfig</class>
 <widget class="QWidget">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>509</width>
-            <height>631</height>
+            <height>639</height>
         </rect>
     </property>
     <property name="caption">
@@ -190,6 +190,12 @@
                         <property name="sizeType">
                             <enum>Expanding</enum>
                         </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>0</width>
+                                <height>20</height>
+                            </size>
+                        </property>
                     </spacer>
                 </vbox>
             </widget>
@@ -212,7 +218,41 @@
                     </property>
                     <widget class="QGroupBox">
                         <property name="name">
-                            <cstring>ogg_settings</cstring>
+                            <cstring>GroupBox193_2_2</cstring>
+                        </property>
+                        <property name="title">
+                            <string>&amp;Encoding Method</string>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>11</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                            <widget class="QComboBox">
+                                <item>
+                                    <property name="text">
+                                        <string>Quality Based</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>Bitrate Based</string>
+                                    </property>
+                                </item>
+                                <property name="name">
+                                    <cstring>vorbis_enc_method</cstring>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QGroupBox">
+                        <property name="name">
+                            <cstring>vorbis_bitrate_settings</cstring>
                         </property>
                         <property name="enabled">
                             <bool>true</bool>
@@ -462,6 +502,25 @@
                     </widget>
                     <widget class="QGroupBox">
                         <property name="name">
+                            <cstring>vorbis_quality_settings</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Vorbis &amp;Quality Setting</string>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>11</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                        </hbox>
+                    </widget>
+                    <widget class="QGroupBox">
+                        <property name="name">
                             <cstring>GroupBox193</cstring>
                         </property>
                         <property name="title">
@@ -502,6 +561,12 @@
                         </property>
                         <property name="sizeType">
                             <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>0</width>
+                                <height>230</height>
+                            </size>
                         </property>
                     </spacer>
                 </vbox>
@@ -1335,6 +1400,12 @@
                         <property name="sizeType">
                             <enum>Expanding</enum>
                         </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>0</width>
+                                <height>20</height>
+                            </size>
+                        </property>
                     </spacer>
                 </vbox>
             </widget>
@@ -1630,6 +1701,12 @@
                                                 <property name="sizeType">
                                                     <enum>Expanding</enum>
                                                 </property>
+                                                <property name="sizeHint">
+                                                    <size>
+                                                        <width>0</width>
+                                                        <height>20</height>
+                                                    </size>
+                                                </property>
                                             </spacer>
                                         </vbox>
                                     </widget>
@@ -1646,6 +1723,12 @@
                         </property>
                         <property name="sizeType">
                             <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>0</width>
+                                <height>20</height>
+                            </size>
                         </property>
                     </spacer>
                 </vbox>
@@ -1700,6 +1783,24 @@
         <sender>ec_enable_check</sender>
         <signal>toggled(bool)</signal>
         <receiver>ec_skip_check</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>vbr_min_br</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>vbr_min_brate</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>vbr_max_br</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>vbr_max_brate</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>vbr_min_br</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>vbr_min_hard</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
 </connections>
