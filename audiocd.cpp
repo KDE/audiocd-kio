@@ -1278,9 +1278,12 @@ AudioCDProtocol::listDir(const KURL & url)
       addEntry(fullCDTrack, FileTypeOggVorbis, drive, -1);
       addEntry(fullCDTrack, FileTypeMP3, drive, -1);
       addEntry(fullCDTrack, FileTypeWAV, drive, -1);
-      addEntry(d->cd_title, FileTypeOggVorbis, drive, -1);
-      addEntry(d->cd_title, FileTypeMP3, drive, -1);
-      addEntry(d->cd_title, FileTypeWAV, drive, -1);
+      if (d->based_on_cddb)
+      {
+        addEntry(d->cd_title, FileTypeOggVorbis, drive, -1);
+        addEntry(d->cd_title, FileTypeMP3, drive, -1);
+        addEntry(d->cd_title, FileTypeWAV, drive, -1);
+      }
     }
     else
     { // listing another dir than the "FullCD" one.
