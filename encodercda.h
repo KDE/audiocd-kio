@@ -41,7 +41,7 @@ public:
   EncoderCda(KIO::SlaveBase *slave) : Encoder(slave) {};
   ~EncoderCda(){};
   virtual bool init(){ return true; };
-  virtual void getParameters(KConfig *){};
+  virtual void loadSettings(KConfig *){};
   virtual unsigned long size(long time_secs);
   virtual QString type(){ return "CDA"; };
   virtual const char * mimeType();

@@ -41,7 +41,7 @@ public:
 
   virtual QString type(){ return "MP3"; };
   virtual bool init();
-  virtual void getParameters(KConfig *config);
+  virtual void loadSettings(KConfig *config);
   virtual unsigned long size(long time_secs);
   virtual const char * fileType(){ return "mp3"; };
   virtual const char * mimeType();

@@ -44,7 +44,7 @@ public:
   
   virtual QString type(){ return "Ogg  Vorbis"; };
   virtual bool init();
-  virtual void getParameters(KConfig *config);
+  virtual void loadSettings(KConfig *config);
   virtual unsigned long size(long time_secs);
   virtual const char * fileType(){ return "ogg"; };
   virtual const char * mimeType();

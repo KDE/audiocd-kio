@@ -75,7 +75,7 @@ bool EncoderVorbis::init(){
   return true;
 }
 
-void EncoderVorbis::getParameters(KConfig *config){
+void EncoderVorbis::loadSettings(KConfig *config){
   config->setGroup("Vorbis");
 
   d->vorbis_encode_method = config->readNumEntry("encmethod", 0); // 0 for quality, 1 for managed bitrate

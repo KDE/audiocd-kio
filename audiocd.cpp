@@ -360,7 +360,7 @@ AudioCDProtocol::initRequest(const KURL & url)
   }
 
   // First get the parameters (settings).
-  getParameters();
+  loadSettings();
 
   // Then these parameters can be overruled by args in the URL.
   parseURLArgs(url);
@@ -1084,8 +1084,7 @@ AudioCDProtocol::paranoiaRead(
   paranoia = 0;
 }
 
-
-void AudioCDProtocol::getParameters() {
+void AudioCDProtocol::loadSettings() {
   KConfig *config;
   config = new KConfig(QFL1("kcmaudiocdrc"));
 
@@ -1111,7 +1110,7 @@ void AudioCDProtocol::getParameters() {
   // Tell the encoders to load their settings
   QMap<int, Encoder*>::Iterator it;
   for ( it = encoders.begin(); it != encoders.end(); ++it )
-    it.data()->getParameters(config);
+    it.data()->loadSettings(config);
 
   delete config;
 }
@@ -1123,4 +1122,3 @@ void paranoiaCallback(long, int)
   // Why not?
 }
 
-// vim:ts=2:sw=2:tw=78:et:

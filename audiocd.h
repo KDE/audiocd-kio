@@ -54,7 +54,7 @@ class AudioCDProtocol : public KIO::SlaveBase
     struct cdrom_drive *  findDrive(bool &noPermission);
     void                  parseURLArgs(const KURL &);
 
-    void getParameters();
+    void loadSettings();
 
     /**
      * From the request information (Private member "d"),
@@ -76,11 +76,15 @@ class AudioCDProtocol : public KIO::SlaveBase
      */
     long fileSize(long firstSector, long lastSector, int encoder);
 
+    /**
+     * The heart of this ioslave.
+     * Reads data off the cd and then passes it to an encoder to encode
+     */
     void paranoiaRead(
         struct cdrom_drive  * drive,
         long                  firstSector,
         long                  lastSector,
-        int                   encoder
+        int                   encoderId
     );
 
     struct cdrom_drive *  initRequest(const KURL &);
@@ -113,4 +117,4 @@ class AudioCDProtocol : public KIO::SlaveBase
 } // end namespace AudioCD
 
 #endif // AUDIO_CD_H
-// vim:ts=2:sw=2:tw=78:et:
+

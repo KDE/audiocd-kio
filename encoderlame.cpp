@@ -363,7 +363,7 @@ bool EncoderLame::init(){
 }
 
 
-void EncoderLame::getParameters(KConfig *config){
+void EncoderLame::loadSettings(KConfig *config){
   if ( !init() )
     return;
   

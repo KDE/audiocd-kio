@@ -53,7 +53,7 @@ public:
    * group.
    * @param config pointer to active KConfig object. 
    */ 
-  virtual void getParameters(KConfig *config) = 0;
+  virtual void loadSettings(KConfig *config) = 0;
 
   /**
    * Helper function to determine the end size of a
