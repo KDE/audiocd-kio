@@ -652,7 +652,7 @@ struct cdrom_drive *
 AudioCDProtocol::initRequest(const KURL & url)
 {
 
-  if (url.hasHost()) 
+  if (url.hasHost())
   {
     error(KIO::ERR_UNSUPPORTED_ACTION,
 	  i18n("You cannot specify a host with this protocol. "
@@ -890,7 +890,7 @@ AudioCDProtocol::get(const KURL & url)
 
     typedef QPair<QCString, QString> CommentField;
     QValueList<CommentField> commentFields;
-    
+
     commentFields.append(CommentField("title", trackName));
     commentFields.append(CommentField("artist", d->cd_artist));
     commentFields.append(CommentField("album", d->cd_title));
@@ -903,7 +903,7 @@ AudioCDProtocol::get(const KURL & url)
     }
 
     for(QValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
-      
+
       // if the value is not empty
       if(!(*it).second.isEmpty()) {
 
@@ -911,7 +911,7 @@ AudioCDProtocol::get(const KURL & url)
         char *value = qstrdup((*it).second.utf8().data());
 
         vorbis_comment_add_tag(&d->vc, key, value);
-        
+
         delete [] key;
         delete [] value;
       }
@@ -1896,7 +1896,6 @@ void AudioCDProtocol::getParameters() {
   d->fileNameTemplate = config->readEntry("file_name_template", "%n %t");
 
   delete config;
-  return;
 }
 
 void paranoiaCallback(long, int)
