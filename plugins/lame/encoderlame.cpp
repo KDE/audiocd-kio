@@ -27,6 +27,11 @@
 #include "encoderlameconfig.h"
 #include "audiocd_lame_encoder.h"
 
+#if HAVE_TAGLIB
+#include <id3v2tag.h>
+#include <id3v1tag.h>
+#endif
+
 #include <klibloader.h>
 #include <kdebug.h>
 #include <qgroupbox.h>
@@ -146,6 +151,10 @@ class EncoderLame::Private
     lame_global_flags *gf;
     int bitrate;
     bool write_id3;
+
+#if HAVE_TAGLIB
+    TagLib::ID3v2::Tag tag;
+#endif
 };
 
 EncoderLame::EncoderLame(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
@@ -501,6 +510,14 @@ long EncoderLame::readInit(long /*size*/){
 	if ( (_lamelib_lame_init_params) (d->gf) < 0) { // tell lame the new parameters
 		kdDebug(7117) << "lame init params failed" << endl;
 	}
+
+#if HAVE_TAGLIB
+	const TagLib::ByteVector data = d->tag.render();
+	QByteArray output;
+	output.setRawData(data.data(), data.size());
+	ioslave->data(output);
+	output.resetRawData(data.data(), data.size());
+#endif
 	return 0;
 }
 
@@ -547,6 +564,18 @@ long EncoderLame::readCleanup(){
     ioslave->data(output);
     output.resetRawData(mp3buffer, mp3bytes);
   }
+
+#if HAVE_TAGLIB
+  if (d->write_id3) {
+    TagLib::ID3v1::Tag id3v1tag;
+    TagLib::Tag::duplicate(&d->tag, &id3v1tag);
+    const TagLib::ByteVector data = id3v1tag.render();
+    QByteArray output;
+    output.setRawData(data.data(), data.size());
+    ioslave->data(output);
+    output.resetRawData(data.data(), data.size());
+  }
+#endif
    
   // reinit lame after finish title
   d->gf = (_lamelib_lame_init)();
@@ -561,9 +590,14 @@ void EncoderLame::fillSongInfo(QString trackName,
 			int trackNumber,
 			int cdYear){
 
-	if ( !init() )
-		return;
-
+#if HAVE_TAGLIB
+		d->tag.setTitle(QStringToTString(trackName));
+		d->tag.setArtist(QStringToTString(cdArtist));
+		d->tag.setAlbum(QStringToTString(cdTitle));
+		d->tag.setGenre(QStringToTString(cdCategory));
+		d->tag.setTrack(trackNumber);
+		d->tag.setYear(cdYear);
+#else
 	if( d->write_id3 ){
 		/* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
 		(_lamelib_id3tag_set_album)  (d->gf, cdTitle.latin1());
@@ -575,5 +609,6 @@ void EncoderLame::fillSongInfo(QString trackName,
 		tn.sprintf("%02d", trackNumber);
 		(_lamelib_id3tag_set_track) (d->gf, tn.latin1());
 	}
+#endif
 }
 

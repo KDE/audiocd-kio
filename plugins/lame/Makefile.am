@@ -1,4 +1,4 @@
-INCLUDES = -I$(srcdir)/.. $(LAME_INCS) $(all_includes)
+INCLUDES = -I$(srcdir)/.. $(LAME_INCS) $(taglib_includes) $(all_includes)
 
 kde_kcfg_DATA = audiocd_lame_encoder.kcfg
 
@@ -8,7 +8,7 @@ libaudiocd_encoder_lame_la_SOURCES = audiocd_lame_encoder.kcfgc encoderlame.cpp 
 
 libaudiocd_encoder_lame_la_LIBADD = $(LIB_KIO) ../libaudiocdplugins.la
 
-libaudiocd_encoder_lame_la_LDFLAGS = -avoid-version -module -no-undefined $(all_libraries)
+libaudiocd_encoder_lame_la_LDFLAGS = -avoid-version -module -no-undefined $(taglib_libs) $(all_libraries)
 
 pluginsdir = $(kde_datadir)/audiocd/plugins
 
