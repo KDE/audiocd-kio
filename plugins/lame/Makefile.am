@@ -15,4 +15,4 @@ pluginsdir = $(kde_datadir)/audiocd/plugins
 METASOURCES = AUTO
 
 messages: rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/audiocd_encoder_lame.pot
+	$(XGETTEXT) *.cpp *.h -o $(podir)/audiocd_encoder_lame.pot

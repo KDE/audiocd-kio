@@ -34,6 +34,8 @@
 #include <kconfig.h>
 #include <knuminput.h>
 #include <qgroupbox.h>
+#include <kglobal.h>
+#include <klocale.h>
 
 extern "C"
 {
@@ -78,6 +80,7 @@ EncoderVorbis::~EncoderVorbis(){
 
 QWidget* EncoderVorbis::getConfigureWidget(KConfigSkeleton** manager) const {
   (*manager) = Settings::self();
+  KGlobal::locale()->insertCatalogue("audiocd_encoder_vorbis");
   EncoderVorbisConfig *config = new EncoderVorbisConfig();
   config->kcfg_vorbis_quality->setRange(0.0, 10.0, 0.2, true);
   config->vorbis_bitrate_settings->hide();

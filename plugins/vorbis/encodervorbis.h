@@ -30,6 +30,7 @@
 #ifdef HAVE_VORBIS
 
 #include <audiocdencoder.h>
+#include <klocale.h>
 
 /**
  * Ogg Vorbis encoder.
@@ -42,11 +43,11 @@ public:
   EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis();
   
-  virtual QString type() const { return "Ogg Vorbis"; };
+  virtual QString type() const { return i18n("Ogg Vorbis"); }
   virtual bool init();
   virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;
-  virtual const char * fileType() const { return "ogg"; };
+  virtual const char * fileType() const { return "ogg"; }
   virtual const char * mimeType() const;
 
   virtual void fillSongInfo(QString trackName,
@@ -73,4 +74,3 @@ private:
 #endif // HAVE_VORBIS
 
 #endif // ENCODER_VORBIS_H
-

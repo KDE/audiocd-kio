@@ -28,6 +28,7 @@
 #include <knuminput.h>
 #include <qregexp.h>
 #include <qlabel.h>
+#include <klocale.h>
 
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"
@@ -48,7 +49,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
       KConfigSkeleton *config = NULL;
       QWidget *widget = encoder->getConfigureWidget(&config);
       if(widget && config){
-	 tabWidget->addTab(widget, encoder->type()+" Encoder");
+	 tabWidget->addTab(widget, i18n("%1 Encoder").arg(encoder->type()));
          KConfigDialogManager *configManager = new KConfigDialogManager(widget, config, QString(encoder->type()+" EncoderConfigManager").latin1());
          encoderSettings.append(configManager);
       }

@@ -26,6 +26,7 @@
 #define ENCODER_LAME_H
 
 #include "audiocdencoder.h"
+#include <klocale.h>
 
 class KLibrary;
 
@@ -39,11 +40,11 @@ public:
   EncoderLame(KIO::SlaveBase *slave);
   ~EncoderLame();
 
-  virtual QString type() const { return "MP3"; };
+  virtual QString type() const { return i18n("MP3"); }
   virtual bool init();
   virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;
-  virtual const char * fileType() const { return "mp3"; };
+  virtual const char * fileType() const { return "mp3"; }
   virtual const char * mimeType() const;
 
   
