@@ -859,7 +859,7 @@ AudioCDProtocol::get(const KURL & url)
 
 #ifdef HAVE_VORBIS
   if (filetype == "ogg") {
-    totalSize((time_secs * d->vorbis_bitrate)/8);
+    totalSize( vorbisSize(time_secs) );
     mimeType("audio/x-ogg-vorbis");
   }
 #endif
@@ -938,7 +938,7 @@ AudioCDProtocol::stat(const KURL & url)
 
 #ifdef HAVE_VORBIS
       if (filetype == "ogg")
-        atom.m_long = (length_seconds * d->vorbis_bitrate) / 8;
+        atom.m_long = vorbisSize(length_seconds);
 #endif
 
       if (filetype == "cda") atom.m_long = filesize;
@@ -1077,6 +1077,42 @@ app_file(UDSEntry& e, const QString & n, size_t s)
   app_entry(e, KIO::UDS_SIZE, s);
 }
 
+#ifdef HAVE_VORBIS
+  long
+AudioCDProtocol::vorbisSize(long time_secs)
+{
+  long vorbis_size;
+  switch (d->vorbis_encode_method)
+  {
+  case 0: // quality based encoding
+
+#if HAVE_VORBIS >= 2 // If really old Vorbis is being used, skip this nicely.
+
+  {
+    // Estimated numbers based on the Vorbis FAQ:
+    // http://www.xiph.org/archives/vorbis-faq/200203/0030.html
+    
+    static long vorbis_q_bitrate[] = { 60,  74,  86,  106, 120, 152, 
+				       183, 207, 239, 309, 440 };
+    long quality = static_cast<long>(d->vorbis_quality);
+    if (quality < 0 || quality > 10) 
+      quality = 3;
+    vorbis_size = (time_secs * vorbis_q_bitrate[quality] * 1000) / 8;
+
+    break;
+  }
+
+#endif // HAVE_VORBIS >= 2
+
+  default: // bitrate based encoding
+    vorbis_size = (time_secs * d->vorbis_bitrate/8);
+    break;
+  }
+
+  return vorbis_size;
+}
+#endif
+
   void
 AudioCDProtocol::listDir(const KURL & url)
 {
@@ -1183,7 +1219,7 @@ AudioCDProtocol::listDir(const KURL & url)
 #ifdef HAVE_VORBIS
             case Vorbis:
               name = d->titles[i - 1] + s3;
-              size = (length_seconds * d->vorbis_bitrate) / 8; // length * bitrate / 8; 
+              size = vorbisSize(length_seconds); 
               break;
 #endif
 
@@ -1619,7 +1655,7 @@ void AudioCDProtocol::getParameters() {
      int method = config->readNumEntry("encmethod",0);
     
      if (method == 0) { 
-       
+
        // Constant Bitrate Encoding
        (_lamelib_lame_set_VBR)(d->gf, vbr_off);
        (_lamelib_lame_set_brate)(d->gf,config->readNumEntry("cbrbitrate",160));
