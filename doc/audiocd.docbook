@@ -156,7 +156,7 @@ contact. By default, this is
 <variablelist>
 <title>Examples</title>
 <varlistentry>
-<term><userinput>audiocd:/?device=/dev/scd0?paranoia_level=0&amp;use_cddb=0</userinput></term>
+<term><userinput>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;use_cddb=0</userinput></term>
 <listitem>
 <para>Gives a listing of the tracks on the audio <acronym>CD</acronym>
 inserted in <filename class="devicefile">/dev/scd0</filename>, which on
