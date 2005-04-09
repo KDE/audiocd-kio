@@ -104,7 +104,8 @@ extern "C"
   static void (*_lamelib_id3tag_set_track)(lame_global_flags*, const char*) = NULL;
   static void (*_lamelib_id3tag_set_year)(lame_global_flags*, const char *) = NULL;
   static int  (*_lamelib_id3tag_set_genre)(lame_global_flags *, const char *) = NULL;
-
+	static int  (*_lamelib_id3tag_set_comment)(lame_global_flags *, const char *) = NULL;
+	
 	static void (*_lamelib_lame_mp3_tags_fid)(lame_global_flags*, FILE *fpStream) = NULL;
   static int  (*_lamelib_lame_encode_buffer_interleaved) (
           lame_global_flags*, short int*, int, unsigned char*, int) = NULL;
@@ -292,7 +293,10 @@ bool EncoderLame::init(){
      _lamelib_id3tag_set_genre =
            (int (*) (lame_global_flags*, const char*))
            _lamelib->symbol("id3tag_set_genre");
-     _lamelib_lame_mp3_tags_fid =
+     _lamelib_id3tag_set_comment =
+					 (int (*) (lame_global_flags*, const char*))
+					 _lamelib->symbol("id3tag_set_comment");
+		 _lamelib_lame_mp3_tags_fid =
            (void (*) (lame_global_flags*, FILE *))
            _lamelib->symbol("lame_mp3_tags_fid");
 
@@ -590,12 +594,13 @@ long EncoderLame::readCleanup(){
   return mp3bytes;
 }
 
-void EncoderLame::fillSongInfo(QString trackName,
-			QString cdArtist,
-			QString cdTitle,
-			QString cdCategory,
+void EncoderLame::fillSongInfo( const QString &trackName,
+			const QString &cdArtist,
+			const QString &cdTitle,
+			const QString &cdCategory,
 			int trackNumber,
-			int cdYear){
+			int cdYear,
+			const QString &comment ){
 
 #if HAVE_TAGLIB
 		d->tag.setTitle(QStringToTString(trackName));
@@ -604,14 +609,16 @@ void EncoderLame::fillSongInfo(QString trackName,
 		d->tag.setGenre(QStringToTString(cdCategory));
 		d->tag.setTrack(trackNumber);
 		d->tag.setYear(cdYear);
+		d->tag.setComment(QStringToTString(comment));
 #else
 	if( d->write_id3 ){
 		/* If CDDB is used to determine the filenames, tell lame to append ID3v1 TAG to MP3 Files */
-		(_lamelib_id3tag_set_album)  (d->gf, cdTitle.latin1());
-		(_lamelib_id3tag_set_artist) (d->gf, cdArtist.latin1());
-		(_lamelib_id3tag_set_title)  (d->gf, trackName.latin1());
-		(_lamelib_id3tag_set_year)   (d->gf, QString("%1").arg(cdYear).latin1());
-		(_lamelib_id3tag_set_genre)  (d->gf, cdCategory.latin1());
+		(_lamelib_id3tag_set_album)   (d->gf, cdTitle.latin1());
+		(_lamelib_id3tag_set_artist)  (d->gf, cdArtist.latin1());
+		(_lamelib_id3tag_set_title)   (d->gf, trackName.latin1());
+		(_lamelib_id3tag_set_year)    (d->gf, QString("%1").arg(cdYear).latin1());
+		(_lamelib_id3tag_set_genre)   (d->gf, cdCategory.latin1());
+		(_lamelib_id3tag_set_comment) (d->gf, comment.latin1());
 		QString tn;
 		tn.sprintf("%02d", trackNumber);
 		(_lamelib_id3tag_set_track) (d->gf, tn.latin1());

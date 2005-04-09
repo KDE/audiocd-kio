@@ -296,12 +296,13 @@ long EncoderVorbis::readCleanup(){
   return processed;
 }
 
-void EncoderVorbis::fillSongInfo(QString trackName,
-		            QString cdArtist,
-			    QString cdTitle,
-			    QString cdCategory,
+void EncoderVorbis::fillSongInfo(const QString &trackName,
+		            const QString &cdArtist,
+			    const QString &cdTitle,
+			    const QString &cdCategory,
 			    int trackNumber,
-			    int cdYear){
+			    int cdYear,
+					const QString &comment){
   if( !d->write_vorbis_comments )
     return;
 
@@ -313,7 +314,8 @@ void EncoderVorbis::fillSongInfo(QString trackName,
   commentFields.append(CommentField("album", cdTitle));
   commentFields.append(CommentField("genre", cdCategory));
   commentFields.append(CommentField("tracknumber", QString::number(trackNumber)));
-
+	commentFields.append(CommentField("comment", comment));
+	
   if (cdYear > 0) {
     QDateTime dt = QDate(cdYear, 1, 1);
     commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));

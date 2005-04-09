@@ -262,7 +262,8 @@ public:
 	// Misc settings
 	QString device; // URL settable
 	int paranoiaLevel; // URL settable
-
+	bool reportErrors;
+	
 	// Directory strings, never change after init
 	QString s_info;
 	QString s_fullCD;
@@ -557,7 +558,10 @@ void AudioCDProtocol::get(const KURL & url)
 			// NO => title of the track.
 			trackName = d->track_titles[d->req_track];
 
-		encoder->fillSongInfo(trackName, d->cd_artist, d->cd_title, d->cd_category, d->req_track+1, d->cd_year);
+		encoder->fillSongInfo(trackName, d->cd_artist, d->cd_title, d->cd_category, d->req_track+1, d->cd_year, "");
+	}
+	else {
+		encoder->fillSongInfo("", "", "", "", d->req_track+1, 0, QString("CDDBDISCID=%1").arg(d->discid));
 	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);
@@ -983,10 +987,8 @@ void AudioCDProtocol::paranoiaRead(
 	{
 		// TODO make the 5 configurable? The default in the lib is 20 fyi
 		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback, 5);
-		if( warned == 0 && paranoia_read_limited_error >= 5 ){
-#if KDE_IS_VERSION (3, 2, 89)
+		if( warned == 0 && paranoia_read_limited_error >= 5 && d->reportErrors ){
 			warning(i18n("AudioCD: Disk damage detected on this track, risk of data corruption."));
-#endif
 			warned = 1;
 		}
 		if (0 == buf) {
@@ -1152,6 +1154,8 @@ void AudioCDProtocol::loadSettings()
 		d->paranoiaLevel = 2;
 		// never skip on errors of the medium, should be default for high quality
 	}
+
+	d->reportErrors = config->readBoolEntry( "report_errors", false );
 
 	if(config->hasKey("niceLevel")) {
 		int niceLevel = config->readNumEntry("niceLevel", 0);

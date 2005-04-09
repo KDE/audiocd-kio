@@ -46,12 +46,13 @@ public:
   virtual QString type() const { return "CDA"; };
   virtual const char * mimeType() const;
   virtual const char * fileType() const { return "cda"; };
-  virtual void fillSongInfo(QString,
-		            QString,
-			    QString,
-			    QString,
+  virtual void fillSongInfo(const QString &,
+		            const QString &,
+			    const QString &,
+			    const QString &,
 			    int,
-			    int){};
+			    int,
+					const QString &){};
   virtual long readInit(long){ return 0; };
   virtual long read(int16_t * buf, int frames);
   virtual long readCleanup(){ return 0; };
