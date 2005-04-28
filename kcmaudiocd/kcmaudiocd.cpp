@@ -33,15 +33,12 @@
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"
 #include <kconfigdialogmanager.h>
+#include <audiocdsettings.h>
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
   : AudiocdConfig(parent, name), configChanged(false)
 {
-    QString foo = i18n("Report errors found on the cd.");
-				
     setButtons(Default|Apply);
-
-    config = new KConfig("kcmaudiocdrc");
 
     QPtrList<AudioCDEncoder> encoders;
     AudioCDEncoder::find_all_plugins(0, encoders);
@@ -57,12 +54,12 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     }
 
     load();
-  
+
     KConfigDialogManager *widget;
     for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
       connect(widget, SIGNAL(widgetModified()), this, SLOT(slotModuleChanged()));
     }
-   
+
     //CDDA Options
     connect(cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
@@ -88,7 +85,6 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
 
 KAudiocdModule::~KAudiocdModule()
 {
-    delete config;
 }
 
 void KAudiocdModule::updateExample()
@@ -98,84 +94,81 @@ void KAudiocdModule::updateExample()
   exampleOutput->setText(text);
 }
 
-void KAudiocdModule::defaults() {
-	cd_autosearch_check->setChecked(true);
-	cd_device_string->setText("/dev/cdrom");
+void KAudiocdModule::defaults()
+{
+    AudioCdSettings::self()->setDefaults();
 
-	ec_enable_check->setChecked(true);
-	ec_skip_check->setChecked(false);
-	niceLevel->setValue(0);
-	
-	kcfg_replaceInput->setText("");
-	kcfg_replaceOutput->setText("");
-	example->setText(i18n("Cool artist - example audio file.wav"));
-	KConfigDialogManager *widget;
-	for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-		widget->updateWidgetsDefault();
-	}
+    // CDDA
+    cd_autosearch_check->setChecked(AudioCdSettings::autoDevice());
+    cd_device_string->setText(AudioCdSettings::device());
+    ec_enable_check->setChecked(!AudioCdSettings::correctErrors());
+    ec_skip_check->setChecked(!AudioCdSettings::skipOnError());
+    niceLevel->setValue(AudioCdSettings::encoderPriority());
 
-	fileNameLineEdit->setText("%{albumartist} - %{number} - %{title}");
-	albumNameLineEdit->setText("%{albumartist} - %{albumtitle}");
+    // FileName
+    fileNameLineEdit->setText(AudioCdSettings::trackTemplate());
+    albumNameLineEdit->setText(AudioCdSettings::albumTemplate());
+    kcfg_replaceInput->setText(AudioCdSettings::replaceInput());
+    kcfg_replaceOutput->setText(AudioCdSettings::replaceOutput());
+    example->setText(AudioCdSettings::example());
+
+    KConfigDialogManager *widget;
+    for (widget = encoderSettings.first(); widget; widget = encoderSettings.next())
+    {
+        widget->updateWidgetsDefault();
+    }
 }
 
-void KAudiocdModule::save() {
-  if (!configChanged ) return;
+void KAudiocdModule::save()
+{
+    if (!configChanged)
+        return;
 
-  {
-    KConfigGroupSaver saver(config, "CDDA");
+    // CDDA
+    AudioCdSettings::setAutoDevice(cd_autosearch_check->isChecked());
+    AudioCdSettings::setDevice(cd_device_string->text());
+    AudioCdSettings::setCorrectErrors(!ec_enable_check->isChecked());
+    AudioCdSettings::setSkipOnError(!ec_skip_check->isChecked());
+    AudioCdSettings::setEncoderPriority(niceLevel->value());
 
-    config->writeEntry("autosearch",cd_autosearch_check->isChecked());
-    config->writeEntry("device",cd_device_string->text());
-    config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
-    config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
-    config->writeEntry("niceLevel", niceLevel->value());
-  }
-  
-  {
-    KConfigGroupSaver saver(config, "FileName");
-    config->writeEntry("file_name_template", fileNameLineEdit->text());
-    config->writeEntry("album_name_template", albumNameLineEdit->text());
-    config->writeEntry("regexp_search",kcfg_replaceInput->text());
-    config->writeEntry("regexp_replace", kcfg_replaceOutput->text());
-    config->writeEntry("regexp_example", example->text());
-  }
+    // FileName
+    AudioCdSettings::setTrackTemplate(fileNameLineEdit->text());
+    AudioCdSettings::setAlbumTemplate(albumNameLineEdit->text());
+    AudioCdSettings::setReplaceInput(kcfg_replaceInput->text());
+    AudioCdSettings::setReplaceOutput(kcfg_replaceOutput->text());
+    AudioCdSettings::setExample(example->text());
 
-  KConfigDialogManager *widget;
-  for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-    widget->updateSettings();
-  }
-  
-  config->sync();
+    AudioCdSettings::writeConfig();
 
-  configChanged = false;
-
+    KConfigDialogManager *widget;
+    for (widget = encoderSettings.first(); widget; widget = encoderSettings.next())
+    {
+        widget->updateSettings();
+    }
+    configChanged = false;
 }
 
-void KAudiocdModule::load() {
+void KAudiocdModule::load()
+{
+    // CDDA
+    cd_autosearch_check->setChecked(AudioCdSettings::autoDevice());
+    cd_device_string->setText(AudioCdSettings::device());
+    ec_enable_check->setChecked(!AudioCdSettings::correctErrors());
+    ec_skip_check->setChecked(!AudioCdSettings::skipOnError());
+    niceLevel->setValue(AudioCdSettings::encoderPriority());
 
-  {
-    KConfigGroupSaver saver(config, "CDDA");
+    // FileName
+    fileNameLineEdit->setText(AudioCdSettings::trackTemplate());
+    albumNameLineEdit->setText(AudioCdSettings::albumTemplate());
+    kcfg_replaceInput->setText(AudioCdSettings::replaceInput());
+    kcfg_replaceOutput->setText(AudioCdSettings::replaceOutput());
+    example->setText(AudioCdSettings::example());
 
-    cd_autosearch_check->setChecked(config->readBoolEntry("autosearch",true));
-    cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
-    ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
-    ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
-    niceLevel->setValue(config->readNumEntry("niceLevel", 0));
-  }
-
-  {
-    KConfigGroupSaver saver(config, "FileName");
-    fileNameLineEdit->setText(config->readEntry("file_name_template", "%{albumartist} - %{number} - %{title}"));
-    albumNameLineEdit->setText(config->readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
-    kcfg_replaceInput->setText(config->readEntry("regexp_search"));
-    kcfg_replaceOutput->setText(config->readEntry("regexp_replace"));
-    example->setText(config->readEntry("example", i18n("Cool artist - example audio file.wav")));
-  }
-  
-  KConfigDialogManager *widget;
-  for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-    widget->updateWidgets();
-  }
+    KConfigDialogManager *widget;
+    for (widget = encoderSettings.first(); widget; widget = encoderSettings.next())
+    {
+        widget->updateWidgets();
+    }
 }
 
 void KAudiocdModule::slotModuleChanged() {
