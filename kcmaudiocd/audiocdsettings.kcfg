@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+    <include>qdir.h</include>
+    <kcfgfile name="kcmaudiocdrc"/>
+    <group name="CDDA">
+        <entry name="AutoDevice" type="Bool" key="autosearch">
+            <default>true</default>
+        </entry>
+        <entry name="Device" type="String" key="device">
+            <default>/dev/cdrom</default>
+        </entry>
+        <entry name="CorrectErrors" type="Bool" key="disable_paranoia">
+            <default>false</default>
+        </entry>
+        <entry name="SkipOnError" type="Bool" key="never_skip">
+            <default>true</default>
+        </entry>
+        <entry name="EncoderPriority" type="Int" key="niceLevel">
+            <default>0</default>
+        </entry>
+    </group>
+    <group name="FileName">
+        <entry name="TrackTemplate" type="String" key="file_name_template">
+            <default>%{albumartist} - %{number} - %{title}</default>
+        </entry>
+        <entry name="AlbumTemplate" type="String" key="album_name_template">
+            <default>%{albumartist} - %{albumtitle}</default>
+        </entry>
+        <entry name="ReplaceInput" type="String" key="regexp_search">
+            <default></default>
+        </entry>
+        <entry name="ReplaceOutput" type="String" key="regexp_replace">
+            <default></default>
+        </entry>
+        <entry name="Example" type="String" key="example">
+            <default>xxxxCool artist - example audio file.wav</default>
+        </entry>
+    </group>
+</kcfg>
