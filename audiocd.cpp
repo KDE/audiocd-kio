@@ -262,6 +262,7 @@ public:
 	// Misc settings
 	QString device; // URL settable
 	int paranoiaLevel; // URL settable
+	int retryLimit;
 
 	// Directory strings, never change after init
 	QString s_info;
@@ -917,9 +918,9 @@ struct cdrom_drive *AudioCDProtocol::pickDrive()
 			else if(!fi.isWritable())
 				error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->device);
 #if KDE_IS_VERSION (3, 3, 89)
-			else error(KIO::ERR_SLAVE_DEFINED, 
+			else error(KIO::ERR_SLAVE_DEFINED,
 i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as yourself (not root). Do you see a track list? If not, make sure you have permission to access the CD device. If you are using SCSI emulation (possible if you have an IDE CD writer) then make sure you check that you have read and write permissions on the generic SCSI device, which is probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your CD-ROM is."));
-#else			
+#else
 			else error(KIO::ERR_UNKNOWN, d->device);
 #endif
 		}
@@ -984,8 +985,8 @@ void AudioCDProtocol::paranoiaRead(
 	int warned = 0;
 	while (currentSector <= lastSector)
 	{
-		// TODO make the 5 configurable? The default in the lib is 20 fyi
-		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback, 5);
+		// TODO: retry limit read out of config file, GUI MISSING
+		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback, d->retryLimit);
 		if( warned == 0 && paranoia_read_limited_error >= 5 ){
 #if KDE_IS_VERSION (3, 2, 89)
 			warning(i18n("AudioCD: Disk damage detected on this track, risk of data corruption."));
@@ -1155,6 +1156,8 @@ void AudioCDProtocol::loadSettings()
 		d->paranoiaLevel = 2;
 		// never skip on errors of the medium, should be default for high quality
 	}
+
+	d->retryLimit = config->readNumEntry("max_retries", 20);
 
 	if(config->hasKey("niceLevel")) {
 		int niceLevel = config->readNumEntry("niceLevel", 0);
