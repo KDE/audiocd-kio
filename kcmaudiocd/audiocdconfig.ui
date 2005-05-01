@@ -12,6 +12,9 @@
             <height>551</height>
         </rect>
     </property>
+    <property name="caption">
+        <string>AudiocdConfig</string>
+    </property>
     <property name="layoutMargin" stdset="0">
     </property>
     <property name="layoutSpacing" stdset="0">
@@ -72,7 +75,7 @@
                             </property>
                             <widget class="QCheckBox">
                                 <property name="name">
-                                    <cstring>cd_autosearch_check</cstring>
+                                    <cstring>kcfg_autoDevice</cstring>
                                 </property>
                                 <property name="text">
                                     <string>De&amp;termine device automatically</string>
@@ -106,12 +109,12 @@
                                             <string>De&amp;vice:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
-                                            <cstring>cd_device_string</cstring>
+                                            <cstring>kcfg_device</cstring>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit">
                                         <property name="name">
-                                            <cstring>cd_device_string</cstring>
+                                            <cstring>kcfg_device</cstring>
                                         </property>
                                         <property name="enabled">
                                             <bool>false</bool>
@@ -146,7 +149,7 @@
                             </property>
                             <widget class="QCheckBox">
                                 <property name="name">
-                                    <cstring>ec_enable_check</cstring>
+                                    <cstring>kcfg_correctErrors</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Enable &amp;error correction</string>
@@ -160,7 +163,7 @@
                             </widget>
                             <widget class="QCheckBox">
                                 <property name="name">
-                                    <cstring>ec_skip_check</cstring>
+                                    <cstring>kcfg_skipOnError</cstring>
                                 </property>
                                 <property name="text">
                                     <string>&amp;Skip on errors</string>
@@ -184,7 +187,7 @@
                             </property>
                             <widget class="QSlider" row="0" column="0" rowspan="1" colspan="3">
                                 <property name="name">
-                                    <cstring>niceLevel</cstring>
+                                    <cstring>kcfg_encoderPriority</cstring>
                                 </property>
                                 <property name="minValue">
                                     <number>-19</number>
@@ -391,7 +394,7 @@
                             </widget>
                             <widget class="KLineEdit">
                                 <property name="name">
-                                    <cstring>fileNameLineEdit</cstring>
+                                    <cstring>kcfg_trackTemplate</cstring>
                                 </property>
                             </widget>
                         </vbox>
@@ -461,7 +464,7 @@
                             </widget>
                             <widget class="QLineEdit" row="5" column="1" rowspan="1" colspan="2">
                                 <property name="name">
-                                    <cstring>example</cstring>
+                                    <cstring>kcfg_example</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Cool artist - example audio file.wav</string>
@@ -630,7 +633,7 @@
                             </spacer>
                             <widget class="KLineEdit">
                                 <property name="name">
-                                    <cstring>albumNameLineEdit</cstring>
+                                    <cstring>kcfg_albumTemplate</cstring>
                                 </property>
                             </widget>
                         </vbox>
@@ -642,30 +645,30 @@
 </widget>
 <connections>
     <connection>
-        <sender>cd_autosearch_check</sender>
+        <sender>kcfg_autoDevice</sender>
         <signal>toggled(bool)</signal>
-        <receiver>cd_device_string</receiver>
+        <receiver>kcfg_device</receiver>
         <slot>setDisabled(bool)</slot>
     </connection>
     <connection>
-        <sender>ec_enable_check</sender>
+        <sender>kcfg_correctErrors</sender>
         <signal>toggled(bool)</signal>
-        <receiver>ec_skip_check</receiver>
+        <receiver>kcfg_skipOnError</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
 </connections>
 <tabstops>
     <tabstop>tabWidget</tabstop>
-    <tabstop>cd_autosearch_check</tabstop>
-    <tabstop>cd_device_string</tabstop>
-    <tabstop>ec_enable_check</tabstop>
-    <tabstop>ec_skip_check</tabstop>
-    <tabstop>niceLevel</tabstop>
-    <tabstop>fileNameLineEdit</tabstop>
-    <tabstop>albumNameLineEdit</tabstop>
+    <tabstop>kcfg_autoDevice</tabstop>
+    <tabstop>kcfg_device</tabstop>
+    <tabstop>kcfg_correctErrors</tabstop>
+    <tabstop>kcfg_skipOnError</tabstop>
+    <tabstop>kcfg_encoderPriority</tabstop>
+    <tabstop>kcfg_trackTemplate</tabstop>
+    <tabstop>kcfg_albumTemplate</tabstop>
     <tabstop>kcfg_replaceInput</tabstop>
     <tabstop>kcfg_replaceOutput</tabstop>
-    <tabstop>example</tabstop>
+    <tabstop>kcfg_example</tabstop>
 </tabstops>
 <slots>
     <slot>toggleLowpass()</slot>
