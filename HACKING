@@ -9,7 +9,11 @@ plugins/flac/* - the flac encoder
 plugins/lame/* - The mp3 encoder 
 plugins/vorbis/* - The ogg encoder
 
-kcmaudiocd/ - kcm configure dialog for the audiocd ioslave.  It also loads the plugins and gets their configure dialogs and puts them into the tab dialog.
+kcmaudiocd/ - kcm configure dialog for the audiocd ioslave.  It also loads the
+plugins and gets their configure dialogs and puts them into the tab dialog. The
+in-tree plugins use KConfig XT automanaged widgets.  Out-of-tree plugins can use
+KConfig XT but NOT with automanaged widgets: otherwise you'll get errors from
+KConfigDialogManager! See http://lists.kde.org/?l=kde-core-devel&m=111491568729495&w=2.
 
 // USERS
 

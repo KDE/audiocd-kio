@@ -25,7 +25,7 @@
 #include <config.h>
 #include "encoderlame.h"
 #include "encoderlameconfig.h"
-#include "audiocd_lame_encoder.h"
+#include "../../kcmaudiocd/audiocdsettings.h"
 
 #if HAVE_TAGLIB
 #include <id3v2tag.h>
@@ -172,8 +172,7 @@ EncoderLame::~EncoderLame(){
 }
 
 QWidget* EncoderLame::getConfigureWidget(KConfigSkeleton** manager) const {
-  (*manager) = Settings::self();
-  KGlobal::locale()->insertCatalogue("audiocd_encoder_lame");
+  (*manager) = AudioCdSettings::self();
   EncoderLameConfig *config = new EncoderLameConfig();
   config->cbr_settings->hide();
   return config;
@@ -424,7 +423,7 @@ void EncoderLame::loadSettings(){
   if ( !init() )
     return;
 
-  Settings *settings = Settings::self();
+  AudioCdSettings *settings = AudioCdSettings::self();
 
   int quality = settings->quality();
   if (quality < 0 ) quality = quality *-1;
