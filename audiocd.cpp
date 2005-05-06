@@ -184,7 +184,7 @@ long my_last_sector(cdrom_drive *drive)
 
 /* Stupid CDparanoia returns the first sector of the first _audio_ track
 	 as first disc sector.  Equally broken to the last sector.  But what is
-	 even more shitty is, that if it happens that the first audio track is
+	 even more horrible is, that if it happens that the first audio track is
 	 the first track at all, it returns a hardcoded _zero_, whatever else
 	 the TOC told it. This of course happens quite often, as usually the first
 	 track is audio, if there's audio at all. And usually it even works,
