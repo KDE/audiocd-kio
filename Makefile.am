@@ -1,7 +1,7 @@
 if include_kcm_audiocd
 AUDIO_CD_SUBDIRS = kcmaudiocd
 endif
-SUBDIRS = plugins $(AUDIO_CD_SUBDIRS)
+SUBDIRS = $(AUDIO_CD_SUBDIRS) plugins
 
 INCLUDES = $(CDPARANOIA_INCS) -I$(top_srcdir)/libkcddb \
 		   -I$(top_builddir)/libkcddb -I$(srcdir)/plugins $(all_includes)
