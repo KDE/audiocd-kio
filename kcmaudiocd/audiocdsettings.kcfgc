@@ -1,5 +1,0 @@
-ClassName=AudioCdSettings
-File=audiocdsettings.kcfg
-Mutators=true
-Singleton=true
-Visibility=KDE_EXPORT

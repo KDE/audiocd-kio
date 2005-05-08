@@ -52,6 +52,7 @@ private slots:
   void slotModuleChanged();
 
 private:
+  KConfig *config;
   bool configChanged;
 
   int getBitrateIndex(int value);

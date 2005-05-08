@@ -23,8 +23,8 @@
 */
 
 #include "encodervorbis.h"
+#include "audiocd_vorbis_encoder.h"
 #include "encodervorbisconfig.h"
-#include "../../kcmaudiocd/audiocdsettings.h"
 
 #ifdef HAVE_VORBIS
 
@@ -80,7 +80,8 @@ EncoderVorbis::~EncoderVorbis(){
 }
 
 QWidget* EncoderVorbis::getConfigureWidget(KConfigSkeleton** manager) const {
-  (*manager) = AudioCdSettings::self();
+  (*manager) = Settings::self();
+  KGlobal::locale()->insertCatalogue("audiocd_encoder_vorbis");
   EncoderVorbisConfig *config = new EncoderVorbisConfig();
   config->kcfg_vorbis_quality->setRange(0.0, 10.0, 0.2, true);
   config->vorbis_bitrate_settings->hide();
@@ -101,7 +102,7 @@ bool EncoderVorbis::init(){
 }
 
 void EncoderVorbis::loadSettings(){
-  AudioCdSettings *settings = AudioCdSettings::self();
+  Settings *settings = Settings::self();
   
   d->vorbis_encode_method = settings->vorbis_enc_method();
   d->vorbis_quality = settings->vorbis_quality();

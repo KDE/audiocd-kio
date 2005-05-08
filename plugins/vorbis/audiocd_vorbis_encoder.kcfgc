@@ -1,0 +1,4 @@
+# Code generation options for kconfig_compiler
+File=audiocd_vorbis_encoder.kcfg
+ClassName=Settings
+Singleton=true

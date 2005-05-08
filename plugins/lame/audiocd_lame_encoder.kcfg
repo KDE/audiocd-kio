@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="kcmaudiocd_encoder_lame_rc"/>
+  <group name="Lame">
+
+<!-- Encoding Method  -->
+    <entry name="bitrate_constant" type="Bool">
+      <label>Constant Bitrate</label>
+      <default>false</default>
+    </entry>
+    <entry name="bitrate_variable" type="Bool">
+      <label>Variable Bitrate</label>
+      <default>true</default>
+    </entry>
+
+    <entry name="stereo" type="Int">
+      <label>Stereo Mode</label>
+      <default>0</default>
+    </entry>
+    <entry name="quality" type="Int">
+      <label>Quality</label>
+      <default>-2</default>
+    </entry>
+
+<!-- Options  -->
+    <entry name="copyright" type="Bool">
+      <label>Copyrighted</label>
+      <default>false</default>
+    </entry>
+    <entry name="original" type="Bool">
+      <label>Original</label>
+      <default>true</default>
+    </entry>
+    <entry name="iso" type="Bool">
+      <label>ISO Encoding</label>
+      <default>false</default>
+    </entry>
+    <entry name="crc" type="Bool">
+      <label>Error protection</label>
+      <default>false</default>
+    </entry>
+    <entry name="id3_tag" type="Bool">
+      <label>Write ID3 Tag</label>
+      <default>true</default>
+    </entry>
+
+<!-- Constant Bitrate Settings -->
+    <entry name="cbr_bitrate" type="Int">
+      <label>Constant Bitrate Settings</label>
+      <default>10</default>
+      <min>0</min>
+      <max>13</max>
+    </entry>
+
+<!-- Variable Bitrate Settings -->
+    <entry name="vbr_min_br" type="Bool">
+      <label>Minimal bitrate</label>
+      <default>false</default>
+    </entry>
+    <entry name="vbr_min_hard" type="Bool">
+      <label>Minimal Value is a hard limit</label>
+      <default>false</default>
+    </entry>
+    <entry name="vbr_max_br" type="Bool">
+      <label>Maximal bitrate</label>
+      <default>false</default>
+    </entry>
+    <entry name="vbr_average_br" type="Bool">
+      <label>Average bitrate</label>
+      <default>false</default>
+    </entry>
+    <entry name="vbr_xing_tag" type="Bool">
+      <label>Write Xing VBR tag</label>
+      <default>true</default>
+    </entry>
+ 
+    <entry name="vbr_min_brate" type="Int">
+      <label>Minimal bitrate value</label>
+      <default>40</default>
+      <min>0</min>
+      <max>13</max>
+    </entry>
+    <entry name="vbr_max_brate" type="Int">
+      <label>Maximal bitrate value</label>
+      <default>13</default>
+      <min>0</min>
+      <max>13</max>
+    </entry>
+    <entry name="vbr_mean_brate" type="Int">
+      <label>Average bitrate value</label>
+      <default>10</default>
+      <min>0</min>
+      <max>13</max>
+     </entry>
+
+
+<!-- Filter Settings -->    
+    <entry name="enable_lowpass" type="Bool">
+      <label>Lowpass filter cutoff above</label>
+      <default>false</default>
+    </entry>
+    <entry name="lowfilterfreq" type="Int">
+      <label>Lowpass filter cutoff above Value</label>
+      <default>18000</default>
+    </entry>
+
+    <entry name="enable_highpass" type="Bool">
+      <label>Highpass filter cutoff above</label>
+      <default>false</default>
+    </entry>
+    <entry name="highfilterfreq" type="Int">
+      <label>Highpass filter cutoff above Value</label>
+      <default>0</default>
+    </entry>
+
+    <entry name="set_lpf_width" type="Bool">
+      <label>Lowpass filter width</label>
+      <default>false</default>
+    </entry>
+    <entry name="lowfilterwidth" type="Int">
+      <label>Lowpass filter width value</label>
+      <default>900</default>
+    </entry>
+ 
+    <entry name="set_hpf_width" type="Bool">
+      <label>Highpass filter width</label>
+      <default>false</default>
+    </entry>
+    <entry name="highfilterwidth" type="Int">
+      <label>Highpass filter width</label>
+      <default>0</default>
+    </entry>
+   </group>
+</kcfg>
+
