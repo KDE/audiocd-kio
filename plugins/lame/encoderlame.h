@@ -1,11 +1,5 @@
 /*
-  Copyright (C) 2000 Rik Hemsley (rikkus) <rik@kde.org>
-  Copyright (C) 2000, 2001, 2002 Michael Matz <matz@kde.org>
-  Copyright (C) 2001 Carsten Duvenhorst <duvenhorst@m2.uni-hannover.de>
-  Copyright (C) 2001 Adrian Schroeter <adrian@suse.de>
-  Copyright (C) 2003 Richard Lärkäng <richard@goteborg.utfors.se>
-  Copyright (C) 2003 Scott Wheeler <wheeler@kde.org>
-  Copyright (C) 2004 Benjamin Meyer <ben + audiocd at meyerhome dot net>
+  Copyright (C) 2005 Benjamin Meyer <ben at meyerhome dot net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,46 +21,53 @@
 
 #include "audiocdencoder.h"
 
-class KLibrary;
+class KProcess;
 
 /**
- * MP3 encoder using the LAME encoding library.
+ * MP3 encoder using the LAME encoder.
  * Go to http://lame.sourceforge.net/ for lots of information.
  */ 
-class EncoderLame : public AudioCDEncoder {
+class EncoderLame : public QObject, public AudioCDEncoder {
+
+Q_OBJECT
 
 public:
-  EncoderLame(KIO::SlaveBase *slave);
-  ~EncoderLame();
+	EncoderLame(KIO::SlaveBase *slave);
+	~EncoderLame();
 
-  virtual QString type() const { return "MP3"; };
-  virtual bool init();
-  virtual void loadSettings();
-  virtual unsigned long size(long time_secs) const;
-  virtual const char * fileType() const { return "mp3"; };
-  virtual const char * mimeType() const;
+	virtual QString type() const { return "MP3"; };
+	virtual bool init();
+	virtual void loadSettings();
+	virtual unsigned long size(long time_secs) const;
+	virtual const char * fileType() const { return "mp3"; };
+	virtual const char * mimeType() const { return "audio/x-mp3"; };
 
+	virtual void fillSongInfo( const QString &trackName,
+		const QString &cdArtist,
+		const QString &cdTitle,
+		const QString &cdCategory,
+		int trackNumber,
+		int cdYear,
+		const QString &comment );
   
-  virtual void fillSongInfo( const QString &trackName,
-		            const QString &cdArtist,
-			    const QString &cdTitle,
-			    const QString &cdCategory,
-			    int trackNumber,
-			    int cdYear,
-					const QString &comment );
+	virtual long readInit(long size);
+	virtual long read(int16_t * buf, int frames);
+	virtual long readCleanup();
   
-  virtual long readInit(long size);
-  virtual long read(int16_t * buf, int frames);
-  virtual long readCleanup();
-  
-   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
+	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
+
+protected slots:
+	void wroteStdin(KProcess *proc);
+	void receivedStdout(KProcess *, char *buffer, int length);
+	void receivedStderr(KProcess *proc, char *buffer, int buflen);
+	void processExited(KProcess *proc);
 
 private:
-  class Private;
-  Private * d;
-    
-  KLibrary *_lamelib;
-  
+	class Private;
+	Private * d;
+
+	QStringList args;
+	QStringList trackInfo;
 };
 
 #endif // ENCODER_LAME_H
