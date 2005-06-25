@@ -71,7 +71,7 @@ KDE_EXPORT int kdemain(int argc, char ** argv);
 
 #include "audiocd.h"
 
-#include <audiocdencoder.h>
+#include "plugins/audiocdencoder.h"
 
 #include <sys/stat.h>
 #include <unistd.h>
