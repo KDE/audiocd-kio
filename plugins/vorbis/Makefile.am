@@ -1,4 +1,4 @@
-INCLUDES = -I$(srcdir)/.. $(VORBIS_INCS) $(all_includes)
+INCLUDES = -I$(srcdir)/.. $(all_includes)
 
 kde_kcfg_DATA = audiocd_vorbis_encoder.kcfg
 
@@ -8,7 +8,7 @@ libaudiocd_encoder_vorbis_la_SOURCES = audiocd_vorbis_encoder.kcfgc encodervorbi
 
 libaudiocd_encoder_vorbis_la_LIBADD = $(VORBIS_LIBS) $(VORBISFILE_LIBS) $(VORBISENC_LIBS) $(LIB_KIO) ../libaudiocdplugins.la
 
-libaudiocd_encoder_vorbis_la_LDFLAGS = $(VORBIS_RPATH) -avoid-version -module -no-undefined $(all_libraries)
+libaudiocd_encoder_vorbis_la_LDFLAGS = -avoid-version -module -no-undefined $(all_libraries)
 
 pluginsdir = $(kde_datadir)/audiocd/plugins
 
