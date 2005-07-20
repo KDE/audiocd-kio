@@ -315,3 +315,5 @@ void EncoderLame::fillSongInfo( const QString &trackName,
 	trackInfo.append(cdCategory);
 }
 
+
+#include "encoderlame.moc"
