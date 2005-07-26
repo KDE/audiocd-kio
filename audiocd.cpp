@@ -5,7 +5,7 @@
  * Copyright (C) 2001 Adrian Schroeter <adrian@suse.de>
  * Copyright (C) 2003 Richard Lärkäng <richard@goteborg.utfors.se>
  * Copyright (C) 2003 Scott Wheeler <wheeler@kde.org>
- * Copyright (C) 2004, 2005 Benjamin Meyer <ben + audiocd at meyerhome dot net>
+ * Copyright (C) 2004, 2005 Benjamin Meyer <ben at meyerhome dot net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -907,23 +907,17 @@ struct cdrom_drive *AudioCDProtocol::pickDrive()
 	}
 
 	if (0 == drive) {
-		kdDebug(7117) << "Can't find an audio CD" << endl;
+		kdDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"" << endl;
 
-		if(!QFile::exists(d->device))
+		QFileInfo fi(d->device);
+		if(!fi.isReadable())
+			error(KIO::ERR_SLAVE_DEFINED, i18n("Device doesn't have read permissions for this account.  Check the read permissions on the device."));
+		else if(!fi.isWritable())
+			error(KIO::ERR_SLAVE_DEFINED, i18n("Device doesn't have write permissions for this account.  Check the write permissions on the device."));
+		else if(!fi.exists())
 			error(KIO::ERR_DOES_NOT_EXIST, d->device);
-		else {
-			QFileInfo fi(d->device);
-			if(!fi.isReadable())
-				error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
-			else if(!fi.isWritable())
-				error(KIO::ERR_CANNOT_OPEN_FOR_WRITING, d->device);
-#if KDE_IS_VERSION (3, 3, 89)
-			else error(KIO::ERR_SLAVE_DEFINED, 
+		else error(KIO::ERR_SLAVE_DEFINED, 
 i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as yourself (not root). Do you see a track list? If not, make sure you have permission to access the CD device. If you are using SCSI emulation (possible if you have an IDE CD writer) then make sure you check that you have read and write permissions on the generic SCSI device, which is probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your CD-ROM is."));
-#else			
-			else error(KIO::ERR_UNKNOWN, d->device);
-#endif
-		}
 	}
 
 	return drive;
@@ -1054,7 +1048,7 @@ void AudioCDProtocol::paranoiaRead(
 					margin = 7;
 				unsigned long low = lastSize - lastSize/margin;
 				if(estSize < low){
-					//qDebug("low: %ld, estSize: %ld, num: %i", low, estSize, num);
+					//qDebug("low: %ld, estSize: %ld, num: %i", low, estSize, margin);
 					totalSize( estSize );
 					lastSize = estSize;
 				}
@@ -1063,7 +1057,7 @@ void AudioCDProtocol::paranoiaRead(
 		/**
 		 * End estimation.
 		 */
-
+		//qDebug("processed: %d, totalSize: %d", processed, estSize);
 		processedSize(processed);
 	}
 
