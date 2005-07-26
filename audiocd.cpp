@@ -366,6 +366,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 		kdDebug(7117) << "cdda_open failed" << endl;
 
 		error(KIO::ERR_CANNOT_OPEN_FOR_READING, url.path());
+		cdda_close(drive);
 		return 0;
 	}
 
