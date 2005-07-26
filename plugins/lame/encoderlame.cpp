@@ -244,6 +244,7 @@ bool EncoderLame::init(){
 #else
    QStringList libpaths, libnames;
    libpaths << QFL1("/usr/lib/")
+	    << QFL1("/usr/lib64/")
             << QFL1("/usr/local/lib/")
             << QString::null;
 
