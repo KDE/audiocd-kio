@@ -280,7 +280,8 @@ long EncoderLame::readCleanup(){
 	// cleanup the process and temp
 	delete d->currentEncodeProcess;
 	delete d->tempFile;
-
+	d->lastSize = 0;
+	
 	return 0;
 }
 
