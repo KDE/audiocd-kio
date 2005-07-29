@@ -26,51 +26,15 @@
 
 extern "C"
 {
-#include <cdda_interface.h>
-#include <cdda_paranoia.h>
-
-/**
- * This is in support for the Mega Hack, if cdparanoia ever is fixed, or we
- * use another ripping library we can remove this.
- **/
-#ifdef __linux__
-#ifdef __KCC
-/* KAI C++'s sys/types.h defines _I386_TYPES_H to get rid of non-ANSI things
-	 from asm/types.h, which also removes __u8,__u16, which are required
-	 by linux/cdrom.h. The only chance is to undef it again, so it gets
-	 included. (matz) */
-#undef _I386_TYPES_H
-/* And <linux/byteorder/swab.h> uses GNU C extensions without providing
-	 fallbacks for non-GNUisms. Fortunately we (or other headers) don't
-	 need the swab routines. */
-#define _LINUX_BYTEORDER_SWAB_H
-#endif
-#include <linux/version.h>
-
-#ifndef __GNUC__
-#define __GNUC__ 1
-#endif
-#undef __STRICT_ANSI__
-#include <asm/types.h>
-#include <linux/cdrom.h>
-#endif
-
-#include <sys/ioctl.h>
-#if defined(__NetBSD__) || defined(__OpenBSD__)
-#include <sys/cdio.h>
-#endif
-
-#include <kdemacros.h>
-void paranoiaCallback(long, int);
-KDE_EXPORT int kdemain(int argc, char ** argv);
-#ifndef CDPARANOIA_STATIC
-	int FixupTOC(cdrom_drive *d, int tracks);
-#endif
-
+	#include <cdda_interface.h>
+	#include <cdda_paranoia.h>
+	void paranoiaCallback(long, int);
+	
+	#include <kdemacros.h>
+	KDE_EXPORT int kdemain(int argc, char ** argv);
 }
 
 #include "audiocd.h"
-
 #include "plugins/audiocdencoder.h"
 
 #include <sys/stat.h>
@@ -84,11 +48,13 @@ KDE_EXPORT int kdemain(int argc, char ** argv);
 #include <qfileinfo.h>
 #include <kcmdlineargs.h>
 #include <kdebug.h>
-#include <kprotocolmanager.h>
+#include <kapplication.h>
 #include <klocale.h>
 #include <qregexp.h>
+
 // CDDB
 #include <client.h>
+#include "kcompactdisc.h"
 
 using namespace KIO;
 using namespace KCDDB;
@@ -96,104 +62,6 @@ using namespace KCDDB;
 #define QFL1(x) QString::fromLatin1(x)
 #define DEFAULT_CD_DEVICE "/dev/cdrom"
 #define CDDB_INFORMATION "CDDB Information"
-
-int start_of_first_data_as_in_toc;
-int hack_track;
-
-/* Only do this if we have shared libcdda_cdparanoia. */
-#ifndef CDPARANOIA_STATIC
-/* Mega hack.  This function comes from libcdda_interface, and is called by
-	 it.  We need to override it, so we implement it ourself in the hope, that
-	 shared lib semantics make the calls in libcdda_interface to FixupTOC end
-	 up here, instead of it's own copy.  This usually works.
-	 You don't want to know the reason for this.  (matz) */
-int FixupTOC(cdrom_drive *d, int tracks)
-{
-	int j;
-	for (j = 0; j < tracks; j++) {
-		if (d->disc_toc[j].dwStartSector < 0)
-			d->disc_toc[j].dwStartSector = 0;
-		if (j < tracks-1
-				&& d->disc_toc[j].dwStartSector > d->disc_toc[j+1].dwStartSector)
-			d->disc_toc[j].dwStartSector = 0;
-	}
-	long last = d->disc_toc[0].dwStartSector;
-	for (j = 1; j < tracks; j++) {
-		if (d->disc_toc[j].dwStartSector < last)
-			d->disc_toc[j].dwStartSector = last;
-	}
-	start_of_first_data_as_in_toc = -1;
-	hack_track = -1;
-	if (d->ioctl_fd != -1) {
-		int ms_addr;
-#ifdef __linux__
-		struct cdrom_multisession ms_str;
-		ms_str.addr_format = CDROM_LBA;
-		if (ioctl(d->ioctl_fd, CDROMMULTISESSION, &ms_str) == -1)
-			return -1;
-		ms_addr = ms_str.addr.lba;
-#endif
-#if defined(__NetBSD__) || defined(__OpenBSD__)
-		ms_addr = 0; /* last session */
-		if (ioctl(d->ioctl_fd, CDIOREADMSADDR, &ms_addr) == -1)
-			return -1;
-#endif
-
-		if (ms_addr > 100) {
-			for (j = tracks-1; j >= 0; j--)
-				if (j > 0 && !IS_AUDIO(d,j) && IS_AUDIO(d,j-1)) {
-					if (d->disc_toc[j].dwStartSector > ms_addr - 11400) {
-						/* The next two code lines are the purpose of duplicating this
-						 * function, all others are an exact copy of paranoias FixupTOC().
-						 * The gory details: CD-Extra consist of N audio-tracks in the
-						 * first session and one data-track in the next session.  This
-						 * means, the first sector of the data track is not right behind
-						 * the last sector of the last audio track, so all length
-						 * calculation for that last audio track would be wrong.  For this
-						 * the start sector of the data track is adjusted (we don't need
-						 * the real start sector, as we don't rip that track anyway), so
-						 * that the last audio track end in the first session.  All well
-						 * and good so far.  BUT: The CDDB disc-id is based on the real
-						 * TOC entries so this adjustment would result in a wrong Disc-ID.
-						 * We can only solve this conflict, when we save the old
-						 * (toc-based) start sector of the data track.  Of course the
-						 * correct solution would be, to only adjust the _length_ of the
-						 * last audio track, not the start of the next track, but the
-						 * internal structures of cdparanoia are as they are, so the
-						 * length is only implicitely given.  Bloody sh*. */
-						start_of_first_data_as_in_toc = d->disc_toc[j].dwStartSector;
-						hack_track = j + 1;
-						d->disc_toc[j].dwStartSector = ms_addr - 11400;
-					}
-					break;
-				}
-			return 1;
-		}
-	}
-	return 0;
-}
-#endif
-
-/* libcdda returns for cdda_disc_lastsector() the last sector of the last
-	 _audio_ track.  How broken. For CDDB Disc-ID we need the real last sector
-	 to calculate the disc length.  */
-long my_last_sector(cdrom_drive *drive)
-{
-	return cdda_track_lastsector(drive, drive->tracks);
-}
-
-/* Stupid CDparanoia returns the first sector of the first _audio_ track
-	 as first disc sector.  Equally broken to the last sector.  But what is
-	 even more annoying is, that if it happens that the first audio track is
-	 the first track at all, it returns a hardcoded _zero_, whatever else
-	 the TOC told it. This of course happens quite often, as usually the first
-	 track is audio, if there's audio at all. And usually it even works,
-	 because most of the time the real TOC offset is 150 frames, which we
-	 accounted for in our code. This is so unbelievable ugly. */
-long my_first_sector(cdrom_drive *drive)
-{
-	return cdda_track_firstsector(drive, 1);
-}
 
 using namespace AudioCD;
 
@@ -205,11 +73,9 @@ static const KCmdLineOptions options[] =
     KCmdLineLastOption
 };
 
-int
-kdemain(int argc, char ** argv)
+int kdemain(int argc, char ** argv)
 {
-	// KApplication is used as libkcddb uses ioslaves which need a valid
-	// kapp pointer
+	// KApplication uses libkcddb which needs a valid kapp pointer
 	// GUIenabled must be true as libkcddb sometimes wants to communicate
 	// with the user
 	putenv(strdup("SESSION_MANAGER="));
@@ -240,7 +106,7 @@ class AudioCDProtocol::Private {
 public:
 	Private() {
 		clearURLargs();
-		discid = "";
+		discid = 0;
 		s_info = i18n("Information");
 		s_fullCD = i18n("Full CD");
 	}
@@ -269,7 +135,7 @@ public:
 	QString s_fullCD;
 
 	// Current CD
-	QString discid;
+	uint discid;
 	uint tracks;
 	bool trackIsAudio[100];
 
@@ -349,7 +215,6 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 	AudioCDEncoder *encoder;
 	for ( encoder = encoders.first(); encoder; encoder = encoders.next() )
 		encoder->init();
-
 	// Load OUR Settings.
 	loadSettings();
 
@@ -357,7 +222,6 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 	parseURLArgs(url);
 
 	struct cdrom_drive * drive = pickDrive();
-
 	if (0 == drive)
 		return 0;
 
@@ -372,10 +236,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 
 	updateCD(drive);
 
-	//
 	// Determine what file or folder that is wanted.
-	//
-
 	d->fname = url.fileName(false);
 	QString dname = url.directory(true, false);
 	if (!dname.isEmpty() && dname[0] == '/')
@@ -647,56 +508,37 @@ void AudioCDProtocol::stat(const KURL & url)
 
 void AudioCDProtocol::updateCD(struct cdrom_drive * drive)
 {
-	d->tracks = cdda_tracks(drive);
-
-	KCDDB::TrackOffsetList qvl;
-
-	for(uint i=0; i< d->tracks; i++){
-			d->trackIsAudio[i] = cdda_track_audiop(drive, i + 1);
-			// Does this ever happen??
-			// kdDebug(7117) << "Hack track: " << hack_track << endl;
-			if (((int)i+1) != hack_track)
-				qvl.append(cdda_track_firstsector(drive, i + 1) + 150);
-			else
-				qvl.append(start_of_first_data_as_in_toc + 150);
-	}
-
-	qvl.append(my_first_sector(drive)+150);
-	qvl.append(my_last_sector(drive)+150);
-
-	KCDDB::CDDB cddb;
-	QString id = cddb.trackOffsetListToId(qvl);
-	if (id == d->discid){
+	KCompactDisc cd(KCompactDisc::Asynchronous);
+	// TODO which one is right?
+	qDebug("\"%s\" \"%s\"", drive->cdda_device_name, drive->ioctl_device_name);
+	cd.setDevice(drive->ioctl_device_name, 50, false);
+	
+	if (cd.discId() == d->discid || cd.discId() == cd.missingDisc)
 		return;
-	}
-	d->discid = id;
+	else
+		d->discid = cd.discId();
+		
+	d->tracks = cd.tracks();
+	
+	for(uint i=0; i< cd.tracks(); i++)
+		d->trackIsAudio[i] = cd.isAudio(i+1);
+
 	d->templateTitles.clear();
 	d->track_titles.clear();
 	KCDDB::Client c;
-
-	d->cddbResult = c.lookup(qvl);
-
+	d->cddbResult = c.lookup(cd.discSignature());
 	if (d->cddbResult == KCDDB::CDDB::Success)
 	{
 		d->cddbList = c.lookupResponse();
 		d->cddbBestChoice = c.bestLookupResponse();
 		generateTemplateTitles();
-		return;
 	}
-
-	for (uint i = 1; i <= d->tracks; i++)
-	{
-		QString s;
-		QString num;
-		num.sprintf("%02d", i);
-		if (cdda_track_audiop(drive, i))
-			s = i18n("Track %1").arg(num);
-		else
-			s.sprintf("data%02d", i);
-		d->templateTitles.append( s );
-
-		// keep both lists in sync
-		d->track_titles.append( QString::null );
+	else{
+		for (unsigned int i = 1; i <= cd.tracks(); i++)
+		{
+			d->templateTitles.append( i18n("Track %1").arg((double)i, 2, '0') );
+			d->track_titles.append( QString::null );
+		}
 	}
 }
 
@@ -1203,8 +1045,7 @@ void AudioCDProtocol::generateTemplateTitles()
 		macros["albumartist"] = d->cd_artist;
 		macros["albumtitle"] = d->cd_title;
 		macros["title"] = d->track_titles[i];
-		QString n;
-		macros["number"] = n.sprintf("%02d", i + 1);
+		macros["number"] = QString("%1").arg((double)(i+1), 2, '0');
 		macros["genre"] = d->cd_category;
 		macros["year"] = QString::number(d->cd_year);
 
