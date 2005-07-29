@@ -4,7 +4,8 @@ endif
 SUBDIRS = plugins $(AUDIO_CD_SUBDIRS)
 
 INCLUDES = -I$(top_srcdir)/libkcddb \
-		   -I$(top_builddir)/libkcddb -I$(srcdir)/plugins $(all_includes)
+		   -I$(top_builddir)/libkcddb -I$(top_srcdir)/kscd $(all_includes) \
+		    -I$(srcdir)/plugins $(all_includes)
 
 KDE_CXXFLAGS=$(ENABLE_PERMISSIVE_FLAG)
 
@@ -14,7 +15,7 @@ kio_audiocd_la_SOURCES = audiocd.cpp
 
 kio_audiocd_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
 
-kio_audiocd_la_LIBADD = ./plugins/libaudiocdplugins.la $(LIB_KIO) $(CDPARANOIA_LIBS) $(top_builddir)/libkcddb/libkcddb.la
+kio_audiocd_la_LIBADD = ./plugins/libaudiocdplugins.la $(LIB_KIO) $(CDPARANOIA_LIBS) $(top_builddir)/libkcddb/libkcddb.la $(top_builddir)/kscd/libkcompactdisc.la
 
 noinst_HEADERS = audiocd.h
 
