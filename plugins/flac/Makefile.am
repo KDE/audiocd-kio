@@ -1,4 +1,4 @@
-INCLUDES = -I$(srcdir)/.. $(all_includes)
+INCLUDES = -I$(top_srcdir)/libkcddb -I$(srcdir)/.. $(all_includes)
 
 kde_module_LTLIBRARIES = libaudiocd_encoder_flac.la
 

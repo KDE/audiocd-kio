@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2004 Benjamin Meyer <ben + audiocd at meyerhome dot net>
+  Copyright (C) 2004, 2005 Benjamin Meyer <ben at meyerhome dot net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by

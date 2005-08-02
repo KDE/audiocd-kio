@@ -285,35 +285,28 @@ long EncoderLame::readCleanup(){
 	return 0;
 }
 
-void EncoderLame::fillSongInfo( const QString &trackName,
-			const QString &cdArtist,
-			const QString &cdTitle,
-			const QString &cdCategory,
-			int trackNumber,
-			int cdYear,
-			const QString &comment ){
-	
+void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ){
 	trackInfo.clear();
 	trackInfo.append("--tt");
-	trackInfo.append(trackName);
+	trackInfo.append(info.trackInfoList[track].get("title").toString());
 
 	trackInfo.append("--ta");
-	trackInfo.append(cdArtist);
+	trackInfo.append(info.get("artist").toString());
 
 	trackInfo.append("--tl");
-	trackInfo.append(cdTitle);
+	trackInfo.append(info.get("title").toString());
 
 	trackInfo.append("--ty");
-	trackInfo.append(QString("%1").arg(cdYear));
+	trackInfo.append(QString("%1").arg(info.get("year").toString()));
 
 	trackInfo.append("--tc");
 	trackInfo.append(comment);
 
 	trackInfo.append("--tn");
-	trackInfo.append(QString("%1").arg(trackNumber));
+	trackInfo.append(QString("%1").arg(track));
 
 	trackInfo.append("--tg");
-	trackInfo.append(cdCategory);
+	trackInfo.append(info.get("genre").toString());
 }
 
 

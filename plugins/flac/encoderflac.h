@@ -1,6 +1,7 @@
 /*
     Copyright (C) 2004 Allan Sandfeld Jensen <kde@carewolf.com>
-
+    Copyright (C) 2005 Benjamin Meyer <ben at meyerhome dot net>
+ 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
     License as published by the Free Software Foundation; either
@@ -43,15 +44,7 @@ public:
   virtual unsigned long size(long time_secs) const;
   virtual const char * fileType() const { return "flac"; };
   virtual const char * mimeType() const { return "audio/x-flac"; }
-
-  virtual void fillSongInfo(const QString &trackName,
-		            const QString &cdArtist,
-			    const QString &cdTitle,
-			    const QString &cdCategory,
-			    int trackNumber,
-			    int cdYear,
-					const QString &comment);
-  
+  virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment );
   virtual long readInit(long size);
   virtual long read(int16_t * buf, int frames);
   virtual long readCleanup();

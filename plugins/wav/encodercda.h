@@ -5,7 +5,7 @@
   Copyright (C) 2001 Adrian Schroeter <adrian@suse.de>
   Copyright (C) 2003 Richard Lärkäng <richard@goteborg.utfors.se>
   Copyright (C) 2003 Scott Wheeler <wheeler@kde.org>
-  Copyright (C) 2004 Benjamin Meyer <ben + audiocd at meyerhome dot net>
+  Copyright (C) 2004, 2005 Benjamin Meyer <ben at meyerhome dot net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -46,13 +46,7 @@ public:
   virtual QString type() const { return "CDA"; };
   virtual const char * mimeType() const;
   virtual const char * fileType() const { return "cda"; };
-  virtual void fillSongInfo(const QString &,
-		            const QString &,
-			    const QString &,
-			    const QString &,
-			    int,
-			    int,
-					const QString &){};
+  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){};
   virtual long readInit(long){ return 0; };
   virtual long read(int16_t * buf, int frames);
   virtual long readCleanup(){ return 0; };

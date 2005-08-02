@@ -1,4 +1,4 @@
-INCLUDES = -I$(srcdir)/.. $(taglib_includes) $(all_includes)
+INCLUDES = -I$(top_srcdir)/libkcddb -I$(srcdir)/.. $(taglib_includes) $(all_includes)
 
 kde_kcfg_DATA = audiocd_lame_encoder.kcfg
 

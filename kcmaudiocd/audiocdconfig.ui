@@ -8,9 +8,12 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>620</width>
-            <height>551</height>
+            <width>640</width>
+            <height>563</height>
         </rect>
+    </property>
+    <property name="caption">
+        <string>AudiocdConfig</string>
     </property>
     <property name="layoutMargin" stdset="0">
     </property>
@@ -49,129 +52,28 @@
                 <attribute name="title">
                     <string>&amp;General</string>
                 </attribute>
-                <vbox>
+                <grid>
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <widget class="QGroupBox">
+                    <spacer row="4" column="2">
                         <property name="name">
-                            <cstring>GroupBox9</cstring>
+                            <cstring>Spacer5</cstring>
                         </property>
-                        <property name="title">
-                            <string>CD Device</string>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
                         </property>
-                        <vbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>11</number>
-                            </property>
-                            <property name="spacing">
-                                <number>6</number>
-                            </property>
-                            <widget class="QCheckBox">
-                                <property name="name">
-                                    <cstring>cd_autosearch_check</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>De&amp;termine device automatically</string>
-                                </property>
-                                <property name="checked">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="whatsThis" stdset="0">
-                                    <string>Uncheck this if you want to specify a CD device different from the one autoprobed</string>
-                                </property>
-                            </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>Layout20</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <property name="margin">
-                                        <number>0</number>
-                                    </property>
-                                    <property name="spacing">
-                                        <number>6</number>
-                                    </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel1</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>De&amp;vice:</string>
-                                        </property>
-                                        <property name="buddy" stdset="0">
-                                            <cstring>cd_device_string</cstring>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit">
-                                        <property name="name">
-                                            <cstring>cd_device_string</cstring>
-                                        </property>
-                                        <property name="enabled">
-                                            <bool>false</bool>
-                                        </property>
-                                        <property name="text">
-                                            <string>/dev/cdrom</string>
-                                        </property>
-                                        <property name="whatsThis" stdset="0">
-                                            <string>Specify a location for the drive you want to use. Normally, this is a file inside the /dev folder representing your CD or DVD drive.</string>
-                                        </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                        </vbox>
-                    </widget>
-                    <widget class="QGroupBox">
-                        <property name="name">
-                            <cstring>GroupBox19</cstring>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
                         </property>
-                        <property name="title">
-                            <string>Error Correction Settings</string>
+                        <property name="sizeHint">
+                            <size>
+                                <width>20</width>
+                                <height>210</height>
+                            </size>
                         </property>
-                        <vbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>11</number>
-                            </property>
-                            <property name="spacing">
-                                <number>6</number>
-                            </property>
-                            <widget class="QCheckBox">
-                                <property name="name">
-                                    <cstring>ec_enable_check</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Enable &amp;error correction</string>
-                                </property>
-                                <property name="checked">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="whatsThis" stdset="0">
-                                    <string>If you check this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
-                                </property>
-                            </widget>
-                            <widget class="QCheckBox">
-                                <property name="name">
-                                    <cstring>ec_skip_check</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>&amp;Skip on errors</string>
-                                </property>
-                                <property name="checked">
-                                    <bool>false</bool>
-                                </property>
-                            </widget>
-                        </vbox>
-                    </widget>
-                    <widget class="QGroupBox">
+                    </spacer>
+                    <widget class="QGroupBox" row="3" column="0" rowspan="1" colspan="3">
                         <property name="name">
                             <cstring>encoderPriority</cstring>
                         </property>
@@ -234,24 +136,83 @@
                             </widget>
                         </grid>
                     </widget>
-                    <spacer>
+                    <widget class="QLineEdit" row="0" column="2">
                         <property name="name">
-                            <cstring>Spacer5</cstring>
+                            <cstring>cd_device_string</cstring>
+                        </property>
+                        <property name="enabled">
+                            <bool>false</bool>
+                        </property>
+                        <property name="text">
+                            <string>/dev/cdrom</string>
+                        </property>
+                        <property name="whatsThis" stdset="0">
+                            <string>Specify a location for the drive you want to use. Normally, this is a file inside the /dev folder representing your CD or DVD drive.</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>cd_autosearch_check</cstring>
+                        </property>
+                        <property name="text">
+                            <string>&amp;Specify CD Device:</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+S</string>
+                        </property>
+                        <property name="whatsThis" stdset="0">
+                            <string>Uncheck this if you want to specify a CD device different from the one autoprobed</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>ec_enable_check</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Use &amp;error correction when reading the CD</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+E</string>
+                        </property>
+                        <property name="checked">
+                            <bool>true</bool>
+                        </property>
+                        <property name="whatsThis" stdset="0">
+                            <string>If you check this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="2" column="1" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>ec_skip_check</cstring>
+                        </property>
+                        <property name="text">
+                            <string>&amp;Skip on errors</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+S</string>
+                        </property>
+                        <property name="checked">
+                            <bool>false</bool>
+                        </property>
+                    </widget>
+                    <spacer row="2" column="0">
+                        <property name="name">
+                            <cstring>spacer4_2</cstring>
                         </property>
                         <property name="orientation">
-                            <enum>Vertical</enum>
+                            <enum>Horizontal</enum>
                         </property>
                         <property name="sizeType">
-                            <enum>Expanding</enum>
+                            <enum>Fixed</enum>
                         </property>
                         <property name="sizeHint">
                             <size>
                                 <width>20</width>
-                                <height>80</height>
+                                <height>20</height>
                             </size>
                         </property>
                     </spacer>
-                </vbox>
+                </grid>
             </widget>
             <widget class="QWidget">
                 <property name="name">
@@ -642,21 +603,20 @@
 </widget>
 <connections>
     <connection>
-        <sender>cd_autosearch_check</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>cd_device_string</receiver>
-        <slot>setDisabled(bool)</slot>
-    </connection>
-    <connection>
         <sender>ec_enable_check</sender>
         <signal>toggled(bool)</signal>
         <receiver>ec_skip_check</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
+    <connection>
+        <sender>cd_autosearch_check</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>cd_device_string</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
 </connections>
 <tabstops>
     <tabstop>tabWidget</tabstop>
-    <tabstop>cd_autosearch_check</tabstop>
     <tabstop>cd_device_string</tabstop>
     <tabstop>ec_enable_check</tabstop>
     <tabstop>ec_skip_check</tabstop>
