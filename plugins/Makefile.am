@@ -4,11 +4,11 @@
 
 SUBDIRS = . wav vorbis lame flac
 
-INCLUDES = $(all_includes)
-
+INCLUDES = -I$(top_srcdir)/libkcddb $(all_includes)
+		   
 lib_LTLIBRARIES = libaudiocdplugins.la
 
-libaudiocdplugins_la_LIBADD =  $(LIB_KDECORE)
+libaudiocdplugins_la_LIBADD =  $(LIB_KDECORE) $(top_builddir)/libkcddb/libkcddb.la
 
 libaudiocdplugins_la_LDFLAGS = $(all_libraries) -version-info 1:0:0 -no-undefined
 

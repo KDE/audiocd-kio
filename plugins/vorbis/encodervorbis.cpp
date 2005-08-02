@@ -5,7 +5,7 @@
   Copyright (C) 2001 Adrian Schroeter <adrian@suse.de>
   Copyright (C) 2003 Richard Lärkäng <richard@goteborg.utfors.se>
   Copyright (C) 2003 Scott Wheeler <wheeler@kde.org>
-  Copyright (C) 2004 Benjamin Meyer <ben + audiocd at meyerhome dot net>
+  Copyright (C) 2004, 2005 Benjamin Meyer <ben at meyerhome dot net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -229,7 +229,7 @@ const char * EncoderVorbis::mimeType() const{
   return "audio/vorbis";
 }
 
-long EncoderVorbis::readInit(long size){
+long EncoderVorbis::readInit(long /*size*/){
   ogg_packet header;
   ogg_packet header_comm;
   ogg_packet header_code;
@@ -296,38 +296,33 @@ long EncoderVorbis::readCleanup(){
   return processed;
 }
 
-void EncoderVorbis::fillSongInfo(const QString &trackName,
-		            const QString &cdArtist,
-			    const QString &cdTitle,
-			    const QString &cdCategory,
-			    int trackNumber,
-			    int cdYear,
-					const QString &comment){
+void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment )
+{
   if( !d->write_vorbis_comments )
     return;
 
-  typedef QPair<QCString, QString> CommentField;
+  typedef QPair<QCString, QVariant> CommentField;
   QValueList<CommentField> commentFields;
 
-  commentFields.append(CommentField("title", trackName));
-  commentFields.append(CommentField("artist", cdArtist));
-  commentFields.append(CommentField("album", cdTitle));
-  commentFields.append(CommentField("genre", cdCategory));
-  commentFields.append(CommentField("tracknumber", QString::number(trackNumber)));
-	commentFields.append(CommentField("comment", comment));
+  commentFields.append(CommentField("title", info.trackInfoList[track].get("title")));
+  commentFields.append(CommentField("artist", info.get("artist")));
+  commentFields.append(CommentField("album", info.get("title")));
+  commentFields.append(CommentField("genre", info.get("genre")));
+  commentFields.append(CommentField("tracknumber", QString::number(track)));
+  commentFields.append(CommentField("comment", comment));
 	
-  if (cdYear > 0) {
-    QDateTime dt = QDate(cdYear, 1, 1);
+  if (info.year > 0) {
+    QDateTime dt = QDate(info.year, 1, 1);
     commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));
   }
 
   for(QValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
 
     // if the value is not empty
-    if(!(*it).second.isEmpty()) {
+    if(!(*it).second.toString().isEmpty()) {
 
       char *key = qstrdup((*it).first);
-      char *value = qstrdup((*it).second.utf8().data());
+      char *value = qstrdup((*it).second.toString().utf8().data());
 
       vorbis_comment_add_tag(&d->vc, key, value);
 

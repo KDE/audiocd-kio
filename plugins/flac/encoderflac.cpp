@@ -1,6 +1,7 @@
 /*
     Copyright (C) 2004 Allan Sandfeld Jensen <kde@carewolf.com>
-
+    Copyright (C) 2005 Benjamin Meyer <ben at meyerhome dot net>
+ 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
     License as published by the Free Software Foundation; either
@@ -152,25 +153,23 @@ long EncoderFLAC::readCleanup()
     return 0;
 }
 
-void EncoderFLAC::fillSongInfo(const QString &trackName, const QString &cdArtist,
-			       const QString &cdTitle,   const QString &cdCategory,
-			       int trackNumber, int cdYear, const QString &comment)
+void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment )
 {
     d->metadata = new FLAC__StreamMetadata*[1];
     d->metadata[0] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_VORBIS_COMMENT);
 //    d->metadata[1] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_PADDING);
 //    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
-    typedef QPair<QString, QString> Comment;
-    Comment comments[7] = { Comment("Title", trackName),
-	    	    	    Comment("Artist", cdArtist),
-	    	    	    Comment("Album",  cdTitle),
-	    	    	    Comment("Genre",  cdCategory),
-	    	    	    Comment("Tracknumber", QString::number(trackNumber)),
-									Comment("Comment", comment),
+    typedef QPair<QString, QVarient> Comment;
+    Comment comments[7] = { Comment("Title", info.trackInfoList[track].get("title")),
+	    	    	    Comment("Artist", info.get("artist")),
+	    	    	    Comment("Album",  info.get("title")),
+	    	    	    Comment("Genre",  info.get("genre")),
+	    	    	    Comment("Tracknumber", QString::number(track)),
+	                    Comment("Comment", comment),
 	    	    	    Comment("Date", QString::null )};
     if (cdYear > 0) {
-    	QDateTime dt = QDate(cdYear, 1, 1);
+    	QDateTime dt = QDate(info.year, 1, 1);
     	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
     }
 
@@ -180,8 +179,8 @@ void EncoderFLAC::fillSongInfo(const QString &trackName, const QString &cdArtist
     int num_comments = 0;
 
     for(int i=0; i<7; i++) {
-	if (!comments[i].second.isEmpty()) {
-	    field = comments[i].first+"="+comments[i].second;
+	if (!comments[i].second.toString().isEmpty()) {
+	    field = comments[i].first+"="+comments[i].second.toString();
 	    cfield = field.utf8();
     	    entry.entry = (FLAC__byte*)qstrdup(cfield);
 	    entry.length = cfield.length();
@@ -192,7 +191,6 @@ void EncoderFLAC::fillSongInfo(const QString &trackName, const QString &cdArtist
     }
 
     FLAC__stream_encoder_set_metadata(d->encoder, d->metadata, 1);
-
 }
 
 #endif // HAVE_LIBFLAC

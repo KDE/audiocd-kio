@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2004 Benjamin Meyer <ben + audiocd at meyerhome dot net>
+  Copyright (C) 2004, 2005 Benjamin Meyer <ben at meyerhome dot net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,8 +21,10 @@
 
 #include <sys/types.h>
 #include <kio/slavebase.h>
+#include <cdinfo.h>
 
 class KConfigSkeleton;
+using namespace KCDDB;
 
 class AudioCDEncoder {
 
@@ -84,13 +86,7 @@ public:
    * information if they want to so it can be inserted 
    * where neccessary (start, middle, end, or combos etc).
    */ 
-  virtual void fillSongInfo( const QString &trackName,
-		      const QString &cdArtist,
-			    const QString &cdTitle,
-			    const QString &cdCategory,
-			    int trackNumber,
-			    int cdYear,
-					const QString &comment ) = 0;
+  virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ) = 0;
   
   /**
    * Perform any initial file creation necessary for a new song (that

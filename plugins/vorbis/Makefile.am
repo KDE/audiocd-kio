@@ -1,4 +1,4 @@
-INCLUDES = -I$(srcdir)/.. $(all_includes)
+INCLUDES = -I$(top_srcdir)/libkcddb -I$(srcdir)/.. $(all_includes)
 
 kde_kcfg_DATA = audiocd_vorbis_encoder.kcfg
 
