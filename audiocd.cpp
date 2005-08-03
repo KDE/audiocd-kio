@@ -216,7 +216,11 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 	KCompactDisc cd(KCompactDisc::Asynchronous);
 	// TODO which one is right?
 	// qDebug("\"%s\" \"%s\"", drive->cdda_device_name, drive->ioctl_device_name);
+#if defined(Q_OS_LINUX)
 	cd.setDevice(drive->cdda_device_name, 50, false);
+#elif defined(Q_OS_FREEBSD)
+	cd.setDevice(drive->dev->device_path);
+#endif
 	
 	if (cd.discId() != d->discid && cd.discId() != cd.missingDisc){
 		d->discid = cd.discId();
