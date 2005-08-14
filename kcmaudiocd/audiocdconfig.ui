@@ -152,7 +152,7 @@
                             <cstring>cd_autosearch_check</cstring>
                         </property>
                         <property name="text">
-                            <string>&amp;Specify CD Device:</string>
+                            <string>&amp;Specify CD device:</string>
                         </property>
                         <property name="whatsThis" stdset="0">
                             <string>Uncheck this if you want to specify a CD device different from the one autoprobed</string>
