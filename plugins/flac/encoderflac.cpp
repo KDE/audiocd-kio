@@ -153,14 +153,14 @@ long EncoderFLAC::readCleanup()
     return 0;
 }
 
-void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment )
+void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment )
 {
     d->metadata = new FLAC__StreamMetadata*[1];
     d->metadata[0] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_VORBIS_COMMENT);
 //    d->metadata[1] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_PADDING);
 //    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
-    typedef QPair<QString, QVarient> Comment;
+    typedef QPair<QString, QVariant> Comment;
     Comment comments[7] = { Comment("Title", info.trackInfoList[track].get("title")),
 	    	    	    Comment("Artist", info.get("artist")),
 	    	    	    Comment("Album",  info.get("title")),
@@ -168,8 +168,8 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	    	    	    Comment("Tracknumber", QString::number(track)),
 	                    Comment("Comment", comment),
 	    	    	    Comment("Date", QString::null )};
-    if (cdYear > 0) {
-    	QDateTime dt = QDate(info.year, 1, 1);
+    if (info.get("Year").toInt() > 0) {
+    	QDateTime dt = QDate(info.get("Year").toInt(), 1, 1);
     	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
     }
 

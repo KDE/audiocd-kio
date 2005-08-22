@@ -1,0 +1,46 @@
+AC_DEFUN([AC_CHECK_LIBFLAC],
+[
+  AC_LANG_SAVE
+  AC_LANG_C
+  have_libFLAC=no
+  KDE_CHECK_HEADER(FLAC/metadata.h,
+  [
+     KDE_CHECK_LIB(FLAC,FLAC__seekable_stream_decoder_process_single,
+	          have_libFLAC=yes)
+
+    ])
+  if test "x$have_libFLAC" = "xyes"; then
+      LIBFLAC="-lFLAC"
+      AC_DEFINE(HAVE_LIBFLAC, 1,
+        [Define if you have libFLAC (required for loading FLAC files)])
+  fi
+  AC_SUBST(LIBFLAC)
+  AC_LANG_RESTORE
+])
+
+AC_DEFUN([AC_CHECK_LIBOGGFLAC],
+[
+  AC_LANG_SAVE
+  AC_LANG_C
+  have_libOggFLAC=no
+  KDE_CHECK_HEADER(OggFLAC/seekable_stream_decoder.h,
+  [
+     KDE_CHECK_LIB(OggFLAC,OggFLAC__seekable_stream_decoder_process_single,
+	          have_libOggFLAC=yes,,[-lm -lOggFLAC -lFLAC])
+
+    ])
+  if test "x$have_libOggFLAC" = "xyes"; then
+      LIBOGGFLAC="-lOggFLAC"
+      AC_DEFINE(HAVE_LIBOGGFLAC, 1,
+        [Define if you have libOggFLAC (required for loading OggFLAC files)])
+  fi
+  AC_SUBST(LIBOGGFLAC)
+  AC_LANG_RESTORE
+])
+
+AC_ARG_WITH(flac,AC_HELP_STRING([--with-flac],[Enable FLAC support @<:@default=check@:>@]),[flac_test="$withval"],[flac_test="yes"])
+
+if test "x$flac_test" = "xyes" ; then
+  AC_CHECK_LIBFLAC
+  AC_CHECK_LIBOGGFLAC
+fi
