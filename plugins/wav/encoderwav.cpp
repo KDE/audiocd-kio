@@ -23,10 +23,12 @@
 */
 
 #include "encoderwav.h"
+//Added by qt3to4:
+#include <Q3PtrList>
 
 extern "C"
 {
-  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
+  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders)
   {
     encoders.append( new EncoderWav(slave));
     encoders.append( new EncoderCda(slave));

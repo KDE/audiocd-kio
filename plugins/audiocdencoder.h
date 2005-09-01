@@ -22,6 +22,8 @@
 #include <sys/types.h>
 #include <kio/slavebase.h>
 #include <cdinfo.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 class KConfigSkeleton;
 using namespace KCDDB;
@@ -125,7 +127,7 @@ public:
    * @param slave ioslave needed if the plugin is going to be used to encode something.
    * @param encoders container for new encoders.
    */
-  static void find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders);
+  static void find_all_plugins(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders);
 
 protected:
   /**

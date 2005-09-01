@@ -33,14 +33,18 @@
 #include <stdlib.h>
 #include <kconfig.h>
 #include <knuminput.h>
-#include <qgroupbox.h>
+#include <q3groupbox.h>
+//Added by qt3to4:
+#include <Q3ValueList>
+#include <Q3CString>
+#include <Q3PtrList>
 
 #include <kglobal.h>  
 #include <klocale.h>
 
 extern "C"
 {
-  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)
+  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders)
   {
     encoders.append(new EncoderVorbis(slave));
   }
@@ -301,8 +305,8 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
   if( !d->write_vorbis_comments )
     return;
 
-  typedef QPair<QCString, QVariant> CommentField;
-  QValueList<CommentField> commentFields;
+  typedef QPair<Q3CString, QVariant> CommentField;
+  Q3ValueList<CommentField> commentFields;
 
   commentFields.append(CommentField("title", info.trackInfoList[track].get("title")));
   commentFields.append(CommentField("artist", info.get("artist")));
@@ -316,7 +320,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
     commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));
   }
 
-  for(QValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
+  for(Q3ValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
 
     // if the value is not empty
     if(!(*it).second.toString().isEmpty()) {

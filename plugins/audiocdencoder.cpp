@@ -21,22 +21,24 @@
 #include <kdebug.h>
 #include <qdir.h>
 #include <qregexp.h>
-#include <kstandarddirs.h> 
+//Added by qt3to4:
+#include <Q3PtrList>
+#include <kstandarddirs.h>
 
 /**
  * Attempt to load a plugin and see if it has the symbol create_audiocd_encoders.
  * @param libFileName file to try to load.
  * @returns pointer to the symbol or NULL
- */  
+ */
 void* loadPlugin( const QString &libFileName ){
 #ifdef DEBUG
   kdDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\"." << endl;
-#endif  
-  KLibLoader *loader = KLibLoader::self(); 
+#endif
+  KLibLoader *loader = KLibLoader::self();
   if( !loader ) return NULL;
 #ifdef DEBUG
   kdDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\"." << endl;
-#endif  
+#endif
   KLibrary *lib = loader->library(libFileName.latin1());
   if( !lib ) return NULL;
 #ifdef DEBUG
@@ -55,7 +57,7 @@ void* loadPlugin( const QString &libFileName ){
  * but I do know that this does work. :)  Feel free to improve the loading system,
  * there isn't much code anyway.
  */
-void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders){
+void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders){
   KStandardDirs da;
 
   QStringList fonts = da.findDirs("module", "");
@@ -66,22 +68,22 @@ void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEnc
       continue;
     }
     d.setFilter( QDir::Files | QDir::Hidden );
-    
-    const QFileInfoList *list = d.entryInfoList();
-    QFileInfoListIterator it( *list );
-    QFileInfo *fi;
-    
-    while ( (fi = it.current()) != 0 ) {
-      if(0 < fi->fileName().contains(QRegExp( "^libaudiocd_encoder_.*.so$" ))){
-        QString fileName = (fi->fileName().mid(0,fi->fileName().find('.')));
-        void *function = loadPlugin(fileName);
-        if(function){
-          void (*functionPointer)(KIO::SlaveBase *, QPtrList<AudioCDEncoder> &) = (void (*)(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)) function;
-          functionPointer(slave, encoders);
+    const QFileInfoList list = d.entryInfoList();
+    if ( list.count()>0 )
+    {
+        for ( int i = 0; i<list.count();i++ )
+        {
+            QFileInfo fi( list.at( i ) );
+            if (0 < fi.fileName().count(QRegExp( "^libaudiocd_encoder_.*.so$" ))){
+                QString fileName = (fi.fileName().mid(0,fi.fileName().find('.')));
+                void *function = loadPlugin(fileName);
+                if(function){
+                    void (*functionPointer)(KIO::SlaveBase *, Q3PtrList<AudioCDEncoder> &) = (void (*)(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders)) function;
+                    functionPointer(slave, encoders);
+                }
+            }
         }
-      }
-      ++it;
-    } 
+    }
   }
 }
 
