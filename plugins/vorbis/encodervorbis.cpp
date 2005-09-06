@@ -37,14 +37,13 @@
 //Added by qt3to4:
 #include <Q3ValueList>
 #include <Q3CString>
-#include <Q3PtrList>
 
 #include <kglobal.h>  
 #include <klocale.h>
 
 extern "C"
 {
-  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders)
+  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)
   {
     encoders.append(new EncoderVorbis(slave));
   }

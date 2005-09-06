@@ -28,14 +28,14 @@
 
 #include <kglobal.h>  
 #include <klocale.h>
-#include <kapplication.h>
+#include <qapplication.h>
 #include <qfileinfo.h>
 #include <ktempfile.h>
 #include <kstandarddirs.h>
 
 extern "C"
 {
-	KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders) {
+	KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders) {
 		encoders.append(new EncoderLame(slave));
 	}
 }
@@ -241,7 +241,7 @@ long EncoderLame::read(int16_t *buf, int frames){
 	// We can't return until the buffer has been written
 	d->waitingForWrite = true;
 	while(d->waitingForWrite && d->currentEncodeProcess->isRunning()){
-		kapp->processEvents();
+		qApp->processEvents();
 		usleep(1);
 	}
 
@@ -259,7 +259,7 @@ long EncoderLame::readCleanup(){
 	// Let lame tag the first frame of the mp3
 	d->currentEncodeProcess->closeStdin();
 	while( d->currentEncodeProcess->isRunning()){
-		kapp->processEvents();
+		qApp->processEvents();
 		usleep(1);
 	}
 

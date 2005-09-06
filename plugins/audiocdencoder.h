@@ -22,8 +22,7 @@
 #include <sys/types.h>
 #include <kio/slavebase.h>
 #include <cdinfo.h>
-//Added by qt3to4:
-#include <Q3PtrList>
+#include <qlist.h>
 
 class KConfigSkeleton;
 using namespace KCDDB;
@@ -117,7 +116,7 @@ public:
    * Returns a configure widget for the encoder
    */ 
   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const
-                   { return NULL; }; 
+                   { Q_UNUSED(manager); return NULL; }; 
  
   /**
    * Helper function to load all of the AudioCD Encoders from libraries.
@@ -127,7 +126,7 @@ public:
    * @param slave ioslave needed if the plugin is going to be used to encode something.
    * @param encoders container for new encoders.
    */
-  static void find_all_plugins(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders);
+  static void find_all_plugins(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders);
 
 protected:
   /**

@@ -21,8 +21,6 @@
 #include <kdebug.h>
 #include <qdir.h>
 #include <qregexp.h>
-//Added by qt3to4:
-#include <Q3PtrList>
 #include <kstandarddirs.h>
 
 /**
@@ -57,7 +55,7 @@ void* loadPlugin( const QString &libFileName ){
  * but I do know that this does work. :)  Feel free to improve the loading system,
  * there isn't much code anyway.
  */
-void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders){
+void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders){
   KStandardDirs da;
 
   QStringList fonts = da.findDirs("module", "");
@@ -78,7 +76,7 @@ void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, Q3PtrList<AudioCDEn
                 QString fileName = (fi.fileName().mid(0,fi.fileName().find('.')));
                 void *function = loadPlugin(fileName);
                 if(function){
-                    void (*functionPointer)(KIO::SlaveBase *, Q3PtrList<AudioCDEncoder> &) = (void (*)(KIO::SlaveBase *slave, Q3PtrList<AudioCDEncoder> &encoders)) function;
+                    void (*functionPointer)(KIO::SlaveBase *, QList<AudioCDEncoder*> &) = (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)) function;
                     functionPointer(slave, encoders);
                 }
             }
