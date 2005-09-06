@@ -42,7 +42,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 {
 	public:
 
-	AudioCDProtocol(const QCString & protocol, const QCString & pool, const QCString & app);
+	AudioCDProtocol(const Q3CString & protocol, const Q3CString & pool, const Q3CString & app);
 	virtual ~AudioCDProtocol();
 
 	virtual void get(const KURL &);
@@ -111,7 +111,7 @@ private:
 
 	void generateTemplateTitles();
 
-	QPtrList<AudioCDEncoder> encoders;
+	QList<AudioCDEncoder*> encoders;
 	cdrom_drive * getDrive();
 
 	// These are the only garenteed encoders to be built, the rest
