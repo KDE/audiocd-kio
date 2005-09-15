@@ -28,26 +28,30 @@
  * @param libFileName file to try to load.
  * @returns pointer to the symbol or NULL
  */
-void* loadPlugin( const QString &libFileName ){
+void *loadPlugin(const QString & libFileName)
+{
 #ifdef DEBUG
-  kdDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\"." << endl;
+    kdDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\"." << endl;
 #endif
-  KLibLoader *loader = KLibLoader::self();
-  if( !loader ) return NULL;
+    KLibLoader *loader = KLibLoader::self();
+    if (!loader)
+        return NULL;
 #ifdef DEBUG
-  kdDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\"." << endl;
+    kdDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\"." << endl;
 #endif
-  KLibrary *lib = loader->library(libFileName.latin1());
-  if( !lib ) return NULL;
+    KLibrary *lib = loader->library(libFileName.latin1());
+    if (!lib)
+        return NULL;
 #ifdef DEBUG
-  kdDebug(7117) << "We have a library. File: \"" << libFileName.latin1() << "\"." << endl;
+    kdDebug(7117) << "We have a library. File: \"" << libFileName.latin1() << "\"." << endl;
 #endif
-  void *cplugin = lib->symbol("create_audiocd_encoders");
-  if( !cplugin ) return NULL;
+    void *cplugin = lib->symbol("create_audiocd_encoders");
+    if (!cplugin)
+        return NULL;
 #ifdef DEBUG
-  kdDebug(7117) << "We have a plugin. File:  \"" << libFileName.latin1() << "\"." << endl;
+    kdDebug(7117) << "We have a plugin. File:  \"" << libFileName.latin1() << "\"." << endl;
 #endif
-  return cplugin;
+    return cplugin;
 }
 
 /**
@@ -55,33 +59,32 @@ void* loadPlugin( const QString &libFileName ){
  * but I do know that this does work. :)  Feel free to improve the loading system,
  * there isn't much code anyway.
  */
-void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders){
-  KStandardDirs da;
+void AudioCDEncoder::findAllPlugins(KIO::SlaveBase * slave, QList<AudioCDEncoder *>&encoders)
+{
+    KStandardDirs standardDirs;
+    QStringList dirs = standardDirs.findDirs("module", "");
+    for (QStringList::Iterator it = dirs.begin(); it != dirs.end(); ++it) {
+        QDir dir(*it);
+        if (!dir.exists()) {
+            kdDebug(7117) << "Directory given by KStandardDirs: " << dir.path().
+                latin1() << " doesn't exists!" << endl;
+            continue;
+        }
 
-  QStringList fonts = da.findDirs("module", "");
-  for ( QStringList::Iterator it = fonts.begin(); it != fonts.end(); ++it ) {
-    QDir d(*it);
-    if(!d.exists()){
-      kdDebug(7117) << "Directory given by KStandardDirs: " << d.path().latin1() << " doesn't exists!" << endl;
-      continue;
-    }
-    d.setFilter( QDir::Files | QDir::Hidden );
-    const QFileInfoList list = d.entryInfoList();
-    if ( list.count()>0 )
-    {
-        for ( int i = 0; i<list.count();i++ )
-        {
-            QFileInfo fi( list.at( i ) );
-            if (0 < fi.fileName().count(QRegExp( "^libaudiocd_encoder_.*.so$" ))){
-                QString fileName = (fi.fileName().mid(0,fi.fileName().find('.')));
+        dir.setFilter(QDir::Files | QDir::Hidden);
+        const QFileInfoList files = dir.entryInfoList();
+        for (int i = 0; i < files.count(); ++i) {
+            QFileInfo fi(files.at(i));
+            if (0 < fi.fileName().count(QRegExp("^libaudiocd_encoder_.*.so$"))) {
+                QString fileName = (fi.fileName().mid(0, fi.fileName().find('.')));
                 void *function = loadPlugin(fileName);
-                if(function){
-                    void (*functionPointer)(KIO::SlaveBase *, QList<AudioCDEncoder*> &) = (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)) function;
+                if (function) {
+                    void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) = 
+                            (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
                     functionPointer(slave, encoders);
                 }
             }
         }
     }
-  }
 }
 
