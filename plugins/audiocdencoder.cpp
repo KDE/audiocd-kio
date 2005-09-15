@@ -55,7 +55,7 @@ void* loadPlugin( const QString &libFileName ){
  * but I do know that this does work. :)  Feel free to improve the loading system,
  * there isn't much code anyway.
  */
-void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders){
+void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders){
   KStandardDirs da;
 
   QStringList fonts = da.findDirs("module", "");

@@ -126,7 +126,7 @@ public:
    * @param slave ioslave needed if the plugin is going to be used to encode something.
    * @param encoders container for new encoders.
    */
-  static void find_all_plugins(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders);
+  static void findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders);
 
 protected:
   /**

@@ -231,7 +231,7 @@ void EncoderLame::wroteStdin( KProcess * /*procces*/ ){
 }
 
 long EncoderLame::read(int16_t *buf, int frames){
-  if(!d->currentEncodeProcess)
+	if(!d->currentEncodeProcess)
 		return 0;
 
 	// Pipe the raw data to lame
