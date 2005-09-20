@@ -51,7 +51,7 @@ extern "C"
 #include <kapplication.h>
 #include <klocale.h>
 #include <qregexp.h>
-
+#include <QHash>
 // CDDB
 #include <client.h>
 #include "kcompactdisc.h"
