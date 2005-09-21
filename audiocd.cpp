@@ -998,7 +998,7 @@ void AudioCDProtocol::generateTemplateTitles()
 	d->templateTitles.clear();
 	if (d->cddbResult != KCDDB::CDDB::Success)
 	{
-		for (unsigned int i = 1; i <= d->tracks; i++){
+		for (unsigned int i = 0; i < d->tracks; i++){
 			QString n;
 			d->templateTitles.append( i18n("Track %1").arg(n.sprintf("%02d", i + 1)));
 		}
