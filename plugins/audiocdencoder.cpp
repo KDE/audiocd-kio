@@ -66,21 +66,18 @@ void AudioCDEncoder::find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEnc
       continue;
     }
     d.setFilter( QDir::Files | QDir::Hidden );
-    
-    const QFileInfoList *list = d.entryInfoList();
-    QFileInfoListIterator it( *list );
-    QFileInfo *fi;
-    
-    while ( (fi = it.current()) != 0 ) {
-      if(0 < fi->fileName().contains(QRegExp( "^libaudiocd_encoder_.*.so$" ))){
-        QString fileName = (fi->fileName().mid(0,fi->fileName().find('.')));
+  
+    QStringList list = d.entryList( "libaudiocd_encoder_*.so");
+kdDebug() << "list " << list << endl;
+    for (QStringList::ConstIterator it2 = list.begin(); it2 != list.end(); ++it2) 
+    {
+        QString fileName = *it2;
+	fileName = fileName.mid(0, fileName.find('.'));
         void *function = loadPlugin(fileName);
         if(function){
           void (*functionPointer)(KIO::SlaveBase *, QPtrList<AudioCDEncoder> &) = (void (*)(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders)) function;
           functionPointer(slave, encoders);
         }
-      }
-      ++it;
     } 
   }
 }
