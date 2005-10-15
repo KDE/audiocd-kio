@@ -303,7 +303,7 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	trackInfo.append(comment);
 
 	trackInfo.append("--tn");
-	trackInfo.append(QString("%1").arg(track));
+	trackInfo.append(QString("%1").arg(track+1));
 
 	trackInfo.append("--tg");
 	trackInfo.append(info.get("genre").toString());

@@ -165,7 +165,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	    	    	    Comment("Artist", info.get("artist")),
 	    	    	    Comment("Album",  info.get("title")),
 	    	    	    Comment("Genre",  info.get("genre")),
-	    	    	    Comment("Tracknumber", QString::number(track)),
+	    	    	    Comment("Tracknumber", QString::number(track+1)),
 	                    Comment("Comment", comment),
 	    	    	    Comment("Date", QString::null )};
     if (info.get("Year").toInt() > 0) {

@@ -411,20 +411,20 @@ void AudioCDProtocol::get(const KURL & url)
 	if(d->cddbResult == KCDDB::CDDB::Success){
 		info = d->cddbBestChoice;
 	
-		int track = d->req_track+1;
+		int track = d->req_track;
 		
 		QString trackName;
 		// hack
 		// do we rip the whole CD?
 		if (d->req_allTracks){
-			track = 1;
+			track = 0;
 			// YES => the title of the file is the title of the CD
 			info.trackInfoList[track].title = info.title.utf8().data();
 		}
 		encoder->fillSongInfo(info, track, "");
 	}
 	else {
-		encoder->fillSongInfo(info, d->req_track+1, QString("CDDBDISCID=%1").arg(d->cddbBestChoice.id));
+		encoder->fillSongInfo(info, d->req_track, QString("CDDBDISCID=%1").arg(d->cddbBestChoice.id));
 	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);
