@@ -467,37 +467,28 @@ void AudioCDProtocol::stat(const KURL & url)
 
 	UDSEntry entry;
 
-	UDSAtom atom;
-	atom.m_uds = KIO::UDS_NAME;
-	atom.m_str = url.fileName().replace('/', QLatin1String("%2F"));
-	kdDebug(7117) << k_funcinfo << atom.m_str << endl;
-	entry.append(atom);
+	entry.insert( KIO::UDS_NAME, url.fileName().replace('/', QLatin1String("%2F") ));
 
-	atom.m_uds = KIO::UDS_FILE_TYPE;
-	atom.m_long = isFile ? S_IFREG : S_IFDIR;
-	entry.append(atom);
+	entry.insert( KIO::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
+				
 
 	const mode_t _umask = ::umask(0);
 	::umask(_umask);
 
-	atom.m_uds = KIO::UDS_ACCESS;
-	atom.m_long = 0666 & (~_umask);
-	entry.append(atom);
-
-	atom.m_uds = KIO::UDS_SIZE;
+	entry.insert(KIO::UDS_ACCESS, (0666 & (~_umask)));
+	
 	if (!isFile)
 	{
-		atom.m_long = cdda_tracks(drive);
+		entry.insert( KIO::UDS_SIZE, cdda_tracks(drive));
 	}
 	else
 	{
 			AudioCDEncoder *encoder = determineEncoder(d->fname);
 			long firstSector, lastSector;
 			getSectorsForRequest(drive, firstSector, lastSector);
-			atom.m_long = fileSize(firstSector, lastSector, encoder);
+			entry.insert( KIO::UDS_SIZE,fileSize(firstSector, lastSector, encoder));
 	}
 
-	entry.append(atom);
 
 	statEntry(entry);
 
@@ -506,39 +497,23 @@ void AudioCDProtocol::stat(const KURL & url)
 	finished();
 }
 
-static void app_entry(UDSEntry& e, unsigned int uds, const QString& str)
-{
-	UDSAtom a;
-	a.m_uds = uds;
-	a.m_str = str;
-	e.append(a);
-}
-
-static void app_entry(UDSEntry& e, unsigned int uds, long l)
-{
-	UDSAtom a;
-	a.m_uds = uds;
-	a.m_long = l;
-	e.append(a);
-}
-
 static void app_dir(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
-	app_entry(e, KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
-	app_entry(e, KIO::UDS_FILE_TYPE, S_IFDIR);
-	app_entry(e, KIO::UDS_ACCESS, 0400);
-	app_entry(e, KIO::UDS_SIZE, s);
-	app_entry(e, KIO::UDS_MIME_TYPE, "inode/directory");
+	e.insert( KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
+	e.insert( KIO::UDS_FILE_TYPE, S_IFDIR);
+	e.insert( KIO::UDS_ACCESS, 0400);
+	e.insert( KIO::UDS_SIZE, s);
+	e.insert( KIO::UDS_MIME_TYPE, "inode/directory");
 }
 
 static void app_file(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
-	app_entry(e, KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
-	app_entry(e, KIO::UDS_FILE_TYPE, S_IFREG);
-	app_entry(e, KIO::UDS_ACCESS, 0400);
-	app_entry(e, KIO::UDS_SIZE, s);
+	e.insert( KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
+	e.insert( KIO::UDS_FILE_TYPE, S_IFREG);
+	e.insert( KIO::UDS_ACCESS, 0400);
+	e.insert( KIO::UDS_SIZE, s);
 }
 
 void AudioCDProtocol::listDir(const KURL & url)
