@@ -36,7 +36,7 @@
 #include <q3groupbox.h>
 //Added by qt3to4:
 #include <Q3ValueList>
-#include <Q3CString>
+#include <QByteArray>
 
 #include <kglobal.h>  
 #include <klocale.h>
@@ -304,7 +304,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
   if( !d->write_vorbis_comments )
     return;
 
-  typedef QPair<Q3CString, QVariant> CommentField;
+  typedef QPair<QByteArray, QVariant> CommentField;
   Q3ValueList<CommentField> commentFields;
 
   commentFields.append(CommentField("title", info.trackInfoList[track].get("title")));

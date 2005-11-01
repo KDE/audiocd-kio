@@ -157,7 +157,7 @@ public:
 
 int paranoia_read_limited_error;
 
-AudioCDProtocol::AudioCDProtocol(const Q3CString & protocol, const Q3CString & pool, const Q3CString & app)
+AudioCDProtocol::AudioCDProtocol(const QByteArray & protocol, const QByteArray & pool, const QByteArray & app)
 	: SlaveBase(protocol, pool, app)
 {
 	d = new Private;
@@ -369,7 +369,7 @@ void AudioCDProtocol::get(const KURL & url)
 		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			if(count == choice){
 				mimeType("text/html");
-				data(Q3CString( (*it).toString().latin1() ));
+				data(QByteArray( (*it).toString().latin1() ));
 				// send an empty QByteArray to signal end of data.
 				data(QByteArray());
 				finished();
@@ -672,7 +672,7 @@ long AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder
 
 struct cdrom_drive *AudioCDProtocol::getDrive()
 {
-	Q3CString device(QFile::encodeName(d->device));
+	QByteArray device(QFile::encodeName(d->device));
 
 	struct cdrom_drive * drive = 0;
 
