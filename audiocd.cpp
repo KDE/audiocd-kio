@@ -81,7 +81,7 @@ int kdemain(int argc, char ** argv)
 	KApplication::disableAutoDcopRegistration();
 	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, 0, 0, 0);
 	KCmdLineArgs::addCmdLineOptions(options);
-	KApplication app(false, true);
+	KApplication app(true);
 
 	kdDebug(7117) << "Starting " << getpid() << endl;
 
