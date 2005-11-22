@@ -418,8 +418,14 @@
     <tabstop>kcfg_vorbis_comments</tabstop>
 </tabstops>
 <layoutdefaults spacing="6" margin="11"/>
+<customwidgets>
+    <customwidget>
+        <class>KDoubleNumInput</class>
+        <header location="global">knuminput.h</header>
+        <container>0</container>
+    </customwidget>
+</customwidgets>
 <includehints>
-    <includehint>knuminput.h</includehint>
     <includehint>knuminput.h</includehint>
 </includehints>
 </UI>
