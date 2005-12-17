@@ -181,7 +181,7 @@ unsigned long EncoderLame::size(long time_secs) const {
 
 long EncoderLame::readInit(long /*size*/){
 	// Create KProcess
-	d->currentEncodeProcess	= new KProcess(0,"encodeprocess");
+	d->currentEncodeProcess	= new KProcess(0);
 	QString prefix = locateLocal("tmp", "");
 	d->tempFile = new KTempFile(prefix, ".mp3");
 	d->tempFile->setAutoDelete(true);

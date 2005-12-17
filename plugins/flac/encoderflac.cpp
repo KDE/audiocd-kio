@@ -169,7 +169,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	                    Comment("Comment", comment),
 	    	    	    Comment("Date", QString::null )};
     if (info.get("Year").toInt() > 0) {
-    	QDateTime dt = QDate(info.get("Year").toInt(), 1, 1);
+    	QDateTime dt(QDate(info.get("Year").toInt(), 1, 1));
     	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
     }
 
