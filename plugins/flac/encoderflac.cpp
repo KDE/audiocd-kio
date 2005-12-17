@@ -28,7 +28,9 @@
 
 #include <kconfig.h>
 #include <kdebug.h>
-
+#include <QPair>
+#include <QDateTime>
+#include <Q3CString>
 
 extern "C"
 {
@@ -166,16 +168,16 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	    	    	    Comment("Album",  info.get("title")),
 	    	    	    Comment("Genre",  info.get("genre")),
 	    	    	    Comment("Tracknumber", QString::number(track)),
-	                    Comment("Comment", comment),
-	    	    	    Comment("Date", QString::null )};
+	                Comment("Comment", comment),
+	    	    	    Comment("Date", QVariant(QString::null) )};
     if (info.get("Year").toInt() > 0) {
-    	QDateTime dt = QDate(info.get("Year").toInt(), 1, 1);
+    	QDateTime dt(QDate(info.get("Year").toInt(), 1, 1));
     	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
     }
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
     QString field;
-    QCString cfield;
+    Q3CString cfield;
     int num_comments = 0;
 
     for(int i=0; i<7; i++) {

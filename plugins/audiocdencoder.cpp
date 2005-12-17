@@ -28,7 +28,7 @@
  * @param libFileName file to try to load.
  * @returns pointer to the symbol or NULL
  */
-void *loadPlugin(const QString & libFileName)
+void *loadPlugin(const QString &libFileName)
 {
 #ifdef DEBUG
     kdDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\"." << endl;
@@ -59,15 +59,16 @@ void *loadPlugin(const QString & libFileName)
  * but I do know that this does work. :)  Feel free to improve the loading system,
  * there isn't much code anyway.
  */
-void AudioCDEncoder::findAllPlugins(KIO::SlaveBase * slave, QList<AudioCDEncoder *>&encoders)
-{
-    KStandardDirs standardDirs;
+void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)
+{ 
+    QString foundEncoders;
+
+		KStandardDirs standardDirs;
     QStringList dirs = standardDirs.findDirs("module", "");
     for (QStringList::Iterator it = dirs.begin(); it != dirs.end(); ++it) {
         QDir dir(*it);
         if (!dir.exists()) {
-            kdDebug(7117) << "Directory given by KStandardDirs: " << dir.path().
-                latin1() << " doesn't exists!" << endl;
+            kdDebug(7117) << "Directory given by KStandardDirs: " << dir.path() << " doesn't exists!" << endl;
             continue;
         }
 
@@ -77,6 +78,11 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase * slave, QList<AudioCDEncoder
             QFileInfo fi(files.at(i));
             if (0 < fi.fileName().count(QRegExp("^libaudiocd_encoder_.*.so$"))) {
                 QString fileName = (fi.fileName().mid(0, fi.fileName().find('.')));
+                if (foundEncoders.contains(fileName)) {
+                    kdDebug(7117) << "Warning, encoder has been found twice!" << endl; 
+                    continue;
+                }
+                foundEncoders.append(fileName);
                 void *function = loadPlugin(fileName);
                 if (function) {
                     void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) = 

@@ -37,7 +37,7 @@
 //Added by qt3to4:
 #include <Q3ValueList>
 #include <QByteArray>
-
+#include <qdatetime.h>
 #include <kglobal.h>  
 #include <klocale.h>
 
@@ -314,8 +314,8 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
   commentFields.append(CommentField("tracknumber", QString::number(track)));
   commentFields.append(CommentField("comment", comment));
 	
-  if (info.year > 0) {
-    QDateTime dt = QDate(info.year, 1, 1);
+  if (info.get("year").toInt() > 0) {
+    QDateTime dt( QDate(info.get("year").toInt(), 1, 1) );
     commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));
   }
 
