@@ -44,7 +44,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     config = new KConfig("kcmaudiocdrc");
 
     QPtrList<AudioCDEncoder> encoders;
-    AudioCDEncoder::find_all_plugins(0, encoders);
+    AudioCDEncoder::findAllPlugins(0, encoders);
     AudioCDEncoder *encoder;
     for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
       KConfigSkeleton *config = NULL;

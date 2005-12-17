@@ -164,7 +164,7 @@ AudioCDProtocol::AudioCDProtocol(const QCString & protocol, const QCString & poo
 	d = new Private;
 
 	// Add encoders
-	AudioCDEncoder::find_all_plugins(this, encoders);
+	AudioCDEncoder::findAllPlugins(this, encoders);
 	encoderTypeCDA = encoderFromExtension(".cda");
 	encoderTypeWAV = encoderFromExtension(".wav");
 	encoders.setAutoDelete(true);

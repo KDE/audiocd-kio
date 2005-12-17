@@ -115,7 +115,7 @@ public:
    * Returns a configure widget for the encoder
    */ 
   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const
-                   { return NULL; }; 
+                   { Q_UNUSED(manager); return NULL; }; 
  
   /**
    * Helper function to load all of the AudioCD Encoders from libraries.
@@ -125,7 +125,7 @@ public:
    * @param slave ioslave needed if the plugin is going to be used to encode something.
    * @param encoders container for new encoders.
    */
-  static void find_all_plugins(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders);
+  static void findAllPlugins(KIO::SlaveBase *slave, QPtrList<AudioCDEncoder> &encoders);
 
 protected:
   /**
