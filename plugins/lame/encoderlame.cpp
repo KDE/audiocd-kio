@@ -211,6 +211,7 @@ long EncoderLame::readInit(long /*size*/){
 	d->tempFile = new KTempFile(prefix, ".mp3");
 	d->tempFile->setAutoDelete(true);
 	d->lastErrorMessage = QString::null;
+	d->processHasExited = false;
 
 	// -x bitswap
 	// -r raw/pcm
