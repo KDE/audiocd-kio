@@ -73,12 +73,7 @@ QWidget* EncoderLame::getConfigureWidget(KConfigSkeleton** manager) const {
 
 bool EncoderLame::init(){
 	// Determine if lame is installed on the system or not.
-	KProcess proc;
-	proc << "which" << "lame";
-	proc.start(KProcess::Block);
-	if(proc.exitStatus() == 0)
-		return false;
-	return true;
+        return !KStandardDirs::findExe( "lame" ).isEmpty();
 }
 
 void EncoderLame::loadSettings(){
@@ -198,6 +193,8 @@ long EncoderLame::readInit(long /*size*/){
 	// Read in stdin, output to the temp file
 	*d->currentEncodeProcess << "-" << d->tempFile->name().latin1();
 	
+	//kdDebug(7117) << d->currentEncodeProcess->args() << endl;
+	
 	
 	connect(d->currentEncodeProcess, SIGNAL(receivedStdout(KProcess *, char *, int)),
                          this, SLOT(receivedStdout(KProcess *, char *, int)));
@@ -305,8 +302,12 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	trackInfo.append("--tn");
 	trackInfo.append(QString("%1").arg(track));
 
+	const QString genre = info.get( "genre" ).toString();
+	if ( genre != "Unknown" ) // lame barfs on "--tg Unknown"
+	{
 	trackInfo.append("--tg");
-	trackInfo.append(info.get("genre").toString());
+		trackInfo.append(genre);
+	}
 }
 
 
