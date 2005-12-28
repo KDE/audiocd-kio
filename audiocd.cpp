@@ -964,7 +964,7 @@ void AudioCDProtocol::loadSettings()
 	AudioCDEncoder *encoder;
 	for (int i = encoders.size()-1; i >= 0; --i) {
             	encoder = encoders.at(i);
-		encoder->init();
+		encoder->init(); // ### TODO check return value!
 		encoder->loadSettings();
 	}
 
