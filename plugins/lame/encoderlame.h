@@ -26,7 +26,7 @@ class KProcess;
 /**
  * MP3 encoder using the LAME encoder.
  * Go to http://lame.sourceforge.net/ for lots of information.
- */ 
+ */
 class EncoderLame : public QObject, public AudioCDEncoder {
 
 Q_OBJECT
@@ -46,7 +46,7 @@ public:
 	virtual long read(int16_t * buf, int frames);
 	virtual long readCleanup();
 	virtual QString lastErrorMessage() const;
-  
+
 	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
 
 protected slots:

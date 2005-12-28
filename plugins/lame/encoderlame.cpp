@@ -32,6 +32,7 @@
 #include <qfileinfo.h>
 #include <ktempfile.h>
 #include <kstandarddirs.h>
+#include "collectingprocess.h"
 
 extern "C"
 {
@@ -49,6 +50,7 @@ public:
 	bool waitingForWrite;
 	bool processHasExited;
 	QString lastErrorMessage;
+	QStringList genreList;
 	uint lastSize;
 	KProcess *currentEncodeProcess;
 	KTempFile *tempFile;
@@ -67,16 +69,41 @@ EncoderLame::~EncoderLame(){
 }
 
 QWidget* EncoderLame::getConfigureWidget(KConfigSkeleton** manager) const {
-  (*manager) = Settings::self();
-  KGlobal::locale()->insertCatalogue("audiocd_encoder_lame");
-  EncoderLameConfig *config = new EncoderLameConfig();
-  config->cbr_settings->hide();
-  return config;
+	(*manager) = Settings::self();
+	KGlobal::locale()->insertCatalogue("audiocd_encoder_lame");
+	EncoderLameConfig *config = new EncoderLameConfig();
+	config->cbr_settings->hide();
+	return config;
 }
 
 bool EncoderLame::init(){
 	// Determine if lame is installed on the system or not.
-        return !KStandardDirs::findExe( "lame" ).isEmpty();
+	if ( KStandardDirs::findExe( "lame" ).isEmpty() )
+		return false;
+
+	// Ask lame for the list of genres it knows; otherwise it barfs when doing
+	// e.g. lame --tg 'Vocal Jazz'
+    CollectingProcess proc;
+	proc << "lame" << "--genre-list";
+	proc.start(KProcess::Block, KProcess::Stdout);
+
+	if(proc.exitStatus() != 0)
+		return false;
+
+	QString str = QString::fromLocal8Bit( proc.collectedStdout() );
+	d->genreList = QStringList::split( '\n', str );
+	// Remove the numbers in front of every genre
+	for( QStringList::Iterator it = d->genreList.begin(); it != d->genreList.end(); ++it ) {
+		QString& genre = *it;
+		uint i = 0;
+		while ( i < genre.length() && ( genre[i].isSpace() || genre[i].isDigit() ) )
+			++i;
+		genre = genre.mid( i );
+
+	}
+	//kdDebug(7117) << "Available genres:" << d->genreList << endl;
+
+	return true;
 }
 
 void EncoderLame::loadSettings(){
@@ -313,7 +340,7 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	trackInfo.append(QString("%1").arg(track+1));
 
 	const QString genre = info.get( "genre" ).toString();
-	if ( genre != "Unknown" ) // lame barfs on "--tg Unknown"
+	if ( d->genreList.find( genre ) != d->genreList.end() )
 	{
 		trackInfo.append("--tg");
 		trackInfo.append(genre);

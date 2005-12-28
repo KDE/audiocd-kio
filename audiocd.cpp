@@ -987,7 +987,7 @@ void AudioCDProtocol::loadSettings()
 	// Tell the encoders to load their settings
 	AudioCDEncoder *encoder;
 	for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
-		encoder->init();
+		encoder->init(); // ### TODO check return value!
 		encoder->loadSettings();
 	}
 
