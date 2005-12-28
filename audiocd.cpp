@@ -29,7 +29,7 @@ extern "C"
 	#include <cdda_interface.h>
 	#include <cdda_paranoia.h>
 	void paranoiaCallback(long, int);
-	
+
 	#include <kdemacros.h>
 	KDE_EXPORT int kdemain(int argc, char ** argv);
 }
@@ -129,7 +129,7 @@ public:
 	QString device; // URL settable
 	int paranoiaLevel; // URL settable
 	bool reportErrors;
-	
+
 	// Directory strings, never change after init
 	QString s_info;
 	QString s_fullCD;
@@ -221,7 +221,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 #elif defined(Q_OS_FREEBSD)
 	cd.setDevice(drive->dev->device_path);
 #endif
-	
+
 	if (cd.discId() != d->discid && cd.discId() != cd.missingDisc){
 		d->discid = cd.discId();
 		d->tracks = cd.tracks();
@@ -234,7 +234,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 		d->cddbBestChoice = c.bestLookupResponse();
 		generateTemplateTitles();
 	}
-	
+
 	// Determine what file or folder that is wanted.
 	d->fname = url.fileName(false);
 	QString dname = url.directory(true, false);
@@ -410,9 +410,9 @@ void AudioCDProtocol::get(const KURL & url)
 	KCDDB::CDInfo info;
 	if(d->cddbResult == KCDDB::CDDB::Success){
 		info = d->cddbBestChoice;
-	
+
 		int track = d->req_track;
-		
+
 		QString trackName;
 		// hack
 		// do we rip the whole CD?
@@ -723,7 +723,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 			error(KIO::ERR_SLAVE_DEFINED, i18n("Device doesn't have write permissions for this account.  Check the write permissions on the device."));
 		else if(!fi.exists())
 			error(KIO::ERR_DOES_NOT_EXIST, d->device);
-		else error(KIO::ERR_SLAVE_DEFINED, 
+		else error(KIO::ERR_SLAVE_DEFINED,
 i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as yourself (not root). Do you see a track list? If not, make sure you have permission to access the CD device. If you are using SCSI emulation (possible if you have an IDE CD writer) then make sure you check that you have read and write permissions on the generic SCSI device, which is probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your CD-ROM is."));
 		return 0;
 	}
@@ -732,10 +732,10 @@ i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ 
 	{
 		kdDebug(7117) << "cdda_open failed" << endl;
 		error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
-		cdda_close(drive); 
+		cdda_close(drive);
 		return 0;
 	}
-	
+
 	return drive;
 }
 
@@ -814,7 +814,11 @@ void AudioCDProtocol::paranoiaRead(
 		if(encoderProcessed == -1){
 			kdDebug(7117) << "Encoder processing error, stopping." << endl;
 			ok = false;
-			error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
+			QString errMsg = i18n( "Couldn't read %1: encoding failed" ).arg( fileName );
+			QString details = encoder->lastErrorMessage();
+			if ( !details.isEmpty() )
+			    errMsg += "\n" + details;
+			error( ERR_SLAVE_DEFINED, errMsg );
 			break;
 		}
 		processed += encoderProcessed;

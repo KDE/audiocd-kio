@@ -45,6 +45,7 @@ public:
 	virtual long readInit(long size);
 	virtual long read(int16_t * buf, int frames);
 	virtual long readCleanup();
+	virtual QString lastErrorMessage() const;
   
 	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
 
