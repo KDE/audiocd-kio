@@ -47,6 +47,8 @@ class EncoderLame::Private
 public:
 	int bitrate;
 	bool waitingForWrite;
+	bool processHasExited;
+	QString lastErrorMessage;
 	uint lastSize;
 	KProcess *currentEncodeProcess;
 	KTempFile *tempFile;
@@ -55,6 +57,7 @@ public:
 EncoderLame::EncoderLame(KIO::SlaveBase *slave) : QObject(), AudioCDEncoder(slave) {
 	d = new Private();
 	d->waitingForWrite = false;
+	d->processHasExited = false;
 	d->lastSize = 0;
 	loadSettings();
 }
@@ -180,6 +183,7 @@ long EncoderLame::readInit(long /*size*/){
 	QString prefix = locateLocal("tmp", "");
 	d->tempFile = new KTempFile(prefix, ".mp3");
 	d->tempFile->setAutoDelete(true);
+	d->lastErrorMessage = QString::null;
 
 	// -x bitswap
 	// -r raw/pcm
@@ -213,10 +217,14 @@ long EncoderLame::readInit(long /*size*/){
 
 void EncoderLame::processExited ( KProcess *process ){
 	kdDebug(7117) << "Lame Encoding process exited with: " << process->exitStatus() << endl;
+	d->processHasExited = true;
 }
 
 void EncoderLame::receivedStderr( KProcess * /*process*/, char *buffer, int /*buflen*/ ){
 	kdDebug(7117) << "Lame stderr: " << buffer << endl;
+	if ( !d->lastErrorMessage.isEmpty() )
+		d->lastErrorMessage += '\t';
+	d->lastErrorMessage += QString::fromLocal8Bit( buffer );
 }
 
 void EncoderLame::receivedStdout( KProcess * /*process*/, char *buffer, int /*length*/ ){
@@ -230,6 +238,8 @@ void EncoderLame::wroteStdin( KProcess * /*procces*/ ){
 long EncoderLame::read(int16_t *buf, int frames){
 	if(!d->currentEncodeProcess)
 		return 0;
+        if (d->processHasExited)
+		return -1;
 
 	// Pipe the raw data to lame
 	char * cbuf = reinterpret_cast<char *>(buf);
@@ -310,5 +320,10 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	}
 }
 
+
+QString EncoderLame::lastErrorMessage() const
+{
+	return d->lastErrorMessage;
+}
 
 #include "encoderlame.moc"

@@ -790,7 +790,11 @@ void AudioCDProtocol::paranoiaRead(
 		if(encoderProcessed == -1){
 			kdDebug(7117) << "Encoder processing error, stopping." << endl;
 			ok = false;
-			error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
+			QString errMsg = i18n( "Couldn't read %1: encoding failed" ).arg( fileName );
+			QString details = encoder->lastErrorMessage();
+			if ( !details.isEmpty() )
+			    errMsg += "\n" + details;
+			error( ERR_SLAVE_DEFINED, errMsg );
 			break;
 		}
 		processed += encoderProcessed;

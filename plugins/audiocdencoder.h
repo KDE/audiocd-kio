@@ -102,7 +102,7 @@ public:
    * This function is most likly called many many times.
    * @param buf pointer to the audio that has been read in so far
    * @param frames the number of frames of audio that are in buf
-   * @return size of the data that was created by this function.
+   * @return size of the data that was created by this function, -1 on error.
    */
   virtual long read(int16_t * buf, int frames) = 0;
 
@@ -118,6 +118,11 @@ public:
   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const
                    { Q_UNUSED(manager); return NULL; }; 
  
+  /**
+   * Returns the last error message; called when e.g. read() returns -1.
+   */
+  virtual QString lastErrorMessage() const { return QString::null; }
+
   /**
    * Helper function to load all of the AudioCD Encoders from libraries.
    * Uses KStandardDirs to find where libraries could be, opens all of the ones
