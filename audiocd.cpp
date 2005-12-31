@@ -228,7 +228,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 		KCDDB::Client c;
 		d->cddbResult = c.lookup(cd.discSignature());
 		d->cddbList = c.lookupResponse();
-		d->cddbBestChoice = c.bestLookupResponse();
+		d->cddbBestChoice = d->cddbList.first();
 		generateTemplateTitles();
 	}
 	
@@ -418,12 +418,12 @@ void AudioCDProtocol::get(const KURL & url)
 		if (d->req_allTracks){
 			track = 1;
 			// YES => the title of the file is the title of the CD
-			info.trackInfoList[track].get("title") = info.get("title").toString().utf8().data();
+			info.track(track-1).set(Title, info.get(Title));
 		}
 		encoder->fillSongInfo(info, track, "");
 	}
 	else {
-		encoder->fillSongInfo(info, d->req_track+1, QString("CDDBDISCID=%1").arg(d->cddbBestChoice.get("id").toString()));
+		encoder->fillSongInfo(info, d->req_track+1, QString("CDDBDISCID=%1").arg(d->cddbBestChoice.get("discid").toString()));
 	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);
@@ -994,14 +994,14 @@ void AudioCDProtocol::generateTemplateTitles()
 	d->templateTitles.clear();
 	for (uint i = 0; i < d->tracks; i++) {
 		QHash<QString, QString> macros;
-		macros["albumartist"] = info.get("artist").toString();
-		macros["albumtitle"] = info.get("title").toString();
-		macros["title"] = (info.trackInfoList[i].get("title").toString());
+		macros["albumartist"] = info.get(Artist).toString();
+		macros["albumtitle"] = info.get(Title).toString();
+		macros["title"] = info.track(i).get(Title).toString();
 		QString n;
 		macros["number"] = n.sprintf("%02d", i + 1);
 		//macros["number"] = QString("%1").arg(i+1, 2, 10);
-		macros["genre"] = info.get("genre").toString();
-		macros["year"] = info.get("year").toString();
+		macros["genre"] = info.get(Genre).toString();
+		macros["year"] = info.get(Year).toString();
 
 		QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QLatin1String("%2F"));
 		title.replace( QRegExp(d->rsearch), d->rreplace );
@@ -1009,10 +1009,10 @@ void AudioCDProtocol::generateTemplateTitles()
 	}
 
 	QHash<QString, QString> macros;
-	macros["albumartist"] = info.get("artist").toString();
-	macros["albumtitle"] = info.get("title").toString();
-	macros["genre"] = info.get("genre").toString();
-	macros["year"] = info.get("year").toString();
+	macros["albumartist"] = info.get(Artist).toString();
+	macros["albumtitle"] = info.get(Title).toString();
+	macros["genre"] = info.get(Genre).toString();
+	macros["year"] = info.get(Year).toString();
 	d->templateAlbumName = KMacroExpander::expandMacros(d->albumTemplate, macros, '%').replace('/', QLatin1String("%2F"));
 	d->templateAlbumName.replace( QRegExp(d->rsearch), d->rreplace );
 }

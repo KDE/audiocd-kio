@@ -163,15 +163,15 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 //    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
     typedef QPair<QString, QVariant> Comment;
-    Comment comments[7] = { Comment("Title", info.trackInfoList[track].get("title")),
-	    	    	    Comment("Artist", info.get("artist")),
-	    	    	    Comment("Album",  info.get("title")),
-	    	    	    Comment("Genre",  info.get("genre")),
+    Comment comments[7] = { Comment("Title", info.track(track).get(Title)),
+	    	    	    Comment("Artist", info.get(Artist)),
+	    	    	    Comment("Album",  info.get(Title)),
+	    	    	    Comment("Genre",  info.get(Genre)),
 	    	    	    Comment("Tracknumber", QString::number(track)),
 	                Comment("Comment", comment),
 	    	    	    Comment("Date", QVariant(QString::null) )};
-    if (info.get("Year").toInt() > 0) {
-    	QDateTime dt(QDate(info.get("Year").toInt(), 1, 1));
+    if (info.get(Year).toInt() > 0) {
+    	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
     	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
     }
 

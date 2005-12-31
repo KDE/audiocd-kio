@@ -307,15 +307,15 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
   typedef QPair<QByteArray, QVariant> CommentField;
   Q3ValueList<CommentField> commentFields;
 
-  commentFields.append(CommentField("title", info.trackInfoList[track].get("title")));
-  commentFields.append(CommentField("artist", info.get("artist")));
-  commentFields.append(CommentField("album", info.get("title")));
-  commentFields.append(CommentField("genre", info.get("genre")));
+  commentFields.append(CommentField("title", info.track(track).get(Title)));
+  commentFields.append(CommentField("artist", info.get(Artist)));
+  commentFields.append(CommentField("album", info.get(Title)));
+  commentFields.append(CommentField("genre", info.get(Genre)));
   commentFields.append(CommentField("tracknumber", QString::number(track)));
   commentFields.append(CommentField("comment", comment));
 	
-  if (info.get("year").toInt() > 0) {
-    QDateTime dt( QDate(info.get("year").toInt(), 1, 1) );
+  if (info.get(Year).toInt() > 0) {
+    QDateTime dt( QDate(info.get(Year).toInt(), 1, 1) );
     commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));
   }
 

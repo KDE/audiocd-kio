@@ -323,16 +323,16 @@ long EncoderLame::readCleanup(){
 void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ){
 	trackInfo.clear();
 	trackInfo.append("--tt");
-	trackInfo.append(info.trackInfoList[track].get("title").toString());
+	trackInfo.append(info.track(track).get(Title).toString());
 
 	trackInfo.append("--ta");
-	trackInfo.append(info.get("artist").toString());
+	trackInfo.append(info.get(Artist).toString());
 
 	trackInfo.append("--tl");
-	trackInfo.append(info.get("title").toString());
+	trackInfo.append(info.get(Title).toString());
 
 	trackInfo.append("--ty");
-	trackInfo.append(QString("%1").arg(info.get("year").toString()));
+	trackInfo.append(QString("%1").arg(info.get(Year).toString()));
 
 	trackInfo.append("--tc");
 	trackInfo.append(comment);
@@ -340,7 +340,7 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	trackInfo.append("--tn");
 	trackInfo.append(QString("%1").arg(track));
 
-	const QString genre = info.get( "genre" ).toString();
+	const QString genre = info.get(Genre).toString();
 	if ( d->genreList.find( genre ) != d->genreList.end() )
 	{
 	trackInfo.append("--tg");
