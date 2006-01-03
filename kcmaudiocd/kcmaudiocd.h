@@ -27,6 +27,9 @@
 #ifndef KAUDIOCDCONFIG_H
 #define KAUDIOCDCONFIG_H
 
+//Added by qt3to4:
+#include <Q3PtrList>
+
 class KConfigDialogManager;
 
 #include "audiocdconfig.h"
@@ -58,7 +61,7 @@ private:
 
   int getBitrateIndex(int value);
 
-  QPtrList<KConfigDialogManager> encoderSettings;
+  Q3PtrList<KConfigDialogManager> encoderSettings;
 };
 
 #endif // KAUDIOCDCONFIG_H

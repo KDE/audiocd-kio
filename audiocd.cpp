@@ -504,7 +504,7 @@ static void app_dir(UDSEntry& e, const QString & n, size_t s)
 	e.insert( KIO::UDS_FILE_TYPE, S_IFDIR);
 	e.insert( KIO::UDS_ACCESS, 0400);
 	e.insert( KIO::UDS_SIZE, s);
-	e.insert( KIO::UDS_MIME_TYPE, "inode/directory");
+	e.insert( KIO::UDS_MIME_TYPE, QString("inode/directory"));
 }
 
 static void app_file(UDSEntry& e, const QString & n, size_t s)
@@ -931,7 +931,7 @@ void AudioCDProtocol::loadSettings()
 	config->setGroup(QLatin1String("CDDA"));
 
 	if (!config->readBoolEntry(QLatin1String("autosearch"),true)) {
-		d->device = config->readEntry(QLatin1String("device"), QLatin1String(DEFAULT_CD_DEVICE));
+		d->device = config->readEntry(QLatin1String("device"), QString(DEFAULT_CD_DEVICE));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
