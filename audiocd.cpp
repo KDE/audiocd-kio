@@ -423,9 +423,6 @@ void AudioCDProtocol::get(const KURL & url)
 		}
 		encoder->fillSongInfo(info, track, "");
 	}
-	else {
-		encoder->fillSongInfo(info, d->req_track, QString("CDDBDISCID=%1").arg(d->cddbBestChoice.id));
-	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);
 
