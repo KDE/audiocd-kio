@@ -103,14 +103,13 @@ enum Which_dir {
 
 class AudioCDProtocol::Private {
 public:
-	Private() {
+	Private() : cd(KCompactDisc::Asynchronous) {
 		clearURLargs();
 		s_info = i18n("Information");
 		s_fullCD = i18n("Full CD");
 	}
 
 	void clearURLargs() {
-		discid = 0;
 		req_allTracks = false;
 		which_dir = Unknown;
 		req_track = -1;
@@ -137,6 +136,7 @@ public:
 	unsigned discid;
 	unsigned tracks;
 	bool trackIsAudio[100];
+	KCompactDisc cd; // keep it around so that we don't assume the disk changed between every stat()
 
 	// CDDB items
 	KCDDB::CDDB::Result cddbResult;
@@ -214,19 +214,23 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 		return 0;
 
 	// Update our knowledge of the disc
-	KCompactDisc cd(KCompactDisc::Asynchronous);
 	// TODO which one is right?
 	// qDebug("\"%s\" \"%s\"", drive->cdda_device_name, drive->ioctl_device_name);
-	cd.setDevice(drive->cdda_device_name, 50, false);
+#if defined( Q_OS_LINUX )
+	d->cd.setDevice(drive->cdda_device_name, 50, false);
+#elif defined( Q_OS_FREEBSD )
+	d->cd.setDevice(drive->dev->device_path);
+#endif
+
 	
-	if (cd.discId() != d->discid && cd.discId() != cd.missingDisc){
-		d->discid = cd.discId();
-		d->tracks = cd.tracks();
-		for(uint i=0; i< cd.tracks(); i++)
-			d->trackIsAudio[i] = cd.isAudio(i+1);
+	if (d->cd.discId() != d->discid && d->cd.discId() != d->cd.missingDisc){
+		d->discid = d->cd.discId();
+		d->tracks = d->cd.tracks();
+		for(uint i=0; i< d->cd.tracks(); i++)
+			d->trackIsAudio[i] = d->cd.isAudio(i+1);
 
 		KCDDB::Client c;
-		d->cddbResult = c.lookup(cd.discSignature());
+		d->cddbResult = c.lookup(d->cd.discSignature());
 		d->cddbList = c.lookupResponse();
 		d->cddbBestChoice = d->cddbList.first();
 		generateTemplateTitles();
@@ -421,9 +425,6 @@ void AudioCDProtocol::get(const KURL & url)
 			info.track(track-1).set(Title, info.get(Title));
 		}
 		encoder->fillSongInfo(info, track, "");
-	}
-	else {
-		encoder->fillSongInfo(info, d->req_track+1, QString("CDDBDISCID=%1").arg(d->cddbBestChoice.get("discid").toString()));
 	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);
