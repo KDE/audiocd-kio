@@ -64,7 +64,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     }
    
     //CDDA Options
-    connect(cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
+    connect(cd_specify_device,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
     connect(ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
     connect(cd_device_string,SIGNAL(textChanged(const QString &)),SLOT(slotConfigChanged()));
@@ -99,7 +99,7 @@ void KAudiocdModule::updateExample()
 }
 
 void KAudiocdModule::defaults() {
-	cd_autosearch_check->setChecked(true);
+	cd_specify_device->setChecked(false);
 	cd_device_string->setText("/dev/cdrom");
 
 	ec_enable_check->setChecked(true);
@@ -124,7 +124,11 @@ void KAudiocdModule::save() {
   {
     KConfigGroupSaver saver(config, "CDDA");
 
-    config->writeEntry("autosearch",cd_autosearch_check->isChecked());
+    // autosearch is the name of the config option, which has the
+    // reverse sense of the current text of the configuration option,
+    // which is specify the device. Therefore, invert the value on write.
+    //
+    config->writeEntry("autosearch", !(cd_specify_device->isChecked()) );
     config->writeEntry("device",cd_device_string->text());
     config->writeEntry("disable_paranoia",!(ec_enable_check->isChecked()));
     config->writeEntry("never_skip",!(ec_skip_check->isChecked()));
@@ -156,7 +160,8 @@ void KAudiocdModule::load() {
   {
     KConfigGroupSaver saver(config, "CDDA");
 
-    cd_autosearch_check->setChecked(config->readBoolEntry("autosearch",true));
+    // Specify <=> not autosearch, as explained above in ::save()
+    cd_specify_device->setChecked( !(config->readBoolEntry("autosearch",true)) );
     cd_device_string->setText(config->readEntry("device","/dev/cdrom"));
     ec_enable_check->setChecked(!(config->readBoolEntry("disable_paranoia",false)));
     ec_skip_check->setChecked(!(config->readBoolEntry("never_skip",true)));
