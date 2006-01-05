@@ -90,7 +90,11 @@ bool EncoderLame::init(){
 	if(proc.exitStatus() != 0)
 		return false;
 
-	QString str = QString::fromLocal8Bit( proc.collectedStdout() );
+	const QByteArray data = proc.collectedStdout();
+	QString str;
+	if ( !data.isEmpty() )
+		str = QString::fromLocal8Bit( data, data.size() );
+
 	d->genreList = QStringList::split( '\n', str );
 	// Remove the numbers in front of every genre
 	for( QStringList::Iterator it = d->genreList.begin(); it != d->genreList.end(); ++it ) {
