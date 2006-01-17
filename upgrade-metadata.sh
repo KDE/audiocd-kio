@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 while read; do
     if [ "${REPLY#\[}" != "$REPLY" ] ; then # group name
