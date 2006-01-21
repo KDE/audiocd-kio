@@ -8,12 +8,9 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>640</width>
-            <height>563</height>
+            <width>708</width>
+            <height>594</height>
         </rect>
-    </property>
-    <property name="caption">
-        <string>AudiocdConfig</string>
     </property>
     <property name="layoutMargin" stdset="0">
     </property>
@@ -22,12 +19,6 @@
     <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
-        </property>
-        <property name="margin">
-            <number>0</number>
-        </property>
-        <property name="spacing">
-            <number>0</number>
         </property>
         <widget class="QTabWidget">
             <property name="name">
@@ -157,9 +148,6 @@
                         <property name="text">
                             <string>&amp;Specify CD Device:</string>
                         </property>
-                        <property name="accel">
-                            <string>Alt+S</string>
-                        </property>
                         <property name="whatsThis" stdset="0">
                             <string>Uncheck this if you want to specify a CD device different from the one autoprobed</string>
                         </property>
@@ -170,9 +158,6 @@
                         </property>
                         <property name="text">
                             <string>Use &amp;error correction when reading the CD</string>
-                        </property>
-                        <property name="accel">
-                            <string>Alt+E</string>
                         </property>
                         <property name="checked">
                             <bool>true</bool>
@@ -187,9 +172,6 @@
                         </property>
                         <property name="text">
                             <string>&amp;Skip on errors</string>
-                        </property>
-                        <property name="accel">
-                            <string>Alt+S</string>
                         </property>
                         <property name="checked">
                             <bool>false</bool>
@@ -246,13 +228,13 @@
                             </widget>
                             <widget class="QLayoutWidget">
                                 <property name="name">
-                                    <cstring>layout7</cstring>
+                                    <cstring>layout6</cstring>
                                 </property>
                                 <grid>
                                     <property name="name">
                                         <cstring>unnamed</cstring>
                                     </property>
-                                    <widget class="QLabel" row="5" column="1">
+                                    <widget class="QLabel" row="6" column="1">
                                         <property name="name">
                                             <cstring>textLabel13</cstring>
                                         </property>
@@ -260,12 +242,12 @@
                                             <string>Genre</string>
                                         </property>
                                     </widget>
-                                    <widget class="QLabel" row="1" column="1">
+                                    <widget class="QLabel" row="5" column="0">
                                         <property name="name">
-                                            <cstring>textLabel7</cstring>
+                                            <cstring>textLabel10</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Track Number</string>
+                                            <string>%{year}</string>
                                         </property>
                                     </widget>
                                     <widget class="QLabel" row="0" column="0">
@@ -276,12 +258,28 @@
                                             <string>%{title}</string>
                                         </property>
                                     </widget>
-                                    <widget class="QLabel" row="4" column="1">
+                                    <widget class="QLabel" row="2" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel5</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Album Title</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="5" column="1">
                                         <property name="name">
                                             <cstring>textLabel11</cstring>
                                         </property>
                                         <property name="text">
                                             <string>Year</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="1">
+                                        <property name="name">
+                                            <cstring>textLabel2_4</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Track Artist</string>
                                         </property>
                                     </widget>
                                     <widget class="QLabel" row="0" column="1">
@@ -292,7 +290,7 @@
                                             <string>Track Title</string>
                                         </property>
                                     </widget>
-                                    <widget class="QLabel" row="3" column="1">
+                                    <widget class="QLabel" row="4" column="1">
                                         <property name="name">
                                             <cstring>textLabel9</cstring>
                                         </property>
@@ -302,10 +300,26 @@
                                     </widget>
                                     <widget class="QLabel" row="4" column="0">
                                         <property name="name">
-                                            <cstring>textLabel10</cstring>
+                                            <cstring>textLabel8</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>%{year}</string>
+                                            <string>%{albumartist}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="6" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel12</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{genre}</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel1_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>%{trackartist}</string>
                                         </property>
                                     </widget>
                                     <widget class="QLabel" row="2" column="0">
@@ -316,28 +330,12 @@
                                             <string>%{albumtitle}</string>
                                         </property>
                                     </widget>
-                                    <widget class="QLabel" row="2" column="1">
+                                    <widget class="QLabel" row="1" column="1">
                                         <property name="name">
-                                            <cstring>textLabel5</cstring>
+                                            <cstring>textLabel7</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Album Title</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel" row="5" column="0">
-                                        <property name="name">
-                                            <cstring>textLabel12</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>%{genre}</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel" row="3" column="0">
-                                        <property name="name">
-                                            <cstring>textLabel8</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>%{albumartist}</string>
+                                            <string>Track Number</string>
                                         </property>
                                     </widget>
                                     <widget class="QLabel" row="1" column="0">
@@ -601,6 +599,8 @@
         </widget>
     </vbox>
 </widget>
+<customwidgets>
+</customwidgets>
 <connections>
     <connection>
         <sender>ec_enable_check</sender>

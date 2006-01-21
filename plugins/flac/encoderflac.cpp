@@ -164,7 +164,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 
     typedef QPair<QString, QVariant> Comment;
     Comment comments[7] = { Comment("Title", info.track(track).get(Title)),
-	    	    	    Comment("Artist", info.get(Artist)),
+	    	    	    Comment("Artist", info.track(track).get(Artist)),
 	    	    	    Comment("Album",  info.get(Title)),
 	    	    	    Comment("Genre",  info.get(Genre)),
 	    	    	    Comment("Tracknumber", QString::number(track)),

@@ -117,7 +117,7 @@ void KAudiocdModule::defaults() {
 		widget->updateWidgetsDefault();
 	}
 
-	fileNameLineEdit->setText("%{albumartist} - %{number} - %{title}");
+	fileNameLineEdit->setText("%{trackartist} - %{number} - %{title}");
 	albumNameLineEdit->setText("%{albumartist} - %{albumtitle}");
 }
 
@@ -168,7 +168,7 @@ void KAudiocdModule::load() {
 
   {
     KConfigGroup cg(config, "FileName");
-    fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{albumartist} - %{number} - %{title}"));
+    fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
     albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
     kcfg_replaceInput->setText(cg.readEntry("regexp_search"));
     kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));

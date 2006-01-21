@@ -956,7 +956,7 @@ void AudioCDProtocol::loadSettings()
 
 	// The default track filename template
 	config->setGroup("FileName");
-	d->fileNameTemplate = config->readEntry("file_name_template", "%{albumartist} - %{number} - %{title}");
+	d->fileNameTemplate = config->readEntry("file_name_template", "%{trackartist} - %{number} - %{title}");
 	d->albumTemplate = config->readEntry("album_template", "%{albumartist} - %{albumtitle}");
 	d->rsearch = config->readEntry("regexp_search");
 	d->rreplace = config->readEntry("regexp_replace");
@@ -998,6 +998,7 @@ void AudioCDProtocol::generateTemplateTitles()
 		macros["albumartist"] = info.get(Artist).toString();
 		macros["albumtitle"] = info.get(Title).toString();
 		macros["title"] = info.track(i).get(Title).toString();
+		macros["trackartist"] = info.track(i).get(Artist).toString();
 		QString n;
 		macros["number"] = n.sprintf("%02d", i + 1);
 		//macros["number"] = QString("%1").arg(i+1, 2, 10);

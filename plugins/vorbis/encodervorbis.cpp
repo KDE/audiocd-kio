@@ -308,7 +308,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
   Q3ValueList<CommentField> commentFields;
 
   commentFields.append(CommentField("title", info.track(track).get(Title)));
-  commentFields.append(CommentField("artist", info.get(Artist)));
+  commentFields.append(CommentField("artist", info.track(track).get(Artist)));
   commentFields.append(CommentField("album", info.get(Title)));
   commentFields.append(CommentField("genre", info.get(Genre)));
   commentFields.append(CommentField("tracknumber", QString::number(track)));

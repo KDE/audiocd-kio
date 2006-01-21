@@ -326,7 +326,7 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	trackInfo.append(info.track(track).get(Title).toString());
 
 	trackInfo.append("--ta");
-	trackInfo.append(info.get(Artist).toString());
+	trackInfo.append(info.track(track).get(Artist).toString());
 
 	trackInfo.append("--tl");
 	trackInfo.append(info.get(Title).toString());
