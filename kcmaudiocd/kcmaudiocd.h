@@ -29,17 +29,17 @@
 
 //Added by qt3to4:
 #include <Q3PtrList>
-
+#include <kcmodule.h>
 class KConfigDialogManager;
 
 #include "audiocdconfig.h"
-class KAudiocdModule : public AudiocdConfig
+class KAudiocdModule : public KCModule
 {
   Q_OBJECT
 
 public:
 
-  KAudiocdModule(QWidget *parent=0, const char *name=0);
+  KAudiocdModule(KInstance *instance, QWidget *parent=0, const QStringList &args=QStringList());
   ~KAudiocdModule();
 
   QString quickHelp() const;
@@ -62,6 +62,7 @@ private:
   int getBitrateIndex(int value);
 
   Q3PtrList<KConfigDialogManager> encoderSettings;
+  AudiocdConfig *audioConfig;
 };
 
 #endif // KAUDIOCDCONFIG_H

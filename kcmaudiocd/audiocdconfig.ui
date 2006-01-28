@@ -1,6 +1,6 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>AudiocdConfig</class>
-<widget class="KCModule">
+<widget class="QWidget">
     <property name="name">
         <cstring>AudiocdConfig</cstring>
     </property>
