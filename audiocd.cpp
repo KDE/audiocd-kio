@@ -194,7 +194,7 @@ AudioCDEncoder *AudioCDProtocol::determineEncoder(const QString & filename)
 	return encoderFromExtension(filename.right(len - pos));
 }
 
-struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
+struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 {
 	if (url.hasHost())
 	{
@@ -356,7 +356,7 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
 	return true;
 }
 
-void AudioCDProtocol::get(const KURL & url)
+void AudioCDProtocol::get(const KUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 	if (!drive)
@@ -444,7 +444,7 @@ void AudioCDProtocol::get(const KURL & url)
 	finished();
 }
 
-void AudioCDProtocol::stat(const KURL & url)
+void AudioCDProtocol::stat(const KUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 	if (!drive)
@@ -517,7 +517,7 @@ static void app_file(UDSEntry& e, const QString & n, size_t s)
 	e.insert( KIO::UDS_SIZE, s);
 }
 
-void AudioCDProtocol::listDir(const KURL & url)
+void AudioCDProtocol::listDir(const KUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 
@@ -879,11 +879,11 @@ void AudioCDProtocol::paranoiaRead(
  * Read the settings from the URL
  * @see loadSettings()
  */
-void AudioCDProtocol::parseURLArgs(const KURL & url)
+void AudioCDProtocol::parseURLArgs(const KUrl & url)
 {
 	d->clearURLargs();
 
-	QString query(KURL::decode_string(url.query()));
+	QString query(KUrl::decode_string(url.query()));
 
 	if (query.isEmpty() || query[0] != '?')
 		return;

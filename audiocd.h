@@ -45,16 +45,16 @@ class AudioCDProtocol : public KIO::SlaveBase
 	AudioCDProtocol(const QByteArray & protocol, const QByteArray & pool, const QByteArray & app);
 	virtual ~AudioCDProtocol();
 
-	virtual void get(const KURL &);
-	virtual void stat(const KURL &);
-	virtual void listDir(const KURL &);
+	virtual void get(const KUrl &);
+	virtual void stat(const KUrl &);
+	virtual void listDir(const KUrl &);
 
 	protected:
 	AudioCDEncoder *encoderFromExtension(const QString& extension);
 	AudioCDEncoder *determineEncoder(const QString & filename);
 
 	struct cdrom_drive *findDrive(bool &noPermission);
-	void parseURLArgs(const KURL &);
+	void parseURLArgs(const KUrl &);
 
 	void loadSettings();
 
@@ -86,7 +86,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 		unsigned long size
 	);
 
-	struct cdrom_drive *initRequest(const KURL &);
+	struct cdrom_drive *initRequest(const KUrl &);
 	uint discid(struct cdrom_drive *);
 
 	/**
