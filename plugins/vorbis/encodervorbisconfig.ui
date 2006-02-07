@@ -325,10 +325,10 @@
                     <property name="value">
                         <number>0</number>
                     </property>
-                    <property name="minValue">
+                    <property name="minimum">
                         <number>0</number>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>10000</number>
                     </property>
                     <property name="precision">
