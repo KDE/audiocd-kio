@@ -8,10 +8,13 @@ X-KDE-ModuleType=Library
 X-KDE-Library=audiocd
 
 Name=Audio CDs
+Name[fr]=CD audio
 Name[x-test]=xxAudio CDsxx
 Comment=Audiocd IO Slave Configuration
+Comment[fr]=Configuration du module pour CD audio
 Comment[x-test]=xxAudiocd IO Slave Configurationxx
 Keywords=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
+Keywords[fr]=CD audio,CD,Ogg,Vorbis,Encodage,CDDA,débit
 Keywords[x-test]=xxAudio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitratexx
 
 Categories=Qt;KDE;X-KDE-settings-sound;
