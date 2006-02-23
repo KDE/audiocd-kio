@@ -931,25 +931,25 @@ void AudioCDProtocol::loadSettings()
 
 	config->setGroup(QLatin1String("CDDA"));
 
-	if (!config->readBoolEntry(QLatin1String("autosearch"),true)) {
+	if (!config->readEntry(QLatin1String("autosearch"),true)) {
 		d->device = config->readEntry(QLatin1String("device"), QString(DEFAULT_CD_DEVICE));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
 
-	if (config->readBoolEntry("disable_paranoia",false)) {
+	if (config->readEntry("disable_paranoia",false)) {
 		d->paranoiaLevel = 0; // disable all paranoia error correction
 	}
 
-	if (config->readBoolEntry("never_skip",true)) {
+	if (config->readEntry("never_skip",true)) {
 		d->paranoiaLevel = 2;
 		// never skip on errors of the medium, should be default for high quality
 	}
 
-	d->reportErrors = config->readBoolEntry( "report_errors", false );
+	d->reportErrors = config->readEntry( "report_errors", false );
 
 	if(config->hasKey("niceLevel")) {
-		int niceLevel = config->readNumEntry("niceLevel", 0);
+		int niceLevel = config->readEntry("niceLevel", 0);
 		if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
 			kDebug(7117) << "Setting nice level to (" << niceLevel << ") failed." << endl;
 	}

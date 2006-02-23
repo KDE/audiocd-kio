@@ -160,11 +160,11 @@ void KAudiocdModule::load() {
   {
     KConfigGroup cg(config, "CDDA");
 
-    audioConfig->cd_autosearch_check->setChecked(cg.readBoolEntry("autosearch",true));
+    audioConfig->cd_autosearch_check->setChecked(cg.readEntry("autosearch",true));
     audioConfig->cd_device_string->setText(cg.readEntry("device","/dev/cdrom"));
-    audioConfig->ec_enable_check->setChecked(!(cg.readBoolEntry("disable_paranoia",false)));
-    audioConfig->ec_skip_check->setChecked(!(cg.readBoolEntry("never_skip",true)));
-    audioConfig->niceLevel->setValue(cg.readNumEntry("niceLevel", 0));
+    audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia",false)));
+    audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip",true)));
+    audioConfig->niceLevel->setValue(cg.readEntry("niceLevel", 0));
   }
 
   {
