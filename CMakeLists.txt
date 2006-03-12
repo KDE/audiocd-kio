@@ -1,0 +1,67 @@
+kde4_header()
+
+add_subdirectory( plugins ) 
+
+message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}: skipped subdir $(AUDIO_CD_SUBDIRS)")
+include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_SOURCE_DIR}/kscd ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+
+
+########### next target ###############
+
+set(kio_audiocd_PART_SRCS audiocd.cpp )
+
+kde4_automoc(${kio_audiocd_PART_SRCS})
+
+kde4_add_plugin(kio_audiocd ${kio_audiocd_PART_SRCS})
+
+kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kio_audiocd )
+
+target_link_libraries(kio_audiocd  ${QT_AND_KDECORE_LIBS} audiocdplugins kio kcddb kcompactdisc )
+
+install_targets(${LIB_INSTALL_DIR}/kde4 kio_audiocd )
+
+
+########### install files ###############
+
+install_files( ${SERVICES_INSTALL_DIR} FILES audiocd.protocol )
+install_files( ${DATA_INSTALL_DIR}/kconf_update FILES audiocd.upd )
+
+kde4_footer()
+
+
+
+#original Makefile.am contents follow:
+
+#if include_kcm_audiocd
+#AUDIO_CD_SUBDIRS = kcmaudiocd
+#endif
+#SUBDIRS = plugins $(AUDIO_CD_SUBDIRS)
+#
+#INCLUDES = -I$(top_srcdir)/libkcddb \
+#		   -I$(top_builddir)/libkcddb $(all_includes) \
+#		   -I$(top_srcdir)/kscd $(all_includes) \
+#		   -I$(srcdir)/plugins $(all_includes)
+#
+#KDE_CXXFLAGS=$(ENABLE_PERMISSIVE_FLAG)
+#
+#kde_module_LTLIBRARIES = kio_audiocd.la
+#
+#kio_audiocd_la_SOURCES = audiocd.cpp
+#
+#kio_audiocd_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+#
+#kio_audiocd_la_LIBADD = ./plugins/libaudiocdplugins.la $(LIB_KIO) $(CDPARANOIA_LIBS) $(top_builddir)/libkcddb/libkcddb.la $(top_builddir)/kscd/libkcompactdisc.la 
+#
+#noinst_HEADERS = audiocd.h
+#
+#protocoldir = $(kde_servicesdir)
+#protocol_DATA = audiocd.protocol
+#
+#messages:
+#	$(XGETTEXT) *.cpp -o $(podir)/kio_audiocd.pot
+#
+#updatedir = $(kde_datadir)/kconf_update
+#update_DATA = audiocd.upd
+#update_SCRIPTS = upgrade-metadata.sh
+#
+#audiocd.lo: ../../libkcddb/configbase.h
