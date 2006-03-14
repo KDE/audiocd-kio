@@ -24,7 +24,7 @@ install_targets(${LIB_INSTALL_DIR}/kde4 kio_audiocd )
 ########### install files ###############
 
 install_files( ${SERVICES_INSTALL_DIR} FILES audiocd.protocol )
-install_files( ${DATA_INSTALL_DIR}/kconf_update FILES audiocd.upd )
+install_files( ${KCONF_UPDATE_INSTALL_DIR} FILES audiocd.upd )
 
 kde4_footer()
 
