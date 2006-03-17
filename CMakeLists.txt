@@ -1,4 +1,5 @@
 kde4_header()
+project(audiocd)
 
 add_subdirectory( plugins ) 
 
