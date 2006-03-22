@@ -17,7 +17,7 @@ kde4_add_plugin(kio_audiocd ${kio_audiocd_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kio_audiocd )
 
-target_link_libraries(kio_audiocd  ${QT_AND_KDECORE_LIBS} audiocdplugins kio kcddb kcompactdisc )
+target_link_libraries(kio_audiocd  ${KDE4_KDECORE_LIBS} audiocdplugins kio kcddb kcompactdisc )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kio_audiocd )
 

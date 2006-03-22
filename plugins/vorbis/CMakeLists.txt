@@ -17,7 +17,7 @@ kde4_add_plugin(audiocd_encoder_vorbis WITH_PREFIX ${audiocd_encoder_vorbis_PART
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} audiocd_encoder_vorbis )
 
-target_link_libraries(audiocd_encoder_vorbis  ${QT_AND_KDECORE_LIBS} kio audiocdplugins )
+target_link_libraries(audiocd_encoder_vorbis  ${KDE4_KDECORE_LIBS} kio audiocdplugins )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 audiocd_encoder_vorbis )
 

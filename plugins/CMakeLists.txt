@@ -16,7 +16,7 @@ kde4_automoc(${audiocdplugins_LIB_SRCS})
 
 kde4_add_library(audiocdplugins SHARED ${audiocdplugins_LIB_SRCS})
 
-target_link_libraries(audiocdplugins  ${QT_AND_KDECORE_LIBS} kcddb )
+target_link_libraries(audiocdplugins  ${KDE4_KDECORE_LIBS} kcddb )
 
 set_target_properties(audiocdplugins PROPERTIES VERSION 1.0.0 SOVERSION 1 )
 install_targets(${LIB_INSTALL_DIR} audiocdplugins )
