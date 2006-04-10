@@ -781,7 +781,7 @@ void AudioCDProtocol::paranoiaRead(
 		if (0 == buf) {
 			kDebug(7117) << "Unrecoverable error in paranoia_read" << endl;
 			ok = false;
-			error( ERR_SLAVE_DEFINED, i18n( "Error reading audio data for %1 from the CD" ).arg( fileName ) );
+			error( ERR_SLAVE_DEFINED, i18n( "Error reading audio data for %1 from the CD", fileName ) );
 			break;
 		}
 
@@ -791,7 +791,7 @@ void AudioCDProtocol::paranoiaRead(
 		if(encoderProcessed == -1){
 			kDebug(7117) << "Encoder processing error, stopping." << endl;
 			ok = false;
-			QString errMsg = i18n( "Couldn't read %1: encoding failed" ).arg( fileName );
+			QString errMsg = i18n( "Couldn't read %1: encoding failed", fileName );
 			QString details = encoder->lastErrorMessage();
 			if ( !details.isEmpty() )
 			    errMsg += "\n" + details;
@@ -869,7 +869,7 @@ void AudioCDProtocol::paranoiaRead(
 		processedSize(processed);
 	}
 	else if ( ok ) // i.e. no error message already emitted
-		error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed" ).arg( fileName ) );
+		error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed", fileName ) );
 
 	paranoia_free(paranoia);
 	paranoia = 0;
@@ -982,7 +982,7 @@ void AudioCDProtocol::generateTemplateTitles()
 	{
 		for (unsigned int i = 0; i < d->tracks; i++){
 			QString n;
-			d->templateTitles.append( i18n("Track %1").arg(n.sprintf("%02d", i + 1)));
+			d->templateTitles.append( i18n("Track %1", n.sprintf("%02d", i + 1)));
 		}
 		return;
 	}

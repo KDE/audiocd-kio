@@ -51,7 +51,7 @@ KAudiocdModule::KAudiocdModule(KInstance *instance, QWidget *parent, const QStri
       KConfigSkeleton *config = NULL;
       QWidget *widget = encoder->getConfigureWidget(&config);
       if(widget && config){
-	 audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder").arg(encoder->type()));
+	 audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder", encoder->type()));
          KConfigDialogManager *configManager = new KConfigDialogManager(widget, config);
          encoderSettings.append(configManager);
       }
