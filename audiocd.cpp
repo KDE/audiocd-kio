@@ -214,10 +214,8 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		return 0;
 
 	// Update our knowledge of the disc
-	// TODO which one is right?
-	// qDebug("\"%s\" \"%s\"", drive->cdda_device_name, drive->ioctl_device_name);
 #if defined( Q_OS_LINUX )
-	d->cd.setDevice(drive->cdda_device_name, 50, false);
+	d->cd.setDevice(drive->ioctl_device_name, 50, false);
 #elif defined( Q_OS_FREEBSD )
 	d->cd.setDevice(drive->dev->device_path);
 #endif
