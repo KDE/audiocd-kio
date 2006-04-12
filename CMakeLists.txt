@@ -2,14 +2,14 @@ kde4_header()
 project(audiocd)
 
 add_subdirectory( plugins ) 
+add_subdirectory( kcmaudiocd )
 
-message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}: skipped subdir $(AUDIO_CD_SUBDIRS)")
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_SOURCE_DIR}/kscd ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_BINARY_DIR}/libkcddb ${CMAKE_SOURCE_DIR}/kscd ${KDE4_INCLUDES}  )
 
 
 ########### next target ###############
 
-set(kio_audiocd_PART_SRCS audiocd.cpp )
+set(kio_audiocd_PART_SRCS ${libkcompactdisc_SRCS} ${libworkman_SRCS} audiocd.cpp )
 
 kde4_automoc(${kio_audiocd_PART_SRCS})
 
@@ -17,7 +17,7 @@ kde4_add_plugin(kio_audiocd ${kio_audiocd_PART_SRCS})
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kio_audiocd )
 
-target_link_libraries(kio_audiocd  ${KDE4_KDECORE_LIBS} audiocdplugins kio kcddb kcompactdisc )
+target_link_libraries(kio_audiocd ${CDPARANOIA_LIBS} ${KDE4_KDECORE_LIBS} audiocdplugins kio kcddb )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 kio_audiocd )
 

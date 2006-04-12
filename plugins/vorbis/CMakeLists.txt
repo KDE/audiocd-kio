@@ -1,6 +1,6 @@
 kde4_header()
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/.. ${KDE4_INCLUDES} )
 
 
 ########### next target ###############
@@ -9,7 +9,7 @@ set(audiocd_encoder_vorbis_PART_SRCS encodervorbis.cpp )
 
 kde4_automoc(${audiocd_encoder_vorbis_PART_SRCS})
 
-kde4_add_ui_files(audiocd_encoder_vorbis_PART_SRCS encodervorbisconfig.ui )
+kde4_add_ui3_files(audiocd_encoder_vorbis_PART_SRCS encodervorbisconfig.ui )
 
 kde4_add_kcfg_files(audiocd_encoder_vorbis_PART_SRCS audiocd_vorbis_encoder.kcfgc )
 

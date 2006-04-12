@@ -1,6 +1,6 @@
 kde4_header()
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/../plugins/ ${KDE4_INCLUDES}  )
 
 
 ########### next target ###############
@@ -9,7 +9,7 @@ set(kcm_audiocd_PART_SRCS kcmaudiocd.cpp )
 
 kde4_automoc(${kcm_audiocd_PART_SRCS})
 
-kde4_add_ui_files(kcm_audiocd_PART_SRCS audiocdconfig.ui )
+kde4_add_ui3_files(kcm_audiocd_PART_SRCS audiocdconfig.ui )
 
 kde4_add_plugin(kcm_audiocd ${kcm_audiocd_PART_SRCS})
 
