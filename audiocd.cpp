@@ -29,7 +29,7 @@ extern "C"
 	#include <cdda_interface.h>
 	#include <cdda_paranoia.h>
 	void paranoiaCallback(long, int);
-	
+
 	#include <kdemacros.h>
 	KDE_EXPORT int kdemain(int argc, char ** argv);
 }
@@ -127,7 +127,7 @@ public:
 	QString device; // URL settable
 	int paranoiaLevel; // URL settable
 	bool reportErrors;
-	
+
 	// Directory strings, never change after init
 	QString s_info;
 	QString s_fullCD;
@@ -214,13 +214,45 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		return 0;
 
 	// Update our knowledge of the disc
-#if defined( Q_OS_LINUX )
-	d->cd.setDevice(drive->ioctl_device_name, 50, false);
-#elif defined( Q_OS_FREEBSD )
-	d->cd.setDevice(drive->dev->device_path);
+ 	d->cd.setDevice(drive->ioctl_device_name, 50, false);
+#if 0
+	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
+	// support for non-SCSI devices. Although it finds ATA cdroms just
+	// fine, there is no straightforward way to discover the device
+	// name associated with the device, which throws the rest of audiocd
+	// for a loop.
+	//
+	if ( !(drive->dev) || (COOKED_IOCTL == drive->interface) )
+	{
+		// For ATAPI devices, we have no real choice. Use the
+		// user selected value, even if there is none.
+		//
+		kdWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user." << endl;
+		d->cd.setDevice( d->device );
+	}
+	else
+	{
+		kdDebug(7117) << "Found a SCSI or ATAPICAM device." << endl;
+		if ( strlen(drive->dev->device_path) > 0 )
+		{
+			d->cd.setDevice( drive->dev->device_path );
+		}
+		else
+		{
+			// But the device_path can be empty under some
+			// circumstances, so build a representation from
+			// the unit number and SCSI device name.
+			//
+			QString devname = QString::fromLatin1( "/dev/%1%2" )
+				.arg( drive->dev->given_dev_name )
+				.arg( drive->dev->given_unit_number ) ;
+			kdDebug(7117) << "  Using derived name " << devname << endl;
+			d->cd.setDevice( devname );
+		}
+	}
 #endif
 
-	
+
 	if (d->cd.discId() != d->discid && d->cd.discId() != d->cd.missingDisc){
 		d->discid = d->cd.discId();
 		d->tracks = d->cd.tracks();
@@ -233,7 +265,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		d->cddbBestChoice = d->cddbList.first();
 		generateTemplateTitles();
 	}
-	
+
 	// Determine what file or folder that is wanted.
 	d->fname = url.fileName(false);
 	QString dname = url.directory(true, false);
@@ -411,9 +443,9 @@ void AudioCDProtocol::get(const KUrl & url)
 	KCDDB::CDInfo info;
 	if(d->cddbResult == KCDDB::CDDB::Success){
 		info = d->cddbBestChoice;
-	
+
 		int track = d->req_track+1;
-		
+
 		QString trackName;
 		// hack
 		// do we rip the whole CD?
@@ -469,13 +501,13 @@ void AudioCDProtocol::stat(const KUrl & url)
 	entry.insert( KIO::UDS_NAME, url.fileName().replace('/', QLatin1String("%2F") ));
 
 	entry.insert( KIO::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
-				
+
 
 	const mode_t _umask = ::umask(0);
 	::umask(_umask);
 
 	entry.insert(KIO::UDS_ACCESS, (0666 & (~_umask)));
-	
+
 	if (!isFile)
 	{
 		entry.insert( KIO::UDS_SIZE, cdda_tracks(drive));
@@ -698,7 +730,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 			error(KIO::ERR_SLAVE_DEFINED, i18n("Device doesn't have write permissions for this account.  Check the write permissions on the device."));
 		else if(!fi.exists())
 			error(KIO::ERR_DOES_NOT_EXIST, d->device);
-		else error(KIO::ERR_SLAVE_DEFINED, 
+		else error(KIO::ERR_SLAVE_DEFINED,
 i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as yourself (not root). Do you see a track list? If not, make sure you have permission to access the CD device. If you are using SCSI emulation (possible if you have an IDE CD writer) then make sure you check that you have read and write permissions on the generic SCSI device, which is probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your CD-ROM is."));
 		return 0;
 	}
@@ -707,10 +739,10 @@ i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ 
 	{
 		kDebug(7117) << "cdda_open failed" << endl;
 		error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
-		cdda_close(drive); 
+		cdda_close(drive);
 		return 0;
 	}
-	
+
 	return drive;
 }
 
