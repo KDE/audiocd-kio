@@ -5,6 +5,9 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/..
 
 ########### next target ###############
 
+# Remove this, and #ifdef in encoderflac when Makefile.am's are removed
+ADD_DEFINITIONS(-DHAVE_LIBFLAC)
+
 set(audiocd_encoder_flac_PART_SRCS encoderflac.cpp )
 
 kde4_automoc(${audiocd_encoder_flac_PART_SRCS})
@@ -13,7 +16,7 @@ kde4_add_plugin(audiocd_encoder_flac WITH_PREFIX ${audiocd_encoder_flac_PART_SRC
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} audiocd_encoder_flac )
 
-target_link_libraries(audiocd_encoder_flac  ${KDE4_KIO_LIBS} audiocdplugins )
+target_link_libraries(audiocd_encoder_flac ${LIBFLAC} ${KDE4_KIO_LIBS} audiocdplugins )
 
 install_targets(${LIB_INSTALL_DIR}/kde4 audiocd_encoder_flac )
 
