@@ -19,7 +19,7 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kio_audiocd )
 
 target_link_libraries(kio_audiocd ${CDPARANOIA_LIBS} ${KDE4_KDECORE_LIBS} audiocdplugins kio kcddb )
 
-install_targets(${LIB_INSTALL_DIR}/kde4 kio_audiocd )
+install_targets(${PLUGIN_INSTALL_DIR} kio_audiocd )
 
 
 ########### install files ###############
