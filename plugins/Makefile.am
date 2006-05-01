@@ -16,6 +16,4 @@ libaudiocdplugins_la_SOURCES = 	audiocdencoder.cpp
 
 include_HEADERS = audiocdencoder.h
 
-messages:
-	$(XGETTEXT) *.cpp -o $(podir)/kio_audiocd.pot
 

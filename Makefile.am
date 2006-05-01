@@ -23,8 +23,6 @@ noinst_HEADERS = audiocd.h
 protocoldir = $(kde_servicesdir)
 protocol_DATA = audiocd.protocol
 
-messages:
-	$(XGETTEXT) *.cpp -o $(podir)/kio_audiocd.pot
 
 updatedir = $(kde_datadir)/kconf_update
 update_DATA = audiocd.upd
