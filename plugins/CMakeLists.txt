@@ -1,15 +1,15 @@
 kde4_header()
 
-macro_optional_find_package(Flac)
-
-add_subdirectory( wav ) 
-if (OGGVORBIS_FOUND)
-    add_subdirectory( vorbis ) 
-endif(OGGVORBIS_FOUND)
-add_subdirectory( lame ) 
 if (FLAC_FOUND)
     add_subdirectory( flac ) 
 endif(FLAC_FOUND)
+
+if (OGGVORBIS_FOUND)
+    add_subdirectory( vorbis ) 
+endif(OGGVORBIS_FOUND)
+
+add_subdirectory( wav ) 
+add_subdirectory( lame ) 
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
 

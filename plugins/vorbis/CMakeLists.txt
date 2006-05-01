@@ -1,6 +1,6 @@
 kde4_header()
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/.. ${KDE4_INCLUDES} )
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/.. ${KDE4_INCLUDES} ${OGGVORBIS_INCLUDE_DIR} )
 
 
 ########### next target ###############
@@ -17,7 +17,7 @@ kde4_add_plugin(audiocd_encoder_vorbis WITH_PREFIX ${audiocd_encoder_vorbis_PART
 
 kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} audiocd_encoder_vorbis )
 
-target_link_libraries(audiocd_encoder_vorbis ${VORBIS_LIBS} ${VORBISFILE_LIBS} ${VORBISENC_LIBS} ${KDE4_KIO_LIBS} audiocdplugins )
+target_link_libraries(audiocd_encoder_vorbis ${OGGVORBIS_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins )
 
 install_targets(${PLUGIN_INSTALL_DIR} audiocd_encoder_vorbis )
 
