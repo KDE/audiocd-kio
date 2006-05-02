@@ -60,7 +60,7 @@ void *loadPlugin(const QString &libFileName)
  * there isn't much code anyway.
  */
 void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)
-{ 
+{
     QString foundEncoders;
 
 		KStandardDirs standardDirs;
@@ -77,15 +77,15 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
         for (int i = 0; i < files.count(); ++i) {
             QFileInfo fi(files.at(i));
             if (0 < fi.fileName().count(QRegExp("^libaudiocd_encoder_.*.so$"))) {
-                QString fileName = (fi.fileName().mid(0, fi.fileName().find('.')));
+                QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf('.')));
                 if (foundEncoders.contains(fileName)) {
-                    kDebug(7117) << "Warning, encoder has been found twice!" << endl; 
+                    kDebug(7117) << "Warning, encoder has been found twice!" << endl;
                     continue;
                 }
                 foundEncoders.append(fileName);
                 void *function = loadPlugin(fileName);
                 if (function) {
-                    void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) = 
+                    void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
                             (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
                     functionPointer(slave, encoders);
                 }

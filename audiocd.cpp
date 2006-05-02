@@ -190,7 +190,7 @@ AudioCDEncoder *AudioCDProtocol::encoderFromExtension(const QString& extension)
 AudioCDEncoder *AudioCDProtocol::determineEncoder(const QString & filename)
 {
 	int len = filename.length();
-	int pos = filename.findRev('.');
+	int pos = filename.lastIndexOf('.');
 	return encoderFromExtension(filename.right(len - pos));
 }
 
@@ -321,7 +321,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		QString name(d->fname);
 
 		// Remove extension
-		int dot = name.findRev('.');
+		int dot = name.lastIndexOf('.');
 		if (dot >= 0)
 			name.truncate(dot);
 
@@ -926,7 +926,7 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 	{
 		QString token(*it);
 
-		int equalsPos(token.find('='));
+		int equalsPos = token.indexOf('=');
 		if (-1 == equalsPos)
 			continue;
 
