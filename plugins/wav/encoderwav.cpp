@@ -64,7 +64,7 @@ long EncoderWav::readInit(long byteCount){
     0x00, 0x00, 0x00, 0x00  // 40 byteCount
   };
 
-  Q_INT32 wavSize(byteCount + 44 - 8);
+  qint32 wavSize(byteCount + 44 - 8);
 
 
   riffHeader[4]   = (wavSize   >> 0 ) & 0xff;

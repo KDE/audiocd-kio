@@ -227,12 +227,12 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		// For ATAPI devices, we have no real choice. Use the
 		// user selected value, even if there is none.
 		//
-		kdWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user." << endl;
+		kWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user." << endl;
 		d->cd.setDevice( d->device );
 	}
 	else
 	{
-		kdDebug(7117) << "Found a SCSI or ATAPICAM device." << endl;
+		kDebug(7117) << "Found a SCSI or ATAPICAM device." << endl;
 		if ( strlen(drive->dev->device_path) > 0 )
 		{
 			d->cd.setDevice( drive->dev->device_path );
@@ -246,7 +246,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 			QString devname = QString::fromLatin1( "/dev/%1%2" )
 				.arg( drive->dev->given_dev_name )
 				.arg( drive->dev->given_unit_number ) ;
-			kdDebug(7117) << "  Using derived name " << devname << endl;
+			kDebug(7117) << "  Using derived name " << devname << endl;
 			d->cd.setDevice( devname );
 		}
 	}
