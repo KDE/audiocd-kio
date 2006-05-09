@@ -23,11 +23,12 @@
 #include <kio/slavebase.h>
 #include <cdinfo.h>
 #include <qlist.h>
+#include <kdemacros.h>
 
 class KConfigSkeleton;
 using namespace KCDDB;
 
-class AudioCDEncoder {
+class KDE_EXPORT AudioCDEncoder {
 
 public:
   /**
