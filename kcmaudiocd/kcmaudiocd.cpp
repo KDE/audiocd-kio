@@ -21,15 +21,15 @@
 #include <klineedit.h>
 #include <klocale.h>
 #include <kinstance.h>
-#include <qcheckbox.h>
+#include <QCheckBox>
 #include <q3combobox.h>
 #include <q3groupbox.h>
 #include <qslider.h>
 #include <qtabwidget.h>
 #include <kaboutdata.h>
 #include <knuminput.h>
-#include <qregexp.h>
-#include <qlabel.h>
+#include <QRegExp>
+#include <QLabel>
 
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"

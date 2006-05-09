@@ -44,13 +44,13 @@ extern "C"
 #include <sys/resource.h>
 
 #include <kmacroexpander.h>
-#include <qfile.h>
+#include <QFile>
 #include <qfileinfo.h>
 #include <kcmdlineargs.h>
 #include <kdebug.h>
 #include <kapplication.h>
 #include <klocale.h>
-#include <qregexp.h>
+#include <QRegExp>
 #include <QHash>
 // CDDB
 #include <client.h>

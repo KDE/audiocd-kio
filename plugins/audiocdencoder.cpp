@@ -19,8 +19,8 @@
 #include <audiocdencoder.h>
 #include <klibloader.h>
 #include <kdebug.h>
-#include <qdir.h>
-#include <qregexp.h>
+#include <QDir>
+#include <QRegExp>
 #include <kstandarddirs.h>
 
 /**
