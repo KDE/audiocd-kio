@@ -37,7 +37,7 @@
 //Added by qt3to4:
 #include <Q3ValueList>
 #include <QByteArray>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <kglobal.h>  
 #include <klocale.h>
 
