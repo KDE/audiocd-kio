@@ -11,7 +11,7 @@ endif(OGGVORBIS_FOUND)
 add_subdirectory( wav ) 
 add_subdirectory( lame ) 
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}  )
+include_directories( ${CMAKE_SOURCE_DIR}/libkcddb  )
 
 
 ########### next target ###############
