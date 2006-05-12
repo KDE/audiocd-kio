@@ -1,4 +1,3 @@
-kde4_header()
 project(audiocd)
 
 add_subdirectory( plugins ) 
@@ -27,7 +26,6 @@ install_targets(${PLUGIN_INSTALL_DIR} kio_audiocd )
 install_files( ${SERVICES_INSTALL_DIR} FILES audiocd.protocol )
 install_files( ${KCONF_UPDATE_INSTALL_DIR} FILES audiocd.upd )
 install_files( ${KCONF_UPDATE_INSTALL_DIR} FILES upgrade-metadata.sh )
-kde4_footer()
 
 
 

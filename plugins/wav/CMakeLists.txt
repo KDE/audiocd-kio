@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/..   )
 
@@ -22,7 +21,6 @@ install_targets(${PLUGIN_INSTALL_DIR} audiocd_encoder_wav )
 
 install_files( ${DATA_INSTALL_DIR}/audiocd/plugins FILES  )
 
-kde4_footer()
 
 
 

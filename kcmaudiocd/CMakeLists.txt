@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/../plugins/   )
 
@@ -24,7 +23,6 @@ install_targets(${PLUGIN_INSTALL_DIR} kcm_audiocd )
 
 install_files( ${XDG_APPS_DIR} FILES audiocd.desktop )
 
-kde4_footer()
 
 
 

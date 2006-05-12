@@ -1,4 +1,3 @@
-kde4_header()
 
 if (FLAC_FOUND)
     add_subdirectory( flac ) 
@@ -32,7 +31,6 @@ install_targets(${LIB_INSTALL_DIR} audiocdplugins )
 
 install_files( /include FILES audiocdencoder.h )
 
-kde4_footer()
 
 
 

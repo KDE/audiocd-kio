@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/..  ${OGGVORBIS_INCLUDE_DIR} )
 
@@ -27,7 +26,6 @@ install_targets(${PLUGIN_INSTALL_DIR} audiocd_encoder_vorbis )
 install_files( ${DATA_INSTALL_DIR}/audiocd/plugins FILES  )
 install_files( ${KCFG_INSTALL_DIR} FILES audiocd_vorbis_encoder.kcfg )
 
-kde4_footer()
 
 
 
