@@ -38,7 +38,7 @@ extern "C"
   {
     encoders.append(new EncoderFLAC(slave));
   }
-};
+}
 
 class EncoderFLAC::Private {
 
@@ -64,13 +64,13 @@ static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *e
     }
 
     return FLAC__STREAM_ENCODER_WRITE_STATUS_OK;
-};
+}
 
 static void MetadataCallback (const FLAC__StreamEncoder *encoder, const FLAC__StreamMetadata *metadata, void *client_data)
 {
 	// We do not have seekable writeback so we just discard the updated metadata
 
-};
+}
 
 /*
 static FLAC__SeekableStreamEncoderSeekStatus  SeekCallback(const FLAC__SeekableStreamEncoder *encoder,  FLAC__uint64 absolute_byte_offset, void *client_data)
