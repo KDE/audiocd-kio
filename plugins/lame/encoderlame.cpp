@@ -24,7 +24,6 @@
 #include <kdebug.h>
 #include <qgroupbox.h>
 #include <kprocess.h>
-#include <kdebug.h>
 
 #include <kglobal.h>  
 #include <klocale.h>
