@@ -72,6 +72,7 @@ KAudiocdModule::KAudiocdModule(KInstance *instance, QWidget *parent, const QStri
     connect(audioConfig->ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
     connect(audioConfig->ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
     connect(audioConfig->cd_device_string,SIGNAL(textChanged(const QString &)),SLOT(slotConfigChanged()));
+    connect(niceLevel,SIGNAL(valueChanged(int)),SLOT(slotConfigChanged()));
 
     // File Name
     connect(audioConfig->fileNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
