@@ -213,7 +213,13 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 		return 0;
 
 	// Update our knowledge of the disc
-	d->cd.setDevice(drive->ioctl_device_name, 50, false);
+
+#if defined(__linux__)
+        d->cd.setDevice(drive->ioctl_device_name, 50, false);
+#else
+        d->cd.setDevice(drive->cdda_device_name, 50, false);
+#endif
+
 #if 0
 	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
 	// support for non-SCSI devices. Although it finds ATA cdroms just
