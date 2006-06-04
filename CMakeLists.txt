@@ -3,7 +3,12 @@ project(audiocd)
 add_subdirectory( plugins ) 
 add_subdirectory( kcmaudiocd )
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_BINARY_DIR}/libkcddb ${CMAKE_SOURCE_DIR}/kscd   )
+include_directories( 
+		${CMAKE_SOURCE_DIR}/libkcddb 
+		${CMAKE_BINARY_DIR}/libkcddb 
+		${CMAKE_SOURCE_DIR}/kscd   
+		${CMAKE_BINARY_DIR}/kscd
+		)
 
 
 ########### next target ###############
