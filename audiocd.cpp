@@ -78,7 +78,7 @@ int kdemain(int argc, char ** argv)
 	// GUIenabled must be true as libkcddb sometimes wants to communicate
 	// with the user
 	putenv(strdup("SESSION_MANAGER="));
-	KApplication::disableAutoDcopRegistration();
+	//KApplication::disableAutoDcopRegistration();
 	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, 0, 0, 0);
 	KCmdLineArgs::addCmdLineOptions(options);
 	KApplication app(true);
