@@ -14,12 +14,12 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} audiocd_encoder_wav )
 
 target_link_libraries(audiocd_encoder_wav  ${KDE4_KIO_LIBS} audiocdplugins )
 
-install_targets(${PLUGIN_INSTALL_DIR} audiocd_encoder_wav )
+install(TARGETS audiocd_encoder_wav  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/audiocd/plugins FILES  )
+install( FILES   DESTINATION  ${DATA_INSTALL_DIR}/audiocd/plugins )
 
 
 

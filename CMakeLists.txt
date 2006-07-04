@@ -23,14 +23,14 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kio_audiocd )
 
 target_link_libraries(kio_audiocd ${CDPARANOIA_LIBRARIES} ${KDE4_KDECORE_LIBS} audiocdplugins kio kcddb )
 
-install_targets(${PLUGIN_INSTALL_DIR} kio_audiocd )
+install(TARGETS kio_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 
 ########### install files ###############
 
-install_files( ${SERVICES_INSTALL_DIR} FILES audiocd.protocol )
-install_files( ${KCONF_UPDATE_INSTALL_DIR} FILES audiocd.upd )
-install_files( ${KCONF_UPDATE_INSTALL_DIR} FILES upgrade-metadata.sh )
+install( FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR} )
+install( FILES audiocd.upd  DESTINATION  ${KCONF_UPDATE_INSTALL_DIR} )
+install( FILES upgrade-metadata.sh  DESTINATION  ${KCONF_UPDATE_INSTALL_DIR} )
 
 
 

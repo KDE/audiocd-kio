@@ -18,13 +18,13 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} audiocd_encoder_vorbis )
 
 target_link_libraries(audiocd_encoder_vorbis ${OGGVORBIS_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins )
 
-install_targets(${PLUGIN_INSTALL_DIR} audiocd_encoder_vorbis )
+install(TARGETS audiocd_encoder_vorbis  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/audiocd/plugins FILES  )
-install_files( ${KCFG_INSTALL_DIR} FILES audiocd_vorbis_encoder.kcfg )
+install( FILES   DESTINATION  ${DATA_INSTALL_DIR}/audiocd/plugins )
+install( FILES audiocd_vorbis_encoder.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 
 
 

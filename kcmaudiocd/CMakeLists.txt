@@ -16,12 +16,12 @@ kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kcm_audiocd )
 
 target_link_libraries(kcm_audiocd  ${KDE4_KDECORE_LIBS} audiocdplugins kdeui )
 
-install_targets(${PLUGIN_INSTALL_DIR} kcm_audiocd )
+install(TARGETS kcm_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES audiocd.desktop )
+install( FILES audiocd.desktop  DESTINATION  ${XDG_APPS_DIR} )
 
 
 
