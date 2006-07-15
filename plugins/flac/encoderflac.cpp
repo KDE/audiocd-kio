@@ -30,7 +30,6 @@
 #include <kdebug.h>
 #include <QPair>
 #include <QDateTime>
-#include <Q3CString>
 
 extern "C"
 {
@@ -177,7 +176,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
     QString field;
-    Q3CString cfield;
+    QByteArray cfield;
     int num_comments = 0;
 
     for(int i=0; i<7; i++) {
