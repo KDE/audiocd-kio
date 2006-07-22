@@ -23,7 +23,6 @@ install(TARGETS audiocd_encoder_vorbis  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 ########### install files ###############
 
-install( FILES   DESTINATION  ${DATA_INSTALL_DIR}/audiocd/plugins )
 install( FILES audiocd_vorbis_encoder.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 
 
