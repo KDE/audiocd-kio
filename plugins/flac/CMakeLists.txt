@@ -20,11 +20,6 @@ target_link_libraries(audiocd_encoder_flac ${FLAC_LIBRARIES} ${KDE4_KIO_LIBS} au
 install(TARGETS audiocd_encoder_flac  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 
-########### install files ###############
-
-install( FILES   DESTINATION  ${DATA_INSTALL_DIR}/audiocd/plugins )
-
-
 
 
 #original Makefile.am contents follow:

@@ -23,7 +23,6 @@ install(TARGETS audiocd_encoder_lame  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 ########### install files ###############
 
-install( FILES   DESTINATION  ${DATA_INSTALL_DIR}/audiocd/plugins )
 install( FILES audiocd_lame_encoder.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 
 
