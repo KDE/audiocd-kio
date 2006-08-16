@@ -19,21 +19,3 @@ target_link_libraries(audiocd_encoder_flac ${FLAC_LIBRARIES} ${KDE4_KIO_LIBS} au
 
 install(TARGETS audiocd_encoder_flac  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
-
-
-
-#original Makefile.am contents follow:
-
-#INCLUDES = -I$(top_srcdir)/libkcddb -I$(srcdir)/.. $(all_includes)
-#
-#kde_module_LTLIBRARIES = libaudiocd_encoder_flac.la
-#
-#libaudiocd_encoder_flac_la_SOURCES = encoderflac.cpp
-#
-#libaudiocd_encoder_flac_la_LIBADD = $(LIBFLAC) $(LIB_KIO) ../libaudiocdplugins.la
-#
-#libaudiocd_encoder_flac_la_LDFLAGS = -avoid-version -module -no-undefined $(all_libraries)
-#
-#pluginsdir = $(kde_datadir)/audiocd/plugins
-#
-#METASOURCES = AUTO
