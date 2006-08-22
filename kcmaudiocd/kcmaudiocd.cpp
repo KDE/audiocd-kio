@@ -100,23 +100,7 @@ void KAudiocdModule::updateExample()
 }
 
 void KAudiocdModule::defaults() {
-	cd_specify_device->setChecked(false);
-	cd_device_string->setText("/dev/cdrom");
-
-	ec_enable_check->setChecked(true);
-	ec_skip_check->setChecked(false);
-	niceLevel->setValue(0);
-	
-	kcfg_replaceInput->setText("");
-	kcfg_replaceOutput->setText("");
-	example->setText(i18n("Cool artist - example audio file.wav"));
-	KConfigDialogManager *widget;
-	for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-		widget->updateWidgetsDefault();
-	}
-
-	fileNameLineEdit->setText("%{albumartist} - %{number} - %{title}");
-	albumNameLineEdit->setText("%{albumartist} - %{albumtitle}");
+	load( false );
 }
 
 void KAudiocdModule::save() {
@@ -157,9 +141,16 @@ void KAudiocdModule::save() {
 }
 
 void KAudiocdModule::load() {
+	load( false );
+}
+
+void KAudiocdModule::load(bool useDefaults) {
+
+	config->setReadDefaults( useDefaults );
 
   {
     KConfigGroupSaver saver(config, "CDDA");
+
 
     // Specify <=> not autosearch, as explained above in ::save()
     cd_specify_device->setChecked( !(config->readBoolEntry("autosearch",true)) );
@@ -182,6 +173,8 @@ void KAudiocdModule::load() {
   for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
     widget->updateWidgets();
   }
+
+  emit changed( useDefaults );
 }
 
 void KAudiocdModule::slotModuleChanged() {

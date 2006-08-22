@@ -44,6 +44,7 @@ public slots:
   void defaults();
   void save();
   void load();
+  void load(bool useDefaults);
 
 private slots:
   void updateExample();
