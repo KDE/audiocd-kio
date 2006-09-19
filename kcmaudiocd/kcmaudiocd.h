@@ -39,7 +39,7 @@ class KAudiocdModule : public KCModule
 
 public:
 
-  KAudiocdModule(KInstance *instance, QWidget *parent=0, const QStringList &args=QStringList());
+  KAudiocdModule(QWidget *parent=0, const QStringList &args=QStringList());
   ~KAudiocdModule();
 
   QString quickHelp() const;

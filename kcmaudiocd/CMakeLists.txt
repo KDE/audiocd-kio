@@ -21,5 +21,5 @@ install(TARGETS kcm_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 ########### install files ###############
 
-install( FILES audiocd.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES audiocd.desktop  DESTINATION  ${SERVICES_INSTALL_DIR} )
 

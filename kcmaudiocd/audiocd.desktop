@@ -2,10 +2,13 @@
 Encoding=UTF-8
 Exec=kcmshell audiocd
 Icon=cdaudio_unmount
-Type=Application
+Type=Service
+ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
 X-KDE-Library=audiocd
+X-KDE-FactoryName=audiocd
+X-KDE-ParentApp=kcontrol
 
 Name=Audio CDs
 Name[fr]=CD audio

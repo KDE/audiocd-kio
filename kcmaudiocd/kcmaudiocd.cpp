@@ -30,13 +30,17 @@
 #include <knuminput.h>
 #include <QRegExp>
 #include <QLabel>
+#include <kgenericfactory.h>
 
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"
 #include <kconfigdialogmanager.h>
 
-KAudiocdModule::KAudiocdModule(KInstance *instance, QWidget *parent, const QStringList &lst)
-  : KCModule(instance, parent, lst), configChanged(false)
+typedef KGenericFactory<KAudiocdModule, QWidget> KAudiocdFactory;
+K_EXPORT_COMPONENT_FACTORY( audiocd, KAudiocdFactory("kcmaudiocd") )
+
+KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
+  : KCModule(KAudiocdFactory::instance(), parent), configChanged(false)
 {
 	audioConfig = new AudiocdConfig(parent,"");
     QString foo = i18n("Report errors found on the cd.");
@@ -224,12 +228,3 @@ QString KAudiocdModule::quickHelp() const
               " version of the LAME or Ogg Vorbis libraries.");
 }
 
-extern "C"
-{
-    KCModule *create_audiocd(QWidget *parent, const char */*name*/)
-    {
-		KInstance *inst = new KInstance("kcmaudiocd");
-        return new KAudiocdModule(inst,parent);
-    }
-
-}
