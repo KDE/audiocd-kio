@@ -209,7 +209,7 @@ long EncoderLame::readInit(long /*size*/){
 	QString prefix = KStandardDirs::locateLocal("tmp", "");
 	d->tempFile = new KTempFile(prefix, ".mp3");
 	d->tempFile->setAutoDelete(true);
-	d->lastErrorMessage = QString::null;
+	d->lastErrorMessage.clear();
 	d->processHasExited = false;
 
 	// -x bitswap

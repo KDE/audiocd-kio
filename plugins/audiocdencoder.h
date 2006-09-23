@@ -122,7 +122,7 @@ public:
   /**
    * Returns the last error message; called when e.g. read() returns -1.
    */
-  virtual QString lastErrorMessage() const { return QString::null; }
+  virtual QString lastErrorMessage() const { return QString(); }
 
   /**
    * Helper function to load all of the AudioCD Encoders from libraries.
