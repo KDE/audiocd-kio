@@ -36,7 +36,7 @@ namespace AudioCD {
 /**
  * The core class of the audiocd:// ioslave.
  * It has the iosalve login and the ripping logic. The actual encoding
- * is done by encoders that are seperate objects.
+ * is done by encoders that are separate objects.
  */
 class AudioCDProtocol : public KIO::SlaveBase
 {

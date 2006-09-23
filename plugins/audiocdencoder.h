@@ -86,7 +86,7 @@ public:
    * Before the read functions are called this is 
    * called to allow the encoders to store the cddb
    * information if they want to so it can be inserted 
-   * where neccessary (start, middle, end, or combos etc).
+   * where necessary (start, middle, end, or combos etc).
    */ 
   virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ) = 0;
   
