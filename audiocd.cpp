@@ -725,9 +725,9 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
 		QFileInfo fi(d->device);
 		if(!fi.isReadable())
-			error(KIO::ERR_SLAVE_DEFINED, i18n("Device does not have read permissions for this account.  Check the read permissions on the device."));
+			error(KIO::ERR_SLAVE_DEFINED, i18n("Device doesn't have read permissions for this account.  Check the read permissions on the device."));
 		else if(!fi.isWritable())
-			error(KIO::ERR_SLAVE_DEFINED, i18n("Device does not have write permissions for this account.  Check the write permissions on the device."));
+			error(KIO::ERR_SLAVE_DEFINED, i18n("Device doesn't have write permissions for this account.  Check the write permissions on the device."));
 		else if(!fi.exists())
 			error(KIO::ERR_DOES_NOT_EXIST, d->device);
 		else error(KIO::ERR_SLAVE_DEFINED,
@@ -821,7 +821,7 @@ void AudioCDProtocol::paranoiaRead(
 		if(encoderProcessed == -1){
 			kDebug(7117) << "Encoder processing error, stopping." << endl;
 			ok = false;
-			QString errMsg = i18n( "Could not read %1: encoding failed", fileName );
+			QString errMsg = i18n( "Couldn't read %1: encoding failed", fileName );
 			QString details = encoder->lastErrorMessage();
 			if ( !details.isEmpty() )
 			    errMsg += "\n" + details;
@@ -899,7 +899,7 @@ void AudioCDProtocol::paranoiaRead(
 		processedSize(processed);
 	}
 	else if ( ok ) // i.e. no error message already emitted
-		error( ERR_SLAVE_DEFINED, i18n( "Could not read %1: encoding failed", fileName ) );
+		error( ERR_SLAVE_DEFINED, i18n( "Couldn't read %1: encoding failed", fileName ) );
 
 	paranoia_free(paranoia);
 	paranoia = 0;
