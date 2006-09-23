@@ -181,7 +181,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 
     for(int i=0; i<7; i++) {
 	if (!comments[i].second.toString().isEmpty()) {
-	    field = comments[i].first+"="+comments[i].second.toString();
+	    field = comments[i].first+'='+comments[i].second.toString();
 	    cfield = field.utf8();
     	    entry.entry = (FLAC__byte*)qstrdup(cfield);
 	    entry.length = cfield.length();
