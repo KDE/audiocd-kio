@@ -215,7 +215,10 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KURL & url)
 	// Update our knowledge of the disc
 
 #if defined(__linux__)
-        d->cd.setDevice(drive->ioctl_device_name, 50, false);
+       if(drive->ioctl_device_name && drive->ioctl_device_name[0])
+         d->cd.setDevice(drive->ioctl_device_name, 50, false);
+       else
+         d->cd.setDevice(drive->cdda_device_name, 50, false);
 #else
         d->cd.setDevice(drive->cdda_device_name, 50, false);
 #endif
