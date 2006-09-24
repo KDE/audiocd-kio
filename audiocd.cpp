@@ -824,7 +824,7 @@ void AudioCDProtocol::paranoiaRead(
 			QString errMsg = i18n( "Could not read %1: encoding failed", fileName );
 			QString details = encoder->lastErrorMessage();
 			if ( !details.isEmpty() )
-			    errMsg += "\n" + details;
+			    errMsg += '\n' + details;
 			error( ERR_SLAVE_DEFINED, errMsg );
 			break;
 		}
