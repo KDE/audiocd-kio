@@ -42,9 +42,14 @@ K_EXPORT_COMPONENT_FACTORY( audiocd, KAudiocdFactory("kcmaudiocd") )
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
   : KCModule(KAudiocdFactory::instance(), parent), configChanged(false)
 {
-	audioConfig = new AudiocdConfig(parent,"");
+   QVBoxLayout *box=new QVBoxLayout(this);
+   box->setSpacing(KDialog::spacingHint());
+   box->setMargin(0);
+
+    audioConfig = new AudiocdConfig(this,"");
     QString foo = i18n("Report errors found on the cd.");
 
+    box->addWidget(audioConfig);
     setButtons(Default|Apply);
 
     config = new KConfig("kcmaudiocdrc");

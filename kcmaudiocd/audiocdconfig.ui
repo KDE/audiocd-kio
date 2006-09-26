@@ -634,6 +634,5 @@
 <includehints>
     <includehint>kcmodule.h</includehint>
     <includehint>klineedit.h</includehint>
-    <includehint>klineedit.h</includehint>
 </includehints>
 </UI>
