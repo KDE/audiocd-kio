@@ -412,7 +412,7 @@ void AudioCDProtocol::get(const KUrl & url)
 			}
 			count++;
 		}
-		if(!found && d->fname.contains(i18n(CDDB_INFORMATION)+":")){
+		if(!found && d->fname.contains(i18n(CDDB_INFORMATION)+':')){
 			mimeType("text/html");
 			//data(QCString( d->fname.latin1() ));
 			// send an empty QByteArray to signal end of data.
