@@ -29,7 +29,7 @@
 #include <klocale.h>
 #include <qapplication.h>
 #include <qfileinfo.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kstandarddirs.h>
 #include "collectingprocess.h"
 
@@ -52,7 +52,7 @@ public:
 	QStringList genreList;
 	uint lastSize;
 	KProcess *currentEncodeProcess;
-	KTempFile *tempFile;
+	KTemporaryFile *tempFile;
 };
 
 EncoderLame::EncoderLame(KIO::SlaveBase *slave) : QObject(), AudioCDEncoder(slave) {
@@ -206,9 +206,9 @@ unsigned long EncoderLame::size(long time_secs) const {
 long EncoderLame::readInit(long /*size*/){
 	// Create KProcess
 	d->currentEncodeProcess	= new KProcess(0);
-	QString prefix = KStandardDirs::locateLocal("tmp", "");
-	d->tempFile = new KTempFile(prefix, ".mp3");
-	d->tempFile->setAutoDelete(true);
+	d->tempFile = new KTemporaryFile();
+	d->tempFile->setSuffix(".mp3");
+	d->tempFile->open();
 	d->lastErrorMessage.clear();
 	d->processHasExited = false;
 
@@ -222,7 +222,7 @@ long EncoderLame::readInit(long /*size*/){
 		*d->currentEncodeProcess << trackInfo;
 
 	// Read in stdin, output to the temp file
-	*d->currentEncodeProcess << "-" << d->tempFile->name().latin1();
+	*d->currentEncodeProcess << "-" << d->tempFile->fileName().latin1();
 	
 	//kDebug(7117) << d->currentEncodeProcess->args() << endl;
 	
@@ -280,7 +280,7 @@ long EncoderLame::read(int16_t *buf, int frames){
 	}
 
 	// Determine the file size increase
-	QFileInfo file(d->tempFile->name());
+	QFileInfo file(d->tempFile->fileName());
 	uint change = file.size() - d->lastSize;
 	d->lastSize = file.size();
 	return change;
@@ -298,7 +298,7 @@ long EncoderLame::readCleanup(){
 	}
 
 	// Now copy the file out of the temp into kio
-	QFile file( d->tempFile->name() );
+	QFile file( d->tempFile->fileName() );
 	if ( file.open( QIODevice::ReadOnly ) ) {
 		QByteArray output;
 		char data[1024];
