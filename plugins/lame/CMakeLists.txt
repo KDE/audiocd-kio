@@ -10,7 +10,7 @@ kde4_automoc(audiocd_encoder_lame ${audiocd_encoder_lame_PART_SRCS})
 
 kde4_add_ui3_files(audiocd_encoder_lame_PART_SRCS encoderlameconfig.ui )
 
-kde4_add_kcfg_files(audiocd_encoder_lame_PART_SRCS audiocd_lame_encoder.kcfgc )
+kde4_add_kcfg_files(audiocd_encoder_lame audiocd_encoder_lame_PART_SRCS audiocd_lame_encoder.kcfgc )
 
 kde4_add_plugin(audiocd_encoder_lame WITH_PREFIX ${audiocd_encoder_lame_PART_SRCS})
 
