@@ -142,10 +142,10 @@
                             <property name="name">
                                 <cstring>kcfg_quality</cstring>
                             </property>
-                            <property name="minValue">
+                            <property name="minimum">
                                 <number>-9</number>
                             </property>
-                            <property name="maxValue">
+                            <property name="maximum">
                                 <number>0</number>
                             </property>
                             <property name="pageStep">
@@ -733,7 +733,7 @@
                     <property name="suffix">
                         <string> Hz</string>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>20000</number>
                     </property>
                 </widget>
@@ -755,7 +755,7 @@
                     <property name="suffix">
                         <string> Hz</string>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>200</number>
                     </property>
                 </widget>
@@ -780,7 +780,7 @@
                     <property name="suffix">
                         <string> Hz</string>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>5000</number>
                     </property>
                 </widget>
@@ -805,7 +805,7 @@
                     <property name="suffix">
                         <string> Hz</string>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>50</number>
                     </property>
                 </widget>
