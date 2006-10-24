@@ -1,6 +1,12 @@
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/..  )
 
+FIND_PROGRAM(LAME_EXECUTABLE NAMES lame
+)
+
+if(NOT LAME_EXECUTABLE)
+	MESSAGE(STATUS "\"lame\" binary not found. Plugins will be compile but install it under your system to using this plugins")
+endif(NOT LAME_EXECUTABLE)
 
 ########### next target ###############
 
