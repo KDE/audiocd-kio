@@ -46,7 +46,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
    box->setSpacing(KDialog::spacingHint());
    box->setMargin(0);
 
-    audioConfig = new AudiocdConfig(this,"");
+    audioConfig = new AudiocdConfig(this);
     QString foo = i18n("Report errors found on the cd.");
 
     box->addWidget(audioConfig);

@@ -32,7 +32,17 @@
 #include <kcmodule.h>
 class KConfigDialogManager;
 
-#include "audiocdconfig.h"
+#include "ui_audiocdconfig.h"
+
+class AudiocdConfig : public QWidget, public Ui::AudiocdConfig
+{
+public:
+  AudiocdConfig( QWidget *parent ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
+
 class KAudiocdModule : public KCModule
 {
   Q_OBJECT
