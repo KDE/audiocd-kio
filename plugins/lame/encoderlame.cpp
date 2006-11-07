@@ -18,7 +18,6 @@
 
 #include <config.h>
 #include "encoderlame.h"
-#include "encoderlameconfig.h"
 #include "audiocd_lame_encoder.h"
 
 #include <kdebug.h>

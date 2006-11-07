@@ -20,8 +20,17 @@
 #define ENCODER_LAME_H
 
 #include "audiocdencoder.h"
-
+#include "ui_encoderlameconfig.h"
 class KProcess;
+
+class EncoderLameConfig : public QWidget, public Ui::EncoderLameConfig
+{
+public:
+  EncoderLameConfig( QWidget *parent = 0 ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
 
 /**
  * MP3 encoder using the LAME encoder.

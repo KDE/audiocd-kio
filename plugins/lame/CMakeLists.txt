@@ -14,7 +14,7 @@ set(audiocd_encoder_lame_PART_SRCS encoderlame.cpp collectingprocess.cpp )
 
 kde4_automoc(${audiocd_encoder_lame_PART_SRCS})
 
-kde4_add_ui3_files(audiocd_encoder_lame_PART_SRCS encoderlameconfig.ui )
+kde4_add_ui_files(audiocd_encoder_lame_PART_SRCS encoderlameconfig.ui )
 
 kde4_add_kcfg_files(audiocd_encoder_lame_PART_SRCS audiocd_lame_encoder.kcfgc )
 

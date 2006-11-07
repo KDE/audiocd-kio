@@ -24,7 +24,6 @@
 
 #include "encodervorbis.h"
 #include "audiocd_vorbis_encoder.h"
-#include "encodervorbisconfig.h"
 
 #ifdef HAVE_VORBIS
 

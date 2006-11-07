@@ -26,10 +26,19 @@
 #define ENCODER_VORBIS_H
 
 #include <config.h>
-
+#include "ui_encodervorbisconfig.h"
 #ifdef HAVE_VORBIS
 
 #include <audiocdencoder.h>
+
+class EncoderVorbisConfig : public QWidget, public Ui::EncoderVorbisConfig
+{
+public:
+  EncoderVorbisConfig( QWidget *parent = 0 ) : QWidget( parent ) {
+    setupUi( this );
+  }
+};
+
 
 /**
  * Ogg Vorbis encoder.
