@@ -13,7 +13,7 @@ kde4_automoc(${audiocd_encoder_flac_PART_SRCS})
 
 kde4_add_plugin(audiocd_encoder_flac WITH_PREFIX ${audiocd_encoder_flac_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} audiocd_encoder_flac )
+
 
 target_link_libraries(audiocd_encoder_flac ${FLAC_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins )
 

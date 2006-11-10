@@ -19,7 +19,7 @@ kde4_automoc(${kio_audiocd_PART_SRCS})
 
 kde4_add_plugin(kio_audiocd ${kio_audiocd_PART_SRCS})
 
-kde4_install_libtool_file( ${PLUGIN_INSTALL_DIR} kio_audiocd )
+
 
 target_link_libraries(kio_audiocd ${CDPARANOIA_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins kcddb )
 
