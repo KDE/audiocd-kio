@@ -1018,6 +1018,19 @@ void AudioCDProtocol::loadSettings()
 	d->albumTemplate = config->readEntry("album_template", "%{albumartist} - %{albumtitle}");
 	d->rsearch = config->readEntry("regexp_search");
 	d->rreplace = config->readEntry("regexp_replace");
+	// if the regular expressions are enclosed in qoutes. remove them
+	// otherwise it is not possible to search for a space " ", since an empty (only spaces) value is not 
+	// supported by KConfig, so the space has to be qouted, but then here the regexp searches really for " "
+	// instead of just the space. Alex
+	QRegExp qoutedString("^\".*\"$");
+	if (qoutedString.exactMatch(d->rsearch))
+	{
+        	d->rsearch=d->rsearch.mid(1, d->rsearch.length()-2);
+	}
+	if (qoutedString.exactMatch(d->rreplace))
+	{
+		d->rreplace=d->rreplace.mid(1, d->rreplace.length()-2);
+	}
 
 	// Tell the encoders to load their settings
 	AudioCDEncoder *encoder;
