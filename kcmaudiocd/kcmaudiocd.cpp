@@ -76,6 +76,9 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     connect( kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
+    connect( kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
+    connect( kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
+    connect( example, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
 
     KAboutData *about =
     new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio CD IO Slave"),
@@ -92,10 +95,33 @@ KAudiocdModule::~KAudiocdModule()
     delete config;
 }
 
+QString removeQoutes(const QString& text)
+{
+   QString deqoutedString=text;
+   QRegExp qoutedStringRegExp("^\".*\"$");
+   if (qoutedStringRegExp.exactMatch(text))
+   {
+      deqoutedString=text.mid(1, text.length()-2);
+   }
+   return deqoutedString;
+}
+
+bool needsQoutes(const QString& text)
+{
+   QRegExp spaceAtTheBeginning("^\\s+.*$");
+   QRegExp spaceAtTheEnd("^.*\\s+$");
+   return (spaceAtTheBeginning.exactMatch(text) || spaceAtTheEnd.exactMatch(text));
+   
+   
+}
+
 void KAudiocdModule::updateExample()
 {
   QString text = example->text();
-  text.replace( QRegExp(kcfg_replaceInput->text()), kcfg_replaceOutput->text() );
+  QString deqoutedReplaceInput=removeQoutes(kcfg_replaceInput->text());
+  QString deqoutedReplaceOutput=removeQoutes(kcfg_replaceOutput->text());
+
+  text.replace( QRegExp(deqoutedReplaceInput), deqoutedReplaceOutput );
   exampleOutput->setText(text);
 }
 
@@ -124,9 +150,20 @@ void KAudiocdModule::save() {
     KConfigGroupSaver saver(config, "FileName");
     config->writeEntry("file_name_template", fileNameLineEdit->text());
     config->writeEntry("album_name_template", albumNameLineEdit->text());
-    config->writeEntry("regexp_search",kcfg_replaceInput->text());
-    config->writeEntry("regexp_replace", kcfg_replaceOutput->text());
     config->writeEntry("regexp_example", example->text());
+    // save qouted if required
+    QString replaceInput=kcfg_replaceInput->text();
+    QString replaceOutput=kcfg_replaceOutput->text();
+    if (needsQoutes(replaceInput))
+    {
+       replaceInput=QString("\"")+replaceInput+QString("\"");
+    }
+    if (needsQoutes(replaceOutput))
+    {
+       replaceOutput=QString("\"")+replaceOutput+QString("\"");
+    }
+    config->writeEntry("regexp_search", replaceInput);
+    config->writeEntry("regexp_replace", replaceOutput);
   }
 
   KConfigDialogManager *widget;
