@@ -89,6 +89,10 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
     connect( audioConfig->kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( audioConfig->kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( audioConfig->example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
+    connect( audioConfig->kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
+    connect( audioConfig->kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
+    connect( audioConfig->example, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
+ 
 
     KAboutData *about =
     new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio CD IO Slave"),
@@ -105,10 +109,31 @@ KAudiocdModule::~KAudiocdModule()
     delete config;
 }
 
+QString removeQoutes(const QString& text)
+{
+   QString deqoutedString=text;
+   QRegExp qoutedStringRegExp("^\".*\"$");
+   if (qoutedStringRegExp.exactMatch(text))
+   {
+      deqoutedString=text.mid(1, text.length()-2);
+   }
+   return deqoutedString;
+}
+
+bool needsQoutes(const QString& text)
+{
+   QRegExp spaceAtTheBeginning("^\\s+.*$");
+   QRegExp spaceAtTheEnd("^.*\\s+$");
+   return (spaceAtTheBeginning.exactMatch(text) || spaceAtTheEnd.exactMatch(text));
+}
+
 void KAudiocdModule::updateExample()
 {
   QString text = audioConfig->example->text();
-  text.replace( QRegExp(audioConfig->kcfg_replaceInput->text()), audioConfig->kcfg_replaceOutput->text() );
+
+  QString deqoutedReplaceInput=removeQoutes(audioConfig->kcfg_replaceInput->text());
+  QString deqoutedReplaceOutput=removeQoutes(audioConfig->kcfg_replaceOutput->text());
+  text.replace( QRegExp(deqoutedReplaceInput), deqoutedReplaceOutput );
   audioConfig->exampleOutput->setText(text);
 }
 
@@ -149,16 +174,28 @@ void KAudiocdModule::save() {
     KConfigGroup cg(config, "FileName");
     cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
     cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
-    cg.writeEntry("regexp_search",audioConfig->kcfg_replaceInput->text());
-    cg.writeEntry("regexp_replace", audioConfig->kcfg_replaceOutput->text());
     cg.writeEntry("regexp_example", audioConfig->example->text());
+    
+        // save qouted if required
+    QString replaceInput=audioConfig->kcfg_replaceInput->text();
+    QString replaceOutput=audioConfig->kcfg_replaceOutput->text();
+    if (needsQoutes(replaceInput))
+    {
+       replaceInput=QString("\"")+replaceInput+QString("\"");
+    }
+    if (needsQoutes(replaceOutput))
+    {
+       replaceOutput=QString("\"")+replaceOutput+QString("\"");
+    }
+    config->writeEntry("regexp_search", replaceInput);
+    config->writeEntry("regexp_replace", replaceOutput);
   }
 
   KConfigDialogManager *widget;
   for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
     widget->updateSettings();
   }
-  
+
   config->sync();
 
   configChanged = false;
