@@ -59,7 +59,6 @@ extern "C"
 using namespace KIO;
 using namespace KCDDB;
 
-#define DEFAULT_CD_DEVICE "/dev/cdrom"
 #define CDDB_INFORMATION "CDDB Information"
 
 using namespace AudioCD;
@@ -715,8 +714,8 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
 		if (0 == drive)
 		{
-			if (QFile(QFile::decodeName(DEFAULT_CD_DEVICE)).exists())
-				drive = cdda_identify(DEFAULT_CD_DEVICE, CDDA_MESSAGE_PRINTIT, 0);
+			if (QFile(QFile::decodeName(KCompactDisc::defaultDevice.toAscii())).exists())
+				drive = cdda_identify(KCompactDisc::defaultDevice.toAscii(), CDDA_MESSAGE_PRINTIT, 0);
 		}
 	}
 
@@ -962,7 +961,7 @@ void AudioCDProtocol::loadSettings()
 	config->setGroup(QLatin1String("CDDA"));
 
 	if (!config->readEntry(QLatin1String("autosearch"),true)) {
-		d->device = config->readEntry(QLatin1String("device"), QString(DEFAULT_CD_DEVICE));
+		d->device = config->readEntry(QLatin1String("device"), QString(KCompactDisc::defaultDevice));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
@@ -991,7 +990,7 @@ void AudioCDProtocol::loadSettings()
 	d->rsearch = config->readEntry("regexp_search");
 	d->rreplace = config->readEntry("regexp_replace");
 	// if the regular expressions are enclosed in qoutes. remove them
-	// otherwise it is not possible to search for a space " ", since an empty (only spaces) value is not 
+	// otherwise it is not possible to search for a space " ", since an empty (only spaces) value is not
 	// supported by KConfig, so the space has to be qouted, but then here the regexp searches really for " "
 	// instead of just the space. Alex
 	QRegExp qoutedString("^\".*\"$");

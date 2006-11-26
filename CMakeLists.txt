@@ -1,19 +1,19 @@
 project(audiocd)
 
-add_subdirectory( plugins ) 
+add_subdirectory( plugins )
 add_subdirectory( kcmaudiocd )
 
-include_directories( 
-		${CMAKE_SOURCE_DIR}/libkcddb 
-		${CMAKE_BINARY_DIR}/libkcddb 
-		${CMAKE_SOURCE_DIR}/kscd   
-		${CMAKE_BINARY_DIR}/kscd
+include_directories(
+		${CMAKE_SOURCE_DIR}/libkcddb
+		${CMAKE_BINARY_DIR}/libkcddb
+		${CMAKE_SOURCE_DIR}/libkcompactdisc
+		${CMAKE_BINARY_DIR}/libkcompactdisc
 		)
 
 
 ########### next target ###############
 
-set(kio_audiocd_PART_SRCS ${libkcompactdisc_SRCS} ${libworkman_SRCS} audiocd.cpp )
+set(kio_audiocd_PART_SRCS audiocd.cpp )
 
 kde4_automoc(${kio_audiocd_PART_SRCS})
 
@@ -21,7 +21,7 @@ kde4_add_plugin(kio_audiocd ${kio_audiocd_PART_SRCS})
 
 
 
-target_link_libraries(kio_audiocd ${CDPARANOIA_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins kcddb )
+target_link_libraries(kio_audiocd ${CDPARANOIA_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins kcddb kcompactdisc)
 
 install(TARGETS kio_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR} )
 

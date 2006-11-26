@@ -1,6 +1,8 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/../plugins/   )
-
+include_directories(
+                ${CMAKE_SOURCE_DIR}/libkcddb
+                ${CMAKE_CURRENT_SOURCE_DIR}/../plugins
+                ${CMAKE_BINARY_DIR}/kioslave/audiocd/kcmaudiocd )
 
 ########### next target ###############
 

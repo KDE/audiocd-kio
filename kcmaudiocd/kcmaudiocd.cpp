@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2001 Carsten Duvenhorst <duvenhorst@m2.uni-hannover.de>
    Copyright (C) 2005 Benjamin Meyer <ben at meyerhome dot net>
-  
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
@@ -70,12 +70,12 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
     encoders.clear();
 
     load();
-  
+
     KConfigDialogManager *widget;
     for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
       connect(widget, SIGNAL(widgetModified()), this, SLOT(slotModuleChanged()));
     }
-   
+
     //CDDA Options
     connect(audioConfig->cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(audioConfig->ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
@@ -92,7 +92,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
     connect( audioConfig->kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
     connect( audioConfig->kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
     connect( audioConfig->example, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
- 
+
 
     KAboutData *about =
     new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio CD IO Slave"),
@@ -144,7 +144,7 @@ void KAudiocdModule::defaults() {
 	audioConfig->ec_enable_check->setChecked(true);
 	audioConfig->ec_skip_check->setChecked(false);
 	audioConfig->niceLevel->setValue(0);
-	
+
 	audioConfig->kcfg_replaceInput->setText("");
 	audioConfig->kcfg_replaceOutput->setText("");
 	audioConfig->example->setText(i18n("Cool artist - example audio file.wav"));
@@ -169,13 +169,13 @@ void KAudiocdModule::save() {
     cg.writeEntry("never_skip",!(audioConfig->ec_skip_check->isChecked()));
     cg.writeEntry("niceLevel", audioConfig->niceLevel->value());
   }
-  
+
   {
     KConfigGroup cg(config, "FileName");
     cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
     cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
     cg.writeEntry("regexp_example", audioConfig->example->text());
-    
+
         // save qouted if required
     QString replaceInput=audioConfig->kcfg_replaceInput->text();
     QString replaceOutput=audioConfig->kcfg_replaceOutput->text();
@@ -222,7 +222,7 @@ void KAudiocdModule::load() {
     audioConfig->kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));
     audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
   }
-  
+
   KConfigDialogManager *widget;
   for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
     widget->updateWidgets();
