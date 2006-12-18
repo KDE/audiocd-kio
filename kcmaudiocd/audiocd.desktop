@@ -9,6 +9,7 @@ X-KDE-Library=audiocd
 
 Name=Audio CDs
 Name[af]=Audio Cds
+Name[ar]=أقراص مدمجة صوتية
 Name[bg]=Аудио диск
 Name[bn]=অডিও সিডি
 Name[br]=CD klevet
@@ -65,7 +66,6 @@ Name[zh_TW]=音樂光碟
 Name[zu]=Ama-CD Okuzwakalayo
 Comment=Audiocd IO Slave Configuration
 Comment[af]=Klank cd Io Slaaf Opstelling
-Comment[ar]=اعدادات Audiocd IO Slave
 Comment[az]=Name=Audiosd IO Kölələri Quraşdırması
 Comment[bg]=Настройки на протокола за операции с аудио диск
 Comment[bn]=অডিও-সিডি আই/ও স্লেভ কনফিগারেশন
