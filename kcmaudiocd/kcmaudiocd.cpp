@@ -30,6 +30,7 @@
 #include <knuminput.h>
 #include <QRegExp>
 #include <QLabel>
+#include <QVBoxLayout>
 #include <kgenericfactory.h>
 
 #include <audiocdencoder.h>
