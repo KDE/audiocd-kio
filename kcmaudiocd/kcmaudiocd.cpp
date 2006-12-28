@@ -32,6 +32,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <kgenericfactory.h>
+#include <kdialog.h>
 
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"
