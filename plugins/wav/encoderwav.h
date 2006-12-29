@@ -33,11 +33,11 @@
 /**
  * Wav audio "encoder"
  * Takes the CDA take and adds the standard wav header.
- */ 
+ */
 class EncoderWav : public EncoderCda {
 
 public:
-  EncoderWav(KIO::SlaveBase *slave) : EncoderCda(slave) {};
+  explicit EncoderWav(KIO::SlaveBase *slave) : EncoderCda(slave) {};
   ~EncoderWav(){};
   virtual bool init(){ return true; };
   virtual unsigned long size(long time_secs) const;
@@ -46,11 +46,11 @@ public:
   virtual const char * mimeType() const;
   virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){};
   virtual long readInit(long size);
-  
+
 private:
   class Private;
   Private * d;
-    
+
 };
 
 #endif // ENCODER_WAV_H

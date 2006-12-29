@@ -1,7 +1,7 @@
 /*
     Copyright (C) 2004 Allan Sandfeld Jensen <kde@carewolf.com>
     Copyright (C) 2005 Benjamin Meyer <ben at meyerhome dot net>
- 
+
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
     License as published by the Free Software Foundation; either
@@ -31,13 +31,13 @@
  * FLAC encoder.
  * This encoder is only enabled when HAVE_LIBFLAC is set.
  * Check out http://flac.sourceforge.net/ for more information.
- */ 
+ */
 class EncoderFLAC : public AudioCDEncoder {
 
 public:
-  EncoderFLAC(KIO::SlaveBase *slave);
+  explicit EncoderFLAC(KIO::SlaveBase *slave);
   ~EncoderFLAC();
-  
+
   virtual QString type() const { return "FLAC"; };
   virtual bool init();
   virtual void loadSettings();
@@ -48,11 +48,11 @@ public:
   virtual long readInit(long size);
   virtual long read(int16_t * buf, int frames);
   virtual long readCleanup();
-  
+
   class Private;
 private:
   Private * d;
-    
+
 };
 
 #endif // HAVE_FLAC

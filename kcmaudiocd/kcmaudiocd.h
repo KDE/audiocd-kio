@@ -2,7 +2,7 @@
 
     Copyright (C) 2001 Carsten Duvenhorst <duvenhorst@m2.uni-hannover.de>
     Copyright (C) 2005 Benjamin Meyer <ben at meyerhome dot net>
-    
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -37,7 +37,7 @@ class KConfigDialogManager;
 class AudiocdConfig : public QWidget, public Ui::AudiocdConfig
 {
 public:
-  AudiocdConfig( QWidget *parent ) : QWidget( parent ) {
+  explicit AudiocdConfig( QWidget *parent ) : QWidget( parent ) {
     setupUi( this );
   }
 };
