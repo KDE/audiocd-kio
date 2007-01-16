@@ -11,12 +11,15 @@ X-KDE-FactoryName=audiocd
 X-KDE-ParentApp=kcontrol
 
 Name=Audio CDs
+Name[el]=CD μουσικής
 Name[fr]=CD audio
 Name[x-test]=xxAudio CDsxx
 Comment=Audiocd IO Slave Configuration
+Comment[el]=Ρύθμιση Audiocd IO Slave
 Comment[fr]=Configuration du module pour CD audio
 Comment[x-test]=xxAudiocd IO Slave Configurationxx
 Keywords=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
+Keywords[el]=CD μουσικής,CD,Ogg,Vorbis,Κωδικοποίηση,CDDA,Ρυθμός bit
 Keywords[fr]=CD audio,CD,Ogg,Vorbis,Encodage,CDDA,débit
 Keywords[x-test]=xxAudio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitratexx
 
