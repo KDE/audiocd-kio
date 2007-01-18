@@ -451,7 +451,6 @@ void AudioCDProtocol::get(const KURL & url)
 
 		int track = d->req_track;
 
-		QString trackName;
 		// hack
 		// do we rip the whole CD?
 		if (d->req_allTracks){
@@ -912,7 +911,7 @@ void AudioCDProtocol::paranoiaRead(
 		/**
 		 * End estimation.
 		 */
-		//qDebug("processed: %d, totalSize: %d", processed, estSize);
+		//qDebug("processed: %ld, totalSize: %ld", processed, estSize);
 		processedSize(processed);
 	}
 
@@ -985,7 +984,7 @@ void AudioCDProtocol::parseURLArgs(const KURL & url)
  */
 void AudioCDProtocol::loadSettings()
 {
-	KConfig *config = new KConfig(QFL1("kcmaudiocdrc"));
+	KConfig *config = new KConfig(QFL1("kcmaudiocdrc"), true /*readonly*/, false /*no kdeglobals*/);
 
 	config->setGroup(QFL1("CDDA"));
 
@@ -1033,10 +1032,17 @@ void AudioCDProtocol::loadSettings()
 	}
 
 	// Tell the encoders to load their settings
-	AudioCDEncoder *encoder;
-	for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
-		encoder->init(); // ### TODO check return value!
-		encoder->loadSettings();
+	AudioCDEncoder *encoder = encoders.first();
+	while ( encoder ) {
+		if ( encoder->init() ) {
+			kdDebug(7117) << "Encoder for " << encoder->type() << " is available." << endl;
+			encoder->loadSettings();
+			encoder = encoders.next();
+		} else {
+			kdDebug(7117) << "Encoder for " << encoder->type() << " is NOT available." << endl;
+			encoders.remove( encoder );
+			encoder = encoders.current();
+		}
 	}
 
 	delete config;
