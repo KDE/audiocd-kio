@@ -956,7 +956,7 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
  */
 void AudioCDProtocol::loadSettings()
 {
-	KConfig *config = new KConfig(QLatin1String("kcmaudiocdrc"));
+	KConfig *config = new KConfig(QLatin1String("kcmaudiocdrc"), true/*readonly*/, false /*no kdeglobals*/);
 
 	config->setGroup(QLatin1String("CDDA"));
 
@@ -1006,9 +1006,11 @@ void AudioCDProtocol::loadSettings()
 	// Tell the encoders to load their settings
 	AudioCDEncoder *encoder;
 	for (int i = encoders.size()-1; i >= 0; --i) {
-            	encoder = encoders.at(i);
-		encoder->init(); // ### TODO check return value!
-		encoder->loadSettings();
+		encoder = encoders.at(i);
+		if (encoder->init())
+			encoder->loadSettings();
+		else
+			encoders.removeAt(i);
 	}
 
 	delete config;
