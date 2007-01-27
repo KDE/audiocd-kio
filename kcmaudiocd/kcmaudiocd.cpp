@@ -37,6 +37,7 @@
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"
 #include <kconfigdialogmanager.h>
+#include <kconfiggroup.h>
 
 typedef KGenericFactory<KAudiocdModule, QWidget> KAudiocdFactory;
 K_EXPORT_COMPONENT_FACTORY( audiocd, KAudiocdFactory("kcmaudiocd") )
