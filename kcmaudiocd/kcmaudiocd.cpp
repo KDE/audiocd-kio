@@ -20,7 +20,7 @@
 #include <kconfig.h>
 #include <klineedit.h>
 #include <klocale.h>
-#include <kinstance.h>
+#include <kcomponentdata.h>
 #include <QCheckBox>
 #include <q3combobox.h>
 #include <q3groupbox.h>
@@ -42,7 +42,7 @@ typedef KGenericFactory<KAudiocdModule, QWidget> KAudiocdFactory;
 K_EXPORT_COMPONENT_FACTORY( audiocd, KAudiocdFactory("kcmaudiocd") )
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
-  : KCModule(KAudiocdFactory::instance(), parent), configChanged(false)
+  : KCModule(KAudiocdFactory::componentData(), parent), configChanged(false)
 {
    QVBoxLayout *box=new QVBoxLayout(this);
    box->setSpacing(KDialog::spacingHint());
