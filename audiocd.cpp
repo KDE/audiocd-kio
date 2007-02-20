@@ -956,7 +956,7 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
  */
 void AudioCDProtocol::loadSettings()
 {
-	KConfig *config = new KConfig(QLatin1String("kcmaudiocdrc"), true/*readonly*/, false /*no kdeglobals*/);
+	KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
 
 	config->setGroup(QLatin1String("CDDA"));
 
