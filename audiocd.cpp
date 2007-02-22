@@ -960,22 +960,22 @@ void AudioCDProtocol::loadSettings()
 
 	config->setGroup(QLatin1String("CDDA"));
 
-	if (!config->readEntry(QLatin1String("autosearch"),true)) {
-		d->device = config->readEntry(QLatin1String("device"), QString(KCompactDisc::defaultDevice));
+	if (!config->readBoolEntry("autosearch", true)) {
+		d->device = config->readEntry("device", QString(KCompactDisc::defaultDevice));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
 
-	if (config->readEntry("disable_paranoia",false)) {
+	if (config->readBoolEntry("disable_paranoia", false)) {
 		d->paranoiaLevel = 0; // disable all paranoia error correction
 	}
 
-	if (config->readEntry("never_skip",true)) {
+	if (config->readBoolEntry("never_skip", true)) {
 		d->paranoiaLevel = 2;
 		// never skip on errors of the medium, should be default for high quality
 	}
 
-	d->reportErrors = config->readEntry( "report_errors", false );
+	d->reportErrors = config->readBoolEntry( "report_errors", false );
 
 	if(config->hasKey("niceLevel")) {
 		int niceLevel = config->readEntry("niceLevel", 0);
