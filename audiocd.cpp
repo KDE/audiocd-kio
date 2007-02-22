@@ -957,38 +957,37 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 void AudioCDProtocol::loadSettings()
 {
 	KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
+        KConfigGroup groupCDDA( config, "CDDA" );
 
-	config->setGroup(QLatin1String("CDDA"));
-
-	if (!config->readBoolEntry("autosearch", true)) {
-		d->device = config->readEntry("device", QString(KCompactDisc::defaultDevice));
+	if (!groupCDDA.readEntry("autosearch", true)) {
+		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultDevice));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
 
-	if (config->readBoolEntry("disable_paranoia", false)) {
+	if (groupCDDA.readEntry("disable_paranoia", false)) {
 		d->paranoiaLevel = 0; // disable all paranoia error correction
 	}
 
-	if (config->readBoolEntry("never_skip", true)) {
+	if (groupCDDA.readEntry("never_skip", true)) {
 		d->paranoiaLevel = 2;
 		// never skip on errors of the medium, should be default for high quality
 	}
 
-	d->reportErrors = config->readBoolEntry( "report_errors", false );
+	d->reportErrors = groupCDDA.readEntry( "report_errors", false );
 
 	if(config->hasKey("niceLevel")) {
-		int niceLevel = config->readEntry("niceLevel", 0);
+		int niceLevel = groupCDDA.readEntry("niceLevel", 0);
 		if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
 			kDebug(7117) << "Setting nice level to (" << niceLevel << ") failed." << endl;
 	}
 
 	// The default track filename template
-	config->setGroup("FileName");
-	d->fileNameTemplate = config->readEntry("file_name_template", "%{trackartist} - %{number} - %{title}");
-	d->albumTemplate = config->readEntry("album_template", "%{albumartist} - %{albumtitle}");
-	d->rsearch = config->readEntry("regexp_search");
-	d->rreplace = config->readEntry("regexp_replace");
+        KConfigGroup groupFileName( config, "FileName" );
+	d->fileNameTemplate = groupFileName.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}");
+	d->albumTemplate = groupFileName.readEntry("album_template", "%{albumartist} - %{albumtitle}");
+	d->rsearch = groupFileName.readEntry("regexp_search");
+	d->rreplace = groupFileName.readEntry("regexp_replace");
 	// if the regular expressions are enclosed in qoutes. remove them
 	// otherwise it is not possible to search for a space " ", since an empty (only spaces) value is not
 	// supported by KConfig, so the space has to be qouted, but then here the regexp searches really for " "
