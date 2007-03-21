@@ -228,7 +228,7 @@ unsigned long EncoderVorbis::size(long time_secs) const {
 }
 
 const char * EncoderVorbis::mimeType() const{
-  return "audio/vorbis";
+  return "audio/x-vorbis+ogg";
 }
 
 long EncoderVorbis::readInit(long /*size*/){
