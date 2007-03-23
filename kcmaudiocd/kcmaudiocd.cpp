@@ -47,12 +47,14 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const char *name)
     AudioCDEncoder::findAllPlugins(0, encoders);
     AudioCDEncoder *encoder;
     for ( encoder = encoders.first(); encoder; encoder = encoders.next() ){
-      KConfigSkeleton *config = NULL;
-      QWidget *widget = encoder->getConfigureWidget(&config);
-      if(widget && config){
-	 tabWidget->addTab(widget, i18n("%1 Encoder").arg(encoder->type()));
-         KConfigDialogManager *configManager = new KConfigDialogManager(widget, config, QString(encoder->type()+" EncoderConfigManager").latin1());
-         encoderSettings.append(configManager);
+      if (encoder->init()) {
+        KConfigSkeleton *config = NULL;
+        QWidget *widget = encoder->getConfigureWidget(&config);
+        if(widget && config){
+	   tabWidget->addTab(widget, i18n("%1 Encoder").arg(encoder->type()));
+             KConfigDialogManager *configManager = new KConfigDialogManager(widget, config, QString(encoder->type()+" EncoderConfigManager").latin1());
+           encoderSettings.append(configManager);
+        }
       }
     }
 
