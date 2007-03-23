@@ -60,12 +60,14 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
     QList<AudioCDEncoder*> encoders;
     AudioCDEncoder::findAllPlugins(0, encoders);
     foreach (AudioCDEncoder *encoder, encoders) {
-      KConfigSkeleton *config = NULL;
-      QWidget *widget = encoder->getConfigureWidget(&config);
-      if(widget && config){
-	 audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder", encoder->type()));
-         KConfigDialogManager *configManager = new KConfigDialogManager(widget, config);
-         encoderSettings.append(configManager);
+      if (encoder->init()) {
+        KConfigSkeleton *config = NULL;
+        QWidget *widget = encoder->getConfigureWidget(&config);
+        if(widget && config){
+  	   audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder", encoder->type()));
+           KConfigDialogManager *configManager = new KConfigDialogManager(widget, config);
+           encoderSettings.append(configManager);
+        }
       }
     }
 
