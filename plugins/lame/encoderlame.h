@@ -21,7 +21,7 @@
 
 #include "audiocdencoder.h"
 #include "ui_encoderlameconfig.h"
-class KProcess;
+class K3Process;
 
 class EncoderLameConfig : public QWidget, public Ui::EncoderLameConfig
 {
@@ -59,10 +59,10 @@ public:
 	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
 
 protected slots:
-	void wroteStdin(KProcess *proc);
-	void receivedStdout(KProcess *, char *buffer, int length);
-	void receivedStderr(KProcess *proc, char *buffer, int buflen);
-	void processExited(KProcess *proc);
+	void wroteStdin(K3Process *proc);
+	void receivedStdout(K3Process *, char *buffer, int length);
+	void receivedStderr(K3Process *proc, char *buffer, int buflen);
+	void processExited(K3Process *proc);
 
 private:
 	class Private;

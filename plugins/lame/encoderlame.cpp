@@ -22,7 +22,7 @@
 
 #include <kdebug.h>
 #include <qgroupbox.h>
-#include <kprocess.h>
+#include <k3process.h>
 
 #include <kglobal.h>  
 #include <klocale.h>
@@ -50,7 +50,7 @@ public:
 	QString lastErrorMessage;
 	QStringList genreList;
 	uint lastSize;
-	KProcess *currentEncodeProcess;
+	K3Process *currentEncodeProcess;
 	KTemporaryFile *tempFile;
 };
 
@@ -83,7 +83,7 @@ bool EncoderLame::init(){
 	// e.g. lame --tg 'Vocal Jazz'
     CollectingProcess proc;
 	proc << "lame" << "--genre-list";
-	proc.start(KProcess::Block, KProcess::Stdout);
+	proc.start(K3Process::Block, K3Process::Stdout);
 
 	if(proc.exitStatus() != 0)
 		return false;
@@ -203,8 +203,8 @@ unsigned long EncoderLame::size(long time_secs) const {
 }
 
 long EncoderLame::readInit(long /*size*/){
-	// Create KProcess
-	d->currentEncodeProcess	= new KProcess(0);
+	// Create K3Process
+	d->currentEncodeProcess	= new K3Process(0);
 	d->tempFile = new KTemporaryFile();
 	d->tempFile->setSuffix(".mp3");
 	d->tempFile->open();
@@ -226,38 +226,38 @@ long EncoderLame::readInit(long /*size*/){
 	//kDebug(7117) << d->currentEncodeProcess->args() << endl;
 	
 	
-	connect(d->currentEncodeProcess, SIGNAL(receivedStdout(KProcess *, char *, int)),
-                         this, SLOT(receivedStdout(KProcess *, char *, int)));
-	connect(d->currentEncodeProcess, SIGNAL(receivedStderr(KProcess *, char *, int)),
-                         this, SLOT(receivedStderr(KProcess *, char *, int)));
-	connect(d->currentEncodeProcess, SIGNAL(wroteStdin(KProcess *)),
-                         this, SLOT(wroteStdin(KProcess *)));
+	connect(d->currentEncodeProcess, SIGNAL(receivedStdout(K3Process *, char *, int)),
+                         this, SLOT(receivedStdout(K3Process *, char *, int)));
+	connect(d->currentEncodeProcess, SIGNAL(receivedStderr(K3Process *, char *, int)),
+                         this, SLOT(receivedStderr(K3Process *, char *, int)));
+	connect(d->currentEncodeProcess, SIGNAL(wroteStdin(K3Process *)),
+                         this, SLOT(wroteStdin(K3Process *)));
 
-	connect(d->currentEncodeProcess, SIGNAL(processExited(KProcess *)),
-                         this, SLOT(processExited(KProcess *)));
+	connect(d->currentEncodeProcess, SIGNAL(processExited(K3Process *)),
+                         this, SLOT(processExited(K3Process *)));
 
 	// Launch!
-	d->currentEncodeProcess->start(KProcess::NotifyOnExit, KShellProcess::All);
+	d->currentEncodeProcess->start(K3Process::NotifyOnExit, K3ShellProcess::All);
 	return 0;
 }
 
-void EncoderLame::processExited ( KProcess *process ){
+void EncoderLame::processExited ( K3Process *process ){
 	kDebug(7117) << "Lame Encoding process exited with: " << process->exitStatus() << endl;
 	d->processHasExited = true;
 }
 
-void EncoderLame::receivedStderr( KProcess * /*process*/, char *buffer, int /*buflen*/ ){
+void EncoderLame::receivedStderr( K3Process * /*process*/, char *buffer, int /*buflen*/ ){
 	kDebug(7117) << "Lame stderr: " << buffer << endl;
 	if ( !d->lastErrorMessage.isEmpty() )
 		d->lastErrorMessage += '\t';
 	d->lastErrorMessage += QString::fromLocal8Bit( buffer );
 }
 
-void EncoderLame::receivedStdout( KProcess * /*process*/, char *buffer, int /*length*/ ){
+void EncoderLame::receivedStdout( K3Process * /*process*/, char *buffer, int /*length*/ ){
 	kDebug(7117) << "Lame stdout: " << buffer << endl;
 }
 
-void EncoderLame::wroteStdin( KProcess * /*procces*/ ){
+void EncoderLame::wroteStdin( K3Process * /*procces*/ ){
 	d->waitingForWrite = false;
 }
 

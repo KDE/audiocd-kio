@@ -33,17 +33,17 @@
 #ifndef __COLLECTINGPROCESS_H__
 #define __COLLECTINGPROCESS_H__
 
-#include <kprocess.h>
+#include <k3process.h>
 
 /**
- * @short An output collecting KProcess class.
+ * @short An output collecting K3Process class.
  *
- * This class simplifies the usage of KProcess by collecting all output
+ * This class simplifies the usage of K3Process by collecting all output
  * (stdout/stderr) of the process.
  *
  * @author Ingo Kloecker <kloecker@kde.org>
  */
-class CollectingProcess : public KProcess {
+class CollectingProcess : public K3Process {
   Q_OBJECT
 public:
   explicit CollectingProcess( QObject * parent = 0 );
@@ -60,8 +60,8 @@ public:
   QByteArray collectedStderr();
 
 private slots:
-  void slotReceivedStdout( KProcess *, char *, int );
-  void slotReceivedStderr( KProcess *, char *, int );
+  void slotReceivedStdout( K3Process *, char *, int );
+  void slotReceivedStderr( K3Process *, char *, int );
 
 private:
   class Private;
