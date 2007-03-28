@@ -28,7 +28,7 @@
  * @param libFileName file to try to load.
  * @returns pointer to the symbol or NULL
  */
-void *loadPlugin(const QString &libFileName)
+KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 {
 #ifdef DEBUG
     kDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\"." << endl;
@@ -45,7 +45,7 @@ void *loadPlugin(const QString &libFileName)
 #ifdef DEBUG
     kDebug(7117) << "We have a library. File: \"" << libFileName.latin1() << "\"." << endl;
 #endif
-    void *cplugin = lib->symbol("create_audiocd_encoders");
+    KLibrary::void_function_ptr cplugin = lib->resolveFunction("create_audiocd_encoders");
     if (!cplugin)
         return NULL;
 #ifdef DEBUG
@@ -83,7 +83,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
                     continue;
                 }
                 foundEncoders.append(fileName);
-                void *function = loadPlugin(fileName);
+                KLibrary::void_function_ptr function = loadPlugin(fileName);
                 if (function) {
                     void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
                             (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
