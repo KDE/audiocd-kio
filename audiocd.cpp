@@ -24,13 +24,13 @@
 
 #include <config.h>
 
+#include <kdemacros.h>
 extern "C"
 {
 	#include <cdda_interface.h>
 	#include <cdda_paranoia.h>
 	void paranoiaCallback(long, int);
 
-	#include <kdemacros.h>
 	KDE_EXPORT int kdemain(int argc, char ** argv);
 }
 
