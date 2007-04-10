@@ -39,7 +39,7 @@ KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 #ifdef DEBUG
     kDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\"." << endl;
 #endif
-    KLibrary *lib = loader->library(libFileName.latin1());
+    KLibrary *lib = loader->library(libFileName.toLatin1());
     if (!lib)
         return NULL;
 #ifdef DEBUG

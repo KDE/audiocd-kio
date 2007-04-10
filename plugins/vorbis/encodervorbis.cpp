@@ -180,13 +180,13 @@ long EncoderVorbis::flush_vorbis(void) {
         if (d->og.header_len) {
           output.setRawData(oggheader, d->og.header_len);
           ioslave->data(output);
-          output.resetRawData(oggheader, d->og.header_len);
+          output.clear();
         }
 
         if (d->og.body_len) {
           output.setRawData(oggbody, d->og.body_len);
           ioslave->data(output);
-          output.resetRawData(oggbody, d->og.body_len);
+          output.clear();
         }
         processed +=  d->og.header_len + d->og.body_len;
       }
@@ -260,13 +260,13 @@ long EncoderVorbis::readInit(long /*size*/){
     if (d->og.header_len) {
       output.setRawData(oggheader, d->og.header_len);
       ioslave->data(output);
-      output.resetRawData(oggheader, d->og.header_len);
+      output.clear();
     }
 
     if (d->og.body_len) {
       output.setRawData(oggbody, d->og.body_len);
       ioslave->data(output);
-      output.resetRawData(oggbody, d->og.body_len);
+      output.clear();
     }
   }
   return 0;
@@ -315,7 +315,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
 	
   if (info.get(Year).toInt() > 0) {
     QDateTime dt( QDate(info.get(Year).toInt(), 1, 1) );
-    commentFields.append(CommentField("date", dt.toString(Qt::ISODate).utf8().data()));
+    commentFields.append(CommentField("date", dt.toString(Qt::ISODate).toUtf8().data()));
   }
 
   for(Q3ValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
@@ -324,7 +324,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
     if(!(*it).second.toString().isEmpty()) {
 
       char *key = qstrdup((*it).first);
-      char *value = qstrdup((*it).second.toString().utf8().data());
+      char *value = qstrdup((*it).second.toString().toUtf8().data());
 
       vorbis_comment_add_tag(&d->vc, key, value);
 

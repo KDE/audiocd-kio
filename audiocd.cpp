@@ -402,7 +402,7 @@ void AudioCDProtocol::get(const KUrl & url)
 		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			if(count == choice){
 				mimeType("text/html");
-				data(QByteArray( (*it).toString().latin1() ));
+				data(QByteArray( (*it).toString().toLatin1() ));
 				// send an empty QByteArray to signal end of data.
 				data(QByteArray());
 				finished();
@@ -530,7 +530,7 @@ void AudioCDProtocol::stat(const KUrl & url)
 static void app_dir(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
-	e.insert( KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
+	e.insert( KIO::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
 	e.insert( KIO::UDS_FILE_TYPE, S_IFDIR);
 	e.insert( KIO::UDS_ACCESS, 0400);
 	e.insert( KIO::UDS_SIZE, s);
@@ -540,7 +540,7 @@ static void app_dir(UDSEntry& e, const QString & n, size_t s)
 static void app_file(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
-	e.insert( KIO::UDS_NAME, QFile::decodeName(n.local8Bit()));
+	e.insert( KIO::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
 	e.insert( KIO::UDS_FILE_TYPE, S_IFREG);
 	e.insert( KIO::UDS_ACCESS, 0400);
 	e.insert( KIO::UDS_SIZE, s);
@@ -919,7 +919,7 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 
 	query = query.mid(1); // Strip leading '?'.
 
-	QStringList tokens(QStringList::split('&', query));
+	QStringList tokens(query.split('&',QString::SkipEmptyParts));
 
 	for (QStringList::ConstIterator it(tokens.begin()); it != tokens.end(); ++it)
 	{
