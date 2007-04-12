@@ -57,7 +57,6 @@ extern "C"
 #include "kcompactdisc.h"
 
 using namespace KIO;
-using namespace KCDDB;
 
 #define CDDB_INFORMATION "CDDB Information"
 
@@ -138,7 +137,7 @@ public:
 	KCompactDisc cd; // keep it around so that we don't assume the disk changed between every stat()
 
 	// CDDB items
-	KCDDB::CDDB::Result cddbResult;
+	KCDDB::Result cddbResult;
 	CDInfoList cddbList;
 	int cddbUserChoice; // URL settable
 	KCDDB::CDInfo cddbBestChoice;
@@ -440,7 +439,7 @@ void AudioCDProtocol::get(const KUrl & url)
 	}
 
 	KCDDB::CDInfo info;
-	if(d->cddbResult == KCDDB::CDDB::Success){
+	if(d->cddbResult == KCDDB::Success){
 		info = d->cddbBestChoice;
 
 		int track = d->req_track+1;
@@ -588,7 +587,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 		}
 		// Error
 		if( count == 1 ) {
-			app_file(entry, QString("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(CDDB::resultToString(d->cddbResult)), ((*it).toString().length())+1);
+			app_file(entry, QString("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), ((*it).toString().length())+1);
 			count++;
 			listEntry(entry, false);
 		}
@@ -624,7 +623,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 			AudioCDEncoder *encoder;
 			for (int i = encoders.size()-1; i >= 0; --i) {
             			encoder = encoders.at(i);
-				if (d->cddbResult != KCDDB::CDDB::Success)
+				if (d->cddbResult != KCDDB::Success)
 					addEntry(d->s_fullCD, encoder, drive, -1);
 				else
 					addEntry(d->templateAlbumName, encoder, drive, -1);
@@ -1021,7 +1020,7 @@ void AudioCDProtocol::loadSettings()
 void AudioCDProtocol::generateTemplateTitles()
 {
 	d->templateTitles.clear();
-	if (d->cddbResult != KCDDB::CDDB::Success)
+	if (d->cddbResult != KCDDB::Success)
 	{
 		for (unsigned int i = 0; i < d->tracks; i++){
 			QString n;
