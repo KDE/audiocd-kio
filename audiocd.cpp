@@ -212,7 +212,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		return 0;
 
 	// Update our knowledge of the disc
- 	d->cd.setDevice(drive->ioctl_device_name, 50, false);
+ 	d->cd.setDevice(KUrl::fromPath(drive->ioctl_device_name), 50, false);
 #if 0
 	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
 	// support for non-SCSI devices. Although it finds ATA cdroms just
@@ -713,8 +713,8 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
 		if (0 == drive)
 		{
-			if (QFile(QFile::decodeName(KCompactDisc::defaultDevice.toAscii())).exists())
-				drive = cdda_identify(KCompactDisc::defaultDevice.toAscii(), CDDA_MESSAGE_PRINTIT, 0);
+			if (QFile(QFile::decodeName(KCompactDisc::defaultDeviceUrl.url().toAscii())).exists())
+				drive = cdda_identify(KCompactDisc::defaultDeviceUrl.url().toAscii(), CDDA_MESSAGE_PRINTIT, 0);
 		}
 	}
 
@@ -959,7 +959,7 @@ void AudioCDProtocol::loadSettings()
         KConfigGroup groupCDDA( config, "CDDA" );
 
 	if (!groupCDDA.readEntry("autosearch", true)) {
-		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultDevice));
+		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultDeviceUrl.url()));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
