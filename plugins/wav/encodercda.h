@@ -38,18 +38,18 @@
 class EncoderCda : public AudioCDEncoder {
 
 public:
-  explicit EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {};
-  ~EncoderCda(){};
-  virtual bool init(){ return true; };
-  virtual void loadSettings(){};
+  explicit EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {}
+  ~EncoderCda(){}
+  virtual bool init(){ return true; }
+  virtual void loadSettings(){}
   virtual unsigned long size(long time_secs) const;
-  virtual QString type() const { return "CDA"; };
+  virtual QString type() const { return "CDA"; }
   virtual const char * mimeType() const;
-  virtual const char * fileType() const { return "cda"; };
-  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){};
-  virtual long readInit(long){ return 0; };
+  virtual const char * fileType() const { return "cda"; }
+  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){}
+  virtual long readInit(long){ return 0; }
   virtual long read(int16_t * buf, int frames);
-  virtual long readCleanup(){ return 0; };
+  virtual long readCleanup(){ return 0; }
 
 private:
   class Private;

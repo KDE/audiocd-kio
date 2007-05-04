@@ -51,11 +51,11 @@ public:
   EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis();
   
-  virtual QString type() const { return "Ogg Vorbis"; };
+  virtual QString type() const { return "Ogg Vorbis"; }
   virtual bool init();
   virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;
-  virtual const char * fileType() const { return "ogg"; };
+  virtual const char * fileType() const { return "ogg"; }
   virtual const char * mimeType() const;
   virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment );
   virtual long readInit(long size);

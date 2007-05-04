@@ -36,12 +36,12 @@ public:
    * @param slave parent that this classes can use to call data() with
    * when finished encoding bits.
    */ 
-  explicit AudioCDEncoder(KIO::SlaveBase *slave) : ioslave(slave) {};
+  explicit AudioCDEncoder(KIO::SlaveBase *slave) : ioslave(slave) {}
   
   /**
    * Deconstructor.
    */
-  virtual ~AudioCDEncoder(){};
+  virtual ~AudioCDEncoder(){}
   
   /**
    * Initiallizes the decoder, loading libraries, etc.  Encoders
@@ -117,7 +117,7 @@ public:
    * Returns a configure widget for the encoder
    */ 
   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const
-                   { Q_UNUSED(manager); return NULL; }; 
+                   { Q_UNUSED(manager); return NULL; } 
  
   /**
    * Returns the last error message; called when e.g. read() returns -1.

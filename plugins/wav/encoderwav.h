@@ -37,14 +37,14 @@
 class EncoderWav : public EncoderCda {
 
 public:
-  explicit EncoderWav(KIO::SlaveBase *slave) : EncoderCda(slave) {};
-  ~EncoderWav(){};
-  virtual bool init(){ return true; };
+  explicit EncoderWav(KIO::SlaveBase *slave) : EncoderCda(slave) {}
+  ~EncoderWav(){}
+  virtual bool init(){ return true; }
   virtual unsigned long size(long time_secs) const;
-  virtual QString type() const { return "Wav"; };
-  virtual const char * fileType() const { return "wav"; };
+  virtual QString type() const { return "Wav"; }
+  virtual const char * fileType() const { return "wav"; }
   virtual const char * mimeType() const;
-  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){};
+  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){}
   virtual long readInit(long size);
 
 private:
