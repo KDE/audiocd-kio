@@ -713,8 +713,8 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
 		if (0 == drive)
 		{
-			if (QFile(QFile::decodeName(KCompactDisc::defaultDeviceUrl.url().toAscii())).exists())
-				drive = cdda_identify(KCompactDisc::defaultDeviceUrl.url().toAscii(), CDDA_MESSAGE_PRINTIT, 0);
+			if (QFile(QFile::decodeName(KCompactDisc::defaultDeviceUrl().url().toAscii())).exists())
+				drive = cdda_identify(KCompactDisc::defaultDeviceUrl().url().toAscii(), CDDA_MESSAGE_PRINTIT, 0);
 		}
 	}
 
@@ -959,7 +959,7 @@ void AudioCDProtocol::loadSettings()
         KConfigGroup groupCDDA( config, "CDDA" );
 
 	if (!groupCDDA.readEntry("autosearch", true)) {
-		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultDeviceUrl.url()));
+		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultDeviceUrl().url()));
 	}
 
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
