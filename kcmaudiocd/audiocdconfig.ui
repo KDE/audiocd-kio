@@ -48,7 +48,7 @@
                 </spacer>
               </item>
               <item rowspan="1" row="3" column="0" colspan="3" >
-                <widget class="Q3GroupBox" name="encoderPriority" >
+                <widget class="QGroupBox" name="encoderPriority" >
                   <property name="title" >
                     <string>Encoder Priority</string>
                   </property>
@@ -187,7 +187,7 @@
                 <number>0</number>
               </property>
               <item row="0" column="0" >
-                <widget class="Q3GroupBox" name="fileNameGroupBox" >
+                <widget class="QGroupBox" name="fileNameGroupBox" >
                   <property name="title" >
                     <string>File Name (without extension)</string>
                   </property>
@@ -359,7 +359,7 @@
                 </widget>
               </item>
               <item rowspan="1" row="1" column="0" colspan="2" >
-                <widget class="Q3GroupBox" name="groupBox2" >
+                <widget class="QGroupBox" name="groupBox2" >
                   <property name="title" >
                     <string>Name Regular Expression Replacement</string>
                   </property>
@@ -484,7 +484,7 @@
                 </spacer>
               </item>
               <item row="0" column="1" >
-                <widget class="Q3GroupBox" name="fileNameGroupBox_2" >
+                <widget class="QGroupBox" name="fileNameGroupBox_2" >
                   <property name="title" >
                     <string>Album Name</string>
                   </property>

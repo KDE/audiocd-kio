@@ -43,7 +43,7 @@
         </widget>
       </item>
       <item>
-        <widget class="Q3GroupBox" name="vorbis_bitrate_settings" >
+        <widget class="QGroupBox" name="vorbis_bitrate_settings" >
           <property name="enabled" >
             <bool>true</bool>
           </property>
@@ -283,7 +283,7 @@
         </widget>
       </item>
       <item>
-        <widget class="Q3GroupBox" name="vorbis_quality_settings" >
+        <widget class="QGroupBox" name="vorbis_quality_settings" >
           <property name="title" >
             <string>Vorbis &amp;Quality Setting</string>
           </property>
@@ -320,7 +320,7 @@
         </widget>
       </item>
       <item>
-        <widget class="Q3GroupBox" name="GroupBox193" >
+        <widget class="QGroupBox" name="GroupBox193" >
           <property name="title" >
             <string>Options</string>
           </property>
