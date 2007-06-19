@@ -64,6 +64,7 @@ Name[zh_HK]=音樂 CD
 Name[zh_TW]=音樂光碟
 Comment=Audiocd IO Slave Configuration
 Comment[af]=Klank cd Io Slaaf Opstelling
+Comment[bg]=Comment=Настройки на аудио диска
 Comment[br]=Kefluniadur Sklav IO Audiocd
 Comment[ca]=Configuració de l'esclau d'E/S pels CD àudio
 Comment[cs]=Nastavení IO klienta pro zvuková CD
