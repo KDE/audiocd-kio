@@ -17,6 +17,7 @@
 */
 
 #include <config.h>
+#include <endian.h>
 #include "encoderlame.h"
 #include "audiocd_lame_encoder.h"
 
@@ -214,7 +215,11 @@ long EncoderLame::readInit(long /*size*/){
 	// -x bitswap
 	// -r raw/pcm
 	// -s 44.1 (because it is raw you have to specify this)
+#if __BYTE_ORDER == __LITTLE_ENDIAN
 	*(d->currentEncodeProcess)	<< "lame" << "--verbose" << "-x" << "-r" << "-s" << "44.1";
+#else
+	*(d->currentEncodeProcess) << "lame" << "--verbose" << "-r" << "-s" << "44.1";
+#endif
 
 	*(d->currentEncodeProcess) << args;
 	if(Settings::self()->id3_tag())
