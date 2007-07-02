@@ -100,12 +100,12 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
 
 
     KAboutData *about =
-    new KAboutData(I18N_NOOP("kcmaudiocd"), I18N_NOOP("KDE Audio CD IO Slave"),
-                   0, 0, KAboutData::License_GPL,
-                   I18N_NOOP("(c) 2000 - 2005 Audio CD developers"));
+    new KAboutData(I18N_NOOP("kcmaudiocd"), 0, ki18n("KDE Audio CD IO Slave"),
+                   0, KLocalizedString(), KAboutData::License_GPL,
+                   ki18n("(c) 2000 - 2005 Audio CD developers"));
 
-    about->addAuthor("Benjamin C. Meyer", I18N_NOOP("Current Maintainer"), "ben@meyerhome.net");
-    about->addAuthor("Carsten Duvenhorst", 0, "duvenhorst@duvnet.de");
+    about->addAuthor(ki18n("Benjamin C. Meyer"), ki18n("Current Maintainer"), "ben@meyerhome.net");
+    about->addAuthor(ki18n("Carsten Duvenhorst"), KLocalizedString(), "duvenhorst@duvnet.de");
     setAboutData(about);
 }
 

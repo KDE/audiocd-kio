@@ -62,14 +62,6 @@ using namespace KIO;
 
 using namespace AudioCD;
 
-static const KCmdLineOptions options[] =
-{
-    { "+protocol", I18N_NOOP("Protocol name"), 0 },
-    { "+pool", I18N_NOOP("Socket name"), 0 },
-    { "+app", I18N_NOOP("Socket name"), 0 },
-    KCmdLineLastOption
-};
-
 int kdemain(int argc, char ** argv)
 {
 	// KApplication uses libkcddb which needs a valid kapp pointer
@@ -77,7 +69,12 @@ int kdemain(int argc, char ** argv)
 	// with the user
 	putenv(strdup("SESSION_MANAGER="));
 	//KApplication::disableAutoDcopRegistration();
-	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, 0, 0, 0);
+	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, KLocalizedString(), 0, KLocalizedString());
+
+	KCmdLineOptions options;
+	options.add("+protocol", ki18n("Protocol name"));
+	options.add("+pool", ki18n("Socket name"));
+	options.add("+app", ki18n("Socket name"));
 	KCmdLineArgs::addCmdLineOptions(options);
 	KApplication app(true);
 
