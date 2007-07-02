@@ -81,7 +81,7 @@ int kdemain(int argc, char ** argv)
 	kDebug(7117) << "Starting " << getpid() << endl;
 
 	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-	AudioCDProtocol slave(args->arg(0), args->arg(1), args->arg(2));
+	AudioCDProtocol slave(args->arg(0).toLocal8Bit(), args->arg(1).toLocal8Bit(), args->arg(2).toLocal8Bit());
 	args->clear();
 	slave.dispatchLoop();
 
