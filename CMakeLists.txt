@@ -17,7 +17,6 @@ include_directories(
 
 set(kio_audiocd_PART_SRCS audiocd.cpp )
 
-kde4_automoc(${kio_audiocd_PART_SRCS})
 
 kde4_add_plugin(kio_audiocd ${kio_audiocd_PART_SRCS})
 

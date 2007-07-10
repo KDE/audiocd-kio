@@ -6,7 +6,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/..
 
 set(audiocd_encoder_vorbis_PART_SRCS encodervorbis.cpp )
 
-kde4_automoc(${audiocd_encoder_vorbis_PART_SRCS})
 
 kde4_add_ui_files(audiocd_encoder_vorbis_PART_SRCS encodervorbisconfig.ui )
 

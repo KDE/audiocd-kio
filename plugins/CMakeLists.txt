@@ -17,7 +17,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkcddb  )
 
 set(audiocdplugins_LIB_SRCS audiocdencoder.cpp )
 
-kde4_automoc(${audiocdplugins_LIB_SRCS})
 
 kde4_add_library(audiocdplugins SHARED ${audiocdplugins_LIB_SRCS})
 

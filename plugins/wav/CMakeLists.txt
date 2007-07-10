@@ -6,7 +6,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/..
 
 set(audiocd_encoder_wav_PART_SRCS encoderwav.cpp encodercda.cpp )
 
-kde4_automoc(${audiocd_encoder_wav_PART_SRCS})
 
 kde4_add_plugin(audiocd_encoder_wav WITH_PREFIX ${audiocd_encoder_wav_PART_SRCS})
 
