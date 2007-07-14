@@ -21,7 +21,7 @@
 
 #include <sys/types.h>
 #include <kio/slavebase.h>
-#include <qlist.h>
+#include <QtCore/QList>
 
 #include <libkcddb/cdinfo.h>
 
