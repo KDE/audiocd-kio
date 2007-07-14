@@ -21,9 +21,9 @@
 
 #include <sys/types.h>
 #include <kio/slavebase.h>
-#include <cdinfo.h>
 #include <qlist.h>
-#include <kdemacros.h>
+
+#include <libkcddb/cdinfo.h>
 
 class KConfigSkeleton;
 using namespace KCDDB;
