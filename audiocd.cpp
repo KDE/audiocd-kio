@@ -271,7 +271,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 	// Kong issue where they send dirs as files, double check
 	/* A hack, for when konqi wants to list the directory audiocd:/Bla
 		 it really submits this URL, instead of audiocd:/Bla/ to us. We could
-		 send (in listDir) the UDS_NAME as "Bla/" for directories, but then
+		 send (in listDir) the UDSEntry::UDS_NAME as "Bla/" for directories, but then
 		 konqi shows them as "Bla//" in the status line. */
 	// See if it is an encoder directory
 	AudioCDEncoder *encoder;
@@ -494,26 +494,26 @@ void AudioCDProtocol::stat(const KUrl & url)
 
 	UDSEntry entry;
 
-	entry.insert( KIO::UDS_NAME, url.fileName().replace('/', QLatin1String("%2F") ));
+	entry.insert( KIO::UDSEntry::UDS_NAME, url.fileName().replace('/', QLatin1String("%2F") ));
 
-	entry.insert( KIO::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
+	entry.insert( KIO::UDSEntry::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
 
 
 	const mode_t _umask = ::umask(0);
 	::umask(_umask);
 
-	entry.insert(KIO::UDS_ACCESS, (0666 & (~_umask)));
+	entry.insert(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
 
 	if (!isFile)
 	{
-		entry.insert( KIO::UDS_SIZE, cdda_tracks(drive));
+		entry.insert( KIO::UDSEntry::UDS_SIZE, cdda_tracks(drive));
 	}
 	else
 	{
 			AudioCDEncoder *encoder = determineEncoder(d->fname);
 			long firstSector, lastSector;
 			getSectorsForRequest(drive, firstSector, lastSector);
-			entry.insert( KIO::UDS_SIZE,fileSize(firstSector, lastSector, encoder));
+			entry.insert( KIO::UDSEntry::UDS_SIZE,fileSize(firstSector, lastSector, encoder));
 	}
 
 
@@ -527,20 +527,20 @@ void AudioCDProtocol::stat(const KUrl & url)
 static void app_dir(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
-	e.insert( KIO::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.insert( KIO::UDS_FILE_TYPE, S_IFDIR);
-	e.insert( KIO::UDS_ACCESS, 0400);
-	e.insert( KIO::UDS_SIZE, s);
-	e.insert( KIO::UDS_MIME_TYPE, QString("inode/directory"));
+	e.insert( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+	e.insert( KIO::UDSEntry::UDS_ACCESS, 0400);
+	e.insert( KIO::UDSEntry::UDS_SIZE, s);
+	e.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString("inode/directory"));
 }
 
 static void app_file(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
-	e.insert( KIO::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.insert( KIO::UDS_FILE_TYPE, S_IFREG);
-	e.insert( KIO::UDS_ACCESS, 0400);
-	e.insert( KIO::UDS_SIZE, s);
+	e.insert( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+	e.insert( KIO::UDSEntry::UDS_ACCESS, 0400);
+	e.insert( KIO::UDSEntry::UDS_SIZE, s);
 }
 
 void AudioCDProtocol::listDir(const KUrl & url)
