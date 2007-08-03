@@ -100,7 +100,7 @@ bool EncoderLame::init(){
 		genre = genre.mid( i );
 
 	}
-	//kDebug(7117) << "Available genres:" << d->genreList << endl;
+	//kDebug(7117) << "Available genres:" << d->genreList;
 
 	return true;
 }
@@ -228,7 +228,7 @@ long EncoderLame::readInit(long /*size*/){
 	// Read in stdin, output to the temp file
 	*d->currentEncodeProcess << "-" << d->tempFile->fileName().latin1();
 	
-	//kDebug(7117) << d->currentEncodeProcess->args() << endl;
+	//kDebug(7117) << d->currentEncodeProcess->args();
 	
 	
 	connect(d->currentEncodeProcess, SIGNAL(receivedStdout(K3Process *, char *, int)),
@@ -247,19 +247,19 @@ long EncoderLame::readInit(long /*size*/){
 }
 
 void EncoderLame::processExited ( K3Process *process ){
-	kDebug(7117) << "Lame Encoding process exited with: " << process->exitStatus() << endl;
+	kDebug(7117) << "Lame Encoding process exited with: " << process->exitStatus();
 	d->processHasExited = true;
 }
 
 void EncoderLame::receivedStderr( K3Process * /*process*/, char *buffer, int /*buflen*/ ){
-	kDebug(7117) << "Lame stderr: " << buffer << endl;
+	kDebug(7117) << "Lame stderr: " << buffer;
 	if ( !d->lastErrorMessage.isEmpty() )
 		d->lastErrorMessage += '\t';
 	d->lastErrorMessage += QString::fromLocal8Bit( buffer );
 }
 
 void EncoderLame::receivedStdout( K3Process * /*process*/, char *buffer, int /*length*/ ){
-	kDebug(7117) << "Lame stdout: " << buffer << endl;
+	kDebug(7117) << "Lame stdout: " << buffer;
 }
 
 void EncoderLame::wroteStdin( K3Process * /*procces*/ ){

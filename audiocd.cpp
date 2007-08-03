@@ -78,14 +78,14 @@ int kdemain(int argc, char ** argv)
 	KCmdLineArgs::addCmdLineOptions(options);
 	KApplication app(true);
 
-	kDebug(7117) << "Starting " << getpid() << endl;
+	kDebug(7117) << "Starting " << getpid();
 
 	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 	AudioCDProtocol slave(args->arg(0).toLocal8Bit(), args->arg(1).toLocal8Bit(), args->arg(2).toLocal8Bit());
 	args->clear();
 	slave.dispatchLoop();
 
-	kDebug(7117) << "Done" << endl;
+	kDebug(7117) << "Done";
 	return 0;
 }
 
@@ -223,12 +223,12 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		// For ATAPI devices, we have no real choice. Use the
 		// user selected value, even if there is none.
 		//
-		kWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user." << endl;
+		kWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user.";
 		d->cd.setDevice( d->device );
 	}
 	else
 	{
-		kDebug(7117) << "Found a SCSI or ATAPICAM device." << endl;
+		kDebug(7117) << "Found a SCSI or ATAPICAM device.";
 		if ( strlen(drive->dev->device_path) > 0 )
 		{
 			d->cd.setDevice( drive->dev->device_path );
@@ -242,7 +242,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 			QString devname = QString::fromLatin1( "/dev/%1%2" )
 				.arg( drive->dev->given_dev_name )
 				.arg( drive->dev->given_unit_number ) ;
-			kDebug(7117) << "  Using derived name " << devname << endl;
+			kDebug(7117) << "  Using derived name " << devname;
 			d->cd.setDevice( devname );
 		}
 	}
@@ -717,7 +717,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 	}
 
 	if (0 == drive) {
-		kDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"" << endl;
+		kDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"";
 
 		QFileInfo fi(d->device);
 		if(!fi.isReadable())
@@ -733,7 +733,7 @@ i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ 
 
 	if (0 != cdda_open(drive))
 	{
-		kDebug(7117) << "cdda_open failed" << endl;
+		kDebug(7117) << "cdda_open failed";
 		error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
 		cdda_close(drive);
 		return 0;
@@ -756,7 +756,7 @@ void AudioCDProtocol::paranoiaRead(
 
 	cdrom_paranoia * paranoia = paranoia_init(drive);
 	if (0 == paranoia) {
-		kDebug(7117) << "paranoia_init failed" << endl;
+		kDebug(7117) << "paranoia_init failed";
 		return;
 	}
 
@@ -805,7 +805,7 @@ void AudioCDProtocol::paranoiaRead(
 			warned = 1;
 		}
 		if (0 == buf) {
-			kDebug(7117) << "Unrecoverable error in paranoia_read" << endl;
+			kDebug(7117) << "Unrecoverable error in paranoia_read";
 			ok = false;
 			error( ERR_SLAVE_DEFINED, i18n( "Error reading audio data for %1 from the CD", fileName ) );
 			break;
@@ -815,7 +815,7 @@ void AudioCDProtocol::paranoiaRead(
 
 		int encoderProcessed = encoder->read(buf, CD_FRAMESAMPLES);
 		if(encoderProcessed == -1){
-			kDebug(7117) << "Encoder processing error, stopping." << endl;
+			kDebug(7117) << "Encoder processing error, stopping.";
 			ok = false;
 			QString errMsg = i18n( "Could not read %1: encoding failed", fileName );
 			QString details = encoder->lastErrorMessage();
@@ -942,7 +942,7 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 		else if (attribute == QLatin1String("niceLevel")){
 			int niceLevel = value.toInt();
 			if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
-				kDebug(7117) << "Setting nice level to (" << niceLevel << ") failed." << endl;
+				kDebug(7117) << "Setting nice level to (" << niceLevel << ") failed.";
 		}
 	}
 }
@@ -976,7 +976,7 @@ void AudioCDProtocol::loadSettings()
 	if(config->hasKey("niceLevel")) {
 		int niceLevel = groupCDDA.readEntry("niceLevel", 0);
 		if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
-			kDebug(7117) << "Setting nice level to (" << niceLevel << ") failed." << endl;
+			kDebug(7117) << "Setting nice level to (" << niceLevel << ") failed.";
 	}
 
 	// The default track filename template
@@ -1069,54 +1069,54 @@ void paranoiaCallback(long, int function)
 {
 	switch(function){
 		case PARANOIA_CB_VERIFY:
-			//kDebug(7117) << "PARANOIA_CB_VERIFY" << endl;
+			//kDebug(7117) << "PARANOIA_CB_VERIFY";
 			break;
 
 		case PARANOIA_CB_READ:
-			//kDebug(7117) << "PARANOIA_CB_READ" << endl;
+			//kDebug(7117) << "PARANOIA_CB_READ";
 			break;
 
 		case PARANOIA_CB_FIXUP_EDGE:
-			//kDebug(7117) << "PARANOIA_CB_FIXUP_EDGE" << endl;
+			//kDebug(7117) << "PARANOIA_CB_FIXUP_EDGE";
 			paranoia_read_limited_error = 2;
 			break;
 
 		case PARANOIA_CB_FIXUP_ATOM:
-			//kDebug(7117) << "PARANOIA_CB_FIXUP_ATOM" << endl;
+			//kDebug(7117) << "PARANOIA_CB_FIXUP_ATOM";
 			paranoia_read_limited_error = 6;
 			break;
 
 		case PARANOIA_CB_READERR:
-			kDebug(7117) << "PARANOIA_CB_READERR" << endl;
+			kDebug(7117) << "PARANOIA_CB_READERR";
 			paranoia_read_limited_error = 6;
 			break;
 
 		case PARANOIA_CB_SKIP:
-			kDebug(7117) << "PARANOIA_CB_SKIP" << endl;
+			kDebug(7117) << "PARANOIA_CB_SKIP";
 			paranoia_read_limited_error = 8;
 			break;
 
 		case PARANOIA_CB_OVERLAP:
-			//kDebug(7117) << "PARANOIA_CB_OVERLAP" << endl;
+			//kDebug(7117) << "PARANOIA_CB_OVERLAP";
 			break;
 
 		case PARANOIA_CB_SCRATCH:
-			kDebug(7117) << "PARANOIA_CB_SCRATCH" << endl;
+			kDebug(7117) << "PARANOIA_CB_SCRATCH";
 			paranoia_read_limited_error = 7;
 			break;
 
 		case PARANOIA_CB_DRIFT:
-			//kDebug(7117) << "PARANOIA_CB_DRIFT" << endl;
+			//kDebug(7117) << "PARANOIA_CB_DRIFT";
 			paranoia_read_limited_error = 4;
 			break;
 
 		case PARANOIA_CB_FIXUP_DROPPED:
-			kDebug(7117) << "PARANOIA_CB_FIXUP_DROPPED" << endl;
+			kDebug(7117) << "PARANOIA_CB_FIXUP_DROPPED";
 			paranoia_read_limited_error = 5;
 			break;
 
 		case PARANOIA_CB_FIXUP_DUPED:
-			kDebug(7117) << "PARANOIA_CB_FIXUP_DUPED" << endl;
+			kDebug(7117) << "PARANOIA_CB_FIXUP_DUPED";
 			paranoia_read_limited_error = 5;
 			break;
 	}

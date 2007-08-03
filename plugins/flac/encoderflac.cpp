@@ -108,7 +108,7 @@ unsigned long EncoderFLAC::size(long time_secs) const {
 }
 
 long EncoderFLAC::readInit(long size) {
-    kDebug(7117) << "EncoderFLAC::readInit() called"<< endl;
+    kDebug(7117) << "EncoderFLAC::readInit() called";
     d->data = 0;
     FLAC__stream_encoder_set_write_callback(d->encoder, WriteCallback);
     FLAC__stream_encoder_set_metadata_callback(d->encoder, MetadataCallback);

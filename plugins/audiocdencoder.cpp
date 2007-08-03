@@ -31,25 +31,25 @@
 KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 {
 #ifdef DEBUG
-    kDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\"." << endl;
+    kDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\".";
 #endif
     KLibLoader *loader = KLibLoader::self();
     if (!loader)
         return NULL;
 #ifdef DEBUG
-    kDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\"." << endl;
+    kDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\".";
 #endif
     KLibrary *lib = loader->library(libFileName.toLatin1());
     if (!lib)
         return NULL;
 #ifdef DEBUG
-    kDebug(7117) << "We have a library. File: \"" << libFileName.latin1() << "\"." << endl;
+    kDebug(7117) << "We have a library. File: \"" << libFileName.latin1() << "\".";
 #endif
     KLibrary::void_function_ptr cplugin = lib->resolveFunction("create_audiocd_encoders");
     if (!cplugin)
         return NULL;
 #ifdef DEBUG
-    kDebug(7117) << "We have a plugin. File:  \"" << libFileName.latin1() << "\"." << endl;
+    kDebug(7117) << "We have a plugin. File:  \"" << libFileName.latin1() << "\".";
 #endif
     return cplugin;
 }
@@ -68,7 +68,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
     for (QStringList::Iterator it = dirs.begin(); it != dirs.end(); ++it) {
         QDir dir(*it);
         if (!dir.exists()) {
-            kDebug(7117) << "Directory given by KStandardDirs: " << dir.path() << " doesn't exists!" << endl;
+            kDebug(7117) << "Directory given by KStandardDirs: " << dir.path() << " doesn't exists!";
             continue;
         }
 
@@ -79,7 +79,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
             if (0 < fi.fileName().count(QRegExp("^libaudiocd_encoder_.*.so$"))) {
                 QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf('.')));
                 if (foundEncoders.contains(fileName)) {
-                    kDebug(7117) << "Warning, encoder has been found twice!" << endl;
+                    kDebug(7117) << "Warning, encoder has been found twice!";
                     continue;
                 }
                 foundEncoders.append(fileName);
