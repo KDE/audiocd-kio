@@ -6,7 +6,7 @@ Type=Service
 ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
-X-KDE-Library=audiocd
+X-KDE-Library=kcm_audiocd
 X-KDE-FactoryName=audiocd
 X-KDE-ParentApp=kcontrol
 
