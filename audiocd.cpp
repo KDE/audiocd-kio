@@ -103,6 +103,7 @@ public:
 		clearURLargs();
 		s_info = i18n("Information");
 		s_fullCD = i18n("Full CD");
+		discid = 0;
 	}
 
 	void clearURLargs() {
@@ -257,8 +258,11 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 
 		KCDDB::Client c;
 		d->cddbResult = c.lookup(d->cd.discSignature());
-		d->cddbList = c.lookupResponse();
-		d->cddbBestChoice = d->cddbList.first();
+		if (d->cddbResult == Success)
+		{
+			d->cddbList = c.lookupResponse();
+			d->cddbBestChoice = d->cddbList.first();
+		}
 		generateTemplateTitles();
 	}
 
