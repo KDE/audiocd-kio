@@ -168,7 +168,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	    	    	    Comment("Genre",  info.get(Genre)),
 	    	    	    Comment("Tracknumber", QString::number(track)),
 	                Comment("Comment", comment),
-	    	    	    Comment("Date", QVariant(QString::null) )};
+	    	    	    Comment("Date", QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
     if (info.get(Year).toInt() > 0) {
     	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
     	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
