@@ -23,9 +23,8 @@
 
 */
 
-
-#ifndef KAUDIOCDCONFIG_H
-#define KAUDIOCDCONFIG_H
+#ifndef KCMAUDIOCD_H
+#define KCMAUDIOCD_H
 
 //Added by qt3to4:
 #include <Q3PtrList>
@@ -49,7 +48,7 @@ class KAudiocdModule : public KCModule
 
 public:
 
-  KAudiocdModule(QWidget *parent=0, const QStringList &args=QStringList());
+  explicit KAudiocdModule(QWidget *parent=0, const QStringList &args=QStringList());
   ~KAudiocdModule();
 
   QString quickHelp() const;
@@ -75,5 +74,4 @@ private:
   AudiocdConfig *audioConfig;
 };
 
-#endif // KAUDIOCDCONFIG_H
-
+#endif // KCMAUDIOCD_H
