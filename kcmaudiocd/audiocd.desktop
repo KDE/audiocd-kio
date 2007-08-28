@@ -5,9 +5,7 @@ Icon=cdaudio_unmount
 Type=Service
 ServiceTypes=KCModule
 
-X-KDE-ModuleType=Library
 X-KDE-Library=kcm_audiocd
-X-KDE-FactoryName=audiocd
 X-KDE-ParentApp=kcontrol
 
 Name=Audio CDs

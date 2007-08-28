@@ -31,19 +31,22 @@
 #include <QRegExp>
 #include <QLabel>
 #include <QVBoxLayout>
-#include <kgenericfactory.h>
 #include <kdialog.h>
 
 #include <audiocdencoder.h>
 #include "kcmaudiocd.moc"
 #include <kconfigdialogmanager.h>
 #include <kconfiggroup.h>
+#include <KPluginFactory>
+#include <KPluginLoader>
 
-typedef KGenericFactory<KAudiocdModule, QWidget> KAudiocdFactory;
-K_EXPORT_COMPONENT_FACTORY( audiocd, KAudiocdFactory("kcmaudiocd") )
+K_PLUGIN_FACTORY(KAudiocdFactory,
+        registerPlugin<KAudiocdModule>();
+        )
+K_EXPORT_PLUGIN(KAudiocdFactory("kcmaudiocd"))
 
-KAudiocdModule::KAudiocdModule(QWidget *parent, const QStringList &lst)
-  : KCModule(KAudiocdFactory::componentData(), parent), configChanged(false)
+KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
+  : KCModule(KAudiocdFactory::componentData(), parent, lst), configChanged(false)
 {
    QVBoxLayout *box=new QVBoxLayout(this);
    box->setSpacing(KDialog::spacingHint());
@@ -192,8 +195,8 @@ void KAudiocdModule::save() {
     {
        replaceOutput=QString("\"")+replaceOutput+QString("\"");
     }
-    config->writeEntry("regexp_search", replaceInput);
-    config->writeEntry("regexp_replace", replaceOutput);
+    cg.writeEntry("regexp_search", replaceInput);
+    cg.writeEntry("regexp_replace", replaceOutput);
   }
 
   KConfigDialogManager *widget;
