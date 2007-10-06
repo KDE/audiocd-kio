@@ -977,7 +977,7 @@ void AudioCDProtocol::loadSettings()
 
 	d->reportErrors = groupCDDA.readEntry( "report_errors", false );
 
-	if(config->hasKey("niceLevel")) {
+	if(groupCDDA.hasKey("niceLevel")) {
 		int niceLevel = groupCDDA.readEntry("niceLevel", 0);
 		if(setpriority(PRIO_PROCESS, getpid(), niceLevel) != 0)
 			kDebug(7117) << "Setting nice level to (" << niceLevel << ") failed.";
