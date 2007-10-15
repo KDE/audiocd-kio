@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=kcmshell audiocd
+Exec=kcmshell4 audiocd
 Icon=cdaudio_unmount
 Type=Service
 ServiceTypes=KCModule
