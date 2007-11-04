@@ -615,13 +615,14 @@
     <tabstop>kcfg_replaceOutput</tabstop>
     <tabstop>example</tabstop>
 </tabstops>
+<includes>
+    <include location="global" impldecl="in declaration">kcmodule.h</include>
+</includes>
 <slots>
     <slot>toggleLowpass()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>kcmodule.h</includehint>
-    <includehint>klineedit.h</includehint>
     <includehint>klineedit.h</includehint>
 </includehints>
 </UI>
