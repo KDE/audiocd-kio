@@ -10,6 +10,7 @@ include_directories(
 		${CMAKE_BINARY_DIR}/libkcddb
 		${CMAKE_SOURCE_DIR}/libkcompactdisc
 		${CMAKE_BINARY_DIR}/libkcompactdisc
+		${CDPARANOIA_INCLUDE_DIR}
 		)
 
 
