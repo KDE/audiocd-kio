@@ -17,7 +17,16 @@
 */
 
 #include <config.h>
+
+// Linux has <endian.h>, FreeBSD has <sys/endian.h> and Solaris has neither.
+#ifdef HAVE_ENDIAN_H
 #include <endian.h>
+#else
+#ifdef HAVE_SYS_ENDIAN_H
+#include <sys/endian.h>
+#endif
+#endif
+
 #include "encoderlame.h"
 #include "audiocd_lame_encoder.h"
 
