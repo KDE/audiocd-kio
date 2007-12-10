@@ -99,7 +99,7 @@ bool EncoderLame::init(){
 		return false;
 
 	QString str = QString::fromLocal8Bit( proc.collectedStdout() );
-	d->genreList = QStringList::split( '\n', str );
+    d->genreList = str.split( '\n', QString::SkipEmptyParts );
 	// Remove the numbers in front of every genre
 	for( QStringList::Iterator it = d->genreList.begin(); it != d->genreList.end(); ++it ) {
 		QString& genre = *it;
@@ -235,7 +235,7 @@ long EncoderLame::readInit(long /*size*/){
 		*d->currentEncodeProcess << trackInfo;
 
 	// Read in stdin, output to the temp file
-	*d->currentEncodeProcess << "-" << d->tempFile->fileName().latin1();
+	*d->currentEncodeProcess << "-" << d->tempFile->fileName().toLatin1();
 	
 	//kDebug(7117) << d->currentEncodeProcess->args();
 	
@@ -316,10 +316,10 @@ long EncoderLame::readCleanup(){
 		QByteArray output;
 		char data[1024];
 		while ( !file.atEnd() ) {
-			uint read = file.readBlock(data, 1024);
-			output.setRawData(data, read);
+			uint read = file.read(data, 1024);
+			output.fromRawData(data, read);
 			ioslave->data(output);
-			output.resetRawData(data, read);
+			output.clear();
 		}
 		file.close();
 	}
@@ -353,7 +353,7 @@ void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	trackInfo.append(QString("%1").arg(track));
 
 	const QString genre = info.get(Genre).toString();
-	if ( d->genreList.find( genre ) != d->genreList.end() )
+	if ( d->genreList.indexOf( genre ) != -1 )
 	{
 	trackInfo.append("--tg");
 		trackInfo.append(genre);

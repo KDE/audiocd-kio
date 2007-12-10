@@ -77,16 +77,14 @@ bool CollectingProcess::start( RunMode runmode, Communication comm ) {
 
 void CollectingProcess::slotReceivedStdout( K3Process *, char *buf, int len )
 {
-  QByteArray b;
-  b.duplicate( buf, len );
+  QByteArray b( buf, len);
   d->stdoutBuffer.append( b );
   d->stdoutSize += len;
 }
 
 void CollectingProcess::slotReceivedStderr( K3Process *, char *buf, int len )
 {
-  QByteArray b;
-  b.duplicate( buf, len );
+  QByteArray b( buf, len );
   d->stderrBuffer.append( b );
   d->stderrSize += len;
 }

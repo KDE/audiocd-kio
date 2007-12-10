@@ -914,7 +914,7 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 {
 	d->clearURLargs();
 
-	QString query(KUrl::decode_string(url.query()));
+	QString query(QUrl::fromPercentEncoding(url.query().toAscii()));
 
 	if (query.isEmpty() || query[0] != '?')
 		return;
