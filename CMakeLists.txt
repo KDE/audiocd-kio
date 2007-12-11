@@ -1,7 +1,5 @@
 project(audiocd)
 
-CHECK_STRUCT_MEMBER(cdrom_drive ioctl_device_name "cdda_interface.h" CDDA_IOCTL_DEVICE_EXISTS)
-
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
 add_subdirectory( plugins )
