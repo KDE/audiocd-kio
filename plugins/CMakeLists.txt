@@ -1,14 +1,17 @@
 
+macro_optional_find_package(Flac)
+macro_log_feature(FLAC_FOUND "FLAC" "An encoder/decoder for the Free Lossless Audio Codec" "http://flac.sourceforge.net" FALSE "" "Required to build the AudioCD FLAC plugin.")
+
 if (FLAC_FOUND)
-    add_subdirectory( flac ) 
+    add_subdirectory( flac )
 endif(FLAC_FOUND)
 
 if (OGGVORBIS_FOUND)
-    add_subdirectory( vorbis ) 
+    add_subdirectory( vorbis )
 endif(OGGVORBIS_FOUND)
 
-add_subdirectory( wav ) 
-add_subdirectory( lame ) 
+add_subdirectory( wav )
+add_subdirectory( lame )
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkcddb  )
 
