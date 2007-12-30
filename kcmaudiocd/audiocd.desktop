@@ -7,6 +7,7 @@ ServiceTypes=KCModule
 
 X-KDE-Library=kcm_audiocd
 X-KDE-ParentApp=kcontrol
+X-KDE-System-Settings-Parent-Category=advanced-user-settings
 
 Name=Audio CDs
 Name[af]=Audio Cds
