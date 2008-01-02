@@ -24,6 +24,12 @@
 #else
 #ifdef HAVE_SYS_ENDIAN_H
 #include <sys/endian.h>
+#else
+#ifdef HAVE_MACHINE_ENDIAN_H
+#include <machine/endian.h>
+#define __BYTE_ORDER _BYTE_ORDER
+#define __LITTLE_ENDIAN _LITTLE_ENDIAN
+#endif
 #endif
 #endif
 
