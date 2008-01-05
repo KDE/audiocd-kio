@@ -27,10 +27,12 @@
 #else
 #ifdef HAVE_MACHINE_ENDIAN_H
 #include <machine/endian.h>
+#endif
+#endif
+#endif
+#if !defined(__BYTE_ORDER) && defined(_BYTE_ORDER)
 #define __BYTE_ORDER _BYTE_ORDER
 #define __LITTLE_ENDIAN _LITTLE_ENDIAN
-#endif
-#endif
 #endif
 
 #include "encoderlame.h"
