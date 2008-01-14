@@ -4,6 +4,7 @@ add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
 add_subdirectory( plugins )
 add_subdirectory( kcmaudiocd )
+add_subdirectory( data )
 
 include_directories(
 		${CMAKE_SOURCE_DIR}/libkcddb
