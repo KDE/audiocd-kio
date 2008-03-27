@@ -3,6 +3,7 @@ Type=Link
 URL=audiocd:/
 Icon=media-optical-audio
 Name=Audio CD Browser
+Name[da]=Lyd-cd-browser
 Name[el]=Περιηγητής CD μουσικής
 Name[ga]=Brabhsálaí Dlúthdhioscaí Fuaime
 Name[ja]=オーディオ CD ブラウザ
