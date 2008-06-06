@@ -26,7 +26,7 @@ kde4_add_library(audiocdplugins SHARED ${audiocdplugins_LIB_SRCS})
 target_link_libraries(audiocdplugins  ${KDE4_KDECORE_LIBS} kcddb )
 
 set_target_properties(audiocdplugins PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
-install(TARGETS audiocdplugins  DESTINATION ${LIB_INSTALL_DIR} )
+install(TARGETS audiocdplugins ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 
 ########### install files ###############
