@@ -31,5 +31,5 @@ install(TARGETS audiocdplugins ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES audiocdencoder.h  DESTINATION ${INCLUDE_INSTALL_DIR} )
+install( FILES audiocdencoder.h  DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
 
