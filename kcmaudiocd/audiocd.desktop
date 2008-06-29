@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Exec=kcmshell audiocd
 Icon=cdaudio_unmount
 Type=Application
