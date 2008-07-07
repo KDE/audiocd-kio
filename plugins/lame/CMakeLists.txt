@@ -21,7 +21,7 @@ kde4_add_plugin(audiocd_encoder_lame WITH_PREFIX ${audiocd_encoder_lame_PART_SRC
 
 
 
-target_link_libraries(audiocd_encoder_lame  ${KDE4_KIO_LIBS} audiocdplugins )
+target_link_libraries(audiocd_encoder_lame  ${KDE4_KIO_LIBS} audiocdplugins  ${KDE4_KDE3SUPPORT_LIBS} kcddb)
 
 install(TARGETS audiocd_encoder_lame  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
