@@ -14,7 +14,7 @@ kde4_add_plugin(audiocd_encoder_flac WITH_PREFIX ${audiocd_encoder_flac_PART_SRC
 
 
 
-target_link_libraries(audiocd_encoder_flac ${FLAC_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins )
+target_link_libraries(audiocd_encoder_flac ${FLAC_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins kcddb )
 
 install(TARGETS audiocd_encoder_flac  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
