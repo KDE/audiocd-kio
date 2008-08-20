@@ -214,7 +214,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 #if defined(HAVE_CDDA_IOCTL_DEVICE)
 	if (d->cd.deviceName() != drive->ioctl_device_name)
 		d->cd.setDevice(drive->ioctl_device_name, 50, false);
-#else
+#elif (defined __FreeBSD__)
 	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
 	// support for non-SCSI devices. Although it finds ATA cdroms just
 	// fine, there is no straightforward way to discover the device
