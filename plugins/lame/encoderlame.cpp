@@ -321,13 +321,11 @@ long EncoderLame::readCleanup(){
 	// Now copy the file out of the temp into kio
 	QFile file( d->tempFile->fileName() );
 	if ( file.open( QIODevice::ReadOnly ) ) {
-		QByteArray output;
 		char data[1024];
 		while ( !file.atEnd() ) {
 			uint read = file.read(data, 1024);
-			output.fromRawData(data, read);
+			QByteArray output(data, read);
 			ioslave->data(output);
-			output.clear();
 		}
 		file.close();
 	}
