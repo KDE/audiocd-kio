@@ -252,6 +252,10 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 			d->cd.setDevice( devname );
 		}
 	}
+#else
+#ifdef __GNUC__
+	#warning audiocd ioslave is not going to work for you
+#endif
 #endif
 
 
