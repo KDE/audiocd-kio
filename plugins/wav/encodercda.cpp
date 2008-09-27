@@ -42,7 +42,10 @@ const char * EncoderCda::mimeType() const {
 // Remove this by calculating CD_FRAMESIZE_RAW from the frames
 extern "C"
 {
+  //cdda_interface.h in cdparanoia 10.2 has a member called 'private' which the C++ compiler doesn't like
+  #define private _private
   #include <cdda_interface.h>
+  #undef private
 }
 
 inline int16_t swap16 (int16_t i)
