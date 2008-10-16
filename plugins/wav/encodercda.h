@@ -32,7 +32,7 @@
 
 /**
  * Raw cd "encoder"
- * Does little more then copy the data and make sure it is in the right
+ * Does little more than copy the data and make sure it is in the right
  * endian.
  */
 class EncoderCda : public AudioCDEncoder {
