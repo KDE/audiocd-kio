@@ -23,6 +23,7 @@
  */
 
 #include <config.h>
+#include <config-audiocd.h>
 
 #include <kdemacros.h>
 extern "C"
