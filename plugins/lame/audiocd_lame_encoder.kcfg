@@ -99,20 +99,20 @@
 
 <!-- Filter Settings -->    
     <entry name="enable_lowpass" type="Bool">
-      <label>Lowpass filter cutoff above</label>
+      <label>Enable the lowpass filter</label>
       <default>false</default>
     </entry>
     <entry name="lowfilterfreq" type="Int">
-      <label>Lowpass filter cutoff above Value</label>
+      <label>Value of the cutoff frequency for the lowpass filter</label>
       <default>18000</default>
     </entry>
 
     <entry name="enable_highpass" type="Bool">
-      <label>Highpass filter cutoff above</label>
+      <label>Enable the highpass filter</label>
       <default>false</default>
     </entry>
     <entry name="highfilterfreq" type="Int">
-      <label>Highpass filter cutoff above Value</label>
+      <label>Value of the cutoff frequency for the highpass filter</label>
       <default>0</default>
     </entry>
 
