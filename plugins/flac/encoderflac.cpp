@@ -177,8 +177,8 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 //    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
     typedef QPair<QString, QVariant> Comment;
-    Comment comments[7] = { Comment("Title", info.track(track).get(Title)),
-	    	    	    Comment("Artist", info.track(track).get(Artist)),
+    Comment comments[7] = { Comment("Title", info.track(track-1).get(Title)),
+	    	    	    Comment("Artist", info.track(track-1).get(Artist)),
 	    	    	    Comment("Album",  info.get(Title)),
 	    	    	    Comment("Genre",  info.get(Genre)),
 	    	    	    Comment("Tracknumber", QString::number(track)),
