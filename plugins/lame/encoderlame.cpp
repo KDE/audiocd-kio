@@ -341,10 +341,10 @@ long EncoderLame::readCleanup(){
 void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ){
 	trackInfo.clear();
 	trackInfo.append("--tt");
-	trackInfo.append(info.track(track).get(Title).toString());
+	trackInfo.append(info.track(track-1).get(Title).toString());
 
 	trackInfo.append("--ta");
-	trackInfo.append(info.track(track).get(Artist).toString());
+	trackInfo.append(info.track(track-1).get(Artist).toString());
 
 	trackInfo.append("--tl");
 	trackInfo.append(info.get(Title).toString());
