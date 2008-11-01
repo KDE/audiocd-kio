@@ -676,7 +676,7 @@
             <item row="0" column="0" >
               <widget class="QCheckBox" name="kcfg_enable_lowpass" >
                 <property name="text" >
-                  <string>&amp;Lowpass filter cutoff above</string>
+                  <string>Apply &amp;lowpass filter above</string>
                 </property>
               </widget>
             </item>
@@ -696,7 +696,7 @@
             <item row="2" column="0" >
               <widget class="QCheckBox" name="kcfg_enable_highpass" >
                 <property name="text" >
-                  <string>&amp;Highpass filter cutoff below</string>
+                  <string>Apply &amp;highpass filter below</string>
                 </property>
               </widget>
             </item>
