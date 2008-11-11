@@ -932,7 +932,7 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 
 	QStringList tokens(query.split('&',QString::SkipEmptyParts));
 
-	for (QStringList::ConstIterator it(tokens.begin()); it != tokens.end(); ++it)
+	for (QStringList::ConstIterator it(tokens.constBegin()); it != tokens.constEnd(); ++it)
 	{
 		QString token(*it);
 

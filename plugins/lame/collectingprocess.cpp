@@ -97,8 +97,8 @@ QByteArray CollectingProcess::collectedStdout()
 
   uint offset = 0;
   QByteArray b( d->stdoutSize );
-  for ( QList<QByteArray>::const_iterator it = d->stdoutBuffer.begin();
-        it != d->stdoutBuffer.end();
+  for ( QList<QByteArray>::const_iterator it = d->stdoutBuffer.constBegin();
+        it != d->stdoutBuffer.constEnd();
         ++it ) {
     memcpy( b.data() + offset, (*it).data(), (*it).size() );
     offset += (*it).size();
@@ -117,8 +117,8 @@ QByteArray CollectingProcess::collectedStderr()
 
   uint offset = 0;
   QByteArray b( d->stderrSize );
-  for ( QList<QByteArray>::const_iterator it = d->stderrBuffer.begin();
-        it != d->stderrBuffer.end();
+  for ( QList<QByteArray>::const_iterator it = d->stderrBuffer.constBegin();
+        it != d->stderrBuffer.constEnd();
         ++it ) {
     memcpy( b.data() + offset, (*it).data(), (*it).size() );
     offset += (*it).size();

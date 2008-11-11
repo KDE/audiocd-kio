@@ -65,7 +65,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
 
 		KStandardDirs standardDirs;
     QStringList dirs = standardDirs.findDirs("module", "");
-    for (QStringList::const_iterator it = dirs.begin(); it != dirs.end(); ++it) {
+    for (QStringList::const_iterator it = dirs.constBegin(); it != dirs.constEnd(); ++it) {
         QDir dir(*it);
         if (!dir.exists()) {
             kDebug(7117) << "Directory given by KStandardDirs: " << dir.path() << " doesn't exists!";
