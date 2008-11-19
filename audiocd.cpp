@@ -548,13 +548,15 @@ static void app_dir(UDSEntry& e, const QString & n, size_t s)
 	e.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString("inode/directory"));
 }
 
-static void app_file(UDSEntry& e, const QString & n, size_t s)
+static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mimetype = QString())
 {
 	e.clear();
 	e.insert( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
 	e.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
 	e.insert( KIO::UDSEntry::UDS_ACCESS, 0400);
 	e.insert( KIO::UDSEntry::UDS_SIZE, s);
+	if (!mimetype.isEmpty())
+		e.insert( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
 }
 
 void AudioCDProtocol::listDir(const KUrl & url)
@@ -696,7 +698,7 @@ void AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encode
 		theFileSize = fileSize(firstSector, lastSector, encoder);
 	}
 	UDSEntry entry;
-	app_file(entry, trackTitle + QString(".")+encoder->fileType(), theFileSize);
+	app_file(entry, trackTitle + QString(".")+encoder->fileType(), theFileSize, encoder->mimeType());
 	listEntry(entry, false);
 }
 
