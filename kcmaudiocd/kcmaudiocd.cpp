@@ -77,7 +77,6 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     qDeleteAll(encoders);
     encoders.clear();
 
-    load();
 
     KConfigDialogManager *widget;
     for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
