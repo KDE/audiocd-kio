@@ -18,23 +18,6 @@
 
 #include <config.h>
 
-// Linux has <endian.h>, FreeBSD has <sys/endian.h> and Solaris has neither.
-#ifdef HAVE_ENDIAN_H
-#include <endian.h>
-#else
-#ifdef HAVE_SYS_ENDIAN_H
-#include <sys/endian.h>
-#else
-#ifdef HAVE_MACHINE_ENDIAN_H
-#include <machine/endian.h>
-#endif
-#endif
-#endif
-#if !defined(__BYTE_ORDER) && defined(_BYTE_ORDER)
-#define __BYTE_ORDER _BYTE_ORDER
-#define __LITTLE_ENDIAN _LITTLE_ENDIAN
-#endif
-
 #include "encoderlame.h"
 #include "audiocd_lame_encoder.h"
 
@@ -42,7 +25,7 @@
 #include <qgroupbox.h>
 #include <k3process.h>
 
-#include <kglobal.h>  
+#include <kglobal.h>
 #include <klocale.h>
 #include <qapplication.h>
 #include <qfileinfo.h>
@@ -125,7 +108,7 @@ bool EncoderLame::init(){
 void EncoderLame::loadSettings(){
 	// Generate the command line arguments for the current settings
 	args.clear();
- 
+
 	Settings *settings = Settings::self();
 
 	int quality = settings->quality();
@@ -133,7 +116,7 @@ void EncoderLame::loadSettings(){
 	if (quality > 9) quality = 9;
 
 	int method = settings->bitrate_constant() ? 0 : 1 ;
-  
+
 	if (method == 0) {
 		// Constant Bitrate Encoding
 		args.append("-b");
@@ -232,7 +215,7 @@ long EncoderLame::readInit(long /*size*/){
 	// -x bitswap
 	// -r raw/pcm
 	// -s 44.1 (because it is raw you have to specify this)
-#if __BYTE_ORDER == __LITTLE_ENDIAN
+#if Q_BYTE_ORDER == Q_LITTLE_ENDIAN
 	*(d->currentEncodeProcess)	<< "lame" << "--verbose" << "-x" << "-r" << "-s" << "44.1";
 #else
 	*(d->currentEncodeProcess) << "lame" << "--verbose" << "-r" << "-s" << "44.1";
@@ -244,10 +227,10 @@ long EncoderLame::readInit(long /*size*/){
 
 	// Read in stdin, output to the temp file
 	*d->currentEncodeProcess << "-" << d->tempFile->fileName().toLatin1();
-	
+
 	//kDebug(7117) << d->currentEncodeProcess->args();
-	
-	
+
+
 	connect(d->currentEncodeProcess, SIGNAL(receivedStdout(K3Process *, char *, int)),
                          this, SLOT(receivedStdout(K3Process *, char *, int)));
 	connect(d->currentEncodeProcess, SIGNAL(receivedStderr(K3Process *, char *, int)),
@@ -334,7 +317,7 @@ long EncoderLame::readCleanup(){
 	delete d->currentEncodeProcess;
 	delete d->tempFile;
 	d->lastSize = 0;
-	
+
 	return 0;
 }
 
