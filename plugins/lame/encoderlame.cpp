@@ -111,6 +111,30 @@ void EncoderLame::loadSettings(){
 
 	Settings *settings = Settings::self();
 
+
+        // Should we bitswap? I'm unsure about the proper logic for this.
+        // KDE3 always swapped on little-endian hosts,
+        // while #171065 says we shouldn't always do so.
+        // So... let's make it configurable, at least.
+
+        bool swap = false;
+        switch (settings->byte_swap()) {
+        case Settings::EnumByte_swap::Yes:
+            swap = true;
+            break;
+        case Settings::EnumByte_swap::No:
+            swap = false;
+            break;
+        default:
+#if Q_BYTE_ORDER == Q_LITTLE_ENDIAN
+            swap = true;
+#else
+            swap = false;
+#endif
+        }
+        if (swap)
+            args << "-x";
+
 	int quality = settings->quality();
 	if (quality < 0 ) quality = quality *-1;
 	if (quality > 9) quality = 9;
@@ -212,15 +236,9 @@ long EncoderLame::readInit(long /*size*/){
 	d->lastErrorMessage.clear();
 	d->processHasExited = false;
 
-	// -x bitswap
 	// -r raw/pcm
 	// -s 44.1 (because it is raw you have to specify this)
-#if Q_BYTE_ORDER == Q_LITTLE_ENDIAN
-	*(d->currentEncodeProcess)	<< "lame" << "--verbose" << "-x" << "-r" << "-s" << "44.1";
-#else
 	*(d->currentEncodeProcess) << "lame" << "--verbose" << "-r" << "-s" << "44.1";
-#endif
-
 	*(d->currentEncodeProcess) << args;
 	if(Settings::self()->id3_tag())
 		*d->currentEncodeProcess << trackInfo;

@@ -25,6 +25,15 @@
       <default>-2</default>
     </entry>
 
+    <entry name="byte_swap" type="Enum">
+      <label>Byte Swap</label>
+      <choices>
+        <choice name="Yes"/>
+        <choice name="No"/>
+        <choice name="Default"/>
+      </choices>
+    </entry>
+
 <!-- Options  -->
     <entry name="copyright" type="Bool">
       <label>Copyrighted</label>
