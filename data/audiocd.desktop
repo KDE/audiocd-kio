@@ -3,6 +3,7 @@ Type=Link
 URL=audiocd:/
 Icon=media-optical-audio
 Name=Audio CD Browser
+Name[ar]=متصفح الأقراص المدمجة الصوتية
 Name[bg]=Разглеждане на аудио дискове
 Name[ca]=Navegador de CD d'àudio
 Name[cs]=Prohlížeč zvukových CD
