@@ -9,7 +9,7 @@ X-KDE-ParentApp=kcontrol
 X-KDE-System-Settings-Parent-Category=advanced-user-settings
 
 Name=Audio CDs
-Name[af]=Audio Cds
+Name[af]=Klank CDs
 Name[ar]=الأقراص الصوتية
 Name[bg]=Аудио дискове
 Name[bn]=অডিও সিডি
@@ -74,7 +74,7 @@ Name[zh_CN]=音频 CD
 Name[zh_HK]=音樂 CD
 Name[zh_TW]=音樂光碟
 Comment=Audiocd IO Slave Configuration
-Comment[af]=Klank cd Io Slaaf Opstelling
+Comment[af]=Audiocd IO Slaaf Opstelling
 Comment[ar]=إعدادات Audiocd IO Slave
 Comment[bg]=Настройки на аудио диска
 Comment[bn]=অডিও-সিডি আই/ও স্লেভ কনফিগারেশন
@@ -138,6 +138,7 @@ Comment[zh_CN]=音频 CD 输入输出模块配置
 Comment[zh_HK]=音樂 CD IO Slave 設定
 Comment[zh_TW]=音樂光碟 IO Slave 組態
 Keywords=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
+Keywords[af]=Klank CD,CD,Ogg,Vorbis, Enkodering,CDDA,Bitrate
 Keywords[ar]=قرص مدمج صوتى، صوت، قرص مدمج، Ogg ، Vorbis ،الترميز، CDDA ،معدل البت
 Keywords[bg]=Keywords=аудио,диск,компактдиск,КД,кодек,музика,Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
 Keywords[br]=CD klevet,CD,Ogg,Vorbis,Kodadur,CDDA,Feur
