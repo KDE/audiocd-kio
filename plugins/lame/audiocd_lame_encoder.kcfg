@@ -28,10 +28,11 @@
     <entry name="byte_swap" type="Enum">
       <label>Byte Swap</label>
       <choices>
-        <choice name="Yes"/>
         <choice name="No"/>
+        <choice name="Yes"/>
         <choice name="Default"/>
-      </choices>
+	  </choices>
+	  <default>No</default>
     </entry>
 
 <!-- Options  -->
