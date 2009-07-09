@@ -127,7 +127,7 @@ void EncoderLame::loadSettings(){
             break;
         default:
 #if Q_BYTE_ORDER == Q_LITTLE_ENDIAN
-            swap = true;
+            swap = false; // it looks like lame is now clever enough to do the right thing by default? (#171065)
 #else
             swap = false;
 #endif
