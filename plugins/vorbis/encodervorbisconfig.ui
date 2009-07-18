@@ -11,14 +11,11 @@
     </property>
     <layout class="QVBoxLayout" >
       <item>
-        <widget class="Q3ButtonGroup" name="kcfg_vorbis_enc_method" >
+        <widget class="QGroupBox" name="kcfg_vorbis_enc_method" >
           <property name="title" >
             <string>&amp;Encoding Method</string>
           </property>
           <layout class="QHBoxLayout" >
-            <property name="margin" >
-              <number>0</number>
-            </property>
             <item>
               <widget class="QRadioButton" name="vorbis_enc_quality" >
                 <property name="text" >
@@ -48,12 +45,6 @@
             <string>Vorbis Bitrate Settings</string>
           </property>
           <layout class="QGridLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
             <item row="0" column="1" >
               <widget class="QComboBox" name="kcfg_vorbis_min_br" >
                 <property name="enabled" >
@@ -288,12 +279,6 @@
             <string>You can set the quality of the encoded stream here. A higher value implies a higher quality but encodes slower.</string>
           </property>
           <layout class="QHBoxLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
             <item>
               <widget class="KDoubleNumInput" name="kcfg_vorbis_quality" >
                 <property name="value" >
@@ -322,12 +307,6 @@
             <string>Options</string>
           </property>
           <layout class="QVBoxLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
             <item>
               <widget class="QCheckBox" name="kcfg_vorbis_comments" >
                 <property name="enabled" >

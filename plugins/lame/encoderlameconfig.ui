@@ -87,26 +87,30 @@
                 </property>
               </widget>
             </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
           </layout>
         </widget>
       </item>
       <item row="0" column="0" >
-        <widget class="Q3ButtonGroup" name="buttonGroup1" >
+        <widget class="QGroupBox" name="buttonGroup1" >
           <property name="title" >
             <string>Encoding Method</string>
           </property>
           <layout class="QGridLayout" >
-            <property name="margin" >
-              <number>0</number>
-            </property>
-            <item rowspan="1" row="3" column="0" colspan="3" >
+            <item rowspan="1" row="4" column="0" colspan="3" >
               <layout class="QHBoxLayout" >
-                <property name="margin" >
-                  <number>0</number>
-                </property>
-                <property name="spacing" >
-                  <number>6</number>
-                </property>
                 <item>
                   <widget class="QLabel" name="TextLabel3_2" >
                     <property name="text" >
@@ -151,7 +155,7 @@
                 </item>
               </layout>
             </item>
-            <item rowspan="1" row="2" column="0" colspan="3" >
+            <item rowspan="1" row="3" column="0" colspan="3" >
               <widget class="QLabel" name="TextLabel1_2" >
                 <property name="text" >
                   <string>&amp;Quality:</string>
@@ -211,6 +215,35 @@
                 </property>
               </widget>
             </item>
+            <item row="2" column="0">
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>6</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="5" column="0">
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
           </layout>
         </widget>
       </item>
@@ -248,10 +281,10 @@
             <item row="3" column="0" >
               <widget class="QCheckBox" name="kcfg_vbr_average_br" >
                 <property name="text" >
-                  <string>Specify avera&amp;ge bitrate:</string>
+                  <string>Avera&amp;ge bitrate:</string>
                 </property>
                 <property name="whatsThis" stdset="0" >
-                  <string>This selects the maximal bitrate used for encoding.</string>
+                  <string>This selects the average bitrate used for encoding.</string>
                 </property>
               </widget>
             </item>
