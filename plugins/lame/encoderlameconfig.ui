@@ -711,7 +711,7 @@
               </widget>
             </item>
             <item row="1" column="0" >
-              <widget class="QSpinBox" name="kcfg_lowfilterfreq" >
+              <widget class="KIntSpinBox" name="kcfg_lowfilterfreq" >
                 <property name="enabled" >
                   <bool>false</bool>
                 </property>
@@ -731,7 +731,7 @@
               </widget>
             </item>
             <item row="3" column="0" >
-              <widget class="QSpinBox" name="kcfg_highfilterfreq" >
+              <widget class="KIntSpinBox" name="kcfg_highfilterfreq" >
                 <property name="enabled" >
                   <bool>false</bool>
                 </property>
@@ -754,7 +754,7 @@
               </widget>
             </item>
             <item row="1" column="1" >
-              <widget class="QSpinBox" name="kcfg_lowfilterwidth" >
+              <widget class="KIntSpinBox" name="kcfg_lowfilterwidth" >
                 <property name="enabled" >
                   <bool>false</bool>
                 </property>
@@ -777,7 +777,7 @@
               </widget>
             </item>
             <item row="3" column="1" >
-              <widget class="QSpinBox" name="kcfg_highfilterwidth" >
+              <widget class="KIntSpinBox" name="kcfg_highfilterwidth" >
                 <property name="enabled" >
                   <bool>false</bool>
                 </property>
@@ -821,6 +821,13 @@
     <tabstop>kcfg_set_hpf_width</tabstop>
     <tabstop>kcfg_highfilterwidth</tabstop>
   </tabstops>
+  <customwidgets>
+    <customwidget>
+      <class>KIntSpinBox</class>
+      <extends>QSpinBox</extends>
+      <header>knuminput.h</header>
+    </customwidget>
+  </customwidgets>
   <connections>
     <connection>
       <sender>kcfg_bitrate_constant</sender>
