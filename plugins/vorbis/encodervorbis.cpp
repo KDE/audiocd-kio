@@ -33,11 +33,9 @@
 #include <kconfig.h>
 #include <knuminput.h>
 #include <q3groupbox.h>
-//Added by qt3to4:
-#include <Q3ValueList>
 #include <QByteArray>
 #include <QDateTime>
-#include <kglobal.h>  
+#include <kglobal.h>
 #include <klocale.h>
 
 extern "C"
@@ -88,7 +86,7 @@ QWidget* EncoderVorbis::getConfigureWidget(KConfigSkeleton** manager) const {
   config->kcfg_vorbis_quality->setRange(0.0, 10.0, 0.2, true);
   config->vorbis_bitrate_settings->hide();
   return config;
-} 
+}
 
 bool EncoderVorbis::init(){
   vorbis_info_init(&d->vi);
@@ -105,7 +103,7 @@ bool EncoderVorbis::init(){
 
 void EncoderVorbis::loadSettings(){
   Settings *settings = Settings::self();
-  
+
   d->vorbis_encode_method = settings->vorbis_enc_method();
   d->vorbis_quality = settings->vorbis_quality();
 
@@ -304,7 +302,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
     return;
 
   typedef QPair<QByteArray, QVariant> CommentField;
-  Q3ValueList<CommentField> commentFields;
+  QList<CommentField> commentFields;
 
   commentFields.append(CommentField("title", info.track(track-1).get(Title)));
   commentFields.append(CommentField("artist", info.track(track-1).get(Artist)));
@@ -318,7 +316,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
     commentFields.append(CommentField("date", dt.toString(Qt::ISODate).toUtf8().data()));
   }
 
-  for(Q3ValueListIterator<CommentField> it = commentFields.begin(); it != commentFields.end(); ++it) {
+  for(QList<CommentField>::iterator it = commentFields.begin(); it != commentFields.end(); ++it) {
 
     // if the value is not empty
     if(!(*it).second.toString().isEmpty()) {
