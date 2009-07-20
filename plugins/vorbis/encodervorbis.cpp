@@ -32,7 +32,6 @@
 #include <stdlib.h>
 #include <kconfig.h>
 #include <knuminput.h>
-#include <q3groupbox.h>
 #include <QByteArray>
 #include <QDateTime>
 #include <kglobal.h>
