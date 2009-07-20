@@ -22,8 +22,6 @@
 #include <klocale.h>
 #include <kcomponentdata.h>
 #include <QCheckBox>
-#include <q3combobox.h>
-#include <q3groupbox.h>
 #include <qslider.h>
 #include <qtabwidget.h>
 #include <kaboutdata.h>
