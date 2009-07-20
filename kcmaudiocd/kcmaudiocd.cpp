@@ -73,9 +73,8 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     encoders.clear();
 
 
-    KConfigDialogManager *widget;
-    for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-      connect(widget, SIGNAL(widgetModified()), this, SLOT(slotModuleChanged()));
+    for (int i = 0; i < encoderSettings.size(); ++i) {
+        connect( encoderSettings.at( i ),SIGNAL(widgetModified()), this, SLOT(slotModuleChanged()));
     }
 
     //CDDA Options
@@ -150,10 +149,9 @@ void KAudiocdModule::defaults() {
 	audioConfig->kcfg_replaceInput->setText("");
 	audioConfig->kcfg_replaceOutput->setText("");
 	audioConfig->example->setText(i18n("Cool artist - example audio file.wav"));
-	KConfigDialogManager *widget;
-	for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-		widget->updateWidgetsDefault();
-	}
+        for (int i = 0; i < encoderSettings.size(); ++i) {
+            encoderSettings.at( i )->updateWidgetsDefault();
+        }
 
 	audioConfig->fileNameLineEdit->setText("%{trackartist} - %{number} - %{title}");
 	audioConfig->albumNameLineEdit->setText("%{albumartist} - %{albumtitle}");
@@ -193,10 +191,11 @@ void KAudiocdModule::save() {
     cg.writeEntry("regexp_replace", replaceOutput);
   }
 
-  KConfigDialogManager *widget;
-  for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-    widget->updateSettings();
+  for ( int i = 0;i<encoderSettings.size();++i )
+  {
+      encoderSettings.at( i )->updateSettings();
   }
+
 
   config->sync();
 
@@ -225,20 +224,23 @@ void KAudiocdModule::load() {
     audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
   }
 
-  KConfigDialogManager *widget;
-  for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-    widget->updateWidgets();
+  for ( int i = 0;i <encoderSettings.size();++i )
+  {
+      encoderSettings.at( i )->updateWidgets();
   }
+
 }
 
 void KAudiocdModule::slotModuleChanged() {
-	KConfigDialogManager *widget;
-	for ( widget = encoderSettings.first(); widget; widget = encoderSettings.next() ){
-		if(widget->hasChanged()){
-			slotConfigChanged();
-			break;
-		}
-	}
+    for ( int i = 0;i<encoderSettings.size();++i )
+    {
+        KConfigDialogManager *widget = encoderSettings.at( i );
+        if ( widget->hasChanged() )
+        {
+            slotConfigChanged();
+            break;
+        }
+    }
 }
 
 void KAudiocdModule::slotConfigChanged() {

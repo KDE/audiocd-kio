@@ -15,7 +15,7 @@ kde4_add_plugin(kcm_audiocd ${kcm_audiocd_PART_SRCS})
 
 
 
-target_link_libraries(kcm_audiocd  audiocdplugins ${KDE4_KDEUI_LIBS} ${QT_QT3SUPPORT_LIBRARY})
+target_link_libraries(kcm_audiocd  audiocdplugins ${KDE4_KDEUI_LIBS} )
 
 install(TARGETS kcm_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR} )
 

@@ -27,7 +27,7 @@
 #define KCMAUDIOCD_H
 
 //Added by qt3to4:
-#include <Q3PtrList>
+#include <QList>
 #include <kcmodule.h>
 class KConfigDialogManager;
 
@@ -70,7 +70,7 @@ private:
 
   int getBitrateIndex(int value);
 
-  Q3PtrList<KConfigDialogManager> encoderSettings;
+  QList<KConfigDialogManager *> encoderSettings;
   AudiocdConfig *audioConfig;
 };
 
