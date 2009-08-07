@@ -1,0 +1,24 @@
+[Desktop Entry]
+X-KDE-Solid-Predicate=[StorageVolume.ignored == false AND OpticalDisc.availableContent == 'Audio']
+Actions=open;
+Type=Service
+X-KDE-Priority=TopLevel
+
+[Desktop Action open]
+Exec=kioclient exec audiocd:/
+Icon=system-file-manager
+Name=Open with File Manager
+Name[csb]=Òtemkni w &menadzérze lopków
+Name[da]=Åbn med filhåndtering
+Name[de]=Mit Dateimanager öffnen
+Name[et]=Ava failihalduriga
+Name[fi]=Avaa tiedostonhallintaohjelmalla
+Name[gu]=ફાઇલ વયવસથાપક સાથ ખોલો
+Name[km]=បើកជាមយកមមវធគរបគរងឯកសារ
+Name[nds]=Mit Dateipleger opmaken
+Name[pt]=Abrir com o Gestor de Ficheiros
+Name[pt_BR]=Abrir com o gerenciador de arquivos
+Name[sv]=Öppna med filhanterare
+Name[tr]=Dosya yöneticisi ile aç
+Name[uk]=Відкрити за допомогою менеджера файлів
+Name[zh_TW]=使用檔案管理員開啟
