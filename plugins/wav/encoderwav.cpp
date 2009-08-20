@@ -49,7 +49,7 @@ const char * EncoderWav::mimeType() const {
 }
 
 long EncoderWav::readInit(long byteCount){
-  static char riffHeader[] =
+  static unsigned char riffHeader[] =
   {
     0x52, 0x49, 0x46, 0x46, // 0  "AIFF"
     0x00, 0x00, 0x00, 0x00, // 4  wavSize
@@ -78,9 +78,9 @@ long EncoderWav::readInit(long byteCount){
   riffHeader[43]  = (byteCount >> 24) & 0xff;
 
   QByteArray output;
-  output.setRawData(riffHeader, 44);
+  output.setRawData((char *) riffHeader, 44);
   ioslave->data(output);
-  output.resetRawData(riffHeader, 44);
+  output.resetRawData((char *) riffHeader, 44);
   return 44;
 }
 
