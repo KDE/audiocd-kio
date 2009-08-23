@@ -8,6 +8,7 @@ X-KDE-Priority=TopLevel
 Exec=kioclient exec audiocd:/
 Icon=system-file-manager
 Name=Open with File Manager
+Name[bg]=Отваряне с файловия браузър
 Name[es]=Abrir con el gestor de archivos
 Name[nds]=Mit Dateipleger opmaken
 Name[pt]=Abrir com o Gestor de Ficheiros
