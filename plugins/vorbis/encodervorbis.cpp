@@ -75,6 +75,8 @@ EncoderVorbis::EncoderVorbis(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
 }
 
 EncoderVorbis::~EncoderVorbis(){
+  vorbis_info_clear(&d->vi);
+  vorbis_comment_clear(&d->vc);
   delete d;
 }
 
