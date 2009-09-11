@@ -290,7 +290,7 @@
                 <property name="maximum" >
                   <number>10000</number>
                 </property>
-                <property name="precision" >
+                <property name="decimals" >
                   <number>1</number>
                 </property>
                 <property name="whatsThis" stdset="0" >

@@ -171,21 +171,15 @@ long EncoderVorbis::flush_vorbis(void) {
       while(int result=ogg_stream_pageout(&d->os,&d->og)) {
         if (!result) break;
 
-        QByteArray output;
-
         char * oggheader = reinterpret_cast<char *>(d->og.header);
         char * oggbody = reinterpret_cast<char *>(d->og.body);
 
         if (d->og.header_len) {
-          output.setRawData(oggheader, d->og.header_len);
-          ioslave->data(output);
-          output.clear();
+          ioslave->data(QByteArray::fromRawData(oggheader, d->og.header_len));
         }
 
         if (d->og.body_len) {
-          output.setRawData(oggbody, d->og.body_len);
-          ioslave->data(output);
-          output.clear();
+          ioslave->data(QByteArray::fromRawData(oggbody, d->og.body_len));
         }
         processed +=  d->og.header_len + d->og.body_len;
       }
@@ -251,21 +245,15 @@ long EncoderVorbis::readInit(long /*size*/){
 
     if (!result) break;
 
-    QByteArray output;
-
     char * oggheader = reinterpret_cast<char *>(d->og.header);
     char * oggbody = reinterpret_cast<char *>(d->og.body);
 
     if (d->og.header_len) {
-      output.setRawData(oggheader, d->og.header_len);
-      ioslave->data(output);
-      output.clear();
+      ioslave->data(QByteArray::fromRawData(oggheader, d->og.header_len));
     }
 
     if (d->og.body_len) {
-      output.setRawData(oggbody, d->og.body_len);
-      ioslave->data(output);
-      output.clear();
+      ioslave->data(QByteArray::fromRawData(oggbody, d->og.body_len));
     }
   }
   return 0;
