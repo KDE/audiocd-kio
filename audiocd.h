@@ -87,7 +87,6 @@ class AudioCDProtocol : public KIO::SlaveBase
 	);
 
 	struct cdrom_drive *initRequest(const KUrl &);
-	uint discid(struct cdrom_drive *);
 
 	/**
 	 * Add an entry in the KIO directory, using the title you give,
