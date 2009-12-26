@@ -116,6 +116,28 @@ public:
 		req_track = -1;
 		cddbUserChoice = -1;
 	}
+	
+	bool tocsAreDifferent(struct cdrom_drive *drive)
+	{
+		if (tracks != (uint)drive->tracks) return true;
+		for (int i = 0; i < drive->tracks; ++i)
+		{
+			if (disc_toc[i].dwStartSector != drive->disc_toc[i].dwStartSector || 
+			    disc_toc[i].bFlags != drive->disc_toc[i].bFlags ||
+			    disc_toc[i].bTrack != drive->disc_toc[i].bTrack) return true;
+		}
+		return false;
+	}
+	
+	void setToc(struct cdrom_drive *drive)
+	{
+		for (int i = 0; i < drive->tracks; ++i)
+		{
+			disc_toc[i].dwStartSector = drive->disc_toc[i].dwStartSector;
+			disc_toc[i].bFlags = drive->disc_toc[i].bFlags;
+			disc_toc[i].bTrack = drive->disc_toc[i].bTrack;
+		}
+	}
 
 	// The type/which of request
 	bool req_allTracks;
@@ -134,6 +156,7 @@ public:
 	QString s_fullCD;
 
 	// Current CD
+	TOC disc_toc[MAXTRK];
 	unsigned discid;
 	unsigned tracks;
 	bool trackIsAudio[100];
@@ -216,8 +239,11 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 
 	// Update our knowledge of the disc
 #if defined(HAVE_CDDA_IOCTL_DEVICE)
-	if (d->cd.deviceName() != drive->ioctl_device_name)
+	if (d->cd.deviceName() != drive->ioctl_device_name || d->tocsAreDifferent(drive))
+	{
 		d->cd.setDevice(drive->ioctl_device_name, 50, false);
+		d->setToc(drive);
+	}
 #elif defined(__FreeBSD__) || defined(__DragonFly__)
 	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
 	// support for non-SCSI devices. Although it finds ATA cdroms just
