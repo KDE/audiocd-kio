@@ -62,9 +62,9 @@ long EncoderCda::read(int16_t * buf, int frames){
     for (int i=0; i < 2 * frames; i++)
        buf[i] = swap16 (buf[i]);
   char * cbuf = reinterpret_cast<char *>(buf);
-  output.setRawData(cbuf, CD_FRAMESIZE_RAW);
+  output = QByteArray::fromRawData(cbuf, CD_FRAMESIZE_RAW);
   ioslave->data(output);
-  output.resetRawData(cbuf, CD_FRAMESIZE_RAW);
+  output.clear();
   return CD_FRAMESIZE_RAW;
 }
 

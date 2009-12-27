@@ -78,9 +78,9 @@ long EncoderWav::readInit(long byteCount){
   riffHeader[43]  = (byteCount >> 24) & 0xff;
 
   QByteArray output;
-  output.setRawData((char *) riffHeader, 44);
+  output = QByteArray::fromRawData((char *) riffHeader, 44);
   ioslave->data(output);
-  output.resetRawData((char *) riffHeader, 44);
+  output.clear();
   return 44;
 }
 

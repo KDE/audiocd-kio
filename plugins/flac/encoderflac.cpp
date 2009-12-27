@@ -66,9 +66,9 @@ static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *e
     QByteArray output;
 
     if (bytes) {
-       output.setRawData((const char*)buffer, bytes);
+       output = QByteArray::fromRawData((const char*)buffer, bytes);
        d->ioslave->data(output);
-       output.resetRawData((const char*)buffer, bytes);
+       output.clear();
     }
 
     return FLAC__STREAM_ENCODER_WRITE_STATUS_OK;

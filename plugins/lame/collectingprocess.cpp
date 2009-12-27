@@ -96,7 +96,8 @@ QByteArray CollectingProcess::collectedStdout()
   }
 
   uint offset = 0;
-  QByteArray b( d->stdoutSize );
+  QByteArray b;
+  if (d->stdoutSize > 0) b.fill('\0', d->stdoutSize);
   for ( QList<QByteArray>::const_iterator it = d->stdoutBuffer.constBegin();
         it != d->stdoutBuffer.constEnd();
         ++it ) {
@@ -116,7 +117,8 @@ QByteArray CollectingProcess::collectedStderr()
   }
 
   uint offset = 0;
-  QByteArray b( d->stderrSize );
+  QByteArray b;
+  if (d->stderrSize > 0) b.fill('\0', d->stderrSize);
   for ( QList<QByteArray>::const_iterator it = d->stderrBuffer.constBegin();
         it != d->stderrBuffer.constEnd();
         ++it ) {
