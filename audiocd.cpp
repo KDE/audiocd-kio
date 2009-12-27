@@ -103,11 +103,10 @@ enum Which_dir {
 
 class AudioCDProtocol::Private {
 public:
-	Private() : cd(KCompactDisc::Asynchronous) {
+	Private() {
 		clearURLargs();
 		s_info = i18n("Information");
 		s_fullCD = i18n("Full CD");
-		discid = 0;
 	}
 
 	void clearURLargs() {
@@ -157,10 +156,8 @@ public:
 
 	// Current CD
 	TOC disc_toc[MAXTRK];
-	unsigned discid;
 	unsigned tracks;
 	bool trackIsAudio[100];
-	KCompactDisc cd; // keep it around so that we don't assume the disk changed between every stat()
 
 	// CDDB items
 	KCDDB::Result cddbResult;
@@ -218,6 +215,52 @@ AudioCDEncoder *AudioCDProtocol::determineEncoder(const QString & filename)
 	return encoderFromExtension(filename.right(len - pos));
 }
 
+static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
+{
+#if defined(HAVE_CDDA_IOCTL_DEVICE)
+	cd->setDevice(drive->ioctl_device_name, 50, false);
+#elif defined(__FreeBSD__) || defined(__DragonFly__)
+	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
+	// support for non-SCSI devices. Although it finds ATA cdroms just
+	// fine, there is no straightforward way to discover the device
+	// name associated with the device, which throws the rest of audiocd
+	// for a loop.
+	//
+	if ( !(drive->dev) || (COOKED_IOCTL == drive->interface) )
+	{
+		// For ATAPI devices, we have no real choice. Use the
+		// user selected value, even if there is none.
+		//
+		kWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user.";
+		cd->setDevice( d->device );
+	}
+	else
+	{
+		kDebug(7117) << "Found a SCSI or ATAPICAM device.";
+		if ( strlen(drive->dev->device_path) > 0 )
+		{
+			cd->setDevice( drive->dev->device_path );
+		}
+		else
+		{
+			// But the device_path can be empty under some
+			// circumstances, so build a representation from
+			// the unit number and SCSI device name.
+			//
+			QString devname = QString::fromLatin1( "/dev/%1%2" )
+				.arg( drive->dev->given_dev_name )
+				.arg( drive->dev->given_unit_number ) ;
+			kDebug(7117) << "  Using derived name " << devname;
+			cd->setDevice( devname );
+		}
+	}
+#else
+#ifdef __GNUC__
+	#warning audiocd ioslave is not going to work for you
+#endif
+#endif
+}
+
 struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 {
 	if (url.hasHost())
@@ -237,63 +280,19 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 	if (0 == drive)
 		return 0;
 
-	// Update our knowledge of the disc
-#if defined(HAVE_CDDA_IOCTL_DEVICE)
-	if (d->cd.deviceName() != drive->ioctl_device_name || d->tocsAreDifferent(drive))
+	if (d->tocsAreDifferent(drive))
 	{
-		d->cd.setDevice(drive->ioctl_device_name, 50, false);
+		// Update our knowledge of the disc
+		KCompactDisc cd(KCompactDisc::Asynchronous);
+		setDeviceToCd(&cd, drive);
 		d->setToc(drive);
-	}
-#elif defined(__FreeBSD__) || defined(__DragonFly__)
-	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
-	// support for non-SCSI devices. Although it finds ATA cdroms just
-	// fine, there is no straightforward way to discover the device
-	// name associated with the device, which throws the rest of audiocd
-	// for a loop.
-	//
-	if ( !(drive->dev) || (COOKED_IOCTL == drive->interface) )
-	{
-		// For ATAPI devices, we have no real choice. Use the
-		// user selected value, even if there is none.
-		//
-		kWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user.";
-		d->cd.setDevice( d->device );
-	}
-	else
-	{
-		kDebug(7117) << "Found a SCSI or ATAPICAM device.";
-		if ( strlen(drive->dev->device_path) > 0 )
-		{
-			d->cd.setDevice( drive->dev->device_path );
-		}
-		else
-		{
-			// But the device_path can be empty under some
-			// circumstances, so build a representation from
-			// the unit number and SCSI device name.
-			//
-			QString devname = QString::fromLatin1( "/dev/%1%2" )
-				.arg( drive->dev->given_dev_name )
-				.arg( drive->dev->given_unit_number ) ;
-			kDebug(7117) << "  Using derived name " << devname;
-			d->cd.setDevice( devname );
-		}
-	}
-#else
-#ifdef __GNUC__
-	#warning audiocd ioslave is not going to work for you
-#endif
-#endif
-
-
-	if (d->cd.discId() != d->discid && !d->cd.isNoDisc()) {
-		d->discid = d->cd.discId();
-		d->tracks = d->cd.tracks();
-		for(uint i=0; i< d->cd.tracks(); i++)
-			d->trackIsAudio[i] = d->cd.isAudio(i+1);
+		
+		d->tracks = cd.tracks();
+		for(uint i=0; i< cd.tracks(); i++)
+			d->trackIsAudio[i] = cd.isAudio(i+1);
 
 		KCDDB::Client c;
-		d->cddbResult = c.lookup(d->cd.discSignature());
+		d->cddbResult = c.lookup(cd.discSignature());
 		if (d->cddbResult == Success)
 		{
 			d->cddbList = c.lookupResponse();
