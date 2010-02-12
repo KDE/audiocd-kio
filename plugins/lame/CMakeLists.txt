@@ -10,7 +10,7 @@ endif(NOT LAME_EXECUTABLE)
 
 ########### next target ###############
 
-set(audiocd_encoder_lame_PART_SRCS encoderlame.cpp collectingprocess.cpp )
+set(audiocd_encoder_lame_PART_SRCS encoderlame.cpp )
 
 
 kde4_add_ui_files(audiocd_encoder_lame_PART_SRCS encoderlameconfig.ui )
@@ -21,7 +21,7 @@ kde4_add_plugin(audiocd_encoder_lame WITH_PREFIX ${audiocd_encoder_lame_PART_SRC
 
 
 
-target_link_libraries(audiocd_encoder_lame  ${KDE4_KIO_LIBS} audiocdplugins  ${KDE4_KDE3SUPPORT_LIBS} kcddb)
+target_link_libraries(audiocd_encoder_lame  ${KDE4_KIO_LIBS} audiocdplugins kcddb)
 
 install(TARGETS audiocd_encoder_lame  DESTINATION ${PLUGIN_INSTALL_DIR} )
 

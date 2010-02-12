@@ -23,15 +23,14 @@
 
 #include <kdebug.h>
 #include <qgroupbox.h>
-#include <k3process.h>
-
+#include <qstringlist.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <qapplication.h>
 #include <qfileinfo.h>
 #include <ktemporaryfile.h>
 #include <kstandarddirs.h>
-#include "collectingprocess.h"
+// #include "collectingprocess.h"
 
 extern "C"
 {
@@ -51,7 +50,7 @@ public:
 	QString lastErrorMessage;
 	QStringList genreList;
 	uint lastSize;
-	K3Process *currentEncodeProcess;
+	KProcess *currentEncodeProcess;
 	KTemporaryFile *tempFile;
 };
 
@@ -82,15 +81,17 @@ bool EncoderLame::init(){
 
 	// Ask lame for the list of genres it knows; otherwise it barfs when doing
 	// e.g. lame --tg 'Vocal Jazz'
-    CollectingProcess proc;
+	KProcess proc;
+	proc.setOutputChannelMode(KProcess::MergedChannels);
 	proc << "lame" << "--genre-list";
-	proc.start(K3Process::Block, K3Process::Stdout);
+	proc.execute();
 
-	if(proc.exitStatus() != 0)
-		return false;
+	if(proc.exitStatus() != QProcess::NormalExit)
+		return FALSE;
 
-	QString str = QString::fromLocal8Bit( proc.collectedStdout() );
-    d->genreList = str.split( '\n', QString::SkipEmptyParts );
+	QByteArray array = proc.readAll();
+	QString str = QString::fromLocal8Bit( array );
+	d->genreList = str.split( '\n', QString::SkipEmptyParts );
 	// Remove the numbers in front of every genre
 	for( QStringList::Iterator it = d->genreList.begin(); it != d->genreList.end(); ++it ) {
 		QString& genre = *it;
@@ -228,8 +229,8 @@ unsigned long EncoderLame::size(long time_secs) const {
 }
 
 long EncoderLame::readInit(long /*size*/){
-	// Create K3Process
-	d->currentEncodeProcess	= new K3Process(0);
+	// Create KProcess
+	d->currentEncodeProcess	= new KProcess();
 	d->tempFile = new KTemporaryFile();
 	d->tempFile->setSuffix(".mp3");
 	d->tempFile->open();
@@ -249,40 +250,43 @@ long EncoderLame::readInit(long /*size*/){
 	//kDebug(7117) << d->currentEncodeProcess->args();
 
 
-	connect(d->currentEncodeProcess, SIGNAL(receivedStdout(K3Process *, char *, int)),
-                         this, SLOT(receivedStdout(K3Process *, char *, int)));
-	connect(d->currentEncodeProcess, SIGNAL(receivedStderr(K3Process *, char *, int)),
-                         this, SLOT(receivedStderr(K3Process *, char *, int)));
-	connect(d->currentEncodeProcess, SIGNAL(wroteStdin(K3Process *)),
-                         this, SLOT(wroteStdin(K3Process *)));
+	connect(d->currentEncodeProcess, SIGNAL(readyReadStandardOutput()),
+                         this, SLOT(receivedStdout()));
+	connect(d->currentEncodeProcess, SIGNAL(readyReadStandardError()),
+                         this, SLOT(receivedStderr()));
+// 	connect(d->currentEncodeProcess, SIGNAL(bytesWritten()),
+//                          this, SLOT(wroteStdin()));
 
-	connect(d->currentEncodeProcess, SIGNAL(processExited(K3Process *)),
-                         this, SLOT(processExited(K3Process *)));
+	connect(d->currentEncodeProcess, SIGNAL(finished(int, QProcess::ExitStatus)),
+                         this, SLOT(processExited(int, QProcess::ExitStatus)));
 
 	// Launch!
-	d->currentEncodeProcess->start(K3Process::NotifyOnExit, K3ShellProcess::All);
+	d->currentEncodeProcess->setOutputChannelMode(KProcess::SeparateChannels);
+	d->currentEncodeProcess->start();
 	return 0;
 }
 
-void EncoderLame::processExited ( K3Process *process ){
-	kDebug(7117) << "Lame Encoding process exited with: " << process->exitStatus();
+void EncoderLame::processExited ( int exitCode, QProcess::ExitStatus /*status*/ ){
+	kDebug(7117) << "Lame Encoding process exited with: " << exitCode;
 	d->processHasExited = true;
 }
 
-void EncoderLame::receivedStderr( K3Process * /*process*/, char *buffer, int /*buflen*/ ){
-	kDebug(7117) << "Lame stderr: " << buffer;
+void EncoderLame::receivedStderr(){
+	QByteArray error = d->currentEncodeProcess->readAllStandardError();
+	kDebug(7117) << "Lame stderr: " << error;
 	if ( !d->lastErrorMessage.isEmpty() )
 		d->lastErrorMessage += '\t';
-	d->lastErrorMessage += QString::fromLocal8Bit( buffer );
+	d->lastErrorMessage += QString::fromLocal8Bit( error );
 }
 
-void EncoderLame::receivedStdout( K3Process * /*process*/, char *buffer, int /*length*/ ){
-	kDebug(7117) << "Lame stdout: " << buffer;
+void EncoderLame::receivedStdout(){
+	QString output = QString::fromLocal8Bit(d->currentEncodeProcess->readAllStandardOutput());
+	kDebug(7117) << "Lame stdout: " << output;
 }
 
-void EncoderLame::wroteStdin( K3Process * /*procces*/ ){
-	d->waitingForWrite = false;
-}
+// void EncoderLame::wroteStdin(){
+// 	d->waitingForWrite = false;
+// }
 
 long EncoderLame::read(int16_t *buf, int frames){
 	if(!d->currentEncodeProcess)
@@ -292,14 +296,9 @@ long EncoderLame::read(int16_t *buf, int frames){
 
 	// Pipe the raw data to lame
 	char * cbuf = reinterpret_cast<char *>(buf);
-	d->currentEncodeProcess->writeStdin( cbuf, frames*4);
-
+	d->currentEncodeProcess->write(cbuf, frames * 4);
 	// We can't return until the buffer has been written
-	d->waitingForWrite = true;
-	while(d->waitingForWrite && d->currentEncodeProcess->isRunning()){
-		qApp->processEvents();
-		usleep(1);
-	}
+	d->currentEncodeProcess->waitForBytesWritten(-1);
 
 	// Determine the file size increase
 	QFileInfo file(d->tempFile->fileName());
@@ -313,11 +312,8 @@ long EncoderLame::readCleanup(){
 		return 0;
 
 	// Let lame tag the first frame of the mp3
-	d->currentEncodeProcess->closeStdin();
-	while( d->currentEncodeProcess->isRunning()){
-		qApp->processEvents();
-		usleep(1);
-	}
+	d->currentEncodeProcess->closeWriteChannel();
+	d->currentEncodeProcess->waitForFinished(-1);
 
 	// Now copy the file out of the temp into kio
 	QFile file( d->tempFile->fileName() );
