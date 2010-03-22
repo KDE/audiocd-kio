@@ -232,7 +232,7 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 		// user selected value, even if there is none.
 		//
 		kWarning(7117) << "Found an ATAPI device, assuming it is the one specified by the user.";
-		cd->setDevice( d->device );
+		cd->setDevice( drive->cdda_device_name );
 	}
 	else
 	{
