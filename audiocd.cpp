@@ -103,10 +103,9 @@ enum Which_dir {
 
 class AudioCDProtocol::Private {
 public:
-	Private() {
+	Private() : s_info(i18n("Information")), s_fullCD(i18n("Full CD"))
+	{
 		clearURLargs();
-		s_info = i18n("Information");
-		s_fullCD = i18n("Full CD");
 	}
 
 	void clearURLargs() {
@@ -151,8 +150,8 @@ public:
 	bool reportErrors;
 
 	// Directory strings, never change after init
-	QString s_info;
-	QString s_fullCD;
+	const QString s_info;
+	const QString s_fullCD;
 
 	// Current CD
 	TOC disc_toc[MAXTRK];
