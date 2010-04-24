@@ -62,7 +62,7 @@ extern "C"
 
 using namespace KIO;
 
-#define CDDB_INFORMATION "CDDB Information"
+#define CDDB_INFORMATION I18N_NOOP("CDDB Information")
 
 using namespace AudioCD;
 
