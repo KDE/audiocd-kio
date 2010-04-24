@@ -625,7 +625,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 		}
 		// Error
 		if( count == 1 ) {
-			app_file(entry, QString("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), ((*it).toString().length())+1);
+			app_file(entry, QString("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), 0);
 			count++;
 			listEntry(entry, false);
 		}
