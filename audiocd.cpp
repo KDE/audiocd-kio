@@ -62,7 +62,7 @@ extern "C"
 
 using namespace KIO;
 
-#define CDDB_INFORMATION "CDDB Information"
+#define CDDB_INFORMATION I18N_NOOP("CDDB Information")
 
 using namespace AudioCD;
 
@@ -103,10 +103,9 @@ enum Which_dir {
 
 class AudioCDProtocol::Private {
 public:
-	Private() {
+	Private() : s_info(i18n("Information")), s_fullCD(i18n("Full CD"))
+	{
 		clearURLargs();
-		s_info = i18n("Information");
-		s_fullCD = i18n("Full CD");
 	}
 
 	void clearURLargs() {
@@ -151,8 +150,8 @@ public:
 	bool reportErrors;
 
 	// Directory strings, never change after init
-	QString s_info;
-	QString s_fullCD;
+	const QString s_info;
+	const QString s_fullCD;
 
 	// Current CD
 	TOC disc_toc[MAXTRK];
@@ -481,7 +480,6 @@ void AudioCDProtocol::get(const KUrl & url)
 
 		int track = d->req_track+1;
 
-		QString trackName;
 		// hack
 		// do we rip the whole CD?
 		if (d->req_allTracks){
@@ -515,11 +513,11 @@ void AudioCDProtocol::stat(const KUrl & url)
 	if (!drive)
 		return;
 
-	bool isFile = !d->fname.isEmpty();
+	const bool isFile = !d->fname.isEmpty();
 
 	// the track number. 0 if ripping
 	// the whole CD.
-	uint trackNumber = d->req_track + 1;
+	const uint trackNumber = d->req_track + 1;
 
 	if (!d->req_allTracks)
 	{ // we only want to rip one track.
@@ -626,7 +624,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 		}
 		// Error
 		if( count == 1 ) {
-			app_file(entry, QString("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), ((*it).toString().length())+1);
+			app_file(entry, QString("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), 0);
 			count++;
 			listEntry(entry, false);
 		}
@@ -740,7 +738,7 @@ long AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder
 
 struct cdrom_drive *AudioCDProtocol::getDrive()
 {
-	QByteArray device(QFile::encodeName(d->device));
+	const QByteArray device(QFile::encodeName(d->device));
 
 	struct cdrom_drive * drive = 0;
 
@@ -760,7 +758,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 	if (0 == drive) {
 		kDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"";
 
-		QFileInfo fi(d->device);
+		const QFileInfo fi(d->device);
 		if(!fi.isReadable())
 			error(KIO::ERR_SLAVE_DEFINED, i18n("Device does not have read permissions for this account.  Check the read permissions on the device."));
 		else if(!fi.isWritable())
@@ -957,18 +955,18 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 
 	query = query.mid(1); // Strip leading '?'.
 
-	QStringList tokens(query.split('&',QString::SkipEmptyParts));
+	const QStringList tokens(query.split('&',QString::SkipEmptyParts));
 
 	for (QStringList::ConstIterator it(tokens.constBegin()); it != tokens.constEnd(); ++it)
 	{
-		QString token(*it);
+		const QString token(*it);
 
 		int equalsPos = token.indexOf('=');
 		if (-1 == equalsPos)
 			continue;
 
-		QString attribute(token.left(equalsPos));
-		QString value(token.mid(equalsPos + 1));
+		const QString attribute(token.left(equalsPos));
+		const QString value(token.mid(equalsPos + 1));
 
 		if (attribute == QLatin1String("device"))
 			d->device = value;
@@ -994,8 +992,8 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
  */
 void AudioCDProtocol::loadSettings()
 {
-	KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
-        KConfigGroup groupCDDA( config, "CDDA" );
+	const KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
+        const KConfigGroup groupCDDA( config, "CDDA" );
 
 	if (!groupCDDA.readEntry("autosearch", true)) {
 		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultCdromDeviceUrl().url()));
@@ -1021,7 +1019,7 @@ void AudioCDProtocol::loadSettings()
 	}
 
 	// The default track filename template
-        KConfigGroup groupFileName( config, "FileName" );
+        const KConfigGroup groupFileName( config, "FileName" );
 	d->fileNameTemplate = groupFileName.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}");
 	d->albumTemplate = groupFileName.readEntry("album_template", "%{albumartist} - %{albumtitle}");
 	d->rsearch = groupFileName.readEntry("regexp_search");
