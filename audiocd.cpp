@@ -480,7 +480,6 @@ void AudioCDProtocol::get(const KUrl & url)
 
 		int track = d->req_track+1;
 
-		QString trackName;
 		// hack
 		// do we rip the whole CD?
 		if (d->req_allTracks){
@@ -514,11 +513,11 @@ void AudioCDProtocol::stat(const KUrl & url)
 	if (!drive)
 		return;
 
-	bool isFile = !d->fname.isEmpty();
+	const bool isFile = !d->fname.isEmpty();
 
 	// the track number. 0 if ripping
 	// the whole CD.
-	uint trackNumber = d->req_track + 1;
+	const uint trackNumber = d->req_track + 1;
 
 	if (!d->req_allTracks)
 	{ // we only want to rip one track.
@@ -739,7 +738,7 @@ long AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder
 
 struct cdrom_drive *AudioCDProtocol::getDrive()
 {
-	QByteArray device(QFile::encodeName(d->device));
+	const QByteArray device(QFile::encodeName(d->device));
 
 	struct cdrom_drive * drive = 0;
 
@@ -759,7 +758,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 	if (0 == drive) {
 		kDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"";
 
-		QFileInfo fi(d->device);
+		const QFileInfo fi(d->device);
 		if(!fi.isReadable())
 			error(KIO::ERR_SLAVE_DEFINED, i18n("Device does not have read permissions for this account.  Check the read permissions on the device."));
 		else if(!fi.isWritable())
@@ -956,18 +955,18 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 
 	query = query.mid(1); // Strip leading '?'.
 
-	QStringList tokens(query.split('&',QString::SkipEmptyParts));
+	const QStringList tokens(query.split('&',QString::SkipEmptyParts));
 
 	for (QStringList::ConstIterator it(tokens.constBegin()); it != tokens.constEnd(); ++it)
 	{
-		QString token(*it);
+		const QString token(*it);
 
 		int equalsPos = token.indexOf('=');
 		if (-1 == equalsPos)
 			continue;
 
-		QString attribute(token.left(equalsPos));
-		QString value(token.mid(equalsPos + 1));
+		const QString attribute(token.left(equalsPos));
+		const QString value(token.mid(equalsPos + 1));
 
 		if (attribute == QLatin1String("device"))
 			d->device = value;
@@ -993,8 +992,8 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
  */
 void AudioCDProtocol::loadSettings()
 {
-	KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
-        KConfigGroup groupCDDA( config, "CDDA" );
+	const KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
+        const KConfigGroup groupCDDA( config, "CDDA" );
 
 	if (!groupCDDA.readEntry("autosearch", true)) {
 		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultCdromDeviceUrl().url()));
@@ -1020,7 +1019,7 @@ void AudioCDProtocol::loadSettings()
 	}
 
 	// The default track filename template
-        KConfigGroup groupFileName( config, "FileName" );
+        const KConfigGroup groupFileName( config, "FileName" );
 	d->fileNameTemplate = groupFileName.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}");
 	d->albumTemplate = groupFileName.readEntry("album_template", "%{albumartist} - %{albumtitle}");
 	d->rsearch = groupFileName.readEntry("regexp_search");
