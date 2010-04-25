@@ -46,8 +46,8 @@ extern "C"
 }
 
 // these are the approx. bitrates for the current 5 Vorbis modes
-static int vorbis_nominal_bitrates[] = { 128, 160, 192, 256, 350 };
-static int vorbis_bitrates[] = { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 350 };
+static const int vorbis_nominal_bitrates[] = { 128, 160, 192, 256, 350 };
+static const int vorbis_bitrates[] = { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 350 };
 
 class EncoderVorbis::Private {
 
