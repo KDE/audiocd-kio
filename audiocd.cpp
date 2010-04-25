@@ -322,7 +322,8 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 	} else {
 		for (int i = encoders.size()-1; i >= 0; --i) {
 			AudioCDEncoder *encoder = encoders.at(i);
-			const QString encoderFileLocation = encoder->type() + "/" + d->templateFileLocation;
+			QString encoderFileLocation = encoder->type();
+		        if (!d->templateFileLocation.isEmpty())	encoderFileLocation = encoderFileLocation + "/" + d->templateFileLocation;
 			if (path == encoder->type()) {
 				d->which_dir = EncoderDir;
 				d->encoder_dir_type = encoder;
