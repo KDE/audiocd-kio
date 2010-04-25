@@ -1,623 +1,788 @@
-<ui version="4.0" stdsetdef="1" >
-  <class>AudiocdConfig</class>
-  <widget class="QWidget" name="AudiocdConfig" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>708</width>
-        <height>594</height>
-      </rect>
-    </property>
-    <layout class="QVBoxLayout" >
-      <item>
-        <widget class="QTabWidget" name="tabWidget" >
-          <property name="sizePolicy" >
-            <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-            </sizepolicy>
-          </property>
-          <widget class="QWidget" name="tab" >
-            <attribute name="title" >
-              <string>&amp;General</string>
-            </attribute>
-            <layout class="QGridLayout" >
-              <item row="4" column="2" >
-                <spacer name="Spacer5" >
-                  <property name="sizeHint" >
-                    <size>
-                      <width>20</width>
-                      <height>210</height>
-                    </size>
-                  </property>
-                  <property name="sizeType" >
-                    <enum>Expanding</enum>
-                  </property>
-                  <property name="orientation" >
-                    <enum>Vertical</enum>
-                  </property>
-                </spacer>
-              </item>
-              <item rowspan="1" row="3" column="0" colspan="3" >
-                <widget class="QGroupBox" name="encoderPriority" >
-                  <property name="title" >
-                    <string>Encoder Priority</string>
-                  </property>
-                  <layout class="QGridLayout" >
-                    <item rowspan="1" row="0" column="0" colspan="3" >
-                      <widget class="QSlider" name="niceLevel" >
-                        <property name="minimum" >
-                          <number>-19</number>
-                        </property>
-                        <property name="maximum" >
-                          <number>19</number>
-                        </property>
-                        <property name="singleStep" >
-                          <number>5</number>
-                        </property>
-                        <property name="orientation" >
-                          <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="tickPosition" >
-                          <enum>QSlider::NoTicks</enum>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="1" column="0" >
-                      <widget class="QLabel" name="textLabel2" >
-                        <property name="text" >
-                          <string>Highest</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="1" column="2" >
-                      <widget class="QLabel" name="textLabel3" >
-                        <property name="text" >
-                          <string>Lowest</string>
-                        </property>
-                        <property name="alignment" >
-                          <set>Qt::AlignVCenter|Qt::AlignRight</set>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="1" column="1" >
-                      <widget class="QLabel" name="textLabel4" >
-                        <property name="text" >
-                          <string>Normal</string>
-                        </property>
-                        <property name="alignment" >
-                          <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </widget>
-              </item>
-              <item row="0" column="2" >
-                <widget class="QLineEdit" name="cd_device_string" >
-                  <property name="enabled" >
-                    <bool>false</bool>
-                  </property>
-                  <property name="text" >
-                    <string>/dev/cdrom</string>
-                  </property>
-                  <property name="whatsThis" stdset="0" >
-                    <string>Specify a location for the drive you want to use. Normally, this is a file inside the /dev folder representing your CD or DVD drive.</string>
-                  </property>
-                </widget>
-              </item>
-              <item rowspan="1" row="0" column="0" colspan="2" >
-                <widget class="QCheckBox" name="cd_autosearch_check" >
-                  <property name="text" >
-                    <string>&amp;Specify CD Device:</string>
-                  </property>
-                  <property name="whatsThis" stdset="0" >
-                    <string>Uncheck this if you want to specify a CD device different from the one autoprobed</string>
-                  </property>
-                </widget>
-              </item>
-              <item rowspan="1" row="1" column="0" colspan="3" >
-                <widget class="QCheckBox" name="ec_enable_check" >
-                  <property name="text" >
-                    <string>Use &amp;error correction when reading the CD</string>
-                  </property>
-                  <property name="checked" >
-                    <bool>true</bool>
-                  </property>
-                  <property name="whatsThis" stdset="0" >
-                    <string>If you uncheck this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
-                  </property>
-                </widget>
-              </item>
-              <item rowspan="1" row="2" column="1" colspan="2" >
-                <widget class="QCheckBox" name="ec_skip_check" >
-                  <property name="text" >
-                    <string>&amp;Skip on errors</string>
-                  </property>
-                  <property name="checked" >
-                    <bool>false</bool>
-                  </property>
-                </widget>
-              </item>
-              <item row="2" column="0" >
-                <spacer name="spacer4_2" >
-                  <property name="sizeHint" >
-                    <size>
-                      <width>20</width>
-                      <height>20</height>
-                    </size>
-                  </property>
-                  <property name="sizeType" >
-                    <enum>Fixed</enum>
-                  </property>
-                  <property name="orientation" >
-                    <enum>Horizontal</enum>
-                  </property>
-                </spacer>
-              </item>
-            </layout>
-          </widget>
-          <widget class="QWidget" name="tab" >
-            <attribute name="title" >
-              <string>&amp;Names</string>
-            </attribute>
-            <layout class="QGridLayout" >
-              <item row="0" column="0" >
-                <widget class="QGroupBox" name="fileNameGroupBox" >
-                  <property name="title" >
-                    <string>File Name (without extension)</string>
-                  </property>
-                  <layout class="QVBoxLayout" >
-                    <item>
-                      <widget class="QLabel" name="textLabel1_2" >
-                        <property name="text" >
-                          <string>The following macros will be expanded:</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item>
-                      <layout class="QGridLayout" >
-                        <item row="6" column="1" >
-                          <widget class="QLabel" name="textLabel13" >
-                            <property name="text" >
-                              <string>Genre</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="5" column="0" >
-                          <widget class="QLabel" name="textLabel10" >
-                            <property name="text" >
-                              <string>%{year}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="0" column="0" >
-                          <widget class="QLabel" name="textLabel2_3" >
-                            <property name="text" >
-                              <string>%{title}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="2" column="1" >
-                          <widget class="QLabel" name="textLabel5" >
-                            <property name="text" >
-                              <string>Album Title</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="5" column="1" >
-                          <widget class="QLabel" name="textLabel11" >
-                            <property name="text" >
-                              <string>Year</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="3" column="1" >
-                          <widget class="QLabel" name="textLabel2_4" >
-                            <property name="text" >
-                              <string>Track Artist</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="0" column="1" >
-                          <widget class="QLabel" name="textLabel3_3" >
-                            <property name="text" >
-                              <string>Track Title</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="4" column="1" >
-                          <widget class="QLabel" name="textLabel9" >
-                            <property name="text" >
-                              <string>Album Artist</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="4" column="0" >
-                          <widget class="QLabel" name="textLabel8" >
-                            <property name="text" >
-                              <string>%{albumartist}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="6" column="0" >
-                          <widget class="QLabel" name="textLabel12" >
-                            <property name="text" >
-                              <string>%{genre}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="3" column="0" >
-                          <widget class="QLabel" name="textLabel1_3" >
-                            <property name="text" >
-                              <string>%{trackartist}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="2" column="0" >
-                          <widget class="QLabel" name="textLabel6" >
-                            <property name="text" >
-                              <string>%{albumtitle}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="1" column="1" >
-                          <widget class="QLabel" name="textLabel7" >
-                            <property name="text" >
-                              <string>Track Number</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="1" column="0" >
-                          <widget class="QLabel" name="textLabel4_2" >
-                            <property name="text" >
-                              <string>%{number}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                      </layout>
-                    </item>
-                    <item>
-                      <widget class="KLineEdit" name="fileNameLineEdit" />
-                    </item>
-                  </layout>
-                </widget>
-              </item>
-              <item rowspan="1" row="1" column="0" colspan="2" >
-                <widget class="QGroupBox" name="groupBox2" >
-                  <property name="title" >
-                    <string>Name Regular Expression Replacement</string>
-                  </property>
-                  <layout class="QGridLayout" >
-                    <item row="1" column="0" >
-                      <widget class="QLabel" name="textLabel2_2" >
-                        <property name="text" >
-                          <string>Selection:</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>true</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item rowspan="1" row="0" column="0" colspan="3" >
-                      <widget class="QLabel" name="textLabel1" >
-                        <property name="text" >
-                          <string>Regular expression used on all file names. For example using selection " " and replace with "_" would replace all the spaces with underlines.
-</string>
-                        </property>
-                        <property name="alignment" >
-                          <set>Qt::AlignVCenter</set>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>true</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="5" column="0" >
-                      <widget class="QLabel" name="inputlabel" >
-                        <property name="text" >
-                          <string>Input:</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item row="6" column="0" >
-                      <widget class="QLabel" name="outputLabel" >
-                        <property name="text" >
-                          <string>Output:</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item rowspan="1" row="4" column="0" colspan="2" >
-                      <widget class="QLabel" name="exampleLabel" >
-                        <property name="text" >
-                          <string>Example</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item rowspan="1" row="6" column="1" colspan="2" >
-                      <widget class="QLabel" name="exampleOutput" >
-                        <property name="text" >
-                          <string>Cool artist - example audio file.wav</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item rowspan="1" row="5" column="1" colspan="2" >
-                      <widget class="QLineEdit" name="example" >
-                        <property name="text" >
-                          <string>Cool artist - example audio file.wav</string>
-                        </property>
-                      </widget>
-                    </item>
-                    <item rowspan="1" row="2" column="0" colspan="2" >
-                      <widget class="QLineEdit" name="kcfg_replaceInput" />
-                    </item>
-                    <item row="2" column="2" >
-                      <widget class="QLineEdit" name="kcfg_replaceOutput" />
-                    </item>
-                    <item row="1" column="2" >
-                      <widget class="QLabel" name="textLabel3_2" >
-                        <property name="text" >
-                          <string>Replace with:</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item rowspan="1" row="3" column="0" colspan="3" >
-                      <widget class="Line" name="line1" >
-                        <property name="frameShape" >
-                          <enum>QFrame::HLine</enum>
-                        </property>
-                        <property name="frameShadow" >
-                          <enum>QFrame::Sunken</enum>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </widget>
-              </item>
-              <item row="2" column="0" >
-                <spacer name="spacer4" >
-                  <property name="sizeHint" >
-                    <size>
-                      <width>21</width>
-                      <height>16</height>
-                    </size>
-                  </property>
-                  <property name="sizeType" >
-                    <enum>Expanding</enum>
-                  </property>
-                  <property name="orientation" >
-                    <enum>Vertical</enum>
-                  </property>
-                </spacer>
-              </item>
-              <item row="0" column="1" >
-                <widget class="QGroupBox" name="fileNameGroupBox_2" >
-                  <property name="title" >
-                    <string>Album Name</string>
-                  </property>
-                  <layout class="QVBoxLayout" >
-                    <item>
-                      <widget class="QLabel" name="fileNameLabel_2" >
-                        <property name="text" >
-                          <string>The following macros will be expanded:</string>
-                        </property>
-                        <property name="wordWrap" >
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item>
-                      <layout class="QGridLayout" >
-                        <item rowspan="2" row="2" column="1" colspan="1" >
-                          <widget class="QLabel" name="textLabel20" >
-                            <property name="text" >
-                              <string>Year</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item rowspan="2" row="1" column="0" colspan="1" >
-                          <widget class="QLabel" name="textLabel15" >
-                            <property name="text" >
-                              <string>%{albumartist}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="3" column="0" >
-                          <widget class="QLabel" name="textLabel16" >
-                            <property name="text" >
-                              <string>%{year}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="4" column="1" >
-                          <widget class="QLabel" name="textLabel21" >
-                            <property name="text" >
-                              <string>Genre</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="1" column="1" >
-                          <widget class="QLabel" name="textLabel19" >
-                            <property name="text" >
-                              <string>Album Artist</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="0" column="1" >
-                          <widget class="QLabel" name="textLabel18" >
-                            <property name="text" >
-                              <string>Album Title</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="4" column="0" >
-                          <widget class="QLabel" name="textLabel17" >
-                            <property name="text" >
-                              <string>%{genre}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                        <item row="0" column="0" >
-                          <widget class="QLabel" name="textLabel14" >
-                            <property name="text" >
-                              <string>%{albumtitle}</string>
-                            </property>
-                            <property name="wordWrap" >
-                              <bool>false</bool>
-                            </property>
-                          </widget>
-                        </item>
-                      </layout>
-                    </item>
-                    <item>
-                      <spacer name="spacer3" >
-                        <property name="sizeHint" >
-                          <size>
-                            <width>20</width>
-                            <height>31</height>
-                          </size>
-                        </property>
-                        <property name="sizeType" >
-                          <enum>Expanding</enum>
-                        </property>
-                        <property name="orientation" >
-                          <enum>Vertical</enum>
-                        </property>
-                      </spacer>
-                    </item>
-                    <item>
-                      <widget class="KLineEdit" name="albumNameLineEdit" />
-                    </item>
-                  </layout>
-                </widget>
-              </item>
-            </layout>
-          </widget>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AudiocdConfig</class>
+ <widget class="QWidget" name="AudiocdConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>848</width>
+    <height>501</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>&amp;General</string>
+      </attribute>
+      <layout class="QGridLayout">
+       <item row="4" column="2">
+        <spacer name="Spacer5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>210</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0" colspan="3">
+        <widget class="QGroupBox" name="encoderPriority">
+         <property name="title">
+          <string>Encoder Priority</string>
+         </property>
+         <layout class="QGridLayout">
+          <item row="0" column="0" colspan="3">
+           <widget class="QSlider" name="niceLevel">
+            <property name="minimum">
+             <number>-19</number>
+            </property>
+            <property name="maximum">
+             <number>19</number>
+            </property>
+            <property name="singleStep">
+             <number>5</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::NoTicks</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="textLabel2">
+            <property name="text">
+             <string>Highest</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="textLabel3">
+            <property name="text">
+             <string>Lowest</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="textLabel4">
+            <property name="text">
+             <string>Normal</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
-      </item>
-    </layout>
-  </widget>
-    <tabstops>
-    <tabstop>tabWidget</tabstop>
-    <tabstop>cd_device_string</tabstop>
-    <tabstop>ec_enable_check</tabstop>
-    <tabstop>ec_skip_check</tabstop>
-    <tabstop>niceLevel</tabstop>
-    <tabstop>fileNameLineEdit</tabstop>
-    <tabstop>albumNameLineEdit</tabstop>
-    <tabstop>kcfg_replaceInput</tabstop>
-    <tabstop>kcfg_replaceOutput</tabstop>
-    <tabstop>example</tabstop>
-  </tabstops>
-  <includes>
-    <include location="local" >kcmodule.h</include>
-    <include location="local" >klineedit.h</include>
-  </includes>
-  <connections>
-    <connection>
-      <sender>ec_enable_check</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>ec_skip_check</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>cd_autosearch_check</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>cd_device_string</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-  </connections>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="cd_device_string">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="whatsThis">
+          <string>Specify a location for the drive you want to use. Normally, this is a file inside the /dev folder representing your CD or DVD drive.</string>
+         </property>
+         <property name="text">
+          <string>/dev/cdrom</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="cd_autosearch_check">
+         <property name="whatsThis">
+          <string>Uncheck this if you want to specify a CD device different from the one autoprobed</string>
+         </property>
+         <property name="text">
+          <string>&amp;Specify CD Device:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QCheckBox" name="ec_enable_check">
+         <property name="whatsThis">
+          <string>If you uncheck this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
+         </property>
+         <property name="text">
+          <string>Use &amp;error correction when reading the CD</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="2">
+        <widget class="QCheckBox" name="ec_skip_check">
+         <property name="text">
+          <string>&amp;Skip on errors</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <spacer name="spacer4_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>&amp;Names</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="fileNameGroupBox">
+         <property name="title">
+          <string>File Name (without extension)</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="textLabel1_2">
+            <property name="text">
+             <string>The following macros will be expanded:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <layout class="QGridLayout">
+            <item row="6" column="1">
+             <widget class="QLabel" name="textLabel13">
+              <property name="text">
+               <string>Genre</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="QLabel" name="textLabel10">
+              <property name="text">
+               <string>%{year}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="textLabel2_3">
+              <property name="text">
+               <string>%{title}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="textLabel5">
+              <property name="text">
+               <string>Album Title</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="textLabel11">
+              <property name="text">
+               <string>Year</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="textLabel2_4">
+              <property name="text">
+               <string>Track Artist</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="textLabel3_3">
+              <property name="text">
+               <string>Track Title</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="textLabel9">
+              <property name="text">
+               <string>Album Artist</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="textLabel8">
+              <property name="text">
+               <string>%{albumartist}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="textLabel12">
+              <property name="text">
+               <string>%{genre}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="textLabel1_3">
+              <property name="text">
+               <string>%{trackartist}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="textLabel6">
+              <property name="text">
+               <string>%{albumtitle}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="textLabel7">
+              <property name="text">
+               <string>Track Number</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="textLabel4_2">
+              <property name="text">
+               <string>%{number}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <widget class="KLineEdit" name="fileNameLineEdit"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QGroupBox" name="albumNameGroupBox">
+         <property name="title">
+          <string>Album Name</string>
+         </property>
+         <layout class="QVBoxLayout">
+          <item>
+           <widget class="QLabel" name="fileNameLabel_2">
+            <property name="text">
+             <string>The following macros will be expanded:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout">
+            <item row="2" column="1" rowspan="2">
+             <widget class="QLabel" name="textLabel20">
+              <property name="text">
+               <string>Year</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" rowspan="2">
+             <widget class="QLabel" name="textLabel15">
+              <property name="text">
+               <string>%{albumartist}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="textLabel16">
+              <property name="text">
+               <string>%{year}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="textLabel21">
+              <property name="text">
+               <string>Genre</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="textLabel19">
+              <property name="text">
+               <string>Album Artist</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="textLabel18">
+              <property name="text">
+               <string>Album Title</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="textLabel17">
+              <property name="text">
+               <string>%{genre}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="textLabel14">
+              <property name="text">
+               <string>%{albumtitle}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="spacer3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>31</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="KLineEdit" name="albumNameLineEdit"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QGroupBox" name="fileLocationGroupBox">
+         <property name="whatsThis">
+          <string>This defines where files will appear in relation to the encoder root, you can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} </string>
+         </property>
+         <property name="title">
+          <string>Files Location</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="_2">
+          <item>
+           <widget class="QLabel" name="fileNameLabel_3">
+            <property name="text">
+             <string>The following macros will be expanded:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="_3">
+            <item row="2" column="1" rowspan="2">
+             <widget class="QLabel" name="textLabel20_2">
+              <property name="text">
+               <string>Year</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" rowspan="2">
+             <widget class="QLabel" name="textLabel15_2">
+              <property name="text">
+               <string>%{albumartist}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="textLabel16_2">
+              <property name="text">
+               <string>%{year}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="textLabel21_2">
+              <property name="text">
+               <string>Genre</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="textLabel19_2">
+              <property name="text">
+               <string>Album Artist</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="textLabel18_2">
+              <property name="text">
+               <string>Album Title</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="textLabel17_2">
+              <property name="text">
+               <string>%{genre}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="textLabel14_2">
+              <property name="text">
+               <string>%{albumtitle}</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="spacer3_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>31</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="KLineEdit" name="fileLocationLineEdit">
+            <property name="text">
+             <string>%{albumtitle}/%{albumartist}</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QGroupBox" name="groupBox2">
+         <property name="title">
+          <string>Name Regular Expression Replacement</string>
+         </property>
+         <layout class="QGridLayout">
+          <item row="1" column="0">
+           <widget class="QLabel" name="textLabel2_2">
+            <property name="text">
+             <string>Selection:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="3">
+           <widget class="QLabel" name="textLabel1">
+            <property name="text">
+             <string>Regular expression used on all file names. For example using selection &quot; &quot; and replace with &quot;_&quot; would replace all the spaces with underlines.
+</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignVCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="inputlabel">
+            <property name="text">
+             <string>Input:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="outputLabel">
+            <property name="text">
+             <string>Output:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QLabel" name="exampleLabel">
+            <property name="text">
+             <string>Example</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" colspan="2">
+           <widget class="QLabel" name="exampleOutput">
+            <property name="text">
+             <string>Cool artist - example audio file.wav</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1" colspan="2">
+           <widget class="QLineEdit" name="example">
+            <property name="text">
+             <string>Cool artist - example audio file.wav</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QLineEdit" name="kcfg_replaceInput"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="kcfg_replaceOutput"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="textLabel3_2">
+            <property name="text">
+             <string>Replace with:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="3">
+           <widget class="Line" name="line1">
+            <property name="frameShape">
+             <enum>QFrame::HLine</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <spacer name="spacer4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>21</width>
+           <height>16</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>cd_device_string</tabstop>
+  <tabstop>ec_enable_check</tabstop>
+  <tabstop>ec_skip_check</tabstop>
+  <tabstop>niceLevel</tabstop>
+  <tabstop>fileNameLineEdit</tabstop>
+  <tabstop>albumNameLineEdit</tabstop>
+  <tabstop>kcfg_replaceInput</tabstop>
+  <tabstop>kcfg_replaceOutput</tabstop>
+  <tabstop>example</tabstop>
+ </tabstops>
+ <includes>
+  <include location="local">kcmodule.h</include>
+  <include location="local">klineedit.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>ec_enable_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ec_skip_check</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cd_autosearch_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cd_device_string</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

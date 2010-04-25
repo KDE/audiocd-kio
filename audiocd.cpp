@@ -98,7 +98,8 @@ enum Which_dir {
 	Info, // CDDB info
 	Root, // The root directory, shows all these :)
 	FullCD, // Show a single file containing all of the data
-	EncoderDir // A directory created by an encoder
+	EncoderDir, // The root directory created by an encoder
+	SubDir // A directory created from the Album name configuration
 };
 
 class AudioCDProtocol::Private {
@@ -142,6 +143,7 @@ public:
 	Which_dir which_dir;
 	int req_track;
 	QString fname;
+	QString child_dir;
 	AudioCDEncoder *encoder_dir_type;
 
 	// Misc settings
@@ -166,13 +168,15 @@ public:
 
 	// Template for ..
 	QString fileNameTemplate; // URL settable
-	QString albumTemplate; // URL settable
+	QString albumNameTemplate; // URL settable
+	QString fileLocationTemplate;  // URL settable
 	QString rsearch;
 	QString rreplace;
 
 	// Current strings for this CD and or cddb selection
 	QStringList templateTitles;
 	QString templateAlbumName;
+	QString templateFileLocation;
 };
 
 int paranoia_read_limited_error;
@@ -301,53 +305,76 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 	}
 
 	// Determine what file or folder that is wanted.
-	d->fname = url.fileName(KUrl::ObeyTrailingSlash);
-	QString dname = url.directory(KUrl::AppendTrailingSlash);
-	if (!dname.isEmpty() && dname[0] == '/')
-		dname = dname.mid(1);
+	QString path = url.path();
+	if (!path.isEmpty() && path[0] == '/')
+		path = path.mid(1);
 
-	// Kong issue where they send dirs as files, double check
-	/* A hack, for when konqi wants to list the directory audiocd:/Bla
-		 it really submits this URL, instead of audiocd:/Bla/ to us. We could
-		 send (in listDir) the UDSEntry::UDS_NAME as "Bla/" for directories, but then
-		 konqi shows them as "Bla//" in the status line. */
-	// See if it is an encoder directory
-	AudioCDEncoder *encoder;
-	for (int i = encoders.size()-1; i >= 0; --i) {
-            encoder = encoders.at(i);
-	    if(encoder->type() == d->fname){
-		dname = d->fname;
-		d->fname = "";
-		break;
-	    }
-	}
-	// Other Hard coded directories
-	if (dname.isEmpty() && (d->fname == d->s_info || d->fname == d->s_fullCD ))
-	{
-		dname = d->fname;
-		d->fname = "";
-	}
-	// end hack
-
-
-	// See which directory they want
+	d->req_allTracks = false;
+	
+	// See which file and directory they want
+	QString remainingDirPath;
 	d->which_dir = Unknown;
-	for (int i = encoders.size()-1; i >= 0; --i) {
-            encoder = encoders.at(i);
-		if(encoder->type() == dname){
-			d->which_dir = EncoderDir;
-			d->encoder_dir_type = encoder;
-			break;
+	if (path.isEmpty()) {
+		d->which_dir = Root;
+		d->encoder_dir_type = encoderTypeWAV;
+		remainingDirPath = d->templateFileLocation;
+		d->fname = QString();
+	} else {
+		for (int i = encoders.size()-1; i >= 0; --i) {
+			AudioCDEncoder *encoder = encoders.at(i);
+			const QString encoderFileLocation = encoder->type() + "/" + d->templateFileLocation;
+			if (path == encoder->type()) {
+				d->which_dir = EncoderDir;
+				d->encoder_dir_type = encoder;
+				remainingDirPath = encoderFileLocation.mid(path.length());
+				d->fname = QString();
+				break;
+			} else if (encoderFileLocation.startsWith(path)) {
+				d->which_dir = SubDir;
+				d->encoder_dir_type = encoder;
+				remainingDirPath = encoderFileLocation.mid(path.length());
+				d->fname = QString();
+				break;
+			} else if (path.startsWith(encoderFileLocation)) {
+				d->which_dir = SubDir;
+				d->encoder_dir_type = encoder;
+				remainingDirPath = QString();
+				d->fname = path.mid(encoderFileLocation.length() + 1);
+				break;
+			} else if (path.startsWith(encoder->type())) {
+				d->which_dir = EncoderDir;
+				d->encoder_dir_type = encoder;
+				remainingDirPath = QString();
+				d->fname = path.mid(encoder->type().length() + 1);
+			}
+		}
+		if ( Unknown == d->which_dir ) {
+			if (path.startsWith(d->s_info)) {
+				d->which_dir = Info;
+				d->fname = path.mid(d->s_info.length() + 1);
+			} else if (path.startsWith(d->s_fullCD)) {
+				d->which_dir = FullCD;
+				d->fname = path.mid(d->s_fullCD.length() + 1);
+				d->req_allTracks = true;
+			} else if (d->templateFileLocation.startsWith(path)) {
+				d->which_dir = SubDir;
+				d->encoder_dir_type = encoderTypeWAV;
+				remainingDirPath = d->templateFileLocation.mid(path.length());
+				d->fname = QString();
+			} else if (path.startsWith(d->templateFileLocation)) {
+				d->encoder_dir_type = encoderTypeWAV;
+				remainingDirPath = QString();
+				d->fname = path.mid(d->templateFileLocation.length() + 1);
+			} else  {
+				d->encoder_dir_type = encoderTypeWAV;
+				remainingDirPath = QString();
+				d->fname = path;
+			}
 		}
 	}
-	if ( Unknown == d->which_dir ){
-		if (dname.isEmpty())
-			d->which_dir = Root;
-		else if (dname == d->s_info)
-			d->which_dir = Info;
-		else if (dname == d->s_fullCD)
-			d->which_dir = FullCD;
-	}
+	if (!remainingDirPath.isEmpty() && remainingDirPath[0] == '/')
+		remainingDirPath = remainingDirPath.mid(1);
+	d->child_dir = remainingDirPath.split("/").first();
 
 	// See if the url is a track
 	d->req_track = -1;
@@ -393,10 +420,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 	if (d->req_track >= (int)d->tracks)
 		d->req_track = -1;
 
-	// Are we in the directory that lists "full CD" files?
-	d->req_allTracks = (dname.contains(d->s_fullCD));
-
-	kDebug(7117) << "dir=" << dname << " file=" << d->fname
+	kDebug(7117) << "path=" << path << " file=" << d->fname
 		<< " req_track=" << d->req_track << " which_dir=" << d->which_dir << " full CD?=" << d->req_allTracks << endl;
 	return drive;
 }
@@ -607,8 +631,6 @@ void AudioCDProtocol::listDir(const KUrl & url)
 	generateTemplateTitles();
 
 	UDSEntry entry;
-	// If the tracks should be listed in this directory
-	bool list_tracks = true;
 
 	if (d->which_dir == Info){
 		CDInfoList::iterator it;
@@ -628,8 +650,6 @@ void AudioCDProtocol::listDir(const KUrl & url)
 			count++;
 			listEntry(entry, false);
 		}
-
-		list_tracks = false;
 	}
 
 	if (d->which_dir == Root){
@@ -654,45 +674,48 @@ void AudioCDProtocol::listDir(const KUrl & url)
 	}
 
 	// Now fill in the tracks for the current directory
-	if (list_tracks && d->which_dir == FullCD) {
-		// if we're listing the "full CD" subdirectory :
-		if ( (d->which_dir == FullCD) ) {
-			AudioCDEncoder *encoder;
-			for (int i = encoders.size()-1; i >= 0; --i) {
-            			encoder = encoders.at(i);
-				if (d->cddbResult != KCDDB::Success)
-					addEntry(d->s_fullCD, encoder, drive, -1);
-				else
-					addEntry(d->templateAlbumName, encoder, drive, -1);
-			}
+	if (d->which_dir == FullCD) {
+		AudioCDEncoder *encoder;
+		for (int i = encoders.size()-1; i >= 0; --i) {
+			encoder = encoders.at(i);
+			if (d->cddbResult != KCDDB::Success)
+				addEntry(d->s_fullCD, encoder, drive, -1);
+			else
+				addEntry(d->templateAlbumName, encoder, drive, -1);
 		}
 	}
 
-	if (list_tracks && d->which_dir != FullCD) {
-		// listing another dir than the "FullCD" one.
-		for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
+	if (d->which_dir == SubDir || d->which_dir == Root || d->which_dir == EncoderDir) {
+		if (d->child_dir.isEmpty() || d->which_dir == Root || d->which_dir == EncoderDir)
 		{
-			// Skip data tracks
-			if (!d->trackIsAudio[trackNumber-1])
-				continue;
+			// we are at the end of the hierarchy, list the tracks
+			for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
+			{
+				// Skip data tracks
+				if (!d->trackIsAudio[trackNumber-1])
+					continue;
 
-			switch (d->which_dir) {
-				case Root:{
-					addEntry(d->templateTitles[trackNumber - 1],
-						encoderTypeWAV, drive, trackNumber);
-					break;
+				switch (d->which_dir) {
+					case EncoderDir:
+					case SubDir:
+					case Root:
+						addEntry(d->templateTitles[trackNumber - 1],
+							d->encoder_dir_type, drive, trackNumber);
+						break;
+					case Info:
+					case Unknown:
+					default:
+						error(KIO::ERR_INTERNAL, url.path());
+						cdda_close(drive);
+						return;
 				}
-				case EncoderDir:
-					addEntry(d->templateTitles[trackNumber - 1],
-						d->encoder_dir_type, drive, trackNumber);
-					break;
-				case Info:
-				case Unknown:
-				default:
-					error(KIO::ERR_INTERNAL, url.path());
-					cdda_close(drive);
-					return;
 			}
+		}
+		
+		if (!d->child_dir.isEmpty())
+		{
+			app_dir(entry, d->child_dir, 1);
+			listEntry(entry, false);
 		}
 	}
 
@@ -975,7 +998,9 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 		else if (attribute == QLatin1String("fileNameTemplate"))
 			d->fileNameTemplate = value;
 		else if (attribute == QLatin1String("albumNameTemplate"))
-			d->albumTemplate = value;
+			d->albumNameTemplate = value;
+		else if (attribute == QLatin1String("fileLocationTemplate"))
+			d->fileLocationTemplate = value;
 		else if (attribute == QLatin1String("cddbChoice"))
 			d->cddbUserChoice = value.toInt();
 		else if (attribute == QLatin1String("niceLevel")){
@@ -1019,9 +1044,13 @@ void AudioCDProtocol::loadSettings()
 	}
 
 	// The default track filename template
-        const KConfigGroup groupFileName( config, "FileName" );
+	const KConfigGroup groupFileName( config, "FileName" );
 	d->fileNameTemplate = groupFileName.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}");
-	d->albumTemplate = groupFileName.readEntry("album_name_template", "%{albumartist} - %{albumtitle}");
+	d->albumNameTemplate = groupFileName.readEntry("album_name_template", "%{albumartist} - %{albumtitle}");
+	if (groupFileName.readEntry("show_file_location", false))
+		d->fileLocationTemplate = groupFileName.readEntry("file_location_template", QString());
+	else
+		d->fileLocationTemplate = QString();
 	d->rsearch = groupFileName.readEntry("regexp_search");
 	d->rreplace = groupFileName.readEntry("regexp_replace");
 	// if the regular expressions are enclosed in qoutes. remove them
@@ -1094,12 +1123,14 @@ void AudioCDProtocol::generateTemplateTitles()
 	macros["albumtitle"] = info.get(Title).toString();
 	macros["genre"] = info.get(Genre).toString();
 	macros["year"] = info.get(Year).toString();
-	d->templateAlbumName = KMacroExpander::expandMacros(d->albumTemplate, macros, '%').replace('/', QLatin1String("%2F"));
+	d->templateAlbumName = KMacroExpander::expandMacros(d->albumNameTemplate, macros, '%').replace('/', QLatin1String("%2F"));
 	d->templateAlbumName.replace( QRegExp(d->rsearch), d->rreplace );
+	
+	d->templateFileLocation = KMacroExpander::expandMacros(d->fileLocationTemplate, macros, '%');
 }
 
 /**
- * Based upon the cdparinoia ripping application
+ * Based upon the cdparanoia ripping application
  * Only output BAD stuff
  * The higher the paranoia_read_limited_error the worse the problem is
  * FYI: PARANOIA_CB_READ & PARANOIA_CB_VERIFY happen continusly when ripping

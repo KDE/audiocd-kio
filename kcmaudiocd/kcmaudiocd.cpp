@@ -87,6 +87,8 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     // File Name
     connect(audioConfig->fileNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
     connect(audioConfig->albumNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
+    connect(audioConfig->fileLocationLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
+    connect(audioConfig->fileLocationGroupBox, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
     connect( audioConfig->kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( audioConfig->kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
     connect( audioConfig->example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
@@ -174,6 +176,8 @@ void KAudiocdModule::save() {
     KConfigGroup cg(config, "FileName");
     cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
     cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
+    cg.writeEntry("show_file_location", audioConfig->fileLocationGroupBox->isChecked());
+    cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
     cg.writeEntry("regexp_example", audioConfig->example->text());
 
         // save qouted if required
@@ -219,6 +223,8 @@ void KAudiocdModule::load() {
     KConfigGroup cg(config, "FileName");
     audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
     audioConfig->albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
+    audioConfig->fileLocationGroupBox->setChecked(cg.readEntry("show_file_location", false));
+    audioConfig->fileLocationLineEdit->setText(cg.readEntry("file_location_template", QString()));
     audioConfig->kcfg_replaceInput->setText(cg.readEntry("regexp_search"));
     audioConfig->kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));
     audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
