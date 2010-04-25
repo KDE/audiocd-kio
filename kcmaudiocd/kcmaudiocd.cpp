@@ -102,7 +102,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
                    0, KLocalizedString(), KAboutData::License_GPL,
                    ki18n("(c) 2000 - 2005 Audio CD developers"));
 
-    about->addAuthor(ki18n("Benjamin C. Meyer"), ki18n("Current Maintainer"), "ben@meyerhome.net");
+    about->addAuthor(ki18n("Benjamin C. Meyer"), ki18n("Former Maintainer"), "ben@meyerhome.net");
     about->addAuthor(ki18n("Carsten Duvenhorst"), KLocalizedString(), "duvenhorst@duvnet.de");
     setAboutData(about);
 }
