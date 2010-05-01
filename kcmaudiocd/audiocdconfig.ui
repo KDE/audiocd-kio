@@ -20,9 +20,9 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tabGeneral">
       <attribute name="title">
        <string>&amp;General</string>
       </attribute>
@@ -171,7 +171,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tabNames">
       <attribute name="title">
        <string>&amp;Names</string>
       </attribute>
@@ -360,7 +360,7 @@
           </item>
           <item>
            <layout class="QGridLayout">
-            <item row="2" column="1" rowspan="2">
+            <item row="2" column="1">
              <widget class="QLabel" name="textLabel20">
               <property name="text">
                <string>Year</string>
@@ -370,7 +370,7 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0" rowspan="2">
+            <item row="1" column="0">
              <widget class="QLabel" name="textLabel15">
               <property name="text">
                <string>%{albumartist}</string>
@@ -380,7 +380,7 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="2" column="0">
              <widget class="QLabel" name="textLabel16">
               <property name="text">
                <string>%{year}</string>
@@ -390,7 +390,7 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="1">
+            <item row="3" column="1">
              <widget class="QLabel" name="textLabel21">
               <property name="text">
                <string>Genre</string>
@@ -420,7 +420,7 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="textLabel17">
               <property name="text">
                <string>%{genre}</string>
@@ -491,7 +491,7 @@
           </item>
           <item>
            <layout class="QGridLayout" name="_3">
-            <item row="2" column="1" rowspan="2">
+            <item row="2" column="1">
              <widget class="QLabel" name="textLabel20_2">
               <property name="text">
                <string>Year</string>
@@ -501,7 +501,7 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0" rowspan="2">
+            <item row="1" column="0">
              <widget class="QLabel" name="textLabel15_2">
               <property name="text">
                <string>%{albumartist}</string>
@@ -511,7 +511,7 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="2" column="0">
              <widget class="QLabel" name="textLabel16_2">
               <property name="text">
                <string>%{year}</string>
@@ -521,7 +521,7 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="1">
+            <item row="3" column="1">
              <widget class="QLabel" name="textLabel21_2">
               <property name="text">
                <string>Genre</string>
@@ -551,7 +551,7 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="textLabel17_2">
               <property name="text">
                <string>%{genre}</string>
