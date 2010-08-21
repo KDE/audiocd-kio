@@ -1,2 +1,2 @@
 #! /bin/sh
-$XGETTEXT *.cpp -o $podir/kio_audiocd.pot
+$XGETTEXT *.cpp plugins/*.cpp -o $podir/kio_audiocd.pot
