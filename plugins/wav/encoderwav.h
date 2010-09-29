@@ -41,7 +41,7 @@ public:
   ~EncoderWav(){}
   virtual bool init(){ return true; }
   virtual unsigned long size(long time_secs) const;
-  virtual QString type() const { return "Wav"; }
+  virtual QString type() const { return QLatin1String( "Wav" ); }
   virtual const char * fileType() const { return "wav"; }
   virtual const char * mimeType() const;
   virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){}

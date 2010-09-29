@@ -1,7 +1,7 @@
 /*
     Copyright (C) 2004 Allan Sandfeld Jensen <kde@carewolf.com>
     Copyright (C) 2005 Benjamin Meyer <ben at meyerhome dot net>
- 
+
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
     License as published by the Free Software Foundation; either
@@ -177,16 +177,16 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 //    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
     typedef QPair<QString, QVariant> Comment;
-    Comment comments[7] = { Comment("Title", info.track(track-1).get(Title)),
-	    	    	    Comment("Artist", info.track(track-1).get(Artist)),
-	    	    	    Comment("Album",  info.get(Title)),
-	    	    	    Comment("Genre",  info.get(Genre)),
-	    	    	    Comment("Tracknumber", QString::number(track)),
-	                Comment("Comment", comment),
-	    	    	    Comment("Date", QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
+    Comment comments[7] = { Comment(QLatin1String( "Title" ), info.track(track-1).get(Title)),
+	    	    	    Comment(QLatin1String( "Artist" ), info.track(track-1).get(Artist)),
+	    	    	    Comment(QLatin1String( "Album" ),  info.get(Title)),
+	    	    	    Comment(QLatin1String( "Genre" ),  info.get(Genre)),
+	    	    	    Comment(QLatin1String( "Tracknumber" ), QString::number(track)),
+	                Comment(QLatin1String( "Comment" ), comment),
+	    	    	    Comment(QLatin1String( "Date" ), QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
     if (info.get(Year).toInt() > 0) {
     	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
-    	comments[6] = Comment("Date", dt.toString(Qt::ISODate));
+    	comments[6] = Comment(QLatin1String( "Date" ), dt.toString(Qt::ISODate));
     }
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
@@ -196,7 +196,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 
     for(int i=0; i<7; i++) {
 	if (!comments[i].second.toString().isEmpty()) {
-	    field = comments[i].first+'='+comments[i].second.toString();
+	    field = comments[i].first+QLatin1Char( '=' )+comments[i].second.toString();
 	    cfield = field.toUtf8();
     	    entry.entry = (FLAC__byte*)qstrdup(cfield);
 	    entry.length = cfield.length();

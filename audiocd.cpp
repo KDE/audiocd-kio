@@ -29,7 +29,7 @@
 extern "C"
 {
 	//cdda_interface.h in cdparanoia 10.2 has a member called 'private' which the C++ compiler doesn't like
-	#define private _private   
+	#define private _private
 	#include <cdda_interface.h>
 	#include <cdda_paranoia.h>
 	#undef private
@@ -115,19 +115,19 @@ public:
 		req_track = -1;
 		cddbUserChoice = -1;
 	}
-	
+
 	bool tocsAreDifferent(struct cdrom_drive *drive)
 	{
 		if (tracks != (uint)drive->tracks) return true;
 		for (int i = 0; i < drive->tracks; ++i)
 		{
-			if (disc_toc[i].dwStartSector != drive->disc_toc[i].dwStartSector || 
+			if (disc_toc[i].dwStartSector != drive->disc_toc[i].dwStartSector ||
 			    disc_toc[i].bFlags != drive->disc_toc[i].bFlags ||
 			    disc_toc[i].bTrack != drive->disc_toc[i].bTrack) return true;
 		}
 		return false;
 	}
-	
+
 	void setToc(struct cdrom_drive *drive)
 	{
 		for (int i = 0; i < drive->tracks; ++i)
@@ -188,8 +188,8 @@ AudioCDProtocol::AudioCDProtocol(const QByteArray & protocol, const QByteArray &
 
 	// Add encoders
 	AudioCDEncoder::findAllPlugins(this, encoders);
-	encoderTypeCDA = encoderFromExtension(".cda");
-	encoderTypeWAV = encoderFromExtension(".wav");
+	encoderTypeCDA = encoderFromExtension(QLatin1String( ".cda" ));
+	encoderTypeWAV = encoderFromExtension(QLatin1String( ".wav" ));
 }
 
 AudioCDProtocol::~AudioCDProtocol()
@@ -204,7 +204,7 @@ AudioCDEncoder *AudioCDProtocol::encoderFromExtension(const QString& extension)
 	AudioCDEncoder *encoder;
 	for (int i = encoders.size()-1; i >= 0; --i) {
             encoder = encoders.at(i);
-	    if(QString(".")+encoder->fileType() == extension)
+	    if(QLatin1String(".")+QLatin1String( encoder->fileType() ) == extension)
 	        return encoder;
     	}
 	Q_ASSERT(false);
@@ -214,14 +214,14 @@ AudioCDEncoder *AudioCDProtocol::encoderFromExtension(const QString& extension)
 AudioCDEncoder *AudioCDProtocol::determineEncoder(const QString & filename)
 {
 	int len = filename.length();
-	int pos = filename.lastIndexOf('.');
+	int pos = filename.lastIndexOf( QLatin1Char( '.' ));
 	return encoderFromExtension(filename.right(len - pos));
 }
 
 static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 {
 #if defined(HAVE_CDDA_IOCTL_DEVICE)
-	cd->setDevice(drive->ioctl_device_name, 50, false);
+	cd->setDevice(QLatin1String( drive->ioctl_device_name ), 50, false);
 #elif defined(__FreeBSD__) || defined(__DragonFly__)
 	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
 	// support for non-SCSI devices. Although it finds ATA cdroms just
@@ -289,7 +289,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		KCompactDisc cd(KCompactDisc::Asynchronous);
 		setDeviceToCd(&cd, drive);
 		d->setToc(drive);
-		
+
 		d->tracks = cd.tracks();
 		for(uint i=0; i< cd.tracks(); i++)
 			d->trackIsAudio[i] = cd.isAudio(i+1);
@@ -306,11 +306,11 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 
 	// Determine what file or folder that is wanted.
 	QString path = url.path();
-	if (!path.isEmpty() && path[0] == '/')
+	if (!path.isEmpty() && path[0] == QLatin1Char( '/' ))
 		path = path.mid(1);
 
 	d->req_allTracks = false;
-	
+
 	// See which file and directory they want
 	QString remainingDirPath;
 	d->which_dir = Unknown;
@@ -323,7 +323,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		for (int i = encoders.size()-1; i >= 0; --i) {
 			AudioCDEncoder *encoder = encoders.at(i);
 			QString encoderFileLocation = encoder->type();
-		        if (!d->templateFileLocation.isEmpty())	encoderFileLocation = encoderFileLocation + "/" + d->templateFileLocation;
+		        if (!d->templateFileLocation.isEmpty())	encoderFileLocation = encoderFileLocation + QLatin1String( "/" ) + d->templateFileLocation;
 			if (path == encoder->type()) {
 				d->which_dir = EncoderDir;
 				d->encoder_dir_type = encoder;
@@ -373,9 +373,9 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 			}
 		}
 	}
-	if (!remainingDirPath.isEmpty() && remainingDirPath[0] == '/')
+	if (!remainingDirPath.isEmpty() && remainingDirPath[0] == QLatin1Char( '/' ))
 		remainingDirPath = remainingDirPath.mid(1);
-	d->child_dir = remainingDirPath.split("/").first();
+	d->child_dir = remainingDirPath.split(QLatin1String( "/" )).first();
 
 	// See if the url is a track
 	d->req_track = -1;
@@ -383,7 +383,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
 		QString name(d->fname);
 
 		// Remove extension
-		int dot = name.lastIndexOf('.');
+		int dot = name.lastIndexOf( QLatin1Char( '.' ));
 		if (dot >= 0)
 			name.truncate(dot);
 
@@ -453,15 +453,15 @@ void AudioCDProtocol::get(const KUrl & url)
 
 	if( d->fname.contains(i18n(CDDB_INFORMATION))){
 		uint choice = 1;
-		if(d->fname != QString("%1.txt").arg(i18n(CDDB_INFORMATION))){
-			choice= d->fname.section('_',1,1).section('.',0,0).toInt();
+		if(d->fname != QString::fromLatin1("%1.txt").arg(i18n(CDDB_INFORMATION))){
+			choice= d->fname.section(QLatin1Char( '_' ),1,1).section(QLatin1Char( '.' ),0,0).toInt();
 		}
 		uint count = 1;
 		CDInfoList::iterator it;
 		bool found = false;
 		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			if(count == choice){
-				mimeType("text/html");
+				mimeType(QLatin1String( "text/html" ));
 				data(QByteArray( (*it).toString().toLatin1() ));
 				// send an empty QByteArray to signal end of data.
 				data(QByteArray());
@@ -471,8 +471,8 @@ void AudioCDProtocol::get(const KUrl & url)
 			}
 			count++;
 		}
-		if(!found && d->fname.contains(i18n(CDDB_INFORMATION)+':')){
-			mimeType("text/html");
+		if(!found && d->fname.contains(i18n(CDDB_INFORMATION)+QLatin1Char( ':' ))){
+			mimeType(QLatin1String( "text/html" ));
 			//data(QCString( d->fname.latin1() ));
 			// send an empty QByteArray to signal end of data.
 			data(QByteArray());
@@ -512,7 +512,7 @@ void AudioCDProtocol::get(const KUrl & url)
 			// YES => the title of the file is the title of the CD
 			info.track(track-1).set(Title, info.get(Title));
 		}
-		encoder->fillSongInfo(info, track, "");
+		encoder->fillSongInfo(info, track, QString());
 	}
 	long totalByteCount = CD_FRAMESIZE_RAW * (lastSector - firstSector + 1);
 	long time_secs = (8 * totalByteCount) / (44100 * 2 * 16);
@@ -556,7 +556,7 @@ void AudioCDProtocol::stat(const KUrl & url)
 
 	UDSEntry entry;
 
-	entry.insert( KIO::UDSEntry::UDS_NAME, url.fileName().replace('/', QLatin1String("%2F") ));
+	entry.insert( KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F") ));
 
 	entry.insert( KIO::UDSEntry::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
 
@@ -593,7 +593,7 @@ static void app_dir(UDSEntry& e, const QString & n, size_t s)
 	e.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
 	e.insert( KIO::UDSEntry::UDS_ACCESS, 0400);
 	e.insert( KIO::UDSEntry::UDS_SIZE, s);
-	e.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString("inode/directory"));
+	e.insert( KIO::UDSEntry::UDS_MIME_TYPE, QLatin1String("inode/directory"));
 }
 
 static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mimetype = QString())
@@ -639,15 +639,15 @@ void AudioCDProtocol::listDir(const KUrl & url)
 		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			(*it).toString();
 			if(count == 1)
-				app_file(entry, QString("%1.txt").arg(i18n(CDDB_INFORMATION)), ((*it).toString().length())+1);
+                            app_file(entry, QString::fromLatin1("%1.txt").arg(i18n(CDDB_INFORMATION)), ((*it).toString().length())+1);
 			else
-				app_file(entry, QString("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(count), ((*it).toString().length())+1);
+                            app_file(entry, QString::fromLatin1("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(count), ((*it).toString().length())+1);
 			count++;
 			listEntry(entry, false);
 		}
 		// Error
 		if( count == 1 ) {
-			app_file(entry, QString("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), 0);
+                    app_file(entry, QString::fromLatin1("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), 0);
 			count++;
 			listEntry(entry, false);
 		}
@@ -712,7 +712,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 				}
 			}
 		}
-		
+
 		if (!d->child_dir.isEmpty())
 		{
 			app_dir(entry, d->child_dir, 1);
@@ -745,7 +745,7 @@ void AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encode
 		theFileSize = fileSize(firstSector, lastSector, encoder);
 	}
 	UDSEntry entry;
-	app_file(entry, trackTitle + QString(".")+encoder->fileType(), theFileSize, encoder->mimeType());
+	app_file(entry, trackTitle + QLatin1String(".")+QLatin1String( encoder->fileType() ), theFileSize, QLatin1String( encoder->mimeType() ));
 	listEntry(entry, false);
 }
 
@@ -766,7 +766,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
 	struct cdrom_drive * drive = 0;
 
-	if (!device.isEmpty() && device != "/")
+	if (!device.isEmpty() && device != "/" )
 		drive = cdda_identify(device, CDDA_MESSAGE_PRINTIT, 0);
 	else
 	{
@@ -883,7 +883,7 @@ void AudioCDProtocol::paranoiaRead(
 			QString errMsg = i18n( "Could not read %1: encoding failed", fileName );
 			QString details = encoder->lastErrorMessage();
 			if ( !details.isEmpty() )
-			    errMsg += '\n' + details;
+			    errMsg += QLatin1Char( '\n' ) + details;
 			error( ERR_SLAVE_DEFINED, errMsg );
 			break;
 		}
@@ -974,18 +974,18 @@ void AudioCDProtocol::parseURLArgs(const KUrl & url)
 
 	QString query(QUrl::fromPercentEncoding(url.query().toAscii()));
 
-	if (query.isEmpty() || query[0] != '?')
+	if (query.isEmpty() || query[0] != QLatin1Char( '?' ))
 		return;
 
 	query = query.mid(1); // Strip leading '?'.
 
-	const QStringList tokens(query.split('&',QString::SkipEmptyParts));
+	const QStringList tokens(query.split(QLatin1Char( '&' ),QString::SkipEmptyParts));
 
 	for (QStringList::ConstIterator it(tokens.constBegin()); it != tokens.constEnd(); ++it)
 	{
 		const QString token(*it);
 
-		int equalsPos = token.indexOf('=');
+		int equalsPos = token.indexOf(QLatin1Char( '=' ));
 		if (-1 == equalsPos)
 			continue;
 
@@ -1058,7 +1058,7 @@ void AudioCDProtocol::loadSettings()
 	// otherwise it is not possible to search for a space " ", since an empty (only spaces) value is not
 	// supported by KConfig, so the space has to be qouted, but then here the regexp searches really for " "
 	// instead of just the space. Alex
-	QRegExp qoutedString("^\".*\"$");
+	QRegExp qoutedString( QLatin1String( "^\".*\"$" ));
 	if (qoutedString.exactMatch(d->rsearch))
 	{
 		d->rsearch=d->rsearch.mid(1, d->rsearch.length()-2);
@@ -1104,30 +1104,30 @@ void AudioCDProtocol::generateTemplateTitles()
 	d->templateTitles.clear();
 	for (uint i = 0; i < d->tracks; i++) {
 		QHash<QString, QString> macros;
-		macros["albumartist"] = info.get(Artist).toString();
-		macros["albumtitle"] = info.get(Title).toString();
-		macros["title"] = info.track(i).get(Title).toString();
-		macros["trackartist"] = info.track(i).get(Artist).toString();
+		macros[QLatin1String( "albumartist" )] = info.get(Artist).toString();
+		macros[QLatin1String( "albumtitle" )] = info.get(Title).toString();
+		macros[QLatin1String( "title" )] = info.track(i).get(Title).toString();
+		macros[QLatin1String( "trackartist" )] = info.track(i).get(Artist).toString();
 		QString n;
-		macros["number"] = n.sprintf("%02d", i + 1);
+		macros[QLatin1String( "number" )] = n.sprintf("%02d", i + 1);
 		//macros["number"] = QString("%1").arg(i+1, 2, 10);
-		macros["genre"] = info.get(Genre).toString();
-		macros["year"] = info.get(Year).toString();
+		macros[QLatin1String( "genre" )] = info.get(Genre).toString();
+		macros[QLatin1String( "year" )] = info.get(Year).toString();
 
-		QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, '%').replace('/', QLatin1String("%2F"));
+		QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, QLatin1Char( '%' )).replace(QLatin1Char( '/' ), QLatin1String("%2F"));
 		title.replace( QRegExp(d->rsearch), d->rreplace );
 		d->templateTitles.append(title);
 	}
 
 	QHash<QString, QString> macros;
-	macros["albumartist"] = info.get(Artist).toString();
-	macros["albumtitle"] = info.get(Title).toString();
-	macros["genre"] = info.get(Genre).toString();
-	macros["year"] = info.get(Year).toString();
-	d->templateAlbumName = KMacroExpander::expandMacros(d->albumNameTemplate, macros, '%').replace('/', QLatin1String("%2F"));
+	macros[QLatin1String( "albumartist" )] = info.get(Artist).toString();
+	macros[QLatin1String( "albumtitle" )] = info.get(Title).toString();
+	macros[QLatin1String( "genre" )] = info.get(Genre).toString();
+	macros[QLatin1String( "year" )] = info.get(Year).toString();
+	d->templateAlbumName = KMacroExpander::expandMacros(d->albumNameTemplate, macros, QLatin1Char( '%' )).replace(QLatin1Char( '/' ), QLatin1String("%2F"));
 	d->templateAlbumName.replace( QRegExp(d->rsearch), d->rreplace );
-	
-	d->templateFileLocation = KMacroExpander::expandMacros(d->fileLocationTemplate, macros, '%');
+
+	d->templateFileLocation = KMacroExpander::expandMacros(d->fileLocationTemplate, macros, QLatin1Char( '%' ));
 }
 
 /**

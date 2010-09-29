@@ -39,7 +39,7 @@ KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 #ifdef DEBUG
     kDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\".";
 #endif
-    KLibrary *lib = loader->library(libFileName.toLatin1());
+    KLibrary *lib = loader->library(QLatin1String( libFileName.toLatin1() ));
     if (!lib)
         return NULL;
 #ifdef DEBUG
@@ -64,7 +64,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
     QString foundEncoders;
 
 		KStandardDirs standardDirs;
-    QStringList dirs = standardDirs.findDirs("module", "");
+    QStringList dirs = standardDirs.findDirs("module", QLatin1String( "" ));
     for (QStringList::const_iterator it = dirs.constBegin(); it != dirs.constEnd(); ++it) {
         QDir dir(*it);
         if (!dir.exists()) {
@@ -76,8 +76,8 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
         const QFileInfoList files = dir.entryInfoList();
         for (int i = 0; i < files.count(); ++i) {
             QFileInfo fi(files.at(i));
-            if (0 < fi.fileName().count(QRegExp("^libaudiocd_encoder_.*.so$"))) {
-                QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf('.')));
+            if (0 < fi.fileName().count(QRegExp( QLatin1String( "^libaudiocd_encoder_.*.so$" )))) {
+                QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf(QLatin1Char( '.' ))));
                 if (foundEncoders.contains(fileName)) {
                     kDebug(7117) << "Warning, encoder has been found twice!";
                     continue;

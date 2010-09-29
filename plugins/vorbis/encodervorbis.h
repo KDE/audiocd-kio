@@ -44,14 +44,14 @@ public:
  * Ogg Vorbis encoder.
  * This encoder is only enabled when HAVE_VORBIS is set.
  * Check out http://www.vorbis.com/ for lots of information.
- */ 
+ */
 class EncoderVorbis : public AudioCDEncoder {
 
 public:
   EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis();
-  
-  virtual QString type() const { return "Ogg Vorbis"; }
+
+  virtual QString type() const { return QLatin1String( "Ogg Vorbis" ); }
   virtual bool init();
   virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;
@@ -65,10 +65,10 @@ public:
 
 private:
   long flush_vorbis();
-  
+
   class Private;
   Private * d;
-    
+
 };
 
 #endif // HAVE_VORBIS

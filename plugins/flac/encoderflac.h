@@ -38,7 +38,7 @@ public:
   explicit EncoderFLAC(KIO::SlaveBase *slave);
   ~EncoderFLAC();
 
-  virtual QString type() const { return "FLAC"; };
+  virtual QString type() const { return QLatin1String( "FLAC" ); };
   virtual bool init();
   virtual void loadSettings();
   virtual unsigned long size(long time_secs) const;

@@ -53,7 +53,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     box->addWidget(audioConfig);
     setButtons(Default|Apply);
 
-    config = new KConfig("kcmaudiocdrc");
+    config = new KConfig( QLatin1String( "kcmaudiocdrc" ));
 
     QList<AudioCDEncoder*> encoders;
     AudioCDEncoder::findAllPlugins(0, encoders);
@@ -115,7 +115,7 @@ KAudiocdModule::~KAudiocdModule()
 QString removeQoutes(const QString& text)
 {
    QString deqoutedString=text;
-   QRegExp qoutedStringRegExp("^\".*\"$");
+   QRegExp qoutedStringRegExp( QLatin1String( "^\".*\"$" ));
    if (qoutedStringRegExp.exactMatch(text))
    {
       deqoutedString=text.mid(1, text.length()-2);
@@ -125,8 +125,8 @@ QString removeQoutes(const QString& text)
 
 bool needsQoutes(const QString& text)
 {
-   QRegExp spaceAtTheBeginning("^\\s+.*$");
-   QRegExp spaceAtTheEnd("^.*\\s+$");
+   QRegExp spaceAtTheBeginning( QLatin1String( "^\\s+.*$" ));
+   QRegExp spaceAtTheEnd( QLatin1String( "^.*\\s+$" ));
    return (spaceAtTheBeginning.exactMatch(text) || spaceAtTheEnd.exactMatch(text));
 }
 

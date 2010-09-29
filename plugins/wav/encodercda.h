@@ -43,7 +43,7 @@ public:
   virtual bool init(){ return true; }
   virtual void loadSettings(){}
   virtual unsigned long size(long time_secs) const;
-  virtual QString type() const { return "CDA"; }
+  virtual QString type() const { return QLatin1String( "CDA" ); }
   virtual const char * mimeType() const;
   virtual const char * fileType() const { return "cda"; }
   virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){}
