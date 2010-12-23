@@ -59,6 +59,10 @@ static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *e
                                                     unsigned current_frame,
                                                     void *client_data)
 {
+    Q_UNUSED(encoder)
+    Q_UNUSED(samples)
+    Q_UNUSED(current_frame)
+
     EncoderFLAC::Private *d = (EncoderFLAC::Private*)client_data;
 
     d->data += bytes;
@@ -77,7 +81,9 @@ static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *e
 static void MetadataCallback (const FLAC__StreamEncoder *encoder, const FLAC__StreamMetadata *metadata, void *client_data)
 {
 	// We do not have seekable writeback so we just discard the updated metadata
-
+    Q_UNUSED(encoder)
+    Q_UNUSED(metadata)
+    Q_UNUSED(client_data)
 }
 
 /*
@@ -152,7 +158,7 @@ long EncoderFLAC::read(int16_t * buf, int frames)
        buffer[i] = (FLAC__int32)buf[i];
     }
 
-    bool res = FLAC__stream_encoder_process_interleaved (d->encoder, buffer, frames);
+    FLAC__stream_encoder_process_interleaved(d->encoder, buffer, frames);
     delete[] buffer;
     return d->data - olddata;
 }
