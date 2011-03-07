@@ -146,7 +146,7 @@ Comment[uk]=Налаштування підлеглого В/В «Audiocd»
 Comment[wa]=Apontiaedje do vårlet d' I/R audiocd
 Comment[xh]=Video-DVD IO Slave Uqwalaselo
 Comment[x-test]=xxAudiocd IO Slave Configurationxx
-Comment[zh_CN]=音频 CD 输入输出模块配置
+Comment[zh_CN]=音频 CD 输入输出后端配置
 Comment[zh_HK]=音樂 CD IO Slave 設定
 Comment[zh_TW]=音樂光碟 IO Slave 組態
 Keywords=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
@@ -212,7 +212,7 @@ Keywords[tr]=Ses CDsi,CD,Ogg,Vorbis,Kodlama,CDDA,Bitrate
 Keywords[uk]=Аудіо-КД,КД,Ogg,Vorbis,кодування,CDDA,частота вибірки
 Keywords[wa]=plake lazer odio,CD,Ogg,Vorbis,Ecôdaedje,Encoding,CDDA,Bitrate,roedeur des bits
 Keywords[x-test]=xxAudio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitratexx
-Keywords[zh_CN]=Audio CD,音频 CD,CD,Ogg,Vorbis,Encding,编码,CDDA,Bitrate,码率
+Keywords[zh_CN]=Audio CD,音频 CD,CD,Ogg,Vorbis,Encding,编码,CDDA,Bitrate,码率,比特率
 Keywords[zh_HK]=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
 Keywords[zh_TW]=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
 
