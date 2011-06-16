@@ -33,23 +33,12 @@ KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 #ifdef DEBUG
     kDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\".";
 #endif
-    KLibLoader *loader = KLibLoader::self();
-    if (!loader)
-        return NULL;
-#ifdef DEBUG
-    kDebug(7117) << "We have a loader. File:  \"" << libFileName.latin1() << "\".";
-#endif
-    KLibrary *lib = loader->library(QLatin1String( libFileName.toLatin1() ));
-    if (!lib)
-        return NULL;
-#ifdef DEBUG
-    kDebug(7117) << "We have a library. File: \"" << libFileName.latin1() << "\".";
-#endif
-    KLibrary::void_function_ptr cplugin = lib->resolveFunction("create_audiocd_encoders");
+    KLibrary::void_function_ptr cplugin = KLibrary::void_function_ptr(
+               QLibrary::resolve(libFileName, "create_audiocd_encoders"));
     if (!cplugin)
         return NULL;
 #ifdef DEBUG
-    kDebug(7117) << "We have a plugin. File:  \"" << libFileName.latin1() << "\".";
+    kDebug(7117) << "We have a plugin. File:  \"" << libFileName << "\".";
 #endif
     return cplugin;
 }
