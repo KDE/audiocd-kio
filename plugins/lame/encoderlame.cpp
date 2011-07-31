@@ -257,8 +257,8 @@ long EncoderLame::readInit(long /*size*/){
 // 	connect(d->currentEncodeProcess, SIGNAL(bytesWritten()),
 //                          this, SLOT(wroteStdin()));
 
-	connect(d->currentEncodeProcess, SIGNAL(finished(int, QProcess::ExitStatus)),
-                         this, SLOT(processExited(int, QProcess::ExitStatus)));
+	connect(d->currentEncodeProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
+                         this, SLOT(processExited(int,QProcess::ExitStatus)));
 
 	// Launch!
 	d->currentEncodeProcess->setOutputChannelMode(KProcess::SeparateChannels);

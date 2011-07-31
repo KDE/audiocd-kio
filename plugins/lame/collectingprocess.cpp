@@ -59,18 +59,18 @@ CollectingProcess::~CollectingProcess() {
 
 bool CollectingProcess::start( RunMode runmode, Communication comm ) {
   // prevent duplicate connection
-  disconnect( this, SIGNAL( receivedStdout( K3Process *, char *, int ) ),
-              this, SLOT( slotReceivedStdout( K3Process *, char *, int ) ) );
+  disconnect( this, SIGNAL(receivedStdout(K3Process*,char*,int)),
+              this, SLOT(slotReceivedStdout(K3Process*,char*,int)) );
   if ( comm & Stdout ) {
-    connect( this, SIGNAL( receivedStdout( K3Process *, char *, int ) ),
-             this, SLOT( slotReceivedStdout( K3Process *, char *, int ) ) );
+    connect( this, SIGNAL(receivedStdout(K3Process*,char*,int)),
+             this, SLOT(slotReceivedStdout(K3Process*,char*,int)) );
   }
   // prevent duplicate connection
-  disconnect( this, SIGNAL( receivedStderr( K3Process *, char *, int ) ),
-              this, SLOT( slotReceivedStderr( K3Process *, char *, int ) ) );
+  disconnect( this, SIGNAL(receivedStderr(K3Process*,char*,int)),
+              this, SLOT(slotReceivedStderr(K3Process*,char*,int)) );
   if ( comm & Stderr ) {
-    connect( this, SIGNAL( receivedStderr( K3Process *, char *, int ) ),
-             this, SLOT( slotReceivedStderr( K3Process *, char *, int ) ) );
+    connect( this, SIGNAL(receivedStderr(K3Process*,char*,int)),
+             this, SLOT(slotReceivedStderr(K3Process*,char*,int)) );
   }
   return K3Process::start( runmode, comm );
 }

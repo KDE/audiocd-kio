@@ -81,20 +81,20 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     connect(audioConfig->cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(audioConfig->ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
     connect(audioConfig->ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
-    connect(audioConfig->cd_device_string,SIGNAL(textChanged(const QString &)),SLOT(slotConfigChanged()));
+    connect(audioConfig->cd_device_string,SIGNAL(textChanged(QString)),SLOT(slotConfigChanged()));
     connect(audioConfig->niceLevel,SIGNAL(valueChanged(int)),SLOT(slotConfigChanged()));
 
     // File Name
-    connect(audioConfig->fileNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
-    connect(audioConfig->albumNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
-    connect(audioConfig->fileLocationLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(slotConfigChanged()));
+    connect(audioConfig->fileNameLineEdit, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()));
+    connect(audioConfig->albumNameLineEdit, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()));
+    connect(audioConfig->fileLocationLineEdit, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()));
     connect(audioConfig->fileLocationGroupBox, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
-    connect( audioConfig->kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
-    connect( audioConfig->kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
-    connect( audioConfig->example, SIGNAL( textChanged(const QString&) ), this, SLOT( updateExample() ) );
-    connect( audioConfig->kcfg_replaceInput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
-    connect( audioConfig->kcfg_replaceOutput, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
-    connect( audioConfig->example, SIGNAL( textChanged(const QString&) ), this, SLOT( slotConfigChanged() ) );
+    connect( audioConfig->kcfg_replaceInput, SIGNAL(textChanged(QString)), this, SLOT(updateExample()) );
+    connect( audioConfig->kcfg_replaceOutput, SIGNAL(textChanged(QString)), this, SLOT(updateExample()) );
+    connect( audioConfig->example, SIGNAL(textChanged(QString)), this, SLOT(updateExample()) );
+    connect( audioConfig->kcfg_replaceInput, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()) );
+    connect( audioConfig->kcfg_replaceOutput, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()) );
+    connect( audioConfig->example, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()) );
 
 
     KAboutData *about =
