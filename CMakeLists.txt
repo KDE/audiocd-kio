@@ -1,5 +1,18 @@
 project(audiocd)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+find_package(Qt4 REQUIRED)
+find_package(KDE4 REQUIRED)
+include(KDE4Defaults)
+include(MacroLibrary)
+include(CheckStructMember)
+
+find_package(Libkcddb)
+find_package(Libkcompactdisc)
+
+find_package(Cdparanoia)
+
 MACRO_PUSH_REQUIRED_VARS()
 SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/include/cdda)
 check_struct_member("struct cdrom_drive" "ioctl_device_name" "cdda_interface.h" CDDA_IOCTL_DEVICE_EXISTS)
@@ -11,18 +24,18 @@ configure_file (config-audiocd.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-audioc
 
 #############################
 
+include_directories(
+    ${KDE4_INCLUDES}
+    ${QT_INCLUDES}
+		${CDPARANOIA_INCLUDE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+		)
+
 
 add_subdirectory( plugins )
 add_subdirectory( kcmaudiocd )
 add_subdirectory( data )
-
-include_directories(
-		${CMAKE_SOURCE_DIR}/libkcddb
-		${CMAKE_BINARY_DIR}/libkcddb
-		${CMAKE_SOURCE_DIR}/libkcompactdisc
-		${CMAKE_BINARY_DIR}/libkcompactdisc
-		${CDPARANOIA_INCLUDE_DIR}
-		)
 
 
 ########### next target ###############

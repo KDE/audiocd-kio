@@ -22,7 +22,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#include <config.h>
 #include <config-audiocd.h>
 
 #include <kdemacros.h>
@@ -57,8 +56,8 @@ extern "C"
 #include <QRegExp>
 #include <QHash>
 // CDDB
-#include <client.h>
-#include "kcompactdisc.h"
+#include <libkcddb/client.h>
+#include <libkcompactdisc/kcompactdisc.h>
 
 using namespace KIO;
 
