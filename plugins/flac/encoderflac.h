@@ -21,7 +21,7 @@
 #ifndef ENCODER_FLAC_H
 #define ENCODER_FLAC_H
 
-#include <config.h>
+#include <config-audiocd.h>
 
 #ifdef HAVE_LIBFLAC
 
