@@ -2,7 +2,6 @@ project(audiocd)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-find_package(Qt4 REQUIRED)
 find_package(KDE4 REQUIRED)
 include(KDE4Defaults)
 include(MacroLibrary)
@@ -26,7 +25,6 @@ configure_file (config-audiocd.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-audioc
 
 include_directories(
     ${KDE4_INCLUDES}
-    ${QT_INCLUDES}
 		${CDPARANOIA_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
