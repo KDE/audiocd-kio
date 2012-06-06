@@ -34,6 +34,7 @@ include_directories(
 add_subdirectory( plugins )
 add_subdirectory( kcmaudiocd )
 add_subdirectory( data )
+add_subdirectory( doc )
 
 
 ########### next target ###############
