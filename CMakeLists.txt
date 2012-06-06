@@ -15,6 +15,7 @@ configure_file (config-audiocd.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-audioc
 add_subdirectory( plugins )
 add_subdirectory( kcmaudiocd )
 add_subdirectory( data )
+add_subdirectory( doc )
 
 include_directories(
 		${CMAKE_SOURCE_DIR}/libkcddb
