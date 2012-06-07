@@ -4,6 +4,7 @@ URL=audiocd:/
 Icon=media-optical-audio
 Name=Audio CD Browser
 Name[cs]=Prohlížeč zvukových CD
+Name[da]=Lyd-cd-browser
 Name[de]=Audio-CDs ansehen
 Name[el]=Περιηγητής CD ήχου
 Name[et]=Heliplaadi sirvija

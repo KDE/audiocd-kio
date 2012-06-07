@@ -9,6 +9,7 @@ Exec=kioclient exec audiocd:/?device=%d
 Icon=system-file-manager
 Name=Open with File Manager
 Name[cs]=Otevřít ve správci souborů
+Name[da]=Åbn med filhåndtering
 Name[de]=Mit Dateimanager öffnen
 Name[el]=Άνοιγμα με διαχειριστή αρχείων
 Name[et]=Avamine failihalduriga
