@@ -25,7 +25,6 @@
 #ifndef ENCODER_VORBIS_H
 #define ENCODER_VORBIS_H
 
-#include <config.h>
 #include "ui_encodervorbisconfig.h"
 #ifdef HAVE_VORBIS
 

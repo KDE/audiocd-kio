@@ -6,6 +6,9 @@ if (FLAC_FOUND)
     add_subdirectory( flac )
 endif(FLAC_FOUND)
 
+macro_optional_find_package(OggVorbis)
+macro_log_feature(OGGVORBIS_FOUND "OggVorbis" "Libraries for Ogg Vorbis general audio compression codec" "http://www.xiph.org" FALSE "" "Required for the AudioCD Ogg Vorbis plugin.")
+
 if (OGGVORBIS_FOUND)
     add_subdirectory( vorbis )
 endif(OGGVORBIS_FOUND)
