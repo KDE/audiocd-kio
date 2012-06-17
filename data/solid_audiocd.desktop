@@ -8,6 +8,7 @@ X-KDE-Priority=TopLevel
 Exec=kioclient exec audiocd:/?device=%d
 Icon=system-file-manager
 Name=Open with File Manager
+Name[ca]=Obre amb el gestor de fitxers
 Name[cs]=Otevřít ve správci souborů
 Name[da]=Åbn med filhåndtering
 Name[de]=Mit Dateimanager öffnen
