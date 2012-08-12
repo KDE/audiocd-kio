@@ -30,7 +30,7 @@
  */
 KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 {
-    kDebug(7117) << "Trying to load library. File: \"" << libFileName.latin1() << "\".";
+    kDebug(7117) << "Trying to load library. File: \"" << libFileName.toLatin1() << "\".";
     KLibrary::void_function_ptr cplugin = KLibrary::void_function_ptr(
             KLibrary( libFileName ).resolveFunction( "create_audiocd_encoders" ));
     if (!cplugin)
