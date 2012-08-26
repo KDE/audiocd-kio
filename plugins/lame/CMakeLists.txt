@@ -1,5 +1,5 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb ${CMAKE_CURRENT_SOURCE_DIR}/..  )
+include_directories( ${LIBKCDDB_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/..  )
 
 FIND_PROGRAM(LAME_EXECUTABLE NAMES lame
 )
@@ -21,7 +21,7 @@ kde4_add_plugin(audiocd_encoder_lame WITH_PREFIX ${audiocd_encoder_lame_PART_SRC
 
 
 
-target_link_libraries(audiocd_encoder_lame  ${KDE4_KIO_LIBS} audiocdplugins kcddb)
+target_link_libraries(audiocd_encoder_lame  ${KDE4_KIO_LIBS} ${LIBKCDDB_LIBRARIES} audiocdplugins)
 
 install(TARGETS audiocd_encoder_lame  DESTINATION ${PLUGIN_INSTALL_DIR} )
 

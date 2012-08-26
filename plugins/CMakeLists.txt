@@ -16,7 +16,7 @@ endif(OGGVORBIS_FOUND)
 add_subdirectory( wav )
 add_subdirectory( lame )
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkcddb  )
+include_directories( ${LIBKCDDB_INCLUDE_DIRS}  )
 
 
 ########### next target ###############
@@ -26,7 +26,7 @@ set(audiocdplugins_LIB_SRCS audiocdencoder.cpp )
 
 kde4_add_library(audiocdplugins SHARED ${audiocdplugins_LIB_SRCS})
 
-target_link_libraries(audiocdplugins  ${KDE4_KDECORE_LIBS} kcddb )
+target_link_libraries(audiocdplugins  ${KDE4_KDECORE_LIBS} ${LIBKCDDB_LIBRARIES} )
 
 set_target_properties(audiocdplugins PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
 install(TARGETS audiocdplugins ${INSTALL_TARGETS_DEFAULT_ARGS} )

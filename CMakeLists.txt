@@ -28,6 +28,8 @@ include_directories(
 		${CDPARANOIA_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
+    ${LIBKCDDB_INCLUDE_DIRS}
+    ${LIBKCOMPACTDISC_INCLUDE_DIRS}
 		)
 
 
@@ -46,7 +48,7 @@ kde4_add_plugin(kio_audiocd ${kio_audiocd_PART_SRCS})
 
 
 
-target_link_libraries(kio_audiocd ${CDPARANOIA_LIBRARIES} ${KDE4_KIO_LIBS} audiocdplugins kcddb kcompactdisc)
+target_link_libraries(kio_audiocd ${CDPARANOIA_LIBRARIES} ${KDE4_KIO_LIBS} ${LIBKCDDB_LIBRARIES} ${LIBKCOMPACTDISC_LIBRARIES} audiocdplugins)
 
 install(TARGETS kio_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
