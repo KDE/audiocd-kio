@@ -56,8 +56,4 @@ install(TARGETS kio_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR} )
 ########### install files ###############
 
 install( FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR} )
-if(NOT WIN32)
-  install( FILES audiocd.upd  DESTINATION  ${KCONF_UPDATE_INSTALL_DIR} )
-  install( PROGRAMS upgrade-metadata.sh  DESTINATION  ${KCONF_UPDATE_INSTALL_DIR} )
-endif(NOT WIN32)
 

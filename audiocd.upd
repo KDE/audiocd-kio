@@ -1,4 +1,0 @@
-# Update for transport configuration
-Id=1
-File=kcmaudiocdrc
-Script=upgrade-metadata.sh,bash
