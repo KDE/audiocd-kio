@@ -4,6 +4,7 @@ URL=audiocd:/
 Icon=media-optical-audio
 Name=Audio CD Browser
 Name[bg]=Преглед на звукови дискове
+Name[bs]=Pregledač Audio CDova
 Name[ca]=Navegador de CD d'àudio
 Name[cs]=Prohlížeč zvukových CD
 Name[da]=Lyd-cd-browser
