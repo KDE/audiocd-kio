@@ -9,6 +9,7 @@ Exec=kioclient exec audiocd:/?device=%d
 Icon=system-file-manager
 Name=Open with File Manager
 Name[bg]=Отваряне с файлов мениджър
+Name[bs]=Otvori menadžerom datoteka
 Name[ca]=Obre amb el gestor de fitxers
 Name[cs]=Otevřít ve správci souborů
 Name[da]=Åbn med filhåndtering
