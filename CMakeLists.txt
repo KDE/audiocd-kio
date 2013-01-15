@@ -13,7 +13,7 @@ find_package(Libkcompactdisc)
 find_package(Cdparanoia)
 
 MACRO_PUSH_REQUIRED_VARS()
-SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/include/cdda)
+SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${CDPARANOIA_INCLUDE_DIR})
 check_struct_member("struct cdrom_drive" "ioctl_device_name" "cdda_interface.h" CDDA_IOCTL_DEVICE_EXISTS)
 MACRO_POP_REQUIRED_VARS()
 macro_bool_to_01(CDDA_IOCTL_DEVICE_EXISTS HAVE_CDDA_IOCTL_DEVICE)
