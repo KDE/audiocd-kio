@@ -94,7 +94,6 @@ Comment[x-test]=xxAudiocd IO Slave Configurationxx
 Comment[zh_CN]=音频 CD IO 后端配置
 Comment[zh_TW]=音樂光碟 IO Slave 組態
 X-KDE-Keywords=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
-X-KDE-Keywords[bs]=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate,Audio CD,kodiranje,protok
 X-KDE-Keywords[ca]=Àudio CD,CD,Ogg,Vorbis,Codificació,CDDA,Taxa de bits
 X-KDE-Keywords[cs]=Zvukové CD,CD,Ogg,Vorbis,Kódování,CDDA,Bitrate
 X-KDE-Keywords[da]=Lyd-cd,CD,Ogg,Vorbis,Indkodning,CDDA,Bitrate
