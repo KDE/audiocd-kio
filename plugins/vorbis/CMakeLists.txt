@@ -4,8 +4,6 @@ include_directories( ${LIBKCDDB_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/..  ${
 
 ########### next target ###############
 
-add_definitions(-DHAVE_VORBIS)
-
 set(audiocd_encoder_vorbis_PART_SRCS encodervorbis.cpp )
 
 

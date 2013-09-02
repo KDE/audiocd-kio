@@ -9,9 +9,9 @@ endif(FLAC_FOUND)
 macro_optional_find_package(OggVorbis)
 macro_log_feature(OGGVORBIS_FOUND "OggVorbis" "Libraries for Ogg Vorbis general audio compression codec" "http://www.xiph.org" FALSE "" "Required for the AudioCD Ogg Vorbis plugin.")
 
-if (OGGVORBIS_FOUND)
+if (OGGVORBIS_FOUND AND HAVE_LIBVORBISENC2)
     add_subdirectory( vorbis )
-endif(OGGVORBIS_FOUND)
+endif(OGGVORBIS_FOUND AND HAVE_LIBVORBISENC2)
 
 add_subdirectory( wav )
 add_subdirectory( lame )
