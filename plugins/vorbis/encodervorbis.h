@@ -26,7 +26,6 @@
 #define ENCODER_VORBIS_H
 
 #include "ui_encodervorbisconfig.h"
-#ifdef HAVE_VORBIS
 
 #include <audiocdencoder.h>
 
@@ -41,7 +40,6 @@ public:
 
 /**
  * Ogg Vorbis encoder.
- * This encoder is only enabled when HAVE_VORBIS is set.
  * Check out http://www.vorbis.com/ for lots of information.
  */
 class EncoderVorbis : public AudioCDEncoder {
@@ -69,8 +67,6 @@ private:
   Private * d;
 
 };
-
-#endif // HAVE_VORBIS
 
 #endif // ENCODER_VORBIS_H
 

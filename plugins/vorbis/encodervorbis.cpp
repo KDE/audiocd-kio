@@ -25,8 +25,6 @@
 #include "encodervorbis.h"
 #include "audiocd_vorbis_encoder.h"
 
-#ifdef HAVE_VORBIS
-
 #include <vorbis/vorbisenc.h>
 #include <time.h>
 #include <stdlib.h>
@@ -139,11 +137,8 @@ void EncoderVorbis::loadSettings(){
   // Now that we have read in the settings apply them to the encoder lib
   switch (d->vorbis_encode_method) {
        case 0:
-/* Support very old libvorbis by simply falling through.  */
-#if HAVE_VORBIS >= 2
        vorbis_encode_init_vbr(&d->vi, 2, 44100, d->vorbis_quality/10.0);
        break;
-#endif
        case 1:
        vorbis_encode_init(&d->vi, 2, 44100, d->vorbis_bitrate_upper, d->vorbis_bitrate_nominal, d->vorbis_bitrate_lower);
        break;
@@ -155,18 +150,11 @@ long EncoderVorbis::flush_vorbis(void) {
   long processed(0);
 
   while(vorbis_analysis_blockout(&d->vd,&d->vb)==1) {
-    /* Support ancient libvorbis (< RC3).  */
-#if HAVE_VORBIS >= 2
     vorbis_analysis(&d->vb,NULL);
     /* Non-ancient case.  */
     vorbis_bitrate_addblock(&d->vb);
 
     while(vorbis_bitrate_flushpacket(&d->vd, &d->op)) {
-#else
-    vorbis_analysis(&d->vb,&d->op);
-    /* Make a lexical block to place the #ifdef's nearby.  */
-    if (1) {
-#endif
       ogg_stream_packetin(&d->os,&d->op);
       while(int result=ogg_stream_pageout(&d->os,&d->og)) {
         if (!result) break;
@@ -193,9 +181,6 @@ unsigned long EncoderVorbis::size(long time_secs) const {
   switch (d->vorbis_encode_method)
   {
   case 0: // quality based encoding
-
-#if HAVE_VORBIS >= 2 // If really old Vorbis is being used, skip this nicely.
-
   {
     // Estimated numbers based on the Vorbis FAQ:
     // http://www.xiph.org/archives/vorbis-faq/200203/0030.html
@@ -209,9 +194,6 @@ unsigned long EncoderVorbis::size(long time_secs) const {
 
     break;
   }
-
-#endif // HAVE_VORBIS >= 2
-
   default: // bitrate based encoding
     vorbis_size = (time_secs * d->vorbis_bitrate/8);
     break;
@@ -320,6 +302,4 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
     }
   }
 }
-
-#endif // HAVE_VORBIS
 
