@@ -275,16 +275,16 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
   typedef QPair<QByteArray, QVariant> CommentField;
   QList<CommentField> commentFields;
 
-  commentFields.append(CommentField("title", info.track(track-1).get(Title)));
-  commentFields.append(CommentField("artist", info.track(track-1).get(Artist)));
-  commentFields.append(CommentField("album", info.get(Title)));
-  commentFields.append(CommentField("genre", info.get(Genre)));
-  commentFields.append(CommentField("tracknumber", QString::number(track)));
-  commentFields.append(CommentField("comment", comment));
+  commentFields.append(CommentField("TITLE", info.track(track-1).get(Title)));
+  commentFields.append(CommentField("ARTIST", info.track(track-1).get(Artist)));
+  commentFields.append(CommentField("ALBUM", info.get(Title)));
+  commentFields.append(CommentField("GENRE", info.get(Genre)));
+  commentFields.append(CommentField("TRACKNUMBER", QString::number(track)));
+  commentFields.append(CommentField("COMMENT", comment));
 
   if (info.get(Year).toInt() > 0) {
     QDateTime dt( QDate(info.get(Year).toInt(), 1, 1) );
-    commentFields.append(CommentField("date",QLatin1String( dt.toString(Qt::ISODate).toUtf8().data() )));
+    commentFields.append(CommentField("DATE",QLatin1String( dt.toString(Qt::ISODate).toUtf8().data() )));
   }
 
   for(QList<CommentField>::iterator it = commentFields.begin(); it != commentFields.end(); ++it) {

@@ -210,16 +210,16 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 //    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
     typedef QPair<QString, QVariant> Comment;
-    Comment comments[7] = { Comment(QLatin1String( "Title" ), info.track(track-1).get(Title)),
-	    	    	    Comment(QLatin1String( "Artist" ), info.track(track-1).get(Artist)),
-	    	    	    Comment(QLatin1String( "Album" ),  info.get(Title)),
-	    	    	    Comment(QLatin1String( "Genre" ),  info.get(Genre)),
-	    	    	    Comment(QLatin1String( "Tracknumber" ), QString::number(track)),
-	                Comment(QLatin1String( "Comment" ), comment),
-	    	    	    Comment(QLatin1String( "Date" ), QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
+    Comment comments[7] = { Comment(QLatin1String( "TITLE" ), info.track(track-1).get(Title)),
+	    	    	    Comment(QLatin1String( "ARTIST" ), info.track(track-1).get(Artist)),
+	    	    	    Comment(QLatin1String( "ALBUM" ),  info.get(Title)),
+	    	    	    Comment(QLatin1String( "GENRE" ),  info.get(Genre)),
+	    	    	    Comment(QLatin1String( "TRACKNUMBER" ), QString::number(track)),
+	                Comment(QLatin1String( "COMMENT" ), comment),
+	    	    	    Comment(QLatin1String( "DATE" ), QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
     if (info.get(Year).toInt() > 0) {
     	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
-    	comments[6] = Comment(QLatin1String( "Date" ), dt.toString(Qt::ISODate));
+    	comments[6] = Comment(QLatin1String( "DATE" ), dt.toString(Qt::ISODate));
     }
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
