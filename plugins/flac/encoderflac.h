@@ -25,7 +25,14 @@
 
 #ifdef HAVE_LIBFLAC
 
+#include "ui_encoderflacconfig.h"
+
 #include <audiocdencoder.h>
+
+class EncoderFLACConfig : public QWidget, public Ui::EncoderFLACConfig {
+public:
+  explicit EncoderFLACConfig(QWidget *parent = 0) : QWidget( parent ) { setupUi( this ); }
+};
 
 /**
  * FLAC encoder.
@@ -48,6 +55,7 @@ public:
   virtual long readInit(long size);
   virtual long read(int16_t * buf, int frames);
   virtual long readCleanup();
+  virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
 
   class Private;
 private:

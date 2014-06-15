@@ -114,6 +114,17 @@ EncoderFLAC::~EncoderFLAC() {
     delete d;
 }
 
+QWidget* EncoderFLAC::getConfigureWidget(KConfigSkeleton** manager) const {
+#if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
+    Q_UNUSED(manager);
+    return NULL;
+#else
+    (*manager) = Settings::self();
+    KGlobal::locale()->insertCatalog( QLatin1String( "audiocd_encoder_flac" ));
+    return new EncoderFLACConfig();
+#endif
+}
+
 bool EncoderFLAC::init(){
     d->encoder = FLAC__stream_encoder_new();
     d->metadata = 0;

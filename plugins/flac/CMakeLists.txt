@@ -9,6 +9,8 @@ add_definitions(-DHAVE_LIBFLAC)
 
 set(audiocd_encoder_flac_PART_SRCS encoderflac.cpp )
 
+kde4_add_ui_files(audiocd_encoder_flac_PART_SRCS encoderflacconfig.ui)
+
 kde4_add_kcfg_files(audiocd_encoder_flac_PART_SRCS audiocd_flac_encoder.kcfgc)
 
 kde4_add_plugin(audiocd_encoder_flac WITH_PREFIX ${audiocd_encoder_flac_PART_SRCS})
