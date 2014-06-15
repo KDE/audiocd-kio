@@ -27,7 +27,7 @@
        <string>&amp;General</string>
       </attribute>
       <layout class="QGridLayout">
-       <item row="4" column="2">
+       <item row="3" column="2">
         <spacer name="Spacer5">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -43,7 +43,46 @@
          </property>
         </spacer>
        </item>
-       <item row="3" column="0" colspan="3">
+       <item row="0" column="0" colspan="3">
+        <widget class="QCheckBox" name="ec_enable_check">
+         <property name="whatsThis">
+          <string>If you uncheck this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
+         </property>
+         <property name="text">
+          <string>Use &amp;error correction when reading the CD</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QCheckBox" name="ec_skip_check">
+         <property name="text">
+          <string>&amp;Skip on errors</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <spacer name="spacer4_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" colspan="3">
         <widget class="QGroupBox" name="encoderPriority">
          <property name="title">
           <string>Encoder Priority</string>
@@ -106,68 +145,6 @@
           </item>
          </layout>
         </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLineEdit" name="cd_device_string">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="whatsThis">
-          <string>Specify a location for the drive you want to use. Normally, this is a file inside the /dev folder representing your CD or DVD drive.</string>
-         </property>
-         <property name="text">
-          <string>/dev/cdrom</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="cd_autosearch_check">
-         <property name="whatsThis">
-          <string>Uncheck this if you want to specify a CD device different from the one autoprobed</string>
-         </property>
-         <property name="text">
-          <string>&amp;Specify CD Device:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="3">
-        <widget class="QCheckBox" name="ec_enable_check">
-         <property name="whatsThis">
-          <string>If you uncheck this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
-         </property>
-         <property name="text">
-          <string>Use &amp;error correction when reading the CD</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" colspan="2">
-        <widget class="QCheckBox" name="ec_skip_check">
-         <property name="text">
-          <string>&amp;Skip on errors</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <spacer name="spacer4_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>
@@ -736,7 +713,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>cd_device_string</tabstop>
   <tabstop>ec_enable_check</tabstop>
   <tabstop>ec_skip_check</tabstop>
   <tabstop>niceLevel</tabstop>
@@ -756,22 +732,6 @@
    <sender>ec_enable_check</sender>
    <signal>toggled(bool)</signal>
    <receiver>ec_skip_check</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cd_autosearch_check</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>cd_device_string</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">

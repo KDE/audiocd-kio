@@ -78,10 +78,8 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     }
 
     //CDDA Options
-    connect(audioConfig->cd_autosearch_check,SIGNAL(clicked()),this,SLOT(slotConfigChanged()));
     connect(audioConfig->ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
     connect(audioConfig->ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
-    connect(audioConfig->cd_device_string,SIGNAL(textChanged(QString)),SLOT(slotConfigChanged()));
     connect(audioConfig->niceLevel,SIGNAL(valueChanged(int)),SLOT(slotConfigChanged()));
 
     // File Name
@@ -141,9 +139,6 @@ void KAudiocdModule::updateExample()
 }
 
 void KAudiocdModule::defaults() {
-	audioConfig->cd_autosearch_check->setChecked(true);
-	audioConfig->cd_device_string->setText("/dev/cdrom");
-
 	audioConfig->ec_enable_check->setChecked(true);
 	audioConfig->ec_skip_check->setChecked(false);
 	audioConfig->niceLevel->setValue(0);
@@ -165,8 +160,6 @@ void KAudiocdModule::save() {
   {
     KConfigGroup cg(config, "CDDA");
 
-    cg.writeEntry("autosearch",audioConfig->cd_autosearch_check->isChecked());
-    cg.writeEntry("device",audioConfig->cd_device_string->text());
     cg.writeEntry("disable_paranoia",!(audioConfig->ec_enable_check->isChecked()));
     cg.writeEntry("never_skip",!(audioConfig->ec_skip_check->isChecked()));
     cg.writeEntry("niceLevel", audioConfig->niceLevel->value());
@@ -212,8 +205,6 @@ void KAudiocdModule::load() {
   {
     KConfigGroup cg(config, "CDDA");
 
-    audioConfig->cd_autosearch_check->setChecked(cg.readEntry("autosearch",true));
-    audioConfig->cd_device_string->setText(cg.readEntry("device","/dev/cdrom"));
     audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia",false)));
     audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip",true)));
     audioConfig->niceLevel->setValue(cg.readEntry("niceLevel", 0));
