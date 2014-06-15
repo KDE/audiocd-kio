@@ -534,6 +534,21 @@ void AudioCDProtocol::get(const KUrl & url)
 void AudioCDProtocol::stat(const KUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
+
+	if (!drive && d->device.isEmpty()) {
+		// This is top level directory with CDROM devices
+		const mode_t _umask = ::umask(0);
+		::umask(_umask);
+		UDSEntry entry;
+		entry.insert(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
+		entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+		entry.insert(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
+		entry.insert(KIO::UDSEntry::UDS_SIZE, 2+encoders.count());
+		statEntry(entry);
+		finished();
+		return;
+	}
+
 	if (!drive)
 		return;
 
@@ -609,6 +624,25 @@ static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mi
 void AudioCDProtocol::listDir(const KUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
+
+	if (!drive && d->device.isEmpty()) {
+		// List CDROM devices
+		UDSEntry entry;
+		const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
+		foreach (const QString &deviceName, deviceNames) {
+			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
+			KUrl targetUrl = url;
+			targetUrl.addQueryItem("device", device);
+			app_dir(entry, device, 2+encoders.count());
+			entry.insert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
+			entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
+			listEntry(entry, false);
+		}
+		totalSize(entry.count());
+		listEntry(entry, true);
+		finished();
+		return;
+	}
 
 	// Some error checking before proceeding
 	if (!drive)
@@ -763,20 +797,12 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 {
 	const QByteArray device(QFile::encodeName(d->device));
 
+	if (device.isEmpty())
+		return 0;
+
 	struct cdrom_drive * drive = 0;
 
-	if (!device.isEmpty() && device != "/" )
-		drive = cdda_identify(device, CDDA_MESSAGE_PRINTIT, 0);
-	else
-	{
-		drive = cdda_find_a_cdrom(CDDA_MESSAGE_PRINTIT, 0);
-
-		if (0 == drive)
-		{
-			if (QFile(QFile::decodeName(KCompactDisc::defaultCdromDeviceUrl().url().toAscii())).exists())
-				drive = cdda_identify(KCompactDisc::defaultCdromDeviceUrl().url().toAscii(), CDDA_MESSAGE_PRINTIT, 0);
-		}
-	}
+	drive = cdda_identify(device, CDDA_MESSAGE_PRINTIT, 0);
 
 	if (0 == drive) {
 		kDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"";
@@ -1020,10 +1046,7 @@ void AudioCDProtocol::loadSettings()
 	const KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
         const KConfigGroup groupCDDA( config, "CDDA" );
 
-	if (!groupCDDA.readEntry("autosearch", true)) {
-		d->device = groupCDDA.readEntry("device", QString(KCompactDisc::defaultCdromDeviceUrl().url()));
-	}
-
+	d->device = QString(); // clear device
 	d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
 
 	if (groupCDDA.readEntry("disable_paranoia", false)) {
