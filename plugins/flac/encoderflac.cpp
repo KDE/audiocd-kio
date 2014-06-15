@@ -132,15 +132,13 @@ long EncoderFLAC::readInit(long size) {
 #endif
 
 #if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
-    // The options match approximely those of flac compression-level-3
+    // The options match approximely those of flac compression-level-5
     FLAC__stream_encoder_set_do_mid_side_stereo(d->encoder, true);
-    FLAC__stream_encoder_set_loose_mid_side_stereo(d->encoder, true); // flac -M
-    FLAC__stream_encoder_set_max_lpc_order(d->encoder, 6);            // flac -l6
+    FLAC__stream_encoder_set_max_lpc_order(d->encoder, 8);            // flac -l8
     FLAC__stream_encoder_set_min_residual_partition_order(d->encoder, 3);
     FLAC__stream_encoder_set_max_residual_partition_order(d->encoder, 3); // flac -r3,3
-    FLAC__stream_encoder_set_blocksize(d->encoder, 4608);
 #else
-    FLAC__stream_encoder_set_compression_level(d->encoder, 3);
+    FLAC__stream_encoder_set_compression_level(d->encoder, 5);
 #endif
 
     FLAC__stream_encoder_set_streamable_subset(d->encoder, true);
