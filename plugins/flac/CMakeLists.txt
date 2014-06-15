@@ -9,6 +9,7 @@ add_definitions(-DHAVE_LIBFLAC)
 
 set(audiocd_encoder_flac_PART_SRCS encoderflac.cpp )
 
+kde4_add_kcfg_files(audiocd_encoder_flac_PART_SRCS audiocd_flac_encoder.kcfgc)
 
 kde4_add_plugin(audiocd_encoder_flac WITH_PREFIX ${audiocd_encoder_flac_PART_SRCS})
 
@@ -17,4 +18,6 @@ kde4_add_plugin(audiocd_encoder_flac WITH_PREFIX ${audiocd_encoder_flac_PART_SRC
 target_link_libraries(audiocd_encoder_flac ${FLAC_LIBRARIES} ${KDE4_KIO_LIBS} ${LIBKCDDB_LIBRARIES} audiocdplugins)
 
 install(TARGETS audiocd_encoder_flac  DESTINATION ${PLUGIN_INSTALL_DIR} )
+
+install(FILES audiocd_flac_encoder.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 

@@ -26,6 +26,10 @@
 #include <FLAC/metadata.h>
 #include <FLAC/stream_encoder.h>
 
+#if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
+#include "audiocd_flac_encoder.h"
+#endif
+
 #include <kconfig.h>
 #include <kdebug.h>
 #include <QPair>
@@ -46,6 +50,9 @@ public:
     FLAC__StreamMetadata** metadata;
     KIO::SlaveBase* ioslave;
     unsigned long data;
+#if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
+    unsigned compression_level;
+#endif
 };
 
 static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *encoder,
@@ -97,6 +104,9 @@ EncoderFLAC::EncoderFLAC(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
     d = new Private();
     d->ioslave = slave;
     d->encoder = 0;
+#if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
+    d->compression_level = 5;
+#endif
 }
 
 EncoderFLAC::~EncoderFLAC() {
@@ -112,8 +122,11 @@ bool EncoderFLAC::init(){
 }
 
 void EncoderFLAC::loadSettings() {
-//  config->setGroup("FLAC");
-
+#if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
+    Settings *settings = Settings::self();
+    d->compression_level = settings->flac_compression_level();
+    if (d->compression_level > 8) d->compression_level = 5;
+#endif
 }
 
 // Estimate size to be 5/8 of uncompresed size.
@@ -138,7 +151,7 @@ long EncoderFLAC::readInit(long size) {
     FLAC__stream_encoder_set_min_residual_partition_order(d->encoder, 3);
     FLAC__stream_encoder_set_max_residual_partition_order(d->encoder, 3); // flac -r3,3
 #else
-    FLAC__stream_encoder_set_compression_level(d->encoder, 5);
+    FLAC__stream_encoder_set_compression_level(d->encoder, d->compression_level);
 #endif
 
     FLAC__stream_encoder_set_streamable_subset(d->encoder, true);
