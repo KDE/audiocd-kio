@@ -632,7 +632,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 		foreach (const QString &deviceName, deviceNames) {
 			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
 			KUrl targetUrl = url;
-			targetUrl.addQueryItem("device", device);
+			targetUrl.addEncodedQueryItem("device", device.toUtf8());
 			app_dir(entry, device, 2+encoders.count());
 			entry.insert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
 			entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
