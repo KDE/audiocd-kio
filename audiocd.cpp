@@ -447,8 +447,10 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
 void AudioCDProtocol::get(const KUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
-	if (!drive)
+	if (!drive) {
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		return;
+	}
 
 	if( d->fname.contains(i18n(CDDB_INFORMATION))){
 		uint choice = 1;
@@ -494,6 +496,7 @@ void AudioCDProtocol::get(const KUrl & url)
 
 	AudioCDEncoder *encoder = determineEncoder(d->fname);
 	if(!encoder){
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		cdda_close(drive);
 		return;
 	}
@@ -549,8 +552,10 @@ void AudioCDProtocol::stat(const KUrl & url)
 		return;
 	}
 
-	if (!drive)
+	if (!drive) {
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		return;
+	}
 
 	const bool isFile = !d->fname.isEmpty();
 
@@ -564,6 +569,7 @@ void AudioCDProtocol::stat(const KUrl & url)
 		if (isFile && (trackNumber < 1 || trackNumber > d->tracks))
 		{
 			error(KIO::ERR_DOES_NOT_EXIST, url.path());
+			cdda_close(drive);
 			return;
 		}
 	}
@@ -632,7 +638,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 		foreach (const QString &deviceName, deviceNames) {
 			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
 			KUrl targetUrl = url;
-			targetUrl.addQueryItem("device", device);
+			targetUrl.addEncodedQueryItem("device", device.toUtf8());
 			app_dir(entry, device, 2+encoders.count());
 			entry.insert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
 			entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
@@ -645,8 +651,10 @@ void AudioCDProtocol::listDir(const KUrl & url)
 	}
 
 	// Some error checking before proceeding
-	if (!drive)
+	if (!drive) {
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		return;
+	}
 
 	if (d->which_dir == Unknown){
 		error(KIO::ERR_DOES_NOT_EXIST, url.path());
@@ -720,7 +728,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 	}
 
 	if (d->which_dir == SubDir || d->which_dir == Root || d->which_dir == EncoderDir) {
-		if (d->child_dir.isEmpty() || d->which_dir == Root || d->which_dir == EncoderDir)
+		if (d->child_dir.isEmpty())
 		{
 			// we are at the end of the hierarchy, list the tracks
 			for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
@@ -745,8 +753,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 				}
 			}
 		}
-
-		if (!d->child_dir.isEmpty())
+		else
 		{
 			app_dir(entry, d->child_dir, 1);
 			listEntry(entry, false);
@@ -802,7 +809,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
 	struct cdrom_drive * drive = 0;
 
-	drive = cdda_identify(device, CDDA_MESSAGE_PRINTIT, 0);
+	drive = cdda_identify(device, CDDA_MESSAGE_FORGETIT, 0);
 
 	if (0 == drive) {
 		kDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"";
@@ -868,7 +875,7 @@ void AudioCDProtocol::paranoiaRead(
 
 	paranoia_modeset(paranoia, paranoiaLevel);
 
-	cdda_verbose_set(drive, CDDA_MESSAGE_PRINTIT, CDDA_MESSAGE_PRINTIT);
+	cdda_verbose_set(drive, CDDA_MESSAGE_PRINTIT, CDDA_MESSAGE_FORGETIT);
 
 	paranoia_seek(paranoia, firstSector, SEEK_SET);
 
