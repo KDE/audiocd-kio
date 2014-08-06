@@ -728,7 +728,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 	}
 
 	if (d->which_dir == SubDir || d->which_dir == Root || d->which_dir == EncoderDir) {
-		if (d->child_dir.isEmpty() || d->which_dir == Root || d->which_dir == EncoderDir)
+		if (d->child_dir.isEmpty())
 		{
 			// we are at the end of the hierarchy, list the tracks
 			for (uint trackNumber = 1; trackNumber <= d->tracks; trackNumber++)
@@ -753,8 +753,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 				}
 			}
 		}
-
-		if (!d->child_dir.isEmpty())
+		else
 		{
 			app_dir(entry, d->child_dir, 1);
 			listEntry(entry, false);
