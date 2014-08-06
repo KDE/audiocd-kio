@@ -809,7 +809,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
 	struct cdrom_drive * drive = 0;
 
-	drive = cdda_identify(device, CDDA_MESSAGE_PRINTIT, 0);
+	drive = cdda_identify(device, CDDA_MESSAGE_FORGETIT, 0);
 
 	if (0 == drive) {
 		kDebug(7117) << "Can't find an audio CD on: \"" << d->device << "\"";
@@ -875,7 +875,7 @@ void AudioCDProtocol::paranoiaRead(
 
 	paranoia_modeset(paranoia, paranoiaLevel);
 
-	cdda_verbose_set(drive, CDDA_MESSAGE_PRINTIT, CDDA_MESSAGE_PRINTIT);
+	cdda_verbose_set(drive, CDDA_MESSAGE_PRINTIT, CDDA_MESSAGE_FORGETIT);
 
 	paranoia_seek(paranoia, firstSector, SEEK_SET);
 
