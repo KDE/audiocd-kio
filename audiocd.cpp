@@ -447,8 +447,10 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
 void AudioCDProtocol::get(const KUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
-	if (!drive)
+	if (!drive) {
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		return;
+	}
 
 	if( d->fname.contains(i18n(CDDB_INFORMATION))){
 		uint choice = 1;
@@ -494,6 +496,7 @@ void AudioCDProtocol::get(const KUrl & url)
 
 	AudioCDEncoder *encoder = determineEncoder(d->fname);
 	if(!encoder){
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		cdda_close(drive);
 		return;
 	}
@@ -549,8 +552,10 @@ void AudioCDProtocol::stat(const KUrl & url)
 		return;
 	}
 
-	if (!drive)
+	if (!drive) {
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		return;
+	}
 
 	const bool isFile = !d->fname.isEmpty();
 
@@ -564,6 +569,7 @@ void AudioCDProtocol::stat(const KUrl & url)
 		if (isFile && (trackNumber < 1 || trackNumber > d->tracks))
 		{
 			error(KIO::ERR_DOES_NOT_EXIST, url.path());
+			cdda_close(drive);
 			return;
 		}
 	}
@@ -645,8 +651,10 @@ void AudioCDProtocol::listDir(const KUrl & url)
 	}
 
 	// Some error checking before proceeding
-	if (!drive)
+	if (!drive) {
+		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		return;
+	}
 
 	if (d->which_dir == Unknown){
 		error(KIO::ERR_DOES_NOT_EXIST, url.path());
