@@ -34,7 +34,7 @@
 
 extern "C"
 {
-	KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders) {
+	AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders) {
 		encoders.append(new EncoderLame(slave));
 	}
 }
@@ -87,7 +87,7 @@ bool EncoderLame::init(){
 	proc.execute();
 
 	if(proc.exitStatus() != QProcess::NormalExit)
-		return FALSE;
+		return false;
 
 	QByteArray array = proc.readAll();
 	QString str = QString::fromLocal8Bit( array );

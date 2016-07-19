@@ -17,6 +17,9 @@
    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+#include "kcmaudiocd.h"
+#include "audiocdplugins_version.h"
+
 #include <kconfig.h>
 #include <klineedit.h>
 #include <klocale.h>
@@ -32,19 +35,18 @@
 #include <kdialog.h>
 
 #include <audiocdencoder.h>
-#include "kcmaudiocd.moc"
 #include <kconfigdialogmanager.h>
 #include <kconfiggroup.h>
 #include <KPluginFactory>
 #include <KPluginLoader>
 
-K_PLUGIN_FACTORY(KAudiocdFactory,
+K_PLUGIN_FACTORY(Factory,
         registerPlugin<KAudiocdModule>();
         )
-K_EXPORT_PLUGIN(KAudiocdFactory("kcmaudiocd"))
+K_EXPORT_PLUGIN(Factory("kcmaudiocd"))
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
-  : KCModule(KAudiocdFactory::componentData(), parent, lst), configChanged(false)
+  : KCModule(parent), configChanged(false)
 {
     QVBoxLayout *box = new QVBoxLayout(this);
 
@@ -96,12 +98,10 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
 
 
     KAboutData *about =
-    new KAboutData(I18N_NOOP("kcmaudiocd"), 0, ki18n("KDE Audio CD IO Slave"),
-                   0, KLocalizedString(), KAboutData::License_GPL,
-                   ki18n("(c) 2000 - 2005 Audio CD developers"));
+    new KAboutData("kcmaudiocd", i18n("KDE Audio CD IO Slave"), AUDIOCDPLUGINS_VERSION_STRING);
 
-    about->addAuthor(ki18n("Benjamin C. Meyer"), ki18n("Former Maintainer"), "ben@meyerhome.net");
-    about->addAuthor(ki18n("Carsten Duvenhorst"), KLocalizedString(), "duvenhorst@duvnet.de");
+    about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), "ben@meyerhome.net");
+    about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), "duvenhorst@duvnet.de");
     setAboutData(about);
 }
 
@@ -271,3 +271,4 @@ QString KAudiocdModule::quickHelp() const
               " version of the LAME or Ogg Vorbis libraries.");
 }
 
+#include "kcmaudiocd.moc"

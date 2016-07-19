@@ -27,7 +27,7 @@
 
 extern "C"
 {
-  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)
+  AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)
   {
     encoders.append( new EncoderWav(slave));
     encoders.append( new EncoderCda(slave));

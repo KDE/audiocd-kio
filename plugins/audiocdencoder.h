@@ -19,16 +19,18 @@
 #ifndef AUDIOCD_ENCODER_H
 #define AUDIOCD_ENCODER_H
 
+#include "audiocdplugins_export.h"
+
 #include <sys/types.h>
 #include <kio/slavebase.h>
 #include <QtCore/QList>
 
-#include <libkcddb/cdinfo.h>
+#include <KCddb/Cdinfo>
 
 class KConfigSkeleton;
 using namespace KCDDB;
 
-class KDE_EXPORT AudioCDEncoder {
+class AUDIOCDPLUGINS_EXPORT AudioCDEncoder {
 
 public:
   /**

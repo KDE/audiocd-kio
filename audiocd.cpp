@@ -56,8 +56,8 @@ extern "C"
 #include <QRegExp>
 #include <QHash>
 // CDDB
-#include <libkcddb/client.h>
-#include <libkcompactdisc/kcompactdisc.h>
+#include <KCddb/Client>
+#include <KCompactDisc/KCompactDisc>
 
 using namespace KIO;
 
@@ -263,9 +263,9 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 #endif
 }
 
-struct cdrom_drive * AudioCDProtocol::initRequest(const KUrl & url)
+struct cdrom_drive * AudioCDProtocol::initRequest(const QUrl & url)
 {
-	if (url.hasHost())
+	if (!url.host().isEmpty())
 	{
 		error(KIO::ERR_UNSUPPORTED_ACTION,
 		i18n("You cannot specify a host with this protocol. "
@@ -444,7 +444,7 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
 	return true;
 }
 
-void AudioCDProtocol::get(const KUrl & url)
+void AudioCDProtocol::get(const QUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 	if (!drive) {
@@ -534,7 +534,7 @@ void AudioCDProtocol::get(const KUrl & url)
 	finished();
 }
 
-void AudioCDProtocol::stat(const KUrl & url)
+void AudioCDProtocol::stat(const QUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 
@@ -627,7 +627,7 @@ static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mi
 		e.insert( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
 }
 
-void AudioCDProtocol::listDir(const KUrl & url)
+void AudioCDProtocol::listDir(const QUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
 
@@ -637,7 +637,7 @@ void AudioCDProtocol::listDir(const KUrl & url)
 		const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
 		foreach (const QString &deviceName, deviceNames) {
 			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
-			KUrl targetUrl = url;
+			QUrl targetUrl = url;
 			targetUrl.addEncodedQueryItem("device", device.toUtf8());
 			app_dir(entry, device, 2+encoders.count());
 			entry.insert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
@@ -1000,7 +1000,7 @@ void AudioCDProtocol::paranoiaRead(
  * Read the settings from the URL
  * @see loadSettings()
  */
-void AudioCDProtocol::parseURLArgs(const KUrl & url)
+void AudioCDProtocol::parseURLArgs(const QUrl & url)
 {
 	d->clearURLargs();
 

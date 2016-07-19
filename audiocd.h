@@ -45,16 +45,16 @@ class AudioCDProtocol : public KIO::SlaveBase
 	AudioCDProtocol(const QByteArray & protocol, const QByteArray & pool, const QByteArray & app);
 	virtual ~AudioCDProtocol();
 
-	virtual void get(const KUrl &);
-	virtual void stat(const KUrl &);
-	virtual void listDir(const KUrl &);
+	virtual void get(const QUrl &);
+	virtual void stat(const QUrl &);
+	virtual void listDir(const QUrl &);
 
 	protected:
 	AudioCDEncoder *encoderFromExtension(const QString& extension);
 	AudioCDEncoder *determineEncoder(const QString & filename);
 
 	struct cdrom_drive *findDrive(bool &noPermission);
-	void parseURLArgs(const KUrl &);
+	void parseURLArgs(const QUrl &);
 
 	void loadSettings();
 
@@ -86,7 +86,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 		unsigned long size
 	);
 
-	struct cdrom_drive *initRequest(const KUrl &);
+	struct cdrom_drive *initRequest(const QUrl &);
 
 	/**
 	 * Add an entry in the KIO directory, using the title you give,

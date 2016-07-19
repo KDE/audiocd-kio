@@ -37,7 +37,7 @@
 
 extern "C"
 {
-  KDE_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)
+  AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)
   {
     encoders.append(new EncoderFLAC(slave));
   }
@@ -120,7 +120,8 @@ QWidget* EncoderFLAC::getConfigureWidget(KConfigSkeleton** manager) const {
     return NULL;
 #else
     (*manager) = Settings::self();
-    KGlobal::locale()->insertCatalog( QLatin1String( "audiocd_encoder_flac" ));
+    // TODO: https://community.kde.org/Frameworks/Porting_Notes
+    //KGlobal::locale()->insertCatalog( QLatin1String( "audiocd_encoder_flac" ));
     return new EncoderFLACConfig();
 #endif
 }

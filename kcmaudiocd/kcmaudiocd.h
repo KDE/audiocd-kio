@@ -26,9 +26,10 @@
 #ifndef KCMAUDIOCD_H
 #define KCMAUDIOCD_H
 
-//Added by qt3to4:
 #include <QList>
 #include <kcmodule.h>
+#include <KConfigCore/KConfig>
+
 class KConfigDialogManager;
 
 #include "ui_audiocdconfig.h"
