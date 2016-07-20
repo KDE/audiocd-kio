@@ -18,7 +18,13 @@ find_package(KF5 ${KF5_DEP_VERSION} REQUIRED COMPONENTS
     DocTools
     KIO
     CompactDisc
-    Cddb
+)
+find_package(KF5Cddb)
+set_package_properties(KF5Cddb PROPERTIES
+    DESCRIPTION "KF5 CDDB library"
+    URL "https://github.com/isoft-linux/libkcddb"
+    TYPE REQUIRED
+    PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
 )
 
 include(KDEInstallDirs)
