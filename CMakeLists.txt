@@ -9,7 +9,7 @@ set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Mod
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 set(CMAKE_MODULE_PATH "${ECM_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(KF5_VERSION "5.25.0") # handled by release scripts
+set(PROJECT_VERSION "16.07.0")
 set(KF5_DEP_VERSION "5.24.0") # handled by release scripts
 
 find_package(KF5 ${KF5_DEP_VERSION} REQUIRED COMPONENTS
@@ -33,11 +33,11 @@ include(KDECMakeSettings)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
 
-ecm_setup_version(${KF5_VERSION}
+ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX AUDIOCDPLUGINS
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/AudioCDPluginsConfigVersion.cmake"
-    SOVERSION 5
+    SOVERSION 16
 )
 
 find_package(Cdparanoia REQUIRED)
