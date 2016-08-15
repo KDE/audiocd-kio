@@ -11,6 +11,6 @@ deleting=false
 linking=false
 moving=false
 Icon=media-optical-audio
-X-DocPath=kioslave/audiocd/index.html
+X-DocPath=kioslave5/audiocd/index.html
 Class=:local
 ShowPreviews=false
