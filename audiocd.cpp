@@ -1006,10 +1006,8 @@ void AudioCDProtocol::parseURLArgs(const QUrl & url)
 
 	QString query(QUrl::fromPercentEncoding(url.query().toAscii()));
 
-	if (query.isEmpty() || query[0] != QLatin1Char( '?' ))
+	if (query.isEmpty())
 		return;
-
-	query = query.mid(1); // Strip leading '?'.
 
 	const QStringList tokens(query.split(QLatin1Char( '&' ),QString::SkipEmptyParts));
 

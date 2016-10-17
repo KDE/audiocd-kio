@@ -32,6 +32,8 @@ include(KDECompilerSettings)
 include(KDECMakeSettings)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
+include(CMakePushCheckState)
+include(CheckStructHasMember)
 
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX AUDIOCDPLUGINS
@@ -41,6 +43,16 @@ ecm_setup_version(${PROJECT_VERSION}
 )
 
 find_package(Cdparanoia REQUIRED)
+
+cmake_push_check_state()
+set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${CDPARANOIA_INCLUDE_DIR})
+check_struct_has_member("struct cdrom_drive" "ioctl_device_name" "cdda_interface.h" CDDA_IOCTL_DEVICE_EXISTS)
+cmake_pop_check_state()
+if(CDDA_IOCTL_DEVICE_EXISTS)
+    set(HAVE_CDDA_IOCTL_DEVICE 1)
+else()
+    set(HAVE_CDDA_IOCTL_DEVICE 0)
+endif()
 
 configure_file(config-audiocd.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
