@@ -120,8 +120,6 @@ QWidget* EncoderFLAC::getConfigureWidget(KConfigSkeleton** manager) const {
     return NULL;
 #else
     (*manager) = Settings::self();
-    // TODO: https://community.kde.org/Frameworks/Porting_Notes
-    //KGlobal::locale()->insertCatalog( QLatin1String( "audiocd_encoder_flac" ));
     return new EncoderFLACConfig();
 #endif
 }

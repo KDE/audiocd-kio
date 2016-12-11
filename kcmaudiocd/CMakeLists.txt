@@ -1,3 +1,5 @@
+add_definitions(-DTRANSLATION_DOMAIN=\"kcmaudiocd\")
+
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../plugins
     ${CMAKE_BINARY_DIR}/kioslave/audiocd/kcmaudiocd
@@ -7,11 +9,12 @@ include_directories(
 
 set(kcm_audiocd_PART_SRCS kcmaudiocd.cpp)
 
-qt5_wrap_ui(kcm_audiocd_PART_SRCS audiocdconfig.ui)
+ki18n_wrap_ui(kcm_audiocd_PART_SRCS audiocdconfig.ui)
 
 add_library(kcm_audiocd ${kcm_audiocd_PART_SRCS})
 
 target_link_libraries(kcm_audiocd  
+    KF5::I18n
     KF5::KDELibs4Support
     audiocdplugins 
 )

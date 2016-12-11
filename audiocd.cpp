@@ -55,6 +55,7 @@ extern "C"
 #include <klocale.h>
 #include <QRegExp>
 #include <QHash>
+#include <KLocalizedString>
 // CDDB
 #include <KCddb/Client>
 #include <KCompactDisc/KCompactDisc>
@@ -67,6 +68,7 @@ using namespace AudioCD;
 
 int kdemain(int argc, char ** argv)
 {
+	KLocalizedString::setApplicationDomain("kio_audiocd");
 	// KApplication uses libkcddb which needs a valid kapp pointer
 	// GUIenabled must be true as libkcddb sometimes wants to communicate
 	// with the user

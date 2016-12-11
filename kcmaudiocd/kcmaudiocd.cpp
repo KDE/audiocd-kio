@@ -22,7 +22,7 @@
 
 #include <kconfig.h>
 #include <klineedit.h>
-#include <klocale.h>
+#include <klocalizedstring.h>
 #include <kcomponentdata.h>
 #include <QCheckBox>
 #include <qslider.h>
