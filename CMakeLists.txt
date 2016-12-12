@@ -17,7 +17,6 @@ find_package(KF5 ${KF5_DEP_VERSION} REQUIRED COMPONENTS
     I18n
     DocTools
     KIO
-    CompactDisc
 )
 find_package(KF5Cddb)
 set_package_properties(KF5Cddb PROPERTIES
@@ -25,6 +24,13 @@ set_package_properties(KF5Cddb PROPERTIES
     URL "http://projects.kde.org/projects/kde/kdemultimedia/libkcddb"
     TYPE REQUIRED
     PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
+)
+find_package(KF5CompactDisc)
+set_package_properties(KF5CompactDisc PROPERTIES
+    DESCRIPTION "KCompactDisc library"
+    URL "https://commits.kde.org/libkcompactdisc"
+    TYPE REQUIRED
+    PURPOSE "libkcompactdisc is used to access CD drives."
 )
 
 include(KDEInstallDirs)
@@ -35,11 +41,11 @@ include(ECMSetupVersion)
 include(CMakePushCheckState)
 include(CheckStructHasMember)
 
-ecm_setup_version(${PROJECT_VERSION}
+ecm_setup_version("5.0.0"
     VARIABLE_PREFIX AUDIOCDPLUGINS
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/AudioCDPluginsConfigVersion.cmake"
-    SOVERSION 16
+    SOVERSION 5
 )
 
 find_package(Cdparanoia REQUIRED)
