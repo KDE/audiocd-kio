@@ -5,7 +5,7 @@ Type=Service
 X-KDE-Priority=TopLevel
 
 [Desktop Action open]
-Exec=kioclient exec audiocd:/?device=%d
+Exec=kioclient5 exec audiocd:/?device=%d
 Icon=system-file-manager
 Name=Open with File Manager
 Name[ar]=افتح بمدير الملفات
