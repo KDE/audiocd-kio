@@ -204,7 +204,7 @@ you have an <acronym>IDE</acronym> <acronym>CD</acronym> writer) then
 make sure you check that you have read and write permissions on the 
 generic <acronym>SCSI</acronym> device, which is probably <filename
 class="devicefile">/dev/sg0</filename>, <filename
-class="devicefile">/dev/sg1</filename>,  If it still doesn't work,
+class="devicefile">/dev/sg1</filename>, &etc; If it still doesn't work,
 try typing <userinput>audiocd:/?device=/dev/sg0</userinput> (or similar)
 to tell kio_audiocd which device your &CD-ROM; is.</para> 
 </answer>
