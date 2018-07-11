@@ -59,6 +59,15 @@ if(CDDA_IOCTL_DEVICE_EXISTS)
 else()
     set(HAVE_CDDA_IOCTL_DEVICE 0)
 endif()
+execute_process(
+    COMMAND sed -e "s|cdda_private_data_t \\*private;|cdda_private_data_t \\*private_data;|g"
+    INPUT_FILE ${CDPARANOIA_INCLUDE_DIR}/cdda_interface.h
+    OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/cdda_interface.hpp
+    RESULT_VARIABLE CDDA_INTERFACE_EDIT_ERROR
+)
+if (CDDA_INTERFACE_EDIT_ERROR)
+    message(STATUS "Fixing cdda_interface.h for C++ failed with exit code ${CDDA_INTERFACE_EDIT_ERROR}")
+endif()
 
 configure_file(config-audiocd.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
