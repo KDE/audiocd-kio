@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=kcmshell4 audiocd
+Exec=kcmshell5 audiocd
 Icon=media-optical-audio
 Type=Service
 ServiceTypes=KCModule
