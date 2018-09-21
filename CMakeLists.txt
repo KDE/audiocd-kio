@@ -40,6 +40,7 @@ include(GenerateExportHeader)
 include(ECMSetupVersion)
 include(CMakePushCheckState)
 include(CheckStructHasMember)
+include(ECMQtDeclareLoggingCategory)
 
 ecm_setup_version("5.0.0"
     VARIABLE_PREFIX AUDIOCDPLUGINS
@@ -89,6 +90,8 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 ########### next target ###############
 
 set(kio_audiocd_PART_SRCS audiocd.cpp )
+
+ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS HEADER audiocd_kio_debug.h IDENTIFIER AUDIOCD_KIO_LOG CATEGORY_NAME log_audiocd_kio DEFAULT_SEVERITY Debug)
 
 add_library(kio_audiocd ${kio_audiocd_PART_SRCS})
 

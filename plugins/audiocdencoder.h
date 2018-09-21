@@ -24,8 +24,11 @@
 #include <sys/types.h>
 #include <kio/slavebase.h>
 #include <QList>
+#include <QLoggingCategory>
 
 #include <KCddb/Cdinfo>
+
+Q_DECLARE_LOGGING_CATEGORY(AUDIOCD_KIO_LOG)
 
 class KConfigSkeleton;
 using namespace KCDDB;

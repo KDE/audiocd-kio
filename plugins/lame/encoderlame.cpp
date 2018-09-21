@@ -21,7 +21,8 @@
 #include "encoderlame.h"
 #include "audiocd_lame_encoder.h"
 
-#include <kdebug.h>
+#include <QDebug>
+#include "audiocd_kio_debug.h"
 #include <qgroupbox.h>
 #include <qstringlist.h>
 #include <kglobal.h>
@@ -31,6 +32,8 @@
 #include <ktemporaryfile.h>
 #include <kstandarddirs.h>
 // #include "collectingprocess.h"
+
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 
 extern "C"
 {
@@ -101,7 +104,7 @@ bool EncoderLame::init(){
 		genre = genre.mid( i );
 
 	}
-	//kDebug(7117) << "Available genres:" << d->genreList;
+	//qCDebug(AUDIOCD_KIO_LOG) << "Available genres:" << d->genreList;
 
 	return true;
 }
@@ -247,7 +250,7 @@ long EncoderLame::readInit(long /*size*/){
 	// Read in stdin, output to the temp file
 	*d->currentEncodeProcess << "-" << d->tempFile->fileName().toLatin1();
 
-	//kDebug(7117) << d->currentEncodeProcess->args();
+	//qCDebug(AUDIOCD_KIO_LOG) << d->currentEncodeProcess->args();
 
 
 	connect(d->currentEncodeProcess, SIGNAL(readyReadStandardOutput()),
@@ -267,13 +270,13 @@ long EncoderLame::readInit(long /*size*/){
 }
 
 void EncoderLame::processExited ( int exitCode, QProcess::ExitStatus /*status*/ ){
-	kDebug(7117) << "Lame Encoding process exited with: " << exitCode;
+	qCDebug(AUDIOCD_KIO_LOG) << "Lame Encoding process exited with: " << exitCode;
 	d->processHasExited = true;
 }
 
 void EncoderLame::receivedStderr(){
 	QByteArray error = d->currentEncodeProcess->readAllStandardError();
-	kDebug(7117) << "Lame stderr: " << error;
+	qCDebug(AUDIOCD_KIO_LOG) << "Lame stderr: " << error;
 	if ( !d->lastErrorMessage.isEmpty() )
 		d->lastErrorMessage += '\t';
 	d->lastErrorMessage += QString::fromLocal8Bit( error );
@@ -281,7 +284,7 @@ void EncoderLame::receivedStderr(){
 
 void EncoderLame::receivedStdout(){
 	QString output = QString::fromLocal8Bit(d->currentEncodeProcess->readAllStandardOutput());
-	kDebug(7117) << "Lame stdout: " << output;
+	qCDebug(AUDIOCD_KIO_LOG) << "Lame stdout: " << output;
 }
 
 // void EncoderLame::wroteStdin(){

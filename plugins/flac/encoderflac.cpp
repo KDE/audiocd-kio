@@ -31,9 +31,12 @@
 #endif
 
 #include <kconfig.h>
-#include <kdebug.h>
+#include <QDebug>
+#include "audiocd_kio_debug.h"
 #include <QPair>
 #include <QDateTime>
+
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 
 extern "C"
 {
@@ -146,7 +149,7 @@ unsigned long EncoderFLAC::size(long time_secs) const {
 }
 
 long EncoderFLAC::readInit(long size) {
-    kDebug(7117) << "EncoderFLAC::readInit() called";
+    qCDebug(AUDIOCD_KIO_LOG) << "EncoderFLAC::readInit() called";
     d->data = 0;
 #if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
     FLAC__stream_encoder_set_write_callback(d->encoder, WriteCallback);

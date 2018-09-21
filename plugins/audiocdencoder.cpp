@@ -18,10 +18,13 @@
 
 #include "audiocdencoder.h"
 #include <klibloader.h>
-#include <kdebug.h>
+#include <QDebug>
+#include "audiocd_kio_debug.h"
 #include <QDir>
 #include <QRegExp>
 #include <kstandarddirs.h>
+
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 
 /**
  * Attempt to load a plugin and see if it has the symbol create_audiocd_encoders.
@@ -30,12 +33,12 @@
  */
 KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 {
-    kDebug(7117) << "Trying to load library. File: \"" << libFileName.toLatin1() << "\".";
+    qCDebug(AUDIOCD_KIO_LOG) << "Trying to load library. File: \"" << libFileName.toLatin1() << "\".";
     KLibrary::void_function_ptr cplugin = KLibrary::void_function_ptr(
             KLibrary( libFileName ).resolveFunction( "create_audiocd_encoders" ));
     if (!cplugin)
         return NULL;
-    kDebug(7117) << "We have a plugin. File:  \"" << libFileName << "\".";
+    qCDebug(AUDIOCD_KIO_LOG) << "We have a plugin. File:  \"" << libFileName << "\".";
     return cplugin;
 }
 
@@ -53,7 +56,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
     for (QStringList::const_iterator it = dirs.constBegin(); it != dirs.constEnd(); ++it) {
         QDir dir(*it);
         if (!dir.exists()) {
-            kDebug(7117) << "Directory given by KStandardDirs: " << dir.path() << " doesn't exists!";
+            qCDebug(AUDIOCD_KIO_LOG) << "Directory given by KStandardDirs: " << dir.path() << " doesn't exists!";
             continue;
         }
 
@@ -64,7 +67,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
             if (0 < fi.fileName().count(QRegExp( QLatin1String( "^libaudiocd_encoder_.*.so$" )))) {
                 QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf(QLatin1Char( '.' ))));
                 if (foundEncoders.contains(fileName)) {
-                    kDebug(7117) << "Warning, encoder has been found twice!";
+                    qCDebug(AUDIOCD_KIO_LOG) << "Warning, encoder has been found twice!";
                     continue;
                 }
                 foundEncoders.append(fileName);
