@@ -47,12 +47,12 @@ extern "C"
   #include "cdda_interface.hpp"
 }
 
-inline int16_t swap16 (int16_t i)
+inline qint16 swap16 (qint16 i)
 {
   return (((i >> 8) & 0xFF) | ((i << 8) & 0xFF00));
 }
 
-long EncoderCda::read(int16_t * buf, int frames){ 
+long EncoderCda::read(qint16 * buf, int frames){ 
   QByteArray output;
   int16_t i16 = 1;
   /* WAV is defined to be little endian, so we need to swap it

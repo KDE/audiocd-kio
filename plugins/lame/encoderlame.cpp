@@ -16,7 +16,7 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include "config-audiocd.h"
+#include <config-audiocd.h>
 
 #include "encoderlame.h"
 #include "audiocd_lame_encoder.h"
@@ -288,7 +288,7 @@ void EncoderLame::receivedStdout(){
 // 	d->waitingForWrite = false;
 // }
 
-long EncoderLame::read(int16_t *buf, int frames){
+long EncoderLame::read(qint16 *buf, int frames){
 	if(!d->currentEncodeProcess)
 		return 0;
         if (d->processHasExited)

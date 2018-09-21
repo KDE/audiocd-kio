@@ -45,7 +45,7 @@ public:
 class EncoderVorbis : public AudioCDEncoder {
 
 public:
-  EncoderVorbis(KIO::SlaveBase *slave);
+  explicit EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis();
 
   virtual QString type() const { return QLatin1String( "Ogg Vorbis" ); }
@@ -56,7 +56,7 @@ public:
   virtual const char * mimeType() const;
   virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment );
   virtual long readInit(long size);
-  virtual long read(int16_t * buf, int frames);
+  virtual long read(qint16 * buf, int frames);
   virtual long readCleanup();
   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
 

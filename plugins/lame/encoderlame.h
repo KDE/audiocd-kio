@@ -42,7 +42,7 @@ class EncoderLame : public QObject, public AudioCDEncoder {
 Q_OBJECT
 
 public:
-	EncoderLame(KIO::SlaveBase *slave);
+	explicit EncoderLame(KIO::SlaveBase *slave);
 	~EncoderLame();
 
 	virtual QString type() const { return "MP3"; }
@@ -53,7 +53,7 @@ public:
 	virtual const char * mimeType() const { return "audio/x-mp3"; }
 	virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment );
 	virtual long readInit(long size);
-	virtual long read(int16_t * buf, int frames);
+	virtual long read(qint16 * buf, int frames);
 	virtual long readCleanup();
 	virtual QString lastErrorMessage() const;
   

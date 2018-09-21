@@ -23,7 +23,7 @@
 
 #include <sys/types.h>
 #include <kio/slavebase.h>
-#include <QtCore/QList>
+#include <QList>
 
 #include <KCddb/Cdinfo>
 
@@ -102,12 +102,12 @@ public:
   
   /**
    * Passes a little bit of cd data to be encoded
-   * This function is most likly called many many times.
+   * This function is most likely called many many times.
    * @param buf pointer to the audio that has been read in so far
    * @param frames the number of frames of audio that are in buf
    * @return size of the data that was created by this function, -1 on error.
    */
-  virtual long read(int16_t * buf, int frames) = 0;
+  virtual long read(qint16 * buf, int frames) = 0;
 
   /**
    * Perform any final file creation/padding that is necessary

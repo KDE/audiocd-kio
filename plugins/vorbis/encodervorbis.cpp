@@ -214,8 +214,8 @@ long EncoderVorbis::readInit(long /*size*/){
   vorbis_analysis_init(&d->vd,&d->vi);
   vorbis_block_init(&d->vd,&d->vb);
 
-  srand(time(NULL));
-  ogg_stream_init(&d->os,rand());
+  qsrand(time(NULL));
+  ogg_stream_init(&d->os,qrand());
 
   vorbis_analysis_headerout(&d->vd,&d->vc,&header,&header_comm,&header_code);
 
@@ -241,7 +241,7 @@ long EncoderVorbis::readInit(long /*size*/){
   return 0;
 }
 
-long EncoderVorbis::read(int16_t * buf, int frames){
+long EncoderVorbis::read(qint16 * buf, int frames){
   int i;
   float **buffer=vorbis_analysis_buffer(&d->vd,frames);
 

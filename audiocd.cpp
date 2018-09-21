@@ -22,6 +22,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+#include "audiocd.h"
 #include <config-audiocd.h>
 
 #include <kdemacros.h>
@@ -36,7 +37,6 @@ extern "C"
 	KDE_EXPORT int kdemain(int argc, char ** argv);
 }
 
-#include "audiocd.h"
 #include "plugins/audiocdencoder.h"
 
 #include <sys/stat.h>
@@ -47,7 +47,8 @@ extern "C"
 
 #include <kmacroexpander.h>
 #include <QFile>
-#include <qfileinfo.h>
+#include <QFileInfo>
+#include <QGlobalStatic>
 #include <kcmdlineargs.h>
 #include <kdebug.h>
 #include <kapplication.h>
@@ -71,7 +72,7 @@ int kdemain(int argc, char ** argv)
 	// KApplication uses libkcddb which needs a valid kapp pointer
 	// GUIenabled must be true as libkcddb sometimes wants to communicate
 	// with the user
-	putenv(strdup("SESSION_MANAGER="));
+	qunsetenv("SESSION_MANAGER");
 	//KApplication::disableAutoDcopRegistration();
 	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, KLocalizedString(), 0, KLocalizedString());
 
@@ -406,12 +407,12 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const QUrl & url)
 					break;
 			}
 			// Find where the numbers end
-			for (end = start; end < name.length(); end++)
+			for (end = start; end < name.length(); ++end)
 				if (!name[end].isDigit())
 					break;
 			if (start < name.length()){
 				bool ok;
-				// The external representation counts from 1 so subtrac 1.
+				// The external representation counts from 1 so subtract 1.
 				d->req_track = name.mid(start-1, end - start+2).toInt(&ok) - 1;
 				if (!ok)
 					d->req_track = -1;
@@ -895,7 +896,7 @@ void AudioCDProtocol::paranoiaRead(
 	while (currentSector <= lastSector)
 	{
 		// TODO make the 5 configurable? The default in the lib is 20 fyi
-		int16_t * buf = paranoia_read_limited(paranoia, paranoiaCallback, 5);
+		qint16 * buf = paranoia_read_limited(paranoia, paranoiaCallback, 5);
 		if( warned == 0 && paranoia_read_limited_error >= 5 && d->reportErrors ){
 			warning(i18n("AudioCD: Disk damage detected on this track, risk of data corruption."));
 			warned = 1;
@@ -1162,7 +1163,7 @@ void AudioCDProtocol::generateTemplateTitles()
  * Based upon the cdparanoia ripping application
  * Only output BAD stuff
  * The higher the paranoia_read_limited_error the worse the problem is
- * FYI: PARANOIA_CB_READ & PARANOIA_CB_VERIFY happen continusly when ripping
+ * FYI: PARANOIA_CB_READ & PARANOIA_CB_VERIFY happen continuously when ripping
  */
 void paranoiaCallback(long, int function)
 {

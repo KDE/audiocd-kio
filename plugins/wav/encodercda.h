@@ -48,7 +48,7 @@ public:
   virtual const char * fileType() const { return "cda"; }
   virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){}
   virtual long readInit(long){ return 0; }
-  virtual long read(int16_t * buf, int frames);
+  virtual long read(qint16 * buf, int frames);
   virtual long readCleanup(){ return 0; }
 
 private:

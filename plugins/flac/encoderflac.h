@@ -53,7 +53,7 @@ public:
   virtual const char * mimeType() const { return "audio/x-flac"; }
   virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment );
   virtual long readInit(long size);
-  virtual long read(int16_t * buf, int frames);
+  virtual long read(qint16 * buf, int frames);
   virtual long readCleanup();
   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
 
