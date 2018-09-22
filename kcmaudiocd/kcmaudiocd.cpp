@@ -43,7 +43,6 @@
 K_PLUGIN_FACTORY(Factory,
         registerPlugin<KAudiocdModule>();
         )
-K_EXPORT_PLUGIN(Factory("kcmaudiocd"))
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
   : KCModule(parent), configChanged(false)
