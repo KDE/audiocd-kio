@@ -72,7 +72,6 @@ EncoderLame::~EncoderLame(){
 
 QWidget* EncoderLame::getConfigureWidget(KConfigSkeleton** manager) const {
   (*manager) = Settings::self();
-  KGlobal::locale()->insertCatalog( QLatin1String( "audiocd_encoder_lame" ));
   EncoderLameConfig *config = new EncoderLameConfig();
   config->cbr_settings->hide();
   return config;
