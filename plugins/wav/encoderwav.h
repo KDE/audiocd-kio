@@ -47,10 +47,6 @@ public:
   virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){}
   virtual long readInit(long size);
 
-private:
-  class Private;
-  Private * d;
-
 };
 
 #endif // ENCODER_WAV_H
