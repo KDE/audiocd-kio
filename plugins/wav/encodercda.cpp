@@ -54,7 +54,7 @@ inline qint16 swap16 (qint16 i)
 
 long EncoderCda::read(qint16 * buf, int frames){ 
   QByteArray output;
-  int16_t i16 = 1;
+  qint16 i16 = 1;
   /* WAV is defined to be little endian, so we need to swap it
      on big endian platforms.  */
   if (((char*)&i16)[0] == 0)
