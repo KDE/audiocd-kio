@@ -24,12 +24,6 @@
 
 #include "encodercda.h"
 
-class EncoderCda::Private
-{
-  public:
-  
-};
-
 unsigned long EncoderCda::size(long time_secs) const {
   //return (time_secs *   (44100 * 2 * 16))/8;
   return (time_secs) * 176400;

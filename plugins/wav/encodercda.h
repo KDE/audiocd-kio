@@ -51,10 +51,6 @@ public:
   virtual long read(qint16 * buf, int frames);
   virtual long readCleanup(){ return 0; }
 
-private:
-  class Private;
-  Private * d;
-
 };
 
 #endif // ENCODER_CDA_H
