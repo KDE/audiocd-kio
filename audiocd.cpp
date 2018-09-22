@@ -645,10 +645,9 @@ void AudioCDProtocol::listDir(const QUrl & url)
 			app_dir(entry, device, 2+encoders.count());
 			entry.insert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
 			entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
-			listEntry(entry, false);
+			listEntry(entry);
 		}
 		totalSize(entry.count());
-		listEntry(entry, true);
 		finished();
 		return;
 	}
@@ -687,24 +686,24 @@ void AudioCDProtocol::listDir(const QUrl & url)
 			else
                             app_file(entry, QString::fromLatin1("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(count), ((*it).toString().length())+1);
 			count++;
-			listEntry(entry, false);
+			listEntry(entry);
 		}
 		// Error
 		if( count == 1 ) {
                     app_file(entry, QString::fromLatin1("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), 0);
 			count++;
-			listEntry(entry, false);
+			listEntry(entry);
 		}
 	}
 
 	if (d->which_dir == Root){
 		// List virtual directories.
 		app_dir(entry, d->s_fullCD, encoders.count());
-		listEntry(entry, false);
+		listEntry(entry);
 
 		// Either >0 cddb results or cddb error file
 		app_dir(entry, d->s_info, d->cddbList.count());
-		listEntry(entry, false);
+		listEntry(entry);
 
 		// List the encoders
 		AudioCDEncoder *encoder;
@@ -714,7 +713,7 @@ void AudioCDProtocol::listDir(const QUrl & url)
 			if( encoder == encoderTypeWAV )
 				continue;
 			app_dir(entry, encoder->type(), d->tracks);
-			listEntry(entry, false);
+			listEntry(entry);
 		}
 	}
 
@@ -759,12 +758,11 @@ void AudioCDProtocol::listDir(const QUrl & url)
 		else
 		{
 			app_dir(entry, d->child_dir, 1);
-			listEntry(entry, false);
+			listEntry(entry);
 		}
 	}
 
 	totalSize(entry.count());
-	listEntry(entry, true);
 	cdda_close(drive);
 	finished();
 }
@@ -789,7 +787,7 @@ void AudioCDProtocol::addEntry(const QString& trackTitle, AudioCDEncoder *encode
 	}
 	UDSEntry entry;
 	app_file(entry, trackTitle + QLatin1String(".")+QLatin1String( encoder->fileType() ), theFileSize, QLatin1String( encoder->mimeType() ));
-	listEntry(entry, false);
+	listEntry(entry);
 }
 
 long AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder *encoder)
