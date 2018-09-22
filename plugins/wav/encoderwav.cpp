@@ -34,12 +34,6 @@ extern "C"
   }
 }
 
-class EncoderWav::Private
-{
-  public:
-  
-};
-
 unsigned long EncoderWav::size(long time_secs) const {
   return (EncoderCda::size(time_secs) + 44);
 }
