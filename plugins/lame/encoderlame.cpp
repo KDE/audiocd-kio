@@ -30,7 +30,7 @@
 #include <qapplication.h>
 #include <qfileinfo.h>
 #include <ktemporaryfile.h>
-#include <kstandarddirs.h>
+#include <QStandardPaths>
 // #include "collectingprocess.h"
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
@@ -79,7 +79,7 @@ QWidget* EncoderLame::getConfigureWidget(KConfigSkeleton** manager) const {
 
 bool EncoderLame::init(){
 	// Determine if lame is installed on the system or not.
-	if ( KStandardDirs::findExe( "lame" ).isEmpty() )
+	if ( QStandardPaths::findExecutable( QStringLiteral( "lame" )).isEmpty() )
 		return false;
 
 	// Ask lame for the list of genres it knows; otherwise it barfs when doing
