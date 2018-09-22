@@ -29,7 +29,8 @@
 #include <klocale.h>
 #include <qapplication.h>
 #include <qfileinfo.h>
-#include <ktemporaryfile.h>
+#include <QDir>
+#include <QTemporaryFile>
 #include <QStandardPaths>
 // #include "collectingprocess.h"
 
@@ -54,7 +55,7 @@ public:
 	QStringList genreList;
 	uint lastSize;
 	KProcess *currentEncodeProcess;
-	KTemporaryFile *tempFile;
+	QTemporaryFile *tempFile;
 };
 
 EncoderLame::EncoderLame(KIO::SlaveBase *slave) : QObject(), AudioCDEncoder(slave) {
@@ -234,8 +235,7 @@ unsigned long EncoderLame::size(long time_secs) const {
 long EncoderLame::readInit(long /*size*/){
 	// Create KProcess
 	d->currentEncodeProcess	= new KProcess();
-	d->tempFile = new KTemporaryFile();
-	d->tempFile->setSuffix(".mp3");
+	d->tempFile = new QTemporaryFile(QDir::tempPath() + QLatin1String("/kaudiocd_XXXXXX") + QLatin1String(".mp3"));
 	d->tempFile->open();
 	d->lastErrorMessage.clear();
 	d->processHasExited = false;
