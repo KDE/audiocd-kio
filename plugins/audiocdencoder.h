@@ -131,7 +131,7 @@ public:
 
   /**
    * Helper function to load all of the AudioCD Encoders from libraries.
-   * Uses KStandardDirs to find where libraries could be, opens all of the ones
+   * Uses QLibraryInfo to find where libraries could be, opens all of the ones
    * that we might own audiocd_encoder_* and then uses the symbol 
    * create_audiocd_encoders to obtain the encoders from that library.
    * @param slave ioslave needed if the plugin is going to be used to encode something.

@@ -22,7 +22,7 @@
 #include "audiocd_kio_debug.h"
 #include <QDir>
 #include <QRegExp>
-#include <kstandarddirs.h>
+#include <QLibraryInfo>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 
@@ -50,33 +50,28 @@ KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
 void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)
 {
     QString foundEncoders;
-
-		KStandardDirs standardDirs;
-    QStringList dirs = standardDirs.findDirs("module", QLatin1String( "" ));
-    for (QStringList::const_iterator it = dirs.constBegin(); it != dirs.constEnd(); ++it) {
-        QDir dir(*it);
-        if (!dir.exists()) {
-            qCDebug(AUDIOCD_KIO_LOG) << "Directory given by KStandardDirs: " << dir.path() << " doesn't exists!";
-            continue;
-        }
-
-        dir.setFilter(QDir::Files | QDir::Hidden);
-        const QFileInfoList files = dir.entryInfoList();
-        for (int i = 0; i < files.count(); ++i) {
-            QFileInfo fi(files.at(i));
-            if (0 < fi.fileName().count(QRegExp( QLatin1String( "^libaudiocd_encoder_.*.so$" )))) {
-                QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf(QLatin1Char( '.' ))));
-                if (foundEncoders.contains(fileName)) {
-                    qCDebug(AUDIOCD_KIO_LOG) << "Warning, encoder has been found twice!";
-                    continue;
-                }
-                foundEncoders.append(fileName);
-                KLibrary::void_function_ptr function = loadPlugin(fileName);
-                if (function) {
-                    void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
-                            (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
-                    functionPointer(slave, encoders);
-                }
+    QDir dir=QLibraryInfo::location(QLibraryInfo::PluginsPath);
+    if (!dir.exists()) {
+        qCDebug(AUDIOCD_KIO_LOG) << "Directory given by QLibraryInfo: " << dir.path() << " doesn't exists!";
+    }
+    dir.setFilter(QDir::Files | QDir::Hidden);
+    const QFileInfoList files = dir.entryInfoList();
+    for (int i = 0; i < files.count(); ++i) {
+        QFileInfo fi(files.at(i));
+        if (0 < fi.fileName().count(QRegExp( QLatin1String( "^libaudiocd_encoder_.*.so$" )))) {
+            QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf(QLatin1Char( '.' ))));
+            
+            if (foundEncoders.contains(fileName)) {
+                qCDebug(AUDIOCD_KIO_LOG) << "Warning, encoder has been found twice!";
+                continue;
+            }
+            foundEncoders.append(fileName);
+            KLibrary::void_function_ptr function = loadPlugin(fileName);
+            if (function) {
+                void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
+                (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
+                functionPointer(slave, encoders);
+                
             }
         }
     }
