@@ -29,7 +29,6 @@
 #include <time.h>
 #include <stdlib.h>
 #include <kconfig.h>
-#include <knuminput.h>
 #include <QByteArray>
 #include <QDateTime>
 #include <kglobal.h>
@@ -81,7 +80,8 @@ EncoderVorbis::~EncoderVorbis(){
 QWidget* EncoderVorbis::getConfigureWidget(KConfigSkeleton** manager) const {
   (*manager) = Settings::self();
   EncoderVorbisConfig *config = new EncoderVorbisConfig();
-  config->kcfg_vorbis_quality->setRange(0.0, 10.0, 0.2, true);
+  config->kcfg_vorbis_quality->setRange(0.0, 10.0);
+  config->kcfg_vorbis_quality->setSingleStep(0.1);
   config->vorbis_bitrate_settings->hide();
   return config;
 }

@@ -280,15 +280,15 @@
           </property>
           <layout class="QHBoxLayout" >
             <item>
-              <widget class="KDoubleNumInput" name="kcfg_vorbis_quality" >
+              <widget class="QDoubleSpinBox" name="kcfg_vorbis_quality" >
                 <property name="value" >
                   <number>0</number>
                 </property>
                 <property name="minimum" >
-                  <number>0</number>
+                  <number>0.0</number>
                 </property>
                 <property name="maximum" >
-                  <number>10000</number>
+                  <number>10.0</number>
                 </property>
                 <property name="decimals" >
                   <number>1</number>
@@ -341,13 +341,6 @@
       </item>
     </layout>
   </widget>
-    <customwidgets>
-    <customwidget>
-      <class>KDoubleNumInput</class>
-      <header location="global" >knuminput.h</header>
-      <container>0</container>
-    </customwidget>
-  </customwidgets>
   <tabstops>
     <tabstop>vorbis_enc_quality</tabstop>
     <tabstop>kcfg_set_vorbis_min_br</tabstop>
@@ -359,9 +352,6 @@
     <tabstop>kcfg_vorbis_quality</tabstop>
     <tabstop>kcfg_vorbis_comments</tabstop>
   </tabstops>
-  <includes>
-    <include location="local" >knuminput.h</include>
-  </includes>
   <connections>
     <connection>
       <sender>vorbis_enc_bitrate</sender>

@@ -142,7 +142,7 @@ void EncoderFLAC::loadSettings() {
 #endif
 }
 
-// Estimate size to be 5/8 of uncompresed size.
+// Estimate size to be 5/8 of uncompressed size.
 unsigned long EncoderFLAC::size(long time_secs) const {
    long uncompressed = (time_secs * (44100*2*2));
    return (uncompressed/8)*5 + 1000;

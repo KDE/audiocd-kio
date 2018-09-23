@@ -28,7 +28,6 @@
 #include <qslider.h>
 #include <qtabwidget.h>
 #include <kaboutdata.h>
-#include <knuminput.h>
 #include <QRegExp>
 #include <QLabel>
 #include <QVBoxLayout>
