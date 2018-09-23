@@ -17,12 +17,12 @@
 */
 
 #include "audiocdencoder.h"
-#include <klibloader.h>
-#include <QDebug>
 #include "audiocd_kio_debug.h"
+#include <QDebug>
+#include <QLibrary>
+#include <QLibraryInfo>
 #include <QDir>
 #include <QRegExp>
-#include <QLibraryInfo>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 
@@ -31,11 +31,10 @@ Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
  * @param libFileName file to try to load.
  * @returns pointer to the symbol or NULL
  */
-KLibrary::void_function_ptr loadPlugin(const QString &libFileName)
+QFunctionPointer loadPlugin(const QString &libFileName)
 {
     qCDebug(AUDIOCD_KIO_LOG) << "Trying to load library. File: \"" << libFileName.toLatin1() << "\".";
-    KLibrary::void_function_ptr cplugin = KLibrary::void_function_ptr(
-            KLibrary( libFileName ).resolveFunction( "create_audiocd_encoders" ));
+    QFunctionPointer cplugin = QLibrary(QLibraryInfo::location(QLibraryInfo::PluginsPath) + QDir::separator() + libFileName).resolve( "create_audiocd_encoders" );
     if (!cplugin)
         return NULL;
     qCDebug(AUDIOCD_KIO_LOG) << "We have a plugin. File:  \"" << libFileName << "\".";
@@ -66,7 +65,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
                 continue;
             }
             foundEncoders.append(fileName);
-            KLibrary::void_function_ptr function = loadPlugin(fileName);
+            QFunctionPointer function = loadPlugin(fileName);
             if (function) {
                 void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
                 (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
