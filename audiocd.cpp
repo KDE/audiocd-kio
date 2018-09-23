@@ -14,7 +14,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * ERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,6 +24,13 @@
 
 #include "audiocd.h"
 #include <config-audiocd.h>
+#include <kio_version.h>
+
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 48, 0)
+    #define INSERT(A, B) fastInsert(A, B);
+#else
+    #define INSERT(A, B) insert(A, B);
+#endif
 
 #include <kdemacros.h>
 extern "C"
@@ -546,10 +553,10 @@ void AudioCDProtocol::stat(const QUrl & url)
 		const mode_t _umask = ::umask(0);
 		::umask(_umask);
 		UDSEntry entry;
-		entry.insert(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
-		entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-		entry.insert(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
-		entry.insert(KIO::UDSEntry::UDS_SIZE, 2+encoders.count());
+		entry.INSERT(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
+		entry.INSERT(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+		entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
+		entry.INSERT(KIO::UDSEntry::UDS_SIZE, 2+encoders.count());
 		statEntry(entry);
 		finished();
 		return;
@@ -579,26 +586,26 @@ void AudioCDProtocol::stat(const QUrl & url)
 
 	UDSEntry entry;
 
-	entry.insert( KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F") ));
+	entry.INSERT( KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F") ));
 
-	entry.insert( KIO::UDSEntry::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
+	entry.INSERT( KIO::UDSEntry::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
 
 
 	const mode_t _umask = ::umask(0);
 	::umask(_umask);
 
-	entry.insert(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
+	entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
 
 	if (!isFile)
 	{
-		entry.insert( KIO::UDSEntry::UDS_SIZE, cdda_tracks(drive));
+		entry.INSERT( KIO::UDSEntry::UDS_SIZE, cdda_tracks(drive));
 	}
 	else
 	{
 			AudioCDEncoder *encoder = determineEncoder(d->fname);
 			long firstSector, lastSector;
 			getSectorsForRequest(drive, firstSector, lastSector);
-			entry.insert( KIO::UDSEntry::UDS_SIZE,fileSize(firstSector, lastSector, encoder));
+			entry.INSERT( KIO::UDSEntry::UDS_SIZE,fileSize(firstSector, lastSector, encoder));
 	}
 
 
@@ -612,22 +619,22 @@ void AudioCDProtocol::stat(const QUrl & url)
 static void app_dir(UDSEntry& e, const QString & n, size_t s)
 {
 	e.clear();
-	e.insert( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-	e.insert( KIO::UDSEntry::UDS_ACCESS, 0400);
-	e.insert( KIO::UDSEntry::UDS_SIZE, s);
-	e.insert( KIO::UDSEntry::UDS_MIME_TYPE, QLatin1String("inode/directory"));
+	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+	e.INSERT( KIO::UDSEntry::UDS_ACCESS, 0400);
+	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
+	e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, QLatin1String("inode/directory"));
 }
 
 static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mimetype = QString())
 {
 	e.clear();
-	e.insert( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-	e.insert( KIO::UDSEntry::UDS_ACCESS, 0400);
-	e.insert( KIO::UDSEntry::UDS_SIZE, s);
+	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+	e.INSERT( KIO::UDSEntry::UDS_ACCESS, 0400);
+	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
 	if (!mimetype.isEmpty())
-		e.insert( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
+		e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
 }
 
 void AudioCDProtocol::listDir(const QUrl & url)
@@ -643,8 +650,8 @@ void AudioCDProtocol::listDir(const QUrl & url)
 			QUrl targetUrl = url;
 			targetUrl.addEncodedQueryItem("device", device.toUtf8());
 			app_dir(entry, device, 2+encoders.count());
-			entry.insert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
-			entry.insert(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
+			entry.INSERT(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
+			entry.INSERT(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
 			listEntry(entry);
 		}
 		totalSize(entry.count());
