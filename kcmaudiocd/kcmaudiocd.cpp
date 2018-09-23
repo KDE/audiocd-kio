@@ -47,6 +47,8 @@ K_PLUGIN_FACTORY(Factory,
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
   : KCModule(parent), configChanged(false)
 {
+    Q_UNUSED(lst);
+    
     QVBoxLayout *box = new QVBoxLayout(this);
 
     audioConfig = new AudiocdConfig(this);
