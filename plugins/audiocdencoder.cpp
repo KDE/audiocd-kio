@@ -34,7 +34,7 @@ Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 QFunctionPointer loadPlugin(const QString &libFileName)
 {
     qCDebug(AUDIOCD_KIO_LOG) << "Trying to load library. File: \"" << libFileName.toLatin1() << "\".";
-    QFunctionPointer cplugin = QLibrary(QLibraryInfo::location(QLibraryInfo::PluginsPath) + QDir::separator() + libFileName).resolve( "create_audiocd_encoders" );
+    QFunctionPointer cplugin = QLibrary(QLibraryInfo::location(QLibraryInfo::PluginsPath) + '/' + libFileName).resolve( "create_audiocd_encoders" );
     if (!cplugin)
         return NULL;
     qCDebug(AUDIOCD_KIO_LOG) << "We have a plugin. File:  \"" << libFileName << "\".";
