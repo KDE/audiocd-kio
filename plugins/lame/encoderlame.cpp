@@ -20,18 +20,14 @@
 
 #include "encoderlame.h"
 #include "audiocd_lame_encoder.h"
+#include "audiocd_kio_debug.h"
 
 #include <QDebug>
-#include "audiocd_kio_debug.h"
-#include <qgroupbox.h>
-#include <qstringlist.h>
-#include <kglobal.h>
-#include <klocale.h>
-#include <qapplication.h>
-#include <qfileinfo.h>
 #include <QDir>
-#include <QTemporaryFile>
+#include <QFileInfo>
 #include <QStandardPaths>
+#include <QStringList>
+#include <QTemporaryFile>
 // #include "collectingprocess.h"
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
@@ -371,4 +367,3 @@ QString EncoderLame::lastErrorMessage() const
 	return d->lastErrorMessage;
 }
 
-//#include "encoderlame.moc"

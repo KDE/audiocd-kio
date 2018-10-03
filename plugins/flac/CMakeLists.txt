@@ -17,7 +17,8 @@ add_library(audiocd_encoder_flac ${audiocd_encoder_flac_PART_SRCS})
 set_target_properties(audiocd_encoder_flac PROPERTIES PREFIX "${CMAKE_SHARED_LIBRARY_PREFIX}")
 
 target_link_libraries(audiocd_encoder_flac 
-    ${FLAC_LIBRARIES} 
+    ${FLAC_LIBRARIES}
+    Qt5::Widgets
     KF5::I18n
     KF5::Cddb
     audiocdplugins

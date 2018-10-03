@@ -27,8 +27,8 @@
 #define KCMAUDIOCD_H
 
 #include <QList>
-#include <kcmodule.h>
-#include <KConfigCore/KConfig>
+#include <KCModule>
+#include <KConfig>
 
 class KConfigDialogManager;
 

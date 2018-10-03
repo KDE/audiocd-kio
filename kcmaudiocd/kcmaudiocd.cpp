@@ -20,24 +20,20 @@
 #include "kcmaudiocd.h"
 #include "audiocdplugins_version.h"
 
-#include <kconfig.h>
-#include <klineedit.h>
-#include <klocalizedstring.h>
-#include <kcomponentdata.h>
-#include <QCheckBox>
-#include <qslider.h>
-#include <qtabwidget.h>
-#include <kaboutdata.h>
-#include <QRegExp>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <kdialog.h>
-
-#include <audiocdencoder.h>
-#include <kconfigdialogmanager.h>
-#include <kconfiggroup.h>
+#include <KAboutData>
+#include <KConfigDialogManager>
+#include <KConfigGroup>
+#include <KLocalizedString>
 #include <KPluginFactory>
 #include <KPluginLoader>
+#include <QCheckBox>
+#include <QLabel>
+#include <QRegExp>
+#include <QSlider>
+#include <QTabWidget>
+#include <QVBoxLayout>
+
+#include <audiocdencoder.h>
 
 K_PLUGIN_FACTORY(Factory,
         registerPlugin<KAudiocdModule>();

@@ -18,7 +18,6 @@ set(audiocdplugins_LIB_SRCS audiocdencoder.cpp)
 add_library(audiocdplugins SHARED ${audiocdplugins_LIB_SRCS})
 
 target_link_libraries(audiocdplugins
-    KF5::KDELibs4Support
     KF5::Cddb
     KF5::KIOCore
 )

@@ -13,9 +13,9 @@ ki18n_wrap_ui(kcm_audiocd_PART_SRCS audiocdconfig.ui)
 
 add_library(kcm_audiocd ${kcm_audiocd_PART_SRCS})
 
-target_link_libraries(kcm_audiocd  
+target_link_libraries(kcm_audiocd
     KF5::I18n
-    KF5::KDELibs4Support
+    KF5::KCMUtils
     audiocdplugins 
 )
 

@@ -314,7 +314,7 @@
            </layout>
           </item>
           <item row="2" column="0">
-           <widget class="KLineEdit" name="fileNameLineEdit"/>
+           <widget class="QLineEdit" name="fileNameLineEdit"/>
           </item>
          </layout>
         </widget>
@@ -436,7 +436,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="KLineEdit" name="albumNameLineEdit"/>
+           <widget class="QLineEdit" name="albumNameLineEdit"/>
           </item>
          </layout>
         </widget>
@@ -567,7 +567,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="KLineEdit" name="fileLocationLineEdit">
+           <widget class="QLineEdit" name="fileLocationLineEdit">
             <property name="text">
              <string>%{albumtitle}/%{albumartist}</string>
             </property>
@@ -704,13 +704,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>ec_enable_check</tabstop>
@@ -722,10 +715,6 @@
   <tabstop>kcfg_replaceOutput</tabstop>
   <tabstop>example</tabstop>
  </tabstops>
- <includes>
-  <include location="local">kcmodule.h</include>
-  <include location="local">klineedit.h</include>
- </includes>
  <resources/>
  <connections>
   <connection>

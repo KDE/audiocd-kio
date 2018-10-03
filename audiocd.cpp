@@ -52,18 +52,20 @@ extern "C"
 #include <sys/time.h>
 #include <sys/resource.h>
 
-#include <kmacroexpander.h>
+#include <QApplication>
+#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QGlobalStatic>
-#include <kcmdlineargs.h>
-#include <QDebug>
-#include "audiocd_kio_debug.h"
-#include <kapplication.h>
-#include <klocale.h>
-#include <QRegExp>
 #include <QHash>
+#include <QRegExp>
+#include <QUrlQuery>
+
+#include "audiocd_kio_debug.h"
+
 #include <KLocalizedString>
+#include <KMacroExpander>
+
 // CDDB
 #include <KCddb/Client>
 #include <KCompactDisc/KCompactDisc>
@@ -74,32 +76,29 @@ using namespace KIO;
 
 using namespace AudioCD;
 
-int kdemain(int argc, char ** argv)
+extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
 {
-	KLocalizedString::setApplicationDomain("kio_audiocd");
-	// KApplication uses libkcddb which needs a valid kapp pointer
-	// GUIenabled must be true as libkcddb sometimes wants to communicate
-	// with the user
-	qunsetenv("SESSION_MANAGER");
-	//KApplication::disableAutoDcopRegistration();
-	KCmdLineArgs::init(argc, argv, "kio_audiocd", 0, KLocalizedString(), 0, KLocalizedString());
+    KLocalizedString::setApplicationDomain("kio_audiocd");
+    // QApplication uses libkcddb which needs a valid kapp pointer
+    // GUIenabled must be true as libkcddb sometimes wants to communicate
+    // with the user
+    qunsetenv("SESSION_MANAGER");
+    QApplication app(argc, argv);
+    app.setApplicationName(QStringLiteral("kio_audiocd"));
 
-	KCmdLineOptions options;
-	options.add("+protocol", ki18n("Protocol name"));
-	options.add("+pool", ki18n("Socket name"));
-	options.add("+app", ki18n("Socket name"));
-	KCmdLineArgs::addCmdLineOptions(options);
-	KApplication app(true);
+    if (argc != 4) {
+        fprintf(stderr, "Usage: kio_audiocd protocol pool app\n");
+        exit(-1);
+    }
 
-	qCDebug(AUDIOCD_KIO_LOG) << "Starting " << getpid();
+    qCDebug(AUDIOCD_KIO_LOG) << "Starting " << getpid();
 
-	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-	AudioCDProtocol slave(args->arg(0).toLocal8Bit(), args->arg(1).toLocal8Bit(), args->arg(2).toLocal8Bit());
-	args->clear();
-	slave.dispatchLoop();
+    AudioCDProtocol slave(argv[1], argv[2], argv[3]);
+    slave.dispatchLoop();
 
-	qCDebug(AUDIOCD_KIO_LOG) << "Done";
-	return 0;
+    qCDebug(AUDIOCD_KIO_LOG) << "Done";
+
+    return 0;
 }
 
 enum Which_dir {
@@ -603,7 +602,7 @@ void AudioCDProtocol::stat(const QUrl & url)
 	else
 	{
 			AudioCDEncoder *encoder = determineEncoder(d->fname);
-			long firstSector, lastSector;
+			long firstSector = 0, lastSector = 0;
 			getSectorsForRequest(drive, firstSector, lastSector);
 			entry.INSERT( KIO::UDSEntry::UDS_SIZE,fileSize(firstSector, lastSector, encoder));
 	}
@@ -648,7 +647,9 @@ void AudioCDProtocol::listDir(const QUrl & url)
 		foreach (const QString &deviceName, deviceNames) {
 			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
 			QUrl targetUrl = url;
-			targetUrl.addEncodedQueryItem("device", device.toUtf8());
+			QUrlQuery targetQuery;
+			targetQuery.addQueryItem("device", device.toUtf8());
+			targetUrl.setQuery(targetQuery);
 			app_dir(entry, device, 2+encoders.count());
 			entry.INSERT(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
 			entry.INSERT(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
@@ -1012,7 +1013,7 @@ void AudioCDProtocol::parseURLArgs(const QUrl & url)
 {
 	d->clearURLargs();
 
-	QString query(QUrl::fromPercentEncoding(url.query().toAscii()));
+	QString query(QUrl::fromPercentEncoding(url.query().toLatin1()));
 
 	if (query.isEmpty())
 		return;

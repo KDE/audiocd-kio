@@ -28,11 +28,9 @@
 #include <vorbis/vorbisenc.h>
 #include <time.h>
 #include <stdlib.h>
-#include <kconfig.h>
+#include <KConfig>
 #include <QByteArray>
 #include <QDateTime>
-#include <kglobal.h>
-#include <klocale.h>
 
 extern "C"
 {

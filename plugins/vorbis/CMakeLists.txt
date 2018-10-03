@@ -15,6 +15,7 @@ set_target_properties(audiocd_encoder_vorbis PROPERTIES PREFIX "${CMAKE_SHARED_L
 
 target_link_libraries(audiocd_encoder_vorbis 
     ${OGGVORBIS_LIBRARIES} 
+    Qt5::Widgets
     KF5::I18n
     KF5::Cddb
     audiocdplugins

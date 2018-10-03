@@ -10,13 +10,16 @@ set(CMAKE_MODULE_PATH "${ECM_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 set(PROJECT_VERSION "16.07.0")
 set(KF5_DEP_VERSION "5.24.0") # handled by release scripts
+set(REQUIRED_QT_VERSION "5.9.0")
+
+find_package(Qt5 ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Core Widgets)
 
 find_package(KF5 ${KF5_DEP_VERSION} REQUIRED COMPONENTS
     Config
-    KDELibs4Support
     I18n
     DocTools
     KIO
+    KCMUtils
 )
 find_package(KF5Cddb)
 set_package_properties(KF5Cddb PROPERTIES
@@ -96,7 +99,8 @@ ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS HEADER audiocd_kio_debug.h
 add_library(kio_audiocd ${kio_audiocd_PART_SRCS})
 
 target_link_libraries(kio_audiocd 
-    ${CDPARANOIA_LIBRARIES} 
+    ${CDPARANOIA_LIBRARIES}
+    Qt5::Widgets
     KF5::CompactDisc
     audiocdplugins
 )

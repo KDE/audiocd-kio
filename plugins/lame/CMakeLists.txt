@@ -20,6 +20,7 @@ add_library(audiocd_encoder_lame ${audiocd_encoder_lame_PART_SRCS})
 set_target_properties(audiocd_encoder_lame PROPERTIES PREFIX "${CMAKE_SHARED_LIBRARY_PREFIX}")
 
 target_link_libraries(audiocd_encoder_lame 
+    Qt5::Widgets
     KF5::I18n
     KF5::Cddb
     audiocdplugins
