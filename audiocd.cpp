@@ -32,7 +32,6 @@
     #define INSERT(A, B) insert(A, B);
 #endif
 
-#include <kdemacros.h>
 extern "C"
 {
 	//cdda_interface.h in cdparanoia 10.2 has a member called 'private' which the C++ compiler doesn't like
@@ -41,7 +40,7 @@ extern "C"
 	#include <cdda_paranoia.h>
 	void paranoiaCallback(long, int);
 
-	KDE_EXPORT int kdemain(int argc, char ** argv);
+	int Q_DECL_EXPORT kdemain(int argc, char ** argv);
 }
 
 #include "plugins/audiocdencoder.h"
