@@ -52,7 +52,6 @@ extern "C"
 #include <sys/resource.h>
 
 #include <QApplication>
-#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QGlobalStatic>

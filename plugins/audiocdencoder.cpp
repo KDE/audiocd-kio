@@ -19,13 +19,12 @@
 #include "audiocdencoder.h"
 #include "audiocd_kio_debug.h"
 
-#include <QDebug>
 #include <QDir>
 #include <QLibrary>
 #include <QLibraryInfo>
 #include <QRegExp>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
 
 /**
  * Attempt to load a plugin and see if it has the symbol create_audiocd_encoders.

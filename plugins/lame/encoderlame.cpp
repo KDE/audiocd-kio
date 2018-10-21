@@ -22,14 +22,13 @@
 #include "audiocd_lame_encoder.h"
 #include "audiocd_kio_debug.h"
 
-#include <QDebug>
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
 #include <QStringList>
 #include <QTemporaryFile>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
 
 extern "C"
 {

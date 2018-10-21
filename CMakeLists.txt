@@ -94,7 +94,7 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 set(kio_audiocd_PART_SRCS audiocd.cpp )
 
-ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS HEADER audiocd_kio_debug.h IDENTIFIER AUDIOCD_KIO_LOG CATEGORY_NAME log_audiocd_kio DEFAULT_SEVERITY Debug)
+ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS HEADER audiocd_kio_debug.h IDENTIFIER AUDIOCD_KIO_LOG CATEGORY_NAME kf5.kio.audiocd DEFAULT_SEVERITY Warning)
 
 add_library(kio_audiocd ${kio_audiocd_PART_SRCS})
 
@@ -109,5 +109,6 @@ install(TARGETS kio_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 ########### install files ###############
 
+install(FILES kio_audiocd.categories DESTINATION ${KDE_INSTALL_CONFDIR})
 install(FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR})
 

@@ -34,10 +34,9 @@
 #include "audiocd_kio_debug.h"
 
 #include <QDateTime>
-#include <QDebug>
 #include <QPair>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
 
 extern "C"
 {
