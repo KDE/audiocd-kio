@@ -251,8 +251,8 @@ long EncoderLame::readInit(long /*size*/){
                          this, &EncoderLame::receivedStdout);
 	connect(d->currentEncodeProcess, &KProcess::readyReadStandardError,
                          this, &EncoderLame::receivedStderr);
-// 	connect(d->currentEncodeProcess, SIGNAL(bytesWritten()),
-//                          this, SLOT(wroteStdin()));
+// 	connect(d->currentEncodeProcess, &KProcess::bytesWritten,
+//                          this, &EncoderLame::wroteStdin);
 
 	connect(d->currentEncodeProcess, QOverload<int, QProcess::ExitStatus>::of(&KProcess::finished),
                          this, &EncoderLame::processExited);
