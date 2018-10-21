@@ -65,6 +65,8 @@ else()
 endif()
 execute_process(
     COMMAND sed -e "s|cdda_private_data_t \\*private;|cdda_private_data_t \\*private_data;|g"
+    # The next line should be removed if strerror_tr will be used somewhere
+    COMMAND sed -e "/static\ char/,/}\;/d"
     INPUT_FILE ${CDPARANOIA_INCLUDE_DIR}/cdda_interface.h
     OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/cdda_interface.hpp
     RESULT_VARIABLE CDDA_INTERFACE_EDIT_ERROR
