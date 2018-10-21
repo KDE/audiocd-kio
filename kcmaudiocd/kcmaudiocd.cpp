@@ -20,18 +20,19 @@
 #include "kcmaudiocd.h"
 #include "audiocdplugins_version.h"
 
-#include <KAboutData>
-#include <KConfigDialogManager>
-#include <KConfigGroup>
-#include <KLocalizedString>
-#include <KPluginFactory>
-#include <KPluginLoader>
 #include <QCheckBox>
 #include <QLabel>
 #include <QRegExp>
 #include <QSlider>
 #include <QTabWidget>
 #include <QVBoxLayout>
+
+#include <KAboutData>
+#include <KConfigDialogManager>
+#include <KConfigGroup>
+#include <KLocalizedString>
+#include <KPluginFactory>
+#include <KPluginLoader>
 
 #include <audiocdencoder.h>
 
@@ -72,25 +73,25 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
 
 
     for (int i = 0; i < encoderSettings.size(); ++i) {
-        connect( encoderSettings.at( i ),SIGNAL(widgetModified()), this, SLOT(slotModuleChanged()));
+        connect( encoderSettings.at( i ), &KConfigDialogManager::widgetModified, this, &KAudiocdModule::slotModuleChanged);
     }
 
     //CDDA Options
-    connect(audioConfig->ec_enable_check,SIGNAL(clicked()),this,SLOT(slotEcEnable()));
-    connect(audioConfig->ec_skip_check,SIGNAL(clicked()),SLOT(slotConfigChanged()));
-    connect(audioConfig->niceLevel,SIGNAL(valueChanged(int)),SLOT(slotConfigChanged()));
+    connect(audioConfig->ec_enable_check, &QCheckBox::clicked, this, &KAudiocdModule::slotEcEnable);
+    connect(audioConfig->ec_skip_check, &QCheckBox::clicked, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->niceLevel, &QSlider::valueChanged, this, &KAudiocdModule::slotConfigChanged);
 
     // File Name
-    connect(audioConfig->fileNameLineEdit, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()));
-    connect(audioConfig->albumNameLineEdit, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()));
-    connect(audioConfig->fileLocationLineEdit, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()));
-    connect(audioConfig->fileLocationGroupBox, SIGNAL(clicked()), this, SLOT(slotConfigChanged()));
-    connect( audioConfig->kcfg_replaceInput, SIGNAL(textChanged(QString)), this, SLOT(updateExample()) );
-    connect( audioConfig->kcfg_replaceOutput, SIGNAL(textChanged(QString)), this, SLOT(updateExample()) );
-    connect( audioConfig->example, SIGNAL(textChanged(QString)), this, SLOT(updateExample()) );
-    connect( audioConfig->kcfg_replaceInput, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()) );
-    connect( audioConfig->kcfg_replaceOutput, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()) );
-    connect( audioConfig->example, SIGNAL(textChanged(QString)), this, SLOT(slotConfigChanged()) );
+    connect(audioConfig->fileNameLineEdit, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->albumNameLineEdit, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->fileLocationLineEdit, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->fileLocationGroupBox, &QGroupBox::clicked, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->kcfg_replaceInput, &QLineEdit::textChanged, this, &KAudiocdModule::updateExample);
+    connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::updateExample);
+    connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::updateExample);
+    connect(audioConfig->kcfg_replaceInput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
 
 
     KAboutData *about =
@@ -169,7 +170,7 @@ void KAudiocdModule::save() {
     cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
     cg.writeEntry("regexp_example", audioConfig->example->text());
 
-        // save qouted if required
+        // save quoted if required
     QString replaceInput=audioConfig->kcfg_replaceInput->text();
     QString replaceOutput=audioConfig->kcfg_replaceOutput->text();
     if (needsQoutes(replaceInput))

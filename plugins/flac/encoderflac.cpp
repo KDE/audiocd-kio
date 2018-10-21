@@ -31,10 +31,11 @@
 #endif
 
 #include <kconfig.h>
-#include <QDebug>
 #include "audiocd_kio_debug.h"
-#include <QPair>
+
 #include <QDateTime>
+#include <QDebug>
+#include <QPair>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 

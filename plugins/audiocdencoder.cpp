@@ -18,10 +18,11 @@
 
 #include "audiocdencoder.h"
 #include "audiocd_kio_debug.h"
+
 #include <QDebug>
+#include <QDir>
 #include <QLibrary>
 #include <QLibraryInfo>
-#include <QDir>
 #include <QRegExp>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")

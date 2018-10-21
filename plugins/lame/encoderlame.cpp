@@ -28,7 +28,6 @@
 #include <QStandardPaths>
 #include <QStringList>
 #include <QTemporaryFile>
-// #include "collectingprocess.h"
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "log_audiocd_kio")
 
@@ -248,15 +247,15 @@ long EncoderLame::readInit(long /*size*/){
 	//qCDebug(AUDIOCD_KIO_LOG) << d->currentEncodeProcess->args();
 
 
-	connect(d->currentEncodeProcess, SIGNAL(readyReadStandardOutput()),
-                         this, SLOT(receivedStdout()));
-	connect(d->currentEncodeProcess, SIGNAL(readyReadStandardError()),
-                         this, SLOT(receivedStderr()));
+	connect(d->currentEncodeProcess, &KProcess::readyReadStandardOutput,
+                         this, &EncoderLame::receivedStdout);
+	connect(d->currentEncodeProcess, &KProcess::readyReadStandardError,
+                         this, &EncoderLame::receivedStderr);
 // 	connect(d->currentEncodeProcess, SIGNAL(bytesWritten()),
 //                          this, SLOT(wroteStdin()));
 
-	connect(d->currentEncodeProcess, SIGNAL(finished(int,QProcess::ExitStatus)),
-                         this, SLOT(processExited(int,QProcess::ExitStatus)));
+	connect(d->currentEncodeProcess, QOverload<int, QProcess::ExitStatus>::of(&KProcess::finished),
+                         this, &EncoderLame::processExited);
 
 	// Launch!
 	d->currentEncodeProcess->setOutputChannelMode(KProcess::SeparateChannels);

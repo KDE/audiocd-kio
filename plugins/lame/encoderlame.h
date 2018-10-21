@@ -22,7 +22,7 @@
 #include "audiocdencoder.h"
 #include "ui_encoderlameconfig.h"
 
-#include <kprocess.h>
+#include <KProcess>
 
 class EncoderLameConfig : public QWidget, public Ui::EncoderLameConfig
 {
