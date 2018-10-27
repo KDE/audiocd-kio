@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component>
+  <id>org.kde.kio_audiocd</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>KIO AudioCD</name>
+  <summary>Transparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilities</summary>
+  <description>
+    <p>KIO AudioCD is a KIO slave that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.</p>
+  </description>
+  <url type="homepage">https://userbase.kde.org/Special:myLanguage/Kio-audiocd</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kdemultimedia</url>
+  <url type="help">https://docs.kde.org/trunk5/en/kdemultimedia/kioslave5/audiocd/index.html</url>
+  <update_contact>yurchor_at_mageia.org</update_contact>
+  <screenshots>
+    <screenshot type="default">
+      <caption>KIO AudioCD configuration window</caption>
+      <image type="source" width="1107" height="861">https://userbase.kde.org/images.userbase/f/fd/Kio_audiocd_screen.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+</component>
