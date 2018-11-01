@@ -9,6 +9,7 @@
   <name xml:lang="gl">KIO AudioCD</name>
   <name xml:lang="nl">KIO AudioCD</name>
   <name xml:lang="pt">AudioCD do KIO</name>
+  <name xml:lang="sk">KIO AudioCD</name>
   <name xml:lang="sv">KIO ljud-cd</name>
   <name xml:lang="uk">KIO AudioCD</name>
   <name xml:lang="x-test">xxKIO AudioCDxx</name>
@@ -18,6 +19,7 @@
   <summary xml:lang="gl">Integración transparente de CDs de son con KDE Plasma e aplicativos de KDE con funcionalidades de conversión de datos</summary>
   <summary xml:lang="nl">Transparante integratie van audio cd's met KDE Plasma en KDE applications met mogelijkheden om gegevensconversie te doen</summary>
   <summary xml:lang="pt">Integração transparente de CD's de áudio com o Plasma e as aplicações do KDE, com capacidades de conversão dos dados</summary>
+  <summary xml:lang="sk">Transparentná integrácia audio CD s KDE Plasma a KDE aplikáciami s možnosťami dátovej konverzie</summary>
   <summary xml:lang="sv">Transparent integrering av ljud-cd med KDE Plasma och KDE-program med datakonverteringsmöjlighet</summary>
   <summary xml:lang="uk">Прозора інтеграція із можливістю перетворення даних звукових компакт-дисків до Плазми та програм KDE</summary>
   <summary xml:lang="x-test">xxTransparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilitiesxx</summary>
@@ -44,6 +46,7 @@
       <caption xml:lang="gl">Xanela de configuración de KIO AudioCD</caption>
       <caption xml:lang="nl">Instellingenvenster van KIO AudioCD</caption>
       <caption xml:lang="pt">Janela de configuração do AudioCD do KIO</caption>
+      <caption xml:lang="sk">Konfiguračné okno KIO AudioCD</caption>
       <caption xml:lang="sv">KIO ljud-cd Inställningsfönster</caption>
       <caption xml:lang="uk">Вікно налаштувань KIO AudioCD</caption>
       <caption xml:lang="x-test">xxKIO AudioCD configuration windowxx</caption>
