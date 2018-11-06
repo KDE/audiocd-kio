@@ -55,4 +55,7 @@
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
+  <provides>
+      <library>libkio_audiocd.so</library>
+  </provides>
 </component>
