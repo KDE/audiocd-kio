@@ -826,7 +826,7 @@
       <sender>kcfg_bitrate_constant</sender>
       <signal>toggled(bool)</signal>
       <receiver>cbr_settings</receiver>
-      <slot>setShown(bool)</slot>
+      <slot>setVisible(bool)</slot>
     </connection>
     <connection>
       <sender>kcfg_enable_highpass</sender>
@@ -904,7 +904,7 @@
       <sender>kcfg_bitrate_variable</sender>
       <signal>toggled(bool)</signal>
       <receiver>vbr_settings</receiver>
-      <slot>setShown(bool)</slot>
+      <slot>setVisible(bool)</slot>
     </connection>
   </connections>
 </ui>
