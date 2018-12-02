@@ -357,13 +357,13 @@
       <sender>vorbis_enc_bitrate</sender>
       <signal>toggled(bool)</signal>
       <receiver>vorbis_bitrate_settings</receiver>
-      <slot>setShown(bool)</slot>
+      <slot>setVisible(bool)</slot>
     </connection>
     <connection>
       <sender>vorbis_enc_quality</sender>
       <signal>toggled(bool)</signal>
       <receiver>vorbis_quality_settings</receiver>
-      <slot>setShown(bool)</slot>
+      <slot>setVisible(bool)</slot>
     </connection>
   </connections>
 </ui>
