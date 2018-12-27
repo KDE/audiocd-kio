@@ -364,4 +364,3 @@ QString EncoderLame::lastErrorMessage() const
 {
 	return d->lastErrorMessage;
 }
-

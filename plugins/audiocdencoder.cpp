@@ -42,8 +42,8 @@ QFunctionPointer loadPlugin(const QString &libFileName)
 }
 
 /**
- * There might be a "better" way of doing this, but I don't know it,
- * but I do know that this does work. :)  Feel free to improve the loading system,
+ * There might be a "better" way of doing this, but I don't know it
+ * and I do know that this does work. :)  Feel free to improve the loading system,
  * there isn't much code anyway.
  */
 void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)

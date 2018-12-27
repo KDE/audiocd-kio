@@ -44,12 +44,12 @@ public:
   explicit AudioCDEncoder(KIO::SlaveBase *slave) : ioslave(slave) {}
   
   /**
-   * Deconstructor.
+   * Destructor.
    */
   virtual ~AudioCDEncoder(){}
   
   /**
-   * Initiallizes the decoder, loading libraries, etc.  Encoders
+   * Initializes the decoder, loading libraries, etc.  Encoders
    * that don't return true will will deleted and not used.
    * @returns false if unable to initialize the encoder.
    */
@@ -63,7 +63,7 @@ public:
   /**
    * Helper function to determine the end size of a
    * encoded file.
-   * @param time_secs the lengh of the audio track in seconds.
+   * @param time_secs the length of the audio track in seconds.
    * @returns the size of a file if it is time_secs in length.
    */ 
   virtual unsigned long size(long time_secs) const = 0;
@@ -107,7 +107,7 @@ public:
    * Passes a little bit of cd data to be encoded
    * This function is most likely called many many times.
    * @param buf pointer to the audio that has been read in so far
-   * @param frames the number of frames of audio that are in buf
+   * @param frames the number of frames of audio that are in @p buf
    * @return size of the data that was created by this function, -1 on error.
    */
   virtual long read(qint16 * buf, int frames) = 0;

@@ -101,8 +101,6 @@ static FLAC__SeekableStreamEncoderSeekStatus  SeekCallback(const FLAC__SeekableS
 {} ; */
 
 
-
-
 EncoderFLAC::EncoderFLAC(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
     d = new Private();
     d->ioslave = slave;
@@ -213,15 +211,15 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 
     typedef QPair<QString, QVariant> Comment;
     Comment comments[7] = { Comment(QLatin1String( "TITLE" ), info.track(track-1).get(Title)),
-	    	    	    Comment(QLatin1String( "ARTIST" ), info.track(track-1).get(Artist)),
-	    	    	    Comment(QLatin1String( "ALBUM" ),  info.get(Title)),
-	    	    	    Comment(QLatin1String( "GENRE" ),  info.get(Genre)),
-	    	    	    Comment(QLatin1String( "TRACKNUMBER" ), QString::number(track)),
-	                Comment(QLatin1String( "COMMENT" ), comment),
-	    	    	    Comment(QLatin1String( "DATE" ), QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
+				Comment(QLatin1String( "ARTIST" ), info.track(track-1).get(Artist)),
+				Comment(QLatin1String( "ALBUM" ),  info.get(Title)),
+				Comment(QLatin1String( "GENRE" ),  info.get(Genre)),
+				Comment(QLatin1String( "TRACKNUMBER" ), QString::number(track)),
+				Comment(QLatin1String( "COMMENT" ), comment),
+				Comment(QLatin1String( "DATE" ), QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
     if (info.get(Year).toInt() > 0) {
-    	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
-    	comments[6] = Comment(QLatin1String( "DATE" ), dt.toString(Qt::ISODate));
+	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
+	comments[6] = Comment(QLatin1String( "DATE" ), dt.toString(Qt::ISODate));
     }
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
@@ -233,10 +231,10 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	if (!comments[i].second.toString().isEmpty()) {
 	    field = comments[i].first+QLatin1Char( '=' )+comments[i].second.toString();
 	    cfield = field.toUtf8();
-    	    entry.entry = (FLAC__byte*)qstrdup(cfield);
+	    entry.entry = (FLAC__byte*)qstrdup(cfield);
 	    entry.length = cfield.length();
 	    // Insert in vorbiscomment and assign ownership of pointers to FLAC
-    	    FLAC__metadata_object_vorbiscomment_insert_comment(d->metadata[0], num_comments, entry, false);
+	    FLAC__metadata_object_vorbiscomment_insert_comment(d->metadata[0], num_comments, entry, false);
 	    num_comments++;
 	}
     }
@@ -245,4 +243,3 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 }
 
 #endif // HAVE_LIBFLAC
-

@@ -93,9 +93,10 @@ class AudioCDProtocol : public KIO::SlaveBase
 	 * it will set the extension itself depending on the fileType.
 	 * You must also give the trackNumber for the size of the file
 	 * to be calculated.
-	 * NOTE: if you want to add a file which is the whole CD, give
+	 * @note If you want to add a file which is the whole CD, give
 	 * trackNo = -1
-	 * NOTE2: you can safely add MP3 or OGG files always. the function
+	 *
+	 * @note You can always safely add MP3 or OGG files. The function
 	 * will check if kio_audiocd was compiled with support for those,
 	 * so NO NEED to wrap your calls with #ifdef for lame or vorbis.
 	 * this function will do the right thing.
@@ -113,7 +114,7 @@ private:
 	QList<AudioCDEncoder*> encoders;
 	cdrom_drive * getDrive();
 
-	// These are the only garenteed encoders to be built, the rest
+	// These are the only guaranteed encoders to be built, the rest
 	// are dynamic depending on other libraries on the system
 	AudioCDEncoder *encoderTypeCDA;
 	AudioCDEncoder *encoderTypeWAV;

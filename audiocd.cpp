@@ -229,7 +229,7 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 #if defined(HAVE_CDDA_IOCTL_DEVICE)
 	cd->setDevice(QLatin1String( drive->ioctl_device_name ), 50, false);
 #elif defined(__FreeBSD__) || defined(__DragonFly__)
-	// FreeBSD's cdparanoia as of january 5th 2006 has rather broken
+	// FreeBSD's cdparanoia as of January 5th 2006 has rather broken
 	// support for non-SCSI devices. Although it finds ATA cdroms just
 	// fine, there is no straightforward way to discover the device
 	// name associated with the device, which throws the rest of audiocd
@@ -958,13 +958,13 @@ void AudioCDProtocol::paranoiaRead(
 			diff = (diff*(unsigned long)((100/(float)end)*(end-cur)))/2;
 			// Need 1% of data calculated as initial buffer, use %2 to be safe
 			if( percentDone < .02 ){
-				//qDebug("val: %f, diff: %ld", ((float)cur/(float)end), diff);
+				//qCDebug(AUDIOCD_KIO_LOG) << "val: " << (float)cur/(float)end << " diff: " << diff;
 				diff = 0;
 			}
 
 			// We are growing larger, increase total.
 			if(lastSize < estSize){
-				//qDebug("lastGuess: %ld, guess: %ld diff: %ld", lastSize, estSize, diff);
+				//qCDebug(AUDIOCD_KIO_LOG) << "lastGuess: " << lastSize << ", guess: " << estSize << ", diff: " << diff;
 				totalSize(estSize+diff);
 				lastSize = estSize+diff;
 			}
@@ -975,7 +975,7 @@ void AudioCDProtocol::paranoiaRead(
 					margin = 7;
 				unsigned long low = lastSize - lastSize/margin;
 				if(estSize < low){
-					//qDebug("low: %ld, estSize: %ld, num: %i", low, estSize, margin);
+					//qCDebug(AUDIOCD_KIO_LOG) << "low: " << low << ", estSize: " << estSize << ", num: " << margin;
 					totalSize( estSize );
 					lastSize = estSize;
 				}
@@ -984,7 +984,7 @@ void AudioCDProtocol::paranoiaRead(
 		/**
 		 * End estimation.
 		 */
-		//qDebug("processed: %d, totalSize: %d", processed, estSize);
+		//qCDebug(AUDIOCD_KIO_LOG) << "processed: " << processed << ", totalSize: " << estSize;
 		processedSize(processed);
 	}
 
@@ -1090,9 +1090,9 @@ void AudioCDProtocol::loadSettings()
 		d->fileLocationTemplate = QString();
 	d->rsearch = groupFileName.readEntry("regexp_search");
 	d->rreplace = groupFileName.readEntry("regexp_replace");
-	// if the regular expressions are enclosed in qoutes. remove them
+	// if the regular expressions are enclosed in quotes. Remove them
 	// otherwise it is not possible to search for a space " ", since an empty (only spaces) value is not
-	// supported by KConfig, so the space has to be qouted, but then here the regexp searches really for " "
+	// supported by KConfig, so the space has to be quoted, but then here the regexp searches really for " "
 	// instead of just the space. Alex
 	QRegExp qoutedString( QLatin1String( "^\".*\"$" ));
 	if (qoutedString.exactMatch(d->rsearch))
