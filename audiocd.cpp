@@ -630,7 +630,7 @@ static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mi
 	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
 	// Use current date and time to avoid confusions. See https://bugs.kde.org/show_bug.cgi?id=400114
 	e.INSERT( KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::currentDateTime().toTime_t ());
-	e.INSERT( KIO::UDSEntry::UDS_ACCESS, 0400);
+	e.INSERT( KIO::UDSEntry::UDS_ACCESS, 0644);
 	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
 	if (!mimetype.isEmpty())
 		e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
