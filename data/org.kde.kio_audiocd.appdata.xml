@@ -23,6 +23,7 @@
   <name xml:lang="uk">KIO AudioCD</name>
   <name xml:lang="x-test">xxKIO AudioCDxx</name>
   <name xml:lang="zh-CN">KIO 音频 CD</name>
+  <name xml:lang="zh-TW">KIO AudioCD</name>
   <summary>Transparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilities</summary>
   <summary xml:lang="ca">Integració transparent dels CD d'àudio amb el Plasma del KDE i les aplicacions KDE, amb capacitats de conversió de dades</summary>
   <summary xml:lang="ca-valencia">Integració transparent dels CD d'àudio amb el Plasma del KDE i les aplicacions KDE, amb capacitats de conversió de dades</summary>
@@ -42,6 +43,7 @@
   <summary xml:lang="uk">Прозора інтеграція із можливістю перетворення даних звукових компакт-дисків до Плазми та програм KDE</summary>
   <summary xml:lang="x-test">xxTransparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilitiesxx</summary>
   <summary xml:lang="zh-CN">音频 CD 与 KDE Plasma 和 KDE 应用的透明整合，具有数据转换功能</summary>
+  <summary xml:lang="zh-TW">透明整合 Audio CD 到 KDE Plasma 和包含資料轉換功能的 KDE 應用程式</summary>
   <description>
     <p>KIO AudioCD is a KIO slave that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.</p>
     <p xml:lang="ca">El KIO AudioCD és un esclau KIO que habilita les aplicacions que admeten el KIO (com el Dolphin o el K3b) per accedir a l'àudio CD i a les dades de text dels discs compactes d'àudio. Permet la conversió transparent de dades d'àudio en arrossegar i deixar anar cap els formats usuals i té un mòdul de configuració a l'Arranjament del sistema a la secció «Multimèdia».</p>
@@ -86,6 +88,7 @@
       <caption xml:lang="uk">Вікно налаштувань KIO AudioCD</caption>
       <caption xml:lang="x-test">xxKIO AudioCD configuration windowxx</caption>
       <caption xml:lang="zh-CN">KIO 音频 CD 配置窗口</caption>
+      <caption xml:lang="zh-TW">KIO AudioCD 設定視窗</caption>
       <image type="source" width="1107" height="861">https://userbase.kde.org/images.userbase/f/fd/Kio_audiocd_screen.png</image>
     </screenshot>
   </screenshots>
