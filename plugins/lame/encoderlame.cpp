@@ -65,10 +65,10 @@ EncoderLame::~EncoderLame(){
 }
 
 QWidget* EncoderLame::getConfigureWidget(KConfigSkeleton** manager) const {
-  (*manager) = Settings::self();
-  EncoderLameConfig *config = new EncoderLameConfig();
-  config->cbr_settings->hide();
-  return config;
+	(*manager) = Settings::self();
+	EncoderLameConfig *config = new EncoderLameConfig();
+	config->cbr_settings->hide();
+	return config;
 }
 
 bool EncoderLame::init(){
@@ -110,28 +110,28 @@ void EncoderLame::loadSettings(){
 	Settings *settings = Settings::self();
 
 
-        // Should we bitswap? I'm unsure about the proper logic for this.
-        // KDE3 always swapped on little-endian hosts,
-        // while #171065 says we shouldn't always do so.
-        // So... let's make it configurable, at least.
+	// Should we bitswap? I'm unsure about the proper logic for this.
+	// KDE3 always swapped on little-endian hosts,
+	// while #171065 says we shouldn't always do so.
+	// So... let's make it configurable, at least.
 
-        bool swap = false;
-        switch (settings->byte_swap()) {
-        case Settings::EnumByte_swap::Yes:
-            swap = true;
-            break;
-        case Settings::EnumByte_swap::No:
-            swap = false;
-            break;
-        default:
+	bool swap = false;
+	switch (settings->byte_swap()) {
+	case Settings::EnumByte_swap::Yes:
+		swap = true;
+		break;
+	case Settings::EnumByte_swap::No:
+		swap = false;
+		break;
+	default:
 #if Q_BYTE_ORDER == Q_LITTLE_ENDIAN
-            swap = false; // it looks like lame is now clever enough to do the right thing by default? (#171065)
+		swap = false; // it looks like lame is now clever enough to do the right thing by default? (#171065)
 #else
-            swap = false;
+		swap = false;
 #endif
         }
-        if (swap)
-            args << "-x";
+	if (swap)
+		args << "-x";
 
 	int quality = settings->quality();
 	if (quality < 0 ) quality = quality *-1;

@@ -49,8 +49,8 @@ public:
 	bool processHasExited;
 	QString lastErrorMessage;
 	uint lastSize;
-	KProcess *currentEncodeProcess;
-	QTemporaryFile *tempFile;
+	KProcess *currentEncodeProcess = nullptr;
+	QTemporaryFile *tempFile = nullptr;
 };
 
 EncoderOpus::EncoderOpus(KIO::SlaveBase *slave) : QObject(), AudioCDEncoder(slave) {
@@ -66,12 +66,12 @@ EncoderOpus::~EncoderOpus(){
 }
 
 QWidget* EncoderOpus::getConfigureWidget(KConfigSkeleton** manager) const {
-  (*manager) = Settings::self();
-  EncoderOpusConfig *config = new EncoderOpusConfig();
-  config->kcfg_opus_complexity->setRange(0, 10);
-  config->kcfg_opus_complexity->setSingleStep(1);
-  config->opus_bitrate_settings->hide();
-  return config;
+	(*manager) = Settings::self();
+	EncoderOpusConfig *config = new EncoderOpusConfig();
+	config->kcfg_opus_complexity->setRange(0, 10);
+	config->kcfg_opus_complexity->setSingleStep(1);
+	config->opus_bitrate_settings->hide();
+	return config;
 }
 
 bool EncoderOpus::init(){
