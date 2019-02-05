@@ -8,7 +8,7 @@ find_package(ECM 5.24.0  NO_MODULE)
 set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules")
 set(CMAKE_MODULE_PATH "${ECM_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(PROJECT_VERSION "16.07.0")
+set(PROJECT_VERSION "19.04.0")
 set(KF5_DEP_VERSION "5.24.0") # handled by release scripts
 set(REQUIRED_QT_VERSION "5.9.0")
 

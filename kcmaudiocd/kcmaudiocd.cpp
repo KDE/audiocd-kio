@@ -260,12 +260,13 @@ void KAudiocdModule::slotEcEnable() {
 QString KAudiocdModule::quickHelp() const
 {
   return i18n("<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily"
-              " create wav, FLAC, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs."
+              " create wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs."
               " The slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location"
               " bar. In this module, you can configure"
-              " encoding, and device settings. Note that FLAC, MP3, and Ogg"
-              " Vorbis encoding are only available if the corresponding libraries and"
-              " utilities are installed in your system.");
+              " encoding, and device settings. Note that FLAC, MP3, Ogg Vorbis,"
+              " and Opus encoding are only available if the corresponding libraries (libFLAC for"
+              " FLAC and libvorbis for Ogg) and utilities (lame for MP3 and opus-tools for Opus)"
+              " are installed in your system.");
 }
 
 #include "kcmaudiocd.moc"

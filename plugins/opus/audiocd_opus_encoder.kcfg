@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="kcmaudiocd_encoder_opus_rc"/>
+  <group name="Vorbis">
+
+    <entry name="opus_enc_complexity" type="Bool">
+      <label>Vorbis Encoding Complexity or Bitrate</label>
+      <default>true</default>
+    </entry>
+
+    <entry name="set_opus_cbr" type="Bool">
+      <label>Constant bitrate specified</label>
+      <default>false</default>
+    </entry>
+    <entry name="set_opus_cvbr" type="Bool">
+      <label>Constrained variable bitrate specified</label>
+      <default>false</default>
+    </entry>
+    <entry name="set_opus_vbr" type="Bool">
+      <label>Average variable bitrate specified</label>
+      <default>true</default>
+    </entry>
+
+    <entry name="opus_comments" type="Bool">
+      <label>Add Comments</label>
+      <default>true</default>
+    </entry>
+    <entry name="opus_complexity" type="Int">
+      <label>Complexity</label>
+      <default>10</default>
+      <min>0</min>
+      <max>10</max>
+    </entry>
+
+    <entry name="opus_cbr" type="Int">
+      <label>Constant bitrate</label>
+      <default>6</default>
+      <min>0</min>
+      <max>10</max>
+    </entry>
+
+    <entry name="opus_cvbr" type="Int">
+      <label>Constrained variable bitrate</label>
+      <default>6</default>
+      <min>0</min>
+      <max>10</max>
+    </entry>
+
+    <entry name="opus_vbr" type="Int">
+      <label>Average variable bitrate</label>
+      <default>6</default>
+      <min>0</min>
+      <max>10</max>
+    </entry>
+   </group>
+</kcfg>

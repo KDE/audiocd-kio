@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EncoderOpusConfig</class>
+ <widget class="QWidget" name="EncoderOpusConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>375</width>
+    <height>408</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QGroupBox" name="opus_enc_method">
+     <property name="title">
+      <string>&amp;Encoding Method</string>
+     </property>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QRadioButton" name="kcfg_opus_enc_complexity">
+        <property name="text">
+         <string>Complexity based</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="kcfg_opus_enc_bitrate">
+        <property name="text">
+         <string>Bitrate based</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="opus_bitrate_settings">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Opus Bitrate Settings</string>
+     </property>
+     <layout class="QGridLayout">
+       <item row="0" column="0">
+       <widget class="QRadioButton" name="kcfg_set_opus_cbr">
+        <property name="text">
+         <string>C&amp;onstant bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="kcfg_opus_cbr">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentText">
+         <string>96 kbps</string>
+        </property>
+        <property name="currentIndex">
+         <number>6</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>6 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="kcfg_set_opus_cvbr">
+        <property name="text">
+         <string>Co&amp;nstrained variable bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="kcfg_opus_cvbr">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentText">
+         <string>96 kbps</string>
+        </property>
+        <property name="currentIndex">
+         <number>6</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>6 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="kcfg_set_opus_vbr">
+        <property name="text">
+         <string>A&amp;verage variable bitrate:</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="kcfg_opus_vbr">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="currentText">
+         <string>96 kbps</string>
+        </property>
+        <property name="currentIndex">
+         <number>6</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>6 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="opus_complexity_settings">
+     <property name="whatsThis">
+      <string>You can set the complexity of the encoded stream here. A higher value implies a higher complexity but encodes slower.</string>
+     </property>
+     <property name="title">
+      <string>Opus Co&amp;mplexity Setting</string>
+     </property>
+     <layout class="QHBoxLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QSlider" name="complexitySlider">
+          <property name="whatsThis">
+            <string>Higher is better but slower</string>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="minimum">
+            <number>0</number>
+          </property>
+          <property name="maximum">
+            <number>10</number>
+          </property>
+          <property name="value">
+            <number>10</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="kcfg_opus_complexity">
+        <property name="whatsThis">
+         <string>Higher is better but slower</string>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="fileOptions">
+     <property name="title">
+      <string>Options</string>
+     </property>
+     <layout class="QVBoxLayout">
+      <item>
+       <widget class="QCheckBox" name="kcfg_opus_comments">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="whatsThis">
+         <string>Add a description of the song to the file header. This makes it easy for the user to get advanced song information shown by his media player. You can get this information automatically via the Internet. Look at the &lt;i&gt;&quot;CDDB Retrieval&quot;&lt;/i&gt; control module for details.</string>
+        </property>
+        <property name="text">
+         <string>Add &amp;track information</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="spacer9">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>kcfg_opus_enc_bitrate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>opus_bitrate_settings</receiver>
+   <slot>setVisible(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_opus_enc_complexity</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>opus_complexity_settings</receiver>
+   <slot>setVisible(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_cbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_cbr</receiver>
+   <slot>setEnabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_cbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_cvbr</receiver>
+   <slot>setDisabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_cbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_vbr</receiver>
+   <slot>setDisabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_cvbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_cvbr</receiver>
+   <slot>setEnabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_cvbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_cbr</receiver>
+   <slot>setDisabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_cvbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_vbr</receiver>
+   <slot>setDisabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_vbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_vbr</receiver>
+   <slot>setEnabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_vbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_cvbr</receiver>
+   <slot>setDisabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_set_opus_vbr</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_opus_cbr</receiver>
+   <slot>setDisabled(bool)</slot>
+  </connection>
+  <connection>
+   <sender>kcfg_opus_complexity</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>complexitySlider</receiver>
+   <slot>setValue(int)</slot>
+  </connection>
+  <connection>
+   <sender>complexitySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>kcfg_opus_complexity</receiver>
+   <slot>setValue(int)</slot>
+  </connection>
+ </connections>
+</ui>

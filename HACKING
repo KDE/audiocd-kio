@@ -4,10 +4,11 @@ audiocd.[h,cpp] - The main ioslave code.  It contains the logic to rip audio fro
 
 plugins/audiocdencoder.[h,cpp] - The base class for all of the encoder plugins
 
-plugins/wav/* - The cda and wav "encoders"
 plugins/flac/* - the flac encoder
-plugins/lame/* - The mp3 encoder 
+plugins/lame/* - The mp3 encoder
+plugins/opus/* - The opus encoder
 plugins/vorbis/* - The ogg encoder
+plugins/wav/* - The cda and wav "encoders"
 
 kcmaudiocd/ - kcm configure dialog for the audiocd ioslave.  It also loads the plugins and gets their configure dialogs and puts them into the tab dialog.
 

@@ -10,6 +10,7 @@ endif(OGGVORBIS_FOUND AND HAVE_LIBVORBISENC2)
 
 add_subdirectory(wav)
 add_subdirectory(lame)
+add_subdirectory(opus)
 
 ########### next target ###############
 
