@@ -45,9 +45,9 @@ class AudioCDProtocol : public KIO::SlaveBase
 	AudioCDProtocol(const QByteArray & protocol, const QByteArray & pool, const QByteArray & app);
 	virtual ~AudioCDProtocol();
 
-	virtual void get(const QUrl &);
-	virtual void stat(const QUrl &);
-	virtual void listDir(const QUrl &);
+	virtual void get(const QUrl &) override;
+	virtual void stat(const QUrl &) override;
+	virtual void listDir(const QUrl &) override;
 
 	protected:
 	AudioCDEncoder *encoderFromExtension(const QString& extension);

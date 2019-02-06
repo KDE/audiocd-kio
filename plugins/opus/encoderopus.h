@@ -28,9 +28,9 @@
 class EncoderOpusConfig : public QWidget, public Ui::EncoderOpusConfig
 {
 public:
-  EncoderOpusConfig( QWidget *parent = 0 ) : QWidget( parent ) {
-    setupUi( this );
-  }
+	EncoderOpusConfig( QWidget *parent = 0 ) : QWidget( parent ) {
+		setupUi( this );
+	}
 };
 
 
@@ -46,19 +46,19 @@ public:
 	explicit EncoderOpus(KIO::SlaveBase *slave);
 	~EncoderOpus();
 
-	virtual QString type() const { return QStringLiteral( "Opus" ); }
-	virtual bool init();
-	virtual void loadSettings();
-	virtual unsigned long size(long time_secs) const;
-	virtual const char * fileType() const { return "opus"; }
-	virtual const char * mimeType() const { return "audio/x-opus+ogg"; }
-	virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment );
-	virtual long readInit(long size);
-	virtual long read(qint16 * buf, int frames);
-	virtual long readCleanup();
-	virtual QString lastErrorMessage() const;
+	virtual QString type() const override { return QStringLiteral( "Opus" ); }
+	virtual bool init() override;
+	virtual void loadSettings() override;
+	virtual unsigned long size(long time_secs) const override;
+	virtual const char * fileType() const override { return "opus"; }
+	virtual const char * mimeType() const override { return "audio/x-opus+ogg"; }
+	virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ) override;
+	virtual long readInit(long size) override;
+	virtual long read(qint16 * buf, int frames) override;
+	virtual long readCleanup() override;
+	virtual QString lastErrorMessage() const override;
 
-	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
+	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const override;
 
 protected slots:
 	void receivedStdout();

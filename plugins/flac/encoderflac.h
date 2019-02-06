@@ -45,17 +45,17 @@ public:
   explicit EncoderFLAC(KIO::SlaveBase *slave);
   ~EncoderFLAC();
 
-  virtual QString type() const { return QLatin1String( "FLAC" ); };
-  virtual bool init();
-  virtual void loadSettings();
-  virtual unsigned long size(long time_secs) const;
-  virtual const char * fileType() const { return "flac"; };
-  virtual const char * mimeType() const { return "audio/x-flac"; }
-  virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment );
-  virtual long readInit(long size);
-  virtual long read(qint16 * buf, int frames);
-  virtual long readCleanup();
-  virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const;
+  virtual QString type() const override { return QLatin1String( "FLAC" ); };
+  virtual bool init() override;
+  virtual void loadSettings() override;
+  virtual unsigned long size(long time_secs) const override;
+  virtual const char * fileType() const override { return "flac"; };
+  virtual const char * mimeType() const override { return "audio/x-flac"; }
+  virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ) override;
+  virtual long readInit(long size) override;
+  virtual long read(qint16 * buf, int frames) override;
+  virtual long readCleanup() override;
+  virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const override;
 
   class Private;
 private:

@@ -52,12 +52,12 @@ public:
   explicit KAudiocdModule(QWidget *parent=0, const QVariantList &args=QVariantList());
   ~KAudiocdModule();
 
-  QString quickHelp() const;
+  QString quickHelp() const override;
 
 public slots:
-  void defaults();
-  void save();
-  void load();
+  void defaults() override;
+  void save() override;
+  void load() override;
 
 private slots:
   void updateExample();

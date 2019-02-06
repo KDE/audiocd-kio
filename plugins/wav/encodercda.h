@@ -40,16 +40,16 @@ class EncoderCda : public AudioCDEncoder {
 public:
   explicit EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {}
   ~EncoderCda(){}
-  virtual bool init(){ return true; }
-  virtual void loadSettings(){}
-  virtual unsigned long size(long time_secs) const;
-  virtual QString type() const { return QLatin1String( "CDA" ); }
-  virtual const char * mimeType() const;
-  virtual const char * fileType() const { return "cda"; }
-  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &){}
-  virtual long readInit(long){ return 0; }
-  virtual long read(qint16 * buf, int frames);
-  virtual long readCleanup(){ return 0; }
+  virtual bool init() override { return true; }
+  virtual void loadSettings() override {}
+  virtual unsigned long size(long time_secs) const override;
+  virtual QString type() const override { return QLatin1String( "CDA" ); }
+  virtual const char * mimeType() const override;
+  virtual const char * fileType() const override { return "cda"; }
+  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &) override {}
+  virtual long readInit(long) override { return 0; }
+  virtual long read(qint16 * buf, int frames) override;
+  virtual long readCleanup() override { return 0; }
 
 };
 
