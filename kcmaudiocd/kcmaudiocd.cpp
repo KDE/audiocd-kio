@@ -50,7 +50,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     audioConfig = new AudiocdConfig(this);
 
     box->addWidget(audioConfig);
-    setButtons(Default|Apply);
+    setButtons(Default|Apply|Help);
 
     config = new KConfig( QLatin1String( "kcmaudiocdrc" ));
 

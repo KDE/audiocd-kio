@@ -3,6 +3,7 @@ Exec=kcmshell5 audiocd
 Icon=media-optical-audio
 Type=Service
 ServiceTypes=KCModule
+X-DocPath=kcontrol/audiocd/index.html
 
 X-KDE-Library=kcm_audiocd
 X-KDE-ParentApp=kcontrol

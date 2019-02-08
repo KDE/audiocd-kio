@@ -25,3 +25,6 @@ install(TARGETS kcm_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR})
 
 install(FILES audiocd.desktop  DESTINATION  ${SERVICES_INSTALL_DIR})
 
+########### add handbook ################
+
+add_subdirectory(doc)
