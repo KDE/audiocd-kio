@@ -365,5 +365,47 @@
       <receiver>vorbis_quality_settings</receiver>
       <slot>setVisible(bool)</slot>
     </connection>
+    <connection>
+      <sender>kcfg_set_vorbis_nominal_br</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_set_vorbis_max_br</receiver>
+      <slot>setDisabled(bool)</slot>
+    </connection>
+    <connection>
+      <sender>kcfg_set_vorbis_nominal_br</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_set_vorbis_min_br</receiver>
+      <slot>setDisabled(bool)</slot>
+    </connection>
+    <connection>
+      <sender>kcfg_set_vorbis_nominal_br</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_vorbis_nominal_br</receiver>
+      <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+      <sender>kcfg_set_vorbis_max_br</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_vorbis_max_br</receiver>
+      <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+      <sender>kcfg_set_vorbis_min_br</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_vorbis_min_br</receiver>
+      <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+      <sender>kcfg_set_vorbis_max_br</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_set_vorbis_nominal_br</receiver>
+      <slot>setDisabled(bool)</slot>
+    </connection>
+    <connection>
+      <sender>kcfg_set_vorbis_min_br</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_set_vorbis_nominal_br</receiver>
+      <slot>setDisabled(bool)</slot>
+    </connection>
   </connections>
 </ui>
