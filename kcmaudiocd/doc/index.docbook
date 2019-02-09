@@ -154,7 +154,7 @@ about 50%. When using this codec the filesize is much larger than Opus, Ogg Vorb
 <listitem>
 <para>Check the <guilabel>Copyrighted</guilabel> item if the produced data are copyright protected.</para>
 <para>Check the <guilabel>Original</guilabel> item if the extraction of data is made from the original &CD;.</para>
-<para>When the <guilabel>ISO encoding</guilabel> item is chacked, LAME will enforce the 7680 bit limitation on total frame size. The compatibility with ISO might be important for hardware players.</para>
+<para>When the <guilabel>ISO encoding</guilabel> item is checked, LAME will enforce the 7680 bit limitation on total frame size. The compatibility with ISO might be important for hardware players.</para>
 <para>The CRC <guilabel>Error Protection</guilabel> item can be used to add a checksum to each data frame. Such protection can enhance the stability of the MP3 data storing.</para>
 <para>The <guilabel>Write ID3 tag</guilabel> item is used to enforce LAME to write <ulink url="https://en.wikipedia.org/wiki/ID3">ID3 metadata</ulink> to each produced MP3 file.</para>
 </listitem>
@@ -241,7 +241,7 @@ this information automatically via the Internet. Look at the &systemsettings; CD
 <variablelist>
 <varlistentry><term><guilabel>Encoding Method</guilabel></term>
 <listitem>
-<para>This setting allows you to choose between <guilabel>Quality based</guilabel> and <guilabel>Bitrate based</guilabel> encoding. The quality based encoding uses some speculative algorithms at a price of the unpredictable size of the results.</para>
+<para>This setting allows you to choose between <guilabel>Quality based</guilabel> and <guilabel>Bitrate based</guilabel> encoding. The quality based encoding uses some speculative algorithms for the price of an unpredictable size of the results.</para>
 <itemizedlist>
 <listitem>
 <para>The quality of Ogg Vorbis encoding can be selected using an integer from 0 to 10, where 0 yields the lowest quality and 10 yields the highest quality.</para>
