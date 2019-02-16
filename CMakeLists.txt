@@ -98,7 +98,8 @@ set(kio_audiocd_PART_SRCS audiocd.cpp )
 
 ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS HEADER audiocd_kio_debug.h IDENTIFIER AUDIOCD_KIO_LOG CATEGORY_NAME kf5.kio.audiocd DEFAULT_SEVERITY Warning)
 
-add_library(kio_audiocd ${kio_audiocd_PART_SRCS})
+add_library(kio_audiocd MODULE ${kio_audiocd_PART_SRCS})
+set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
 
 target_link_libraries(kio_audiocd 
     ${CDPARANOIA_LIBRARIES}
@@ -107,7 +108,7 @@ target_link_libraries(kio_audiocd
     audiocdplugins
 )
 
-install(TARGETS kio_audiocd  DESTINATION ${PLUGIN_INSTALL_DIR})
+install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
 
 ########### install files ###############
 

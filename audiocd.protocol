@@ -1,5 +1,5 @@
 [Protocol]
-exec=kio_audiocd
+exec=kf5/kio/audiocd
 protocol=audiocd
 input=none
 output=filesystem
