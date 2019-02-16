@@ -76,13 +76,13 @@ using namespace AudioCD;
 
 extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
 {
-    KLocalizedString::setApplicationDomain("kio_audiocd");
     // QApplication uses libkcddb which needs a valid kapp pointer
     // GUIenabled must be true as libkcddb sometimes wants to communicate
     // with the user
     qunsetenv("SESSION_MANAGER");
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("kio_audiocd"));
+    KLocalizedString::setApplicationDomain("kio_audiocd");
 
     if (argc != 4) {
         fprintf(stderr, "Usage: kio_audiocd protocol pool app\n");
