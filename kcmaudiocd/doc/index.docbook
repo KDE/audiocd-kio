@@ -190,7 +190,7 @@ about 50%. When using this codec the filesize is much larger than Opus, Ogg Vorb
 </screenshot>
 
 <note>
-<para>The Opus encoder tab is only available if <ulink url="http://opus-codec.org/">opus-tools</ulink> are installed in the system.</para>
+<para>The Opus encoder tab is only available if <ulink url="https://opus-codec.org/">opus-tools</ulink> are installed in the system.</para>
 </note>
 
 <para>Opus is a totally open, royalty-free, highly versatile audio codec. Opus is unmatched for interactive speech and music transmission over the Internet, but is also intended for storage and streaming applications.</para>

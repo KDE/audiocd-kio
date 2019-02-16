@@ -37,7 +37,7 @@ public:
 /**
  * FLAC encoder.
  * This encoder is only enabled when HAVE_LIBFLAC is set.
- * Check out http://flac.sourceforge.net/ for more information.
+ * Check out https://xiph.org/flac/ for more information.
  */
 class EncoderFLAC : public AudioCDEncoder {
 

@@ -36,7 +36,7 @@ public:
 
 /**
  * Opus encoder.
- * Check out http://opus-codec.org/ for lots of information.
+ * Check out https://opus-codec.org/ for lots of information.
  */
 class EncoderOpus : public QObject, public AudioCDEncoder {
 
