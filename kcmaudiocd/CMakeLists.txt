@@ -2,7 +2,6 @@ add_definitions(-DTRANSLATION_DOMAIN=\"kcmaudiocd\")
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../plugins
-    ${CMAKE_BINARY_DIR}/kioslave/audiocd/kcmaudiocd
 )
 
 ########### next target ###############
