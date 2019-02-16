@@ -7,10 +7,18 @@ set(PROJECT_VERSION "19.04.0")
 set(QT_MIN_VERSION "5.9.0")
 set(KF_MIN_VERSION "5.24.0")
 
-# ECM setup
-include(FeatureSummary)
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+include(ECMSetupVersion)
+include(ECMQtDeclareLoggingCategory)
+include(CMakePushCheckState)
+include(GenerateExportHeader)
+include(CheckStructHasMember)
+include(FeatureSummary)
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
 
@@ -35,15 +43,6 @@ set_package_properties(KF5CompactDisc PROPERTIES
     TYPE REQUIRED
     PURPOSE "libkcompactdisc is used to access CD drives."
 )
-
-include(KDEInstallDirs)
-include(KDECompilerSettings)
-include(KDECMakeSettings)
-include(GenerateExportHeader)
-include(ECMSetupVersion)
-include(CMakePushCheckState)
-include(CheckStructHasMember)
-include(ECMQtDeclareLoggingCategory)
 
 ecm_setup_version("5.0.0"
     VARIABLE_PREFIX AUDIOCDPLUGINS
