@@ -451,6 +451,19 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
 	return true;
 }
 
+static uint findInformationFileNumber(const QString &filename, uint max) {
+	if (filename == QString::fromLatin1("%1.txt").arg(i18n(CDDB_INFORMATION)))
+		return 1;
+
+	for (uint i = 2; i <= max; ++i) {
+		if (filename == QString::fromLatin1("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(i)) {
+			return i;
+		}
+	}
+
+	return max + 1;
+}
+
 void AudioCDProtocol::get(const QUrl & url)
 {
 	struct cdrom_drive * drive = initRequest(url);
@@ -460,10 +473,7 @@ void AudioCDProtocol::get(const QUrl & url)
 	}
 
 	if( d->fname.contains(i18n(CDDB_INFORMATION))){
-		uint choice = 1;
-		if(d->fname != QString::fromLatin1("%1.txt").arg(i18n(CDDB_INFORMATION))){
-			choice= d->fname.section(QLatin1Char( '_' ),1,1).section(QLatin1Char( '.' ),0,0).toInt();
-		}
+		const uint choice = findInformationFileNumber(d->fname, d->cddbList.count());
 		uint count = 1;
 		CDInfoList::iterator it;
 		bool found = false;
@@ -562,6 +572,39 @@ void AudioCDProtocol::stat(const QUrl & url)
 	if (!drive) {
 		error(KIO::ERR_DOES_NOT_EXIST, url.path());
 		return;
+	}
+
+	if (d->which_dir == Info) {
+		// This is the info dir or one of the info files
+		if (d->fname.isEmpty()) {
+			// The info dir
+			const mode_t _umask = ::umask(0);
+			::umask(_umask);
+			UDSEntry entry;
+			entry.INSERT(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
+			entry.INSERT(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+			entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
+			entry.INSERT(KIO::UDSEntry::UDS_SIZE, d->cddbList.count());
+			statEntry(entry);
+			finished();
+			return;
+		} else if( d->fname.contains(i18n(CDDB_INFORMATION))) {
+			// choice is 1-indexed so we need <= and -1 when accessing d->cddbList
+			const uint choice = findInformationFileNumber(d->fname, d->cddbList.count());
+			if (choice <= (uint)d->cddbList.count()) {
+				// It's a valid info file
+				const mode_t _umask = ::umask(0);
+				::umask(_umask);
+				UDSEntry entry;
+				entry.INSERT(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
+				entry.INSERT(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+				entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
+				entry.INSERT(KIO::UDSEntry::UDS_SIZE, d->cddbList.at(choice - 1).toString().toLatin1().size());
+				statEntry(entry);
+				finished();
+				return;
+			}
+		}
 	}
 
 	const bool isFile = !d->fname.isEmpty();
