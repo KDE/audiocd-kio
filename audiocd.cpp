@@ -68,6 +68,13 @@ extern "C"
 #include <KCddb/Client>
 #include <KCompactDisc/KCompactDisc>
 
+// Pseudo plugin class to embed metadata
+class KIOPluginForMetaData : public QObject
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.kio.slave.audiocd" FILE "audiocd.json")
+};
+
 using namespace KIO;
 
 #define CDDB_INFORMATION I18N_NOOP("CDDB Information")
@@ -1273,3 +1280,5 @@ void paranoiaCallback(long, int function)
 	}
 }
 
+// needed for JSON file embedding
+#include "audiocd.moc"

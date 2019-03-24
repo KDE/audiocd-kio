@@ -1,0 +1,30 @@
+{
+    "KDE-KIO-Protocols": {
+        "audiocd": {
+            "Class": ":local",
+            "Icon": "media-optical-audio",
+            "X-DocPath": "kioslave5/audiocd/index.html",
+            "copyFromFile": true,
+            "copyToFile": false,
+            "deleting": false,
+            "exec": "kf5/kio/audiocd",
+            "input": "none",
+            "listing": [
+                "Name",
+                "Type",
+                "Size",
+                "Date",
+                "Link",
+                ""
+            ],
+            "makedir": false,
+            "maxInstances": 20,
+            "maxInstancesPerHost": 5,
+            "moving": false,
+            "output": "filesystem",
+            "protocol": "audiocd",
+            "reading": true,
+            "writing": false
+        }
+    }
+}
