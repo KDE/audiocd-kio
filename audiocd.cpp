@@ -598,6 +598,7 @@ void AudioCDProtocol::stat(const QUrl & url)
 				UDSEntry entry;
 				entry.INSERT(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
 				entry.INSERT(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+				entry.INSERT(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("text/plain"));
 				entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
 				entry.INSERT(KIO::UDSEntry::UDS_SIZE, d->cddbList.at(choice - 1).toString().toLatin1().size());
 				statEntry(entry);
