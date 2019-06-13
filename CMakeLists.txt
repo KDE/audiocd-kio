@@ -111,6 +111,10 @@ install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
 
 ########### install files ###############
 
-install(FILES kio_audiocd.categories DESTINATION ${KDE_INSTALL_CONFDIR})
+if (${ECM_VERSION} STRGREATER "5.58.0")
+    install(FILES kio_audiocd.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
+else()
+    install(FILES kio_audiocd.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
+endif()
 install(FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR})
 
