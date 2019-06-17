@@ -487,7 +487,7 @@ void AudioCDProtocol::get(const QUrl & url)
 		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			if(count == choice){
 				mimeType(QLatin1String( "text/html" ));
-				data(QByteArray( (*it).toString().toLatin1() ));
+				data(QByteArray( (*it).toString().toUtf8() ));
 				// send an empty QByteArray to signal end of data.
 				data(QByteArray());
 				finished();
