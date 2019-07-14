@@ -216,7 +216,7 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 				Comment(QLatin1String( "GENRE" ),  info.get(Genre)),
 				Comment(QLatin1String( "TRACKNUMBER" ), QString::number(track)),
 				Comment(QLatin1String( "COMMENT" ), comment),
-				Comment(QLatin1String( "DATE" ), QVariant(QString::null) )};	//krazy:exclude=nullstrassign for old broken gcc
+				Comment(QLatin1String( "DATE" ), QVariant(QString()) )};
     if (info.get(Year).toInt() > 0) {
 	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
 	comments[6] = Comment(QLatin1String( "DATE" ), dt.toString(Qt::ISODate));
