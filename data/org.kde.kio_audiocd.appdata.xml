@@ -8,6 +8,7 @@
   <name xml:lang="ca-valencia">KIO AudioCD</name>
   <name xml:lang="cs">KIO AudioCD</name>
   <name xml:lang="de">KIO AudioCD</name>
+  <name xml:lang="el">KIO AudioCD</name>
   <name xml:lang="en-GB">KIO AudioCD</name>
   <name xml:lang="es">KIO AudioCD</name>
   <name xml:lang="eu">KIO AudioCD</name>
@@ -31,6 +32,7 @@
   <summary xml:lang="ca">Integració transparent dels CD d'àudio amb el Plasma del KDE i les aplicacions KDE, amb capacitats de conversió de dades</summary>
   <summary xml:lang="ca-valencia">Integració transparent dels CD d'àudio amb el Plasma del KDE i les aplicacions KDE, amb capacitats de conversió de dades</summary>
   <summary xml:lang="de">Transparente Integration von Audio-CDs on KDE-Plasma und KDE-Anwendungen mit Fähigkeit zur Datenumwandlung</summary>
+  <summary xml:lang="el">Διαφανής ολοκλήρωση των CD ήχου με το KDE Plasma και τις εφαρμογές του KDE με ιδιότητες μετατροπής δεδομένων</summary>
   <summary xml:lang="en-GB">Transparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilities</summary>
   <summary xml:lang="es">Integración de CD de audio con KDE Plasma y las aplicaciones de KDE con capacidad de conversión de datos</summary>
   <summary xml:lang="eu">Audio CDen integrazio gardena KDE Plasma eta KDE aplikazioekin, datuak bihurtzeko gaitasunarekin</summary>
@@ -54,6 +56,7 @@
     <p>KIO AudioCD is a KIO slave that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.</p>
     <p xml:lang="ca">El KIO AudioCD és un esclau KIO que habilita les aplicacions que admeten el KIO (com el Dolphin o el K3b) per accedir a l'àudio CD i a les dades de text dels discs compactes d'àudio. Permet la conversió transparent de dades d'àudio en arrossegar i deixar anar cap els formats usuals i té un mòdul de configuració a l'Arranjament del sistema a la secció «Multimèdia».</p>
     <p xml:lang="ca-valencia">El KIO AudioCD és un esclau KIO que habilita les aplicacions que admeten el KIO (com el Dolphin o el K3b) per accedir a l'àudio CD i a les dades de text dels discs compactes d'àudio. Permet la conversió transparent de dades d'àudio en arrossegar i deixar anar cap els formats usuals i té un mòdul de configuració a l'Arranjament del sistema a la secció «Multimèdia».</p>
+    <p xml:lang="el">Το KIO AudioCD είναι ένας slave που επιτρέπει σε εφαρμογές που χρησιμοποιούν KIO (όπως το Dolphin ή το K3b) να έχουν πρόσβαση στα δεδομένα κειμένου ήχου και CD. Επιτρέπει διαφανή με έλκυση και απόθεση μετατροπή των δεδομένων ήχου σε δημοφιλείς τύπους αποθήκευσης και έχει ένα άρθρωμα διαμόρφωσης Ρυθμίσεις συστήματος στην ενότητα «Πολυμέσα».</p>
     <p xml:lang="en-GB">KIO AudioCD is a KIO slave that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.</p>
     <p xml:lang="es">KIO AudioCD es un esclavo KIO que permite a las aplicaciones que usan KIO (como Dolphin o k3b) acceder al audio y los datos de texto de los discos compactos de audio. Permite la conversión de datos de audio mediante arrastrar y soltar entre los formatos de audio populares y tiene un modulo de preferencias del sistema disponible en la sección «Multimedia».</p>
     <p xml:lang="eu">KIO AudioCD, KIO esklabo bat da, KIO-jakitun diren aplikazioei (Dolphin edo k3b esaterako) audio CDetako audioa eta CD testu datuak atzitzen uzten diena. Arrastatu eta jareginez audio datuen bihurketa gardena egiten uzten du formatu ezagunetara eta konfiguratzeko Sistema-Ezarpenetako modulu bat du erabilgarri "Multimedia" atalean.</p>
@@ -82,6 +85,7 @@
       <caption xml:lang="ca">Finestra de configuració del KIO AudioCD</caption>
       <caption xml:lang="ca-valencia">Finestra de configuració del KIO AudioCD</caption>
       <caption xml:lang="de">Einrichtungsdialog von KIO AudioCD</caption>
+      <caption xml:lang="el">KIO AudioCD παράθυρο διαμόρφωσης</caption>
       <caption xml:lang="en-GB">KIO AudioCD configuration window</caption>
       <caption xml:lang="es">Ventana de configuración de KIO AudioCD</caption>
       <caption xml:lang="eu">KIO AudioCD konfiguratzeko leihoa</caption>
