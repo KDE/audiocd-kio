@@ -7,5 +7,5 @@ install(FILES
   DESTINATION ${DATA_INSTALL_DIR}/solid/actions)
 
 install(FILES
-  org.kde.kio_audiocd.appdata.xml
+  org.kde.kio_audiocd.metainfo.xml
   DESTINATION ${KDE_INSTALL_METAINFODIR})
