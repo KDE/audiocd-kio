@@ -24,7 +24,8 @@
             "output": "filesystem",
             "protocol": "audiocd",
             "reading": true,
-            "writing": false
+            "writing": false,
+            "ShowPreviews": false
         }
     }
 }
