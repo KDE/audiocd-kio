@@ -22,7 +22,7 @@
 #include <QDir>
 #include <QLibrary>
 #include <QLibraryInfo>
-#include <QRegExp>
+#include <QRegularExpression>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
 
@@ -57,7 +57,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
     const QFileInfoList files = dir.entryInfoList();
     for (int i = 0; i < files.count(); ++i) {
         QFileInfo fi(files.at(i));
-        if (0 < fi.fileName().count(QRegExp( QLatin1String( "^libaudiocd_encoder_.*.so$" )))) {
+        if (0 < fi.fileName().count(QRegularExpression( QLatin1String( "^libaudiocd_encoder_.*.so$" )))) {
             QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf(QLatin1Char( '.' ))));
             
             if (foundEncoders.contains(fileName)) {

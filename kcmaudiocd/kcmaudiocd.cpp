@@ -22,7 +22,7 @@
 
 #include <QCheckBox>
 #include <QLabel>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QSlider>
 #include <QTabWidget>
 #include <QVBoxLayout>
@@ -110,8 +110,9 @@ KAudiocdModule::~KAudiocdModule()
 QString removeQoutes(const QString& text)
 {
    QString deqoutedString=text;
-   QRegExp qoutedStringRegExp( QLatin1String( "^\".*\"$" ));
-   if (qoutedStringRegExp.exactMatch(text))
+   QRegularExpression qoutedStringRegExp( QLatin1String( "^\".*\"$" ));
+   QRegularExpressionMatch hasQuotes = qoutedStringRegExp.match(text);
+   if (hasQuotes.hasMatch())
    {
       deqoutedString=text.mid(1, text.length()-2);
    }
@@ -120,9 +121,11 @@ QString removeQoutes(const QString& text)
 
 bool needsQoutes(const QString& text)
 {
-   QRegExp spaceAtTheBeginning( QLatin1String( "^\\s+.*$" ));
-   QRegExp spaceAtTheEnd( QLatin1String( "^.*\\s+$" ));
-   return (spaceAtTheBeginning.exactMatch(text) || spaceAtTheEnd.exactMatch(text));
+   QRegularExpression spaceAtTheBeginning( QLatin1String( "^\\s+.*$" ));
+   QRegularExpression spaceAtTheEnd( QLatin1String( "^.*\\s+$" ));
+   QRegularExpressionMatch hasSpaceAtTheBeginning = spaceAtTheBeginning.match(text);
+   QRegularExpressionMatch hasSpaceAtTheEnd = spaceAtTheEnd.match(text);
+   return (hasSpaceAtTheBeginning.hasMatch() || hasSpaceAtTheEnd.hasMatch());
 }
 
 void KAudiocdModule::updateExample()
@@ -131,7 +134,7 @@ void KAudiocdModule::updateExample()
 
   QString deqoutedReplaceInput=removeQoutes(audioConfig->kcfg_replaceInput->text());
   QString deqoutedReplaceOutput=removeQoutes(audioConfig->kcfg_replaceOutput->text());
-  text.replace( QRegExp(deqoutedReplaceInput), deqoutedReplaceOutput );
+  text.replace( QRegularExpression(deqoutedReplaceInput), deqoutedReplaceOutput );
   audioConfig->exampleOutput->setText(text);
 }
 
