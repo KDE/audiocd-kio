@@ -680,7 +680,7 @@ static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mi
 	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
 	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
 	// Use current date and time to avoid confusions. See https://bugs.kde.org/show_bug.cgi?id=400114
-	e.INSERT( KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::currentDateTime().toTime_t ());
+	e.INSERT( KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::currentDateTime().toSecsSinceEpoch ());
 	e.INSERT( KIO::UDSEntry::UDS_ACCESS, 0644);
 	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
 	if (!mimetype.isEmpty())
@@ -1177,8 +1177,7 @@ void AudioCDProtocol::generateTemplateTitles()
 	if (d->cddbResult != KCDDB::Success)
 	{
 		for (unsigned int i = 0; i < d->tracks; i++){
-			QString n;
-			d->templateTitles.append( i18n("Track %1", n.sprintf("%02d", i + 1)));
+			d->templateTitles.append( i18n("Track %1", QString::asprintf("%02d", i + 1)));
 		}
 		return;
 	}
@@ -1195,8 +1194,7 @@ void AudioCDProtocol::generateTemplateTitles()
 		macros[QLatin1String( "albumtitle" )] = info.get(Title).toString();
 		macros[QLatin1String( "title" )] = info.track(i).get(Title).toString();
 		macros[QLatin1String( "trackartist" )] = info.track(i).get(Artist).toString();
-		QString n;
-		macros[QLatin1String( "number" )] = n.sprintf("%02d", i + 1);
+		macros[QLatin1String( "number" )] = QString::asprintf("%02d", i + 1);
 		//macros["number"] = QString("%1").arg(i+1, 2, 10);
 		macros[QLatin1String( "genre" )] = info.get(Genre).toString();
 		macros[QLatin1String( "year" )] = info.get(Year).toString();
