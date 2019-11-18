@@ -40,7 +40,7 @@ public:
 
 /**
  * Ogg Vorbis encoder.
- * Check out http://www.vorbis.com/ for lots of information.
+ * Check out https://xiph.org/vorbis/ for more information.
  */
 class EncoderVorbis : public AudioCDEncoder {
 

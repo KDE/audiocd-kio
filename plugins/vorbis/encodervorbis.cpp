@@ -180,7 +180,7 @@ unsigned long EncoderVorbis::size(long time_secs) const {
   case 0: // quality based encoding
   {
     // Estimated numbers based on the Vorbis FAQ:
-    // http://www.xiph.org/archives/vorbis-faq/200203/0030.html
+    // https://xiph.org/vorbis/faq/#quality
 
     static long vorbis_q_bitrate[] = { 60,  74,  86,  106, 120, 152,
                183, 207, 239, 309, 440 };

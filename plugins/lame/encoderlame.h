@@ -35,7 +35,7 @@ public:
 
 /**
  * MP3 encoder using the LAME encoder.
- * Go to http://lame.sourceforge.net/ for lots of information.
+ * Go to https://lame.sourceforge.io/ for more information.
  */ 
 class EncoderLame : public QObject, public AudioCDEncoder {
 
