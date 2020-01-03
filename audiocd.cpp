@@ -435,7 +435,7 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const QUrl & url)
 		d->req_track = -1;
 
 	qCDebug(AUDIOCD_KIO_LOG) << "path=" << path << " file=" << d->fname
-		<< " req_track=" << d->req_track << " which_dir=" << d->which_dir << " full CD?=" << d->req_allTracks << endl;
+                << " req_track=" << d->req_track << " which_dir=" << d->which_dir << " full CD?=" << d->req_allTracks;
 	return drive;
 }
 
