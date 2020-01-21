@@ -27,7 +27,7 @@
 class EncoderLameConfig : public QWidget, public Ui::EncoderLameConfig
 {
 public:
-  EncoderLameConfig( QWidget *parent = 0 ) : QWidget( parent ) {
+  EncoderLameConfig( QWidget *parent = nullptr ) : QWidget( parent ) {
     setupUi( this );
   }
 };

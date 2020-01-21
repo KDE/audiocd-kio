@@ -32,7 +32,7 @@
 class EncoderVorbisConfig : public QWidget, public Ui::EncoderVorbisConfig
 {
 public:
-  EncoderVorbisConfig( QWidget *parent = 0 ) : QWidget( parent ) {
+  EncoderVorbisConfig( QWidget *parent = nullptr ) : QWidget( parent ) {
     setupUi( this );
   }
 };

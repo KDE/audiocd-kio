@@ -28,7 +28,7 @@
 class EncoderOpusConfig : public QWidget, public Ui::EncoderOpusConfig
 {
 public:
-	EncoderOpusConfig( QWidget *parent = 0 ) : QWidget( parent ) {
+	EncoderOpusConfig( QWidget *parent = nullptr ) : QWidget( parent ) {
 		setupUi( this );
 	}
 };
