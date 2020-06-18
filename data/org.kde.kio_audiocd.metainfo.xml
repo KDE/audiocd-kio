@@ -31,6 +31,7 @@
   <name xml:lang="sl">KIO AudioCD</name>
   <name xml:lang="sv">KIO ljud-cd</name>
   <name xml:lang="uk">KIO AudioCD</name>
+  <name xml:lang="x-test">xxKIO AudioCDxx</name>
   <name xml:lang="zh-CN">KIO 音频 CD</name>
   <name xml:lang="zh-TW">KIO AudioCD</name>
   <summary>Transparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilities</summary>
@@ -57,6 +58,7 @@
   <summary xml:lang="sl">Transparentna integracija avdio CD-jev s programi KDE Plasma in KDE z možnostjo pretvorbe podatkov</summary>
   <summary xml:lang="sv">Transparent integrering av ljud-cd med KDE Plasma och KDE-program med datakonverteringsmöjlighet</summary>
   <summary xml:lang="uk">Прозора інтеграція із можливістю перетворення даних звукових компакт-дисків до Плазми та програм KDE</summary>
+  <summary xml:lang="x-test">xxTransparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilitiesxx</summary>
   <summary xml:lang="zh-CN">音频 CD 与 KDE Plasma 和 KDE 应用的透明整合，具有数据转换功能</summary>
   <summary xml:lang="zh-TW">透明整合 Audio CD 到 KDE Plasma 和包含資料轉換功能的 KDE 應用程式</summary>
   <description>
@@ -83,6 +85,7 @@
     <p xml:lang="sl">KIO AudioCD je odjemalec KIO, ki aplikacijam, ki poznajo KIO (na primer Dolphin ali k3b), omogoča dostop do avdio in CD besedilnih podatkov na avdio kompaktnih diskih. Omogoča pregledno pretvorbo zvočnih podatkov v priljubljene formate z zahtevami povleci in spusti, v razdelku "Multimedija" pa je na voljo modul za sistemske nastavitve.</p>
     <p xml:lang="sv">KIO ljud-cd är en I/O-slav som gör det möjligt för program medvetna om KIO (såsom Dplphin eller K3b) att komma åt ljud- och cd-text på ljud-cd-skivor. Den tillåter transparent konvertering av ljuddata till populära format med drag och släpp, och har en inställningsmodul tillgänglig i systeminställningarna under sektionen "Multimedia".</p>
     <p xml:lang="uk">KIO AudioCD — допоміжний засіб введення-виведення, який уможливлює для заснованих на KIO програм (зокрема Dolphin або k3b) отримувати доступ до звукових та текстових даних на компакт-дисках. За його допомогою можна простим перетягуванням зі скиданням перетворювати звукові дані у один із популярних форматів. Передбачено спеціальний модуль налаштовування «Системних параметрів», пункт якого розташовано у розділі «Мультимедіа».</p>
+    <p xml:lang="x-test">xxKIO AudioCD is a KIO slave that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.xx</p>
     <p xml:lang="zh-CN">KIO 音频 CD 是一个 KIO 从属程序，能够让 KIO 可感知的程序 (比如 Dolphin 和 k3b) 访问音频光盘上的音频和 CD 文本数据。它允许透明地将音频数据拖放转换成流行的音频格式，其配置可以在系统设置的“多媒体”一节找到。</p>
   </description>
   <url type="homepage">https://userbase.kde.org/Special:myLanguage/Kio-audiocd</url>
@@ -115,6 +118,7 @@
       <caption xml:lang="sl">Nastavitveno okno KIO AudioCD</caption>
       <caption xml:lang="sv">KIO ljud-cd Inställningsfönster</caption>
       <caption xml:lang="uk">Вікно налаштувань KIO AudioCD</caption>
+      <caption xml:lang="x-test">xxKIO AudioCD configuration windowxx</caption>
       <caption xml:lang="zh-CN">KIO 音频 CD 配置窗口</caption>
       <caption xml:lang="zh-TW">KIO AudioCD 設定視窗</caption>
       <image type="source" width="1107" height="861">https://userbase.kde.org/images.userbase/f/fd/Kio_audiocd_screen.png</image>
