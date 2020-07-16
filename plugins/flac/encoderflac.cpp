@@ -30,7 +30,7 @@
 #include "audiocd_flac_encoder.h"
 #endif
 
-#include <kconfig.h>
+#include <KConfig>
 #include "audiocd_kio_debug.h"
 
 #include <QDateTime>
