@@ -23,6 +23,7 @@
 #include <QLibrary>
 #include <QLibraryInfo>
 #include <QRegularExpression>
+#include <QCoreApplication>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
 
@@ -31,13 +32,13 @@ Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
  * @param libFileName file to try to load.
  * @returns pointer to the symbol or NULL
  */
-QFunctionPointer loadPlugin(const QString &libFileName)
+static QFunctionPointer loadPlugin(const QString &libFileName)
 {
-    qCDebug(AUDIOCD_KIO_LOG) << "Trying to load library. File: \"" << libFileName.toLatin1() << "\".";
-    QFunctionPointer cplugin = QLibrary(QLibraryInfo::location(QLibraryInfo::PluginsPath) + '/' + libFileName).resolve( "create_audiocd_encoders" );
+    qCDebug(AUDIOCD_KIO_LOG) << "Trying to load" << libFileName;
+    QFunctionPointer cplugin = QLibrary(libFileName).resolve("create_audiocd_encoders");
     if (!cplugin)
         return NULL;
-    qCDebug(AUDIOCD_KIO_LOG) << "We have a plugin. File:  \"" << libFileName << "\".";
+    qCDebug(AUDIOCD_KIO_LOG) << "Loaded plugin";
     return cplugin;
 }
 
@@ -49,30 +50,34 @@ QFunctionPointer loadPlugin(const QString &libFileName)
 void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)
 {
     QString foundEncoders;
-    QDir dir=QLibraryInfo::location(QLibraryInfo::PluginsPath);
-    if (!dir.exists()) {
-        qCDebug(AUDIOCD_KIO_LOG) << "Directory given by QLibraryInfo: " << dir.path() << " doesn't exists!";
-    }
-    dir.setFilter(QDir::Files | QDir::Hidden);
-    const QFileInfoList files = dir.entryInfoList();
-    for (int i = 0; i < files.count(); ++i) {
-        QFileInfo fi(files.at(i));
-        if (0 < fi.fileName().count(QRegularExpression( QLatin1String( "^libaudiocd_encoder_.*.so$" )))) {
-            QString fileName = (fi.fileName().mid(0, fi.fileName().indexOf(QLatin1Char( '.' ))));
-            
-            if (foundEncoders.contains(fileName)) {
-                qCDebug(AUDIOCD_KIO_LOG) << "Warning, encoder has been found twice!";
-                continue;
-            }
-            foundEncoders.append(fileName);
-            QFunctionPointer function = loadPlugin(fileName);
-            if (function) {
-                void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
-                (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
-                functionPointer(slave, encoders);
-                
+
+    for (const QString &path : QCoreApplication::libraryPaths()) {
+        QDir dir(path);
+        if (!dir.exists()) {
+            //qCDebug(AUDIOCD_KIO_LOG) << "Library path" << path << "does not exist";
+            continue;
+        }
+
+        dir.setFilter(QDir::Files);
+        const QFileInfoList files = dir.entryInfoList();
+
+        for (const QFileInfo &fi : qAsConst(files)) {
+            if (fi.fileName().contains(QRegularExpression(QLatin1String("^libaudiocd_encoder_.*.so$")))) {
+                QString fileName = fi.baseName();
+
+                if (foundEncoders.contains(fileName)) {
+                    qCWarning(AUDIOCD_KIO_LOG) << "Encoder" << fileName << "found in multiple locations";
+                    continue;
+                }
+                foundEncoders.append(fileName);
+
+                QFunctionPointer function = loadPlugin(fi.absoluteFilePath());
+                if (function) {
+                    void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
+                        (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
+                    functionPointer(slave, encoders);
+                }
             }
         }
     }
 }
-
