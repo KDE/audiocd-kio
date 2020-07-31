@@ -109,6 +109,7 @@ extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
 enum Which_dir {
 	Unknown = 0, // Error
 	Info, // CDDB info
+	Base, // The ioslave base directory showing all drives
 	Root, // The root directory, shows all these :)
 	FullCD, // Show a single file containing all of the data
 	EncoderDir, // The root directory created by an encoder
@@ -198,17 +199,20 @@ AudioCDProtocol::AudioCDProtocol(const QByteArray & protocol, const QByteArray &
 	: SlaveBase(protocol, pool, app)
 {
 	d = new Private;
-
 	// Add encoders
 	AudioCDEncoder::findAllPlugins(this, encoders);
+	if (encoders.isEmpty()) {
+		qCCritical(AUDIOCD_KIO_LOG) << "No encoders available";
+		return;
+	}
+
 	encoderTypeCDA = encoderFromExtension(QLatin1String( ".cda" ));
 	encoderTypeWAV = encoderFromExtension(QLatin1String( ".wav" ));
 }
 
 AudioCDProtocol::~AudioCDProtocol()
 {
-    while (!encoders.isEmpty())
-        delete encoders.takeFirst();
+    qDeleteAll(encoders);
     delete d;
 }
 
@@ -220,15 +224,15 @@ AudioCDEncoder *AudioCDProtocol::encoderFromExtension(const QString& extension)
 	    if(QLatin1String(".")+QLatin1String( encoder->fileType() ) == extension)
 	        return encoder;
     	}
-	Q_ASSERT(false);
-	return NULL;
+
+	qCWarning(AUDIOCD_KIO_LOG) << "No encoder available for format" << extension;
+	return nullptr;
 }
 
 AudioCDEncoder *AudioCDProtocol::determineEncoder(const QString & filename)
 {
-	int len = filename.length();
-	int pos = filename.lastIndexOf( QLatin1Char( '.' ));
-	return encoderFromExtension(filename.right(len - pos));
+	int pos = filename.lastIndexOf(QLatin1Char( '.' ));
+	return encoderFromExtension(filename.mid(pos));
 }
 
 static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
@@ -277,24 +281,21 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 #endif
 }
 
-struct cdrom_drive * AudioCDProtocol::initRequest(const QUrl & url)
-{
-	if (!url.host().isEmpty())
-	{
-		error(KIO::ERR_UNSUPPORTED_ACTION,
-		i18n("You cannot specify a host with this protocol. "
-				 "Please use the audiocd:/ format instead."));
-		return 0;
-	}
 
-	// Load OUR Settings.
+// Initiate a request to access the CD drive.  If there is no valid drive
+// specified or there is a problem, then error() must be (or have been)
+// called before returning a null pointer.
+struct cdrom_drive *AudioCDProtocol::initRequest(const QUrl &url)
+{
+	// Load our Settings.
 	loadSettings();
-	// Then url parameters can overrule our settings.
+	// Then URL parameters can overrule our settings.
 	parseURLArgs(url);
 
-	struct cdrom_drive * drive = getDrive();
-	if (0 == drive)
-		return 0;
+	struct cdrom_drive *drive = getDrive();
+	if (drive==nullptr) {
+		return nullptr;
+	}
 
 	if (d->tocsAreDifferent(drive))
 	{
@@ -302,7 +303,6 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const QUrl & url)
 		KCompactDisc cd(KCompactDisc::Asynchronous);
 		setDeviceToCd(&cd, drive);
 		d->setToc(drive);
-
 		d->tracks = cd.tracks();
 		for(uint i=0; i< cd.tracks(); i++)
 			d->trackIsAudio[i] = cd.isAudio(i+1);
@@ -312,6 +312,8 @@ struct cdrom_drive * AudioCDProtocol::initRequest(const QUrl & url)
 		if (d->cddbResult == Success)
 		{
 			d->cddbList = c.lookupResponse();
+			// FIXME: not always the best choice, see bug 279485
+			// for a similar problem with Amarok
 			d->cddbBestChoice = d->cddbList.first();
 		}
 		generateTemplateTitles();
@@ -471,11 +473,66 @@ static uint findInformationFileNumber(const QString &filename, uint max) {
 	return max + 1;
 }
 
+// See whether this is the root of the ioslave (listing of all
+// available CD drives) or the root of a drive (listing of encoder
+// subdirectories and track WAV files).
+//
+// This needs to be deduced from the URL without calling initRequest()
+// or getDrive(), either of which may call error().  It is not an
+// error if there is no drive to be accessed and none needs to be, but
+// subsequently calling finished() will assert.
+//
+// So parse the URL only.  Either Base, Root or Unknown (meaning "anywhere
+// else") will be returned.
+static Which_dir whichFromUrl(const QUrl &url)
+{
+	QUrlQuery query(url);
+	if (!query.hasQueryItem("device")) {		// see if "device" query present
+		return Base;				// if not, must be slave base
+	}
+
+	if (url.path()=="/") {				// see if the device root
+		return Root;
+	}
+
+	return Unknown;					// elsewhere within device
+}
+
+// Check that the URL does not have a host specified, and return an error
+// if it does.  Moved here because not all operations need to or should
+// call initRequest().
+bool AudioCDProtocol::checkNoHost(const QUrl &url)
+{
+	if (!url.host().isEmpty())
+	{
+		error(KIO::ERR_UNSUPPORTED_ACTION,
+		      i18n("You cannot specify a host with this protocol. "
+			   "Please use the audiocd:/ format instead."));
+		return false;
+	}
+
+	return true;
+}
+
+// Escape any '/'es in what should be a file name.
+static QString escapePath(const QString &in)
+{
+	QString result = in;
+	// FIXME: maybe could use QUrl::toPercentEncoding()
+	result.replace(QLatin1Char('/'), QLatin1String("%2F"));
+	return result;
+}
+
+
 void AudioCDProtocol::get(const QUrl & url)
 {
-	struct cdrom_drive * drive = initRequest(url);
-	if (!drive) {
-		error(KIO::ERR_DOES_NOT_EXIST, url.path());
+	if (!checkNoHost(url)) {
+		return;
+	}
+
+	struct cdrom_drive *drive = initRequest(url);
+	if (drive==nullptr) {
+		// Do not call error(), getDrive() will already have done that.
 		return;
 	}
 
@@ -486,6 +543,7 @@ void AudioCDProtocol::get(const QUrl & url)
 		bool found = false;
 		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			if(count == choice){
+				// FIXME: should be "text/plain"?
 				mimeType(QLatin1String( "text/html" ));
 				data( (*it).toString().toUtf8() );
 				// send an empty QByteArray to signal end of data.
@@ -497,6 +555,7 @@ void AudioCDProtocol::get(const QUrl & url)
 			count++;
 		}
 		if(!found && d->fname.contains(i18n(CDDB_INFORMATION)+QLatin1Char( ':' ))){
+			// FIXME: should be "text/plain"?
 			mimeType(QLatin1String( "text/html" ));
 			//data(QCString( d->fname.latin1() ));
 			// send an empty QByteArray to signal end of data.
@@ -558,26 +617,58 @@ void AudioCDProtocol::get(const QUrl & url)
 	finished();
 }
 
+
+static void app_dir(UDSEntry& e, const QString & n, size_t s)
+{
+	const mode_t _umask = ::umask(0);
+	::umask(_umask);
+
+	e.clear();
+	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+	e.INSERT( KIO::UDSEntry::UDS_ACCESS, (0555 & ~_umask));
+	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
+	e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, QLatin1String("inode/directory"));
+}
+
+static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mimetype = QString())
+{
+	const mode_t _umask = ::umask(0);
+	::umask(_umask);
+
+	e.clear();
+	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+	// Use current date and time to avoid confusions. See https://bugs.kde.org/show_bug.cgi?id=400114
+	e.INSERT( KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::currentDateTime().toSecsSinceEpoch ());
+	e.INSERT( KIO::UDSEntry::UDS_ACCESS, (0444 & ~_umask));
+	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
+	if (!mimetype.isEmpty()) e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
+}
+
+
 void AudioCDProtocol::stat(const QUrl & url)
 {
-	struct cdrom_drive * drive = initRequest(url);
+	if (!checkNoHost(url)) {
+		return;
+	}
 
-	if (!drive && d->device.isEmpty()) {
-		// This is top level directory with CDROM devices
-		const mode_t _umask = ::umask(0);
-		::umask(_umask);
+	if (whichFromUrl(url)==Base) {
+		// This is the top level directory with CDROM devices only.
+		// No drive access is required.  url.fileName() is empty here.
+
 		UDSEntry entry;
-		entry.INSERT(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
-		entry.INSERT(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-		entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
-		entry.INSERT(KIO::UDSEntry::UDS_SIZE, 2+encoders.count());
+		// One subdirectory for each drive
+		const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
+		app_dir(entry, escapePath("/"), deviceNames.count());
 		statEntry(entry);
 		finished();
 		return;
 	}
 
-	if (!drive) {
-		error(KIO::ERR_DOES_NOT_EXIST, url.path());
+	struct cdrom_drive *drive = initRequest(url);
+	if (drive==nullptr) {
+		// Do not call error(), getDrive() will already have done that.
 		return;
 	}
 
@@ -585,13 +676,8 @@ void AudioCDProtocol::stat(const QUrl & url)
 		// This is the info dir or one of the info files
 		if (d->fname.isEmpty()) {
 			// The info dir
-			const mode_t _umask = ::umask(0);
-			::umask(_umask);
 			UDSEntry entry;
-			entry.INSERT(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
-			entry.INSERT(KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-			entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
-			entry.INSERT(KIO::UDSEntry::UDS_SIZE, d->cddbList.count());
+			app_dir(entry, escapePath(url.fileName()), d->cddbList.count());
 			statEntry(entry);
 			finished();
 			return;
@@ -600,14 +686,10 @@ void AudioCDProtocol::stat(const QUrl & url)
 			const uint choice = findInformationFileNumber(d->fname, d->cddbList.count());
 			if (choice <= (uint)d->cddbList.count()) {
 				// It's a valid info file
-				const mode_t _umask = ::umask(0);
-				::umask(_umask);
 				UDSEntry entry;
-				entry.INSERT(KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F")));
-				entry.INSERT(KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-				entry.INSERT(KIO::UDSEntry::UDS_MIME_TYPE, QStringLiteral("text/plain"));
-				entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
-				entry.INSERT(KIO::UDSEntry::UDS_SIZE, d->cddbList.at(choice - 1).toString().toLatin1().size());
+				app_file(entry, escapePath(url.fileName()),
+					 d->cddbList.at(choice - 1).toString().toLatin1().size(),
+					 QStringLiteral("text/plain"));
 				statEntry(entry);
 				finished();
 				return;
@@ -633,67 +715,36 @@ void AudioCDProtocol::stat(const QUrl & url)
 	}
 
 	UDSEntry entry;
-
-	entry.INSERT( KIO::UDSEntry::UDS_NAME, url.fileName().replace(QLatin1Char( '/' ), QLatin1String("%2F") ));
-
-	entry.INSERT( KIO::UDSEntry::UDS_FILE_TYPE,isFile ? S_IFREG : S_IFDIR);
-
-
-	const mode_t _umask = ::umask(0);
-	::umask(_umask);
-
-	entry.INSERT(KIO::UDSEntry::UDS_ACCESS, (0666 & (~_umask)));
-
 	if (!isFile)
 	{
-		entry.INSERT( KIO::UDSEntry::UDS_SIZE, cdda_tracks(drive));
+		app_dir(entry, escapePath(url.fileName()), cdda_tracks(drive));
 	}
 	else
 	{
-			AudioCDEncoder *encoder = determineEncoder(d->fname);
-			long firstSector = 0, lastSector = 0;
-			getSectorsForRequest(drive, firstSector, lastSector);
-			entry.INSERT( KIO::UDSEntry::UDS_SIZE,fileSize(firstSector, lastSector, encoder));
+		AudioCDEncoder *encoder = determineEncoder(d->fname);
+		long firstSector = 0, lastSector = 0;
+		getSectorsForRequest(drive, firstSector, lastSector);
+		app_file(entry, escapePath(url.fileName()), fileSize(firstSector, lastSector, encoder));
 	}
 
-
 	statEntry(entry);
-
 	cdda_close(drive);
-
 	finished();
-}
-
-static void app_dir(UDSEntry& e, const QString & n, size_t s)
-{
-	e.clear();
-	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-	e.INSERT( KIO::UDSEntry::UDS_ACCESS, 0400);
-	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
-	e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, QLatin1String("inode/directory"));
-}
-
-static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mimetype = QString())
-{
-	e.clear();
-	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
-	// Use current date and time to avoid confusions. See https://bugs.kde.org/show_bug.cgi?id=400114
-	e.INSERT( KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::currentDateTime().toSecsSinceEpoch ());
-	e.INSERT( KIO::UDSEntry::UDS_ACCESS, 0644);
-	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
-	if (!mimetype.isEmpty())
-		e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
 }
 
 void AudioCDProtocol::listDir(const QUrl & url)
 {
-	struct cdrom_drive * drive = initRequest(url);
+	if (!checkNoHost(url)) {
+		return;
+	}
 
-	if (!drive && d->device.isEmpty()) {
-		// List CDROM devices
-		UDSEntry entry;
+	UDSEntry entry;
+	app_dir(entry, ".", 0);
+	listEntry(entry);
+
+	if (whichFromUrl(url)==Base) {
+		// The top level directory with CDROM devices only.
+
 		const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
 		foreach (const QString &deviceName, deviceNames) {
 			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
@@ -701,7 +752,8 @@ void AudioCDProtocol::listDir(const QUrl & url)
 			QUrlQuery targetQuery;
 			targetQuery.addQueryItem("device", device.toUtf8());
 			targetUrl.setQuery(targetQuery);
-			app_dir(entry, device, 2+encoders.count());
+
+			app_dir(entry, escapePath(device), 2+encoders.count());
 			entry.INSERT(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
 			entry.INSERT(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
 			listEntry(entry);
@@ -711,9 +763,11 @@ void AudioCDProtocol::listDir(const QUrl & url)
 		return;
 	}
 
+	struct cdrom_drive *drive = initRequest(url);
+
 	// Some error checking before proceeding
-	if (!drive) {
-		error(KIO::ERR_DOES_NOT_EXIST, url.path());
+	if (drive==nullptr) {
+		// Do not call error(), getDrive() will already have done that.
 		return;
 	}
 
@@ -732,8 +786,6 @@ void AudioCDProtocol::listDir(const QUrl & url)
 	// Generate templated names every time
 	// because the template might have changed.
 	generateTemplateTitles();
-
-	UDSEntry entry;
 
 	if (d->which_dir == Info){
 		CDInfoList::iterator it;
@@ -860,18 +912,19 @@ long AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder
 	return encoder->size(length_seconds);
 }
 
+// If a null pointer (meaning no or an invalid drive) is to be returned,
+// this must call error() first and the caller must not subsequently
+// call error() or finished().
 struct cdrom_drive *AudioCDProtocol::getDrive()
 {
 	const QByteArray device(QFile::encodeName(d->device));
+	if (device.isEmpty()) {
+		error(KIO::ERR_MALFORMED_URL, i18n("Missing device specification"));
+		return nullptr;
+	}
 
-	if (device.isEmpty())
-		return 0;
-
-	struct cdrom_drive * drive = 0;
-
-	drive = cdda_identify(device, CDDA_MESSAGE_FORGETIT, 0);
-
-	if (0 == drive) {
+	struct cdrom_drive *drive = cdda_identify(device, CDDA_MESSAGE_FORGETIT, 0);
+	if (drive==nullptr) {
 		qCDebug(AUDIOCD_KIO_LOG) << "Can't find an audio CD on: \"" << d->device << "\"";
 
 		const QFileInfo fi(d->device);
@@ -883,15 +936,14 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 			error(KIO::ERR_DOES_NOT_EXIST, d->device);
 		else error(KIO::ERR_SLAVE_DEFINED,
 i18n("Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as yourself (not root). Do you see a track list? If not, make sure you have permission to access the CD device. If you are using SCSI emulation (possible if you have an IDE CD writer) then make sure you check that you have read and write permissions on the generic SCSI device, which is probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your CD-ROM is."));
-		return 0;
+		return nullptr;
 	}
 
-	if (0 != cdda_open(drive))
-	{
+	if (cdda_open(drive)!=0) {
 		qCDebug(AUDIOCD_KIO_LOG) << "cdda_open failed";
 		error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
 		cdda_close(drive);
-		return 0;
+		return nullptr;
 	}
 
 	return drive;
@@ -1064,6 +1116,7 @@ void AudioCDProtocol::parseURLArgs(const QUrl & url)
 {
 	d->clearURLargs();
 
+	// FIXME: Use QUrlQuery for parsing
 	QString query(QUrl::fromPercentEncoding(url.query().toLatin1()));
 
 	if (query.isEmpty())
@@ -1203,7 +1256,7 @@ void AudioCDProtocol::generateTemplateTitles()
 		macros[QLatin1String( "genre" )] = info.get(Genre).toString();
 		macros[QLatin1String( "year" )] = info.get(Year).toString();
 
-		QString title = KMacroExpander::expandMacros(d->fileNameTemplate, macros, QLatin1Char( '%' )).replace(QLatin1Char( '/' ), QLatin1String("%2F"));
+		QString title = escapePath(KMacroExpander::expandMacros(d->fileNameTemplate, macros, QLatin1Char( '%' )));
 		title.replace( QRegExp(d->rsearch), d->rreplace );
 		d->templateTitles.append(title);
 	}
@@ -1213,7 +1266,7 @@ void AudioCDProtocol::generateTemplateTitles()
 	macros[QLatin1String( "albumtitle" )] = info.get(Title).toString();
 	macros[QLatin1String( "genre" )] = info.get(Genre).toString();
 	macros[QLatin1String( "year" )] = info.get(Year).toString();
-	d->templateAlbumName = KMacroExpander::expandMacros(d->albumNameTemplate, macros, QLatin1Char( '%' )).replace(QLatin1Char( '/' ), QLatin1String("%2F"));
+	d->templateAlbumName = escapePath(KMacroExpander::expandMacros(d->albumNameTemplate, macros, QLatin1Char( '%' )));
 	d->templateAlbumName.replace( QRegExp(d->rsearch), d->rreplace );
 
 	d->templateFileLocation = KMacroExpander::expandMacros(d->fileLocationTemplate, macros, QLatin1Char( '%' ));

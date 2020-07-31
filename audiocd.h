@@ -110,6 +110,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 private:
 
 	void generateTemplateTitles();
+	bool checkNoHost(const QUrl &url);
 
 	QList<AudioCDEncoder*> encoders;
 	cdrom_drive * getDrive();
