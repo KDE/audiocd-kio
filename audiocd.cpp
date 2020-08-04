@@ -919,7 +919,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 {
 	const QByteArray device(QFile::encodeName(d->device));
 	if (device.isEmpty()) {
-		error(KIO::ERR_MALFORMED_URL, i18n("Missing device specification"));
+		error(KIO::ERR_MALFORMED_URL, i18nc("The URL does not include a device name", "Missing device specification"));
 		return nullptr;
 	}
 
