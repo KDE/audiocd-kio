@@ -94,7 +94,7 @@
   </description>
   <url type="homepage">https://userbase.kde.org/Special:myLanguage/Kio-audiocd</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kdemultimedia</url>
-  <url type="help">https://docs.kde.org/trunk5/en/kdemultimedia/kioslave5/audiocd/index.html</url>
+  <url type="help">https://docs.kde.org/?application=kioslave5%2Faudiocd</url>
   <update_contact>yurchor_at_mageia.org</update_contact>
   <screenshots>
     <screenshot type="default">
