@@ -245,14 +245,14 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 		// user selected value, even if there is none.
 		//
 		qCWarning(AUDIOCD_KIO_LOG) << "Found an ATAPI device, assuming it is the one specified by the user.";
-		cd->setDevice( drive->cdda_device_name );
+		cd->setDevice(QString::fromLatin1(drive->cdda_device_name));
 	}
 	else
 	{
 		qCDebug(AUDIOCD_KIO_LOG) << "Found a SCSI or ATAPICAM device.";
 		if ( strlen(drive->dev->device_path) > 0 )
 		{
-			cd->setDevice( drive->dev->device_path );
+			cd->setDevice(QString::fromLatin1(drive->dev->device_path));
 		}
 		else
 		{
@@ -260,8 +260,8 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 			// circumstances, so build a representation from
 			// the unit number and SCSI device name.
 			//
-			QString devname = QString::fromLatin1( "/dev/%1%2" )
-				.arg( drive->dev->given_dev_name )
+			QString devname = QStringLiteral( "/dev/%1%2" )
+				.arg( QString::fromLatin1(drive->dev->given_dev_name) )
 				.arg( drive->dev->given_unit_number ) ;
 			qCDebug(AUDIOCD_KIO_LOG) << "  Using derived name " << devname;
 			cd->setDevice( devname );
