@@ -289,7 +289,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
     // if the value is not empty
     if(!(*it).second.toString().isEmpty()) {
 
-      char *key = qstrdup((*it).first);
+      char *key = qstrdup((*it).first.constData());
       char *value = qstrdup((*it).second.toString().toUtf8().data());
 
       vorbis_comment_add_tag(&d->vc, key, value);

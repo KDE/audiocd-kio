@@ -918,7 +918,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 		return nullptr;
 	}
 
-	struct cdrom_drive *drive = cdda_identify(device, CDDA_MESSAGE_FORGETIT, nullptr);
+	struct cdrom_drive *drive = cdda_identify(device.data(), CDDA_MESSAGE_FORGETIT, nullptr);
 	if (drive==nullptr) {
 		qCDebug(AUDIOCD_KIO_LOG) << "Can't find an audio CD on: \"" << d->device << "\"";
 

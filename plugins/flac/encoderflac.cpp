@@ -224,14 +224,13 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
     QString field;
-    QByteArray cfield;
     int num_comments = 0;
 
     for(int i=0; i<7; i++) {
 	if (!comments[i].second.toString().isEmpty()) {
 	    field = comments[i].first+QLatin1Char( '=' )+comments[i].second.toString();
-	    cfield = field.toUtf8();
-	    entry.entry = (FLAC__byte*)qstrdup(cfield);
+	    const QByteArray cfield = field.toUtf8();
+	    entry.entry = (FLAC__byte*)qstrdup(cfield.data());
 	    entry.length = cfield.length();
 	    // Insert in vorbiscomment and assign ownership of pointers to FLAC
 	    FLAC__metadata_object_vorbiscomment_insert_comment(d->metadata[0], num_comments, entry, false);
