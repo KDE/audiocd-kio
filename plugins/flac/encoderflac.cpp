@@ -218,7 +218,11 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 				Comment(QLatin1String( "COMMENT" ), comment),
 				Comment(QLatin1String( "DATE" ), QVariant(QString()) )};
     if (info.get(Year).toInt() > 0) {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+	const QDateTime dt = QDate(info.get(Year).toInt(), 1, 1).startOfDay();
+#else
 	QDateTime dt(QDate(info.get(Year).toInt(), 1, 1));
+#endif
 	comments[6] = Comment(QLatin1String( "DATE" ), dt.toString(Qt::ISODate));
     }
 
