@@ -31,6 +31,7 @@
 #include <KConfig>
 #include <QByteArray>
 #include <QDateTime>
+#include <QRandomGenerator>
 
 extern "C"
 {
@@ -211,8 +212,7 @@ long EncoderVorbis::readInit(long /*size*/){
   vorbis_analysis_init(&d->vd,&d->vi);
   vorbis_block_init(&d->vd,&d->vb);
 
-  qsrand(time(nullptr));
-  ogg_stream_init(&d->os,qrand());
+  ogg_stream_init(&d->os, QRandomGenerator::global()->generate());
 
   vorbis_analysis_headerout(&d->vd,&d->vc,&header,&header_comm,&header_code);
 
