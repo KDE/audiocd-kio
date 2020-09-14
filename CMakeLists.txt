@@ -119,3 +119,4 @@ else()
 endif()
 install(FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR})
 
+ki18n_install(po)
