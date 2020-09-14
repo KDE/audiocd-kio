@@ -480,11 +480,11 @@ static uint findInformationFileNumber(const QString &filename, uint max) {
 static Which_dir whichFromUrl(const QUrl &url)
 {
 	QUrlQuery query(url);
-	if (!query.hasQueryItem("device")) {		// see if "device" query present
+	if (!query.hasQueryItem(QStringLiteral("device"))) {		// see if "device" query present
 		return Base;				// if not, must be slave base
 	}
 
-	if (url.path()=="/") {				// see if the device root
+	if (url.path()==QLatin1String("/")) {		// see if the device root
 		return Root;
 	}
 
@@ -655,7 +655,7 @@ void AudioCDProtocol::stat(const QUrl & url)
 		UDSEntry entry;
 		// One subdirectory for each drive
 		const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
-		app_dir(entry, escapePath("/"), deviceNames.count());
+		app_dir(entry, escapePath(QStringLiteral("/")), deviceNames.count());
 		statEntry(entry);
 		finished();
 		return;
@@ -734,7 +734,7 @@ void AudioCDProtocol::listDir(const QUrl & url)
 	}
 
 	UDSEntry entry;
-	app_dir(entry, ".", 0);
+	app_dir(entry, QStringLiteral("."), 0);
 	listEntry(entry);
 
 	if (whichFromUrl(url)==Base) {
@@ -745,7 +745,7 @@ void AudioCDProtocol::listDir(const QUrl & url)
 			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
 			QUrl targetUrl = url;
 			QUrlQuery targetQuery;
-			targetQuery.addQueryItem("device", device.toUtf8());
+			targetQuery.addQueryItem(QStringLiteral("device"), device);
 			targetUrl.setQuery(targetQuery);
 
 			app_dir(entry, escapePath(device), 2+encoders.count());

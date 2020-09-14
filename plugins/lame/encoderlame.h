@@ -45,7 +45,7 @@ public:
 	explicit EncoderLame(KIO::SlaveBase *slave);
 	~EncoderLame();
 
-	virtual QString type() const override { return "MP3"; }
+	virtual QString type() const override { return QStringLiteral("MP3"); }
 	virtual bool init() override;
 	virtual void loadSettings() override;
 	virtual unsigned long size(long time_secs) const override;

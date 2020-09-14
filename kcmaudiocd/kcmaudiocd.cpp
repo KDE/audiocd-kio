@@ -95,10 +95,10 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
 
 
     KAboutData *about =
-    new KAboutData("kcmaudiocd", i18n("KDE Audio CD IO Slave"), AUDIOCDPLUGINS_VERSION_STRING);
+    new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD IO Slave"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
 
-    about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), "ben@meyerhome.net");
-    about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), "duvenhorst@duvnet.de");
+    about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), QStringLiteral("ben@meyerhome.net"));
+    about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), QStringLiteral("duvenhorst@duvnet.de"));
     setAboutData(about);
 }
 
@@ -143,15 +143,15 @@ void KAudiocdModule::defaults() {
 	audioConfig->ec_skip_check->setChecked(false);
 	audioConfig->niceLevel->setValue(0);
 
-	audioConfig->kcfg_replaceInput->setText("");
-	audioConfig->kcfg_replaceOutput->setText("");
+	audioConfig->kcfg_replaceInput->setText(QString());
+	audioConfig->kcfg_replaceOutput->setText(QString());
 	audioConfig->example->setText(i18n("Cool artist - example audio file.wav"));
         for (int i = 0; i < encoderSettings.size(); ++i) {
             encoderSettings.at( i )->updateWidgetsDefault();
         }
 
-	audioConfig->fileNameLineEdit->setText("%{trackartist} - %{number} - %{title}");
-	audioConfig->albumNameLineEdit->setText("%{albumartist} - %{albumtitle}");
+	audioConfig->fileNameLineEdit->setText(QStringLiteral("%{trackartist} - %{number} - %{title}"));
+	audioConfig->albumNameLineEdit->setText(QStringLiteral("%{albumartist} - %{albumtitle}"));
 }
 
 void KAudiocdModule::save() {
@@ -178,11 +178,11 @@ void KAudiocdModule::save() {
     QString replaceOutput=audioConfig->kcfg_replaceOutput->text();
     if (needsQoutes(replaceInput))
     {
-       replaceInput=QString("\"")+replaceInput+QString("\"");
+       replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
     }
     if (needsQoutes(replaceOutput))
     {
-       replaceOutput=QString("\"")+replaceOutput+QString("\"");
+       replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
     }
     cg.writeEntry("regexp_search", replaceInput);
     cg.writeEntry("regexp_replace", replaceOutput);

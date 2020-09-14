@@ -89,30 +89,30 @@ void EncoderOpus::loadSettings(){
 	Settings *settings = Settings::self();
 
 	if (settings->opus_enc_complexity()) {
-		args.append("--comp");
-		args.append(QString("%1").arg(settings->opus_complexity()));
+		args.append(QStringLiteral("--comp"));
+		args.append(QStringLiteral("%1").arg(settings->opus_complexity()));
 	}
 	else {
 		// Constant Bitrate Encoding
 		if (settings->set_opus_cbr()) {
-			args.append("--bitrate");
-			args.append(QString("%1").arg(bitrates[settings->opus_cbr()]));
+			args.append(QStringLiteral("--bitrate"));
+			args.append(QStringLiteral("%1").arg(bitrates[settings->opus_cbr()]));
 			d->bitrate = settings->opus_cbr();
-			args.append("--hard-cbr");
+			args.append(QStringLiteral("--hard-cbr"));
 		};
 		// Constrained Variable Bitrate Encoding
 		if (settings->set_opus_cvbr()) {
-			args.append("--bitrate");
-			args.append(QString("%1").arg(bitrates[settings->opus_cvbr()]));
+			args.append(QStringLiteral("--bitrate"));
+			args.append(QStringLiteral("%1").arg(bitrates[settings->opus_cvbr()]));
 			d->bitrate = bitrates[settings->opus_cvbr()];
-			args.append("--cvbr");
+			args.append(QStringLiteral("--cvbr"));
 		};
 		// Average Variable Bitrate Encoding
 		if (settings->set_opus_vbr()) {
-			args.append("--bitrate");
-			args.append(QString("%1").arg(bitrates[settings->opus_vbr()]));
+			args.append(QStringLiteral("--bitrate"));
+			args.append(QStringLiteral("%1").arg(bitrates[settings->opus_vbr()]));
 			d->bitrate = bitrates[settings->opus_vbr()];
-			args.append("--vbr");
+			args.append(QStringLiteral("--vbr"));
 		};
 	};
 
@@ -134,12 +134,12 @@ long EncoderOpus::readInit(long /*size*/){
 
 	// --raw raw/pcm
 	// --raw-rate 44100 (because it is raw you have to specify this)
-	*(d->currentEncodeProcess) << "opusenc" << "--raw" << "--raw-rate" << "44100";
+	*(d->currentEncodeProcess) << QStringLiteral("opusenc") << QStringLiteral("--raw") << QStringLiteral("--raw-rate") << QStringLiteral("44100");
 	*(d->currentEncodeProcess) << args;
 	*d->currentEncodeProcess << trackInfo;
 
 	// Read in stdin, output to the temp file
-	*d->currentEncodeProcess << "-" << d->tempFile->fileName().toLatin1();
+	*d->currentEncodeProcess << QStringLiteral("-") << d->tempFile->fileName();
 
 	//qCDebug(AUDIOCD_KIO_LOG) << args;
 
@@ -165,7 +165,7 @@ void EncoderOpus::receivedStderr(){
 	QByteArray error = d->currentEncodeProcess->readAllStandardError();
 	qCDebug(AUDIOCD_KIO_LOG) << "Opusenc stderr: " << error;
 	if ( !d->lastErrorMessage.isEmpty() )
-		d->lastErrorMessage += '\t';
+		d->lastErrorMessage += QLatin1Char('\t');
 	d->lastErrorMessage += QString::fromLocal8Bit( error );
 }
 
@@ -228,26 +228,26 @@ void EncoderOpus::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 	if( !d->write_opus_comments )
 		return;
 
-	trackInfo.append("--album");
+	trackInfo.append(QStringLiteral("--album"));
 	trackInfo.append(info.get(Title).toString());
 
-	trackInfo.append("--artist");
+	trackInfo.append(QStringLiteral("--artist"));
 	trackInfo.append(info.track(track-1).get(Artist).toString());
 
-	trackInfo.append("--title");
+	trackInfo.append(QStringLiteral("--title"));
 	trackInfo.append(info.track(track-1).get(Title).toString());
 
-	trackInfo.append("--date");
+	trackInfo.append(QStringLiteral("--date"));
 	trackInfo.append( QDate(info.get(Year).toInt(), 1, 1 ).toString(Qt::ISODate) );
 
-	trackInfo.append("--comment");
+	trackInfo.append(QStringLiteral("--comment"));
 	trackInfo.append(QStringLiteral("DESCRIPTION=") + comment);
 
-	trackInfo.append("--comment");
+	trackInfo.append(QStringLiteral("--comment"));
 	trackInfo.append(QStringLiteral("TRACKNUMBER=") + QString::number(track));
 
-	trackInfo.append("--genre");
-	trackInfo.append(QString("%1").arg(info.get(Genre).toString()));
+	trackInfo.append(QStringLiteral("--genre"));
+	trackInfo.append(QStringLiteral("%1").arg(info.get(Genre).toString()));
 
 }
 

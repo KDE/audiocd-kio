@@ -80,7 +80,7 @@ bool EncoderLame::init(){
 	// e.g. lame --tg 'Vocal Jazz'
 	KProcess proc;
 	proc.setOutputChannelMode(KProcess::MergedChannels);
-	proc << "lame" << "--genre-list";
+	proc << QStringLiteral("lame") << QStringLiteral("--genre-list");
 	proc.execute();
 
 	if(proc.exitStatus() != QProcess::NormalExit)
@@ -89,9 +89,9 @@ bool EncoderLame::init(){
 	QByteArray array = proc.readAll();
 	QString str = QString::fromLocal8Bit( array );
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-	d->genreList = str.split( '\n', QString::SkipEmptyParts );
+	d->genreList = str.split(QLatin1Char('\n'), QString::SkipEmptyParts );
 #else
-	d->genreList = str.split( '\n', Qt::SkipEmptyParts );
+	d->genreList = str.split(QLatin1Char('\n'), Qt::SkipEmptyParts );
 #endif
 	// Remove the numbers in front of every genre
 	for( QStringList::Iterator it = d->genreList.begin(); it != d->genreList.end(); ++it ) {
@@ -135,7 +135,7 @@ void EncoderLame::loadSettings(){
 #endif
         }
 	if (swap)
-		args << "-x";
+		args << QStringLiteral("-x");
 
 	int quality = settings->quality();
 	if (quality < 0 ) quality = quality *-1;
@@ -145,82 +145,82 @@ void EncoderLame::loadSettings(){
 
 	if (method == 0) {
 		// Constant Bitrate Encoding
-		args.append("-b");
-		args.append(QString("%1").arg(bitrates[settings->cbr_bitrate()]));
+		args.append(QStringLiteral("-b"));
+		args.append(QStringLiteral("%1").arg(bitrates[settings->cbr_bitrate()]));
 		d->bitrate = bitrates[settings->cbr_bitrate()];
-		args.append("-q");
-		args.append(QString("%1").arg(quality));
+		args.append(QStringLiteral("-q"));
+		args.append(QStringLiteral("%1").arg(quality));
 	}
 	else {
 		// Variable Bitrate Encoding
 		if (settings->vbr_average_br()) {
-			args.append("--abr");
-			args.append(QString("%1").arg(bitrates[settings->vbr_mean_brate()]));
+			args.append(QStringLiteral("--abr"));
+			args.append(QStringLiteral("%1").arg(bitrates[settings->vbr_mean_brate()]));
 			d->bitrate = bitrates[settings->vbr_mean_brate()];
 			if (settings->vbr_min_br()){
-				args.append("-b");
-				args.append(QString("%1").arg(bitrates[settings->vbr_min_brate()]));
+				args.append(QStringLiteral("-b"));
+				args.append(QStringLiteral("%1").arg(bitrates[settings->vbr_min_brate()]));
 			}
 			if (settings->vbr_min_hard())
-				args.append("-F");
+				args.append(QStringLiteral("-F"));
 			if (settings->vbr_max_br()){
-				args.append("-B");
-				args.append(QString("%1").arg(bitrates[settings->vbr_max_brate()]));
+				args.append(QStringLiteral("-B"));
+				args.append(QStringLiteral("%1").arg(bitrates[settings->vbr_max_brate()]));
 			}
 		} else {
 			d->bitrate = 128;
-			args.append("-V");
-			args.append(QString("%1").arg(quality));
+			args.append(QStringLiteral("-V"));
+			args.append(QStringLiteral("%1").arg(quality));
 		}
 		if ( !settings->vbr_xing_tag() )
-			args.append("-t");
+			args.append(QStringLiteral("-t"));
 	}
 
-	args.append("-m");
+	args.append(QStringLiteral("-m"));
 	switch ( settings->stereo() ) {
 		case 0:
-			args.append("s");
+			args.append(QStringLiteral("s"));
 			break;
 		case 1:
-			args.append("j");
+			args.append(QStringLiteral("j"));
 			break;
 		case 2:
-			args.append("d");
+			args.append(QStringLiteral("d"));
 			break;
 		case 3:
-			args.append("m");
+			args.append(QStringLiteral("m"));
 			break;
 		default:
-			args.append("s");
+			args.append(QStringLiteral("s"));
 			break;
 	}
 
 	if(settings->copyright())
-		args.append("-c");
+		args.append(QStringLiteral("-c"));
 	if(!settings->original())
-		args.append("-o");
+		args.append(QStringLiteral("-o"));
 	if(settings->iso())
-		args.append("--strictly-enforce-ISO");
+		args.append(QStringLiteral("--strictly-enforce-ISO"));
 	if(settings->crc())
-		args.append("-p");
+		args.append(QStringLiteral("-p"));
 
 	if ( settings->enable_lowpass() ) {
-		args.append("--lowpass");
-		args.append(QString("%1").arg(settings->lowfilterfreq()));
+		args.append(QStringLiteral("--lowpass"));
+		args.append(QStringLiteral("%1").arg(settings->lowfilterfreq()));
 
 		if (settings->set_lpf_width()){
-			args.append("--lowpass-width");
-			args.append(QString("%1").arg(settings->lowfilterwidth()));
+			args.append(QStringLiteral("--lowpass-width"));
+			args.append(QStringLiteral("%1").arg(settings->lowfilterwidth()));
 		}
 	}
 
 	if ( settings->enable_highpass()) {
-		args.append("--hipass");
-		args.append(QString("%1").arg(settings->highfilterfreq()));
+		args.append(QStringLiteral("--hipass"));
+		args.append(QStringLiteral("%1").arg(settings->highfilterfreq()));
 
 		if (settings->set_hpf_width()){
-			args.append("--hipass-width");
-			args.append(QString("%1").arg(settings->highfilterwidth()));
+			args.append(QStringLiteral("--hipass-width"));
+			args.append(QStringLiteral("%1").arg(settings->highfilterwidth()));
 		}
 	}
 }
@@ -239,13 +239,13 @@ long EncoderLame::readInit(long /*size*/){
 
 	// -r raw/pcm
 	// -s 44.1 (because it is raw you have to specify this)
-	*(d->currentEncodeProcess) << "lame" << "--verbose" << "-r" << "-s" << "44.1";
+	*(d->currentEncodeProcess) << QStringLiteral("lame") << QStringLiteral("--verbose") << QStringLiteral("-r") << QStringLiteral("-s") << QStringLiteral("44.1");
 	*(d->currentEncodeProcess) << args;
 	if(Settings::self()->id3_tag())
 		*d->currentEncodeProcess << trackInfo;
 
 	// Read in stdin, output to the temp file
-	*d->currentEncodeProcess << "-" << d->tempFile->fileName().toLatin1();
+	*d->currentEncodeProcess << QStringLiteral("-") << d->tempFile->fileName();
 
 	//qCDebug(AUDIOCD_KIO_LOG) << d->currentEncodeProcess->args();
 
@@ -275,7 +275,7 @@ void EncoderLame::receivedStderr(){
 	QByteArray error = d->currentEncodeProcess->readAllStandardError();
 	qCDebug(AUDIOCD_KIO_LOG) << "Lame stderr: " << error;
 	if ( !d->lastErrorMessage.isEmpty() )
-		d->lastErrorMessage += '\t';
+		d->lastErrorMessage += QLatin1Char('\t');
 	d->lastErrorMessage += QString::fromLocal8Bit( error );
 }
 
@@ -337,28 +337,28 @@ long EncoderLame::readCleanup(){
 
 void EncoderLame::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ){
 	trackInfo.clear();
-	trackInfo.append("--tt");
+	trackInfo.append(QStringLiteral("--tt"));
 	trackInfo.append(info.track(track-1).get(Title).toString());
 
-	trackInfo.append("--ta");
+	trackInfo.append(QStringLiteral("--ta"));
 	trackInfo.append(info.track(track-1).get(Artist).toString());
 
-	trackInfo.append("--tl");
+	trackInfo.append(QStringLiteral("--tl"));
 	trackInfo.append(info.get(Title).toString());
 
-	trackInfo.append("--ty");
-	trackInfo.append(QString("%1").arg(info.get(Year).toString()));
+	trackInfo.append(QStringLiteral("--ty"));
+	trackInfo.append(QStringLiteral("%1").arg(info.get(Year).toString()));
 
-	trackInfo.append("--tc");
+	trackInfo.append(QStringLiteral("--tc"));
 	trackInfo.append(comment);
 
-	trackInfo.append("--tn");
-	trackInfo.append(QString("%1").arg(track));
+	trackInfo.append(QStringLiteral("--tn"));
+	trackInfo.append(QStringLiteral("%1").arg(track));
 
 	const QString genre = info.get(Genre).toString();
 	if ( d->genreList.indexOf( genre ) != -1 )
 	{
-	trackInfo.append("--tg");
+	trackInfo.append(QStringLiteral("--tg"));
 		trackInfo.append(genre);
 	}
 }
