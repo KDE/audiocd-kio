@@ -103,7 +103,15 @@ add_subdirectory(doc)
 
 set(kio_audiocd_PART_SRCS audiocd.cpp )
 
-ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS HEADER audiocd_kio_debug.h IDENTIFIER AUDIOCD_KIO_LOG CATEGORY_NAME kf5.kio.audiocd DEFAULT_SEVERITY Warning)
+ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS
+    HEADER audiocd_kio_debug.h
+    IDENTIFIER AUDIOCD_KIO_LOG
+    CATEGORY_NAME kf.kio.slaves.audiocd
+    OLD_CATEGORY_NAMES kf5.kio.audiocd
+    DEFAULT_SEVERITY Warning
+    DESCRIPTION "audiocd KIO slave"
+    EXPORT AUDIOCD
+)
 
 add_library(kio_audiocd MODULE ${kio_audiocd_PART_SRCS})
 set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
@@ -118,8 +126,13 @@ target_link_libraries(kio_audiocd
 
 install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
 
-install(FILES kio_audiocd.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 install(FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR})
+
+ecm_qt_install_logging_categories(
+    EXPORT AUDIOCD
+    FILE kio_audiocd.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
 
 ki18n_install(po)
 

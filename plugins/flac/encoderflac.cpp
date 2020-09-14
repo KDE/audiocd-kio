@@ -36,7 +36,7 @@
 #include <QDateTime>
 #include <QPair>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.slaves.audiocd")
 
 extern "C"
 {

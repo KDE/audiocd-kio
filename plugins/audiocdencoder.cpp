@@ -25,7 +25,7 @@
 #include <QRegularExpression>
 #include <QCoreApplication>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf5.kio.audiocd")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.slaves.audiocd")
 
 /**
  * Attempt to load a plugin and see if it has the symbol create_audiocd_encoders.
