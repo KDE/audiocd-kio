@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(audiocd)
-
-set(PROJECT_VERSION "19.04.0")
+project(audiocd VERSION "5.0.0")
 
 set(QT_MIN_VERSION "5.12.0")
 set(KF_MIN_VERSION "5.68.0")
@@ -44,10 +42,9 @@ set_package_properties(KF5CompactDisc PROPERTIES
     PURPOSE "libkcompactdisc is used to access CD drives."
 )
 
-ecm_setup_version("5.0.0"
+ecm_setup_version(${audiocd_VERSION}
     VARIABLE_PREFIX AUDIOCDPLUGINS
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_version.h"
-    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/AudioCDPluginsConfigVersion.cmake"
     SOVERSION 5
 )
 
