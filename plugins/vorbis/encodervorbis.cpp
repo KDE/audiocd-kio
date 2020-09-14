@@ -147,7 +147,7 @@ long EncoderVorbis::flush_vorbis(void) {
   long processed(0);
 
   while(vorbis_analysis_blockout(&d->vd,&d->vb)==1) {
-    vorbis_analysis(&d->vb,NULL);
+    vorbis_analysis(&d->vb,nullptr);
     /* Non-ancient case.  */
     vorbis_bitrate_addblock(&d->vb);
 
@@ -211,7 +211,7 @@ long EncoderVorbis::readInit(long /*size*/){
   vorbis_analysis_init(&d->vd,&d->vi);
   vorbis_block_init(&d->vd,&d->vb);
 
-  qsrand(time(NULL));
+  qsrand(time(nullptr));
   ogg_stream_init(&d->os,qrand());
 
   vorbis_analysis_headerout(&d->vd,&d->vc,&header,&header_comm,&header_code);

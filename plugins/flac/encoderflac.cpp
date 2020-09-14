@@ -104,7 +104,7 @@ static FLAC__SeekableStreamEncoderSeekStatus  SeekCallback(const FLAC__SeekableS
 EncoderFLAC::EncoderFLAC(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
     d = new Private();
     d->ioslave = slave;
-    d->encoder = 0;
+    d->encoder = nullptr;
 #if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
     d->compression_level = 5;
 #endif
@@ -127,7 +127,7 @@ QWidget* EncoderFLAC::getConfigureWidget(KConfigSkeleton** manager) const {
 
 bool EncoderFLAC::init(){
     d->encoder = FLAC__stream_encoder_new();
-    d->metadata = 0;
+    d->metadata = nullptr;
     d->data = 0;
     return true;
 }
@@ -172,7 +172,7 @@ long EncoderFLAC::readInit(long size) {
 #if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
     FLAC__stream_encoder_init(d->encoder);
 #else
-    FLAC__stream_encoder_init_stream(d->encoder, WriteCallback, NULL, NULL, MetadataCallback, d);
+    FLAC__stream_encoder_init_stream(d->encoder, WriteCallback, nullptr, nullptr, MetadataCallback, d);
 #endif
     return d->data;
 }
@@ -197,7 +197,7 @@ long EncoderFLAC::readCleanup()
     if (d->metadata) {
 	 FLAC__metadata_object_delete(d->metadata[0]);
          delete[] d->metadata;
-	 d->metadata = 0;
+	 d->metadata = nullptr;
     }
     return 0;
 }

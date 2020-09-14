@@ -122,7 +122,7 @@ public:
    * Returns a configure widget for the encoder
    */ 
   virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const
-                   { Q_UNUSED(manager); return NULL; } 
+                   { Q_UNUSED(manager); return nullptr; }
  
   /**
    * Returns the last error message; called when e.g. read() returns -1.

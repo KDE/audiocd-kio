@@ -37,7 +37,7 @@ static QFunctionPointer loadPlugin(const QString &libFileName)
     qCDebug(AUDIOCD_KIO_LOG) << "Trying to load" << libFileName;
     QFunctionPointer cplugin = QLibrary(libFileName).resolve("create_audiocd_encoders");
     if (!cplugin)
-        return NULL;
+        return nullptr;
     qCDebug(AUDIOCD_KIO_LOG) << "Loaded plugin";
     return cplugin;
 }

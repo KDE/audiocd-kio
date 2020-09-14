@@ -55,10 +55,10 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     config = new KConfig( QLatin1String( "kcmaudiocdrc" ));
 
     QList<AudioCDEncoder*> encoders;
-    AudioCDEncoder::findAllPlugins(0, encoders);
+    AudioCDEncoder::findAllPlugins(nullptr, encoders);
     foreach (AudioCDEncoder *encoder, encoders) {
       if (encoder->init()) {
-        KConfigSkeleton *config = NULL;
+        KConfigSkeleton *config = nullptr;
         QWidget *widget = encoder->getConfigureWidget(&config);
         if(widget && config){
   	   audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder", encoder->type()));

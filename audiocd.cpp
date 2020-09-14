@@ -923,7 +923,7 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 		return nullptr;
 	}
 
-	struct cdrom_drive *drive = cdda_identify(device, CDDA_MESSAGE_FORGETIT, 0);
+	struct cdrom_drive *drive = cdda_identify(device, CDDA_MESSAGE_FORGETIT, nullptr);
 	if (drive==nullptr) {
 		qCDebug(AUDIOCD_KIO_LOG) << "Can't find an audio CD on: \"" << d->device << "\"";
 
@@ -962,7 +962,7 @@ void AudioCDProtocol::paranoiaRead(
 		return;
 
 	cdrom_paranoia * paranoia = paranoia_init(drive);
-	if (0 == paranoia) {
+	if (nullptr == paranoia) {
 		qCDebug(AUDIOCD_KIO_LOG) << "paranoia_init failed";
 		return;
 	}
@@ -1011,7 +1011,7 @@ void AudioCDProtocol::paranoiaRead(
 			warning(i18n("AudioCD: Disk damage detected on this track, risk of data corruption."));
 			warned = 1;
 		}
-		if (0 == buf) {
+		if (nullptr == buf) {
 			qCDebug(AUDIOCD_KIO_LOG) << "Unrecoverable error in paranoia_read";
 			ok = false;
 			error( ERR_SLAVE_DEFINED, i18n( "Error reading audio data for %1 from the CD", fileName ) );
@@ -1105,7 +1105,7 @@ void AudioCDProtocol::paranoiaRead(
 		error( ERR_SLAVE_DEFINED, i18n( "Could not read %1: encoding failed", fileName ) );
 
 	paranoia_free(paranoia);
-	paranoia = 0;
+	paranoia = nullptr;
 }
 
 /**
