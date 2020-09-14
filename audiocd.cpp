@@ -24,13 +24,6 @@
 
 #include "audiocd.h"
 #include <config-audiocd.h>
-#include <kio_version.h>
-
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 48, 0)
-    #define INSERT(A, B) fastInsert(A, B);
-#else
-    #define INSERT(A, B) insert(A, B);
-#endif
 
 extern "C"
 {
@@ -624,11 +617,12 @@ static void app_dir(UDSEntry& e, const QString & n, size_t s)
 	::umask(_umask);
 
 	e.clear();
-	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
-	e.INSERT( KIO::UDSEntry::UDS_ACCESS, (0555 & ~_umask));
-	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
-	e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, QLatin1String("inode/directory"));
+        e.reserve(5);
+	e.fastInsert( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.fastInsert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR);
+	e.fastInsert( KIO::UDSEntry::UDS_ACCESS, (0555 & ~_umask));
+	e.fastInsert( KIO::UDSEntry::UDS_SIZE, s);
+	e.fastInsert( KIO::UDSEntry::UDS_MIME_TYPE, QLatin1String("inode/directory"));
 }
 
 static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mimetype = QString())
@@ -637,13 +631,14 @@ static void app_file(UDSEntry& e, const QString & n, size_t s, const QString &mi
 	::umask(_umask);
 
 	e.clear();
-	e.INSERT( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
-	e.INSERT( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
+        e.reserve(6);
+	e.fastInsert( KIO::UDSEntry::UDS_NAME, QFile::decodeName(n.toLocal8Bit()));
+	e.fastInsert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFREG);
 	// Use current date and time to avoid confusions. See https://bugs.kde.org/show_bug.cgi?id=400114
-	e.INSERT( KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::currentDateTime().toSecsSinceEpoch ());
-	e.INSERT( KIO::UDSEntry::UDS_ACCESS, (0444 & ~_umask));
-	e.INSERT( KIO::UDSEntry::UDS_SIZE, s);
-	if (!mimetype.isEmpty()) e.INSERT( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
+	e.fastInsert( KIO::UDSEntry::UDS_MODIFICATION_TIME, QDateTime::currentDateTime().toSecsSinceEpoch ());
+	e.fastInsert( KIO::UDSEntry::UDS_ACCESS, (0444 & ~_umask));
+	e.fastInsert( KIO::UDSEntry::UDS_SIZE, s);
+	if (!mimetype.isEmpty()) e.fastInsert( KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
 }
 
 
@@ -754,8 +749,8 @@ void AudioCDProtocol::listDir(const QUrl & url)
 			targetUrl.setQuery(targetQuery);
 
 			app_dir(entry, escapePath(device), 2+encoders.count());
-			entry.INSERT(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
-			entry.INSERT(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
+			entry.fastInsert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
+			entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
 			listEntry(entry);
 		}
 		totalSize(entry.count());
