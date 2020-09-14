@@ -4,8 +4,8 @@ project(audiocd)
 
 set(PROJECT_VERSION "19.04.0")
 
-set(QT_MIN_VERSION "5.9.0")
-set(KF_MIN_VERSION "5.24.0")
+set(QT_MIN_VERSION "5.12.0")
+set(KF_MIN_VERSION "5.68.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -89,10 +89,6 @@ add_subdirectory(kcmaudiocd)
 add_subdirectory(data)
 add_subdirectory(doc)
 
-feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
-
-########### next target ###############
-
 set(kio_audiocd_PART_SRCS audiocd.cpp )
 
 ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS HEADER audiocd_kio_debug.h IDENTIFIER AUDIOCD_KIO_LOG CATEGORY_NAME kf5.kio.audiocd DEFAULT_SEVERITY Warning)
@@ -110,13 +106,9 @@ target_link_libraries(kio_audiocd
 
 install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
 
-########### install files ###############
-
-if (${ECM_VERSION} STRGREATER "5.58.0")
-    install(FILES kio_audiocd.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-else()
-    install(FILES kio_audiocd.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
-endif()
+install(FILES kio_audiocd.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 install(FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR})
 
 ki18n_install(po)
+
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
