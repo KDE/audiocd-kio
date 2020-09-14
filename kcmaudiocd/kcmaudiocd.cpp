@@ -56,7 +56,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
 
     QList<AudioCDEncoder*> encoders;
     AudioCDEncoder::findAllPlugins(nullptr, encoders);
-    foreach (AudioCDEncoder *encoder, encoders) {
+    for (AudioCDEncoder *encoder : qAsConst(encoders)) {
       if (encoder->init()) {
         KConfigSkeleton *config = nullptr;
         QWidget *widget = encoder->getConfigureWidget(&config);

@@ -740,8 +740,8 @@ void AudioCDProtocol::listDir(const QUrl & url)
 	if (whichFromUrl(url)==Base) {
 		// The top level directory with CDROM devices only.
 
-		const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
-		foreach (const QString &deviceName, deviceNames) {
+		const QStringList deviceNames = KCompactDisc::cdromDeviceNames();
+		for (const QString &deviceName : deviceNames) {
 			const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
 			QUrl targetUrl = url;
 			QUrlQuery targetQuery;
