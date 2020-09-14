@@ -59,7 +59,7 @@ public:
   
 	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const override;
 
-protected slots:
+protected Q_SLOTS:
 // 	void wroteStdin();
 	void receivedStdout();
 	void receivedStderr();

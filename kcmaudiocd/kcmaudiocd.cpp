@@ -242,7 +242,7 @@ void KAudiocdModule::slotModuleChanged() {
 
 void KAudiocdModule::slotConfigChanged() {
 	configChanged = true;
-	emit changed(true);
+	Q_EMIT changed(true);
 }
 
 /*

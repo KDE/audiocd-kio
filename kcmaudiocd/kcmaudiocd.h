@@ -54,12 +54,12 @@ public:
 
   QString quickHelp() const override;
 
-public slots:
+public Q_SLOTS:
   void defaults() override;
   void save() override;
   void load() override;
 
-private slots:
+private Q_SLOTS:
   void updateExample();
   void slotConfigChanged();
   void slotEcEnable();

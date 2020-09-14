@@ -60,7 +60,7 @@ public:
 
 	virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const override;
 
-protected slots:
+protected Q_SLOTS:
 	void receivedStdout();
 	void receivedStderr();
 	void processExited(int exitCode, QProcess::ExitStatus /*status*/);

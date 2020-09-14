@@ -77,6 +77,7 @@ configure_file(config-audiocd.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd
 
 add_definitions(
     -DQT_NO_FOREACH
+    -DQT_NO_KEYWORDS
 )
 include_directories(
 	${CDPARANOIA_INCLUDE_DIR}

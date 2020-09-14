@@ -597,7 +597,7 @@ void AudioCDProtocol::get(const QUrl & url)
 
 	unsigned long size = encoder->size(time_secs);
 	totalSize(size);
-	emit mimeType(QLatin1String(encoder->mimeType()));
+	Q_EMIT mimeType(QLatin1String(encoder->mimeType()));
 
 	// Read data (track/disk) from the cd
 	paranoiaRead(drive, firstSector, lastSector, encoder, url.fileName(), size);
