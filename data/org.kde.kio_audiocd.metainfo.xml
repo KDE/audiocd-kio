@@ -142,4 +142,7 @@
     <category>Audio</category>
   </categories>
   <icon type="stock">media-optical-audio</icon>
+  <releases>
+    <release version="5.0.0" date="2020-12-10"/>
+  </releases>
 </component>
