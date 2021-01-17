@@ -126,7 +126,7 @@ target_link_libraries(kio_audiocd
 
 install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
 
-install(FILES audiocd.protocol  DESTINATION  ${SERVICES_INSTALL_DIR})
+install(FILES audiocd.protocol  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR})
 
 ecm_qt_install_logging_categories(
     EXPORT AUDIOCD

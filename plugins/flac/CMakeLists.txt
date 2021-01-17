@@ -24,7 +24,7 @@ target_link_libraries(audiocd_encoder_flac
     audiocdplugins
 )
 
-install(TARGETS audiocd_encoder_flac  DESTINATION ${PLUGIN_INSTALL_DIR})
+install(TARGETS audiocd_encoder_flac  DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
-install(FILES audiocd_flac_encoder.kcfg DESTINATION ${KCFG_INSTALL_DIR})
+install(FILES audiocd_flac_encoder.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 

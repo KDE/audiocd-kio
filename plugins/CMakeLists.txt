@@ -34,9 +34,9 @@ set_target_properties(audiocdplugins
     SOVERSION ${AUDIOCDPLUGINS_SOVERSION}
 )
 
-install(TARGETS audiocdplugins ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS audiocdplugins ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_export.h audiocdencoder.h  DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_export.h audiocdencoder.h  DESTINATION ${KDE_INSTALL_INCLUDEDIR} COMPONENT Devel)
 

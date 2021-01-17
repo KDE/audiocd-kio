@@ -26,9 +26,9 @@ target_link_libraries(audiocd_encoder_lame
     audiocdplugins
 )
 
-install(TARGETS audiocd_encoder_lame  DESTINATION ${PLUGIN_INSTALL_DIR})
+install(TARGETS audiocd_encoder_lame  DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
 ########### install files ###############
 
-install(FILES audiocd_lame_encoder.kcfg  DESTINATION  ${KCFG_INSTALL_DIR})
+install(FILES audiocd_lame_encoder.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
 
