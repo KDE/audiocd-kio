@@ -25,7 +25,7 @@
 #ifndef AUDIO_CD_H
 #define AUDIO_CD_H
 
-#include <kio/slavebase.h>
+#include <KIO/SlaveBase>
 
 class AudioCDEncoder;
 

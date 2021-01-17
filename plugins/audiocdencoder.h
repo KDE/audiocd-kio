@@ -22,7 +22,7 @@
 #include "audiocdplugins_export.h"
 
 #include <sys/types.h>
-#include <kio/slavebase.h>
+#include <KIO/SlaveBase>
 #include <QList>
 #include <QLoggingCategory>
 
