@@ -38,11 +38,12 @@ extern "C"
 
 #include "plugins/audiocdencoder.h"
 
-#include <sys/stat.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <sys/time.h>
+#include <sys/stat.h>
 #include <sys/resource.h>
+
+#include <cstdlib>
+#include <ctime>
 
 #include <QApplication>
 #include <QFile>

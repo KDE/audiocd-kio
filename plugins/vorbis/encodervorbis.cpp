@@ -26,8 +26,8 @@
 #include "audiocd_vorbis_encoder.h"
 
 #include <vorbis/vorbisenc.h>
-#include <time.h>
-#include <stdlib.h>
+#include <ctime>
+#include <cstdlib>
 #include <KConfig>
 #include <QByteArray>
 #include <QDateTime>
