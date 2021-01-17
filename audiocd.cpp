@@ -59,7 +59,7 @@ extern "C"
 
 // CDDB
 #include <KCddb/Client>
-#include <KCompactDisc/KCompactDisc>
+#include <KCompactDisc>
 
 // Pseudo plugin class to embed metadata
 class KIOPluginForMetaData : public QObject
