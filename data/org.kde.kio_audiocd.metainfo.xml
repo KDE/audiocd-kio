@@ -7,6 +7,7 @@
   <extends>org.kde.konqueror.desktop</extends>
   <extends>org.kde.krusader.desktop</extends>
   <name>KIO AudioCD</name>
+  <name xml:lang="az">KIO AudioCD</name>
   <name xml:lang="ca">KIO AudioCD</name>
   <name xml:lang="ca-valencia">KIO AudioCD</name>
   <name xml:lang="cs">KIO AudioCD</name>
@@ -38,6 +39,7 @@
   <name xml:lang="zh-CN">KIO AudioCD</name>
   <name xml:lang="zh-TW">KIO AudioCD</name>
   <summary>Transparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilities</summary>
+  <summary xml:lang="az">Məlumatları çevirmə imkanları ilə audio CD'lərin KDE Plasma və KDE tətbiqləri ilə şəffaf inteqrasiyası</summary>
   <summary xml:lang="ca">Integració transparent dels CD d'àudio amb el Plasma del KDE i les aplicacions KDE, amb capacitats de conversió de dades</summary>
   <summary xml:lang="ca-valencia">Integració transparent dels CD d'àudio amb el Plasma del KDE i les aplicacions KDE, amb capacitats de conversió de dades</summary>
   <summary xml:lang="da">Transparent integration af audio-cd'er med KDE Plasma og KDE-programmer med datakonverteringskapabiliteter</summary>
@@ -69,6 +71,7 @@
   <summary xml:lang="zh-TW">透明整合 Audio CD 到 KDE Plasma 和包含資料轉換功能的 KDE 應用程式</summary>
   <description>
     <p>KIO AudioCD is a KIO slave that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.</p>
+    <p xml:lang="az">KIO AudioCD modulu, Dolphin fayl meneceri və ya K3b disk yazma tətbiqi kimi, KİO modulunda işləmək üçün istifadə olunan tətbiqlərin köməyi ilə kompakt-diskə yazılan səs və CD mətni məlumatlarına giriş əldə etməyə imkan verir. Bu modul, kompakt-diskdən audio məlumatlarını sadəcə köçürməklə onları tanınmış audio formatlara çevirməyə icazə verir. Modulun parametrlərini "Multimedia" bölməsindəki Sistem Ayarlarında tənzimləyə bilərsiniz.</p>
     <p xml:lang="ca">El KIO AudioCD és un esclau KIO que habilita les aplicacions que admeten el KIO (com el Dolphin o el K3b) per a accedir a l'àudio CD i a les dades de text dels discs compactes d'àudio. Permet la conversió transparent de dades d'àudio en arrossegar i deixar anar cap els formats usuals i té un mòdul de configuració a l'Arranjament del sistema a la secció «Multimèdia».</p>
     <p xml:lang="ca-valencia">El KIO AudioCD és un esclau KIO que habilita les aplicacions que admeten el KIO (com el Dolphin o el K3b) per a accedir a l'àudio CD i a les dades de text dels discs compactes d'àudio. Permet la conversió transparent de dades d'àudio en arrossegar i deixar anar cap els formats usuals i té un mòdul de configuració a l'Arranjament del sistema a la secció «Multimèdia».</p>
     <p xml:lang="da">KIO AudioCD er en KIO-slave der lader KIO-opmærksomme programmer (såsom Dolphin eller k3b) tilgå lyd og og cd-tekstdata på lyd-cd'er. Det muliggør transparent træk og slip-konvertering af lyddata til de populære formater og har et konfigurationsmodul til Systemindstillinger tilgængeligt i Multimedie-sektionen.</p>
@@ -105,6 +108,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>KIO AudioCD configuration window</caption>
+      <caption xml:lang="az">KIO AudioCD tənzimləmə pəncərəsi</caption>
       <caption xml:lang="ca">Finestra de configuració del KIO AudioCD</caption>
       <caption xml:lang="ca-valencia">Finestra de configuració del KIO AudioCD</caption>
       <caption xml:lang="da">KIO AudioCD's konfigurationsvindue</caption>
