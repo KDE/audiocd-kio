@@ -30,7 +30,8 @@ generate_export_header(audiocdplugins
 )
 
 set_target_properties(audiocdplugins 
-    PROPERTIES VERSION ${AUDIOCDPLUGINS_VERSION_STRING} 
+    PROPERTIES
+    VERSION ${AUDIOCDPLUGINS_VERSION}
     SOVERSION ${AUDIOCDPLUGINS_SOVERSION}
 )
 
