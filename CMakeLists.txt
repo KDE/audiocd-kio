@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.16)
 
 project(audiocd VERSION "5.0.0")
 
-set(QT_MIN_VERSION "5.12.0")
-set(KF_MIN_VERSION "5.68.0")
+set(QT_MIN_VERSION "5.15.0")
+set(KF_MIN_VERSION "5.80.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -11,6 +11,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+
 include(ECMSetupVersion)
 include(ECMQtDeclareLoggingCategory)
 include(CMakePushCheckState)
@@ -76,9 +77,9 @@ configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 #############################
 
 add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050C00
+    -DQT_DISABLE_DEPRECATED_BEFORE=0x050F00
     -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054400
+    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055000
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
     -DQT_NO_FOREACH
     -DQT_NO_KEYWORDS
@@ -90,20 +91,18 @@ add_definitions(
     -DQT_USE_QSTRINGBUILDER
     -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT
 )
-include_directories(
-	${CDPARANOIA_INCLUDE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_BINARY_DIR}
-)
 
 add_subdirectory(plugins)
 add_subdirectory(kcmaudiocd)
 add_subdirectory(data)
 add_subdirectory(doc)
 
-set(kio_audiocd_PART_SRCS audiocd.cpp )
+add_library(kio_audiocd MODULE)
+target_sources(kio_audiocd PRIVATE
+    audiocd.cpp
+)
 
-ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS
+ecm_qt_declare_logging_category(kio_audiocd
     HEADER audiocd_kio_debug.h
     IDENTIFIER AUDIOCD_KIO_LOG
     CATEGORY_NAME kf.kio.slaves.audiocd
@@ -113,15 +112,14 @@ ecm_qt_declare_logging_category(kio_audiocd_PART_SRCS
     EXPORT AUDIOCD
 )
 
-add_library(kio_audiocd MODULE ${kio_audiocd_PART_SRCS})
 set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
 
-target_link_libraries(kio_audiocd 
-    ${CDPARANOIA_LIBRARIES}
-    Qt5::Widgets
+target_link_libraries(kio_audiocd
+    audiocdplugins
     KF5::CompactDisc
     KF5::I18n
-    audiocdplugins
+    Qt5::Widgets
+    Cdparanoia::Cdparanoia
 )
 
 install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)

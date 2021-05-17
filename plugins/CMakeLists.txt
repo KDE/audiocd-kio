@@ -14,13 +14,19 @@ add_subdirectory(opus)
 
 ########### next target ###############
 
-set(audiocdplugins_LIB_SRCS audiocdencoder.cpp)
+add_library(audiocdplugins SHARED)
 
-add_library(audiocdplugins SHARED ${audiocdplugins_LIB_SRCS})
-
+target_sources(audiocdplugins PRIVATE
+    audiocdencoder.cpp
+)
+target_include_directories(audiocdplugins
+    PRIVATE
+        ${CMAKE_BINARY_DIR}
+)
 target_link_libraries(audiocdplugins
-    KF5::Cddb
-    KF5::KIOCore
+    PUBLIC
+        KF5::KIOCore
+        KF5::Cddb
 )
 
 generate_export_header(audiocdplugins 
@@ -29,15 +35,17 @@ generate_export_header(audiocdplugins
     EXPORT_FILE_NAME audiocdplugins_export.h
 )
 
-set_target_properties(audiocdplugins 
-    PROPERTIES
+set_target_properties(audiocdplugins PROPERTIES
     VERSION ${AUDIOCDPLUGINS_VERSION}
     SOVERSION ${AUDIOCDPLUGINS_SOVERSION}
 )
 
 install(TARGETS audiocdplugins ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
-########### install files ###############
-
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_export.h audiocdencoder.h  DESTINATION ${KDE_INSTALL_INCLUDEDIR} COMPONENT Devel)
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_export.h
+    audiocdencoder.h
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}
+    COMPONENT Devel
+)
 
