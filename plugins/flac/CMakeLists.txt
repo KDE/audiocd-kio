@@ -4,9 +4,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..  ${FLAC_INCLUDE_DIR} )
 
 ########### next target ###############
 
-# Remove this, and #ifdef in encoderflac when Makefile.am's are removed
-add_definitions(-DHAVE_LIBFLAC)
-
 set(audiocd_encoder_flac_PART_SRCS encoderflac.cpp )
 
 ki18n_wrap_ui(audiocd_encoder_flac_PART_SRCS encoderflacconfig.ui)

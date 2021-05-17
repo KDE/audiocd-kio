@@ -20,8 +20,6 @@
 
 #include "encoderflac.h"
 
-#ifdef HAVE_LIBFLAC
-
 #include <FLAC/format.h>
 #include <FLAC/metadata.h>
 #include <FLAC/stream_encoder.h>
@@ -244,5 +242,3 @@ void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &co
 
     FLAC__stream_encoder_set_metadata(d->encoder, d->metadata, 1);
 }
-
-#endif // HAVE_LIBFLAC

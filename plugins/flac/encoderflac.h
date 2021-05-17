@@ -23,8 +23,6 @@
 
 #include <config-audiocd.h>
 
-#ifdef HAVE_LIBFLAC
-
 #include "ui_encoderflacconfig.h"
 
 #include <audiocdencoder.h>
@@ -36,7 +34,6 @@ public:
 
 /**
  * FLAC encoder.
- * This encoder is only enabled when HAVE_LIBFLAC is set.
  * Check out https://xiph.org/flac/ for more information.
  */
 class EncoderFLAC : public AudioCDEncoder {
@@ -62,8 +59,6 @@ private:
   Private * d;
 
 };
-
-#endif // HAVE_FLAC
 
 #endif // ENCODER_FLAC_H
 
