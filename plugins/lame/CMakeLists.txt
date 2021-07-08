@@ -26,7 +26,7 @@ target_link_libraries(audiocd_encoder_lame
     audiocdplugins
     KF5::Cddb
     KF5::I18n
-    Qt5::Widgets
+    Qt::Widgets
 )
 
 install(TARGETS audiocd_encoder_lame  DESTINATION ${KDE_INSTALL_PLUGINDIR})

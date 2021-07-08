@@ -118,7 +118,7 @@ target_link_libraries(kio_audiocd
     audiocdplugins
     KF5::CompactDisc
     KF5::I18n
-    Qt5::Widgets
+    Qt::Widgets
     Cdparanoia::Cdparanoia
 )
 

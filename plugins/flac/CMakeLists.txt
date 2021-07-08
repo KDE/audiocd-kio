@@ -18,7 +18,7 @@ target_include_directories(audiocd_encoder_flac
 target_link_libraries(audiocd_encoder_flac 
     audiocdplugins
     KF5::I18n
-    Qt5::Widgets
+    Qt::Widgets
     FLAC::FLAC
 )
 
