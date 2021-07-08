@@ -1,0 +1,28 @@
+# SPDX-FileCopyrightText: 2021 Laurent Montel <montel@kde.org>
+#
+# SPDX-License-Identifier: LGPL-3.0-or-later
+
+# Ignore the following files
+*~
+*.[oa]
+*.diff
+*.kate-swp
+*.kdev4
+.kdev_include_paths
+*.kdevelop.pcs
+*.moc
+*.moc.cpp
+*.orig
+*.user
+.*.swp
+.swp.*
+Doxyfile
+Makefile
+avail
+random_seed
+/build*/
+CMakeLists.txt.user*
+*.unc-backup*
+*.gcov
+.reuse
+.clang-format
