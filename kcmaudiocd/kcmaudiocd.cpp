@@ -43,7 +43,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
 {
     Q_UNUSED(lst);
 
-    QVBoxLayout *box = new QVBoxLayout(this);
+    auto box = new QVBoxLayout(this);
 
     audioConfig = new AudiocdConfig(this);
 
@@ -60,7 +60,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
             QWidget *widget = encoder->getConfigureWidget(&config);
             if (widget && config) {
                 audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder", encoder->type()));
-                KConfigDialogManager *configManager = new KConfigDialogManager(widget, config);
+                auto configManager = new KConfigDialogManager(widget, config);
                 encoderSettings.append(configManager);
             }
         }
@@ -90,7 +90,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
 
-    KAboutData *about = new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD IO Slave"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
+    auto about = new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD IO Slave"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
 
     about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), QStringLiteral("ben@meyerhome.net"));
     about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), QStringLiteral("duvenhorst@duvnet.de"));

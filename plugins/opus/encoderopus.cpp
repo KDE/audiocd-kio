@@ -73,7 +73,7 @@ EncoderOpus::~EncoderOpus()
 QWidget *EncoderOpus::getConfigureWidget(KConfigSkeleton **manager) const
 {
     (*manager) = Settings::self();
-    EncoderOpusConfig *config = new EncoderOpusConfig();
+    auto config = new EncoderOpusConfig();
     config->kcfg_opus_complexity->setRange(0, 10);
     config->kcfg_opus_complexity->setSingleStep(1);
     config->opus_bitrate_settings->hide();

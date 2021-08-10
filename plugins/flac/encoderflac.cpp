@@ -70,7 +70,7 @@ static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *e
     Q_UNUSED(samples)
     Q_UNUSED(current_frame)
 
-    EncoderFLAC::Private *d = (EncoderFLAC::Private *)client_data;
+    auto *d = (EncoderFLAC::Private *)client_data;
 
     d->data += bytes;
 
@@ -183,7 +183,7 @@ long EncoderFLAC::readInit(long size) {
 long EncoderFLAC::read(qint16 *buf, int frames)
 {
     unsigned long olddata = d->data;
-    FLAC__int32 *buffer = new FLAC__int32[frames * 2];
+    auto buffer = new FLAC__int32[frames * 2];
     for (int i = 0; i < frames * 2; i++) {
         buffer[i] = (FLAC__int32)buf[i];
     }
@@ -213,7 +213,7 @@ void EncoderFLAC::fillSongInfo(KCDDB::CDInfo info, int track, const QString &com
     //    d->metadata[2] =
     //    FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
-    typedef QPair<QString, QVariant> Comment;
+    using Comment = QPair<QString, QVariant>;
     Comment comments[7] = {Comment(QLatin1String("TITLE"), info.track(track - 1).get(Title)),
                            Comment(QLatin1String("ARTIST"), info.track(track - 1).get(Artist)),
                            Comment(QLatin1String("ALBUM"), info.get(Title)),

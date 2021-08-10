@@ -72,7 +72,7 @@ EncoderLame::~EncoderLame()
 QWidget *EncoderLame::getConfigureWidget(KConfigSkeleton **manager) const
 {
     (*manager) = Settings::self();
-    EncoderLameConfig *config = new EncoderLameConfig();
+    auto config = new EncoderLameConfig();
     config->cbr_settings->hide();
     return config;
 }

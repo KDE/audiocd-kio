@@ -80,7 +80,7 @@ EncoderVorbis::~EncoderVorbis()
 QWidget *EncoderVorbis::getConfigureWidget(KConfigSkeleton **manager) const
 {
     (*manager) = Settings::self();
-    EncoderVorbisConfig *config = new EncoderVorbisConfig();
+    auto config = new EncoderVorbisConfig();
     config->kcfg_vorbis_quality->setRange(0.0, 10.0);
     config->kcfg_vorbis_quality->setSingleStep(0.1);
     config->vorbis_bitrate_settings->hide();
@@ -142,35 +142,36 @@ void EncoderVorbis::loadSettings()
     }
 }
 
-long EncoderVorbis::flush_vorbis(void) {
-  long processed(0);
+long EncoderVorbis::flush_vorbis()
+{
+    long processed(0);
 
-  while (vorbis_analysis_blockout(&d->vd, &d->vb) == 1) {
-      vorbis_analysis(&d->vb, nullptr);
-      /* Non-ancient case.  */
-      vorbis_bitrate_addblock(&d->vb);
+    while (vorbis_analysis_blockout(&d->vd, &d->vb) == 1) {
+        vorbis_analysis(&d->vb, nullptr);
+        /* Non-ancient case.  */
+        vorbis_bitrate_addblock(&d->vb);
 
-      while (vorbis_bitrate_flushpacket(&d->vd, &d->op)) {
-          ogg_stream_packetin(&d->os, &d->op);
-          while (int result = ogg_stream_pageout(&d->os, &d->og)) {
-              if (!result)
-                  break;
+        while (vorbis_bitrate_flushpacket(&d->vd, &d->op)) {
+            ogg_stream_packetin(&d->os, &d->op);
+            while (int result = ogg_stream_pageout(&d->os, &d->og)) {
+                if (!result)
+                    break;
 
-              char *oggheader = reinterpret_cast<char *>(d->og.header);
-              char *oggbody = reinterpret_cast<char *>(d->og.body);
+                char *oggheader = reinterpret_cast<char *>(d->og.header);
+                char *oggbody = reinterpret_cast<char *>(d->og.body);
 
-              if (d->og.header_len) {
-                  ioslave->data(QByteArray::fromRawData(oggheader, d->og.header_len));
-              }
+                if (d->og.header_len) {
+                    ioslave->data(QByteArray::fromRawData(oggheader, d->og.header_len));
+                }
 
-              if (d->og.body_len) {
-                  ioslave->data(QByteArray::fromRawData(oggbody, d->og.body_len));
-              }
-              processed += d->og.header_len + d->og.body_len;
-          }
-      }
-  }
-  return processed;
+                if (d->og.body_len) {
+                    ioslave->data(QByteArray::fromRawData(oggbody, d->og.body_len));
+                }
+                processed += d->og.header_len + d->og.body_len;
+            }
+        }
+    }
+    return processed;
 }
 
 unsigned long EncoderVorbis::size(long time_secs) const {
@@ -270,7 +271,7 @@ void EncoderVorbis::fillSongInfo(KCDDB::CDInfo info, int track, const QString &c
     if (!d->write_vorbis_comments)
         return;
 
-    typedef QPair<QByteArray, QVariant> CommentField;
+    using CommentField = QPair<QByteArray, QVariant>;
     QList<CommentField> commentFields;
 
     commentFields.append(CommentField("TITLE", info.track(track - 1).get(Title)));
