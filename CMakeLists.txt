@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 project(audiocd VERSION "5.0.0")
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF_MIN_VERSION "5.80.0")
+set(KF_MIN_VERSION "5.83.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -11,6 +11,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+include(KDEClangFormat)
 
 include(ECMSetupVersion)
 include(ECMQtDeclareLoggingCategory)
@@ -18,6 +19,7 @@ include(CMakePushCheckState)
 include(GenerateExportHeader)
 include(CheckStructHasMember)
 include(FeatureSummary)
+include(KDEGitCommitHooks)
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
 
@@ -132,5 +134,6 @@ ecm_qt_install_logging_categories(
 
 ki18n_install(po)
 kdoctools_install(po)
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

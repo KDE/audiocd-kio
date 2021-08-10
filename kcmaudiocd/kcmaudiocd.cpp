@@ -14,7 +14,8 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+   USA.
 */
 
 #include "kcmaudiocd.h"
@@ -35,47 +36,45 @@
 
 #include <audiocdencoder.h>
 
-K_PLUGIN_FACTORY(Factory,
-        registerPlugin<KAudiocdModule>();
-        )
+K_PLUGIN_FACTORY(Factory, registerPlugin<KAudiocdModule>();)
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
-  : KCModule(parent), configChanged(false)
+    : KCModule(parent)
+    , configChanged(false)
 {
     Q_UNUSED(lst);
-    
+
     QVBoxLayout *box = new QVBoxLayout(this);
 
     audioConfig = new AudiocdConfig(this);
 
     box->addWidget(audioConfig);
-    setButtons(Default|Apply|Help);
+    setButtons(Default | Apply | Help);
 
-    config = new KConfig( QStringLiteral( "kcmaudiocdrc" ));
+    config = new KConfig(QStringLiteral("kcmaudiocdrc"));
 
-    QList<AudioCDEncoder*> encoders;
+    QList<AudioCDEncoder *> encoders;
     AudioCDEncoder::findAllPlugins(nullptr, encoders);
     for (AudioCDEncoder *encoder : qAsConst(encoders)) {
-      if (encoder->init()) {
-        KConfigSkeleton *config = nullptr;
-        QWidget *widget = encoder->getConfigureWidget(&config);
-        if(widget && config){
-  	   audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder", encoder->type()));
-           KConfigDialogManager *configManager = new KConfigDialogManager(widget, config);
-           encoderSettings.append(configManager);
+        if (encoder->init()) {
+            KConfigSkeleton *config = nullptr;
+            QWidget *widget = encoder->getConfigureWidget(&config);
+            if (widget && config) {
+                audioConfig->tabWidget->addTab(widget, i18n("%1 Encoder", encoder->type()));
+                KConfigDialogManager *configManager = new KConfigDialogManager(widget, config);
+                encoderSettings.append(configManager);
+            }
         }
-      }
     }
 
     qDeleteAll(encoders);
     encoders.clear();
 
-
     for (int i = 0; i < encoderSettings.size(); ++i) {
-        connect( encoderSettings.at( i ), &KConfigDialogManager::widgetModified, this, &KAudiocdModule::slotModuleChanged);
+        connect(encoderSettings.at(i), &KConfigDialogManager::widgetModified, this, &KAudiocdModule::slotModuleChanged);
     }
 
-    //CDDA Options
+    // CDDA Options
     connect(audioConfig->ec_enable_check, &QCheckBox::clicked, this, &KAudiocdModule::slotEcEnable);
     connect(audioConfig->ec_skip_check, &QCheckBox::clicked, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->niceLevel, &QSlider::valueChanged, this, &KAudiocdModule::slotConfigChanged);
@@ -92,9 +91,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
 
-
-    KAboutData *about =
-    new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD IO Slave"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
+    KAboutData *about = new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD IO Slave"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
 
     about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), QStringLiteral("ben@meyerhome.net"));
     about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), QStringLiteral("duvenhorst@duvnet.de"));
@@ -106,63 +103,63 @@ KAudiocdModule::~KAudiocdModule()
     delete config;
 }
 
-QString removeQoutes(const QString& text)
+QString removeQoutes(const QString &text)
 {
-   QString deqoutedString=text;
-   QRegularExpression qoutedStringRegExp( QStringLiteral( "^\".*\"$" ));
-   QRegularExpressionMatch hasQuotes = qoutedStringRegExp.match(text);
-   if (hasQuotes.hasMatch())
-   {
-      deqoutedString=text.mid(1, text.length()-2);
-   }
-   return deqoutedString;
+    QString deqoutedString = text;
+    QRegularExpression qoutedStringRegExp(QStringLiteral("^\".*\"$"));
+    QRegularExpressionMatch hasQuotes = qoutedStringRegExp.match(text);
+    if (hasQuotes.hasMatch()) {
+        deqoutedString = text.mid(1, text.length() - 2);
+    }
+    return deqoutedString;
 }
 
-bool needsQoutes(const QString& text)
+bool needsQoutes(const QString &text)
 {
-   QRegularExpression spaceAtTheBeginning( QStringLiteral( "^\\s+.*$" ));
-   QRegularExpression spaceAtTheEnd( QStringLiteral( "^.*\\s+$" ));
-   QRegularExpressionMatch hasSpaceAtTheBeginning = spaceAtTheBeginning.match(text);
-   QRegularExpressionMatch hasSpaceAtTheEnd = spaceAtTheEnd.match(text);
-   return (hasSpaceAtTheBeginning.hasMatch() || hasSpaceAtTheEnd.hasMatch());
+    QRegularExpression spaceAtTheBeginning(QStringLiteral("^\\s+.*$"));
+    QRegularExpression spaceAtTheEnd(QStringLiteral("^.*\\s+$"));
+    QRegularExpressionMatch hasSpaceAtTheBeginning = spaceAtTheBeginning.match(text);
+    QRegularExpressionMatch hasSpaceAtTheEnd = spaceAtTheEnd.match(text);
+    return (hasSpaceAtTheBeginning.hasMatch() || hasSpaceAtTheEnd.hasMatch());
 }
 
 void KAudiocdModule::updateExample()
 {
-  QString text = audioConfig->example->text();
+    QString text = audioConfig->example->text();
 
-  QString deqoutedReplaceInput=removeQoutes(audioConfig->kcfg_replaceInput->text());
-  QString deqoutedReplaceOutput=removeQoutes(audioConfig->kcfg_replaceOutput->text());
-  text.replace( QRegularExpression(deqoutedReplaceInput), deqoutedReplaceOutput );
-  audioConfig->exampleOutput->setText(text);
+    QString deqoutedReplaceInput = removeQoutes(audioConfig->kcfg_replaceInput->text());
+    QString deqoutedReplaceOutput = removeQoutes(audioConfig->kcfg_replaceOutput->text());
+    text.replace(QRegularExpression(deqoutedReplaceInput), deqoutedReplaceOutput);
+    audioConfig->exampleOutput->setText(text);
 }
 
 void KAudiocdModule::defaults() {
-	audioConfig->ec_enable_check->setChecked(true);
-	audioConfig->ec_skip_check->setChecked(false);
-	audioConfig->niceLevel->setValue(0);
+    audioConfig->ec_enable_check->setChecked(true);
+    audioConfig->ec_skip_check->setChecked(false);
+    audioConfig->niceLevel->setValue(0);
 
-	audioConfig->kcfg_replaceInput->setText(QString());
-	audioConfig->kcfg_replaceOutput->setText(QString());
-	audioConfig->example->setText(i18n("Cool artist - example audio file.wav"));
-        for (int i = 0; i < encoderSettings.size(); ++i) {
-            encoderSettings.at( i )->updateWidgetsDefault();
-        }
+    audioConfig->kcfg_replaceInput->setText(QString());
+    audioConfig->kcfg_replaceOutput->setText(QString());
+    audioConfig->example->setText(i18n("Cool artist - example audio file.wav"));
+    for (int i = 0; i < encoderSettings.size(); ++i) {
+        encoderSettings.at(i)->updateWidgetsDefault();
+    }
 
-	audioConfig->fileNameLineEdit->setText(QStringLiteral("%{trackartist} - %{number} - %{title}"));
-	audioConfig->albumNameLineEdit->setText(QStringLiteral("%{albumartist} - %{albumtitle}"));
+    audioConfig->fileNameLineEdit->setText(QStringLiteral("%{trackartist} - %{number} - %{title}"));
+    audioConfig->albumNameLineEdit->setText(QStringLiteral("%{albumartist} - %{albumtitle}"));
 }
 
 void KAudiocdModule::save() {
-  if (!configChanged ) return;
+    if (!configChanged)
+        return;
 
-  {
-    KConfigGroup cg(config, "CDDA");
+    {
+        KConfigGroup cg(config, "CDDA");
 
-    cg.writeEntry("disable_paranoia",!(audioConfig->ec_enable_check->isChecked()));
-    cg.writeEntry("never_skip",!(audioConfig->ec_skip_check->isChecked()));
-    cg.writeEntry("niceLevel", audioConfig->niceLevel->value());
-  }
+        cg.writeEntry("disable_paranoia", !(audioConfig->ec_enable_check->isChecked()));
+        cg.writeEntry("never_skip", !(audioConfig->ec_skip_check->isChecked()));
+        cg.writeEntry("niceLevel", audioConfig->niceLevel->value());
+    }
 
   {
     KConfigGroup cg(config, "FileName");
@@ -172,31 +169,26 @@ void KAudiocdModule::save() {
     cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
     cg.writeEntry("regexp_example", audioConfig->example->text());
 
-        // save quoted if required
-    QString replaceInput=audioConfig->kcfg_replaceInput->text();
-    QString replaceOutput=audioConfig->kcfg_replaceOutput->text();
-    if (needsQoutes(replaceInput))
-    {
-       replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
+    // save quoted if required
+    QString replaceInput = audioConfig->kcfg_replaceInput->text();
+    QString replaceOutput = audioConfig->kcfg_replaceOutput->text();
+    if (needsQoutes(replaceInput)) {
+        replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
     }
-    if (needsQoutes(replaceOutput))
-    {
-       replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
+    if (needsQoutes(replaceOutput)) {
+        replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
     }
     cg.writeEntry("regexp_search", replaceInput);
     cg.writeEntry("regexp_replace", replaceOutput);
   }
 
-  for ( int i = 0;i<encoderSettings.size();++i )
-  {
-      encoderSettings.at( i )->updateSettings();
+  for (int i = 0; i < encoderSettings.size(); ++i) {
+      encoderSettings.at(i)->updateSettings();
   }
-
 
   config->sync();
 
   configChanged = false;
-
 }
 
 void KAudiocdModule::load() {
@@ -204,8 +196,8 @@ void KAudiocdModule::load() {
   {
     KConfigGroup cg(config, "CDDA");
 
-    audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia",false)));
-    audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip",true)));
+    audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia", false)));
+    audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip", true)));
     audioConfig->niceLevel->setValue(cg.readEntry("niceLevel", 0));
   }
 
@@ -220,19 +212,15 @@ void KAudiocdModule::load() {
     audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
   }
 
-  for ( int i = 0;i <encoderSettings.size();++i )
-  {
-      encoderSettings.at( i )->updateWidgets();
+  for (int i = 0; i < encoderSettings.size(); ++i) {
+      encoderSettings.at(i)->updateWidgets();
   }
-
 }
 
 void KAudiocdModule::slotModuleChanged() {
-    for ( int i = 0;i<encoderSettings.size();++i )
-    {
-        KConfigDialogManager *widget = encoderSettings.at( i );
-        if ( widget->hasChanged() )
-        {
+    for (int i = 0; i < encoderSettings.size(); ++i) {
+        KConfigDialogManager *widget = encoderSettings.at(i);
+        if (widget->hasChanged()) {
             slotConfigChanged();
             break;
         }
@@ -240,8 +228,8 @@ void KAudiocdModule::slotModuleChanged() {
 }
 
 void KAudiocdModule::slotConfigChanged() {
-	configChanged = true;
-	Q_EMIT changed(true);
+    configChanged = true;
+    Q_EMIT changed(true);
 }
 
 /*
@@ -261,14 +249,19 @@ void KAudiocdModule::slotEcEnable() {
 
 QString KAudiocdModule::quickHelp() const
 {
-  return i18n("<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily"
-              " create wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs."
-              " The slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location"
-              " bar. In this module, you can configure"
-              " encoding, and device settings. Note that FLAC, MP3, Ogg Vorbis,"
-              " and Opus encoding are only available if the corresponding libraries (libFLAC for"
-              " FLAC and libvorbis for Ogg) and utilities (lame for MP3 and opus-tools for Opus)"
-              " are installed in your system.");
+    return i18n(
+        "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily"
+        " create wav, FLAC, MP3, Ogg Vorbis or Opus files from your "
+        "audio CD-ROMs or DVDs."
+        " The slave is invoked by typing <i>\"audiocd:/\"</i> in "
+        "Dolphin's location"
+        " bar. In this module, you can configure"
+        " encoding, and device settings. Note that FLAC, MP3, Ogg Vorbis,"
+        " and Opus encoding are only available if the corresponding "
+        "libraries (libFLAC for"
+        " FLAC and libvorbis for Ogg) and utilities (lame for MP3 and "
+        "opus-tools for Opus)"
+        " are installed in your system.");
 }
 
 #include "kcmaudiocd.moc"

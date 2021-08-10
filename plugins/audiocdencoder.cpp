@@ -13,22 +13,24 @@
 
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+  USA.
 */
 
 #include "audiocdencoder.h"
 #include "audiocd_kio_debug.h"
 
+#include <QCoreApplication>
 #include <QDir>
 #include <QLibrary>
 #include <QLibraryInfo>
 #include <QRegularExpression>
-#include <QCoreApplication>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.slaves.audiocd")
 
 /**
- * Attempt to load a plugin and see if it has the symbol create_audiocd_encoders.
+ * Attempt to load a plugin and see if it has the symbol
+ * create_audiocd_encoders.
  * @param libFileName file to try to load.
  * @returns pointer to the symbol or NULL
  */
@@ -44,10 +46,10 @@ static QFunctionPointer loadPlugin(const QString &libFileName)
 
 /**
  * There might be a "better" way of doing this, but I don't know it
- * and I do know that this does work. :)  Feel free to improve the loading system,
- * there isn't much code anyway.
+ * and I do know that this does work. :)  Feel free to improve the loading
+ * system, there isn't much code anyway.
  */
-void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)
+void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
 {
     QString foundEncoders;
 
@@ -55,7 +57,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
     for (const QString &path : libraryPaths) {
         QDir dir(path);
         if (!dir.exists()) {
-            //qCDebug(AUDIOCD_KIO_LOG) << "Library path" << path << "does not exist";
+            // qCDebug(AUDIOCD_KIO_LOG) << "Library path" << path << "does not exist";
             continue;
         }
 
@@ -74,8 +76,8 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
 
                 QFunctionPointer function = loadPlugin(fi.absoluteFilePath());
                 if (function) {
-                    void (*functionPointer) (KIO::SlaveBase *, QList<AudioCDEncoder*>&) =
-                        (void (*)(KIO::SlaveBase *slave, QList<AudioCDEncoder *>&encoders)) function;
+                    void (*functionPointer)(KIO::SlaveBase *, QList<AudioCDEncoder *> &) =
+                        (void (*)(KIO::SlaveBase * slave, QList<AudioCDEncoder *> & encoders)) function;
                     functionPointer(slave, encoders);
                 }
             }

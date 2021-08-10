@@ -19,62 +19,61 @@
 
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+  USA.
 */
 
 #include "encoderwav.h"
 #include <QList>
 
-extern "C"
+extern "C" {
+AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
 {
-  AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)
-  {
-    encoders.append( new EncoderWav(slave));
-    encoders.append( new EncoderCda(slave));
-  }
+    encoders.append(new EncoderWav(slave));
+    encoders.append(new EncoderCda(slave));
+}
 }
 
 unsigned long EncoderWav::size(long time_secs) const {
   return (EncoderCda::size(time_secs) + 44);
 }
 
-const char * EncoderWav::mimeType() const {
-  return "audio/x-wav";
+const char *EncoderWav::mimeType() const
+{
+    return "audio/x-wav";
 }
 
-long EncoderWav::readInit(long byteCount){
-  static unsigned char riffHeader[] =
-  {
-    0x52, 0x49, 0x46, 0x46, // 0  "AIFF"
-    0x00, 0x00, 0x00, 0x00, // 4  wavSize
-    0x57, 0x41, 0x56, 0x45, // 8  "WAVE"
-    0x66, 0x6d, 0x74, 0x20, // 12 "fmt "
-    0x10, 0x00, 0x00, 0x00, // 16
-    0x01, 0x00, 0x02, 0x00, // 20
-    0x44, 0xac, 0x00, 0x00, // 24
-    0x10, 0xb1, 0x02, 0x00, // 28
-    0x04, 0x00, 0x10, 0x00, // 32
-    0x64, 0x61, 0x74, 0x61, // 36 "data"
-    0x00, 0x00, 0x00, 0x00  // 40 byteCount
-  };
+long EncoderWav::readInit(long byteCount)
+{
+    static unsigned char riffHeader[] = {
+        0x52, 0x49, 0x46, 0x46, // 0  "AIFF"
+        0x00, 0x00, 0x00, 0x00, // 4  wavSize
+        0x57, 0x41, 0x56, 0x45, // 8  "WAVE"
+        0x66, 0x6d, 0x74, 0x20, // 12 "fmt "
+        0x10, 0x00, 0x00, 0x00, // 16
+        0x01, 0x00, 0x02, 0x00, // 20
+        0x44, 0xac, 0x00, 0x00, // 24
+        0x10, 0xb1, 0x02, 0x00, // 28
+        0x04, 0x00, 0x10, 0x00, // 32
+        0x64, 0x61, 0x74, 0x61, // 36 "data"
+        0x00, 0x00, 0x00, 0x00 // 40 byteCount
+    };
 
-  qint32 wavSize(byteCount + 44 - 8);
+    qint32 wavSize(byteCount + 44 - 8);
 
+    riffHeader[4] = (wavSize >> 0) & 0xff;
+    riffHeader[5] = (wavSize >> 8) & 0xff;
+    riffHeader[6] = (wavSize >> 16) & 0xff;
+    riffHeader[7] = (wavSize >> 24) & 0xff;
 
-  riffHeader[4]   = (wavSize   >> 0 ) & 0xff;
-  riffHeader[5]   = (wavSize   >> 8 ) & 0xff;
-  riffHeader[6]   = (wavSize   >> 16) & 0xff;
-  riffHeader[7]   = (wavSize   >> 24) & 0xff;
+    riffHeader[40] = (byteCount >> 0) & 0xff;
+    riffHeader[41] = (byteCount >> 8) & 0xff;
+    riffHeader[42] = (byteCount >> 16) & 0xff;
+    riffHeader[43] = (byteCount >> 24) & 0xff;
 
-  riffHeader[40]  = (byteCount >> 0 ) & 0xff;
-  riffHeader[41]  = (byteCount >> 8 ) & 0xff;
-  riffHeader[42]  = (byteCount >> 16) & 0xff;
-  riffHeader[43]  = (byteCount >> 24) & 0xff;
-
-  QByteArray output;
-  output = QByteArray::fromRawData((char *) riffHeader, 44);
-  ioslave->data(output);
-  output.clear();
-  return 44;
+    QByteArray output;
+    output = QByteArray::fromRawData((char *)riffHeader, 44);
+    ioslave->data(output);
+    output.clear();
+    return 44;
 }
-

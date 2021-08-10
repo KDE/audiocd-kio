@@ -19,7 +19,8 @@
 
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+  USA.
 */
 
 #ifndef ENCODER_VORBIS_H
@@ -32,11 +33,12 @@
 class EncoderVorbisConfig : public QWidget, public Ui::EncoderVorbisConfig
 {
 public:
-  EncoderVorbisConfig( QWidget *parent = nullptr ) : QWidget( parent ) {
-    setupUi( this );
-  }
+    EncoderVorbisConfig(QWidget *parent = nullptr)
+        : QWidget(parent)
+    {
+        setupUi(this);
+    }
 };
-
 
 /**
  * Ogg Vorbis encoder.
@@ -48,25 +50,29 @@ public:
   explicit EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis();
 
-  virtual QString type() const override { return QLatin1String( "Ogg Vorbis" ); }
+  virtual QString type() const override
+  {
+      return QLatin1String("Ogg Vorbis");
+  }
   virtual bool init() override;
   virtual void loadSettings() override;
   virtual unsigned long size(long time_secs) const override;
-  virtual const char * fileType() const override { return "ogg"; }
-  virtual const char * mimeType() const override;
-  virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ) override;
+  virtual const char *fileType() const override
+  {
+      return "ogg";
+  }
+  virtual const char *mimeType() const override;
+  virtual void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
   virtual long readInit(long size) override;
-  virtual long read(qint16 * buf, int frames) override;
+  virtual long read(qint16 *buf, int frames) override;
   virtual long readCleanup() override;
-  virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const override;
+  virtual QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
 
-private:
+  private:
   long flush_vorbis();
 
   class Private;
-  Private * d;
-
+  Private *d;
 };
 
 #endif // ENCODER_VORBIS_H
-

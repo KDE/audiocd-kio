@@ -19,7 +19,8 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+ * USA.
  */
 
 #ifndef AUDIO_CD_H
@@ -40,88 +41,76 @@ namespace AudioCD {
  */
 class AudioCDProtocol : public KIO::SlaveBase
 {
-	public:
+public:
+    AudioCDProtocol(const QByteArray &protocol, const QByteArray &pool, const QByteArray &app);
+    virtual ~AudioCDProtocol();
 
-	AudioCDProtocol(const QByteArray & protocol, const QByteArray & pool, const QByteArray & app);
-	virtual ~AudioCDProtocol();
+    virtual void get(const QUrl &) override;
+    virtual void stat(const QUrl &) override;
+    virtual void listDir(const QUrl &) override;
 
-	virtual void get(const QUrl &) override;
-	virtual void stat(const QUrl &) override;
-	virtual void listDir(const QUrl &) override;
+protected:
+    AudioCDEncoder *encoderFromExtension(const QString &extension);
+    AudioCDEncoder *determineEncoder(const QString &filename);
 
-	protected:
-	AudioCDEncoder *encoderFromExtension(const QString& extension);
-	AudioCDEncoder *determineEncoder(const QString & filename);
+    struct cdrom_drive *findDrive(bool &noPermission);
+    void parseURLArgs(const QUrl &);
 
-	struct cdrom_drive *findDrive(bool &noPermission);
-	void parseURLArgs(const QUrl &);
+    void loadSettings();
 
-	void loadSettings();
+    /**
+     * From the request information (Private member "d"),
+     * get the first and last sector for the request.
+     * return false if the parameters are invalid (for instance,
+     * track number which does not exist on this CD)
+     */
+    bool getSectorsForRequest(struct cdrom_drive *drive, long &firstSector, long &lastSector) const;
 
-	/**
-	 * From the request information (Private member "d"),
-	 * get the first and last sector for the request.
-	 * return false if the parameters are invalid (for instance,
-	 * track number which does not exist on this CD)
-	 */
-	bool getSectorsForRequest(struct cdrom_drive * drive,
-	                          long & firstSector, long & lastSector) const;
+    /**
+     * Give the size in bytes of the space between those two
+     * sectors, depending on the file type.
+     */
+    long fileSize(long firstSector, long lastSector, AudioCDEncoder *encoder);
 
-	/**
-	 * Give the size in bytes of the space between those two
-	 * sectors, depending on the file type.
-	 */
-	long fileSize(long firstSector, long lastSector, AudioCDEncoder *encoder);
+    /**
+     * The heart of this ioslave.
+     * Reads data off the cd and then passes it to an encoder to encode
+     */
+    void paranoiaRead(struct cdrom_drive *drive, long firstSector, long lastSector, AudioCDEncoder *encoder, const QString &fileName, unsigned long size);
 
-	/**
-	 * The heart of this ioslave.
-	 * Reads data off the cd and then passes it to an encoder to encode
-	 */
-	void paranoiaRead(
-		struct cdrom_drive * drive,
-		long firstSector,
-		long lastSector,
-		AudioCDEncoder* encoder,
-		const QString& fileName,
-		unsigned long size
-	);
+    struct cdrom_drive *initRequest(const QUrl &);
 
-	struct cdrom_drive *initRequest(const QUrl &);
+    /**
+     * Add an entry in the KIO directory, using the title you give,
+     * it will set the extension itself depending on the fileType.
+     * You must also give the trackNumber for the size of the file
+     * to be calculated.
+     * @note If you want to add a file which is the whole CD, give
+     * trackNo = -1
+     *
+     * @note You can always safely add MP3 or OGG files. The function
+     * will check if kio_audiocd was compiled with support for those,
+     * so NO NEED to wrap your calls with #ifdef for lame or vorbis.
+     * this function will do the right thing.
+     */
+    void addEntry(const QString &trackTitle, AudioCDEncoder *encoder, struct cdrom_drive *drive, int trackNo);
 
-	/**
-	 * Add an entry in the KIO directory, using the title you give,
-	 * it will set the extension itself depending on the fileType.
-	 * You must also give the trackNumber for the size of the file
-	 * to be calculated.
-	 * @note If you want to add a file which is the whole CD, give
-	 * trackNo = -1
-	 *
-	 * @note You can always safely add MP3 or OGG files. The function
-	 * will check if kio_audiocd was compiled with support for those,
-	 * so NO NEED to wrap your calls with #ifdef for lame or vorbis.
-	 * this function will do the right thing.
-	 */
-	void addEntry(const QString& trackTitle, AudioCDEncoder *encoder,
-	struct cdrom_drive * drive, int trackNo);
-
-	class Private;
-	Private * d;
+    class Private;
+    Private *d;
 
 private:
+    void generateTemplateTitles();
+    bool checkNoHost(const QUrl &url);
 
-	void generateTemplateTitles();
-	bool checkNoHost(const QUrl &url);
+    QList<AudioCDEncoder *> encoders;
+    cdrom_drive *getDrive();
 
-	QList<AudioCDEncoder*> encoders;
-	cdrom_drive * getDrive();
-
-	// These are the only guaranteed encoders to be built, the rest
-	// are dynamic depending on other libraries on the system
-	AudioCDEncoder *encoderTypeCDA;
-	AudioCDEncoder *encoderTypeWAV;
+    // These are the only guaranteed encoders to be built, the rest
+    // are dynamic depending on other libraries on the system
+    AudioCDEncoder *encoderTypeCDA;
+    AudioCDEncoder *encoderTypeWAV;
 };
 
 } // end namespace AudioCD
 
 #endif // AUDIO_CD_H
-

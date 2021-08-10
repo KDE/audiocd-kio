@@ -19,45 +19,47 @@
 
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+  USA.
 */
 
 #include "encodercda.h"
 
 unsigned long EncoderCda::size(long time_secs) const {
-  //return (time_secs *   (44100 * 2 * 16))/8;
-  return (time_secs) * 176400;
+    // return (time_secs *   (44100 * 2 * 16))/8;
+    return (time_secs)*176400;
 }
 
-const char * EncoderCda::mimeType() const {
-  return "audio/x-cda";
+const char *EncoderCda::mimeType() const
+{
+    return "audio/x-cda";
 }
 
 // Remove this by calculating CD_FRAMESIZE_RAW from the frames
-extern "C"
+extern "C" {
+// cdda_interface.h in cdparanoia 10.2 has a member called 'private' which the
+// C++ compiler doesn't like we will thus use a generated local copy which
+// renames that member.
+#include "cdda_interface.hpp"
+}
+
+inline qint16 swap16(qint16 i)
 {
-  //cdda_interface.h in cdparanoia 10.2 has a member called 'private' which the C++ compiler doesn't like
-  //we will thus use a generated local copy which renames that member.
-  #include "cdda_interface.hpp"
+    return (((i >> 8) & 0xFF) | ((i << 8) & 0xFF00));
 }
 
-inline qint16 swap16 (qint16 i)
+long EncoderCda::read(qint16 *buf, int frames)
 {
-  return (((i >> 8) & 0xFF) | ((i << 8) & 0xFF00));
+    QByteArray output;
+    qint16 i16 = 1;
+    /* WAV is defined to be little endian, so we need to swap it
+       on big endian platforms.  */
+    if (((char *)&i16)[0] == 0)
+        for (int i = 0; i < 2 * frames; i++)
+            buf[i] = swap16(buf[i]);
+    char *cbuf = reinterpret_cast<char *>(buf);
+    output = QByteArray::fromRawData(cbuf, CD_FRAMESIZE_RAW);
+    ioslave->data(output);
+    output.clear();
+    return CD_FRAMESIZE_RAW;
 }
-
-long EncoderCda::read(qint16 * buf, int frames){ 
-  QByteArray output;
-  qint16 i16 = 1;
-  /* WAV is defined to be little endian, so we need to swap it
-     on big endian platforms.  */
-  if (((char*)&i16)[0] == 0)
-    for (int i=0; i < 2 * frames; i++)
-       buf[i] = swap16 (buf[i]);
-  char * cbuf = reinterpret_cast<char *>(buf);
-  output = QByteArray::fromRawData(cbuf, CD_FRAMESIZE_RAW);
-  ioslave->data(output);
-  output.clear();
-  return CD_FRAMESIZE_RAW;
-}
-

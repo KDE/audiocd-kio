@@ -19,16 +19,17 @@
 
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+  USA.
 */
 
 #ifndef ENCODER_CDA_H
 #define ENCODER_CDA_H
 
 #include <audiocdencoder.h>
+#include <cstdlib>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <cstdlib>
 
 /**
  * Raw cd "encoder"
@@ -39,19 +40,27 @@ class EncoderCda : public AudioCDEncoder {
 
 public:
   explicit EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {}
-  ~EncoderCda(){}
+  ~EncoderCda()
+  {
+  }
   virtual bool init() override { return true; }
   virtual void loadSettings() override {}
   virtual unsigned long size(long time_secs) const override;
-  virtual QString type() const override { return QLatin1String( "CDA" ); }
-  virtual const char * mimeType() const override;
-  virtual const char * fileType() const override { return "cda"; }
-  virtual void fillSongInfo( KCDDB::CDInfo, int, const QString &) override {}
+  virtual QString type() const override
+  {
+      return QLatin1String("CDA");
+  }
+  virtual const char *mimeType() const override;
+  virtual const char *fileType() const override
+  {
+      return "cda";
+  }
+  virtual void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
+  {
+  }
   virtual long readInit(long) override { return 0; }
-  virtual long read(qint16 * buf, int frames) override;
+  virtual long read(qint16 *buf, int frames) override;
   virtual long readCleanup() override { return 0; }
-
 };
 
 #endif // ENCODER_CDA_H
-

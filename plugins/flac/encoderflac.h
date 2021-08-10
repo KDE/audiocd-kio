@@ -29,7 +29,11 @@
 
 class EncoderFLACConfig : public QWidget, public Ui::EncoderFLACConfig {
 public:
-  explicit EncoderFLACConfig(QWidget *parent = nullptr) : QWidget( parent ) { setupUi( this ); }
+    explicit EncoderFLACConfig(QWidget *parent = nullptr)
+        : QWidget(parent)
+    {
+        setupUi(this);
+    }
 };
 
 /**
@@ -42,23 +46,31 @@ public:
   explicit EncoderFLAC(KIO::SlaveBase *slave);
   ~EncoderFLAC();
 
-  virtual QString type() const override { return QLatin1String( "FLAC" ); }
+  virtual QString type() const override
+  {
+      return QLatin1String("FLAC");
+  }
   virtual bool init() override;
   virtual void loadSettings() override;
   virtual unsigned long size(long time_secs) const override;
-  virtual const char * fileType() const override { return "flac"; }
-  virtual const char * mimeType() const override { return "audio/x-flac"; }
-  virtual void fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment ) override;
+  virtual const char *fileType() const override
+  {
+      return "flac";
+  }
+  virtual const char *mimeType() const override
+  {
+      return "audio/x-flac";
+  }
+  virtual void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
   virtual long readInit(long size) override;
-  virtual long read(qint16 * buf, int frames) override;
+  virtual long read(qint16 *buf, int frames) override;
   virtual long readCleanup() override;
-  virtual QWidget* getConfigureWidget(KConfigSkeleton** manager) const override;
+  virtual QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
 
   class Private;
-private:
-  Private * d;
 
+  private:
+  Private *d;
 };
 
 #endif // ENCODER_FLAC_H
-

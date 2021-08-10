@@ -28,28 +28,27 @@
 #include "audiocd_flac_encoder.h"
 #endif
 
-#include <KConfig>
 #include "audiocd_kio_debug.h"
+#include <KConfig>
 
 #include <QDateTime>
 #include <QPair>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.slaves.audiocd")
 
-extern "C"
+extern "C" {
+AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
 {
-  AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder*> &encoders)
-  {
     encoders.append(new EncoderFLAC(slave));
-  }
+}
 }
 
 class EncoderFLAC::Private {
 
 public:
     FLAC__StreamEncoder *encoder;
-    FLAC__StreamMetadata** metadata;
-    KIO::SlaveBase* ioslave;
+    FLAC__StreamMetadata **metadata;
+    KIO::SlaveBase *ioslave;
     unsigned long data;
 #if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
     unsigned compression_level;
@@ -71,33 +70,34 @@ static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *e
     Q_UNUSED(samples)
     Q_UNUSED(current_frame)
 
-    EncoderFLAC::Private *d = (EncoderFLAC::Private*)client_data;
+    EncoderFLAC::Private *d = (EncoderFLAC::Private *)client_data;
 
     d->data += bytes;
 
     QByteArray output;
 
     if (bytes) {
-       output = QByteArray::fromRawData((const char*)buffer, bytes);
-       d->ioslave->data(output);
-       output.clear();
+        output = QByteArray::fromRawData((const char *)buffer, bytes);
+        d->ioslave->data(output);
+        output.clear();
     }
 
     return FLAC__STREAM_ENCODER_WRITE_STATUS_OK;
 }
 
-static void MetadataCallback (const FLAC__StreamEncoder *encoder, const FLAC__StreamMetadata *metadata, void *client_data)
+static void MetadataCallback(const FLAC__StreamEncoder *encoder, const FLAC__StreamMetadata *metadata, void *client_data)
 {
-	// We do not have seekable writeback so we just discard the updated metadata
+    // We do not have seekable writeback so we just discard the updated metadata
     Q_UNUSED(encoder)
     Q_UNUSED(metadata)
     Q_UNUSED(client_data)
 }
 
 /*
-static FLAC__SeekableStreamEncoderSeekStatus  SeekCallback(const FLAC__SeekableStreamEncoder *encoder,  FLAC__uint64 absolute_byte_offset, void *client_data)
+static FLAC__SeekableStreamEncoderSeekStatus  SeekCallback(const
+FLAC__SeekableStreamEncoder *encoder,  FLAC__uint64 absolute_byte_offset, void
+*client_data)
 {} ; */
-
 
 EncoderFLAC::EncoderFLAC(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
     d = new Private();
@@ -109,11 +109,13 @@ EncoderFLAC::EncoderFLAC(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
 }
 
 EncoderFLAC::~EncoderFLAC() {
-    if (d->encoder) FLAC__stream_encoder_delete(d->encoder);
+    if (d->encoder)
+        FLAC__stream_encoder_delete(d->encoder);
     delete d;
 }
 
-QWidget* EncoderFLAC::getConfigureWidget(KConfigSkeleton** manager) const {
+QWidget *EncoderFLAC::getConfigureWidget(KConfigSkeleton **manager) const
+{
 #if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
     Q_UNUSED(manager);
     return NULL;
@@ -123,7 +125,8 @@ QWidget* EncoderFLAC::getConfigureWidget(KConfigSkeleton** manager) const {
 #endif
 }
 
-bool EncoderFLAC::init(){
+bool EncoderFLAC::init()
+{
     d->encoder = FLAC__stream_encoder_new();
     d->metadata = nullptr;
     d->data = 0;
@@ -134,14 +137,15 @@ void EncoderFLAC::loadSettings() {
 #if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
     Settings *settings = Settings::self();
     d->compression_level = settings->flac_compression_level();
-    if (d->compression_level > 8) d->compression_level = 5;
+    if (d->compression_level > 8)
+        d->compression_level = 5;
 #endif
 }
 
 // Estimate size to be 5/8 of uncompressed size.
 unsigned long EncoderFLAC::size(long time_secs) const {
-   long uncompressed = (time_secs * (44100*2*2));
-   return (uncompressed/8)*5 + 1000;
+    long uncompressed = (time_secs * (44100 * 2 * 2));
+    return (uncompressed / 8) * 5 + 1000;
 }
 
 long EncoderFLAC::readInit(long size) {
@@ -156,16 +160,17 @@ long EncoderFLAC::readInit(long size) {
 #if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
     // The options match approximately those of flac compression-level-5
     FLAC__stream_encoder_set_do_mid_side_stereo(d->encoder, true);
-    FLAC__stream_encoder_set_max_lpc_order(d->encoder, 8);            // flac -l8
+    FLAC__stream_encoder_set_max_lpc_order(d->encoder, 8); // flac -l8
     FLAC__stream_encoder_set_min_residual_partition_order(d->encoder, 3);
-    FLAC__stream_encoder_set_max_residual_partition_order(d->encoder, 3); // flac -r3,3
+    FLAC__stream_encoder_set_max_residual_partition_order(d->encoder,
+                                                          3); // flac -r3,3
 #else
     FLAC__stream_encoder_set_compression_level(d->encoder, d->compression_level);
 #endif
 
     FLAC__stream_encoder_set_streamable_subset(d->encoder, true);
     if (size > 0)
-        FLAC__stream_encoder_set_total_samples_estimate(d->encoder, size/4);
+        FLAC__stream_encoder_set_total_samples_estimate(d->encoder, size / 4);
 
 #if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
     FLAC__stream_encoder_init(d->encoder);
@@ -175,12 +180,12 @@ long EncoderFLAC::readInit(long size) {
     return d->data;
 }
 
-long EncoderFLAC::read(qint16 * buf, int frames)
+long EncoderFLAC::read(qint16 *buf, int frames)
 {
     unsigned long olddata = d->data;
-    FLAC__int32 *buffer = new FLAC__int32[frames*2];
-    for(int i=0; i<frames*2;i++) {
-       buffer[i] = (FLAC__int32)buf[i];
+    FLAC__int32 *buffer = new FLAC__int32[frames * 2];
+    for (int i = 0; i < frames * 2; i++) {
+        buffer[i] = (FLAC__int32)buf[i];
     }
 
     FLAC__stream_encoder_process_interleaved(d->encoder, buffer, frames);
@@ -191,49 +196,50 @@ long EncoderFLAC::read(qint16 * buf, int frames)
 long EncoderFLAC::readCleanup()
 {
     FLAC__stream_encoder_finish(d->encoder);
-//    FLAC__stream_encoder_delete(d->encoder);
+    //    FLAC__stream_encoder_delete(d->encoder);
     if (d->metadata) {
-	 FLAC__metadata_object_delete(d->metadata[0]);
-         delete[] d->metadata;
-	 d->metadata = nullptr;
+        FLAC__metadata_object_delete(d->metadata[0]);
+        delete[] d->metadata;
+        d->metadata = nullptr;
     }
     return 0;
 }
 
-void EncoderFLAC::fillSongInfo( KCDDB::CDInfo info, int track, const QString &comment )
+void EncoderFLAC::fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment)
 {
-    d->metadata = new FLAC__StreamMetadata*[1];
+    d->metadata = new FLAC__StreamMetadata *[1];
     d->metadata[0] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_VORBIS_COMMENT);
-//    d->metadata[1] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_PADDING);
-//    d->metadata[2] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
+    //    d->metadata[1] = FLAC__metadata_object_new(FLAC__METADATA_TYPE_PADDING);
+    //    d->metadata[2] =
+    //    FLAC__metadata_object_new(FLAC__METADATA_TYPE_SEEKTABLE)
 
     typedef QPair<QString, QVariant> Comment;
-    Comment comments[7] = { Comment(QLatin1String( "TITLE" ), info.track(track-1).get(Title)),
-				Comment(QLatin1String( "ARTIST" ), info.track(track-1).get(Artist)),
-				Comment(QLatin1String( "ALBUM" ),  info.get(Title)),
-				Comment(QLatin1String( "GENRE" ),  info.get(Genre)),
-				Comment(QLatin1String( "TRACKNUMBER" ), QString::number(track)),
-				Comment(QLatin1String( "COMMENT" ), comment),
-				Comment(QLatin1String( "DATE" ), QVariant(QString()) )};
+    Comment comments[7] = {Comment(QLatin1String("TITLE"), info.track(track - 1).get(Title)),
+                           Comment(QLatin1String("ARTIST"), info.track(track - 1).get(Artist)),
+                           Comment(QLatin1String("ALBUM"), info.get(Title)),
+                           Comment(QLatin1String("GENRE"), info.get(Genre)),
+                           Comment(QLatin1String("TRACKNUMBER"), QString::number(track)),
+                           Comment(QLatin1String("COMMENT"), comment),
+                           Comment(QLatin1String("DATE"), QVariant(QString()))};
     if (info.get(Year).toInt() > 0) {
-	const QDateTime dt = QDate(info.get(Year).toInt(), 1, 1).startOfDay();
-	comments[6] = Comment(QLatin1String( "DATE" ), dt.toString(Qt::ISODate));
+        const QDateTime dt = QDate(info.get(Year).toInt(), 1, 1).startOfDay();
+        comments[6] = Comment(QLatin1String("DATE"), dt.toString(Qt::ISODate));
     }
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;
     QString field;
     int num_comments = 0;
 
-    for(int i=0; i<7; i++) {
-	if (!comments[i].second.toString().isEmpty()) {
-	    field = comments[i].first+QLatin1Char( '=' )+comments[i].second.toString();
-	    const QByteArray cfield = field.toUtf8();
-	    entry.entry = (FLAC__byte*)qstrdup(cfield.data());
-	    entry.length = cfield.length();
-	    // Insert in vorbiscomment and assign ownership of pointers to FLAC
-	    FLAC__metadata_object_vorbiscomment_insert_comment(d->metadata[0], num_comments, entry, false);
-	    num_comments++;
-	}
+    for (int i = 0; i < 7; i++) {
+        if (!comments[i].second.toString().isEmpty()) {
+            field = comments[i].first + QLatin1Char('=') + comments[i].second.toString();
+            const QByteArray cfield = field.toUtf8();
+            entry.entry = (FLAC__byte *)qstrdup(cfield.data());
+            entry.length = cfield.length();
+            // Insert in vorbiscomment and assign ownership of pointers to FLAC
+            FLAC__metadata_object_vorbiscomment_insert_comment(d->metadata[0], num_comments, entry, false);
+            num_comments++;
+        }
     }
 
     FLAC__stream_encoder_set_metadata(d->encoder, d->metadata, 1);
