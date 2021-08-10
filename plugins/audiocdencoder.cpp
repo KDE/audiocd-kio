@@ -64,7 +64,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
         dir.setFilter(QDir::Files);
         const QFileInfoList files = dir.entryInfoList();
 
-        for (const QFileInfo &fi : qAsConst(files)) {
+        for (const QFileInfo &fi : std::as_const(files)) {
             if (fi.fileName().contains(QRegularExpression(QStringLiteral("^libaudiocd_encoder_.*.so$")))) {
                 QString fileName = fi.baseName();
 

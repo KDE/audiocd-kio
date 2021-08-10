@@ -77,7 +77,8 @@ endif()
 configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
 #############################
-
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_definitions(
     -DQT_DISABLE_DEPRECATED_BEFORE=0x050F00
     -DQT_DEPRECATED_WARNINGS_SINCE=0x060000

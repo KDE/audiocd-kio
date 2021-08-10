@@ -1004,7 +1004,7 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
             qCDebug(AUDIOCD_KIO_LOG) << "Encoder processing error, stopping.";
             ok = false;
             QString errMsg = i18n("Could not read %1: encoding failed", fileName);
-            QString details = encoder->lastErrorMessage();
+            const QString details = encoder->lastErrorMessage();
             if (!details.isEmpty())
                 errMsg += QLatin1Char('\n') + details;
             error(ERR_SLAVE_DEFINED, errMsg);
