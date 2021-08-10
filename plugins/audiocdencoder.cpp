@@ -51,7 +51,8 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
 {
     QString foundEncoders;
 
-    for (const QString &path : QCoreApplication::libraryPaths()) {
+    const auto libraryPaths{QCoreApplication::libraryPaths()};
+    for (const QString &path : libraryPaths) {
         QDir dir(path);
         if (!dir.exists()) {
             //qCDebug(AUDIOCD_KIO_LOG) << "Library path" << path << "does not exist";
@@ -62,7 +63,7 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
         const QFileInfoList files = dir.entryInfoList();
 
         for (const QFileInfo &fi : qAsConst(files)) {
-            if (fi.fileName().contains(QRegularExpression(QLatin1String("^libaudiocd_encoder_.*.so$")))) {
+            if (fi.fileName().contains(QRegularExpression(QStringLiteral("^libaudiocd_encoder_.*.so$")))) {
                 QString fileName = fi.baseName();
 
                 if (foundEncoders.contains(fileName)) {

@@ -200,8 +200,8 @@ AudioCDProtocol::AudioCDProtocol(const QByteArray & protocol, const QByteArray &
 		return;
 	}
 
-	encoderTypeCDA = encoderFromExtension(QLatin1String( ".cda" ));
-	encoderTypeWAV = encoderFromExtension(QLatin1String( ".wav" ));
+    encoderTypeCDA = encoderFromExtension(QStringLiteral(".cda" ));
+    encoderTypeWAV = encoderFromExtension(QStringLiteral( ".wav" ));
 }
 
 AudioCDProtocol::~AudioCDProtocol()
@@ -384,7 +384,7 @@ struct cdrom_drive *AudioCDProtocol::initRequest(const QUrl &url)
 	}
 	if (!remainingDirPath.isEmpty() && remainingDirPath[0] == QLatin1Char( '/' ))
 		remainingDirPath = remainingDirPath.mid(1);
-	d->child_dir = remainingDirPath.split(QLatin1String( "/" )).first();
+    d->child_dir = remainingDirPath.split(QStringLiteral( "/" )).first();
 
 	// See if the url is a track
 	d->req_track = -1;
@@ -455,11 +455,11 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive * drive, long & fi
 }
 
 static uint findInformationFileNumber(const QString &filename, uint max) {
-	if (filename == QString::fromLatin1("%1.txt").arg(i18n(CDDB_INFORMATION)))
+    if (filename == QStringLiteral("%1.txt").arg(i18n(CDDB_INFORMATION)))
 		return 1;
 
 	for (uint i = 2; i <= max; ++i) {
-		if (filename == QString::fromLatin1("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(i)) {
+        if (filename == QStringLiteral("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(i)) {
 			return i;
 		}
 	}
@@ -538,7 +538,7 @@ void AudioCDProtocol::get(const QUrl & url)
 		for ( it = d->cddbList.begin(); it != d->cddbList.end(); ++it ){
 			if(count == choice){
 				// FIXME: should be "text/plain"?
-				mimeType(QLatin1String( "text/html" ));
+                mimeType(QStringLiteral( "text/html" ));
 				data( (*it).toString().toUtf8() );
 				// send an empty QByteArray to signal end of data.
 				data(QByteArray());
@@ -550,7 +550,7 @@ void AudioCDProtocol::get(const QUrl & url)
 		}
 		if(!found && d->fname.contains(i18n(CDDB_INFORMATION)+QLatin1Char( ':' ))){
 			// FIXME: should be "text/plain"?
-			mimeType(QLatin1String( "text/html" ));
+            mimeType(QStringLiteral( "text/html" ));
 			//data(QCString( d->fname.latin1() ));
 			// send an empty QByteArray to signal end of data.
 			data(QByteArray());
@@ -598,7 +598,7 @@ void AudioCDProtocol::get(const QUrl & url)
 
 	unsigned long size = encoder->size(time_secs);
 	totalSize(size);
-	Q_EMIT mimeType(QLatin1String(encoder->mimeType()));
+    mimeType(QLatin1String(encoder->mimeType()));
 
 	// Read data (track/disk) from the cd
 	paranoiaRead(drive, firstSector, lastSector, encoder, url.fileName(), size);
@@ -1157,7 +1157,7 @@ void AudioCDProtocol::parseURLArgs(const QUrl & url)
  */
 void AudioCDProtocol::loadSettings()
 {
-	const KConfig *config = new KConfig(QLatin1String( "kcmaudiocdrc"), KConfig::NoGlobals );
+    const KConfig *config = new KConfig(QStringLiteral( "kcmaudiocdrc"), KConfig::NoGlobals );
         const KConfigGroup groupCDDA( config, "CDDA" );
 
 	d->device = QString(); // clear device
@@ -1239,14 +1239,14 @@ void AudioCDProtocol::generateTemplateTitles()
 	d->templateTitles.clear();
 	for (uint i = 0; i < d->tracks; i++) {
 		QHash<QString, QString> macros;
-		macros[QLatin1String( "albumartist" )] = info.get(Artist).toString();
-		macros[QLatin1String( "albumtitle" )] = info.get(Title).toString();
-		macros[QLatin1String( "title" )] = info.track(i).get(Title).toString();
-		macros[QLatin1String( "trackartist" )] = info.track(i).get(Artist).toString();
-		macros[QLatin1String( "number" )] = QString::asprintf("%02d", i + 1);
+        macros[QStringLiteral( "albumartist" )] = info.get(Artist).toString();
+        macros[QStringLiteral( "albumtitle" )] = info.get(Title).toString();
+        macros[QStringLiteral( "title" )] = info.track(i).get(Title).toString();
+        macros[QStringLiteral( "trackartist" )] = info.track(i).get(Artist).toString();
+        macros[QStringLiteral( "number" )] = QString::asprintf("%02d", i + 1);
 		//macros["number"] = QString("%1").arg(i+1, 2, 10);
-		macros[QLatin1String( "genre" )] = info.get(Genre).toString();
-		macros[QLatin1String( "year" )] = info.get(Year).toString();
+        macros[QStringLiteral( "genre" )] = info.get(Genre).toString();
+        macros[QStringLiteral( "year" )] = info.get(Year).toString();
 
 		QString title = escapePath(KMacroExpander::expandMacros(d->fileNameTemplate, macros, QLatin1Char( '%' )));
 		title.replace( QRegExp(d->rsearch), d->rreplace );
@@ -1254,10 +1254,10 @@ void AudioCDProtocol::generateTemplateTitles()
 	}
 
 	QHash<QString, QString> macros;
-	macros[QLatin1String( "albumartist" )] = info.get(Artist).toString();
-	macros[QLatin1String( "albumtitle" )] = info.get(Title).toString();
-	macros[QLatin1String( "genre" )] = info.get(Genre).toString();
-	macros[QLatin1String( "year" )] = info.get(Year).toString();
+    macros[QStringLiteral( "albumartist" )] = info.get(Artist).toString();
+    macros[QStringLiteral( "albumtitle" )] = info.get(Title).toString();
+    macros[QStringLiteral( "genre" )] = info.get(Genre).toString();
+    macros[QStringLiteral( "year" )] = info.get(Year).toString();
 	d->templateAlbumName = escapePath(KMacroExpander::expandMacros(d->albumNameTemplate, macros, QLatin1Char( '%' )));
 	d->templateAlbumName.replace( QRegExp(d->rsearch), d->rreplace );
 

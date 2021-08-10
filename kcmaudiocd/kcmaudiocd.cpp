@@ -51,7 +51,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     box->addWidget(audioConfig);
     setButtons(Default|Apply|Help);
 
-    config = new KConfig( QLatin1String( "kcmaudiocdrc" ));
+    config = new KConfig( QStringLiteral( "kcmaudiocdrc" ));
 
     QList<AudioCDEncoder*> encoders;
     AudioCDEncoder::findAllPlugins(nullptr, encoders);
@@ -109,7 +109,7 @@ KAudiocdModule::~KAudiocdModule()
 QString removeQoutes(const QString& text)
 {
    QString deqoutedString=text;
-   QRegularExpression qoutedStringRegExp( QLatin1String( "^\".*\"$" ));
+   QRegularExpression qoutedStringRegExp( QStringLiteral( "^\".*\"$" ));
    QRegularExpressionMatch hasQuotes = qoutedStringRegExp.match(text);
    if (hasQuotes.hasMatch())
    {
@@ -120,8 +120,8 @@ QString removeQoutes(const QString& text)
 
 bool needsQoutes(const QString& text)
 {
-   QRegularExpression spaceAtTheBeginning( QLatin1String( "^\\s+.*$" ));
-   QRegularExpression spaceAtTheEnd( QLatin1String( "^.*\\s+$" ));
+   QRegularExpression spaceAtTheBeginning( QStringLiteral( "^\\s+.*$" ));
+   QRegularExpression spaceAtTheEnd( QStringLiteral( "^.*\\s+$" ));
    QRegularExpressionMatch hasSpaceAtTheBeginning = spaceAtTheBeginning.match(text);
    QRegularExpressionMatch hasSpaceAtTheEnd = spaceAtTheEnd.match(text);
    return (hasSpaceAtTheBeginning.hasMatch() || hasSpaceAtTheEnd.hasMatch());
