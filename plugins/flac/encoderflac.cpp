@@ -223,7 +223,7 @@ void EncoderFLAC::fillSongInfo(KCDDB::CDInfo info, int track, const QString &com
                            Comment(QLatin1String("DATE"), QVariant(QString()))};
     if (info.get(Year).toInt() > 0) {
         const QDateTime dt = QDate(info.get(Year).toInt(), 1, 1).startOfDay();
-        comments[6] = Comment(QLatin1String("DATE"), dt.toString(Qt::ISODate));
+        comments[6] = Comment(QStringLiteral("DATE"), dt.toString(Qt::ISODate));
     }
 
     FLAC__StreamMetadata_VorbisComment_Entry entry;

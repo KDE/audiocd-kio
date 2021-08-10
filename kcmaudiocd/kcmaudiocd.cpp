@@ -40,7 +40,6 @@ K_PLUGIN_FACTORY(Factory, registerPlugin<KAudiocdModule>();)
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     : KCModule(parent)
-    , configChanged(false)
 {
     Q_UNUSED(lst);
 
@@ -127,8 +126,8 @@ void KAudiocdModule::updateExample()
 {
     QString text = audioConfig->example->text();
 
-    QString deqoutedReplaceInput = removeQoutes(audioConfig->kcfg_replaceInput->text());
-    QString deqoutedReplaceOutput = removeQoutes(audioConfig->kcfg_replaceOutput->text());
+    const QString deqoutedReplaceInput = removeQoutes(audioConfig->kcfg_replaceInput->text());
+    const QString deqoutedReplaceOutput = removeQoutes(audioConfig->kcfg_replaceOutput->text());
     text.replace(QRegularExpression(deqoutedReplaceInput), deqoutedReplaceOutput);
     audioConfig->exampleOutput->setText(text);
 }

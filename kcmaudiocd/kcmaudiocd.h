@@ -68,7 +68,7 @@ private Q_SLOTS:
 
 private:
   KConfig *config;
-  bool configChanged;
+  bool configChanged = false;
 
   int getBitrateIndex(int value);
 
