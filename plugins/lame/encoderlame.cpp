@@ -88,11 +88,7 @@ bool EncoderLame::init(){
 
 	QByteArray array = proc.readAll();
 	QString str = QString::fromLocal8Bit( array );
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-	d->genreList = str.split(QLatin1Char('\n'), QString::SkipEmptyParts );
-#else
 	d->genreList = str.split(QLatin1Char('\n'), Qt::SkipEmptyParts );
-#endif
 	// Remove the numbers in front of every genre
 	for( QStringList::Iterator it = d->genreList.begin(); it != d->genreList.end(); ++it ) {
 		QString& genre = *it;

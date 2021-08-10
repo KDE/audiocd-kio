@@ -1118,11 +1118,7 @@ void AudioCDProtocol::parseURLArgs(const QUrl & url)
 	if (query.isEmpty())
 		return;
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-	const QStringList tokens(query.split(QLatin1Char( '&' ),QString::SkipEmptyParts));
-#else
 	const QStringList tokens(query.split(QLatin1Char( '&' ),Qt::SkipEmptyParts));
-#endif
 
 	for (QStringList::ConstIterator it(tokens.constBegin()); it != tokens.constEnd(); ++it)
 	{

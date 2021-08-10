@@ -280,11 +280,7 @@ void EncoderVorbis::fillSongInfo( KCDDB::CDInfo info, int track, const QString &
   commentFields.append(CommentField("COMMENT", comment));
 
   if (info.get(Year).toInt() > 0) {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     const QDateTime dt = QDate(info.get(Year).toInt(), 1, 1).startOfDay();
-#else
-    QDateTime dt( QDate(info.get(Year).toInt(), 1, 1) );
-#endif
     commentFields.append(CommentField("DATE",QLatin1String( dt.toString(Qt::ISODate).toUtf8().data() )));
   }
 
