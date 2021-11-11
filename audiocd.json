@@ -2,7 +2,7 @@
     "KDE-KIO-Protocols": {
         "audiocd": {
             "Class": ":local",
-            "Icon": "media-optical-audio",
+            "Icon": "media-default-album",
             "X-DocPath": "kioslave5/audiocd/index.html",
             "copyFromFile": true,
             "copyToFile": false,

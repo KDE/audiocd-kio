@@ -150,7 +150,7 @@
   <categories>
     <category>Audio</category>
   </categories>
-  <icon type="stock">media-optical-audio</icon>
+  <icon type="stock">media-default-album</icon>
   <releases>
     <release version="5.0.0" date="2021-11-04"/>
     <release version="5.0.0" date="2021-10-07"/>

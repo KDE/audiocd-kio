@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=systemsettings5 audiocd
-Icon=media-optical-audio
+Icon=media-default-album
 Type=Service
 ServiceTypes=KCModule
 X-DocPath=kcontrol/audiocd/index.html
