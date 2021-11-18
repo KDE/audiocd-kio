@@ -102,7 +102,7 @@ add_subdirectory(doc)
 
 add_library(kio_audiocd MODULE)
 target_sources(kio_audiocd PRIVATE
-    audiocd.cpp
+    audiocd.cpp audiocd.h
 )
 
 ecm_qt_declare_logging_category(kio_audiocd

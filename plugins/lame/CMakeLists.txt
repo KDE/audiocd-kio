@@ -10,7 +10,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"audiocd_encoder_lame\")
 add_library(audiocd_encoder_lame SHARED)
 
 target_sources(audiocd_encoder_lame PRIVATE
-    encoderlame.cpp
+    encoderlame.cpp encoderlame.h
 )
 
 ki18n_wrap_ui(audiocd_encoder_lame encoderlameconfig.ui)

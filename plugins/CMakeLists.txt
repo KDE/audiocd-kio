@@ -17,7 +17,7 @@ add_subdirectory(opus)
 add_library(audiocdplugins SHARED)
 
 target_sources(audiocdplugins PRIVATE
-    audiocdencoder.cpp
+    audiocdencoder.cpp audiocdencoder.h
 )
 target_include_directories(audiocdplugins
     PRIVATE

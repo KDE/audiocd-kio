@@ -3,7 +3,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"audiocd_encoder_vorbis\")
 add_library(audiocd_encoder_vorbis SHARED)
 
 target_sources(audiocd_encoder_vorbis PRIVATE
-    encodervorbis.cpp
+    encodervorbis.cpp encodervorbis.h
 )
 
 ki18n_wrap_ui(audiocd_encoder_vorbis encodervorbisconfig.ui)

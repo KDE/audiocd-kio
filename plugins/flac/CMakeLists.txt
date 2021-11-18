@@ -3,7 +3,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"audiocd_encoder_flac\")
 add_library(audiocd_encoder_flac SHARED)
 
 target_sources(audiocd_encoder_flac PRIVATE
-    encoderflac.cpp
+    encoderflac.cpp encoderflac.h
 )
 
 ki18n_wrap_ui(audiocd_encoder_flac encoderflacconfig.ui)

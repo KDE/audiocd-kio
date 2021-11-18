@@ -3,6 +3,8 @@ add_library(audiocd_encoder_wav SHARED)
 target_sources(audiocd_encoder_wav PRIVATE
     encoderwav.cpp
     encodercda.cpp
+    encoderwav.h
+    encodercda.h
 )
 
 target_include_directories(audiocd_encoder_wav

@@ -3,7 +3,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"kcmaudiocd\")
 add_library(kcm_audiocd MODULE)
 
 target_sources(kcm_audiocd PRIVATE
-    kcmaudiocd.cpp
+    kcmaudiocd.cpp kcmaudiocd.h
 )
 
 ki18n_wrap_ui(kcm_audiocd audiocdconfig.ui)

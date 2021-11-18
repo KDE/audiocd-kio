@@ -3,7 +3,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"audiocd_encoder_opus\")
 add_library(audiocd_encoder_opus SHARED)
 
 target_sources(audiocd_encoder_opus PRIVATE
-    encoderopus.cpp
+    encoderopus.cpp encoderopus.h
 )
 
 ki18n_wrap_ui(audiocd_encoder_opus encoderopusconfig.ui)
