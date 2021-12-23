@@ -31,6 +31,7 @@
 #include <KAboutData>
 #include <KConfigDialogManager>
 #include <KConfigGroup>
+#include <KConfigSkeleton>
 #include <KLocalizedString>
 #include <KPluginFactory>
 
