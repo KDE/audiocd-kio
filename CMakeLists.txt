@@ -30,7 +30,7 @@ find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     KIO
     KCMUtils
 )
-find_package(KF5Cddb)
+find_package(KF5Cddb 5.1)
 set_package_properties(KF5Cddb PROPERTIES
     DESCRIPTION "KF5 branch for CDDB library"
     URL "https://commits.kde.org/libkcddb"

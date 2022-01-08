@@ -27,7 +27,7 @@
 #include <QLoggingCategory>
 #include <sys/types.h>
 
-#include <KCddb/Cdinfo>
+#include <KCDDB/CDInfo>
 
 Q_DECLARE_LOGGING_CATEGORY(AUDIOCD_KIO_LOG)
 

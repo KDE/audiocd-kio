@@ -60,7 +60,7 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
 #include <KMacroExpander>
 
 // CDDB
-#include <KCddb/Client>
+#include <KCDDB/Client>
 #include <KCompactDisc>
 
 // Pseudo plugin class to embed metadata
