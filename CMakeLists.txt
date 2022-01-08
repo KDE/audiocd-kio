@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 project(audiocd VERSION "5.0.0")
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF_MIN_VERSION "5.83.0")
+set(KF_MIN_VERSION "5.85.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -77,17 +77,11 @@ endif()
 configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
 #############################
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_definitions(
     -DQT_DISABLE_DEPRECATED_BEFORE=0x050F00
     -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
     -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DQT_NO_URL_CAST_FROM_STRING
-    -DQT_NO_CAST_FROM_ASCII
-    -DQT_NO_CAST_TO_ASCII
-    -DQT_NO_CAST_FROM_BYTEARRAY
 )
 
 add_subdirectory(plugins)
