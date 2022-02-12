@@ -165,7 +165,7 @@ X-KDE-Keywords[tr]=Ses CDsi,CD,Ogg,Vorbis,Kodlama,CDDA,Bit oranı
 X-KDE-Keywords[ug]=ئۈن CD،CD،Ogg،Vorbis،كودلىنىش،CDDA،Bitrate
 X-KDE-Keywords[uk]=Audio CD,CD,Аудіо-КД,КД,Ogg,Vorbis,кодування,CDDA,частота,дискретизація
 X-KDE-Keywords[x-test]=xxAudio CDxx,xxCDxx,xxOggxx,xxVorbisxx,xxEncodingxx,xxCDDAxx,xxBitratexx
-X-KDE-Keywords[zh_CN]=Audio CD,音频 CD,CD,光盘,Ogg,Vorbis,Encoding,编码,CDDA,Bitrate,比特率
+X-KDE-Keywords[zh_CN]=Audio CD,音频 CD,CD,光盘,Ogg,Vorbis,Encoding,编码,CDDA,Bitrate,码率,比特率
 X-KDE-Keywords[zh_TW]=Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate
 
 Categories=Qt;KDE;X-KDE-settings-sound;
