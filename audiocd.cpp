@@ -58,6 +58,7 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
 
 #include <KLocalizedString>
 #include <KMacroExpander>
+#include <QRegularExpression>
 
 // CDDB
 #include <KCDDB/Client>
@@ -71,8 +72,6 @@ class KIOPluginForMetaData : public QObject
 };
 
 using namespace KIO;
-
-#define CDDB_INFORMATION I18N_NOOP("CDDB Information")
 
 using namespace AudioCD;
 
@@ -446,11 +445,11 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive *drive, long &firs
 }
 
 static uint findInformationFileNumber(const QString &filename, uint max) {
-    if (filename == QStringLiteral("%1.txt").arg(i18n(CDDB_INFORMATION)))
+    if (filename == QStringLiteral("%1.txt").arg(i18n("CDDB Information")))
         return 1;
 
     for (uint i = 2; i <= max; ++i) {
-        if (filename == QStringLiteral("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(i)) {
+        if (filename == QStringLiteral("%1_%2.txt").arg(i18n("CDDB Information")).arg(i)) {
             return i;
         }
     }
@@ -519,7 +518,7 @@ void AudioCDProtocol::get(const QUrl &url)
         return;
     }
 
-    if (d->fname.contains(i18n(CDDB_INFORMATION))) {
+    if (d->fname.contains(i18n("CDDB Information"))) {
         const uint choice = findInformationFileNumber(d->fname, d->cddbList.count());
         uint count = 1;
         CDInfoList::iterator it;
@@ -537,7 +536,7 @@ void AudioCDProtocol::get(const QUrl &url)
             }
             count++;
         }
-        if (!found && d->fname.contains(i18n(CDDB_INFORMATION) + QLatin1Char(':'))) {
+        if (!found && d->fname.contains(i18n("CDDB Information") + QLatin1Char(':'))) {
             // FIXME: should be "text/plain"?
             mimeType(QStringLiteral("text/html"));
             // data(QCString( d->fname.latin1() ));
@@ -665,7 +664,7 @@ void AudioCDProtocol::stat(const QUrl &url)
             statEntry(entry);
             finished();
             return;
-        } else if (d->fname.contains(i18n(CDDB_INFORMATION))) {
+        } else if (d->fname.contains(i18n("CDDB Information"))) {
             // choice is 1-indexed so we need <= and -1 when accessing d->cddbList
             const uint choice = findInformationFileNumber(d->fname, d->cddbList.count());
             if (choice <= (uint)d->cddbList.count()) {
@@ -770,15 +769,15 @@ void AudioCDProtocol::listDir(const QUrl &url)
         for (it = d->cddbList.begin(); it != d->cddbList.end(); ++it) {
             (*it).toString();
             if (count == 1)
-                app_file(entry, QString::fromLatin1("%1.txt").arg(i18n(CDDB_INFORMATION)), ((*it).toString().length()) + 1);
+                app_file(entry, QString::fromLatin1("%1.txt").arg(i18n("CDDB Information")), ((*it).toString().length()) + 1);
             else
-                app_file(entry, QString::fromLatin1("%1_%2.txt").arg(i18n(CDDB_INFORMATION)).arg(count), ((*it).toString().length()) + 1);
+                app_file(entry, QString::fromLatin1("%1_%2.txt").arg(i18n("CDDB Information")).arg(count), ((*it).toString().length()) + 1);
             count++;
             listEntry(entry);
         }
         // Error
         if (count == 1) {
-            app_file(entry, QString::fromLatin1("%1: %2.txt").arg(i18n(CDDB_INFORMATION)).arg(KCDDB::resultToString(d->cddbResult)), 0);
+            app_file(entry, QString::fromLatin1("%1: %2.txt").arg(i18n("CDDB Information")).arg(KCDDB::resultToString(d->cddbResult)), 0);
             count++;
             listEntry(entry);
         }
@@ -1230,7 +1229,7 @@ void AudioCDProtocol::generateTemplateTitles()
         macros[QStringLiteral("year")] = info.get(Year).toString();
 
         QString title = escapePath(KMacroExpander::expandMacros(d->fileNameTemplate, macros, QLatin1Char('%')));
-        title.replace(QRegExp(d->rsearch), d->rreplace);
+        title.replace(QRegularExpression(d->rsearch), d->rreplace);
         d->templateTitles.append(title);
     }
 
@@ -1240,7 +1239,7 @@ void AudioCDProtocol::generateTemplateTitles()
     macros[QStringLiteral("genre")] = info.get(Genre).toString();
     macros[QStringLiteral("year")] = info.get(Year).toString();
     d->templateAlbumName = escapePath(KMacroExpander::expandMacros(d->albumNameTemplate, macros, QLatin1Char('%')));
-    d->templateAlbumName.replace(QRegExp(d->rsearch), d->rreplace);
+    d->templateAlbumName.replace(QRegularExpression(d->rsearch), d->rreplace);
 
     d->templateFileLocation = KMacroExpander::expandMacros(d->fileLocationTemplate, macros, QLatin1Char('%'));
 }
