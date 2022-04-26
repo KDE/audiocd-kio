@@ -21,7 +21,7 @@ target_link_libraries(kcm_audiocd
 
 install(TARGETS kcm_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
-install(FILES audiocd.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR})
+install(FILES audiocd.desktop  DESTINATION  ${KDE_INSTALL_KSERVICESDIR})
 
 ########### add handbook ################
 

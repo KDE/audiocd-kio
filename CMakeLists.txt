@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 project(audiocd VERSION "5.0.0")
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF_MIN_VERSION "5.85.0")
+set(KF_MIN_VERSION "5.90.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -21,7 +21,7 @@ include(CheckStructHasMember)
 include(FeatureSummary)
 include(KDEGitCommitHooks)
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
 
 find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
