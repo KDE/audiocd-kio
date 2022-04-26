@@ -22,6 +22,9 @@ include(FeatureSummary)
 include(KDEGitCommitHooks)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
+if (QT_MAJOR_VERSION STREQUAL 6)
+    find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
+endif()
 
 find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
@@ -113,6 +116,9 @@ target_link_libraries(kio_audiocd
     Qt::Widgets
     Cdparanoia::Cdparanoia
 )
+if (TARGET Qt6::Core5Compat)
+    target_link_libraries(kio_audiocd Qt6::Core5Compat)
+endif()
 
 install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
 
