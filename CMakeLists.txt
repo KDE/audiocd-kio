@@ -120,7 +120,7 @@ if (TARGET Qt6::Core5Compat)
     target_link_libraries(kio_audiocd Qt6::Core5Compat)
 endif()
 
-install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio)
+install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/kio)
 
 ecm_qt_install_logging_categories(
     EXPORT AUDIOCD
