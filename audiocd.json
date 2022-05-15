@@ -7,7 +7,6 @@
             "copyFromFile": true,
             "copyToFile": false,
             "deleting": false,
-            "exec": "kf5/kio/audiocd",
             "input": "none",
             "listing": [
                 "Name",
