@@ -51,7 +51,7 @@ class KAudiocdModule : public KCModule
 
 public:
     explicit KAudiocdModule(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
-    ~KAudiocdModule();
+    ~KAudiocdModule() override;
 
     QString quickHelp() const override;
 

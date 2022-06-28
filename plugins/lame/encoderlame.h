@@ -44,7 +44,7 @@ class EncoderLame : public QObject, public AudioCDEncoder {
 
 public:
     explicit EncoderLame(KIO::SlaveBase *slave);
-    ~EncoderLame();
+    ~EncoderLame() override;
 
     virtual QString type() const override
     {

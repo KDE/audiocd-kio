@@ -44,7 +44,7 @@ class EncoderFLAC : public AudioCDEncoder {
 
 public:
   explicit EncoderFLAC(KIO::SlaveBase *slave);
-  ~EncoderFLAC();
+  ~EncoderFLAC() override;
 
   virtual QString type() const override
   {

@@ -43,7 +43,7 @@ class AudioCDProtocol : public KIO::SlaveBase
 {
 public:
     AudioCDProtocol(const QByteArray &protocol, const QByteArray &pool, const QByteArray &app);
-    virtual ~AudioCDProtocol();
+    ~AudioCDProtocol() override;
 
     virtual void get(const QUrl &) override;
     virtual void stat(const QUrl &) override;

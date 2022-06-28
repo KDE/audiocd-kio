@@ -39,7 +39,7 @@ class EncoderWav : public EncoderCda {
 
 public:
   explicit EncoderWav(KIO::SlaveBase *slave) : EncoderCda(slave) {}
-  ~EncoderWav()
+  ~EncoderWav() override
   {
   }
   virtual bool init() override { return true; }

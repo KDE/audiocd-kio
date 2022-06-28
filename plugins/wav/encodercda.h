@@ -40,7 +40,7 @@ class EncoderCda : public AudioCDEncoder {
 
 public:
   explicit EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {}
-  ~EncoderCda()
+  ~EncoderCda() override
   {
   }
   virtual bool init() override { return true; }

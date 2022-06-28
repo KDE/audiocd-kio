@@ -48,7 +48,7 @@ class EncoderVorbis : public AudioCDEncoder {
 
 public:
   explicit EncoderVorbis(KIO::SlaveBase *slave);
-  ~EncoderVorbis();
+  ~EncoderVorbis() override;
 
   virtual QString type() const override
   {

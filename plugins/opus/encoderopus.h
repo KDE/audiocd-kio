@@ -45,7 +45,7 @@ class EncoderOpus : public QObject, public AudioCDEncoder {
 
 public:
     explicit EncoderOpus(KIO::SlaveBase *slave);
-    ~EncoderOpus();
+    ~EncoderOpus() override;
 
     virtual QString type() const override
     {
