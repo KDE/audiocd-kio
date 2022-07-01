@@ -8,6 +8,7 @@
   <extends>org.kde.krusader.desktop</extends>
   <name>KIO AudioCD</name>
   <name xml:lang="az">KIO AudioCD</name>
+  <name xml:lang="bg">KIO AudioCD</name>
   <name xml:lang="ca">KIO AudioCD</name>
   <name xml:lang="ca-valencia">KIO AudioCD</name>
   <name xml:lang="cs">KIO AudioCD</name>
@@ -118,6 +119,7 @@
     <screenshot type="default">
       <caption>KIO AudioCD configuration window</caption>
       <caption xml:lang="az">KIO AudioCD tənzimləmə pəncərəsi</caption>
+      <caption xml:lang="bg">Конфигурационен прозорец на KIO AudioCD</caption>
       <caption xml:lang="ca">Finestra de configuració del KIO AudioCD</caption>
       <caption xml:lang="ca-valencia">Finestra de configuració de KIO AudioCD</caption>
       <caption xml:lang="da">KIO AudioCD's konfigurationsvindue</caption>
