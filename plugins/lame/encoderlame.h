@@ -46,28 +46,28 @@ public:
     explicit EncoderLame(KIO::SlaveBase *slave);
     ~EncoderLame() override;
 
-    virtual QString type() const override
+    QString type() const override
     {
         return QStringLiteral("MP3");
     }
-    virtual bool init() override;
-    virtual void loadSettings() override;
-    virtual unsigned long size(long time_secs) const override;
-    virtual const char *fileType() const override
+    bool init() override;
+    void loadSettings() override;
+    unsigned long size(long time_secs) const override;
+    const char *fileType() const override
     {
         return "mp3";
     }
-    virtual const char *mimeType() const override
+    const char *mimeType() const override
     {
         return "audio/x-mp3";
     }
-    virtual void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
-    virtual long readInit(long size) override;
-    virtual long read(qint16 *buf, int frames) override;
-    virtual long readCleanup() override;
-    virtual QString lastErrorMessage() const override;
+    void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
+    long readInit(long size) override;
+    long read(qint16 *buf, int frames) override;
+    long readCleanup() override;
+    QString lastErrorMessage() const override;
 
-    virtual QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
+    QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
 
 protected Q_SLOTS:
     // 	void wroteStdin();

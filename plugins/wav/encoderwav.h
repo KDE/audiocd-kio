@@ -42,21 +42,24 @@ public:
   ~EncoderWav() override
   {
   }
-  virtual bool init() override { return true; }
-  virtual unsigned long size(long time_secs) const override;
-  virtual QString type() const override
+  bool init() override
+  {
+      return true;
+  }
+  unsigned long size(long time_secs) const override;
+  QString type() const override
   {
       return QLatin1String("Wav");
   }
-  virtual const char *fileType() const override
+  const char *fileType() const override
   {
       return "wav";
   }
-  virtual const char *mimeType() const override;
-  virtual void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
+  const char *mimeType() const override;
+  void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
   {
   }
-  virtual long readInit(long size) override;
+  long readInit(long size) override;
 };
 
 #endif // ENCODER_WAV_H

@@ -45,9 +45,9 @@ public:
     AudioCDProtocol(const QByteArray &protocol, const QByteArray &pool, const QByteArray &app);
     ~AudioCDProtocol() override;
 
-    virtual void get(const QUrl &) override;
-    virtual void stat(const QUrl &) override;
-    virtual void listDir(const QUrl &) override;
+    void get(const QUrl &) override;
+    void stat(const QUrl &) override;
+    void listDir(const QUrl &) override;
 
 protected:
     AudioCDEncoder *encoderFromExtension(const QString &extension);

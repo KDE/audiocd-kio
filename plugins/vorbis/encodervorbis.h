@@ -50,23 +50,23 @@ public:
   explicit EncoderVorbis(KIO::SlaveBase *slave);
   ~EncoderVorbis() override;
 
-  virtual QString type() const override
+  QString type() const override
   {
       return QLatin1String("Ogg Vorbis");
   }
-  virtual bool init() override;
-  virtual void loadSettings() override;
-  virtual unsigned long size(long time_secs) const override;
-  virtual const char *fileType() const override
+  bool init() override;
+  void loadSettings() override;
+  unsigned long size(long time_secs) const override;
+  const char *fileType() const override
   {
       return "ogg";
   }
-  virtual const char *mimeType() const override;
-  virtual void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
-  virtual long readInit(long size) override;
-  virtual long read(qint16 *buf, int frames) override;
-  virtual long readCleanup() override;
-  virtual QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
+  const char *mimeType() const override;
+  void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
+  long readInit(long size) override;
+  long read(qint16 *buf, int frames) override;
+  long readCleanup() override;
+  QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
 
   private:
   long flush_vorbis();

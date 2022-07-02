@@ -43,24 +43,35 @@ public:
   ~EncoderCda() override
   {
   }
-  virtual bool init() override { return true; }
-  virtual void loadSettings() override {}
-  virtual unsigned long size(long time_secs) const override;
-  virtual QString type() const override
+  bool init() override
+  {
+      return true;
+  }
+  void loadSettings() override
+  {
+  }
+  unsigned long size(long time_secs) const override;
+  QString type() const override
   {
       return QLatin1String("CDA");
   }
-  virtual const char *mimeType() const override;
-  virtual const char *fileType() const override
+  const char *mimeType() const override;
+  const char *fileType() const override
   {
       return "cda";
   }
-  virtual void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
+  void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
   {
   }
-  virtual long readInit(long) override { return 0; }
-  virtual long read(qint16 *buf, int frames) override;
-  virtual long readCleanup() override { return 0; }
+  long readInit(long) override
+  {
+      return 0;
+  }
+  long read(qint16 *buf, int frames) override;
+  long readCleanup() override
+  {
+      return 0;
+  }
 };
 
 #endif // ENCODER_CDA_H
