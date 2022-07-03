@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 project(audiocd VERSION "5.0.0")
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF_MIN_VERSION "5.90.0")
+set(KF_MIN_VERSION "5.96.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -100,10 +100,10 @@ target_sources(kio_audiocd PRIVATE
 ecm_qt_declare_logging_category(kio_audiocd
     HEADER audiocd_kio_debug.h
     IDENTIFIER AUDIOCD_KIO_LOG
-    CATEGORY_NAME kf.kio.slaves.audiocd
-    OLD_CATEGORY_NAMES kf5.kio.audiocd
+    CATEGORY_NAME kf.kio.workers.audiocd
+    OLD_CATEGORY_NAMES kf5.kio.audiocd kf.kio.slaves.audiocd
     DEFAULT_SEVERITY Warning
-    DESCRIPTION "audiocd KIO slave"
+    DESCRIPTION "audiocd KIO worker"
     EXPORT AUDIOCD
 )
 

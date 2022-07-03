@@ -91,7 +91,7 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
 
-    auto about = new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD IO Slave"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
+    auto about = new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD KIO Worker"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
 
     about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), QStringLiteral("ben@meyerhome.net"));
     about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), QStringLiteral("duvenhorst@duvnet.de"));
@@ -250,10 +250,10 @@ void KAudiocdModule::slotEcEnable() {
 QString KAudiocdModule::quickHelp() const
 {
     return i18n(
-        "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily"
+        "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily"
         " create wav, FLAC, MP3, Ogg Vorbis or Opus files from your "
         "audio CD-ROMs or DVDs."
-        " The slave is invoked by typing <i>\"audiocd:/\"</i> in "
+        " The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in "
         "Dolphin's location"
         " bar. In this module, you can configure"
         " encoding, and device settings. Note that FLAC, MP3, Ogg Vorbis,"

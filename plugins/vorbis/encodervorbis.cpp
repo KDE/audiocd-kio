@@ -35,9 +35,9 @@
 #include <vorbis/vorbisenc.h>
 
 extern "C" {
-AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
+AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::WorkerBase *worker, QList<AudioCDEncoder *> &encoders)
 {
-    encoders.append(new EncoderVorbis(slave));
+    encoders.append(new EncoderVorbis(worker));
 }
 }
 
@@ -66,8 +66,10 @@ public:
     int vorbis_bitrate;
 };
 
-EncoderVorbis::EncoderVorbis(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
-  d = new Private();
+EncoderVorbis::EncoderVorbis(KIO::WorkerBase *worker)
+    : AudioCDEncoder(worker)
+{
+    d = new Private();
 }
 
 EncoderVorbis::~EncoderVorbis()
@@ -161,11 +163,11 @@ long EncoderVorbis::flush_vorbis()
                 char *oggbody = reinterpret_cast<char *>(d->og.body);
 
                 if (d->og.header_len) {
-                    ioslave->data(QByteArray::fromRawData(oggheader, d->og.header_len));
+                    ioWorker->data(QByteArray::fromRawData(oggheader, d->og.header_len));
                 }
 
                 if (d->og.body_len) {
-                    ioslave->data(QByteArray::fromRawData(oggbody, d->og.body_len));
+                    ioWorker->data(QByteArray::fromRawData(oggbody, d->og.body_len));
                 }
                 processed += d->og.header_len + d->og.body_len;
             }
@@ -228,11 +230,11 @@ long EncoderVorbis::readInit(long /*size*/)
         char *oggbody = reinterpret_cast<char *>(d->og.body);
 
         if (d->og.header_len) {
-            ioslave->data(QByteArray::fromRawData(oggheader, d->og.header_len));
+            ioWorker->data(QByteArray::fromRawData(oggheader, d->og.header_len));
         }
 
         if (d->og.body_len) {
-            ioslave->data(QByteArray::fromRawData(oggbody, d->og.body_len));
+            ioWorker->data(QByteArray::fromRawData(oggbody, d->og.body_len));
         }
     }
     return 0;

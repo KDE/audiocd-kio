@@ -39,7 +39,10 @@
 class EncoderCda : public AudioCDEncoder {
 
 public:
-  explicit EncoderCda(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {}
+    explicit EncoderCda(KIO::WorkerBase *worker)
+        : AudioCDEncoder(worker)
+    {
+    }
   ~EncoderCda() override
   {
   }

@@ -36,8 +36,8 @@
 </articleinfo>
 
 <sect1 id="audiocd-page">
-<title>Audiocd IO Slave Configuration</title>
-<para>The module <guilabel>Audiocd IO Slave Configuration</guilabel> page is divided in the <guilabel>General</guilabel> tab, the <guilabel>Names</guilabel> tab, and the encoder parameter tabs.</para>
+<title>Audiocd KIO Worker Configuration</title>
+<para>The module <guilabel>Audiocd KIO Worker Configuration</guilabel> page is divided in the <guilabel>General</guilabel> tab, the <guilabel>Names</guilabel> tab, and the encoder parameter tabs.</para>
 
 <sect2 id="general-tab">
 <title>The General Tab</title>
@@ -103,7 +103,7 @@
 </screenshot>
 
 <note>
-<para>The FLAC encoder tab is only available if Audiocd IO slave was compiled with libFLAC.</para>
+<para>The FLAC encoder tab is only available if Audiocd KIO worker was compiled with libFLAC.</para>
 </note>
 
 <para>FLAC is a lossless compressed audio format free of any patents or license fees. It maintains perfect CD audio quality while reducing file size by 
@@ -140,7 +140,7 @@ about 50%. When using this codec the filesize is much larger than Opus, Ogg Vorb
 
 <para>MP3 (or MPEG-1 Audio Layer III) is a patented digital audio codec using a form of lossy data compression. In spite of its shortcomings, it is a common format for consumer audio storage, and is widely supported on portable music players.</para>
 
-<para>Audiocd IO slave uses the LAME encoder to produce <filename class="extension">mp3</filename> files. LAME is considered the best MP3 encoder, mostly thanks to the dedicated work of its developers and the open source licensing model that allowed the project to tap into engineering resources from all around the world.</para>
+<para>Audiocd KIO worker uses the LAME encoder to produce <filename class="extension">mp3</filename> files. LAME is considered the best MP3 encoder, mostly thanks to the dedicated work of its developers and the open source licensing model that allowed the project to tap into engineering resources from all around the world.</para>
 
 <variablelist>
 <varlistentry><term><guilabel>Encoding Method</guilabel></term>
@@ -233,7 +233,7 @@ this information automatically via the Internet. Look at the &systemsettings; CD
 </screenshot>
 
 <note>
-<para>The Ogg Vorbis encoder tab is only available if Audiocd IO slave was compiled with <ulink url="https://xiph.org/vorbis/">libvorbis</ulink>.</para>
+<para>The Ogg Vorbis encoder tab is only available if Audiocd KIO worker was compiled with <ulink url="https://xiph.org/vorbis/">libvorbis</ulink>.</para>
 </note>
 
 <para>Ogg Vorbis is an open and royalty-free audio codec for lossy audio compression. It produces smaller files than MP3 at equivalent or higher quality.</para>

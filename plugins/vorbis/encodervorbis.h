@@ -47,13 +47,13 @@ public:
 class EncoderVorbis : public AudioCDEncoder {
 
 public:
-  explicit EncoderVorbis(KIO::SlaveBase *slave);
-  ~EncoderVorbis() override;
+    explicit EncoderVorbis(KIO::WorkerBase *worker);
+    ~EncoderVorbis() override;
 
-  QString type() const override
-  {
-      return QLatin1String("Ogg Vorbis");
-  }
+    QString type() const override
+    {
+        return QLatin1String("Ogg Vorbis");
+    }
   bool init() override;
   void loadSettings() override;
   unsigned long size(long time_secs) const override;

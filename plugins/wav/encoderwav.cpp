@@ -27,10 +27,10 @@
 #include <QList>
 
 extern "C" {
-AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
+AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::WorkerBase *worker, QList<AudioCDEncoder *> &encoders)
 {
-    encoders.append(new EncoderWav(slave));
-    encoders.append(new EncoderCda(slave));
+    encoders.append(new EncoderWav(worker));
+    encoders.append(new EncoderCda(worker));
 }
 }
 
@@ -73,7 +73,7 @@ long EncoderWav::readInit(long byteCount)
 
     QByteArray output;
     output = QByteArray::fromRawData((char *)riffHeader, 44);
-    ioslave->data(output);
+    ioWorker->data(output);
     output.clear();
     return 44;
 }

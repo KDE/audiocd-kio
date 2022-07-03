@@ -38,7 +38,10 @@
 class EncoderWav : public EncoderCda {
 
 public:
-  explicit EncoderWav(KIO::SlaveBase *slave) : EncoderCda(slave) {}
+    explicit EncoderWav(KIO::WorkerBase *worker)
+        : EncoderCda(worker)
+    {
+    }
   ~EncoderWav() override
   {
   }

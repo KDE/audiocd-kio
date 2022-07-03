@@ -22,7 +22,7 @@
 
 #include "audiocdplugins_export.h"
 
-#include <KIO/SlaveBase>
+#include <KIO/WorkerBase>
 #include <QList>
 #include <QLoggingCategory>
 #include <sys/types.h>
@@ -39,11 +39,11 @@ class AUDIOCDPLUGINS_EXPORT AudioCDEncoder {
 public:
     /**
      * Constructor.
-     * @param slave parent that this classes can use to call data() with
+     * @param worker parent that this classes can use to call data() with
      * when finished encoding bits.
      */
-    explicit AudioCDEncoder(KIO::SlaveBase *slave)
-        : ioslave(slave)
+    explicit AudioCDEncoder(KIO::WorkerBase *worker)
+        : ioWorker(worker)
     {
     }
 
@@ -143,18 +143,18 @@ public:
    * Uses QLibraryInfo to find where libraries could be, opens all of the ones
    * that we might own audiocd_encoder_* and then uses the symbol
    * create_audiocd_encoders to obtain the encoders from that library.
-   * @param slave ioslave needed if the plugin is going to be used to encode
+   * @param worker Worker needed if the plugin is going to be used to encode
    * something.
    * @param encoders container for new encoders.
    */
-  static void findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders);
+  static void findAllPlugins(KIO::WorkerBase *worker, QList<AudioCDEncoder *> &encoders);
 
   protected:
-  /**
-   * Pointer to the ioslave that is running this encoder.
-   * Used (only?) for the data() function to pass back encoded data.
-   */
-  KIO::SlaveBase *ioslave;
+      /**
+       * Pointer to the ioWorker that is running this encoder.
+       * Used (only?) for the data() function to pass back encoded data.
+       */
+      KIO::WorkerBase *ioWorker;
 };
 
 #endif // AUDIOCD_ENCODER_H

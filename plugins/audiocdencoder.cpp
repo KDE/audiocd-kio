@@ -26,7 +26,7 @@
 #include <QLibraryInfo>
 #include <QRegularExpression>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.slaves.audiocd")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.workers.audiocd")
 
 /**
  * Attempt to load a plugin and see if it has the symbol
@@ -49,7 +49,7 @@ static QFunctionPointer loadPlugin(const QString &libFileName)
  * and I do know that this does work. :)  Feel free to improve the loading
  * system, there isn't much code anyway.
  */
-void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
+void AudioCDEncoder::findAllPlugins(KIO::WorkerBase *worker, QList<AudioCDEncoder *> &encoders)
 {
     QString foundEncoders;
 
@@ -76,9 +76,9 @@ void AudioCDEncoder::findAllPlugins(KIO::SlaveBase *slave, QList<AudioCDEncoder 
 
                 QFunctionPointer function = loadPlugin(fi.absoluteFilePath());
                 if (function) {
-                    void (*functionPointer)(KIO::SlaveBase *, QList<AudioCDEncoder *> &) =
-                        (void (*)(KIO::SlaveBase * slave, QList<AudioCDEncoder *> & encoders)) function;
-                    functionPointer(slave, encoders);
+                    void (*functionPointer)(KIO::WorkerBase *, QList<AudioCDEncoder *> &) =
+                        (void (*)(KIO::WorkerBase * worker, QList<AudioCDEncoder *> & encoders)) function;
+                    functionPointer(worker, encoders);
                 }
             }
         }

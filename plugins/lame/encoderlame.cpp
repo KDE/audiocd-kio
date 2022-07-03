@@ -29,12 +29,12 @@
 #include <QStringList>
 #include <QTemporaryFile>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.slaves.audiocd")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.workers.audiocd")
 
 extern "C" {
-AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
+AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::WorkerBase *worker, QList<AudioCDEncoder *> &encoders)
 {
-    encoders.append(new EncoderLame(slave));
+    encoders.append(new EncoderLame(worker));
 }
 }
 
@@ -53,9 +53,9 @@ public:
     QTemporaryFile *tempFile;
 };
 
-EncoderLame::EncoderLame(KIO::SlaveBase *slave)
+EncoderLame::EncoderLame(KIO::WorkerBase *worker)
     : QObject()
-    , AudioCDEncoder(slave)
+    , AudioCDEncoder(worker)
 {
     d = new Private();
     d->waitingForWrite = false;
@@ -329,7 +329,7 @@ long EncoderLame::readCleanup()
         while (!file.atEnd()) {
             uint read = file.read(data, 1024);
             QByteArray output(data, read);
-            ioslave->data(output);
+            ioWorker->data(output);
         }
         file.close();
     }

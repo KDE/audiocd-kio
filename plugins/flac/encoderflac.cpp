@@ -34,12 +34,12 @@
 #include <QDateTime>
 #include <QPair>
 
-Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.slaves.audiocd")
+Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.workers.audiocd")
 
 extern "C" {
-AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::SlaveBase *slave, QList<AudioCDEncoder *> &encoders)
+AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::WorkerBase *worker, QList<AudioCDEncoder *> &encoders)
 {
-    encoders.append(new EncoderFLAC(slave));
+    encoders.append(new EncoderFLAC(worker));
 }
 }
 
@@ -48,7 +48,7 @@ class EncoderFLAC::Private {
 public:
     FLAC__StreamEncoder *encoder;
     FLAC__StreamMetadata **metadata;
-    KIO::SlaveBase *ioslave;
+    KIO::WorkerBase *ioWorker;
     unsigned long data;
 #if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
     unsigned compression_level;
@@ -78,7 +78,7 @@ static FLAC__StreamEncoderWriteStatus WriteCallback(const FLAC__StreamEncoder *e
 
     if (bytes) {
         output = QByteArray::fromRawData((const char *)buffer, bytes);
-        d->ioslave->data(output);
+        d->ioWorker->data(output);
         output.clear();
     }
 
@@ -99,9 +99,11 @@ FLAC__SeekableStreamEncoder *encoder,  FLAC__uint64 absolute_byte_offset, void
 *client_data)
 {} ; */
 
-EncoderFLAC::EncoderFLAC(KIO::SlaveBase *slave) : AudioCDEncoder(slave) {
+EncoderFLAC::EncoderFLAC(KIO::WorkerBase *worker)
+    : AudioCDEncoder(worker)
+{
     d = new Private();
-    d->ioslave = slave;
+    d->ioWorker = worker;
     d->encoder = nullptr;
 #if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
     d->compression_level = 5;

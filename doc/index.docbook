@@ -25,13 +25,13 @@ and, when copied from the folder, are digitally extracted from the
 <acronym>CD</acronym>. This ensures a perfect copy of the audio
 data.</para>
 
-<para>To see how this slave works, insert an audio <acronym>CD</acronym>
+<para>To see how this KIO worker works, insert an audio <acronym>CD</acronym>
 in your &CD-ROM; drive and type <userinput>audiocd:/</userinput> into
 &konqueror;. Within a few seconds you should see a list of tracks and
 some folders.</para>
 
 <para>Audio <acronym>CD</acronym>s don't really have folders, but
-the audiocd slave provides them as a convenience. If you look inside
+the audiocd KIO worker provides them as a convenience. If you look inside
 these folders you will see that they all contain the same number of
 tracks. If you are connected to the Internet, some folders will have
 the actual track titles shown as the filenames.</para>
@@ -48,7 +48,7 @@ saved to a file. Note that Ogg Vorbis is a compressed format, so the
 file in your home folder will appear a great deal smaller than it
 would have been if you had copied the raw data.</para>
 
-<para>The mechanism behind this is quite simple. When the audiocd slave
+<para>The mechanism behind this is quite simple. When the audiocd KIO worker
 is asked to retrieve a track from the <filename class="directory">Ogg
 Vorbis</filename> folder, it starts extracting the digital audio data
 from the <acronym>CD</acronym>. As it sends the data over to the file in
@@ -78,7 +78,7 @@ below.</para>
 <listitem>
 <para>Set the path to the audio <acronym>CD</acronym> device, &eg;
 <userinput>audiocd:/<option>?device</option>=<parameter>/dev/sdc</parameter></userinput>.
-Normally, the slave will try to find a <acronym>CD</acronym> drive with
+Normally, the KIO worker will try to find a <acronym>CD</acronym> drive with
 an audio <acronym>CD</acronym> inserted, but if it fails or you have
 more than one <acronym>CD</acronym> drive, you may want to try this
 option. Note that the configuration dialog allows you to set a default

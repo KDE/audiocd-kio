@@ -59,7 +59,6 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
 #include <KLocalizedString>
 #include <KMacroExpander>
 #include <QRegularExpression>
-#include <kio_version.h>
 
 // CDDB
 #include <KCDDB/Client>
@@ -69,7 +68,7 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
 class KIOPluginForMetaData : public QObject
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.kde.kio.slave.audiocd" FILE "audiocd.json")
+    Q_PLUGIN_METADATA(IID "org.kde.kio.worker.audiocd" FILE "audiocd.json")
 };
 
 using namespace KIO;
@@ -93,8 +92,8 @@ extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
 
     qCDebug(AUDIOCD_KIO_LOG) << "Starting " << getpid();
 
-    AudioCDProtocol slave(argv[1], argv[2], argv[3]);
-    slave.dispatchLoop();
+    AudioCDProtocol worker(argv[1], argv[2], argv[3]);
+    worker.dispatchLoop();
 
     qCDebug(AUDIOCD_KIO_LOG) << "Done";
 
@@ -104,7 +103,7 @@ extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
 enum Which_dir {
     Unknown = 0, // Error
     Info, // CDDB info
-    Base, // The ioslave base directory showing all drives
+    Base, // The KIO worker base directory showing all drives
     Root, // The root directory, shows all these :)
     FullCD, // Show a single file containing all of the data
     EncoderDir, // The root directory created by an encoder
@@ -193,7 +192,7 @@ public:
 int paranoia_read_limited_error;
 
 AudioCDProtocol::AudioCDProtocol(const QByteArray &protocol, const QByteArray &pool, const QByteArray &app)
-    : SlaveBase(protocol, pool, app)
+    : WorkerBase(protocol, pool, app)
 {
     d = new Private;
     // Add encoders
@@ -266,7 +265,7 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
     }
 #else
 #ifdef __GNUC__
-#warning audiocd ioslave is not going to work for you
+#warning audiocd KIO worker is not going to work for you
 #endif
 #endif
 }
@@ -274,23 +273,23 @@ static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
 // Initiate a request to access the CD drive.  If there is no valid drive
 // specified or there is a problem, then error() must be (or have been)
 // called before returning a null pointer.
-struct cdrom_drive *AudioCDProtocol::initRequest(const QUrl &url)
+KIO::WorkerResult AudioCDProtocol::initRequest(const QUrl &url, struct cdrom_drive **drive)
 {
     // Load our Settings.
     loadSettings();
     // Then URL parameters can overrule our settings.
     parseURLArgs(url);
 
-    struct cdrom_drive *drive = getDrive();
-    if (drive == nullptr) {
-        return nullptr;
+    const KIO::WorkerResult result = getDrive(drive);
+    if (!result.success()) {
+        return result;
     }
 
-    if (d->tocsAreDifferent(drive)) {
+    if (d->tocsAreDifferent(*drive)) {
         // Update our knowledge of the disc
         KCompactDisc cd(KCompactDisc::Asynchronous);
-        setDeviceToCd(&cd, drive);
-        d->setToc(drive);
+        setDeviceToCd(&cd, *drive);
+        d->setToc(*drive);
         d->tracks = cd.tracks();
         for (uint i = 0; i < cd.tracks(); i++)
             d->trackIsAudio[i] = cd.isAudio(i + 1);
@@ -426,7 +425,7 @@ struct cdrom_drive *AudioCDProtocol::initRequest(const QUrl &url)
 
     qCDebug(AUDIOCD_KIO_LOG) << "path=" << path << " file=" << d->fname << " req_track=" << d->req_track << " which_dir=" << d->which_dir
                              << " full CD?=" << d->req_allTracks;
-    return drive;
+    return KIO::WorkerResult::pass();
 }
 
 bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive *drive, long &firstSector, long &lastSector) const
@@ -458,14 +457,13 @@ static uint findInformationFileNumber(const QString &filename, uint max) {
     return max + 1;
 }
 
-// See whether this is the root of the ioslave (listing of all
+// See whether this is the root of the io worker (listing of all
 // available CD drives) or the root of a drive (listing of encoder
 // subdirectories and track WAV files).
 //
 // This needs to be deduced from the URL without calling initRequest()
-// or getDrive(), either of which may call error().  It is not an
-// error if there is no drive to be accessed and none needs to be, but
-// subsequently calling finished() will assert.
+// or getDrive(), either of which may return KIO::WorkerResult::fail().  It is not an
+// error if there is no drive to be accessed and none needs to be.
 //
 // So parse the URL only.  Either Base, Root or Unknown (meaning "anywhere
 // else") will be returned.
@@ -473,7 +471,7 @@ static Which_dir whichFromUrl(const QUrl &url)
 {
     QUrlQuery query(url);
     if (!query.hasQueryItem(QStringLiteral("device"))) { // see if "device" query present
-        return Base; // if not, must be slave base
+        return Base; // if not, must be KIO worker base
     }
 
     if (url.path() == QLatin1String("/")) { // see if the device root
@@ -486,16 +484,15 @@ static Which_dir whichFromUrl(const QUrl &url)
 // Check that the URL does not have a host specified, and return an error
 // if it does.  Moved here because not all operations need to or should
 // call initRequest().
-bool AudioCDProtocol::checkNoHost(const QUrl &url)
+KIO::WorkerResult AudioCDProtocol::checkNoHost(const QUrl &url)
 {
     if (!url.host().isEmpty()) {
-        error(KIO::ERR_UNSUPPORTED_ACTION,
-              i18n("You cannot specify a host with this protocol. "
-                   "Please use the audiocd:/ format instead."));
-        return false;
+        return KIO::WorkerResult::fail(KIO::ERR_UNSUPPORTED_ACTION,
+                                       i18n("You cannot specify a host with this protocol. "
+                                            "Please use the audiocd:/ format instead."));
     }
 
-    return true;
+    return KIO::WorkerResult::pass();
 }
 
 // Escape any '/'es in what should be a file name.
@@ -507,16 +504,17 @@ static QString escapePath(const QString &in)
     return result;
 }
 
-void AudioCDProtocol::get(const QUrl &url)
+KIO::WorkerResult AudioCDProtocol::get(const QUrl &url)
 {
-    if (!checkNoHost(url)) {
-        return;
+    const KIO::WorkerResult noHostResult = checkNoHost(url);
+    if (!noHostResult.success()) {
+        return noHostResult;
     }
 
-    struct cdrom_drive *drive = initRequest(url);
-    if (drive == nullptr) {
-        // Do not call error(), getDrive() will already have done that.
-        return;
+    struct cdrom_drive *drive;
+    const KIO::WorkerResult initResult = initRequest(url, &drive);
+    if (!initResult.success()) {
+        return initResult;
     }
 
     if (d->fname.contains(i18n("CDDB Information"))) {
@@ -531,7 +529,6 @@ void AudioCDProtocol::get(const QUrl &url)
                 data((*it).toString().toUtf8());
                 // send an empty QByteArray to signal end of data.
                 data(QByteArray());
-                finished();
                 found = true;
                 break;
             }
@@ -543,27 +540,24 @@ void AudioCDProtocol::get(const QUrl &url)
             // data(QCString( d->fname.latin1() ));
             // send an empty QByteArray to signal end of data.
             data(QByteArray());
-            finished();
             found = true;
         }
-        if (!found)
-            error(KIO::ERR_DOES_NOT_EXIST, url.path());
         cdda_close(drive);
-        return;
+        if (!found)
+            return KIO::WorkerResult::fail(KIO::ERR_DOES_NOT_EXIST, url.path());
+        return KIO::WorkerResult::pass();
     }
 
     long firstSector, lastSector;
     if (!getSectorsForRequest(drive, firstSector, lastSector)) {
-        error(KIO::ERR_DOES_NOT_EXIST, url.path());
         cdda_close(drive);
-        return;
+        return KIO::WorkerResult::fail(KIO::ERR_DOES_NOT_EXIST, url.path());
     }
 
     AudioCDEncoder *encoder = determineEncoder(d->fname);
     if (!encoder) {
-        error(KIO::ERR_DOES_NOT_EXIST, url.path());
         cdda_close(drive);
-        return;
+        return KIO::WorkerResult::fail(KIO::ERR_DOES_NOT_EXIST, url.path());
     }
 
     KCDDB::CDInfo info;
@@ -589,14 +583,14 @@ void AudioCDProtocol::get(const QUrl &url)
     mimeType(QLatin1String(encoder->mimeType()));
 
     // Read data (track/disk) from the cd
-    paranoiaRead(drive, firstSector, lastSector, encoder, url.fileName(), size);
+    const KIO::WorkerResult readResult = paranoiaRead(drive, firstSector, lastSector, encoder, url.fileName(), size);
 
     // send an empty QByteArray to signal end of data.
     data(QByteArray());
 
     cdda_close(drive);
 
-    finished();
+    return readResult;
 }
 
 static void app_dir(UDSEntry &e, const QString &n, size_t s)
@@ -631,10 +625,11 @@ static void app_file(UDSEntry &e, const QString &n, size_t s, const QString &mim
         e.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
 }
 
-void AudioCDProtocol::stat(const QUrl &url)
+KIO::WorkerResult AudioCDProtocol::stat(const QUrl &url)
 {
-    if (!checkNoHost(url)) {
-        return;
+    const KIO::WorkerResult result = checkNoHost(url);
+    if (!result.success()) {
+        return result;
     }
 
     if (whichFromUrl(url) == Base) {
@@ -646,14 +641,13 @@ void AudioCDProtocol::stat(const QUrl &url)
         const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
         app_dir(entry, escapePath(QStringLiteral("/")), deviceNames.count());
         statEntry(entry);
-        finished();
-        return;
+        return KIO::WorkerResult::pass();
     }
 
-    struct cdrom_drive *drive = initRequest(url);
-    if (drive == nullptr) {
-        // Do not call error(), getDrive() will already have done that.
-        return;
+    struct cdrom_drive *drive;
+    const KIO::WorkerResult initResult = initRequest(url, &drive);
+    if (!initResult.success()) {
+        return initResult;
     }
 
     if (d->which_dir == Info) {
@@ -663,9 +657,9 @@ void AudioCDProtocol::stat(const QUrl &url)
             UDSEntry entry;
             app_dir(entry, escapePath(url.fileName()), d->cddbList.count());
             statEntry(entry);
-            finished();
-            return;
-        } else if (d->fname.contains(i18n("CDDB Information"))) {
+            return KIO::WorkerResult::pass();
+        }
+        if (d->fname.contains(i18n("CDDB Information"))) {
             // choice is 1-indexed so we need <= and -1 when accessing d->cddbList
             const uint choice = findInformationFileNumber(d->fname, d->cddbList.count());
             if (choice <= (uint)d->cddbList.count()) {
@@ -673,8 +667,7 @@ void AudioCDProtocol::stat(const QUrl &url)
                 UDSEntry entry;
                 app_file(entry, escapePath(url.fileName()), d->cddbList.at(choice - 1).toString().toLatin1().size(), QStringLiteral("text/plain"));
                 statEntry(entry);
-                finished();
-                return;
+                return KIO::WorkerResult::pass();
             }
         }
     }
@@ -688,9 +681,8 @@ void AudioCDProtocol::stat(const QUrl &url)
     if (!d->req_allTracks) { // we only want to rip one track.
         // does this track exist?
         if (isFile && (trackNumber < 1 || trackNumber > d->tracks)) {
-            error(KIO::ERR_DOES_NOT_EXIST, url.path());
             cdda_close(drive);
-            return;
+            return KIO::WorkerResult::fail(KIO::ERR_DOES_NOT_EXIST, url.path());
         }
     }
 
@@ -706,13 +698,14 @@ void AudioCDProtocol::stat(const QUrl &url)
 
     statEntry(entry);
     cdda_close(drive);
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
-void AudioCDProtocol::listDir(const QUrl &url)
+KIO::WorkerResult AudioCDProtocol::listDir(const QUrl &url)
 {
-    if (!checkNoHost(url)) {
-        return;
+    const KIO::WorkerResult result = checkNoHost(url);
+    if (!result.success()) {
+        return result;
     }
 
     UDSEntry entry;
@@ -736,28 +729,23 @@ void AudioCDProtocol::listDir(const QUrl &url)
             listEntry(entry);
         }
         totalSize(entry.count());
-        finished();
-        return;
+        return KIO::WorkerResult::pass();
     }
 
-    struct cdrom_drive *drive = initRequest(url);
-
-    // Some error checking before proceeding
-    if (drive == nullptr) {
-        // Do not call error(), getDrive() will already have done that.
-        return;
+    struct cdrom_drive *drive;
+    const KIO::WorkerResult initResult = initRequest(url, &drive);
+    if (!initResult.success()) {
+        return initResult;
     }
 
     if (d->which_dir == Unknown) {
-        error(KIO::ERR_DOES_NOT_EXIST, url.path());
         cdda_close(drive);
-        return;
+        return KIO::WorkerResult::fail(KIO::ERR_DOES_NOT_EXIST, url.path());
     }
 
     if (!d->fname.isEmpty()) {
-        error(KIO::ERR_IS_FILE, url.path());
         cdda_close(drive);
-        return;
+        return KIO::WorkerResult::fail(KIO::ERR_IS_FILE, url.path());
     }
 
     // Generate templated names every time
@@ -835,9 +823,8 @@ void AudioCDProtocol::listDir(const QUrl &url)
                 case Info:
                 case Unknown:
                 default:
-                    error(KIO::ERR_INTERNAL, url.path());
                     cdda_close(drive);
-                    return;
+                    return KIO::WorkerResult::fail(KIO::ERR_INTERNAL, url.path());
                 }
             }
         } else {
@@ -848,7 +835,7 @@ void AudioCDProtocol::listDir(const QUrl &url)
 
     totalSize(entry.count());
     cdda_close(drive);
-    finished();
+    return KIO::WorkerResult::pass();
 }
 
 void AudioCDProtocol::addEntry(const QString &trackTitle, AudioCDEncoder *encoder, struct cdrom_drive *drive, int trackNo)
@@ -880,82 +867,66 @@ long AudioCDProtocol::fileSize(long firstSector, long lastSector, AudioCDEncoder
     return encoder->size(length_seconds);
 }
 
-// If a null pointer (meaning no or an invalid drive) is to be returned,
-// this must call error() first and the caller must not subsequently
-// call error() or finished().
-struct cdrom_drive *AudioCDProtocol::getDrive()
+KIO::WorkerResult AudioCDProtocol::getDrive(struct cdrom_drive **drive)
 {
     const QByteArray device(QFile::encodeName(d->device));
     if (device.isEmpty()) {
-        error(KIO::ERR_MALFORMED_URL, i18nc("The URL does not include a device name", "Missing device specification"));
-        return nullptr;
+        *drive = nullptr;
+        return KIO::WorkerResult::fail(KIO::ERR_MALFORMED_URL, i18nc("The URL does not include a device name", "Missing device specification"));
     }
 
-    struct cdrom_drive *drive = cdda_identify(device.data(), CDDA_MESSAGE_FORGETIT, nullptr);
-    if (drive == nullptr) {
+    *drive = cdda_identify(device.data(), CDDA_MESSAGE_FORGETIT, nullptr);
+    if (*drive == nullptr) {
         qCDebug(AUDIOCD_KIO_LOG) << "Can't find an audio CD on: \"" << d->device << "\"";
 
         const QFileInfo fi(d->device);
         if (!fi.isReadable())
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
-            error(KIO::ERR_WORKER_DEFINED,
-#else
-            error(KIO::ERR_SLAVE_DEFINED,
-#endif
-                  i18n("Device does not have read permissions for this account.  "
-                       "Check the read permissions on the device."));
-        else if (!fi.isWritable())
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
-            error(KIO::ERR_WORKER_DEFINED,
-#else
-            error(KIO::ERR_SLAVE_DEFINED,
-#endif
-                  i18n("Device does not have write permissions for this account.  "
-                       "Check the write permissions on the device."));
-        else if (!fi.exists())
-            error(KIO::ERR_DOES_NOT_EXIST, d->device);
-        else
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
-            error(KIO::ERR_WORKER_DEFINED,
-#else
-            error(KIO::ERR_SLAVE_DEFINED,
-#endif
-                  i18n("Unknown error.  If you have a cd in the drive try running "
-                       "cdparanoia -vsQ as yourself (not root). Do you see a track "
-                       "list? If not, make sure you have permission to access the CD "
-                       "device. If you are using SCSI emulation (possible if you "
-                       "have an IDE CD writer) then make sure you check that you "
-                       "have read and write permissions on the generic SCSI device, "
-                       "which is probably /dev/sg0, /dev/sg1, etc.. If it still does "
-                       "not work, try typing audiocd:/?device=/dev/sg0 (or similar) "
-                       "to tell kio_audiocd which device your CD-ROM is."));
-        return nullptr;
+            return KIO::WorkerResult::fail(KIO::ERR_WORKER_DEFINED,
+                                           i18n("Device does not have read permissions for this account.  "
+                                                "Check the read permissions on the device."));
+        if (!fi.isWritable())
+            return KIO::WorkerResult::fail(KIO::ERR_WORKER_DEFINED,
+                                           i18n("Device does not have write permissions for this account.  "
+                                                "Check the write permissions on the device."));
+        if (!fi.exists())
+            return KIO::WorkerResult::fail(KIO::ERR_DOES_NOT_EXIST, d->device);
+
+        return KIO::WorkerResult::fail(KIO::ERR_WORKER_DEFINED,
+                                       i18n("Unknown error.  If you have a cd in the drive try running "
+                                            "cdparanoia -vsQ as yourself (not root). Do you see a track "
+                                            "list? If not, make sure you have permission to access the CD "
+                                            "device. If you are using SCSI emulation (possible if you "
+                                            "have an IDE CD writer) then make sure you check that you "
+                                            "have read and write permissions on the generic SCSI device, "
+                                            "which is probably /dev/sg0, /dev/sg1, etc.. If it still does "
+                                            "not work, try typing audiocd:/?device=/dev/sg0 (or similar) "
+                                            "to tell kio_audiocd which device your CD-ROM is."));
     }
 
-    if (cdda_open(drive) != 0) {
+    if (cdda_open(*drive) != 0) {
         qCDebug(AUDIOCD_KIO_LOG) << "cdda_open failed";
-        error(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
-        cdda_close(drive);
-        return nullptr;
+        cdda_close(*drive);
+        *drive = nullptr;
+        return KIO::WorkerResult::fail(KIO::ERR_CANNOT_OPEN_FOR_READING, d->device);
     }
 
-    return drive;
+    return KIO::WorkerResult::pass();
 }
 
-void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
-                                   long firstSector,
-                                   long lastSector,
-                                   AudioCDEncoder *encoder,
-                                   const QString &fileName,
-                                   unsigned long size)
+KIO::WorkerResult AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
+                                                long firstSector,
+                                                long lastSector,
+                                                AudioCDEncoder *encoder,
+                                                const QString &fileName,
+                                                unsigned long size)
 {
     if (!encoder || !drive)
-        return;
+        return KIO::WorkerResult::fail();
 
     cdrom_paranoia *paranoia = paranoia_init(drive);
     if (nullptr == paranoia) {
         qCDebug(AUDIOCD_KIO_LOG) << "paranoia_init failed";
-        return;
+        return KIO::WorkerResult::fail();
     }
 
     int paranoiaLevel = PARANOIA_MODE_FULL ^ PARANOIA_MODE_NEVERSKIP;
@@ -987,6 +958,7 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
     // TODO test for errors (processed<0)?
     processedSize(processed);
     bool ok = true;
+    QString errorString;
 
     unsigned long lastSize = size;
     unsigned long diff = 0;
@@ -1005,12 +977,7 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
         if (nullptr == buf) {
             qCDebug(AUDIOCD_KIO_LOG) << "Unrecoverable error in paranoia_read";
             ok = false;
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
-            error(KIO::ERR_WORKER_DEFINED,
-#else
-            error(KIO::ERR_SLAVE_DEFINED,
-#endif
-                  i18n("Error reading audio data for %1 from the CD", fileName));
+            errorString = i18n("Error reading audio data for %1 from the CD", fileName);
             break;
         }
 
@@ -1020,16 +987,10 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
         if (encoderProcessed == -1) {
             qCDebug(AUDIOCD_KIO_LOG) << "Encoder processing error, stopping.";
             ok = false;
-            QString errMsg = i18n("Could not read %1: encoding failed", fileName);
+            errorString = i18n("Could not read %1: encoding failed", fileName);
             const QString details = encoder->lastErrorMessage();
             if (!details.isEmpty())
-                errMsg += QLatin1Char('\n') + details;
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
-            error(KIO::ERR_WORKER_DEFINED,
-#else
-            error(KIO::ERR_SLAVE_DEFINED,
-#endif
-                  errMsg);
+                errorString += QLatin1Char('\n') + details;
             break;
         }
         processed += encoderProcessed;
@@ -1104,15 +1065,16 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
             totalSize(processed);
         processedSize(processed);
     } else if (ok) // i.e. no error message already emitted
-#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
-        error(KIO::ERR_WORKER_DEFINED,
-#else
-        error(KIO::ERR_SLAVE_DEFINED,
-#endif
-              i18n("Could not read %1: encoding failed", fileName));
+        errorString = i18n("Could not read %1: encoding failed", fileName);
 
     paranoia_free(paranoia);
     paranoia = nullptr;
+
+    if (!errorString.isEmpty()) {
+        return KIO::WorkerResult::fail(ERR_WORKER_DEFINED, errorString);
+    }
+
+    return KIO::WorkerResult::pass();
 }
 
 /**

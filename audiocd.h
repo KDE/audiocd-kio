@@ -26,7 +26,7 @@
 #ifndef AUDIO_CD_H
 #define AUDIO_CD_H
 
-#include <KIO/SlaveBase>
+#include <KIO/WorkerBase>
 
 class AudioCDEncoder;
 
@@ -35,19 +35,19 @@ struct cdrom_drive;
 namespace AudioCD {
 
 /**
- * The core class of the audiocd:// ioslave.
- * It has the ioslave login and the ripping logic. The actual encoding
+ * The core class of the audiocd:// KIO worker.
+ * It has the KIO worker login and the ripping logic. The actual encoding
  * is done by encoders that are separate objects.
  */
-class AudioCDProtocol : public KIO::SlaveBase
+class AudioCDProtocol : public KIO::WorkerBase
 {
 public:
     AudioCDProtocol(const QByteArray &protocol, const QByteArray &pool, const QByteArray &app);
     ~AudioCDProtocol() override;
 
-    void get(const QUrl &) override;
-    void stat(const QUrl &) override;
-    void listDir(const QUrl &) override;
+    KIO::WorkerResult get(const QUrl &) override;
+    KIO::WorkerResult stat(const QUrl &) override;
+    KIO::WorkerResult listDir(const QUrl &) override;
 
 protected:
     AudioCDEncoder *encoderFromExtension(const QString &extension);
@@ -73,12 +73,13 @@ protected:
     long fileSize(long firstSector, long lastSector, AudioCDEncoder *encoder);
 
     /**
-     * The heart of this ioslave.
+     * The heart of this KIO worker.
      * Reads data off the cd and then passes it to an encoder to encode
      */
-    void paranoiaRead(struct cdrom_drive *drive, long firstSector, long lastSector, AudioCDEncoder *encoder, const QString &fileName, unsigned long size);
+    KIO::WorkerResult
+    paranoiaRead(struct cdrom_drive *drive, long firstSector, long lastSector, AudioCDEncoder *encoder, const QString &fileName, unsigned long size);
 
-    struct cdrom_drive *initRequest(const QUrl &);
+    KIO::WorkerResult initRequest(const QUrl &url, struct cdrom_drive **drive);
 
     /**
      * Add an entry in the KIO directory, using the title you give,
@@ -100,10 +101,10 @@ protected:
 
 private:
     void generateTemplateTitles();
-    bool checkNoHost(const QUrl &url);
+    KIO::WorkerResult checkNoHost(const QUrl &url);
 
     QList<AudioCDEncoder *> encoders;
-    cdrom_drive *getDrive();
+    KIO::WorkerResult getDrive(struct cdrom_drive **drive);
 
     // These are the only guaranteed encoders to be built, the rest
     // are dynamic depending on other libraries on the system

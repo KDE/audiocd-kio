@@ -43,13 +43,13 @@ public:
 class EncoderFLAC : public AudioCDEncoder {
 
 public:
-  explicit EncoderFLAC(KIO::SlaveBase *slave);
-  ~EncoderFLAC() override;
+    explicit EncoderFLAC(KIO::WorkerBase *worker);
+    ~EncoderFLAC() override;
 
-  QString type() const override
-  {
-      return QLatin1String("FLAC");
-  }
+    QString type() const override
+    {
+        return QLatin1String("FLAC");
+    }
   bool init() override;
   void loadSettings() override;
   unsigned long size(long time_secs) const override;

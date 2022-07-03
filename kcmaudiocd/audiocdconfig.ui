@@ -46,7 +46,7 @@
        <item row="0" column="0" colspan="3">
         <widget class="QCheckBox" name="ec_enable_check">
          <property name="whatsThis">
-          <string>If you uncheck this option, the slave will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
+          <string>If you uncheck this option, the KIO worker will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
          </property>
          <property name="text">
           <string>Use &amp;error correction when reading the CD</string>
