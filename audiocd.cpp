@@ -59,6 +59,7 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
 #include <KLocalizedString>
 #include <KMacroExpander>
 #include <QRegularExpression>
+#include <kio_version.h>
 
 // CDDB
 #include <KCDDB/Client>
@@ -896,17 +897,29 @@ struct cdrom_drive *AudioCDProtocol::getDrive()
 
         const QFileInfo fi(d->device);
         if (!fi.isReadable())
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
+            error(KIO::ERR_WORKER_DEFINED,
+#else
             error(KIO::ERR_SLAVE_DEFINED,
+#endif
                   i18n("Device does not have read permissions for this account.  "
                        "Check the read permissions on the device."));
         else if (!fi.isWritable())
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
+            error(KIO::ERR_WORKER_DEFINED,
+#else
             error(KIO::ERR_SLAVE_DEFINED,
+#endif
                   i18n("Device does not have write permissions for this account.  "
                        "Check the write permissions on the device."));
         else if (!fi.exists())
             error(KIO::ERR_DOES_NOT_EXIST, d->device);
         else
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
+            error(KIO::ERR_WORKER_DEFINED,
+#else
             error(KIO::ERR_SLAVE_DEFINED,
+#endif
                   i18n("Unknown error.  If you have a cd in the drive try running "
                        "cdparanoia -vsQ as yourself (not root). Do you see a track "
                        "list? If not, make sure you have permission to access the CD "
@@ -992,7 +1005,12 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
         if (nullptr == buf) {
             qCDebug(AUDIOCD_KIO_LOG) << "Unrecoverable error in paranoia_read";
             ok = false;
-            error(ERR_SLAVE_DEFINED, i18n("Error reading audio data for %1 from the CD", fileName));
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
+            error(KIO::ERR_WORKER_DEFINED,
+#else
+            error(KIO::ERR_SLAVE_DEFINED,
+#endif
+                  i18n("Error reading audio data for %1 from the CD", fileName));
             break;
         }
 
@@ -1006,7 +1024,12 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
             const QString details = encoder->lastErrorMessage();
             if (!details.isEmpty())
                 errMsg += QLatin1Char('\n') + details;
-            error(ERR_SLAVE_DEFINED, errMsg);
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
+            error(KIO::ERR_WORKER_DEFINED,
+#else
+            error(KIO::ERR_SLAVE_DEFINED,
+#endif
+                  errMsg);
             break;
         }
         processed += encoderProcessed;
@@ -1081,7 +1104,12 @@ void AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
             totalSize(processed);
         processedSize(processed);
     } else if (ok) // i.e. no error message already emitted
-        error(ERR_SLAVE_DEFINED, i18n("Could not read %1: encoding failed", fileName));
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 96, 0)
+        error(KIO::ERR_WORKER_DEFINED,
+#else
+        error(KIO::ERR_SLAVE_DEFINED,
+#endif
+              i18n("Could not read %1: encoding failed", fileName));
 
     paranoia_free(paranoia);
     paranoia = nullptr;
