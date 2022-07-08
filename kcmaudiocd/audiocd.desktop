@@ -70,6 +70,7 @@ Comment[ca]=Configuració del procés de treball d'E/S dels CD àudio
 Comment[ca@valencia]=Configuració del procés de treball d'E/S dels CD àudio
 Comment[nl]=Configuratie van audioCD KIO-programma
 Comment[pt]=Configuração do IO Slave de CDs-Áudio
+Comment[sl]=Konfiguracija audiocd IO worker
 Comment[tr]=Ses CD'si Girdi-Çıktı Çalışanı Yapılandırması
 Comment[uk]=Налаштування обробника введення-виведення «Audiocd»
 Comment[x-test]=xxAudiocd IO Worker Configurationxx
