@@ -68,6 +68,7 @@ Comment=Audiocd IO Worker Configuration
 Comment[az]=Audiocd IO işləyicisi tənzimləməsi
 Comment[ca]=Configuració del procés de treball d'E/S dels CD àudio
 Comment[ca@valencia]=Configuració del procés de treball d'E/S dels CD àudio
+Comment[fr]=Configuration du module de traitement « audiocd »
 Comment[nl]=Configuratie van audioCD KIO-programma
 Comment[pt]=Configuração do IO Slave de CDs-Áudio
 Comment[sl]=Konfiguracija audiocd IO worker
