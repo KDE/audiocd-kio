@@ -83,6 +83,7 @@ Comment[nn]=Oppsett av IU-arbeidar for lyd-CD
 Comment[pl]=Ustawienia Usługi WE/WY Audio CD
 Comment[pt]=Configuração do IO Slave de CDs-Áudio
 Comment[sl]=Konfiguracija audiocd IO worker
+Comment[sv]=Anpassa I/O-arbetare för ljud-cd
 Comment[tr]=Ses CD'si Girdi-Çıktı Çalışanı Yapılandırması
 Comment[uk]=Налаштування обробника введення-виведення «Audiocd»
 Comment[x-test]=xxAudiocd IO Worker Configurationxx
