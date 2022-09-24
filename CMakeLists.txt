@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(audiocd VERSION "5.0.0")
 
-set(QT_MIN_VERSION "5.15.0")
+set(QT_MIN_VERSION "5.15.2")
 set(KF_MIN_VERSION "5.96.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
@@ -81,7 +81,7 @@ configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
 #############################
 add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050F00
+    -DQT_DISABLE_DEPRECATED_BEFORE=0x050F02
     -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
     -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
