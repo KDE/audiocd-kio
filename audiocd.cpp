@@ -49,7 +49,6 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
 #include <QApplication>
 #include <QFile>
 #include <QFileInfo>
-#include <QGlobalStatic>
 #include <QHash>
 #include <QRegExp>
 #include <QUrlQuery>

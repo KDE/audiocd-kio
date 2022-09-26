@@ -27,7 +27,6 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
-#include <QStringList>
 #include <QTemporaryFile>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.workers.audiocd")

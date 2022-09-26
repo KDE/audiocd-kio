@@ -22,10 +22,8 @@
 #include "audiocdplugins_version.h"
 
 #include <QCheckBox>
-#include <QLabel>
 #include <QRegularExpression>
 #include <QSlider>
-#include <QTabWidget>
 #include <QVBoxLayout>
 
 #include <KAboutData>

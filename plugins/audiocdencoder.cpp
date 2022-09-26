@@ -23,7 +23,6 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QLibrary>
-#include <QLibraryInfo>
 #include <QRegularExpression>
 
 Q_LOGGING_CATEGORY(AUDIOCD_KIO_LOG, "kf.kio.workers.audiocd")
