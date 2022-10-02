@@ -1,0 +1,359 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Spanish "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Santiago</firstname
+><surname
+>Fernández Sancho</surname
+><affiliation
+><address
+><email
+>santi@kde-es.org</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Enrique</firstname
+><surname
+>Matías Sánchez</surname
+><affiliation
+><address
+><email
+>cronopios@gmail.com</email
+></address
+></affiliation
+><contrib
+>Mantenimiento de la traducción desde 2008</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Ayoze</firstname
+><surname
+>Hernández Díaz</surname
+><affiliation
+><address
+><email
+>ayoze12@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Le permite tratar <acronym
+>CD</acronym
+> de audio como un sistema de archivos «real», en el que las pistas se representan como archivos, y cuando se copian de la carpeta, se extraen digitalmente del <acronym
+>CD</acronym
+>. Así se asegura una copia perfecta de los datos de audio.</para>
+
+<para
+>Para ver como funciona este proceso KIO, inserte un <acronym
+>CD</acronym
+> de audio en su &CD-ROM; y teclee <userinput
+>audiocd:/</userinput
+> en &konqueror;. Al cabo de unos segundos verá una lista de pistas y algunas carpetas.</para>
+
+<para
+>Los <acronym
+>CD</acronym
+> de audio realmente no tienen carpetas, pero el proceso KIO de audiocd las proporciona para su comodidad. Si mira dentro de estas carpetas, verá que todas ellas contienen el mismo número de pistas. Si está conectado a Internet, en algunas carpetas los nombres de los archivos serán incluso los títulos de las pistas.</para>
+
+<para
+>La razón de la existencia de estas carpetas separadas es que usted pueda elegir el formato en el que desea escuchar (o copiar) las pistas del <acronym
+>CD</acronym
+>.</para>
+
+<para
+>Si arrastra una pista desde la carpeta <filename class="directory"
+>Ogg Vorbis</filename
+> y la suelta en otra ventana de &konqueror; abierta en su carpeta personal, debería ver un cuadro de progreso que muestra que la pista está siendo extraída desde el <acronym
+>CD</acronym
+> y guardada en un archivo. Tenga en cuenta que Ogg Vorbis es un formato comprimido, de modo que el archivo en su carpeta personal aparecerá bastante más pequeño de lo que sería si hubiera copiado los datos en bruto.</para>
+
+<para
+>El mecanismo tras esta operación es bastante simple. Cuando se solicita al proceso KIO de audiocd que obtenga una pista desde la carpeta <filename class="directory"
+>Ogg Vorbis</filename
+>, comienza a extraer los datos de audio digital de desde el <acronym
+>CD</acronym
+>. A medida que envía los datos a un archivo de su carpeta personal, los va codificando simultáneamente en formato Ogg Vorbis (para empezar, el <acronym
+>CD</acronym
+> de audio es un formato sin comprimir).</para>
+
+<para
+>También podría intentar arrastrar un archivo con extensión <literal role="extension"
+>.wav</literal
+> y soltarlo en el reproductor multimedia de &kde;, &juk;. En este caso, el procedimiento que tiene lugar entre bambalinas es similar, excepto que en lugar de codificar los datos en formato Ogg Vorbis, se guardan, tras una conversión muy sencilla de datos binarios en bruto (que es lo que representan los archivos <literal role="extension"
+>.cda</literal
+> de la carpeta superior), a formato «RIFF WAV», que es un formato no comprimido reconocido por la mayor parte de los reproductores multimedia.</para>
+
+<para
+>&juk; debería reproducir sin problemas los archivos <literal role="extension"
+>.wav</literal
+>, pero si observa algún problema, debería intentar utilizar la opción <option
+>paranoia_level</option
+>, que se explica más abajo.</para>
+
+<variablelist>
+<title
+>Opciones</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Establezca la ruta al dispositivo <acronym
+>CD</acronym
+> de audio, &eg; <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Normalmente, el proceso KIO tratará de encontrar una unidad de <acronym
+>CD</acronym
+> con un <acronym
+>CD</acronym
+> de audio en su interior, pero si fallara o dispone de más de una unidad de <acronym
+>CD</acronym
+>, intente esta opción. Observe que el diálogo de configuración le permite establecer un valor predeterminado para esta opción.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Establece la plantilla de los nombres de archivo, &eg;, <userinput
+>audiocd:/<option
+> ?fileNameTemplate</option
+>=<parameter
+>Track %{number}</parameter
+></userinput
+>. Tenga en cuenta que el diálogo de configuración le permitirá establecer un valor predeterminado para esta opción. Aparecerá un aviso si asigna como valor una cadena vacía.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Establece la plantilla del nombre de los álbumes, &eg;, <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Tenga en cuenta que el diálogo de configuración le permitirá establecer un valor predeterminado para esta opción.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Establece el nivel adecuado para los codificadores, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Tenga en cuenta que el diálogo de configuración le permitirá establecer un valor predeterminado para esta opción.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Establece la cantidad de detección y corrección de errores usada al extraer los datos.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Nivel 0</term>
+<listitem>
+<para
+>Sin detección o corrección. Solo útil si dispone de una unidad de <acronym
+>CD</acronym
+> perfecta (poco probable).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Nivel 1</term>
+<listitem>
+<para
+>Activar la comprobación y corrección de errores básica.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Nivel 2</term>
+<listitem>
+<para
+>Predeterminado. Indica que solo se aceptará una extracción perfecta.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>El nivel 2 tiene una desventaja. La extracción puede ser muy lenta, de modo que la reproducción digital en tiempo real puede no funcionar correctamente. Si usted dispone de una unidad de <acronym
+>CD</acronym
+> de buena calidad (más cara no significa necesariamente mejor calidad) probablemente no experimente una extracción muy lenta, pero un dispositivo malo puede tardar días (!) en extraer los datos de audio de un <acronym
+>CD</acronym
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Indica qué entrada de la base de datos de <acronym
+>CD</acronym
+> en Internet usar. Los <acronym
+>CD</acronym
+> de audio no tienen los nombres de las pistas, pero la base de datos de <acronym
+>CD</acronym
+> en Internet es un sistema inteligente que utiliza un identificador especial único generado a partir del número y duración de las pistas en cada <acronym
+>CD</acronym
+> para hacer una referencia cruzada con la lista de pistas. Las listas de las pistas son un esfuerzo de la comunidad de Internet y están disponibles para todos. Ocasionalmente puede haber múltiples entradas. Puede especificar cuál usar.</para>
+
+<para
+>Puede enviar sus propias listas de pistas usando &kscd;, el reproductor de <acronym
+>CD</acronym
+> de &kde;.</para>
+
+<para
+>Por omisión, audiocd intenta seleccionar la mejor.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Ejemplos</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Ofrece una lista de las pistas del <acronym
+>CD</acronym
+> de audio insertado en <filename class="devicefile"
+>/dev/scd0</filename
+>, que en &Linux; indica el primer dispositivo de &CD-ROM; <acronym
+>SCSI</acronym
+>. Si copia las pistas desde el <acronym
+>CD</acronym
+>, la extracción digital se realizará sin corrección o detección de errores. Se utilizará la entrada 0 de la base de datos <acronym
+>CDDB</acronym
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Preguntas más frecuentes</title>
+<qandaentry>
+<question>
+<para
+>Obtengo <errorname
+>El archivo o carpeta / no existe</errorname
+>. ¿Cómo arreglo esto? ¡Tengo un <acronym
+>CD</acronym
+> de audio dentro de mi unidad!</para>
+</question>
+
+<answer>
+<para
+>Intente ejecutar <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> desde su cuenta (no como <systemitem class="username"
+>root</systemitem
+>). ¿Ve una lista de pistas? Si no la ve, asegúrese de que tiene permiso para acceder al dispositivo de <acronym
+>CD</acronym
+>. Si está utilizando emulación <acronym
+>SCSI</acronym
+> (lo que es posible si dispone de una grabadora <acronym
+>IDE</acronym
+> de <acronym
+>CD</acronym
+>) asegúrese de que dispone de permisos de lectura y escritura en el dispositivo <acronym
+>SCSI</acronym
+> genérico, que probablemente sea <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, &etc;. Si esto no funciona, intente introducir <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (o similar) para indicar a kio_audiocd cuál es su dispositivo de &CD-ROM;.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

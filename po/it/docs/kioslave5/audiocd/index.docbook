@@ -1,0 +1,333 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Italian "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Luciano</firstname
+> <surname
+>Montanaro</surname
+> <affiliation
+><address
+><email
+>mikelima@cirulla.net</email
+></address
+></affiliation
+> <contrib
+>Traduzione del documento</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Permette di trattare i <acronym
+>CD</acronym
+> audio come un filesystem <quote
+>reale</quote
+>, dove le tracce sono rappresentate come file e copiandole dalla cartella vengono estratte digitalmente dal <acronym
+>CD</acronym
+>. Questo assicura una copia perfetta dei dati audio.</para>
+
+<para
+>Per vedere questo KIO worker al lavoro, inserisci un <acronym
+>CD</acronym
+> audio nel lettore di &CD-ROM; e digita <userinput
+>audiocd:/</userinput
+> in &konqueror;. Entro pochi secondi dovresti vedere la lista delle tracce e alcune cartelle.</para>
+
+<para
+>I <acronym
+>CD</acronym
+> audio non hanno veramente delle cartelle, ma il KIO worker audiocd le fornisce per comodità. Aprendole, vedrai che tutte contengono lo stesso numero di tracce. Se sei connesso a Internet, alcune cartelle conterranno file il cui nome corrisponde al titolo effettivo della traccia.</para>
+
+<para
+>Il motivo dell'esistenza di queste cartelle separate è di permettere la scelta del formato in cui ascoltare (o da cui copiare) le tracce del <acronym
+>CD</acronym
+>.</para>
+
+<para
+>Trascinando una traccia dalla cartella <filename class="directory"
+>Ogg Vorbis</filename
+> a un'altra finestra di &konqueror; aperta sulla tua cartella Home, dovrebbe apparire una finestra di progresso che mostra che la traccia viene estratta dal <acronym
+>CD</acronym
+> e salvata su un file. Tieni presente che Ogg Vorbis è un formato compresso, per cui il file nella tua cartella Home apparirà molto più piccolo di quanto sarebbe se avessi copiato i dati grezzi.</para>
+
+<para
+>Il meccanismo che sta dietro a questa funzionalità è abbastanza semplice. Quando viene chiesto al KIO worker audiocd di leggere una traccia dalla cartella <filename class="directory"
+>Ogg Vorbis</filename
+>, comincia a estrarre i dati dell'audio digitale dal <acronym
+>CD</acronym
+>. Mentre manda i dati al file della tua cartella, li codifica simultaneamente nel formato Ogg Vorbis (l'audio <acronym
+>CD</acronym
+> è in un formato non compresso).</para>
+
+<para
+>Puoi anche provare a trascinare un file con estensione <literal role="extension"
+>.wav</literal
+> sul lettore multimediale di &kde;, &juk;. In questo caso, il processo dietro le quinte è simile, tranne che invece di codificare i dati in formato Ogg Vorbis, questi vengono trasformati da dati grezzi (che hanno l'estensione <literal role="extension"
+>.cda</literal
+> nella cartella principale) al formato <quote
+>RIFF WAV</quote
+>, un formato non compresso compreso dalla maggior parte dei programmi di riproduzione sonora.</para>
+
+<para
+>&juk; dovrebbe felicemente riprodurre il file <literal role="extension"
+>.wav</literal
+>, ma se avesse problemi dovresti considerare l'utilizzo dell'opzione <option
+>paranoia_level</option
+>, spiegata di seguito.</para>
+
+<variablelist>
+<title
+>Opzioni</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Imposta il percorso al dispositivo del <acronym
+>CD</acronym
+> audio, &eg; <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc/</parameter
+></userinput
+>. Di solito il KIO worker cercherà di trovare un lettore di <acronym
+>CD</acronym
+>, ma se fallisce, o se hai più di un lettore <acronym
+>CD</acronym
+>, puoi usare questa opzione. La finestra di dialogo di configurazione permette di impostare un valore predefinito per questa opzione.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Imposta la maschera del nome del file,  &eg; <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Track %{number}</parameter
+></userinput
+>. Nota che la finestra di configurazione permette di impostare un valore predefinito per questa opzione. Fai attenzione a non lasciare vuoto il campo, altrimenti non verrà mostrato alcun file.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Imposta la maschera del nome dell'album, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Nota che questa finestra di configurazione permette di impostare un valore predefinito per questa opzione.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Imposta il livello nice di elaborazione per la conversione &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Nota che la finestra di configurazione permette di impostare un valore predefinito per questa opzione.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Imposta il livello di rilevamento e correzione di errori da usare quando si estraggono i dati.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Livello 0</term>
+<listitem>
+<para
+>Nessun riconoscimento o correzione. Utilizzabile solo nel caso (improbabile) in cui si possieda un lettore di <acronym
+>CD</acronym
+> perfetto.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Livello 1</term>
+<listitem>
+<para
+>Abilita controllo e correzione degli errori basilari.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Livello 2</term>
+<listitem>
+<para
+>Predefinito. Specifica che verrà accettata solo un'estrazione perfetta.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Tieni presente che il livello 2 ha alcuni svantaggi. L'estrazione dei dati può essere molto lenta, per cui la riproduzione digitale in tempo reale potrebbe non funzionare. Se possiedi un lettore di <acronym
+>CD</acronym
+> di buona qualità (e non è detto che più caro significhi di migliore qualità) allora probabilmente non sarà molto lento in fase di estrazione, mentre un lettore scadente può impiegare giorni (!) per estrarre l'audio da un <acronym
+>CD</acronym
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Specifica che i nomi delle tracce per i <acronym
+>CD</acronym
+> inseriti saranno cercati sul <acronym
+>CD</acronym
+> Database di Internet. I <acronym
+>CD</acronym
+> audio non hanno informazioni sul nome delle tracce, ma il <acronym
+>CD</acronym
+>Database di Internet è un sistema intelligente, e usa un metodo di identificazione basato sulla lunghezza di ogni traccia di un <acronym
+>CD</acronym
+> per ricavare una chiave di ricerca per la lista dei nomi delle tracce. Le liste dei nomi delle tracce sono offerti dalla comunità di Internet e sono stati resi disponibili a tutti. A volte saranno disponibili più voci per lo stesso CD. Puoi specificare quale usare.</para>
+
+<para
+>Puoi inviare le tue liste di tracce usando &kscd;, il lettore di <acronym
+>CD</acronym
+> di &kde;.</para>
+
+<para
+>Normalmente audiocd cerca di scegliere il migliore.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Esempi</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Ottiene una lista delle tracce del <acronym
+>CD</acronym
+> audio inserito in <filename class="devicefile"
+>/dev/scd0</filename
+>, che su &Linux; specifica il primo dispositivo &CD-ROM; <acronym
+>SCSI</acronym
+>. copiando le tracce dal <acronym
+>CD</acronym
+>, verrà effettuata un'estrazione senza correzione degli errori. Inoltre, verrà usato il campo 0 della base dati di <acronym
+>CDDB</acronym
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Domande frequenti</title>
+<qandaentry>
+<question>
+<para
+>Mi compare il messaggio <errorname
+>Il file o la cartella / non esiste</errorname
+>. Come lo correggo? Ho un <acronym
+>CD</acronym
+> audio nel lettore!</para>
+</question>
+
+<answer>
+<para
+>Prova a usare il comando <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> con il tuo utente (non <systemitem class="username"
+>root</systemitem
+>). Vedi la lista delle tracce? Se no, assicurati di avere il permesso di accesso al dispositivo del <acronym
+>CD</acronym
+>. Se stai usando l'emulazione <acronym
+>SCSI</acronym
+> (è probabile se possiedi un masterizzatore <acronym
+>IDE</acronym
+>) assicurati di controllare i permessi sul dispositivo generico <acronym
+>SCSI</acronym
+>, che probabilmente è uno di <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, &etc; Se anche questo non funzionasse, prova a inserire <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (o qualcosa di simile) per dire a kio_audiocd a quale dispositivo corrisponde il &CD-ROM;.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

@@ -1,0 +1,287 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Serbian-Latin "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>Audio CD</title>
+<articleinfo>
+<authorgroup>
+<author
+><personname
+><firstname
+>Rik</firstname
+> <surname
+>Hemsli</surname
+></personname
+> &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Bendžamin</firstname
+> <othername
+>K.</othername
+> <surname
+>Mejer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Dragan</firstname
+><surname
+>Pantelić</surname
+><affiliation
+><address
+><email
+>falcon-10@gmx.de</email
+></address
+></affiliation
+><contrib
+>prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>16. 9. 2004.</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Omogućava tretiranje audio CD‑ova kao „pravih“ fajl sistema, gde su numere predstavljene kao fajlovi, i, kad se kopiraju iz fascikle, digitalno izvučene sa CD‑a. Ovo obezbeđuje savršenu kopiju audio podataka.</para>
+
+<para
+>Da biste videli kako ovaj zahvat radi, stavite audio CD u CD‑ROM jedinicu i unesite <userinput
+>audiocd:/</userinput
+> u <application
+>K‑osvajač</application
+>. Za nekoliko sekundi trebalo bi da vidite listu numera i nekoliko fascikli.</para>
+
+<para
+>Audio CD‑ovi nemaju zaista fascikle, ali ih ovaj zahvat pruža kao pogodnost. Ako pogledate u ove fascikle, videćete da svaka sadrži isti broj numera. Ako ste povezani na Internet, u nekim fasciklama će imena fajlova biti stvarni naslovi numera.</para>
+
+<para
+>Zasebne fascikle postoje zato da biste mogli izabrati format u kojem želite da slušate (ili kopirate) numere sa CD‑a.</para>
+
+<para
+>Ako prevučete numeru iz fascikle <filename class="directory"
+>Ogg Vorbis</filename
+> i ispustite je na drugi prozor <application
+>K‑osvajača</application
+>, otvoren na vašoj domaćoj fascikli, trebalo bi da vidite prozor napretka koji pokazuje da se numera izvlači sa CD‑a i upisuje u fajl. Primetite da je OGG kompresovani format, zbog čega će rezultujući fajl u domaćoj fascikli biti znatno manji nego kada biste kopirali sirove podatke.</para>
+
+<para
+>Mehanizam iza ovoga je vrlo jednostavan. Kad se od zahvata zatraži da dobavi numeru iz fascikle <filename class="directory"
+>Ogg Vorbis</filename
+>, on počinje da izvlači digitalne audio podatke sa CD‑a. Dok upisuje podatke u fajl u vašoj domaćoj fascikli, istovremeno ih kodira u format OGG Vorbis (CD audio je sam po sebi nekompresovan).</para>
+
+<para
+>Možete pokušati i da prevučete fajl sa nastavkom <literal role="extension"
+>.wav</literal
+> na KDE‑ov medija plejer <application
+>Juk</application
+>. Tada se iza scene odvija sličan postupak, osim što se umesto kodiranja audio podataka u OGG Vorbis sprovodi vrlo prosto pretvaranje sirovih binarnih podataka (predstavljenih <literal role="extension"
+>.cda</literal
+> fajlovima u fascikli na vrhu) u format RIFF WAV, nekompresovan format koji razume većina medija plejera.</para>
+
+<para
+><application
+>Juk</application
+> bi trebalo bez problema da pusti WAV fajl, ali ako problema bude, razmotrite upotrebu opcije <option
+>paranoia_level</option
+> objašnjene u narednom.</para>
+
+<variablelist>
+<title
+>Opcije</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Postavlja putanju uređaj sa audio CD‑om, npr. <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Zahvat će normalno pokušati da otkrije CD jedinicu s ubačenim audio CD‑om, ali ako ne uspe, ili ima više CD jedinica, možete upotrebiti ovu opciju. Podrazumevanu vrednost ove opcije možete zadati u dijalogu za podešavanje.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Postavlja šablon imenâ̂ fajlova, npr. <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Numera %{number}</parameter
+></userinput
+>. Podrazumevanu vrednost ove opcije možete zadati u dijalogu za podešavanje. Pazite, ako postavite praznu nisku, fajlovi se neće pojaviti.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Postavlja šablon imenâ̂ albuma, npr. <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Podrazumevanu vrednost ove opcije možete zadati u dijalogu za podešavanje.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Postavlja stepen finoće za kodere, npr. <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Podrazumevanu vrednost ove opcije možete zadati u dijalogu za podešavanje.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Postavlja stepen otkrivanja i ispravljanja grešaka pri izvlačenju podataka.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>nivo 0</term>
+<listitem>
+<para
+>Bez otkrivanja ili ispravljanja. Korisno samo ako imate savršenu CD jedinicu (malo verovatno).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>nivo 1</term>
+<listitem>
+<para
+>Osnovna provera i ispravljanje grešaka.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>nivo 2</term>
+<listitem>
+<para
+>Podrazumevano. Zadaje da se prihvata samo savršeno izvlačenje.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Imajte u vidu da nivo 2 ima jednu manu. Izvlačenje može da bude veoma sporo, zbog čega puštanje u stvarnom vremenu možda neće pravilno raditi. Ako imate CD jedinicu dobrog kvaliteta (skuplja ne znači nužno i veći kvalitet) izvlačenje verovatno neće biti previše sporo, ali lošoj jedinici mogu trebati dani (!) da izvuče audio sa jednog CD‑a.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Zadaje unos iz CDDB‑a koji treba upotrebiti za CD. Audio CD‑ovi ne navode imena numera, ali je zato tu CDDB, pametna internet baza podataka koji koristi specijalni jedinstveni identifikator, sastavljen na osnovu broja i dužina numera na CD‑u, za povezivanje CD‑ova s listama numera. Liste numera prilažu pojedinci širom Interneta, tako da su svima na raspolaganju. Poneki CD može imati više unosa, i tada ovom opcijom zadajete koji upotrebiti.</para>
+
+<para
+>Liste numera koje sami sastavite možete predati <application
+>KsCD‑om</application
+>, KDE‑ovim CD plejerom.</para>
+
+<para
+>Zahvat audio CD‑a podrazumevano pokušava da izabere najbolji.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Primeri</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Daje listu numera na audio CD‑u ubačenom u <filename class="devicefile"
+>/dev/scd0</filename
+>, što je pod Linuxom prvi SCSI CD‑ROM uređaj. Pri kopiranju numera sa ovog CD‑a, digitalno izvlačenje izvešće se bez ispravki ili otkrivanja grešaka. Upotrebiće se unos 0 iz CDDB‑a.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Često postavljana pitanja</title>
+<qandaentry>
+<question>
+<para
+>Dobijam <errorname
+>Fajl ili fascikla ne postoji</errorname
+>. Kako ovo da popravim? Audio CD jeste ubačen u jedinicu!</para>
+</question>
+
+<answer>
+<para
+>Pokušajte da izvršite <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> pod svojim nalogom (ne kao <systemitem class="username"
+>root</systemitem
+>). Vidite li listu numera? Ako ne, obezbedite dozvolu pristupa CD uređaju. Ako koristite emulaciju SCSI‑ja (moguće ako imate IDE CD pisač), obezbedite dozvole za čitanje i pisanje na generički SCSI uređaj, koji je verovatno <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, itd. Ako i dalje ne radi, pokušajte da upišete <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (ili tome slično) kako biste zahvatu audio CD‑a stavili do znanja koji je uređaj CD‑ROM.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

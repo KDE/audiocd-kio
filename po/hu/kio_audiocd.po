@@ -1,0 +1,124 @@
+#
+# Tamas Szanto <tszanto@interware.hu>, 2001.
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2010, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE 4.0\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2021-07-04 14:17+0200\n"
+"Last-Translator: Kristóf Kiszel <kiszel.kristof@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kiszel Kristóf,Szántó Tamás"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kiszel.kristof@gmail.com,tszanto@interware.hu"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Információ"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "A teljes CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB-információ"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Gépnevet nem lehet megadni ennél a protokollnál. Az audiocd:/ formátumot "
+"kell használni."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Hiányzó eszközspecifikáció"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Nincs olvasási jogosultsága az eszközhöz. Ellenőrizze a jogosultsági "
+"beállításokat."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Nincs írási jogosultsága az eszközhöz. Ellenőrizze a jogosultsági "
+"beállításokat."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Ismeretlen hiba történt. Ha van CD a meghajtóban, próbálja kiadni a "
+"cdparanoia -vsQ parancsot a saját nevében (nem root-ként). Megjelenik a "
+"számlista? Ha nem, akkor ellenőrizze a CD-eszköz elérési jogosultságait. Ha "
+"SCSI-emulációt használ (például IDE-csatolós CD-író esetén), akkor "
+"ellenőrizze, van-e írási és olvasási jogosultsága az általános SCSI-"
+"eszközhöz (ennek neve általában /dev/sg0, /dev/sg1, stb.). Ha ez sem segít, "
+"próbálja kiadni ezt: audiocd:/?device=/dev/sg0 (vagy hasonló névvel), hogy a "
+"kio_audiocd tudja, melyik eszköz a CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: a hangsáv lemezhibákat tartalmaz, adatvesztés lehet az eredmény."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Nem sikerült hangadatokat beolvasni a CD-lemezről (%1)"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "%1 nem olvasható: a kódolás nem sikerült"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "S%1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Protokollnév"
+
+#~ msgid "Socket name"
+#~ msgstr "Aljazatnév"

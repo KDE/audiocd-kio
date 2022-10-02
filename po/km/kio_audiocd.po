@@ -1,0 +1,117 @@
+# translation of kio_audiocd.po to Khmer
+#
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2006, 2007, 2008, 2010.
+# Auk Piseth <piseth_dv@khmeros.info>, 2007, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2010-05-11 11:19+0700\n"
+"Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
+"Language-Team: Khmer <support@khmeros.info>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ខឹម សុខែម,​អេង វណ្ណៈ, អោក ពិសិដ្ឋ​"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "khoemsokhem@khmeros.info,​​evannak@khmeros.info,piseth_dv@khmeros.info"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "ព័ត៌មាន"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "ស៊ីឌី​ទាំងមូល"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "ព័ត៌មាន CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr "អ្នក​មិន​អាច​បញ្ជាក់​ម៉ាស៊ីន​មួយ​​ជា​មួយ​ពិធីការ​នេះ​បានទេ ។ សូម​ប្រើ​ទ្រង់ទ្រាយ audiocd ៖/ ជំនួស​វិញ ។"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr "ឧបករណ៍​មិនមាន​សិទ្ធិ​អាន​សម្រាប់​គណនី​នេះ​ទេ ។ ពិនិត្យ​មើល​សិទ្ធិ​អាន​នៅលើ​ឧបករណ៍ ។"
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr "ឧបករណ៍​មិនមាន​សិទ្ធិ​​សរសេរ​សម្រាប់​គណនី​នេះ​ទេ ។ ពិនិត្យ​សិទ្ធិសរសេរ​នៅលើ​ឧបករណ៍ ។"
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"មិន​ស្គាល់​កំហុស ។ ប្រសិន​បើ​អ្នក​មាន​ស៊ីឌី​មួយ​ក្នុង​ដ្រាយ ព្យាយាម​រត់ cdparanoia -vsQ ជា​​អ្នក​ប្រើ​ ​របស់អ្នក​"
+"ផ្ទាល់ (មិនមែន​ជា​ root) ។ តើ​អ្នក​ឃើញ​បញ្ជី​បទ​មួយ​​ឬទេ ? ប្រសិន​បើមិន​ឃើញ សូម​ប្រាកដថា​អ្នក​មាន​សិទ្ធិ​ចូល​"
+"ដំណើរការ​ឧបករណ៍​ស៊ីឌី ។ ប្រសិន​បើ​អ្នក​កំពុង​ប្រើ​ការ​ធ្វើ​ត្រាប់​តាម SCSI (អាច​ធ្វើ​បាន ប្រសិន​បើ​អ្នក​មាន​​"
+"ឧបករណ៍​ស៊ីឌី IDE) បន្ទាប់​មក​សូម​ប្រាកដ​ថា អ្នក​​​មាន​សិទ្ធិ​សរសេរ និង​អាន​នៅ​លើ​ឧបករណ៍​ SCSI ទូទៅ ដែល​ប្រហែល​"
+"ជា /dev/sg0, /dev/sg1, ។ល។... ប្រសិន​បើ​វា​នៅ​តែ​មិន​ធ្វើ​ការ ព្យាយាម​វាយ audiocd:/?"
+"device=/dev/sg0 (ឬ​ដូច​គ្នា) នឹង tell kio_audiocd ដែល​ជា​​ឧបករណ៍​ស៊ីឌី​រ៉ូម​របស់​​អ្នក ។"
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "អូឌីយ៉ូ​ស៊ីឌី ៖ បាន​រក​ឃើញ​ថាស​​ខូស​​​នៅ​លើ​បទ​នេះ ប្រឈម​មុខ​នឹង​ការ​ខូច​ទិន្នន័យ ។"
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "កំហុស​ក្នុង​ការ​អាន​ទិន្នន័យ​អូឌីយ៉ូ​សម្រាប់ %1 ពី​ស៊ីឌី"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "មិនអាច​អាន %1 ៖ ការ​អ៊ិនកូដ​បាន​បរាជ័យ"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "បទ %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "ឈ្មោះ​​ពិធីការ"
+
+#~ msgid "Socket name"
+#~ msgstr "ឈ្មោះ​រន្ធ"

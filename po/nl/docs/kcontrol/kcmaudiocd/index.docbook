@@ -1,0 +1,510 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Audio-cd</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+&Freek.de.Kruijf; 
+
+</authorgroup>
+
+<date
+>2019-02-08</date>
+<releaseinfo
+>Applications 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Systeeminstellingen</keyword>
+<keyword
+>audio</keyword>
+<keyword
+>compact disc</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>AudioCD KIO-programma configureren</title>
+<para
+>De modulepagina <guilabel
+>Configuratie audiocd KIO-programma</guilabel
+> is opgedeeld in het tabblad <guilabel
+>Algemeen</guilabel
+>, het tabblad <guilabel
+>Namen</guilabel
+> en het tabblad encoderparameters.</para>
+
+<sect2 id="general-tab">
+<title
+>Het tabblad Algemeen</title>
+<screenshot>
+<screeninfo
+>Het tabblad <guilabel
+>Algemeen</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Het tabblad <guilabel
+>Algemeen</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Dit tabblad bevat de algemene parameters die van toepassing zijn op het gehele proces van gegevens lezen van de cd.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Foutcorrectie gebruiken tijdens lezen van de cd</guilabel
+></term>
+<listitem>
+<para
+>Bij schrijven van een audio-cd voegt het proces 64 bits gegevens voor foutcorrectie toe aan elk frame. Hierna worden 8 bits gegevens voor subcode of subchannel toegevoegd aan elk van de gecodeerde frames, die gebruikt worden voor besturing en adressering bij afspelen van de cd. Deze correctiegegevens negeren kan lezen versnellen maar kan ook enige ongewenste artifacts produceren.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Fouten overslaan</guilabel
+></term>
+<listitem>
+<para
+>De standaard is nooit fouten op het medium overslaan. Dit is nodig om de hoge kwaliteit van het resultaat te verzekeren.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Encoderprioriteit</guilabel
+></term>
+<listitem>
+<para
+>Het is mogelijk de prioriteit van de codeerder te bepalen om te verzekeren dat het coderingsproces niet zal voorkomen dat u enige andere taken parallel kan uitvoeren (de lagere waarden) of om de codering te versnellen (de hogere waarden). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>Het tabblad Namen</title>
+
+<screenshot>
+<screeninfo
+>Het tabblad <guilabel
+>Namen</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Het tabblad <guilabel
+>Namen</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Het tabblad <guilabel
+>Namen</guilabel
+> kan gebruikt worden om de bestandsnamen voor de gecodeerde gegevens fijn af te stemmen. Het is mogelijk om enige macro's te gebruiken en <ulink url="https://en.wikipedia.org/wiki/Regular_expression"
+>reguliere expressies</ulink
+> om de namen precies op uw wensen af te stemmen.</para>
+
+<para
+>U kunt het interactieve testveld onderaan de pagina gebruiken om te bewijzen dat de juiste namen geproduceerd zullen worden.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>Het tabblad FLAC-codeerder</title>
+
+<screenshot>
+<screeninfo
+>Het tabblad <guilabel
+>FLAC-codeerder</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Het tabblad <guilabel
+>FLAC-codeerder</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Het tabblad FLAC-codeerder is alleen beschikbaar als Audiocd KIO-programma is gecompileerd met libFLAC.</para>
+</note>
+
+<para
+>FLAC is een gcomprimeerd audio-formaat zonder verlies vrij van elke patent- of licentiekosten. Het handhaaft een perfecte cd audiokwaliteit terwijl het de bestandsgrootte vermindert met ongeveer 50%. Bij gebruik van deze codec is de bestandsgrootte veel groter dan Opus, Ogg Vorbis of MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Flac-compressieniveau</guilabel
+></term>
+<listitem>
+<para
+>Het compressieniveau is een geheel getal tussen 0 en 8 die de verhouding bepaalt tussen bestandsgrootte en compressiesnelheid.</para>
+<para
+>Instellen van het compressieniveau op 0 geeft de kortste compressietijd maar genereert een vergelijkbaar groot bestand.</para>
+<para
+>Aan de andere kant maakt een compressieniveau van 8 de compressie tamelijk langzaam maar produceert het kleinste bestand.</para>
+<para
+>Merk op dat omdat FLAC per definitie een codec zonder verlies is, de audiokwaliteit van de uitvoer exact hetzelfde is ongeacht het compressieniveau.</para>
+<para
+>Niveaus boven 5 verhogen dramatisch de compressietijd maar maakt een slechts weinig kleiner bestand en wordt niet aanbevolen.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>Het tabblad MP3-codeerder</title>
+
+<screenshot>
+<screeninfo
+>Het tabblad <guilabel
+>MP3-codeerder</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Het tabblad <guilabel
+>MP3-codeerder</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>De tabblad MP3-codeerder is alleen beschikbaar als <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+> hulpprogramma's zijn geïnstalleerd in het systeem.</para>
+</note>
+
+<para
+>MP3 (of MPEG-1 Audio Layer III) is een gepatenteerde digitale audio-codec die een vorm van gegevenscompressie gebruikt met verlies. Ondanks zijn tekortkomingen, is het een algemeen formaat voor opslag van geluid voor gebruikers en is breed ondersteund op draagbare muziekspelers.</para>
+
+<para
+>Audiocd KIO-programma gebruikt de LAME-codeerder om <filename class="extension"
+>mp3</filename
+> bestanden te produceren. LAME wordt beschouwd als de beste MP3-codeerder, meestal dankzij het toegewijde werk van zijn ontwikkelaars en het open-source licentiemodel dat het project toestaat om gebruikt te maken van de ontwikkelingsbronnen vanaf overal op de wereld.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Coderingsmethode</guilabel
+></term>
+<listitem>
+<para
+>De bitsnelheid is een maat voor de hoeveelheid gegevens gebruikt om een seconde van de geluidstrack te representeren. Het is mogelijk om een <guilabel
+>Constante bitsnelheid</guilabel
+> te bepalen voor een voorspelbare bestandsgrootte. De MP3-codeerder ondersteunt ook een instelling voor <guilabel
+>Variabele bitsnelheid</guilabel
+>, wat betekent dat de waarde van de bitsnelheid fluctueert langs de track gebaseerd op de complexiteit van de inhoud van het geluid. Meer complexe intervals van gegevens worden gecodeerd met een hogere bitsnelheid dan minder complexe; deze benadering levert over het geheel genomen een betere kwaliteit en een kleiner bestand dan een constante bitsnelheid over de track.</para>
+<para
+>U kunt ook de kwaliteit van de codering definiëren. De lagere kwaliteit kan het coderingsproces versnellen voor de prijs van enig verlies van gegevens.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Opties</guilabel
+></term>
+<listitem>
+<para
+>Activeer het item <guilabel
+>Copyrighted</guilabel
+> als de geproduceerde gegevens beschermd zijn met copyright.</para>
+<para
+>Activeer het item <guilabel
+>Origineel</guilabel
+> als de extractie van gegevens wordt gemaakt vanaf de originele &CD;.</para>
+<para
+>Wanneer het item <guilabel
+>ISO-gecodeerd</guilabel
+> is geactiveerd zal LAME de limiet van 7680 bits afdwingen op de totale framegrootte. De compatibiliteit met ISO kan belangrijk zijn voor hardware spelers.</para>
+<para
+>Het item CRC <guilabel
+>Foutprotectie</guilabel
+> kan gebruikt worden om een controlesom aan elk gegevensframe toe te voegen. Deze protectie kan de stabiliteit van het opslaan van MP3 verhogen.</para>
+<para
+>Het item <guilabel
+>ID3-tag schrijven</guilabel
+> wordt gebruikt om LAME te dwingen de <ulink url="https://en.wikipedia.org/wiki/ID3"
+>ID3-metagegevens</ulink
+> weg te schrijven naar elk geproduceerde MP3-bestand.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Filterinstellingen</guilabel
+></term>
+<listitem>
+<para
+>Het is mogelijk om filtering op bandbreedte toe te passen op de gegevens. Het wordt gebruikt om de hoge of lage frequencies die gecodeerd worden te beperken. De meeste van ons kunnen de hoge frequencies toch niet horen en deze zijn het <quote
+>duurst</quote
+> voor bits bij de codering. Ze zijn mogelijk ook de oorzaak van artifacts.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Instellingen voor variabele bitrate</guilabel
+></term>
+<listitem>
+
+<para
+>U kunt ook <guilabel
+>Gemiddelde bitsnelheid</guilabel
+> kiezen, wat de standaard is of <guilabel
+>Maximale bitsnelheid</guilabel
+>, <guilabel
+>Minimale bitsnelheid</guilabel
+> en of <guilabel
+>Minimale waarde een harde limiet is</guilabel
+>.</para>
+<para
+>160 kb/s is een goede keuze voor muziek luisteren op een draagbare speler. Alles onder 120 kb/s kan onbevredigend zijn voor muziek en alles boven 256 kb/s is waarschijnlijk teveel.</para>
+<para
+>Het is ook mogelijk om <guilabel
+>Xing VBR-tag schrijven</guilabel
+> in het bestand. Xing was verantwoordelijk voor het maken van een codeerder met zijn VBR-tag, die accurater zoeken in de bestanden met variabele bitsnelheid inschakelt. Naast andere dingen bevat de VBR-tag van Xing informatie over de totale duur van een MP3-bestand, iets dat anders niet eenvoudig beschikbaar is uit de MPEG-stream.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>Het tabblad Opus-codeerder</title>
+
+<screenshot>
+<screeninfo
+>Het tabblad <guilabel
+>Opus-codeerder</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Het tabblad <guilabel
+>Opus-codeerder</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Het tabblad Opus-codeerder is alleen beschikbaar als <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+> geïnstalleerd zijn in het systeem.</para>
+</note>
+
+<para
+>Opus is een totaal open, royalty-free, zeer veelzijdige audio-codec. Opus is ongeëvenaard voor interactieve spraak- en muziektransmissie over het internet, maar is ook bedoeld voor toepassingen voor opslag en streaming.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Coderingsmethode</guilabel
+></term>
+<listitem>
+<para
+>Deze instelling stelt u in staat te kiezen tussen codering <guilabel
+>Gebaseerd op complexiteit</guilabel
+> en <guilabel
+>Gebaseerd op bitsnelheid</guilabel
+>. De op complexiteit gebaseerde codering gebruikt enige speculatieve algorithmen voor de prijs van een onvoorspelbare grootte van de resultaten.</para>
+<itemizedlist>
+<listitem>
+<para
+>Er zijn verschillende dingen die de Opus codeerder laat kiezen tussen CPU complexiteit en kwaliteit/bitsnelheid. De complexiteit van de codering kan feselecteerd worden met een geheel getal van 0 tot 10, waar 0 de laagste kwaliteit levert en 10 de hoogste kwaliteit.</para>
+</listitem>
+<listitem>
+<para
+>Opus is efficienter wanneer het werkt met variabele bitsnelheid (<guilabel
+>Gemiddelde variabele bitsnelheid</guilabel
+>), wat de standaard is. Het is mogelijk om beperkte variabele bitsnelheid (<guilabel
+>Beperkte variabele bitsnelheid</guilabel
+> te gebruiken, analoog aan constante bitsnelheid voor MP3) wanneer de overdracht met lage latency is vereist boven een relatief langzame verbinding. In sommige (zeldzame) toepassingen is constante bitsnelheid (<guilabel
+>Constante bitsnelheid</guilabel
+>) vereist.</para>
+<para
+>Het wordt aanbevolen om bitsnelheid 64-128 kbit/s voor stereomuziek te gebruiken.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Track-informatie toevoegen</guilabel
+></term>
+<listitem>
+<para
+>Indien geactiveerd, voeg een beschrijving van de track toe aan de bestandsheader. Deze beschrijving wordt door audiospelers gebruikt om u informatie over de track te tonen, zoals artiest, tracknaam, album, etc. U kunt deze informatie automatisch van het internet halen. Kijk in &systemsettings; module CDDB-ophalen voor meer details. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>Het tabblad Ogg Vorbis codeerder</title>
+
+<screenshot>
+<screeninfo
+>Het tabblad <guilabel
+>Ogg Vorbis codeerder</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Het tabblad <guilabel
+>Ogg Vorbis codeerder</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Het tabblad Ogg Vorbis codeerder is alleen beschikbaar als Audiocd KIO-programma is gecompileerd met <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+>.</para>
+</note>
+
+<para
+>Ogg Vorbis is een open audio-codec, die rechtenvrij is, voor geluidscompressie met verlies. Het produceert kleinere bestanden dan MP3 bij gelijke of hogere kwaliteit.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Coderingsmethode</guilabel
+></term>
+<listitem>
+<para
+>Deze instelling stelt u in staat te kiezen tussen codering <guilabel
+>Gebaseerd op kwaliteit</guilabel
+> en <guilabel
+>Gebaseerd op bitsnelheid</guilabel
+>. De op kwaliteit gebaseerde codering gebruikt enige speculatieve algoritmen voor de prijs van een onvoorspelbare grootte van de resultaten.</para>
+<itemizedlist>
+<listitem>
+<para
+>De kwaliteit van codering met Ogg Vorbis kan geselecteerd worden met een geheel getal van 0 tot 10, waar 0 de laagste kwaliteit levert en 10 de hoogste.</para>
+</listitem>
+<listitem>
+<para
+>Als een alternatief kan de variabele bitsnelheid worden gebruikt. Het is mogelijk <guilabel
+>Gemiddelde bitsnelheid</guilabel
+> te kiezen, wat de standaard is of <guilabel
+>Maximale bitsnelheid</guilabel
+> en <guilabel
+>Minimale bitsnelheid</guilabel
+>.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Track-informatie toevoegen</guilabel
+></term>
+<listitem>
+<para
+>Indien geactiveerd, voeg een beschrijving van de track toe aan de bestandsheader. Deze beschrijving wordt door audiospelers gebruikt om u informatie over de track te tonen, zoals artiest, tracknaam, album, etc. U kunt deze informatie automatisch van het internet halen. Kijk in &systemsettings; module CDDB-ophalen voor meer details. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

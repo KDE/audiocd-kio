@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Swedish "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Ljud-cd</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>2019-02-08</date>
+<releaseinfo
+>Program 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Systeminställningar</keyword>
+<keyword
+>ljud</keyword>
+<keyword
+>cd-skiva</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>Inställning av I/O-arbetare för ljud-cd</title>
+<para
+>Modulen <guilabel
+>Inställning av I/O-arbetare för ljud-cd</guilabel
+> är uppdelad i fliken <guilabel
+>Allmänt</guilabel
+>, fliken <guilabel
+>Namn</guilabel
+>, och flikarna med kodningsparametrar.</para>
+
+<sect2 id="general-tab">
+<title
+>Fliken Allmänt</title>
+<screenshot>
+<screeninfo
+>Fliken <guilabel
+>Allmänt</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Fliken <guilabel
+>Allmänt</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Fliken innehåller allmänna parametrar som gäller hela processen att läsa data från en cd.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Använd felkorrigering när cd:n läses</guilabel
+></term>
+<listitem>
+<para
+>När en ljud-cd skrivs, lägger processen till 64 bitar felkorrigeringsdata i varje ram. Därefter läggs 8 bitar delkodsdata eller delkanaldata till i varje kodad ram, vilka används för kontroll och adressering när cd:n spelas upp. Att ignorera sådan data kan snabba upp läsningen, men kan också skapa vissa oönskade artefakter.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Hoppa över vid fel</guilabel
+></term>
+<listitem>
+<para
+>Normalvärdet är att aldrig hoppa över fel på mediet. Det är nödvändigt för att säkerställa hög kvalitet på resultatet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Kodningsprioritet</guilabel
+></term>
+<listitem>
+<para
+>Det är möjligt att bestämma kodningsprioritet för att säkerställa att kodningsprocessen inte förhindrar att andra uppgifter utförs parallellt (de lägre värdena) eller för att snabba upp kodningen (de högre värdena). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>Fliken Namn</title>
+
+<screenshot>
+<screeninfo
+>Fliken <guilabel
+>Namn</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Fliken <guilabel
+>Namn</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Fliken <guilabel
+>Namn</guilabel
+> kan användas för att finjustera filnamnen på kodad data. Det är möjligt att använda vissa makron och <ulink url="https://sv.wikipedia.org/wiki/Reguljära_uttryck"
+>regulkära uttryck</ulink
+> för att skapa namn som exakt motsvarar dina behov.</para>
+
+<para
+>Det går att använda det interaktiva testfältet längst ner på sidan för att bevisa att riktiga namn skapas.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>Fliken FLAC-kodning</title>
+
+<screenshot>
+<screeninfo
+>Fliken <guilabel
+>FLAC-kodning</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Fliken <guilabel
+>FLAC-kodning</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Fliken FLAC-kodning är bara tillgänglig om I/O-arbetare för ljud-cd kompilerades med libFLAC.</para>
+</note>
+
+<para
+>FLAC är ett förlustfritt komprimerat ljudformat utan några patent eller licensavgifter. Det bibehåller perfekt cd-ljudkvalitet medan filstorleken reduceras omkring 50 %. När den här kodaren används är filstorleken mycket större än Opus, Ogg Vorbis eller MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Flac-komprimeringsnivå</guilabel
+></term>
+<listitem>
+<para
+>Komprimeringsnivån är ett heltalsvärde mellan 0 och 8 som representerar avvägningen mellan filstorlek och komprimeringshastighet.</para>
+<para
+>Att ställa in komprimeringsnivån till 0 ger kortast komprimeringstid men skapar en jämförelsevis stor fil.</para>
+<para
+>Å andra sidan, gör komprimeringsnivån 8 att komprimeringen blir rätt långsam men skapar den minsta filen.</para>
+<para
+>Observera att eftersom FLAC är definitionsmässigt en förlustfri komprimering, är ljudkvaliteten för utdata exakt samma oberoende av komprimeringsnivå.</para>
+<para
+>Dessutom ökar nivåer över 5 komprimeringstiden dramatiskt men skapar bara en något mindre fil, och rekommenderas inte.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>Fliken MP3-kodning</title>
+
+<screenshot>
+<screeninfo
+>Fliken <guilabel
+>MP3-kodning</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Fliken <guilabel
+>MP3-kodning</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Fliken MP3-kodning är bara tillgänglig om verktyget <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+> är installerat på datorn.</para>
+</note>
+
+<para
+>MP3 (eller MPEG-1 Audio Layer III) är en patenterad digital ljudkodare som använder en typ av destruktiv datakomprimering. Trots dess brister, är det ett vanligt format för konsumentljudlagring, och har brett stöd på portabla musikspelare.</para>
+
+<para
+>I/O-arbetare för ljud-cd använder LAME-kodaren för att skapa <filename class="extension"
+>mp3</filename
+>-filer. LAME anses vara den bästa MP3-kodaren, mycket tack vare det hängivna arbetet från utvecklarna och licensmodellen med öppen källkod som gjorde det möjligt för projektet att utnyttja ingenjörsresurser från hela världen.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodningsmetod</guilabel
+></term>
+<listitem>
+<para
+>Bithastigheten är ett mått på datamängden som används för att representera en sekund av ljudspåret. Det är möjligt att bestämma <guilabel
+>Konstant bithastighet</guilabel
+> för förutsägbar filstorlek. MP3-kodaren stöder också inställningen <guilabel
+>Variabel bithastighet</guilabel
+>, vilket betyder att bithastigheten varierar längs spåret baserat på ljudinnehållets komplexitet. Mer komplexa dataintervaller kodas med en högre bithastighet än mindre komplexa. Tillvägagångssättet ger generellt bättre kvalitet och en mindre fil än att använda konstant bithastighet för hela spåret.</para>
+<para
+>Det går också att definiera kodningens kvalitet. Lägre kvalitet kan snabba upp kodningsprocessen till priset av viss dataförlust.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Alternativ</guilabel
+></term>
+<listitem>
+<para
+>Markera alternativet <guilabel
+>Med copyright</guilabel
+> om skapad data är skyddad av copyright.</para>
+<para
+>Markera alternativet <guilabel
+>Original</guilabel
+> om extraheringen av data görs från original-cd:n.</para>
+<para
+>När alternativet <guilabel
+>ISO-kodning</guilabel
+> är markerat, upprätthåller LAME begränsningen 7680 bitar för den totala ramstorleken. Kompatibilitet med ISO kan vara viktigt för hårdvaruspelare.</para>
+<para
+>Alternativet CRC <guilabel
+>Felskydd</guilabel
+> kan användas för att lägga till en checksumma i varje dataram. Ett sådant skydd kan förbättra MP3-datalagringens stabilitet.</para>
+<para
+>Alternativet <guilabel
+>Skriv ID3-tagg</guilabel
+> används för att säkerställa att LAME skriver <ulink url="https://en.wikipedia.org/wiki/ID3"
+>ID3 metadata</ulink
+> i varje MP3-fil som skapas.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Filterinställningar</guilabel
+></term>
+<listitem>
+<para
+>Det är möjligt att bandbreddsfiltrera data. Det används för att begränsa de höga eller låga frekvenserna som kodas. De flesta av oss kan inte höra de höga frekvenserna ändå, och de är <quote
+>dyrast</quote
+> när det gäller antal bitar i kodningen. De brukar också vara orsaken till artefakter.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Inställningar av variabel bithastighet</guilabel
+></term>
+<listitem>
+
+<para
+>Det går också att välja <guilabel
+>Medelbithastighet</guilabel
+>, vilket är normalvärdet, eller <guilabel
+>Maximal bithastighet</guilabel
+>, <guilabel
+>Minimal bithastighet</guilabel
+> och om <guilabel
+>Minimalt värde är en hård gräns</guilabel
+>.</para>
+<para
+>Ett bra val för att lyssna på musik på en portabel musikspelare är 160 kb/s. Allt under 120 kb/s kan vara otillräckligt för musik och allting över 256 kb/s är troligen överdrivet.</para>
+<para
+>Det är också möjligt att använda <guilabel
+>Skriv Xing-tagg för variabel bithastighet</guilabel
+>. Xing var ansvariga för att skapa en kodare som var anmärkningsvärd för sin tagg för variabel bithastighet, vilket möjliggör noggrannare sökning i filer med variabel bithastighet. Bland annat innehåller Xings tagg för variabel bithastighet information om den totala längden för en MP3-fil, något som annars inte är lättillgängligt i MPEG-strömmen.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>Fliken Opus-kodning</title>
+
+<screenshot>
+<screeninfo
+>Fliken <guilabel
+>Opus-kodning</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Fliken <guilabel
+>Opus-kodning</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Fliken Opus-kodning är bara tillgänglig om <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+> är installerat på datorn.</para>
+</note>
+
+<para
+>Opus är en helt öppen, avgiftsfri, mycket flexibel ljudkodare. Opus saknar motstycke för överföring av interaktivt tal och musik via Internet, men är också avsett för lagring och strömning.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodningsmetod</guilabel
+></term>
+<listitem>
+<para
+>Inställningen gör det möjligt att välja mellan kodning <guilabel
+>Komplexitetsbaserad</guilabel
+> och <guilabel
+>Bithastighetsbaserad</guilabel
+>. Den komplexitetsbaserade kodningen använder vissa spekulativa algoritmer på bekostnad av en oförutsägbar storlek hos resultatet.</para>
+<itemizedlist>
+<listitem>
+<para
+>Det finns flera saker som påverkar Opus-kodarens val mellan processorkomplexitet och kvalitet eller bithastighet. Kodningens komplexitet kan väljas med ett heltal från 0 till 10, där 0 ger lägst och 10 ger högst kvalitet.</para>
+</listitem>
+<listitem>
+<para
+>Opus är effektivera när variabel bithastighet används (<guilabel
+>Variabel medelbithastighet</guilabel
+>), vilket är normalvärdet. Det är möjligt att använda begränsad variabel bithastighet (<guilabel
+>Begränsad variabel bithastighet</guilabel
+>, som motsvarar konstant bithastighet för MP3) när överföring med låg latens krävs över en relativt långsam anslutning. I några (ovanliga) fall, krävs konstant bithastighet (<guilabel
+>Konstant bithastighet</guilabel
+>).</para>
+<para
+>För musik i stereo rekommenderas att 64-128 kbit/s bithastighet används.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Lägg till spårinformation</guilabel
+></term>
+<listitem>
+<para
+>När markerad, läggs en beskrivning av sången till i filhuvudet. Det gör det enkelt för användaren att få information om sånger visad av mediaspelaren i förväg. Informationen kan hämtas automatiskt via Internet. Titta i systeminställningarnas module "Hämtning från CDDB" för detaljerad information. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>Fliken Ogg Vorbis-kodare</title>
+
+<screenshot>
+<screeninfo
+>Fliken <guilabel
+>Ogg Vorbis-kodare</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Fliken <guilabel
+>Ogg Vorbis-kodare</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Fliken Ogg Vorbis-kodning är bara tillgänglig om I/O-arbetare för ljud-cd kompilerades med <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+>.</para>
+</note>
+
+<para
+>Opus är en öppen och avgiftsfri ljudkodare för destruktiv ljudkomprimering. Den skapar mindre filer än MP3 vid motsvarande eller högre kvalitet.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodningsmetod</guilabel
+></term>
+<listitem>
+<para
+>Inställningen gör det möjligt att välja mellan kodningen <guilabel
+>Kvalitetsbaserad</guilabel
+> och <guilabel
+>Bithastighetsbaserad</guilabel
+>. Den komplexitetsbaserade kodningen använder vissa spekulativa algoritmer på bekostnad av en oförutsägbar storlek hos resultatet.</para>
+<itemizedlist>
+<listitem>
+<para
+>Kvaliteten för Ogg Vorbis-kodning kan väljas med ett heltal från 0 till 10, där 0 ger lägst och 10 ger högst kvalitet.</para>
+</listitem>
+<listitem>
+<para
+>Som ett alternativ kan också variabel bithastighet användas. Det är möjligt att välja <guilabel
+>Medelbithastighet</guilabel
+>, vilket är normalvärdet, <guilabel
+>Maximal bithastighet</guilabel
+> och <guilabel
+>Minimal bithastighet</guilabel
+>.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Lägg till spårinformation</guilabel
+></term>
+<listitem>
+<para
+>När markerad, läggs en beskrivning av sången till i filhuvudet. Det gör det enkelt för användaren att få information om sånger visad av mediaspelaren i förväg. Informationen kan hämtas automatiskt via Internet. Titta i systeminställningarnas module "Hämtning från CDDB" för detaljerad information. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

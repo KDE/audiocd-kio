@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2022-09-20 01:55\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/audiocd-kio/kio_audiocd.pot\n"
+"X-Crowdin-File-ID: 5917\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE 中国, Guo Yunhe, Tyson Tan"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-china@kde.org, i@guoyunhe.me, tysontan@tysontan.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "信息"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "整张 CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB 信息"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr "您不能在此协议中指定主机。请用 audiocd:/ 格式代替。"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "没有指定设备"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr "此账户不具备该设备的读取权限。请检查该设备的读取权限。"
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr "此账户不具备该设备的写入权限。请检查该设备的写入权限。"
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"未知错误。如果 CD 已在光驱内，请尝试以您本人身份 (而不是 root 身份) 运行 "
+"cdparanoia -vsQ。您可以查看 CD 的音轨列表吗？如果不能，请确保您具备访问 CD 设"
+"备的权限。如果您正在使用 SCSI 仿真 (在 IDE CD 刻录机上也是可能的)，那么请确保"
+"您具备一般 SCSI 设备的读写权限，它们可能位于 /dev/sg0，/dev/sg1 等处。如果上"
+"述手段都不奏效，请尝试输入 audiocd:/?device=/dev/sg0 (或者类似的字符串) 来为 "
+"kio_audiocd 指定您的 CD-ROM 光驱设备。"
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "音频 CD：在本音轨上检测到光盘损伤，可能造成数据损坏。"
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "从 CD 读取 %1 的音频数据时出错"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "无法读取 %1：编码失败"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "音轨 %1"

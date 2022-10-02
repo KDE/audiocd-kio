@@ -1,0 +1,130 @@
+# translation of kio_audiocd.po to galician
+# Copyright (C) 2002, 2003, 2006, 2007 Free Software Foundation, Inc.
+#
+# Javier Jardón <javierjc@mundo-r.com>, 2002, 2003.
+# Xabi G. Feal <xabigf@gmx.net>, 2006.
+# mvillarino <mvillarino@users.sourceforge.net>, 2007.
+# Miguel Branco <mgl.branco@gmail.com>, 2009.
+# Manuel A. Vazquez <xixirei@yahoo.es>, 2011, 2012.
+# Marce Villarino <mvillarino@kde-espana.org>, 2013.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2017-11-05 15:09+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Xabi García"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "xabigf@gmx.net"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Información"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "CD completo"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Información de CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Non podes especificar unha máquina con este protocolo. Empregue o formato "
+"audiocd:/ no seu lugar."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"O dispositivo non ten permisos de lectura para esta conta. Comproba os "
+"permisos de lectura neste dispositivo."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"O dispositivo non ten permisos de escritura para esta conta. Comproba os "
+"permisos de escritura do dispositivo."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Erro descoñecido. Se ten un CD na unidade intente executar cdparanoia -vsQ "
+"desde o seu usuario (non desde root). Ve unha lista das pistas? Se non a ve, "
+"asegúrese de que ten permiso de acceso ao dispositivo de CD. Se está a "
+"empregar emulación SCSI (posibelmente se ten unha gravadora IDE) entón "
+"comprobe que ten permisos de lectura e escritura no dispositivo xenérico "
+"SCSI, que é probabelmente /dev/sg0 (ou similar), para permitir que "
+"kio_audiocd saiba cal é o dispositivo de CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: Detectouse un dano do disco nesta pista, risco de corrupción de "
+"datos."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Erro ao ler os datos de son para %1 desde o CD"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Non se puido ler %1: fallou a codificación"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Pista %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Nome do protocolo"
+
+#~ msgid "Socket name"
+#~ msgstr "Nome do socket"

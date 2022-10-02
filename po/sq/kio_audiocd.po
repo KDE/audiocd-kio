@@ -1,0 +1,129 @@
+# Albanian translation for kdemultimedia
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the kdemultimedia package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kdemultimedia\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2009-03-18 02:23+0000\n"
+"Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
+"Language-Team: Albanian <sq@li.org>\n"
+"Language: sq\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-04-22 02:23+0000\n"
+"X-Generator: Launchpad (build 12883)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE Shqip, Launchpad Contributions: Vilson Gjeci"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-shqip@yahoogroups.com,vilsongjeci@gmail.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Informacion"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "CD i Plotë"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB Informacion"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Ju nuk mund të specifikoni një mbartës me këtë protokoll. Ju lutemi përdorni "
+"formatin audiocd:/ në vend të tij."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Pajisja nuk ka leje leximi për këtë llogari. Kontrolloni lejen e leximit për "
+"pajisjen."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Pajisja nuk ka leje shkrimi për këtë llogari. Kontrolloni lejen e shkrimit "
+"për pajisjen."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Gabim i panjohur. Nëse keni një CD në fole provoni të nisni cdparanoia -vsQ "
+"si vetvetja (jo si rrënjë). A shikoni një listë të këngëve? Nëse jo, "
+"sigurohuni që keni lejen për të hyrë në pajisjen CD. Nëse ju po përdorni "
+"emulimin e SCSI (e mundshme nëse keni një shkruajtës CD IDE) atëherë "
+"sigurohuni që të kontrolloni që keni leje leximi dhe shkrimi në pajisjen "
+"përgjithësuese SCSI, e cila ka mundësi të jetë /dev/sg0, /dev/sg1, etj.. "
+"Nëse vazhdon të mos punojë, provoni të shtypni audiocd:/?device=/dev/sg0 "
+"(ose të ngjajshme) për t'i thënë kio_audiocd se cila pajisje është CD-ROM-i "
+"juaj."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: U dallua një dëmtim i diskut në këtë gjurmë, ka rrezik për dëmtim "
+"të të dhënave."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Gabim në leximin e të dhënave audio %1 për CD-në"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Nuk mund të lexojmë %1: kodimi dështoi"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Gjurma %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Emri i protokollit"
+
+#~ msgid "Socket name"
+#~ msgstr "Emri i socket"

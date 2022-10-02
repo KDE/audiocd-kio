@@ -1,0 +1,285 @@
+# translation of audiocd_encoder_vorbis.po to Tajik
+# translation of audiocd_encoder_vorbis.po to Тоҷикӣ
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# 2004, infoDev, a World Bank organization
+# 2004, Khujand Computer Technologies, Inc.
+# 2004, KCT1, NGO
+# Dilshod Marupov <dma165@hotmail.com>, 2004
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: audiocd_encoder_vorbis\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:08+0200\n"
+"PO-Revision-Date: 2004-11-01 19:09+0000\n"
+"Last-Translator: Abrorova <H_Abrorova@rambler.ru>\n"
+"Language-Team: Tajik\n"
+"Language: tg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:10
+#, kde-format
+msgid "Vorbis Encoding Quality or Bitrate"
+msgstr "Сифати Рамзгузории Vorbis ё Зуддии битӣ"
+
+#. i18n: ectx: label, entry (set_vorbis_min_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:15
+#, kde-format
+msgid "Minimal bitrate specified"
+msgstr "Зуддии битии хурдтарин таъин шудааст"
+
+#. i18n: ectx: label, entry (set_vorbis_max_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:19
+#, kde-format
+msgid "Maximal bitrate specified"
+msgstr "Зуддии битии калонтарин таъин шудааст"
+
+#. i18n: ectx: label, entry (set_vorbis_nominal_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:23
+#, kde-format
+msgid "Average bitrate specified"
+msgstr "Зуддии битии миёна таъин шудааст"
+
+#. i18n: ectx: label, entry (vorbis_comments), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:28
+#, kde-format
+msgid "Add Comments"
+msgstr "Иловакунии Тавсифот"
+
+#. i18n: ectx: label, entry (vorbis_quality), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:32
+#, kde-format
+msgid "Quality"
+msgstr "Сифат"
+
+#. i18n: ectx: label, entry (vorbis_min_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:39
+#, kde-format
+msgid "Minimal bitrate"
+msgstr "Зуддии битии хурдтарин"
+
+#. i18n: ectx: label, entry (vorbis_max_br), group (Vorbis)
+#. i18n: ectx: label, entry (vorbis_nominal_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:46 audiocd_vorbis_encoder.kcfg:53
+#: audiocd_vorbis_encoder.kcfg:61
+#, kde-format
+msgid "maximal bitrate"
+msgstr "зуддии битии калонтарин"
+
+#. i18n: ectx: property (title), widget (QGroupBox, kcfg_vorbis_enc_method)
+#: encodervorbisconfig.ui:16
+#, kde-format
+msgid "&Encoding Method"
+msgstr "Усули &Рамзгузорӣ"
+
+#. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
+#: encodervorbisconfig.ui:22
+#, kde-format
+msgid "Quality based"
+msgstr "Дар асоси сифат"
+
+#. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
+#: encodervorbisconfig.ui:32
+#, kde-format
+msgid "Bitrate based"
+msgstr "Дар асоси зудии битӣ"
+
+#. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
+#: encodervorbisconfig.ui:45
+#, kde-format
+msgid "Vorbis Bitrate Settings"
+msgstr "Гузопишҳои Зуддии Битии Vorbis"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:58 encodervorbisconfig.ui:138
+#, fuzzy, kde-format
+#| msgid "32 kbs"
+msgid "32 kbps"
+msgstr "32 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:63 encodervorbisconfig.ui:143
+#, fuzzy, kde-format
+#| msgid "40 kbs"
+msgid "40 kbps"
+msgstr "40 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:68 encodervorbisconfig.ui:148
+#, fuzzy, kde-format
+#| msgid "48 kbs"
+msgid "48 kbps"
+msgstr "48 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:73 encodervorbisconfig.ui:153
+#, fuzzy, kde-format
+#| msgid "56 kbs"
+msgid "56 kbps"
+msgstr "56 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:78 encodervorbisconfig.ui:158
+#, fuzzy, kde-format
+#| msgid "64 kbs"
+msgid "64 kbps"
+msgstr "64 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:83 encodervorbisconfig.ui:163
+#, fuzzy, kde-format
+#| msgid "80 kbs"
+msgid "80 kbps"
+msgstr "80 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:88 encodervorbisconfig.ui:168
+#, fuzzy, kde-format
+#| msgid "96 kbs"
+msgid "96 kbps"
+msgstr "96 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:93 encodervorbisconfig.ui:173
+#, fuzzy, kde-format
+#| msgid "112 kbs"
+msgid "112 kbps"
+msgstr "112 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:98 encodervorbisconfig.ui:178
+#: encodervorbisconfig.ui:235
+#, fuzzy, kde-format
+#| msgid "128 kbs"
+msgid "128 kbps"
+msgstr "128 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:103 encodervorbisconfig.ui:183
+#: encodervorbisconfig.ui:240
+#, fuzzy, kde-format
+#| msgid "160 kbs"
+msgid "160 kbps"
+msgstr "160 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:108 encodervorbisconfig.ui:188
+#: encodervorbisconfig.ui:245
+#, fuzzy, kde-format
+#| msgid "192 kbs"
+msgid "192 kbps"
+msgstr "192 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:113 encodervorbisconfig.ui:193
+#, fuzzy, kde-format
+#| msgid "224 kbs"
+msgid "224 kbps"
+msgstr "224 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:118 encodervorbisconfig.ui:198
+#: encodervorbisconfig.ui:250
+#, fuzzy, kde-format
+#| msgid "256 kbs"
+msgid "256 kbps"
+msgstr "256 кб/с"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:123 encodervorbisconfig.ui:203
+#: encodervorbisconfig.ui:255
+#, fuzzy, kde-format
+#| msgid "350 kbs"
+msgid "350 kbps"
+msgstr "350 кб/с"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_min_br)
+#: encodervorbisconfig.ui:214
+#, kde-format
+msgid "M&inimal bitrate:"
+msgstr "Зуддии битии &хурдтарин:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_max_br)
+#: encodervorbisconfig.ui:224
+#, kde-format
+msgid "Ma&ximal bitrate:"
+msgstr "Зуддии битии &калонтарин:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_nominal_br)
+#: encodervorbisconfig.ui:263
+#, kde-format
+msgid "A&verage bitrate:"
+msgstr "Зуддии битии &миёна:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, vorbis_quality_settings)
+#: encodervorbisconfig.ui:276
+#, kde-format
+msgid "Vorbis &Quality Setting"
+msgstr "Гузоришҳои &Сифатии Vorbis"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, vorbis_quality_settings)
+#: encodervorbisconfig.ui:279
+#, kde-format
+msgid ""
+"You can set the quality of the encoded stream here. A higher value implies a "
+"higher quality but encodes slower."
+msgstr ""
+"Дар ин ҷо шумо сифати маҷрои рамзшавандаро барпо карда метавонед. Қиммати "
+"калонтар сифати баландро дар бар мегирад, лекин сустар рамзгузорӣ мешавад."
+
+#. i18n: ectx: property (whatsThis), widget (QDoubleSpinBox, kcfg_vorbis_quality)
+#: encodervorbisconfig.ui:297
+#, kde-format
+msgid "Higher is better but slower"
+msgstr "Баландтараш беҳтар аст лекин сусттар"
+
+#. i18n: ectx: property (title), widget (QGroupBox, GroupBox193)
+#: encodervorbisconfig.ui:307
+#, kde-format
+msgid "Options"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_vorbis_comments)
+#: encodervorbisconfig.ui:316
+#, kde-format
+msgid "Add &track information"
+msgstr "Илованамоии ахбороти &шиора"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vorbis_comments)
+#: encodervorbisconfig.ui:319
+#, kde-format
+msgid ""
+"Add a description of the song to the file header. This makes it easy for the "
+"user to get advanced song information shown by his media player. You can get "
+"this information automatically via the Internet. Look at the <i>\"CDDB "
+"Retrieval\"</i> control module for details."
+msgstr ""
+"Тавсифоти сурудро ба сарлавҳаи файл илова кунед.Ин барои корванд гирифтани "
+"ахбороти пешрафтаро оиди суруд, ки аз тарафи расонаи бозингар нишон дода "
+"мешавад, осон мекунад.Шумо ин ахборотро ба таври худкор ба воситаи Интернет "
+"гирифта метавонед.Барои гирифтани маълумоти муфассал ба модули идораи <i>"
+"\"CDDB Retrieval\"</i> нигаред."

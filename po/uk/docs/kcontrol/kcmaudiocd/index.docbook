@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Ukrainian "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Аудіо-КД</title>
+
+<authorgroup>
+<author
+><firstname
+>Юрій</firstname
+> <surname
+>Чорноіван</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>8 лютого 2019 року</date>
+<releaseinfo
+>Програми 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Системні параметри</keyword>
+<keyword
+>звук</keyword>
+<keyword
+>компакт-диск</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>Налаштування обробника введення-виведення «Audiocd»</title>
+<para
+>Сторінку <guilabel
+>Налаштування обробника введення-виведення «Audiocd»</guilabel
+> поділено між вкладками <guilabel
+>Загальне</guilabel
+>, <guilabel
+>Назви</guilabel
+> та вкладками параметрів засобів кодування.</para>
+
+<sect2 id="general-tab">
+<title
+>Вкладка «Загальне»</title>
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Загальне</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Загальне</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>На цій вкладці розташовано пункти загальний параметрів, які стосуються усього процесу читання даних з компакт-дисків.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Виправляти помилки при читанні КД</guilabel
+></term>
+<listitem>
+<para
+>Під час запису звукових компакт-дисків процес додає до кожного блоку даних 64 бітів даних для виправлення помилок. Після цього до кожного закодованого блоку даних додається 8 бітів даних підкоду або підканалу. Ці дані використовуються для керування і адресування під час відтворення компакт-диска. Ігнорування цих даних може пришвидшити читання, але також може призвести до появи у прочитаних даних небажаних викривлень.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Пропускати помилки</guilabel
+></term>
+<listitem>
+<para
+>Типово, програма ніколи не пропускає помилки на носії даних. Так зроблено, щоб забезпечити найвищу якість результатів.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Пріоритет кодера</guilabel
+></term>
+<listitem>
+<para
+>Передбачено можливість визначення пріоритетності процесу кодування. За допомогою пріоритетності можна запобігти ускладненням у паралельній роботі з іншими програмами (нижчі значення пріоритетності) або пришвидшити кодування (вищі значення пріоритетності). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>Вкладка «Назви»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Назви</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Назви</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Вкладкою <guilabel
+>Назви</guilabel
+> можна скористатися для коригування назв файлів із закодованими даними. Для отримання бажаних для вас результатів можна скористатися макросами та <ulink url="https://uk.wikipedia.org/wiki/Регулярний_вираз"
+>формальними виразами</ulink
+>.</para>
+
+<para
+>Ви можете скористатися інтерактивним поле тестування у нижній частині сторінки, щоб переконатися, що у результаті кодування буде створено файли із бажаними для вас назвами.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>Вкладка «Кодер FLAC»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Кодер FLAC</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Кодер FLAC</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Вкладкою кодера FLAC може буде скористатися, лише якщо обробник введення-виведення даних звукових компакт-дисків було зібрано з libFLAC.</para>
+</note>
+
+<para
+>FLAC є форматом зберігання звукових даних без втрат, вільним від патентних обмежень або ліцензійних виплат. За зберігання у цьому форматі зберігається відмінна якість даних компакт-диска з одночасним зменшенням об’єму даних до приблизно 50%. Використання цього кодека дає файли, розмір яких набагато перевищує розмір файлів Opus, Ogg Vorbis та MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Рівень стискання Flac</guilabel
+></term>
+<listitem>
+<para
+>Рівень стискання — ціле значення від 0 до 8, яке відповідає співвідношенню між розміром файла та швидкістю стискання.</para>
+<para
+>Встановлення рівня стискання 0 надає змогу досягти найшвидшого кодування, але розмір файла при цьому буде порівняно великим.</para>
+<para
+>Крім того, рівень стискання 8 робить процедуру стискання доволі повільною, лише дещо зменшуючи розмір отриманого файла.</para>
+<para
+>Зауважте, що оскільки FLAC за означенням є форматом стискання без втрат, якість звукових даних, які ви отримаєте у результаті кодування, буде однаковою для будь-якого рівня стискання.</para>
+<para
+>Також слід зважати на те, що рівні стискання вище 5 значно збільшують час стискання, але дають лише трохи менші за розміром файли. Не рекомендуємо використовувати надто великі рівні стискання.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>Вкладка «Кодер MP3»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Кодер MP3</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Кодер MP3</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Засобом кодування MP3 можна буде скористатися, лише якщо у системі встановлено програми <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+>.</para>
+</note>
+
+<para
+>MP3 (або MPEG-1 Audio Layer III) — патентований формат кодування цифрових звукових даних з втратою даних.Незважаючи на недоліки цього формату, він є типовим на споживчому ринку, а також широко підтримується портативними музичними програвачами.</para>
+
+<para
+>Для створення файлів <filename class="extension"
+>mp3</filename
+> обробник введення-виведення даних компакт-дисків використовує бібліотеку LAME. LAME вважається найкращим засобом кодування MP3, здебільшого, завдяки відданій роботі розробників та вільній моделі ліцензування, яка надала проєкту доступ до найкращих інженерних ресурсів світу.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Метод кодування</guilabel
+></term>
+<listitem>
+<para
+>Бітова швидкість є мірою об'єму даних, у яких зберігаються дані секунди звукової доріжки. Можна визначити  <guilabel
+>Сталу бітову швидкість</guilabel
+> для отримання файла із передбачуваним розміром. У засобі кодування MP3 передбачено підтримку і <guilabel
+>Змінної бітової швидкості</guilabel
+>, тобто значення бітової швидкості може змінюватися протягом доріжки, залежно від складності звукових даних. Складніші інтервали даних буде закодовано із вищою бітовою швидкістю, ніж менш складні інтервали; такий підхід дає кращу якість і менший розмір файлів, ніж використання сталої бітової швидкості у композиції.</para>
+<para
+>Також ви можете визначити якість кодування. Зниження якості може дещо пришвидшити процес кодування ціною певної втрати даних.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Параметри</guilabel
+></term>
+<listitem>
+<para
+>Позначте пункт <guilabel
+>Захищений авторським правом</guilabel
+>, якщо створені дані є захищеними авторським правом.</para>
+<para
+>Позначте пункт <guilabel
+>Оригінал</guilabel
+>, якщо видобування даних виконується з оригінального компакт-диска.</para>
+<para
+>Якщо позначено пункт <guilabel
+>Кодування ISO</guilabel
+>, LAME примусово дотримуватиметься обмеження у 7680 бітів для загального розміру блоків даних. Сумісність із ISO може бути важливою для відтворення даних на деяких апаратних програвачах.</para>
+<para
+>Для додавання до кожного блоку даних контрольної суми можна скористатися пунктом <guilabel
+>Захист від помилок</guilabel
+>. Такий захист може дещо покращити стійкість зберігання даних MP3.</para>
+<para
+>Пункти <guilabel
+>Записувати мітку ID3</guilabel
+> призначено для примусового запису <ulink url="https://en.wikipedia.org/wiki/ID3"
+>метаданих ID3</ulink
+> до кожного створеного файла MP3 за допомогою LAME.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Параметри фільтра</guilabel
+></term>
+<listitem>
+<para
+>До даних можна застосувати фільтрування за частотними смугами. Фільтрування використовується для обмеження високих та низьких частот при кодуванні. Більшість із нас не розрізняє звукових сигналів із надто високими частотами, а вони є <quote
+>найвартіснішими</quote
+> за об'ємом даних при кодуванні. Також кодування високих частот може призвести до викривлення сигналу.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Параметри змінної бітової швидкості</guilabel
+></term>
+<listitem>
+
+<para
+>Ви також можете вибрати <guilabel
+>Середню бітову швидкість</guilabel
+>, яка є типовою, або <guilabel
+>Максимальну бітову швидкість</guilabel
+>, <guilabel
+>Мінімальну бітову швидкість</guilabel
+> і те, чи <guilabel
+>Мінімальне значення — жорстке обмеження</guilabel
+>.</para>
+<para
+>Для відтворення музики на портативному програвачі достатньою бітовою швидкістю є 160 кбіт/с. Значення, які є нижчими за 120 кбіт/с є незадовільними для музики, а значення, які є вищими за 256 кбіт/с, ймовірно, є надмірними.</para>
+<para
+>Також можна <guilabel
+>Записувати мітку Xing VBR</guilabel
+> до файла. Xing було створено засіб кодування, який записував власну мітку VBR, що уможливлювала точніше позиціювання у файлах зі змінною бітовою швидкістю. Серед інших даних, у мітці VBR Xing містяться дані щодо загальної тривалості відтворення файла MP3, дані, які важко отримати у інший спосіб з потоку даних MPEG.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>Вкладка «Кодер Opus»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Кодер Opus</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Кодер Opus</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Засобом кодування Opus можна буде скористатися, лише якщо у системі встановлено програми <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+>.</para>
+</note>
+
+<para
+>Opus є повністю відкритим, вільним від авторських відрахувань дуже гнучким кодеком для зберігання та поширення звукових даних. Opus є найкращим варіантом для інтерактивного передавання голосових даних та музики у інтернеті, але ним можна скористатися і для зберігання та трансляції звукових даних.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Метод кодування</guilabel
+></term>
+<listitem>
+<para
+>За допомогою цього розділу можна вибрати між кодуванням <guilabel
+>На основі складності</guilabel
+> і <guilabel
+>За бітовою швидкістю</guilabel
+>. Кодування на основі складності передбачає використання певних інтелектуальних алгоритмів визначення максимального використання придатних до сприйняття даних, але точний розмір файла-результату при цьому передбачити доволі важко.</para>
+<itemizedlist>
+<listitem>
+<para
+>Існує декілька речей, які впливають на вибір засобом кодування Opus між навантаженням на процесор та якістю кодування. Ви можете вплинути на вибір за допомогою значення складності кодування у межах від 0 до 10, де 0 відповідає найнижчій якості, а 10 — найвищій.</para>
+</listitem>
+<listitem>
+<para
+>Opus є найефективнішим, якщо виконується кодування зі змінною бітовою швидкістю (<guilabel
+>Середня змінна бітова швидкість</guilabel
+>), цей варіант є типовим. Також можна скористатися обмеженою змінною бітовою швидкістю (<guilabel
+>Обмежена змінна бітова швидкість</guilabel
+>, аналог сталої бітової швидкості для MP3), якщо треба передати дані із низькою латентністю за допомогою відносно повільного з'єднання. У деяких (рідкісних) випадках доводиться користуватися сталою бітовою швидкістю (<guilabel
+>Стала бітова швидкість</guilabel
+>).</para>
+<para
+>Рекомендуємо використовувати для музичних творів у стерео бітову швидкість у діапазоні 64-128 кбіт/с.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Додати інформацію про доріжку</guilabel
+></term>
+<listitem>
+<para
+>Якщо позначено, додати опис пісні у заголовок файла. Це спрощує для користувачів отримання попередньої інформації, яка показується їхніми програвачами мультимедіа. Цю інформацію можна отримати автоматично через Інтернет. Для подробиць подивіться в модуль Системних параметрів «Отримання з CDDB». </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>Вкладка «Кодер Ogg Vorbis»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Кодер Ogg Vorbis</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Кодер Ogg Vorbis</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Вкладкою кодера Ogg Vorbis може буде скористатися, лише якщо обробник введення-виведення даних звукових компакт-дисків було зібрано з <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+>.</para>
+</note>
+
+<para
+>Ogg Vorbis є відкритим, вільним від патентних відрахувань форматом стискання цифрових звукових даних з втратами.За його допомогою можна отримати менші файли, порівняно з MP3 рівної або нижчої якості.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Метод кодування</guilabel
+></term>
+<listitem>
+<para
+>За допомогою цього розділу можна вибрати між кодуванням <guilabel
+>За якістю</guilabel
+> і <guilabel
+>За бітовою швидкістю</guilabel
+>. Кодування за якістю передбачає використання певних інтелектуальних алгоритмів визначення максимального використання придатних до сприйняття даних, але точний розмір файла-результату при цьому передбачити доволі важко.</para>
+<itemizedlist>
+<listitem>
+<para
+>Якість кодування Ogg Vorbis можна визначити за допомогою значення від 0 до 10, де 0 відповідає найнижчій якості, а 10 — найвищій.</para>
+</listitem>
+<listitem>
+<para
+>Альтернативно, можна скористатися змінною бітовою швидкістю. Можна вибрати або <guilabel
+>Середню бітову швидкість</guilabel
+>, яка є типовою, або <guilabel
+>Максимальну бітову швидкість</guilabel
+> і <guilabel
+>Мінімальну бітову швидкість</guilabel
+>.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Додати інформацію про доріжку</guilabel
+></term>
+<listitem>
+<para
+>Якщо позначено, додати опис пісні у заголовок файла. Це спрощує для користувачів отримання попередньої інформації, яка показується їхніми програвачами мультимедіа. Цю інформацію можна отримати автоматично через Інтернет. Для подробиць подивіться в модуль Системних параметрів «Отримання з CDDB». </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

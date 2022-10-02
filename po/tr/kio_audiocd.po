@@ -1,0 +1,127 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010.
+# Onur Küçük <onur@uludag.org.tr>, 2005.
+# obsoleteman <tulliana@gmail.com>, 2009.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdemultimedia-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2022-05-05 12:05+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Onur Küçük, Emir SARI"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "onur@uludag.org.tr, emir_sari@icloud.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Bilgi"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Bütün CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB Bilgisi"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Bu iletişim kuralıyla bir makine belirtmelisiniz. Lütfen audiocd:/ biçimini "
+"kullanın."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Aygıt belirtimi eksik"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Aygıtın bu hesap için okuma izinleri yok. Aygıt üzerindeki okuma izinlerini "
+"denetleyin."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Aygıtın bu hesap için yazma izinleri yok. Aygıt üzerindeki yazma izinlerini "
+"denetleyin."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Bilinmeyen hata.  İçeride CD var ise cdparanoia -vsQ komutunu kendiniz "
+"olarak (ana kullanıcı değil) çalıştırın. Parça listesi görüyor musunuz? "
+"Görmüyorsanız CD aygıtına erişim yetkiniz olduğuna emin olun. SCSI öykünücü  "
+"kullanıyorsanız (IDE CD yazıcınız var ise olabilir) genel SCSI aygıtına (/"
+"dev/sg0, /dev/sg1 vs.) okuma ve yazma yetkiniz olduğundan emin olun. Hala "
+"çalışmıyor ise kio_audiocd'ye CD-Rom aygıtınızın hangisi olduğunu anlatmak "
+"için audiocd:/?device=/dev/sg0 komutunu yazın."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "AudioCD: Disk otomatik hata algılaması bu şarkıda hata buldu."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "CD'den %1 için ses verisi okuma hatası"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "%1 okunamadı: Kodlama başarısız"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Parça %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Protokol adı"
+
+#~ msgid "Socket name"
+#~ msgstr "Soket adı"

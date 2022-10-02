@@ -1,0 +1,127 @@
+# Indonesian translations for kio_audiocd package.
+# Copyright (C) 2012 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kio_audiocd package.
+# Gian Giovani <wejick@gmail.com>, 2012.
+# Wantoyo <wantoyek@gmail.com>, 2017, 2018, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2022-08-26 23:44+0700\n"
+"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
+"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Gian Giovani,Wantoyo"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "wejick@gmail.com,wantoyek@gmail.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Informasi"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "CD Penuh"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Informasi CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Kamu tak bisa menentukan sebuah host dengan protokol ini. Silakan gunakan "
+"format audiocd:/ sebagai gantinya."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Peranti tidak memiliki izin baca untuk akun ini. Periksa perizinan baca pada "
+"peranti."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Peranti tidak memiliki izin tulis untuk akun ini. Periksa perizinan tulis "
+"pada peranti."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Galat yang tidak diketahui. Jika kamu memiliki cd di drive coba jalankan "
+"cdparanoia -vsQ sebagai dirimu sendiri (bukan root). Apakah kamu melihat "
+"daftar trek? Jika tidak, pastikan kamu memiliki izin untuk mengakses peranti "
+"CD. Jika kamu menggunakan emulasi SCSI (mungkin jika kamu memiliki sebuah CD "
+"writer IDE), pastikan kamu memeriksa apakah kamu  telah memiliki izin baca "
+"dan tulis pada peranti SCSI generik, yang mungkin /dev/sg0, /dev/sg1, dll. "
+"Jika masih tidak berhasil, coba ketikkan audiocd:/?device=/dev/sg0 (atau "
+"yang sejenis) untuk memberi tahu kio_audiocd di mana peranti CD-ROM kamu."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: Terdeteksi diska yang cacat pada trek ini, resiko korupnya data."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Error membaca data audio untuk %1 dari CD"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Tidak dapat baca %1: gagal encoding"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Trek %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Nama protokol:"
+
+#~ msgid "Socket name"
+#~ msgstr "Nama soket:"

@@ -1,0 +1,337 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Marco</firstname
+><surname
+>Wegner</surname
+><affiliation
+><address
+><email
+>mail@marcowegner.de</email
+></address
+></affiliation
+><contrib
+>Übersetzer</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Erlaubt das Verwenden von Audio-<acronym
+>CD</acronym
+>s wie ein <quote
+>richtiges</quote
+> Dateisystem, wobei die Stücke als Dateien dargestellt und beim Kopieren aus dem Verzeichnis digital von der <acronym
+>CD</acronym
+> ausgelesen werden. Dies garantiert eine perfekte Kopie der Audiodaten.</para>
+
+<para
+>Um zu sehen, wie dieses Modul arbeitet, legen Sie eine Audio-<acronym
+>CD</acronym
+> in Ihr &CD-ROM;-Laufwerk ein und geben <userinput
+>audiocd:/</userinput
+> im &konqueror; ein. Innerhalb weniger Sekunden sollten Sie eine Liste von Stücken und einige Ordner sehen.</para>
+
+<para
+>Auf Audio-<acronym
+>CD</acronym
+>s gibt es eigentlich keine Ordner, aber das audiocd-Modul stellt diese nützliche Erweiterung bereit. Wenn Sie in diese Ordner schauen, werden Sie feststellen, dass sie alle die gleiche Anzahl Titel enthalten. Falls Sie mit dem Internet verbunden sind, werden in einigen Verzeichnissen sogar die Stück-Titel als Dateinamen angezeigt.</para>
+
+<para
+>Diese separaten Ordner existieren, damit Sie auswählen können, in welchem Format Sie die Stücke auf der <acronym
+>CD</acronym
+> anhören (oder kopieren) wollen.</para>
+
+<para
+>Wenn Sie einen Titel aus dem Ordner <filename class="directory"
+>Ogg Vorbis</filename
+> ziehen und ihn über einem anderen offenen &konqueror;-Fenster ablegen, sollten Sie ein Fenster sehen, das Ihnen anzeigt, dass der Titel von der <acronym
+>CD</acronym
+> ausgelesen und in einer Datei gespeichert wird. Beachten Sie, dass Ogg Vorbis ein komprimiertes Format ist, sodass die gespeicherte Datei erheblich kleiner sein wird als eine von den Rohdaten kopierte.</para>
+
+<para
+>Der Mechanismus dahinter ist recht einfach. Wenn das audiocd-Modul aufgefordert wird, einen Titel aus dem Ordner <filename class="directory"
+>Ogg Vorbis</filename
+> zu erzeugen, liest es die digitalen Audiodaten von der <acronym
+>CD</acronym
+>. Während das Modul die Daten zur Speicherung in eine Datei ablegt, werden diese in das Format Ogg Vorbis umgewandelt (<acronym
+>CD</acronym
+>-Audio ist kein spezielles Format, es sind einfach binäre Daten).</para>
+
+<para
+>Sie könnten auch versuchen, eine auf <literal role="extension"
+>.wav</literal
+> endende Datei auf die &kde;-Medienwiedergabe (&juk;) zu ziehen. In diesem Fall ist der Vorgang, der dahinter steckt, ganz ähnlich, nur dass an Stelle einer Umwandlung der Audiodaten in das Format Ogg Vorbis hier eine sehr einfache Umwandlung stattfindet: von binären Rohdaten (repräsentiert von den <literal role="extension"
+>.cda</literal
+>-Dateien im Basisordner) ins Format <quote
+>RIFF WAV</quote
+>, ein unkomprimiertes Format, das von den meisten Medien-Abspielern verstanden wird.</para>
+
+<para
+>&juk; sollte problemlos die <literal role="extension"
+>.wav</literal
+>-Datei abspielen, aber wenn es Schwierigkeiten gibt, können sie versuchen, die Option <option
+>paranoia_level</option
+> zu verwenden, die später noch erklärt wird.</para>
+
+<variablelist>
+<title
+>Optionen</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Setzt den Pfad zum Audio-<acronym
+>CD</acronym
+>-Gerät, &eg; <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Normalerweise wird das Modul versuchen, ein <acronym
+>CD</acronym
+>-Laufwerk mit einer eingelegten Audio-<acronym
+>CD</acronym
+> zu finden, aber wenn das nicht funktioniert oder Sie mehr als ein <acronym
+>CD</acronym
+>-Laufwerk besitzen, können Sie es mit dieser Option versuchen. Beachten Sie, dass der Einrichtungsdialog es Ihnen erlaubt, eine Voreinstellung für diese Option zu setzen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Setzt das Schema für Dateinamen, zum Beispiel <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Track %{number}</parameter
+></userinput
+>. Der Standardwert für diese Option kann im Konfigurationsdialog gesetzt werden. Warnung: Wenn Sie eine leere Zeichenfolge angeben, werden keine Dateien erscheinen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Setzt das Schema für Alben, zum Beispiel <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>.Der Standardwert für diese Option kann im Konfigurationsdialog gesetzt werden.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>Nice-Ebene</option
+></term>
+<listitem>
+<para
+>Setzt die Nice-Ebene für die Kodierer, zum Beispiel <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Im Konfigurationsdialog kann für diesen Parameter ein Standardwert eingegeben werden.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Setzt den Wert für Fehlererkennung und -korrektur beim Auslesen von Audiodaten.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Stufe 0</term>
+<listitem>
+<para
+>Keine Erkennung oder Korrektur. Das ist nur sinnvoll, falls Sie ein perfektes <acronym
+>CD</acronym
+>-Laufwerk haben (also eher unwahrscheinlich).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Stufe 1</term>
+<listitem>
+<para
+>Ermöglicht grundlegende Fehlerkontrolle und -korrektur.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Stufe 2</term>
+<listitem>
+<para
+>Voreinstellung. Legt fest, dass nur ein fehlerfreies Auslesen akzeptiert wird.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Beachten Sie, dass es einen Nachteil der Stufe 2 gibt: Das Auslesen kann sehr langsam sein, sodass das digitale Abspielen in Echtzeit möglicherweise nicht korrekt arbeitet. Falls Sie ein qualitativ hochwertiges <acronym
+>CD</acronym
+>-Laufwerk besitzen (dabei gilt, dass teurer nicht notwendigerweise auch bessere Qualität bedeutet), werden Sie ein langsames Auslesen wahrscheinlich nicht erleben, aber ein schlechtes Laufwerk kann Tage brauchen (!), um die Audiodaten einer einzigen <acronym
+>CD</acronym
+> auszulesen. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>CDDB-Auswahl</option
+></term>
+<listitem>
+
+<para
+>Legt fest, dass die Namen der Titel der eingelegten <acronym
+>CD</acronym
+> in einer Internet-<acronym
+>CD</acronym
+>-Datenbank nachgeschlagen werden. Auf Audio-<acronym
+>CD</acronym
+>s sind die Titel der Stücke nicht gespeichert, aber die Internet-<acronym
+>CD</acronym
+>-Datenbank ist ein raffiniertes System, das ein spezielles einzigartiges Identifizierungsmerkmal verwendet, das aus der Anzahl und Länge der Titel auf jeder <acronym
+>CD</acronym
+> erstellt wird, um auf eine dazugehörende Titel-Liste zu verweisen. Diese Titel-Listen werden von der Internetgemeinschaft bereitgestellt und für alle verfügbar gemacht. Ab und an können mehrere Einträge gefunden werden, aus denen dann ausgewählt werden muss.</para>
+
+<para
+>Sie können Ihre eigenen Titel-Listen mittels &kscd; hinzufügen, dem <acronym
+>CD</acronym
+>-Spieler der &kde;.</para>
+
+<para
+>Standardmäßig wählt audiocd den am besten passenden.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Beispiele</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Gibt eine Liste der Stücke auf der Audio-<acronym
+>CD</acronym
+> aus, die in <filename class="devicefile"
+>/dev/scd0</filename
+> eingelegt wurde. (Das steht unter &Linux; für das erste <acronym
+>SCSI</acronym
+>-&CD-ROM;-Gerät.) Falls Sie Titel von der <acronym
+>CD</acronym
+> kopieren, wird das digitale Auslesen ohne Fehlerkorrektur oder -erkennung ausgeführt. Die Internet-<acronym
+>CD</acronym
+>-Datenbank Eintrag 0 wird verwendet.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Eine oft gestellte Frage</title>
+<qandaentry>
+<question>
+<para
+>Ich bekomme die Fehlermeldung <errorname
+>Die Datei oder der Ordner / existiert nicht</errorname
+>. Was muss ich tun? Ich habe eine Audio-<acronym
+>CD</acronym
+> in meinem Laufwerk.</para>
+</question>
+
+<answer>
+<para
+>Versuchen Sie es mit dem Befehl <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> (nicht als <systemitem class="username"
+>root</systemitem
+>). Sehen Sie eine Titel-Liste? Falls nicht, stellen Sie sicher, dass Sie die Berechtigung haben, auf das <acronym
+>CD</acronym
+>-Laufwerk zuzugreifen. Sollten Sie die <acronym
+>SCSI</acronym
+>-Emulation verwenden (&eg; wenn Sie einen <acronym
+>IDE</acronym
+>-<acronym
+>CD</acronym
+>-Brenner haben), prüfen Sie die Zugriffsrechte der <acronym
+>SCSI</acronym
+>-Geräte, also <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+> &etc; Falls es immer noch nicht funktioniert, versuchen Sie es mit der Eingabe von <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (oder ähnlich), um dem audiocd-Modul mitzuteilen, welches Gerät Ihr &CD-ROM; ist.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

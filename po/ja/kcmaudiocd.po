@@ -1,0 +1,357 @@
+# Translation of kcmaudiocd into Japanese.
+# This file is distributed under the same license as the kdemultimedia package.
+#
+# Taiki Komoda <kom@kde.gr.jp>, 2002.
+# Kaori Andou <parsley@happy.email.ne.jp>, 2004.
+# AWASHIRO Ikuya <ikuya@oooug.jp>, 2004.
+# AWASHIRO Ikuya <ikuya@good-day.co.jp>, 2005.
+# Shinichi Tsunoda <tsuno@ngy.1st.ne.jp>, 2005.
+# Fumiaki Okushi <fumiaki@okushi.com>, 2006.
+# Yukiko Bando <ybando@k6.dion.ne.jp>, 2006, 2007.
+# Fumiaki Okushi <okushi@kde.gr.jp>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmaudiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2010-09-26 11:43-0700\n"
+"Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
+"Language-Team: Japanese <kde-jp@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Noboru Sinohara,Kaori Andou,Ikuya AWASHIRO,Shinichi Tsunoda"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"shinobo@leo.bekkoame.ne.jp,parsley@happy.email.ne.jp,ikuya@oooug.jp,"
+"tsuno@ngy.1st.ne.jp"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
+#: audiocdconfig.ui:27
+#, kde-format
+msgid "&General"
+msgstr "全般(&G)"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:49
+#, fuzzy, kde-format
+#| msgid ""
+#| "If you uncheck this option, the slave will not try to use error "
+#| "correction which can be useful for reading damaged CDs. However, this "
+#| "feature can be problematic in some cases, so you can switch it off here."
+msgid ""
+"If you uncheck this option, the KIO worker will not try to use error "
+"correction which can be useful for reading damaged CDs. However, this "
+"feature can be problematic in some cases, so you can switch it off here."
+msgstr ""
+"このオプションのチェックを外すと、読み込んだ CD が破損していてもスレーブはエ"
+"ラー訂正を試みません。しかし、この機能によって問題が起こることもあるので、そ"
+"のような場合はここで無効にできます。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:52
+#, kde-format
+msgid "Use &error correction when reading the CD"
+msgstr "CD の読み込み時にエラー訂正を使う(&E)"
+
+# ACCELERATOR changed by translator
+#. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
+#: audiocdconfig.ui:62
+#, kde-format
+msgid "&Skip on errors"
+msgstr "エラーをスキップする(&K)"
+
+#. i18n: ectx: property (title), widget (QGroupBox, encoderPriority)
+#: audiocdconfig.ui:88
+#, kde-format
+msgid "Encoder Priority"
+msgstr "エンコーダの優先度"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: audiocdconfig.ui:113
+#, kde-format
+msgid "Highest"
+msgstr "最高"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: audiocdconfig.ui:123
+#, kde-format
+msgid "Lowest"
+msgstr "最低"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: audiocdconfig.ui:136
+#, kde-format
+msgid "Normal"
+msgstr "標準"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabNames)
+#: audiocdconfig.ui:153
+#, kde-format
+msgid "&Names"
+msgstr "名前(&N)"
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
+#: audiocdconfig.ui:159
+#, kde-format
+msgid "File Name (without extension)"
+msgstr "ファイル名 (拡張子なし)"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_3)
+#: audiocdconfig.ui:165 audiocdconfig.ui:331 audiocdconfig.ui:462
+#, kde-format
+msgid "The following macros will be expanded:"
+msgstr "以下のマクロを拡張します:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel13)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21_2)
+#: audiocdconfig.ui:177 audiocdconfig.ui:373 audiocdconfig.ui:504
+#, kde-format
+msgid "Genre"
+msgstr "ジャンル"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16_2)
+#: audiocdconfig.ui:187 audiocdconfig.ui:363 audiocdconfig.ui:494
+#, no-c-format, kde-format
+msgid "%{year}"
+msgstr "%{year}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
+#: audiocdconfig.ui:197
+#, no-c-format, kde-format
+msgid "%{title}"
+msgstr "%{title}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel5)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18_2)
+#: audiocdconfig.ui:207 audiocdconfig.ui:393 audiocdconfig.ui:524
+#, kde-format
+msgid "Album Title"
+msgstr "アルバムのタイトル"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20_2)
+#: audiocdconfig.ui:217 audiocdconfig.ui:343 audiocdconfig.ui:474
+#, kde-format
+msgid "Year"
+msgstr "年"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
+#: audiocdconfig.ui:227
+#, kde-format
+msgid "Track Artist"
+msgstr "トラックのアーティスト"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
+#: audiocdconfig.ui:237
+#, kde-format
+msgid "Track Title"
+msgstr "トラックのタイトル"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19_2)
+#: audiocdconfig.ui:247 audiocdconfig.ui:383 audiocdconfig.ui:514
+#, kde-format
+msgid "Album Artist"
+msgstr "アルバムのアーティスト"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15_2)
+#: audiocdconfig.ui:257 audiocdconfig.ui:353 audiocdconfig.ui:484
+#, no-c-format, kde-format
+msgid "%{albumartist}"
+msgstr "%{albumartist}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17_2)
+#: audiocdconfig.ui:267 audiocdconfig.ui:403 audiocdconfig.ui:534
+#, no-c-format, kde-format
+msgid "%{genre}"
+msgstr "%{genre}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
+#: audiocdconfig.ui:277
+#, no-c-format, kde-format
+msgid "%{trackartist}"
+msgstr "%{trackartist}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14_2)
+#: audiocdconfig.ui:287 audiocdconfig.ui:413 audiocdconfig.ui:544
+#, no-c-format, kde-format
+msgid "%{albumtitle}"
+msgstr "%{albumtitle}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: audiocdconfig.ui:297
+#, kde-format
+msgid "Track Number"
+msgstr "トラック番号"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
+#: audiocdconfig.ui:307
+#, no-c-format, kde-format
+msgid "%{number}"
+msgstr "%{number}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
+#: audiocdconfig.ui:325
+#, kde-format
+msgid "Album Name"
+msgstr "アルバムの名前"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:447
+#, no-c-format, kde-format
+msgid ""
+"This defines where files will appear in relation to the encoder root, you "
+"can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:450
+#, kde-format
+msgid "Files Location"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
+#: audiocdconfig.ui:572
+#, no-c-format, kde-format
+msgid "%{albumtitle}/%{albumartist}"
+msgstr "%{albumtitle}/%{albumartist}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: audiocdconfig.ui:582
+#, kde-format
+msgid "Name Regular Expression Replacement"
+msgstr "名前を正規表現で置換"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
+#: audiocdconfig.ui:588
+#, kde-format
+msgid "Selection:"
+msgstr "選択:"
+
+# skip-rule: underline
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: audiocdconfig.ui:599
+#, kde-format
+msgid ""
+"Regular expression used on all file names. For example using selection \" \" "
+"and replace with \"_\" would replace all the spaces with underlines.\n"
+msgstr ""
+"正規表現はすべてのファイル名に使われます。例えば「選択」に “ ”、「次と置換」"
+"に “_” を指定すると、すべてのスペースがアンダースコアに置き換えられます。\n"
+
+#. i18n: ectx: property (text), widget (QLabel, inputlabel)
+#: audiocdconfig.ui:612
+#, kde-format
+msgid "Input:"
+msgstr "入力:"
+
+#. i18n: ectx: property (text), widget (QLabel, outputLabel)
+#: audiocdconfig.ui:622
+#, kde-format
+msgid "Output:"
+msgstr "出力:"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleLabel)
+#: audiocdconfig.ui:632
+#, kde-format
+msgid "Example"
+msgstr "例"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleOutput)
+#. i18n: ectx: property (text), widget (QLineEdit, example)
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:141
+#: kcmaudiocd.cpp:210
+#, kde-format
+msgid "Cool artist - example audio file.wav"
+msgstr "Cool artist - example audio file.wav"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
+#: audiocdconfig.ui:665
+#, kde-format
+msgid "Replace with:"
+msgstr "次と置換:"
+
+#: kcmaudiocd.cpp:61
+#, kde-format
+msgid "%1 Encoder"
+msgstr "%1 エンコーダ"
+
+#: kcmaudiocd.cpp:92
+#, fuzzy, kde-format
+#| msgid "KDE Audio CD IO Slave"
+msgid "KDE Audio CD KIO Worker"
+msgstr "KDE オーディオ CD I/O スレーブ"
+
+#: kcmaudiocd.cpp:94
+#, kde-format
+msgid "Benjamin C. Meyer"
+msgstr "Benjamin C. Meyer"
+
+#: kcmaudiocd.cpp:94
+#, kde-format
+msgid "Former Maintainer"
+msgstr "元メンテナ"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Carsten Duvenhorst"
+msgstr "Carsten Duvenhorst"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Original Author"
+msgstr ""
+
+#: kcmaudiocd.cpp:251
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
+#| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
+#| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. In "
+#| "this module, you can configure encoding, and device settings. Note that "
+#| "MP3 and Ogg Vorbis encoding are only available if KDE was built with a "
+#| "recent version of the LAME or Ogg Vorbis libraries."
+msgid ""
+"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
+"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
+"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
+"In this module, you can configure encoding, and device settings. Note that "
+"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
+"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
+"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
+"system."
+msgstr ""
+"<h1>オーディオ CD</h1><p>オーディオ CD I/O スレーブを利用することによって、"
+"オーディオ CD-ROM やオーディオ DVD から簡単に wav, MP3, Ogg Vorbis ファイルを"
+"作成することができます。このスレーブは Konqueror の場所バーに “audiocd:/” と"
+"入力することで呼び出せます。このモジュールではエンコーディングやデバイスを設"
+"定します。</p><p>【注意】 MP3 および Ogg Vorbis のエンコーディングは、KDE が"
+"最近のバージョンの LAME または Ogg Vorbis ライブラリでビルドされている場合の"
+"み利用できます。</p>"

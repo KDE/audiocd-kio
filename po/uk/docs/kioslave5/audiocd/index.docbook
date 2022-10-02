@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Ukrainian "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>16 вересня 2004 року</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Надає системі змогу працювати зі звуковим <acronym
+>КД</acronym
+> як зі <quote
+>справжньою</quote
+> файловою системою, де файлам відповідають доріжки, якщо скопіювати ці файли до якоїсь з тек, звукові дані буде видобуто <acronym
+>КД</acronym
+> у цифровому вигляді. Таким чином ви отримуєте ідеальну копію звукових даних.</para>
+
+<para
+>Щоб побачити як працює цей обробник, вставте звуковий <acronym
+>КД</acronym
+> до вашого пристрою з читання компакт-дисків і наберіть <userinput
+>audiocd:/</userinput
+> у полі адреси &konqueror;. За декілька секунд ви побачити список доріжок і декілька тек.</para>
+
+<para
+>Насправді, на звуковому <acronym
+>КД</acronym
+> немає ніяких тек, але для зручності обробник audiocd показує інформацію у вигляді тек. Якщо ви зазирнете всередину цих тек, ви побачите, що всі вони містять однакову кількість доріжок. Якщо ваш комп’ютер з’єднано з мережею Інтернет, деякі теки міститимуть файли з назвами, які відповідають справжнім назвам доріжок диска.</para>
+
+<para
+>Причиною існування декількох окремих тек з однаковим вмістом є те, що за їх допомогою ви можете обрати формат, у якому ви бажаєте слухати (або копіювати) доріжки <acronym
+>КД</acronym
+>.</para>
+
+<para
+>Якщо ви перетягнете доріжку з теки <filename class="directory"
+>Ogg Vorbis</filename
+> і скинете її до іншого вікна &konqueror;, відкритого у вашій домашній теці, відкриється вікно поступу, яке відображатиме процес видобування доріжки з <acronym
+>КД</acronym
+> і збереження її до файла. Зауважте, що файли у форматі Ogg Vorbis стискаються, отже, файл у вашій домашній теці буде набагато меншого розміру, ніж міг би бути, якби ви скопіювали всі дані з диска напряму.</para>
+
+<para
+>За всім цим стоїть досить простий механізм. Коли до обробника введення-виведення audiocd надходить запит на отримання доріжки з теки <filename class="directory"
+>Ogg Vorbis</filename
+>, засіб починає видобування цифрових звукових даних з <acronym
+>КД</acronym
+>. Під час надсилання даних до файла у вашій домашній теці засіб кодує їх у форматі Ogg Vorbis (формат, у якому отримуються дані зі звукового <acronym
+>КД</acronym
+> є форматом без стискання).</para>
+
+<para
+>Ви також можете спробувати перетягнути файл з суфіксом <literal role="extension"
+>.wav</literal
+> до програвача &kde;, &juk;. У цьому випадку те, що відбудеться поза полем вашого зору, буде дуже схоже на попередній випадок, окрім, хіба що, кодування звукових даних у форматі Ogg Vorbis — відбудеться дуже просте перетворення, з необроблених двійкових даних (яким відповідають файли <literal role="extension"
+>.cda</literal
+> у теці найвищого рівня) до формату <quote
+>RIFF WAV</quote
+>, формату без стиснення, який розуміє більшість програвачів.</para>
+
+<para
+>&juk; має без проблем відтворити файл <literal role="extension"
+>.wav</literal
+>, але, якщо проблеми все ж виникли, ви можете спробувати використати параметр <option
+>paranoia_level</option
+>, значення якого пояснено нижче.</para>
+
+<variablelist>
+<title
+>Параметри</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Встановлює шлях до пристрою звукового <acronym
+>КД</acronym
+>, приклад: <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Зазвичай, обробник намагатиметься знайти пристрій для читання <acronym
+>КД</acronym
+> зі вставленим звуковим <acronym
+>КД</acronym
+> самостійно, але, якщо пошук зазнає невдачі або буде знайдено декілька пристроїв <acronym
+>КД</acronym
+>, ви можете спробувати вказати пристрій за допомогою цього параметра. Зауважте, що у діалоговому вікні налаштування ви можете встановити типове значення для цього параметра.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Встановлює шаблон назви, приклад: <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Track %{number}</parameter
+></userinput
+>. Зауважте, що ви можете встановити типове значення цього параметра у діалоговому вікні налаштування. Якщо ви встановите порожнє значення параметра, файлів показано не буде.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Встановлює шаблон назви альбому, приклад: <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Зауважте, що ви можете встановити типове значення цього параметра у діалоговому вікні налаштування.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Встановлює пріоритет процесу кодувальника, приклад: <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Зауважте, що ви можете встановити типове значення цього параметра у діалоговому вікні налаштування.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Встановлює рівень виявлених і виправлених помилок під час видобування даних.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Рівень 0</term>
+<listitem>
+<para
+>Без виявлення або виправлення. Використовуйте, лише якщо ваш пристрій для читання <acronym
+>КД</acronym
+> у ідеальному стані (малоймовірно).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Рівень 1</term>
+<listitem>
+<para
+>Увімкнути базову перевірку наявності помилок і виправлення.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Рівень 2</term>
+<listitem>
+<para
+>Типове значення. Вказує на те, що прийнятним є лише безпомилкове видобування.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Зауважте, що використання рівня 2, може призвести до певних незручностей. Видобування може бути дуже повільним, отже відтворення у режимі реального часу може не працювати належним чином. Якщо у вас чудовий пристрій для читання <acronym
+>КД</acronym
+> (зауважте, що «дорогий» не означає «кращий»), ви не відчуєте уповільнення під час видобування, але якщо пристрій доживає останні дні, видобування одного <acronym
+>КД</acronym
+> може тривати декілька днів!</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Визначає базу даних щодо <acronym
+>КД</acronym
+> у Інтернеті, яку слід використовувати. На звукових <acronym
+>КД</acronym
+> часто немає інформації про назви доріжок, але мережеві бази даних <acronym
+>КД</acronym
+> побудовано на розумній системі, яка визначає список доріжок за унікальним ідентифікатором, який обчислюється на основі кількості і тривалості доріжок <acronym
+>КД</acronym
+>. Списки доріжок є внесками членів Інтернет-спільноти і доступні для всіх. Іноді одному дискові відповідають декілька записів у базі даних. Ви можете вказати, який з них слід використовувати.</para>
+
+<para
+>За допомогою &kscd;, програвача <acronym
+>КД</acronym
+> для &kde; ви можете надсилати до бази даних свої списки доріжок.</para>
+
+<para
+>Типово, audiocd спробує підібрати найкращий.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Приклади</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Отримує список доріжок на звуковому <acronym
+>КД</acronym
+>, який знаходиться у пристрої <filename class="devicefile"
+>/dev/scd0</filename
+> (так у &Linux; позначається перший <acronym
+>SCSI</acronym
+>-пристрій для читання компакт дисків). Якщо ви скопіюєте доріжки з <acronym
+>КД</acronym
+>, цифрове видобування відбуватиметься без виявлення і виправлення помилок. Для створення назв доріжок буде використано 0 запис з <acronym
+>CDDB</acronym
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Поширені питання</title>
+<qandaentry>
+<question>
+<para
+>Отримую повідомлення про те, що <errorname
+>Файл або тека / не існує</errorname
+>. Як це виправити? У моєму пристрої для читання є звуковий <acronym
+>КД</acronym
+>!</para>
+</question>
+
+<answer>
+<para
+>Спробуйте виконати команду <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> від вашого користувача (не <systemitem class="username"
+>root</systemitem
+>). Бачите список доріжок? Якщо ні, переконайтеся, що у вас є дозвіл на доступ до пристрою для читання <acronym
+>КД</acronym
+>. Якщо ви використовуєте емуляцію <acronym
+>SCSI</acronym
+> (це може статися, якщо у вас пристрій для записування <acronym
+>КД</acronym
+> на <acronym
+>IDE</acronym
+>), переконайтеся, що у вас є дозвіл на читання і запис до звичайного пристрою <acronym
+>SCSI</acronym
+>, яким, швидше за все, є один з пристроїв <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+> тощо. Якщо після перевірок і виправлення прав доступу система не працює, пробуйте ввести адресу <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (або щось подібне), щоб напряму вказати tell kio_audiocd, де знаходиться пристрій для читання КД.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Tillåter att en ljud-<acronym
+>cd</acronym
+> behandlas som ett <quote
+>riktigt</quote
+> filsystem, där spår representeras som filer, och när de kopieras från katalogen, extraheras digitalt från <acronym
+> cd</acronym
+>:n. Det här garanterar en perfekt kopia av ljuddata.</para>
+
+<para
+>För att se hur arbetaren fungerar, stoppa in en ljud-<acronym
+>cd</acronym
+> i din cd-romspelare och skriv <userinput
+>audiocd:/</userinput
+> i &konqueror;. Inom några få sekunder bör du se en lista på spår och några kataloger.</para>
+
+<para
+>En ljud-<acronym
+>cd</acronym
+> har egentligen inte kataloger, men I/O-arbetaren tillhandahåller dem för bekvämlighetens skull. Om du tittar inne i dessa kataloger kommer du att se att de alla innehåller samma antal spår. Om du är ansluten till Internet, kommer en del kataloger visa de verkliga titlarna på spåren som filnamn.</para>
+
+<para
+>Orsaken till att de här olika katalogerna finns, är för att du ska kunna välja vilket format du vill lyssna på (eller kopiera) spåren på <acronym
+>cd</acronym
+>:n.</para>
+
+<para
+>Om du drar ett spår från <filename class="directory"
+>Ogg Vorbis</filename
+>-katalogen och släpper det i ett annat &konqueror;-fönster som är öppet och visar din hemkatalog, ser du ett förloppsfönster som visar dig att spåret extraheras från <acronym
+>cd</acronym
+>:n och sparas på en fil. Observera att Ogg Vorbis är ett komprimerat format, så filen i din hemkatalog blir väsentligt mindre än den skulle varit om du hade kopierat rådata.</para>
+
+<para
+>Mekanismen bakom det här är ganska enkel. När I/O-arbetaren får en begäran att hämta ett spår från <filename class="directory"
+>Ogg Vorbis</filename
+>-katalogen, börjar den extrahera digital ljuddata från <acronym
+>cd</acronym
+>:n. Medan den skickar över data till filen i din hemkatalog, kodar den det samtidigt i Ogg Vorbis-format (<acronym
+>cd</acronym
+>-ljud har ett okomprimerat format från början).</para>
+
+<para
+>Du kan också försöka att dra en fil som slutar med <literal role="extension"
+>.wav</literal
+> och släppa den på &kde;:s mediaspelare, &juk;. I det här fallet är proceduren som sker bakom ridån liknande, utom att istället för att koda ljuddata i Ogg Vorbis-format, så genomgår det en mycket enkel konvertering, från binär rådata (som <literal role="extension"
+>.cda</literal
+>-filerna i toppnivåkatalogen representerar) till <quote
+>RIFF WAV</quote
+>-format, ett okomprimerat format som de flesta mediaspelare förstår.</para>
+
+<para
+>&juk; bör helt glatt spela <literal role="extension"
+>.wav</literal
+>-filen, men om det uppstår problem, kan du försöka använda parametern <option
+>paranoia_level</option
+>, som förklaras nedan.</para>
+
+<variablelist>
+<title
+>Alternativ</title>
+
+<varlistentry>
+<term
+><option
+>enhet</option
+></term>
+<listitem>
+<para
+>Ställer in sökvägen till ljud-<acronym
+>cd</acronym
+>-enheten, t ex <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc </parameter
+></userinput
+>. I/O-arbetaren försöker normalt hitta en <acronym
+>cd</acronym
+>-spelare med en ljud-<acronym
+>cd</acronym
+> inmatad, men om den misslyckas eller om du har mer än en <acronym
+>cd</acronym
+>-spelare, kanske du vill försöka med den här parametern. Observera att inställningsdialogrutan låter dig ange ett standardvärde för den här parametern.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Ange filnamnsmallen, t.ex. <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Track %{nummer}</parameter
+></userinput
+>. Observera att inställningsdialogrutan låter dig ange ett förvalt värde för alternativet. Varning för att om du anger den som en tom sträng visas inga filer.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Ange albumnamnsmallen, t.ex. <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitel}</parameter
+></userinput
+>. Observera att inställningsdialogrutan låter dig ange ett förvalt värde för alternativet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Anger processens snällhetsnivå för kodare, t.ex. <userinput
+>audiocd:/<option
+>?niceLevel</option
+>=<parameter
+>10</parameter
+></userinput
+>. Observera att inställningsdialogrutan låter dig ange ett förvalt värde för alternativet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Ställ in mängden felidentifiering och felkorrigering som används när data extraheras.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Nivå 0</term>
+<listitem>
+<para
+>Ingen identifiering eller korrigering. Bara användbart om du har en perfekt <acronym
+>cd</acronym
+>-spelare (inte troligt).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Nivå 1</term>
+<listitem>
+<para
+>Aktivera grundläggande feldetektering och felkorrigering.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Nivå 2</term>
+<listitem>
+<para
+>Förvalt. Anger att bara en perfekt extrahering accepteras.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Observera att det finns en nackdel med nivå 2. Extraheringen kan vara mycket långsam, så att uppspelning i realtid kanske inte fungerar som den ska. Om du har en <acronym
+>cd</acronym
+>-spelare med bra kvalitet (observera att dyrare inte nödvändigtvis betyder bättre kvalitet) kommer du troligen inte att råka ut för mycket långsam extrahering, men en dålig spelare kan ta dagar (!) för att extrahera ljudet från en <acronym
+>cd</acronym
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Ange vilken <acronym
+>cd</acronym
+>-databaspost på Internet som ska användas. En ljud-<acronym
+>cd</acronym
+> har inte spårnamn, men <acronym
+>cd</acronym
+>-databasen på Internet är ett smart system som använder en särskild unik identifiering som skapas från antalet spår och deras längd på varje <acronym
+>cd</acronym
+> för att ge en korsreferens till en spårlistning. Spårlistningar bidras med av Internet-gemenskapen och görs tillgängliga för alla. Ibland finns det flera poster. Du kan ange vilken som ska användas.</para>
+
+<para
+>Du kan skicka in dina egna spårlistor med &kscd;, som är &kde;:s <acronym
+>cd</acronym
+>-spelare.</para>
+
+<para
+>Normalt försöker audiocd välja den bästa.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Exempel</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Ger en listning av spåren på en ljud-<acronym
+>cd</acronym
+> som matats in i <filename class="devicefile"
+>/dev/scd0</filename
+>, som anger den första <acronym
+>SCSI</acronym
+> cd-romenheten på &Linux;. Om du kopierar spår från en <acronym
+>cd</acronym
+>, utförs digital extrahering utan felkorrektion eller detektering. Databasposten 0 från <acronym
+>CDDB</acronym
+> används.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Vanliga frågor</title>
+<qandaentry>
+<question>
+<para
+>Jag får <errorname
+>Filen eller katalogen / finns inte</errorname
+>. Hur fixar jag det? Jag har en ljud-<acronym
+>cd</acronym
+> i min enhet!</para>
+</question>
+
+<answer>
+<para
+>Försök att köra <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> som dig själv (inte <systemitem class="username"
+>root</systemitem
+>). Ser du en spårlista? Om inte, försäkra dig om att du har behörighet att komma åt <acronym
+>cd</acronym
+>-spelaren. Om du använder <acronym
+>SCSI</acronym
+>-emulering (vilket är möjligt om du har en <acronym
+>IDE</acronym
+> <acronym
+>cd</acronym
+>-inspelningsenhet) försäkra dig om att du har läs- och skrivrättighet för den generella <acronym
+>SCSI</acronym
+>-enheten, som troligen är <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, etc. Om det fortfarande inte fungerar, försök att skriva <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (eller liknande) för att tala om för I/O-slaven vilken enhet som är din cd-rom.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

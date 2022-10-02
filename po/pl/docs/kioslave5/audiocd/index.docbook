@@ -1,0 +1,333 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Polish "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Michał</firstname
+><surname
+>Bendowski</surname
+><affiliation
+><address
+><email
+>bendowski@gmail.com</email
+></address
+></affiliation
+><contrib
+></contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Pozwala traktować płyty <acronym
+>CD</acronym
+> z muzyką jak <quote
+>prawdziwy</quote
+> system plików, w którym utwory reprezentowane są jako pliki. Jeżeli te pliki zostaną skopiowane, reprezentowane przez nie utwory zostaną cyfrowo wydobyte z płyty <acronym
+>CD</acronym
+>. Zapewnia to doskonałą kopię zawartego na płycie dźwięku.</para>
+
+<para
+>Żeby zobaczyć jak działa ten moduł, włóż płytę <acronym
+>CD</acronym
+> z muzyką do Twojego napędu i wpisz w pasku adresu &konqueror-dopelniacz; <userinput
+>audiocd:/</userinput
+>. W ciągu kilku sekund powinieneś zobaczyć listę utworów i kilka folderów.</para>
+
+<para
+>Muzyczne płyty <acronym
+>CD</acronym
+> tak naprawdę nie zawierają folderów, ale moduł audiocd pokazuje je dla wygody. Jeżeli zajrzysz do tych folderów, zobaczysz, że wszystkie zawierają tą samą liczbę utworów. Jeżeli posiadasz połączenie z Internetem, pliki w niektórych folderach będą nazwane prawdziwymi tytułami utworów.</para>
+
+<para
+>Powodem dla którego istnieją te osobne foldery jest możliwość dokonania przez Ciebie wyboru, w jakim formacie chcesz odsłuchać (lub skopiować) utwory z tej płyty <acronym
+>CD</acronym
+>.</para>
+
+<para
+>Jeżeli przeciągniesz utwór z folderu <filename class="directory"
+>Ogg Vorbis</filename
+> do innego okna &konqueror-dopelniacz; z Twoim katalogiem domowym, powinno pojawić się okno postępu. Oznacza ono, że utwór jest zgrywany z płyty <acronym
+>CD</acronym
+> i zapisywany do pliku. Zauważ, że Ogg Vorbis jest formatem skompresowanym, więc plik, który pojawi się w Twoim katalogu domowym będzie o wiele mniejszy niż nieprzetworzone dane z płyty <acronym
+>CD</acronym
+>.</para>
+
+<para
+>Odpowiedzialny za to mechanizm jest całkiem prosty. Kiedy moduł audiocd jest proszony o pobranie utworu z folderu <filename class="directory"
+>Ogg Vorbis</filename
+>, zaczyna zgrywać z płyty <acronym
+>CD</acronym
+> cyfrowe dane audio. Wysyłając dane do pliku w Twoim katalogu domowym, jednoczeście koduje je w formacie Ogg Vorbis (muzyczna płyta <acronym
+>CD</acronym
+> zawiera nieskompresowane dane).</para>
+
+<para
+>Możesz również spróbować przeciągnąć plik z rozszerzeniem <literal role="extension"
+>.wav</literal
+> na multimedialny odtwarzacz &kde; czyli &juk;. W tym przypadku proces jest podobny, poza tym, że zamiast kodować dane w formacie Ogg Vorbis, są one poddawane bardzo prostej konwersji z nieprzetworzonych danych binarnych (reprezentowanych przez pliki <literal role="extension"
+>.cda</literal
+> w głównym katalogu) do formatu <quote
+>RIFF WAV</quote
+>, nieskompresowanego formatu rozumianego przez większość odtwarzaczy.</para>
+
+<para
+>&juk; powinien bez problemu odtwarzać plik <literal role="extension"
+>.wav</literal
+>, ale jeżeli będą z tym kłopoty, powinno się rozważyć użycie opcji <option
+>poziomu paranoi</option
+>, objaśnionej poniżej.</para>
+
+<variablelist>
+<title
+>Opcje</title>
+
+<varlistentry>
+<term
+><option
+>urządzenie</option
+></term>
+<listitem>
+<para
+>Ustawia ścieżkę do napędu <acronym
+>CD</acronym
+>, np. <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Na ogół moduł spróbuje znaleźć napęd <acronym
+>CD</acronym
+> z włożoną płytą muzyczną, ale jeżeli mu się nie uda, albo masz więcej niż napęd <acronym
+>CD</acronym
+>, możesz spróbować tej opcji. Proszę zauważyć, że okno konfiguracji pozwala Ci ustawić domyślną wartość tej opcji.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Ustawia wzór nazwy pliku, np. <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Utwór %{number}</parameter
+></userinput
+>. Zauważ, że okno konfiguracji pozwala ci wybrać domyślną wartość tej opcji. Jeżeli ustawisz ją jako pusty napis, nie pojawią się żadne pliki.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Ustawia wzór nazwy albumu, np. <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Proszę zauważyć, że okno konfiguracji pozwala ci wybrać domyślną wartość tej opcji.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Ustawia priorytet (nice) programu kodującego, np. <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Proszę zauważyć, że okno konfiguracji pozwala Ci wybrać domyślną wartość tej opcji.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Ustaw poziom wykrywania i korekcji błędów przy ekstrakcji danych.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Poziom 0</term>
+<listitem>
+<para
+>Brak wykrywania i korekcji. Przydatne tylko w przypadku, kiedy posiadasz doskonały napęd <acronym
+>CD</acronym
+> (mało prawdopodobne).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Poziom 1</term>
+<listitem>
+<para
+>Włącza proste wykrywanie i korekcję błędów.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Poziom 2</term>
+<listitem>
+<para
+>Domyślna wartość. Określa, że akceptowana będzie tylko idealna ekstrakcja.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Proszę zauważyć, że poziom 2 ma pewne wady. Ekstrakcja może być bardzo powolna, więc odtwarzanie w czasie rzeczywistym może nie działać prawidłowo. Jeżeli posiadasz napęd <acronym
+>CD</acronym
+> dobrej jakości (droższy niekoniecznie oznacza lepszy), najprawdopodobniej nie odczujesz tego spowolnienia, ale kiepskiemu napędowi wydobycie dźwięku z jednej płyty <acronym
+>CD</acronym
+> może zająć kilka dni!</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Wybiera, który wpis internetowej bazy danych płyt <acronym
+>CD</acronym
+> zostanie użyty. Muzyczne płyty <acronym
+>CD</acronym
+> nie zawierają tytułów utworów, ale internetowa baza danych <acronym
+>CD</acronym
+> to sprytny system, który korzystając z unikalnego identyfikatora wygenerowanego na podstawie liczby i długości utworów na każdej płycie <acronym
+>CD</acronym
+>, przypisuje jej listę utworów. Listy utworów są nadsyłane przez społeczność internetową i są powszechnie dostępne. Może się zdarzyć, że w bazie będzie więcej niż jedna lista. Ten parametr pozwala ci wybrać, której listy użyć.</para>
+
+<para
+>Możesz nadesłać Twoją własną listę utworów za pomocą &kscd;, odtwarzacza płyt <acronym
+>CD</acronym
+> dla &kde;.</para>
+
+<para
+>Domyślnie audiocd stara się wybrać najlepszą.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Przykłady</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Pokazuje utwory z muzycznej płyty <acronym
+>CD</acronym
+> włożonej do napędu <filename class="devicefile"
+>/dev/scd0</filename
+>, co w &Linux-miejscownik; oznacza napęd <acronym
+>SCSI</acronym
+>. Jeżeli skopiujesz utwory z płyty <acronym
+>CD</acronym
+>, cyfrowa ekstrakcja dokonana będzie bez wykrywania i korekcji błędów. Użyty zostanie wpis numer 0 z bazy danych <acronym
+>CDDB</acronym
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Najczęściej zadawane pytania</title>
+<qandaentry>
+<question>
+<para
+>Pojawia się błąd <errorname
+>Plik lub folder / nie istnieje</errorname
+>. Jak to naprawić? Płyta <acronym
+>CD</acronym
+> jest włożona do mojego napędu!</para>
+</question>
+
+<answer>
+<para
+>Spróbuj uruchomić polecenie <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> jako zwykły użytkownik (a nie <systemitem class="username"
+>root</systemitem
+>). Czy widzisz listę utworów? Jeżeli nie, upewnij się, że masz uprawnienia dostępu do napędu <acronym
+>CD</acronym
+>. Jeżeli używasz emulacji <acronym
+>SCSI</acronym
+> (możliwe, jeżeli posiadasz nagrywarki <acronym
+>IDE</acronym
+>), upewnij się, że masz uprawnienia do zapisu i odczytu ze standardowego urządzenia <acronym
+>SCSI</acronym
+>, najprawdopodobniej <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, itp. Jeżeli problem nadal występuje, spróbuj wpisać <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (lub podobne), żeby sprecyzować którym urządzeniem jest Twój napęd &CD-ROM;.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

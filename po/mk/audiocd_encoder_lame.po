@@ -1,0 +1,602 @@
+# Copyright (C) 2006, 2007 Free Software Foundation, Inc.
+# translation of audiocd_encoder_lame.po to Macedonian
+#
+# Zaklina Gjalevska <gjalevska@yahoo.com>, 2005.
+# Bozidar Proevski <bobibobi@freemail.com.mk>, 2005, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: audiocd_encoder_lame\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:08+0200\n"
+"PO-Revision-Date: 2007-12-03 12:18+0100\n"
+"Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
+"Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
+"Language: mk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=3; plural=n%10==1 ? 0 : n%10==2 ? 1 : "
+"2;\n"
+
+#. i18n: ectx: label, entry (bitrate_constant), group (Lame)
+#: audiocd_lame_encoder.kcfg:11
+#, kde-format
+msgid "Constant Bitrate"
+msgstr "Константна брзина на битови"
+
+#. i18n: ectx: label, entry (bitrate_variable), group (Lame)
+#: audiocd_lame_encoder.kcfg:15
+#, kde-format
+msgid "Variable Bitrate"
+msgstr "Променлива брзина на битови"
+
+#. i18n: ectx: label, entry (stereo), group (Lame)
+#: audiocd_lame_encoder.kcfg:20
+#, kde-format
+msgid "Stereo Mode"
+msgstr "Режим Стерео "
+
+#. i18n: ectx: label, entry (quality), group (Lame)
+#: audiocd_lame_encoder.kcfg:24
+#, kde-format
+msgid "Quality"
+msgstr "Квалитет"
+
+#. i18n: ectx: label, entry (byte_swap), group (Lame)
+#: audiocd_lame_encoder.kcfg:29
+#, kde-format
+msgid "Byte Swap"
+msgstr ""
+
+#. i18n: ectx: label, entry (copyright), group (Lame)
+#: audiocd_lame_encoder.kcfg:40
+#, kde-format
+msgid "Copyrighted"
+msgstr "Зашт. авторски права"
+
+#. i18n: ectx: label, entry (original), group (Lame)
+#: audiocd_lame_encoder.kcfg:44
+#, kde-format
+msgid "Original"
+msgstr "Оригинал"
+
+#. i18n: ectx: label, entry (iso), group (Lame)
+#: audiocd_lame_encoder.kcfg:48
+#, kde-format
+msgid "ISO Encoding"
+msgstr "Кодирање ISO "
+
+#. i18n: ectx: label, entry (crc), group (Lame)
+#: audiocd_lame_encoder.kcfg:52
+#, kde-format
+msgid "Error protection"
+msgstr "Заштита од грешки"
+
+#. i18n: ectx: label, entry (id3_tag), group (Lame)
+#: audiocd_lame_encoder.kcfg:56
+#, kde-format
+msgid "Write ID3 Tag"
+msgstr "Запиши ознака ID3"
+
+#. i18n: ectx: property (title), widget (QGroupBox, cbr_settings)
+#. i18n: ectx: label, entry (cbr_bitrate), group (Lame)
+#: audiocd_lame_encoder.kcfg:62 encoderlameconfig.ui:586
+#, kde-format
+msgid "Constant Bitrate Settings"
+msgstr "Поставувања за константна брзина на битови"
+
+#. i18n: ectx: label, entry (vbr_min_br), group (Lame)
+#: audiocd_lame_encoder.kcfg:70
+#, kde-format
+msgid "Minimal bitrate"
+msgstr "Минимална брзина на битови"
+
+#. i18n: ectx: label, entry (vbr_min_hard), group (Lame)
+#: audiocd_lame_encoder.kcfg:74
+#, kde-format
+msgid "Minimal Value is a hard limit"
+msgstr "Мин. вредност е строго ограничување"
+
+#. i18n: ectx: label, entry (vbr_max_br), group (Lame)
+#: audiocd_lame_encoder.kcfg:78
+#, kde-format
+msgid "Maximal bitrate"
+msgstr "Максимална брзина на битови"
+
+#. i18n: ectx: label, entry (vbr_average_br), group (Lame)
+#: audiocd_lame_encoder.kcfg:82
+#, kde-format
+msgid "Average bitrate"
+msgstr "Просечна брзина на битови"
+
+#. i18n: ectx: label, entry (vbr_xing_tag), group (Lame)
+#: audiocd_lame_encoder.kcfg:86
+#, kde-format
+msgid "Write Xing VBR tag"
+msgstr "Запиши ознака VBR за Xing"
+
+#. i18n: ectx: label, entry (vbr_min_brate), group (Lame)
+#: audiocd_lame_encoder.kcfg:91
+#, kde-format
+msgid "Minimal bitrate value"
+msgstr "Мин. вредност на брзината на битови"
+
+#. i18n: ectx: label, entry (vbr_max_brate), group (Lame)
+#: audiocd_lame_encoder.kcfg:97
+#, kde-format
+msgid "Maximal bitrate value"
+msgstr "Макс. вредност на брзината на битови"
+
+#. i18n: ectx: label, entry (vbr_mean_brate), group (Lame)
+#: audiocd_lame_encoder.kcfg:103
+#, kde-format
+msgid "Average bitrate value"
+msgstr "Просечна вредност на брзината на битови"
+
+#. i18n: ectx: label, entry (enable_lowpass), group (Lame)
+#: audiocd_lame_encoder.kcfg:112
+#, kde-format
+msgid "Enable the lowpass filter"
+msgstr ""
+
+#. i18n: ectx: label, entry (lowfilterfreq), group (Lame)
+#: audiocd_lame_encoder.kcfg:116
+#, kde-format
+msgid "Value of the cutoff frequency for the lowpass filter"
+msgstr ""
+
+#. i18n: ectx: label, entry (enable_highpass), group (Lame)
+#: audiocd_lame_encoder.kcfg:121
+#, kde-format
+msgid "Enable the highpass filter"
+msgstr ""
+
+#. i18n: ectx: label, entry (highfilterfreq), group (Lame)
+#: audiocd_lame_encoder.kcfg:125
+#, kde-format
+msgid "Value of the cutoff frequency for the highpass filter"
+msgstr ""
+
+#. i18n: ectx: label, entry (set_lpf_width), group (Lame)
+#: audiocd_lame_encoder.kcfg:130
+#, kde-format
+msgid "Lowpass filter width"
+msgstr "Ширина на нископропусен филтер"
+
+#. i18n: ectx: label, entry (lowfilterwidth), group (Lame)
+#: audiocd_lame_encoder.kcfg:134
+#, kde-format
+msgid "Lowpass filter width value"
+msgstr "Вредност за ширината на нископропусниот филтер"
+
+#. i18n: ectx: label, entry (set_hpf_width), group (Lame)
+#. i18n: ectx: label, entry (highfilterwidth), group (Lame)
+#: audiocd_lame_encoder.kcfg:139 audiocd_lame_encoder.kcfg:143
+#, kde-format
+msgid "Highpass filter width"
+msgstr "Ширина на високопропусен филтер"
+
+#. i18n: ectx: property (title), widget (QGroupBox, GroupBox1_2)
+#: encoderlameconfig.ui:16
+#, kde-format
+msgid "Options"
+msgstr "Опции"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_copyright)
+#: encoderlameconfig.ui:28
+#, kde-format
+msgid "Cop&yrighted"
+msgstr "Зашт. &авторски права"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_copyright)
+#: encoderlameconfig.ui:31
+#, kde-format
+msgid "Mark MP3 file as copyrighted"
+msgstr "Ја означува датотеката од тип MP3 како заштитена со авторски права"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_copyright)
+#: encoderlameconfig.ui:34
+#, kde-format
+msgid "Mark MP3 file as copyrighted."
+msgstr "Ја означува датотеката од тип MP3 како заштитена со авторски права."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_original)
+#: encoderlameconfig.ui:41
+#, kde-format
+msgid "Origi&nal"
+msgstr "Ориги&нал"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_original)
+#: encoderlameconfig.ui:47
+#, kde-format
+msgid "Mark MP3 file as an original"
+msgstr "Ја означува датотеката од тип MP3 како оригинал"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_original)
+#: encoderlameconfig.ui:50
+#, kde-format
+msgid "Mark MP3 file as an original."
+msgstr "Ја означува датотеката од тип MP3 како оригинал."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_iso)
+#: encoderlameconfig.ui:57
+#, kde-format
+msgid "&ISO encoding"
+msgstr "Кодирање &ISO"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_iso)
+#: encoderlameconfig.ui:60
+#, kde-format
+msgid "Try to use strict ISO encoding"
+msgstr "Обидете се да користите строго кодирање ISO"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_iso)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vbr_max_br)
+#: encoderlameconfig.ui:63 encoderlameconfig.ui:380
+#, kde-format
+msgid "This selects the maximal bitrate used for encoding."
+msgstr "Ова ја избира максималната брзина на битови за кодирањето."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_crc)
+#: encoderlameconfig.ui:70
+#, kde-format
+msgid "&Error protection"
+msgstr "&Заштита од грешки"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_id3_tag)
+#: encoderlameconfig.ui:77
+#, kde-format
+msgid "&Write ID3 tag"
+msgstr "&Запиши ознака ID3"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_id3_tag)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_id3_tag)
+#: encoderlameconfig.ui:83 encoderlameconfig.ui:86
+#, kde-format
+msgid ""
+"If checked and if cddb support is available, an id3 tag will be appended"
+msgstr ""
+"Ако е обележано и ако е достапна поддршката за cddb, ќе се отвори ознака id3"
+
+#. i18n: ectx: property (title), widget (QGroupBox, buttonGroup1)
+#: encoderlameconfig.ui:109
+#, kde-format
+msgid "Encoding Method"
+msgstr "Метод на кодирање"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
+#: encoderlameconfig.ui:117
+#, kde-format
+msgid "Low"
+msgstr "Низок"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel2_2)
+#: encoderlameconfig.ui:149
+#, kde-format
+msgid "High"
+msgstr "Висок"
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel1_2)
+#: encoderlameconfig.ui:161
+#, kde-format
+msgid "&Quality:"
+msgstr "&Квалитет:"
+
+#. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
+#: encoderlameconfig.ui:177
+#, kde-format
+msgid ""
+"This option controls whether MP3 files are recorded with one or two "
+"channels. Note that choosing <i>\"Mono\"</i> reduces file size, but also "
+"kills the stereo signal."
+msgstr ""
+"Оваа опција контролира дали датотеките од тип MP3 се снимени со еден или два "
+"канали. Забележете дека изборот <i>„Моно“</i> ја намалува големината на "
+"датотеката, но истовремено го уништува стерео сигналот."
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
+#: encoderlameconfig.ui:181
+#, kde-format
+msgid "Stereo"
+msgstr "Стерео"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
+#: encoderlameconfig.ui:186
+#, kde-format
+msgid "Joint Stereo"
+msgstr "Здружено стерео"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
+#: encoderlameconfig.ui:191
+#, kde-format
+msgid "Dual Channel"
+msgstr "Дуален канал"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
+#: encoderlameconfig.ui:196
+#, kde-format
+msgid "Mono"
+msgstr "Моно"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
+#: encoderlameconfig.ui:204
+#, kde-format
+msgid "Constant bitrate"
+msgstr "Константна брзина на битови"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
+#: encoderlameconfig.ui:211
+#, kde-format
+msgid "Variable bitrate"
+msgstr "Променлива брзина на битови"
+
+#. i18n: ectx: property (title), widget (QGroupBox, vbr_settings)
+#: encoderlameconfig.ui:272
+#, kde-format
+msgid "Variable Bitrate Settings"
+msgstr "Поставувања за променлива брзина на битови"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_average_br)
+#: encoderlameconfig.ui:284
+#, fuzzy, kde-format
+#| msgid "Average bitrate"
+msgid "Avera&ge bitrate:"
+msgstr "Просечна брзина на битови"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vbr_average_br)
+#: encoderlameconfig.ui:287
+#, fuzzy, kde-format
+#| msgid "This selects the maximal bitrate used for encoding."
+msgid "This selects the average bitrate used for encoding."
+msgstr "Ова ја избира максималната брзина на битови за кодирањето."
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:301 encoderlameconfig.ui:407 encoderlameconfig.ui:510
+#: encoderlameconfig.ui:618
+#, kde-format
+msgid "32 kbs"
+msgstr "32 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:306 encoderlameconfig.ui:412 encoderlameconfig.ui:515
+#: encoderlameconfig.ui:623
+#, kde-format
+msgid "40 kbs"
+msgstr "40 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:311 encoderlameconfig.ui:417 encoderlameconfig.ui:520
+#: encoderlameconfig.ui:628
+#, kde-format
+msgid "48 kbs"
+msgstr "48 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:316 encoderlameconfig.ui:422 encoderlameconfig.ui:525
+#: encoderlameconfig.ui:633
+#, kde-format
+msgid "56 kbs"
+msgstr "56 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:321 encoderlameconfig.ui:427 encoderlameconfig.ui:530
+#: encoderlameconfig.ui:638
+#, kde-format
+msgid "64 kbs"
+msgstr "64 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:326 encoderlameconfig.ui:432 encoderlameconfig.ui:535
+#: encoderlameconfig.ui:643
+#, kde-format
+msgid "80 kbs"
+msgstr "80 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:331 encoderlameconfig.ui:437 encoderlameconfig.ui:540
+#: encoderlameconfig.ui:648
+#, kde-format
+msgid "96 kbs"
+msgstr "96 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:336 encoderlameconfig.ui:442 encoderlameconfig.ui:545
+#: encoderlameconfig.ui:653
+#, kde-format
+msgid "112 kbs"
+msgstr "112 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:341 encoderlameconfig.ui:447 encoderlameconfig.ui:550
+#: encoderlameconfig.ui:658
+#, kde-format
+msgid "128 kbs"
+msgstr "128 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:346 encoderlameconfig.ui:452 encoderlameconfig.ui:555
+#: encoderlameconfig.ui:663
+#, kde-format
+msgid "160 kbs"
+msgstr "160 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:351 encoderlameconfig.ui:457 encoderlameconfig.ui:560
+#: encoderlameconfig.ui:668
+#, kde-format
+msgid "192 kbs"
+msgstr "192 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:356 encoderlameconfig.ui:462 encoderlameconfig.ui:565
+#: encoderlameconfig.ui:673
+#, kde-format
+msgid "224 kbs"
+msgstr "224 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:361 encoderlameconfig.ui:467 encoderlameconfig.ui:570
+#: encoderlameconfig.ui:678
+#, kde-format
+msgid "256 kbs"
+msgstr "256 kbs"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_max_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:366 encoderlameconfig.ui:472 encoderlameconfig.ui:575
+#: encoderlameconfig.ui:683
+#, kde-format
+msgid "320 kbs"
+msgstr "320 kbs"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_max_br)
+#: encoderlameconfig.ui:377
+#, kde-format
+msgid "Maximal bi&trate:"
+msgstr "Максимална брзина на би&тови:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_xing_tag)
+#: encoderlameconfig.ui:387
+#, kde-format
+msgid "Write &Xing VBR tag"
+msgstr "Запиши ја ознаката VBR за &Xing"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vbr_xing_tag)
+#: encoderlameconfig.ui:393
+#, kde-format
+msgid ""
+"This writes additional information related to VBR as introduced by Xing."
+msgstr ""
+"Ова запишува дополнителна информација која се однесува на VBR како што е "
+"воведено од Xing."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_min_hard)
+#: encoderlameconfig.ui:483
+#, kde-format
+msgid "Minimal &value is a hard limit"
+msgstr "Мин. &вредност е строго ограничување"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_min_br)
+#: encoderlameconfig.ui:493
+#, kde-format
+msgid "Minimal &bitrate:"
+msgstr "Минимална &брзина на битови:"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vbr_min_br)
+#: encoderlameconfig.ui:496
+#, kde-format
+msgid "This selects the minimal bitrate used for encoding."
+msgstr "Ова ја избира минималната брзина на битови употребена за кодирање."
+
+#. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
+#: encoderlameconfig.ui:598
+#, kde-format
+msgid "Bitrate:"
+msgstr "Брзина на битови:"
+
+#. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
+#: encoderlameconfig.ui:614
+#, kde-format
+msgid "The higher the bitrate, the better the quality and the larger the file."
+msgstr ""
+"Колку е поголема брзината на битови, толку е подобар квалитетот и е поголема "
+"датотеката."
+
+#. i18n: ectx: property (title), widget (QGroupBox, GroupBox83_2)
+#: encoderlameconfig.ui:694
+#, kde-format
+msgid "Filter Settings"
+msgstr "Поставувања за филтер"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_enable_lowpass)
+#: encoderlameconfig.ui:709
+#, fuzzy, kde-format
+#| msgid "&Lowpass filter cutoff above"
+msgid "Apply &lowpass filter above"
+msgstr "&Нископропусен филтер отсекува одозгора"
+
+#. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_lowfilterfreq)
+#. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_highfilterfreq)
+#. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_lowfilterwidth)
+#. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_highfilterwidth)
+#: encoderlameconfig.ui:719 encoderlameconfig.ui:739 encoderlameconfig.ui:762
+#: encoderlameconfig.ui:785
+#, kde-format
+msgid " Hz"
+msgstr " Hz"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_enable_highpass)
+#: encoderlameconfig.ui:729
+#, fuzzy, kde-format
+#| msgid "&Highpass filter cutoff below"
+msgid "Apply &highpass filter below"
+msgstr "&Високопропусен филтер отсекува одоздола"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_lpf_width)
+#: encoderlameconfig.ui:752
+#, kde-format
+msgid "Low&pass filter width"
+msgstr "Ширина на ниско&пропусен филтер"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_hpf_width)
+#: encoderlameconfig.ui:775
+#, kde-format
+msgid "Highpa&ss filter width"
+msgstr "Ширина на ви&сокопропусен филтер"
+
+#~ msgid "Specify avera&ge bitrate:"
+#~ msgstr "&Одредете просечна брзина на битови:"
+
+#~ msgid "Lowpass filter cutoff above"
+#~ msgstr "Нископропусен филтер отсекува одозгора"
+
+#~ msgid "Lowpass filter cutoff above Value"
+#~ msgstr "Вредност за отсекување одозгора на нископропусен филтер "
+
+#~ msgid "Highpass filter cutoff above"
+#~ msgstr "Високопропусен филтер отсекува одоздола"
+
+#~ msgid "Highpass filter cutoff above Value"
+#~ msgstr "Вредност за отсекување одоздола на високопропусен филтер"

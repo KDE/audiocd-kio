@@ -1,0 +1,125 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# g.sora <g.sora@tiscali.it>, 2011, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-09-02 19:37+0100\n"
+"Last-Translator: Giovanni Sora <g.sora@tiscali.it>\n"
+"Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
+"Language: ia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Giovanni Sora"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "g.sora@tiscali.it"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Information"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "CD complete"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Information de CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Tu non pote specificar un hospite con iste protocollo. Pro favor usa in vice "
+"le formato audiocd:/"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Specification de dispositivo mancante"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Dispositivo non ha permission de lectura per iste conto. Verifica le "
+"permissiones de lectura super iste dispositivo."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Dispositivo non ha permission de scriptura per iste conto. Verifica le "
+"permissiones de scriptura super iste dispositivo."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Error incognite. Si tu ha un cd in le drive cerca executar cdparanoia -vsQ "
+"como te mesme (non administrator radice). Tu vide un lista de tracias? Si "
+"no, tu assecura te que tu a permission de accesso a iste dispositivo CD. Si "
+"tu es usante simulation SCSI (possibile si tu ha un scriptor de IDE CD) "
+"alora tu assecura te de verificar que tu ha permissiones de scriptura e "
+"lectura super le generic dispositivo SCSI, que probabilemente es /dev/sg0, /"
+"dev/sg1, etc. Si ancora il non function, essaya typar audiocd:/?device=/dev/"
+"sg0 (o alcun simile) pro dicer a kio_audio qual es tu dispositivo CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: On relevava un dambo sur iste tracia, risco de corruption de datos."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Error durante que on legeva datos audio per %1 ex le CD"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Non pote leger %1: il falleva a codificar"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Tracia %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Nomine de protocollo"
+
+#~ msgid "Socket name"
+#~ msgstr "Nomine de socket"

@@ -1,0 +1,129 @@
+# translation of kio_audiocd.po to Spanish
+# Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
+#
+# Salvador Gimeno Zanón <salgiza@jazzfree.com>, 2003.
+# Salvador Gimeno Zanón <salgiza@ono.com>, 2004, 2005.
+# santi <santi@kde-es.org>, 2005.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2007.
+# Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2008.
+# Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>, 2010.
+# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-08-01 16:36+0200\n"
+"Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
+"Language-Team: Spanish <kde-l10n-es@kde.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.04.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+"Eloy Cuadra,Salvador Gimeno Zanón,Enrique Matías Sánchez,Víctor Rodrigo "
+"Córdoba"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"ecuadra@eloihr.net,salgiza@ono.com,cronopios@gmail.com,vrcordoba@gmail.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Información"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "CD completo"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Información de CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"No puede indicar una máquina con este protocolo. Utilice el formato "
+"«audiocd:/» en su lugar."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Especificación del dispositivo no disponible"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"El dispositivo no tiene permisos de lectura para esta cuenta. Compruebe los "
+"permisos de lectura del dispositivo."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"El dispositivo no tiene permisos de escritura para esta cuenta. Compruebe "
+"los permisos de escritura del dispositivo."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Error desconocido. Si tiene un CD en la unidad, intente ejecutar cdparanoia -"
+"vsQ con su usuario (no como root). ¿Ve la lista de pistas? Si no es así, "
+"asegúrese de que tiene permisos para acceder al dispositivo de CD. Si la "
+"emulación SCSI está activada (es posible que lo esté, si utiliza una "
+"grabadora de CD IDE), asegúrese de que tiene permisos de escritura y lectura "
+"en los dispositivos de SCSI genéricos, que probablemente sean /dev/sg0, /dev/"
+"sg1, etc. Si pese a todo no funcionara, pruebe a escribir audiocd:/?device=/"
+"dev/sg0 (o similar) para indicarle a kio_audiocd el dispositivo de CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: se ha detectado que el disco está dañado en esta pista, hay riesgo "
+"de que se dañen los datos."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Error al leer la pista de audio para %1 desde el CD"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "No se ha podido leer %1: la codificación ha fallado"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Pista %1"

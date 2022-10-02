@@ -1,0 +1,525 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % German "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Audio-CD</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+><firstname
+>Deutsches</firstname
+><surname
+>KDE-Übersetzerteam</surname
+><affiliation
+><address
+><email
+>kde-i18n-de@kde.org</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>2019-02-08</date>
+<releaseinfo
+>Anwendungen 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Systemeinstellungen</keyword>
+<keyword
+>audio</keyword>
+<keyword
+>Compact Disc</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>Einrichtung des Ein-/Ausgabemoduls für Audio-CDs</title>
+<para
+>Das Modul <guilabel
+>Einrichtung des Ein-/Ausgabemoduls für Audio-CDs</guilabel
+> besteht aus den Karteikarten <guilabel
+>Allgemein</guilabel
+>, <guilabel
+>Namen</guilabel
+>und der Karteikarte mit Kodierer-Parametern.</para>
+
+<sect2 id="general-tab">
+<title
+>Die Karteikarte Allgemein</title>
+<screenshot>
+<screeninfo
+>Die Karteikarte <guilabel
+>Allgemein</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Die Karteikarte <guilabel
+>Allgemein</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Diese Karteikarte enthält die allgemeinen Parameter für den gesamten Prozess des Lesens von Daten von der CD.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Fehlerkorrektur beim Auslesen der CD verwenden</guilabel
+></term>
+<listitem>
+<para
+>Beim Schreiben einer Audio-CD fügt der Prozess jedem Block 64 Bit Fehlerkorrekturdaten hinzu. Danach werden jedem der kodierten Blöcke 8 Bit Subcode- oder Subchannel-Daten hinzugefügt, die zur Steuerung und Adressierung beim Abspielen der CD verwendet werden. Das Ignorieren dieser Datenkorrektur kann das Lesen beschleunigen, kann aber auch einige unerwünschte Artefakte erzeugen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Fehler überspringen</guilabel
+></term>
+<listitem>
+<para
+>Als Voreinstellung werden Fehler beim Lesen des Mediums nicht übersprungen. Dies ist für die hohe Qualität der Ergebnisse nötig.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Kodierer-Priorität</guilabel
+></term>
+<listitem>
+<para
+>Die Kodierer-Priorität kann eingestellt werden, damit der Prozess Sie nicht daran hindert, einige andere Aufgaben parallel zu erledigen (niedrigere Werte), oder um die Kodierung zu beschleunigen (höhere Werte). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>Die Karteikarte Namen</title>
+
+<screenshot>
+<screeninfo
+>Die Karteikarte <guilabel
+>Namen</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Die Karteikarte <guilabel
+>Namen</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Die Karteikarte <guilabel
+>Namen</guilabel
+> kann zur Feinabstimmung der Dateinamen für die kodierten Daten verwendet werden. Sie können Makros und <ulink url="https://en.wikipedia.org/wiki/Regular_expression"
+>reguläre Ausdrücke</ulink
+> verwenden, die Namen genau nach Ihren Wünschen zu erzeugen.</para>
+
+<para
+>Sie können im interaktiven Testfeld unten auf der Seite überprüfen, ob die gewünschten Dateinamen generiert werden.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>Die Karteikarte FLAC-Kodierer</title>
+
+<screenshot>
+<screeninfo
+>Die Karteikarte <guilabel
+>FLAC-Kodierer</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Die Karteikarte <guilabel
+>FLAC-Kodierer</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Die Karteikarte FLAC-Kodierer ist nur vorhanden, wenn das Ein-/Ausgabemodul Audiocd mit libFLAC kompiliert wurde.</para>
+</note>
+
+<para
+>Das verlustfreie komprimierte Audio-Format FLAC ist frei von Patenten oder Lizenzgebühren. Es erhält die perfekte Qualität einer Musik-CD, reduziert aber die Dateigröße um ungefähr 50 %. Die Dateien sind viel größer als bei Opus, Ogg Vorbis oder MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Flac-Komprimierungsstufe</guilabel
+></term>
+<listitem>
+<para
+>Die Komprimierungsstufe ist ein ganzzahliger Wert zwischen 0 und 8, der einen Kompromiss zwischen Dateigröße und der Geschwindigkeit der Komprimierung darstellt.</para>
+<para
+>Die Einstellung der Komprimierungsstufe auf 0 ergibt die kürzeste Komprimierungszeit, erzeugt aber erzeugt aber eine vergleichsweise große Datei.</para>
+<para
+>Eine Komprimierungsstufe von 8 hingegen macht die Komprimierung recht langsam, erzeugt aber die kleinste Datei.</para>
+<para
+>FLAC ist per Definition ein verlustfreier Codec, daher ist die Audioqualität der Ausgabe unabhängig von der Komprimierungsstufe immer gleich.</para>
+<para
+>Außerdem erhöhen Stufen über 5 die Komprimierungszeit drastisch, erzeugen aber eine nur eine geringfügig kleinere Datei und werden daher nicht empfohlen.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>Die Karteikarte MP3-Kodierer</title>
+
+<screenshot>
+<screeninfo
+>Die Karteikarte <guilabel
+>MP3-Kodierer</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Die Karteikarte <guilabel
+>MP3-Kodierer</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Die Karteikarte MP3 ist nur vorhanden, wenn die <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+>-Dienstprogramme auf dem System installiert sind.</para>
+</note>
+
+<para
+>MP3 oder MPEG Audio Layer III ist eine patentierte verlustbehaftete komprimierte Kodierung für digitales Audio.Trotz der Mängel ist sie ein gebräuchliches Format zum Speichern von digitalem Audio und wird von fast jedem tragbaren Mediengerät unterstützt.</para>
+
+<para
+>Das Ein-/Ausgabemoduls für Audio-CDs verwendet den LAME-Kodierer, um <filename class="extension"
+>mp3</filename
+>-Dateien zu erzeugen. LAME gilt als der beste MP3-Kodierer, vor allem dank der engagierten Arbeit seiner Entwickler und des Open-Source-Lizenzmodells, das es dem Projekt ermöglichte, auf technische Ressourcen aus der ganzen Welt zurückzugreifen.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodier-Methode</guilabel
+></term>
+<listitem>
+<para
+>Die Bitrate ist ein Maß für die Datenmenge, die für eine Sekunde der Audiospur benötigt wird. Es ist möglich, die <guilabel
+>Konstante Bitrate</guilabel
+> für eine vorhersagbare Dateigröße zu wählen. Der MP3-Kodierer unterstützt auch eine <guilabel
+>Variable Bitrate</guilabel
+>, damit schwankt die Bitrate in Abhängigkeit von der Komplexität des Audioinhalts. Komplexere Intervalle von Daten werden mit einer höheren Bitrate kodiert Dieser Ansatz liefert insgesamt eine bessere Qualität und eine kleinere Datei als bei einer konstanten Bitrate über die gesamte Spur.</para>
+<para
+>Sie können auch die Qualität der Kodierung festlegen. Die niedrigere Qualität kann den Kodierungsprozess um den Preis eines gewissen Datenverlusts beschleunigen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Optionen</guilabel
+></term>
+<listitem>
+<para
+>Wählen Sie <guilabel
+>Kopiergeschützt</guilabel
+>, wenn dies auf die produzierten Daten zutrifft.</para>
+<para
+>Kreuzen Sie <guilabel
+>Original</guilabel
+> an, wenn das Auslesen von der originalen &CD; erfolgt.</para>
+<para
+>Wenn <guilabel
+>ISO-Kodierung</guilabel
+> aktiviert ist, erzwingt LAME die Begrenzung der gesamten Blockgröße auf 7680 Bit. Die Kompatibilität mit ISO kann für Hardware-Player wichtig sein.</para>
+<para
+>Die<guilabel
+>Fehlerkorrektur</guilabel
+> kann verwendet werden, um jedem Datenblock eine Prüfsumme hinzuzufügen. Ein solcher Schutz kann die Stabilität der MP3-Datenspeicherung erhöhen.</para>
+<para
+>Mit <guilabel
+>ID3-Metadaten schreiben</guilabel
+> fügt LAME jeder produzierten MP3-Datei <ulink url="https://de.wikipedia.org/wiki/ID3-Tag"
+>Metadaten</ulink
+> hinzu.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Filtereinstellungen</guilabel
+></term>
+<listitem>
+<para
+>Es ist möglich, eine Bandbreitenfilterung auf die Daten anzuwenden. Sie wird verwendet, um die hohen oder niedrigen Frequenzen, die kodiert werden, zu begrenzen. Die meisten von uns können die hohen Frequenzen sowieso nicht hören, und sie benötigen die <quote
+>meisten Bits</quote
+>, wenn es um die Kodierung geht. Sie sind auch häufig die Ursache für Artefakte.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Einstellungen für variable Bitrate</guilabel
+></term>
+<listitem>
+
+<para
+>Sie können die <guilabel
+>Durchschnittliche Bitrate</guilabel
+> (Voreinstellung) oder die <guilabel
+>Maximale Bitrate</guilabel
+> und <guilabel
+>Minimale Bitrate</guilabel
+> einstellen und wählen, und ob der <guilabel
+>Minimale Wert eine harte Grenze ist</guilabel
+>.</para>
+<para
+>160 kb/s ist eine gute Wahl für das Musikhören auf einem tragbaren Abspielgerät. Alles unter 120 kb/s könnte für Musik unbefriedigend sein und alles über 256 kb/s ist wahrscheinlich übertrieben.</para>
+<para
+>Es ist auch möglich, mit <guilabel
+>Xing VBR-Marke schreiben</guilabel
+> diese Daten in die zu bringen. Xing hat mit dem VBR-Tag einen Kodierer entwickelt, der eine genauere Suche in Dateien mit variabler Bitrate ermöglicht. Das VBR-Tag von Xing enthält unter anderem Informationen über die Gesamtdauer einer MP3-Datei, die sonst nicht ohne weiteres aus dem MPEG-Stream verfügbar ist.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>Die Karteikarte Opus-Kodierer</title>
+
+<screenshot>
+<screeninfo
+>Die Karteikarte <guilabel
+>Opus-Kodierer</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Die Karteikarte <guilabel
+>Opus-Kodierer</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Die Karteikarte Opus ist nur vorhanden, wenn die <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+> auf dem System installiert sind.</para>
+</note>
+
+<para
+>Opus ist ein völlig offener, lizenzfreier und äußerst vielseitiger Audio-Codec. Opus ist unübertroffen für die interaktive Sprach- und Musikübertragung über das Internet, ist aber auch für Speicher- und Streaming-Anwendungen gedacht.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodier-Methode</guilabel
+></term>
+<listitem>
+<para
+>Mit dieser Einstellung können Sie zwischen <guilabel
+>Komplexitätsbasiert</guilabel
+> und <guilabel
+>Bitratenbasiert</guilabel
+> wählen. Die komplexitätsbasierte Kodierung verwendet einige spekulative Algorithmen, die Größe der Ergebnisse ist aber nicht vorhersagbar.</para>
+<itemizedlist>
+<listitem>
+<para
+>Es gibt mehrere Dinge, die die Wahl des Opus-Kodierers zwischen CPU-Komplexität und Qualität/Bitrate beeinflussen. Die Komplexität der Kodierung von 0 bis 10 eingestellt werden, wobei 0 die niedrigste Qualität und 10 die höchste Qualität ergibt.</para>
+</listitem>
+<listitem>
+<para
+>Opus ist mit der Voreinstellung <guilabel
+>Durchschnittliche variable Bitrate</guilabel
+>)effizienter. Es ist möglich, die <guilabel
+>Eingeschränkte variable Bitrate</guilabel
+>, das entspricht der konstanten Bitrate für MP3, zu verwenden, wenn die Übertragung mit niedriger Latenz über eine relativ langsame Verbindung erforderlich ist. In einigen seltenen Anwendungen ist eine <guilabel
+>Konstante Bitrate</guilabel
+> erforderlich.</para>
+<para
+>Es wird empfohlen, eine Bitrate von 64-128 kbit/s für Stereo-Musik zu verwenden.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Titelinformationen hinzufügen</guilabel
+></term>
+<listitem>
+<para
+>Fügt dem Vorspann der Datei zusätzliche Informationen über das Stück hinzu. Das macht es für den Benutzer leichter, zusätzliche Informationen in seinem jeweiligen Wiedergabeprogramm zu sehen. Diese Informationen können automatisch aus dem Internet geholt werden. Weitere Informationen dazu finden Sie im &systemsettings;-Modul CDDB-Abfrage. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>Die Karteikarte Ogg-Vorbis-Kodierer</title>
+
+<screenshot>
+<screeninfo
+>Die Karteikarte <guilabel
+>Ogg-Vorbis-Kodierer</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Die Karteikarte <guilabel
+>Ogg-Vorbis-Kodierer</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Die Karteikarte Ogg-Vorbis-Kodierer ist nur vorhanden, wenn das Ein-/Ausgabemodul Audiocd mit <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+> kompiliert wurde
+>.</para>
+</note>
+
+<para
+>Ogg Vorbis ist eine offene, lizenzfreie und verlustbehaftete Kompressionsmethode für digitales Audio. Bei gleicher oder höherer Qualität erstellt sie kleiner Dateien als MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodier-Methode</guilabel
+></term>
+<listitem>
+<para
+>Mit dieser Einstellung können Sie zwischen <guilabel
+>Qualitätsbasiert</guilabel
+> und <guilabel
+>Bitratenbasiert</guilabel
+> wählen. Die qualitätsbasierte Kodierung verwendet einige spekulative Algorithmen, die Größe der Ergebnisse ist aber nicht vorhersagbar.</para>
+<itemizedlist>
+<listitem>
+<para
+>Die Qualität der Ogg Vorbis-Kodierung kann von 0 bis 10 eingestellt werden, wobei 0 die niedrigste Qualität und 10 die höchste Qualität ergibt.</para>
+</listitem>
+<listitem>
+<para
+>Als Alternative kann eine variable Bitrate benutzt werden. Sie können die <guilabel
+>Durchschnittliche Bitrate</guilabel
+> (Voreinstellung) oder die <guilabel
+>Maximale Bitrate</guilabel
+> und <guilabel
+>Minimale Bitrate</guilabel
+> einstellen.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Titelinformationen hinzufügen</guilabel
+></term>
+<listitem>
+<para
+>Fügt dem Vorspann der Datei zusätzliche Informationen über das Stück hinzu. Das macht es für den Benutzer leichter, zusätzliche Informationen in seinem jeweiligen Wiedergabeprogramm zu sehen. Diese Informationen können automatisch aus dem Internet geholt werden. Weitere Informationen dazu finden Sie im &systemsettings;-Modul CDDB-Abfrage. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

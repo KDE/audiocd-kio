@@ -1,0 +1,345 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Engin Çağatay <engincagatay@yahoo.com>, 2005.
+# Görkem Çetin <gorkem@kde.org>, 2002-2003.
+# H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010-2011.
+# Ozan Çağlayan <ozan@pardus.org.tr>, 2010.
+# Rıdvan CAN <ridvan@geleceklinux.org>, 2003.
+# obsoleteman <tulliana@gmail.com>, 2007,2009,2012.
+# Yıldız KARDESLER <turkishprogram@xposta.com>, 2004.
+# Volkan Gezer <volkangezer@gmail.com>, 2017.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdemultimedia-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2022-07-06 22:45+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "H. İbrahim Güngör, Emir SARI"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ibrahim@pardus.org.tr, emir_sari@icloud.com"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
+#: audiocdconfig.ui:27
+#, kde-format
+msgid "&General"
+msgstr "&Genel"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:49
+#, kde-format
+msgid ""
+"If you uncheck this option, the KIO worker will not try to use error "
+"correction which can be useful for reading damaged CDs. However, this "
+"feature can be problematic in some cases, so you can switch it off here."
+msgstr ""
+"Eğer bu ayarı kapatırsanız KIO çalışanı hata düzeltmeyi kullanamaz, ki bu "
+"bazen hatalı CD'lerde çok işinize yarayabilir. Diğer yanda bu işlev arada "
+"sırada olsa da sorun yaratabilir; bu durumda da bu seçeneği etkisiz hale "
+"getirmek zorunda kalırsınız."
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:52
+#, kde-format
+msgid "Use &error correction when reading the CD"
+msgstr "CD'yi okurken hata düz&eltmesi kullan"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
+#: audiocdconfig.ui:62
+#, kde-format
+msgid "&Skip on errors"
+msgstr "Ha&taları atla"
+
+#. i18n: ectx: property (title), widget (QGroupBox, encoderPriority)
+#: audiocdconfig.ui:88
+#, kde-format
+msgid "Encoder Priority"
+msgstr "Kodlayıcı Önceliği"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: audiocdconfig.ui:113
+#, kde-format
+msgid "Highest"
+msgstr "Yüksek"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: audiocdconfig.ui:123
+#, kde-format
+msgid "Lowest"
+msgstr "Düşük"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: audiocdconfig.ui:136
+#, kde-format
+msgid "Normal"
+msgstr "Normal"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabNames)
+#: audiocdconfig.ui:153
+#, kde-format
+msgid "&Names"
+msgstr "&Dosya adları"
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
+#: audiocdconfig.ui:159
+#, kde-format
+msgid "File Name (without extension)"
+msgstr "Dosya adı (uzantısız)"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_3)
+#: audiocdconfig.ui:165 audiocdconfig.ui:331 audiocdconfig.ui:462
+#, kde-format
+msgid "The following macros will be expanded:"
+msgstr "Şu makrolar genişletilecek:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel13)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21_2)
+#: audiocdconfig.ui:177 audiocdconfig.ui:373 audiocdconfig.ui:504
+#, kde-format
+msgid "Genre"
+msgstr "Tür"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16_2)
+#: audiocdconfig.ui:187 audiocdconfig.ui:363 audiocdconfig.ui:494
+#, no-c-format, kde-format
+msgid "%{year}"
+msgstr "%{year}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
+#: audiocdconfig.ui:197
+#, no-c-format, kde-format
+msgid "%{title}"
+msgstr "%{title}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel5)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18_2)
+#: audiocdconfig.ui:207 audiocdconfig.ui:393 audiocdconfig.ui:524
+#, kde-format
+msgid "Album Title"
+msgstr "Albüm Başlığı"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20_2)
+#: audiocdconfig.ui:217 audiocdconfig.ui:343 audiocdconfig.ui:474
+#, kde-format
+msgid "Year"
+msgstr "Yıl"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
+#: audiocdconfig.ui:227
+#, kde-format
+msgid "Track Artist"
+msgstr "Parça Sanatçısı"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
+#: audiocdconfig.ui:237
+#, kde-format
+msgid "Track Title"
+msgstr "Parça Başlığı"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19_2)
+#: audiocdconfig.ui:247 audiocdconfig.ui:383 audiocdconfig.ui:514
+#, kde-format
+msgid "Album Artist"
+msgstr "Albüm Sanatçısı"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15_2)
+#: audiocdconfig.ui:257 audiocdconfig.ui:353 audiocdconfig.ui:484
+#, no-c-format, kde-format
+msgid "%{albumartist}"
+msgstr "%{albumartist}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17_2)
+#: audiocdconfig.ui:267 audiocdconfig.ui:403 audiocdconfig.ui:534
+#, no-c-format, kde-format
+msgid "%{genre}"
+msgstr "%{genre}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
+#: audiocdconfig.ui:277
+#, no-c-format, kde-format
+msgid "%{trackartist}"
+msgstr "%{trackartist}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14_2)
+#: audiocdconfig.ui:287 audiocdconfig.ui:413 audiocdconfig.ui:544
+#, no-c-format, kde-format
+msgid "%{albumtitle}"
+msgstr "%{albumtitle}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: audiocdconfig.ui:297
+#, kde-format
+msgid "Track Number"
+msgstr "Parça Numarası"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
+#: audiocdconfig.ui:307
+#, no-c-format, kde-format
+msgid "%{number}"
+msgstr "%{number}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
+#: audiocdconfig.ui:325
+#, kde-format
+msgid "Album Name"
+msgstr "Albüm Adı"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:447
+#, no-c-format, kde-format
+msgid ""
+"This defines where files will appear in relation to the encoder root, you "
+"can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
+msgstr ""
+"Dosyaların kodlayıcı köküne göre nerede oluşacağını belirler. / kullanarak "
+"alt dizin oluşturabilirsiniz. Örneğin: %{albumartist}/%{albumtitle} "
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:450
+#, kde-format
+msgid "Files Location"
+msgstr "Dosyaların Konumu"
+
+#. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
+#: audiocdconfig.ui:572
+#, no-c-format, kde-format
+msgid "%{albumtitle}/%{albumartist}"
+msgstr "%{albumtitle}/%{albumartist}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: audiocdconfig.ui:582
+#, kde-format
+msgid "Name Regular Expression Replacement"
+msgstr "Ad - Düzenli İfadeleri Değiştirmesi"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
+#: audiocdconfig.ui:588
+#, kde-format
+msgid "Selection:"
+msgstr "Seçim:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: audiocdconfig.ui:599
+#, kde-format
+msgid ""
+"Regular expression used on all file names. For example using selection \" \" "
+"and replace with \"_\" would replace all the spaces with underlines.\n"
+msgstr ""
+"Düzenli ifadeler bütün dosya isimlerinde kullanılabilir. Mesela \"·"
+"\"·kullanılarak\"_\" alt çizgili dosya isimler ile değiştirilebilir.\n"
+
+#. i18n: ectx: property (text), widget (QLabel, inputlabel)
+#: audiocdconfig.ui:612
+#, kde-format
+msgid "Input:"
+msgstr "Girdi:"
+
+#. i18n: ectx: property (text), widget (QLabel, outputLabel)
+#: audiocdconfig.ui:622
+#, kde-format
+msgid "Output:"
+msgstr "Çıktı:"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleLabel)
+#: audiocdconfig.ui:632
+#, kde-format
+msgid "Example"
+msgstr "Örnek"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleOutput)
+#. i18n: ectx: property (text), widget (QLineEdit, example)
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:141
+#: kcmaudiocd.cpp:210
+#, kde-format
+msgid "Cool artist - example audio file.wav"
+msgstr "Mükemmel sanatçı - örnek ses dosyası file.wav"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
+#: audiocdconfig.ui:665
+#, kde-format
+msgid "Replace with:"
+msgstr "Bununla değiştir:"
+
+#: kcmaudiocd.cpp:61
+#, kde-format
+msgid "%1 Encoder"
+msgstr "%1 Kodlayıcı"
+
+#: kcmaudiocd.cpp:92
+#, kde-format
+msgid "KDE Audio CD KIO Worker"
+msgstr "KDE Ses CD'si KIO Çalışanı"
+
+#: kcmaudiocd.cpp:94
+#, kde-format
+msgid "Benjamin C. Meyer"
+msgstr "Benjamin C. Meyer"
+
+#: kcmaudiocd.cpp:94
+#, kde-format
+msgid "Former Maintainer"
+msgstr "Proje Eski Yürütücüsü"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Carsten Duvenhorst"
+msgstr "Carsten Duvenhorst"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Original Author"
+msgstr "Özgün Yazar"
+
+#: kcmaudiocd.cpp:251
+#, kde-format
+msgid ""
+"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
+"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
+"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
+"In this module, you can configure encoding, and device settings. Note that "
+"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
+"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
+"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
+"system."
+msgstr ""
+"<h1>Ses CD'leri</h1> Ses CD'si KIO Çalışanı, ses CD-ROM'larından veya "
+"DVD'lerinden wav, FLAC, MP3, Ogg Vorbis veya Opus dosyalarını kolayca "
+"oluşturmanıza olanak tanır. Dolphin'in konum çubuğuna <i>\"audiocd:/\"</i> "
+"yazılarak KIO Çalışanı çağrılır. Bu modülde kodlamayı ve aygıt ayarlarını "
+"yapılandırabilirsiniz. FLAC, MP3, Ogg Vorbis ve Opus kodlamasının yalnızca "
+"sisteminizde ilgili kitaplıklar (FLAC için libFLAC ve Ogg için libvorbis) ve "
+"yardımcı programlar (MP3 için topal ve Opus için opus araçları) kuruluysa "
+"kullanılabileceğini unutmayın."

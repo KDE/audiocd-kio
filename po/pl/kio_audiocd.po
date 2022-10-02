@@ -1,0 +1,133 @@
+# translation of kio_audiocd.po to
+# Version: $Revision: 1634664 $
+# Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+#
+# Michal Rudolf <mrudolf@kdewebdev.org>, 2003.
+# Mikolaj Machowski <mikmach@wp.pl>, 2004, 2005.
+# Krzysztof Lichota <lichota@mimuw.edu.pl>, 2006.
+# Robert Gomulka <rgom@o2.pl>, 2006.
+# Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-11-14 11:59+0100\n"
+"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
+"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.08.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Mikołaj Machowski"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "mikmach@wp.pl"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Dane"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Cała płyta CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Dane CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"W tym protokole nie można podawać nazwy serwera. Proszę użyć zamiast tego "
+"formatu audiocd:/"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Brak danych nt urządzenia"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Urządzenie nie ma uprawnień odczytu na tym koncie. Sprawdź uprawnienia "
+"odczytu dla tego urządzenia."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Urządzenie nie ma praw zapisu na tym koncie.  Sprawdź prawa zapisu dla tego "
+"urządzenia."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Nieznany błąd. Jeśli masz cd w urządzeniu, spróbuj uruchomić cdparanoia -vsQ "
+"jako zwykły użytkownik (nie administrator). Czy widzisz listę utworów? Jeśli "
+"nie, upewnij się, że masz prawa dostępu do urządzenia. Jeśli używasz "
+"emulacji SCSI (prawdopodobne jeśli masz nagrywarkę IDE), upewnij się, że "
+"masz prawa zapisu i odczytu w generycznym urządzeniu SCSI - prawdopodobnie /"
+"dev/sg0, /dev/sg1, itd. Jeśli i to nie pomoże, spróbuj wpisać audiocd:/?"
+"device=/dev/sg0 (lub podobne), aby przekazać kio_audiocd, które urządzenie "
+"to CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: Wykryto uszkodzenie płyty na tej ścieżce, możliwe jest uszkodzenie "
+"danych."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Błąd odczytu danych audio dla %1 z płyty CD"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Nie można odczytać %1: kodowanie nie powiodło się"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Ścieżka %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Nazwa protokołu"
+
+#~ msgid "Socket name"
+#~ msgstr "Nazwa gniazda"

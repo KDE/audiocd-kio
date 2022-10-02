@@ -1,0 +1,381 @@
+# translation of kcmaudiocd.po to Macedonian
+# Copyright (C) 2003, 2005, 2006, 2007 Free Software Foundation, Inc.
+#
+# Vladislav Bidikov <bidikovi@mail.com.mk>, 2003.
+# Zaklina Gjalevska <gjalevska@yahoo.com>, 2005.
+# Bozidar Proevski <bobibobi@freemail.com.mk>, 2005, 2006, 2007.
+# Viktor Stojanovski <viktor@lugola.net>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmaudiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2007-12-03 12:18+0100\n"
+"Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
+"Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
+"Language: mk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=3; plural=n%10==1 ? 0 : n%10==2 ? 1 : "
+"2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Зоран Димовски,Жаклина Ѓалевска,Виктор Стојановски"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "zoki@email.com,gjalevska@yahoo.com,viktor@lugola.net"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
+#: audiocdconfig.ui:27
+#, kde-format
+msgid "&General"
+msgstr "&Општо"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:49
+#, fuzzy, kde-format
+#| msgid ""
+#| "If you uncheck this option, the slave will not try to use error "
+#| "correction which can be useful for reading damaged CDs. However, this "
+#| "feature can be problematic in some cases, so you can switch it off here."
+msgid ""
+"If you uncheck this option, the KIO worker will not try to use error "
+"correction which can be useful for reading damaged CDs. However, this "
+"feature can be problematic in some cases, so you can switch it off here."
+msgstr ""
+"Ако ја одизберете оваа опција, служителот нема да се обиде да користи "
+"корекција на грешките што може да биде корисно за читање на оштетени CD-а. "
+"Сепак, оваа карактеристика може да биде проблематична во некои случаи, така "
+"што тука може да ја исклучите."
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:52
+#, kde-format
+msgid "Use &error correction when reading the CD"
+msgstr "Користи корекција на &грешки додека читаш од CD"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
+#: audiocdconfig.ui:62
+#, kde-format
+msgid "&Skip on errors"
+msgstr "&Прескокни при грешки"
+
+#. i18n: ectx: property (title), widget (QGroupBox, encoderPriority)
+#: audiocdconfig.ui:88
+#, kde-format
+msgid "Encoder Priority"
+msgstr "Приоритет на кодерот"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: audiocdconfig.ui:113
+#, kde-format
+msgid "Highest"
+msgstr "Највисок"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: audiocdconfig.ui:123
+#, kde-format
+msgid "Lowest"
+msgstr "Најнизок"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: audiocdconfig.ui:136
+#, kde-format
+msgid "Normal"
+msgstr "Нормален"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabNames)
+#: audiocdconfig.ui:153
+#, kde-format
+msgid "&Names"
+msgstr "&Имиња"
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
+#: audiocdconfig.ui:159
+#, kde-format
+msgid "File Name (without extension)"
+msgstr "Име на датотека (без наставка)"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_3)
+#: audiocdconfig.ui:165 audiocdconfig.ui:331 audiocdconfig.ui:462
+#, kde-format
+msgid "The following macros will be expanded:"
+msgstr "Следниве макроа ќе бидат извршени:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel13)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21_2)
+#: audiocdconfig.ui:177 audiocdconfig.ui:373 audiocdconfig.ui:504
+#, kde-format
+msgid "Genre"
+msgstr "Жанр"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16_2)
+#: audiocdconfig.ui:187 audiocdconfig.ui:363 audiocdconfig.ui:494
+#, no-c-format, kde-format
+msgid "%{year}"
+msgstr "%{year}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
+#: audiocdconfig.ui:197
+#, no-c-format, kde-format
+msgid "%{title}"
+msgstr "%{title}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel5)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18_2)
+#: audiocdconfig.ui:207 audiocdconfig.ui:393 audiocdconfig.ui:524
+#, kde-format
+msgid "Album Title"
+msgstr "Име на албумот"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20_2)
+#: audiocdconfig.ui:217 audiocdconfig.ui:343 audiocdconfig.ui:474
+#, kde-format
+msgid "Year"
+msgstr "Година"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
+#: audiocdconfig.ui:227
+#, kde-format
+msgid "Track Artist"
+msgstr "Изведувач на песна"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
+#: audiocdconfig.ui:237
+#, kde-format
+msgid "Track Title"
+msgstr "Наслов на песна"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19_2)
+#: audiocdconfig.ui:247 audiocdconfig.ui:383 audiocdconfig.ui:514
+#, kde-format
+msgid "Album Artist"
+msgstr "Албум на изведувачот"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15_2)
+#: audiocdconfig.ui:257 audiocdconfig.ui:353 audiocdconfig.ui:484
+#, no-c-format, kde-format
+msgid "%{albumartist}"
+msgstr "%{albumartist}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17_2)
+#: audiocdconfig.ui:267 audiocdconfig.ui:403 audiocdconfig.ui:534
+#, no-c-format, kde-format
+msgid "%{genre}"
+msgstr "%{genre}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
+#: audiocdconfig.ui:277
+#, no-c-format, kde-format
+msgid "%{trackartist}"
+msgstr "%{trackartist}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14_2)
+#: audiocdconfig.ui:287 audiocdconfig.ui:413 audiocdconfig.ui:544
+#, no-c-format, kde-format
+msgid "%{albumtitle}"
+msgstr "%{albumtitle}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: audiocdconfig.ui:297
+#, kde-format
+msgid "Track Number"
+msgstr "Број на песна"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
+#: audiocdconfig.ui:307
+#, no-c-format, kde-format
+msgid "%{number}"
+msgstr "%{number}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
+#: audiocdconfig.ui:325
+#, kde-format
+msgid "Album Name"
+msgstr "Име на албумот"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:447
+#, no-c-format, kde-format
+msgid ""
+"This defines where files will appear in relation to the encoder root, you "
+"can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:450
+#, kde-format
+msgid "Files Location"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
+#: audiocdconfig.ui:572
+#, fuzzy, no-c-format, kde-format
+#| msgid "%{albumartist}"
+msgid "%{albumtitle}/%{albumartist}"
+msgstr "%{albumartist}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: audiocdconfig.ui:582
+#, kde-format
+msgid "Name Regular Expression Replacement"
+msgstr "Наведи замена за регуларниот израз"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
+#: audiocdconfig.ui:588
+#, kde-format
+msgid "Selection:"
+msgstr "Избор:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: audiocdconfig.ui:599
+#, kde-format
+msgid ""
+"Regular expression used on all file names. For example using selection \" \" "
+"and replace with \"_\" would replace all the spaces with underlines.\n"
+msgstr ""
+"Регуларен израз употребен на сите имиња на датотеки. На пример употреба на "
+"изборот „ “ и негова замена со „_“ ќе  ги замени сите празни места со долна "
+"црта.\n"
+
+#. i18n: ectx: property (text), widget (QLabel, inputlabel)
+#: audiocdconfig.ui:612
+#, kde-format
+msgid "Input:"
+msgstr "Влез:"
+
+#. i18n: ectx: property (text), widget (QLabel, outputLabel)
+#: audiocdconfig.ui:622
+#, kde-format
+msgid "Output:"
+msgstr "Излез:"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleLabel)
+#: audiocdconfig.ui:632
+#, kde-format
+msgid "Example"
+msgstr "Пример"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleOutput)
+#. i18n: ectx: property (text), widget (QLineEdit, example)
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:141
+#: kcmaudiocd.cpp:210
+#, kde-format
+msgid "Cool artist - example audio file.wav"
+msgstr "Познат изведувач - пример за аудиодатотека.wav"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
+#: audiocdconfig.ui:665
+#, kde-format
+msgid "Replace with:"
+msgstr "Заменете со:"
+
+#: kcmaudiocd.cpp:61
+#, kde-format
+msgid "%1 Encoder"
+msgstr "Енкодер за %1"
+
+#: kcmaudiocd.cpp:92
+#, fuzzy, kde-format
+#| msgid "KDE Audio CD IO Slave"
+msgid "KDE Audio CD KIO Worker"
+msgstr "IO-служител за аудио ЦД во KDE"
+
+#: kcmaudiocd.cpp:94
+#, kde-format
+msgid "Benjamin C. Meyer"
+msgstr "Benjamin C. Meyer"
+
+#: kcmaudiocd.cpp:94
+#, fuzzy, kde-format
+#| msgid "Current Maintainer"
+msgid "Former Maintainer"
+msgstr "Тековен одржувач"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Carsten Duvenhorst"
+msgstr "Carsten Duvenhorst"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Original Author"
+msgstr ""
+
+#: kcmaudiocd.cpp:251
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
+#| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
+#| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. In "
+#| "this module, you can configure encoding, and device settings. Note that "
+#| "MP3 and Ogg Vorbis encoding are only available if KDE was built with a "
+#| "recent version of the LAME or Ogg Vorbis libraries."
+msgid ""
+"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
+"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
+"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
+"In this module, you can configure encoding, and device settings. Note that "
+"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
+"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
+"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
+"system."
+msgstr ""
+"<h1>Аудио CD</h1> IO-Slave на аудио CD ви овозможува лесно да креирате "
+"датотеки од тип wav, MP3 или Ogg Vorbis преку вашите аудиоуреди CD-ROM или "
+"DVD. Slave се повикува со внесување на <i>„audiocd:/“</i> во лентата за "
+"локација воKonqueror. Во овој модул можете да го конфигурирате кодирањето и "
+"поставувањата на уредот. Забележете дека кодирањата од тип MP3 и Ogg Vorbis "
+"се можни само ако KDE е направен со најновата верзија на библиотеки на LAME "
+"или Ogg Vorbis."
+
+#~ msgid "kcmaudiocd"
+#~ msgstr "kcmaudiocd"
+
+#~ msgid "(c) 2000 - 2005 Audio CD developers"
+#~ msgstr "(c) 2000 - 2005 развивачите на Audio CD"
+
+#~ msgid ""
+#~ "Specify a location for the drive you want to use. Normally, this is a "
+#~ "file inside the /dev folder representing your CD or DVD drive."
+#~ msgstr ""
+#~ "Зададете локација за уредот што сакате да го користите. Вообичаено, ова е "
+#~ "датотека во папката /dev што го претставува вашиот CD или DVD уред."
+
+#~ msgid "/dev/cdrom"
+#~ msgstr "/dev/cdrom"
+
+#~ msgid ""
+#~ "Uncheck this if you want to specify a CD device different from the one "
+#~ "autoprobed"
+#~ msgstr ""
+#~ "Исклучете го ова ако сакате да одредите CD-уред поинаков од оној што е "
+#~ "автоматски пронајден"
+
+#~ msgid "&Specify CD Device:"
+#~ msgstr "Наведете CD-&уред:"
+
+#~ msgid "Report errors found on the cd."
+#~ msgstr "Пријави ги грешките пронајдени на CD-то"

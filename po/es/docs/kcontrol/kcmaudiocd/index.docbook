@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Spanish "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Audio-CD</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+><firstname
+>Víctor</firstname
+><surname
+>Rodrigo</surname
+> <affiliation
+><address
+><email
+>vrcordoba@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>2019-02-08</date>
+<releaseinfo
+>Aplicaciones 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Preferencias del sistema</keyword>
+<keyword
+>audio</keyword>
+<keyword
+>disco compacto</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>Configuración del proceso KIO de Audiocd</title>
+<para
+>La página del módulo de <guilabel
+>Configuración del proceso KIO de Audiocd</guilabel
+> se divide en la pestaña <guilabel
+>General</guilabel
+>, la pestaña de <guilabel
+>Nombres</guilabel
+> y las pestañas de parámetros de los codificadores.</para>
+
+<sect2 id="general-tab">
+<title
+>La pestaña general</title>
+<screenshot>
+<screeninfo
+>La pestaña <guilabel
+>General</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>La pestaña <guilabel
+>General</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Esta pestaña contiene los parámetros generales que aplican a todo el proceso de leer datos del CD</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Usar la corrección de errores al leer el CD</guilabel
+></term>
+<listitem>
+<para
+>Al escribir un CD de audio, el proceso añade 64 bits de corrección de datos a cada marco. Tras esto, se añaden 8 bits de datos subcódigo o subcanal a cada uno de los marcos codificados, los cuales se usan para controlar y saltar a secciones cuando se reproduce el CD. Ignorar estos datos puede acelerar la lectura pero puede producir artefactos indeseados.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Ignorar los errores</guilabel
+></term>
+<listitem>
+<para
+>Por omisión, nunca se ignoran los errores del medio. Esto es necesario para asegurar la alta calidad de los resultados.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Prioridad del codificador</guilabel
+></term>
+<listitem>
+<para
+>Es posible elegir la prioridad del codificador para asegurar que el proceso de codificación no le impide ejecutar otras tareas en paralelo (valores bajos) o aumentar la velocidad de la codificación (valores altos). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>La pestaña de nombres</title>
+
+<screenshot>
+<screeninfo
+>La pestaña de <guilabel
+>Nombres</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>La pestaña de <guilabel
+>Nombres</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>La pestaña <guilabel
+>Nombres</guilabel
+> puede usarse para determinar el nombre de los archivos de los datos codificados. Es posible usar macros y <ulink url="https://en.wikipedia.org/wiki/Regular_expression"
+>expresiones regulares</ulink
+> para producir los nombres que necesita.</para>
+
+<para
+>Puede usar el campo de test interactivo en la parte inferior de la página para comprobar que se producirán los nombres correctos.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>La pestaña del codificador FLAC</title>
+
+<screenshot>
+<screeninfo
+>La pestaña del <guilabel
+>codificador FLAC</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>La pestaña del <guilabel
+>codificador FLAC</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>La pestaña del codificador FLAC solo está disponible si el proceso KIO de Audiocd se compiló con libFLAC.</para>
+</note>
+
+<para
+>FLAC es un formato de audio comprimido sin pérdida libre de patentes u honorarios de licencias. Mantiene la calidad de audio perfecta reduciendo el tamaño del archivo un 50%. El tamaño de los archivos al usar este codec es mucho mayor que con Opus, Ogg Vorbis o MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Nivel de compresión Flac</guilabel
+></term>
+<listitem>
+<para
+>El nivel de compresión es un valor entero entre 0 y 8 que representa la compensación entre el tamaño del archivo y la velocidad de compresión.</para>
+<para
+>Establecer el nivel de compresión a 0 produce la compresión más pequeña pero genera archivos grandes.</para>
+<para
+>Por otro lado, un nivel de compresión de 8 hace que la compresión sea lenta pero produce el archivo más pequeño posible.</para>
+<para
+>Tenga en cuenta que al ser FLAC un codec sin pérdida, la calidad del audio de salida es exactamente igual independientemente del nivel de compresión.</para>
+<para
+>Además, los niveles por encima de 5 incrementan dramáticamente el tiempo de compresión pero crea archivos solo marginalmente más pequeños, por tanto no los recomendamos.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>La pestaña del codificador MP3</title>
+
+<screenshot>
+<screeninfo
+>La pestaña del <guilabel
+>codificador MP3</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>La pestaña del <guilabel
+>codificador MP3</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>La pestaña del codificador MP3 solo estará disponible si las utilidades <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+> están instaladas en el sistema.</para>
+</note>
+
+<para
+>MP3 (o MPEG-1 Audio Layer III) es un codec de audio patentado que usa un formato de compresión con pérdida. A pesar de sus limitaciones, es un formato muy común en el almacenamiento de audio y está ampliamente soportado por los reproductores de música portátiles.</para>
+
+<para
+>El proceso KIO de Audiocd usa el codificador LAME para producir archivos <filename class="extension"
+>mp3</filename
+>. LAME está considerado el mejor codificador MP3, gracias al gran trabajo de sus desarrolladores y el modelo de licencia de software libre que ha permitido al proyecto beneficiarse de recursos de ingeniería de todo el mundo.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Método de codificación</guilabel
+></term>
+<listitem>
+<para
+>La tasa de bits es una medida de la cantidad de datos usados para representar un segundo de la pista de audio. Es posible establecer una <guilabel
+>tasa de bits constante</guilabel
+> para tamaños de archivo predecibles. El codificador MP3 también soporta <guilabel
+>tasa de bits variable</guilabel
+>, en la cual la tasa de bits varía a lo largo de la pista basándose en la complejidad del contenido del audio. Los intervalos de datos más complejos se codifican con una tasa de bits mayor que los menos complejos. Esta aproximación  suele conseguir mejor calidad y un tamaño de archivo más pequeño que cando se selecciona una tasa de bits constante para toda la pista.</para>
+<para
+>Puede definir también la calidad de la codificación. Una calidad menor puede acelerar el proceso de codificación a costa de aumentar la pérdida de datos.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Opciones</guilabel
+></term>
+<listitem>
+<para
+>Compruebe el elemento <guilabel
+>Protegido por derechos de autor</guilabel
+> si los datos producidos estuvieran protegidos por derechos de autor.</para>
+<para
+>Compruebe el elemento <guilabel
+>Original</guilabel
+> si la extracción de datos se hace desde el &CD; original.</para>
+<para
+>Cuando se marca el elemento <guilabel
+>codificación ISO</guilabel
+>, LAME forzará la limitación de 7680 bits en el tamaño total del marco. La compatibilidad ISO puede ser importante para los reproductores hardware.</para>
+<para
+>El elemento <guilabel
+>Protección de errores</guilabel
+> CRC puede usarse para añadir la suma de control a cada marco. Esta protección puede mejorar la estabilidad del almacenamiento de datos MP3.</para>
+<para
+>El elemento <guilabel
+>Escribir etiqueta ID3</guilabel
+> se usa para hacer que LAME escriba <ulink url="https://en.wikipedia.org/wiki/ID3"
+>metadatos ID3</ulink
+> en cada archivo MP3 que se produzca.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Preferencias del filtro</guilabel
+></term>
+<listitem>
+<para
+>Es posible aplicar un filtro de ancho de banda a los datos. Se usa para limitar las frecuencias máximas y mínimas que se codificarán. La mayoría de nosotros no puede oír frecuencias altas de ninguna manera y suelen ser más <quote
+>caras</quote
+> de codificar en término de bits. También tienden a causar artefactos.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Preferencias de tasa de bits variable</guilabel
+></term>
+<listitem>
+
+<para
+>Puede elegir también <guilabel
+>tasa de bits media</guilabel
+>, que es la opción por omisión, o <guilabel
+>tasa de bits máxima</guilabel
+>, <guilabel
+>tasa de bits mínima</guilabel
+> y si <guilabel
+>el valor mínimo es un límite rígido</guilabel
+>.</para>
+<para
+>160 kb/s es una buena elección para escuchar música en reproductores portátiles. Cualquier valor por debajo de 120 kb/s puede ser insatisfactorio para música y cualquier valor por encima de 256 kb/s puede resultar exagerado.</para>
+<para
+>También es posible <guilabel
+>Escribir etiqueta Xing VBR</guilabel
+> en el archivo. Xing fue responsable de crear un codificador destacable por su etiqueta VBR, que permite búsquedas más precisas en archivos de tasa de bits variable. Entre otras características, la etiqueta VBR de Xing contiene información sobre la duración total del archivo MP3, algo que no está directamente disponible en el flujo MPEG.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>La pestaña del codificador Opus</title>
+
+<screenshot>
+<screeninfo
+>La pestaña del <guilabel
+>codificador Opus</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>La pestaña del <guilabel
+>codificador Opus</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>La pestaña del codificador Opus solo estará disponible si las <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+> están instaladas en el sistema.</para>
+</note>
+
+<para
+>Opus es un codec de audio totalmente abierto, libre de cánones y altamente versatil. Opus no tiene rival en la transmisión de música y de discursos interactivos a través de internet pero también está pensado para el almacenaje y la transmisión de aplicaciones.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Método de codificación</guilabel
+></term>
+<listitem>
+<para
+>Esta preferencia le permite elegir entre la codificación <guilabel
+>basada en complejidad</guilabel
+> y la  <guilabel
+>basada en tasa de bits</guilabel
+>. La codificación basada en complejidad usa algoritmos especulativos a cambio de un tamaño impredecible en los resultados.</para>
+<itemizedlist>
+<listitem>
+<para
+>Hay varios aspectos que influencian la elección del codificador Opus entre complejidad de CPU y la calidad/tasa de bits. La complejidad de la codificación puede elegirse como un entero de 0 a 10, donde 0 significa la calidad menor y 10 la calidad mayor.</para>
+</listitem>
+<listitem>
+<para
+>Opus es más eficiente cuando opera con tasa de bits variable (<guilabel
+>Tasa de bits variable media</guilabel
+>), que es la opción por omisión. Es posible usar tasa de bits variable restringida (<guilabel
+>Tasa de bits variable restringida</guilabel
+>, que es análoga a la tasa constante de MP3) cuando se requiere baja latencia en conexiones lentas. En algunas pocas aplicaciones, se requiere tasa de bits constante (<guilabel
+>Tasa de bits constante</guilabel
+>).</para>
+<para
+>Se recomienda usar una tasa de bits de 64-128 kbit/s para música estéreo.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Añadir información de pista</guilabel
+></term>
+<listitem>
+<para
+>Cuando se marca, añade una descripción de la canción a la cabecera del archivo. Esto facilita al usuario encontrar información avanzada de la canción al mostrar esta al reproductor de medios. Puede obtener esta información automáticamente a través de Internet. Vea el módulo de recuperación CDDB de &systemsettings; para más detalles. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>La pestaña del codificador Ogg Vorbis</title>
+
+<screenshot>
+<screeninfo
+>La pestaña del <guilabel
+>codificador Ogg Vorbis</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>La pestaña del <guilabel
+>codificador Ogg Vorbis</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>La pestaña del codificador Ogg Vorbis solo estará disponible si el proceso KIO de Audiocd se compiló con <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+>.</para>
+</note>
+
+<para
+>Ogg Vorbis es un codec de audio abierto y libre de cánones con compresión de audio con pérdidas. Produce archivos más pequeños que MP3 para la misma o superior calidad.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Método de codificación</guilabel
+></term>
+<listitem>
+<para
+>Esta preferencia le permite elegir entre codificación <guilabel
+>basada en calidad</guilabel
+> y <guilabel
+>basada en tasa de bits</guilabel
+>. La codificación basada en calidad usa algunos algoritmos especulativos a cambio de un tamaño impredecible en los resultados.</para>
+<itemizedlist>
+<listitem>
+<para
+>La calidad de la codificación Ogg Vorbis se puede seleccionar usando un entero de 0 a 10, donde 0 representa la calidad más baja y 10 la más alta.</para>
+</listitem>
+<listitem>
+<para
+>Como alternativa se puede usar la tasa de bits variable. Es posible elegir <guilabel
+>tasa de bits media</guilabel
+>, que es la opción por omisión, o <guilabel
+>tasa de bits máxima</guilabel
+> y <guilabel
+>tasa de bits mínima</guilabel
+>.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Añadir información de pista</guilabel
+></term>
+<listitem>
+<para
+>Cuando se marca, añade una descripción de la canción a la cabecera del archivo. Esto facilita al usuario encontrar información avanzada de la canción al mostrar esta al reproductor de medios. Puede obtener esta información automáticamente a través de Internet. Vea el módulo de recuperación CDDB de &systemsettings; para más detalles. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

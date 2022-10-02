@@ -1,0 +1,119 @@
+# translation of kio_audiocd.po to Thai
+#
+# Thanomsub Noppaburana <donga_n@yahoo.com>, 2005.
+# Sahachart Anukulkitch <drrider@gmail.com>, 2007.
+# Thanomsub Noppaburana <donga.nb@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2010-04-30 14:01+0700\n"
+"Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
+"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ถนอมทรัพย์ นพบูรณ์"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "donga.nb@gmail.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "ข้อมูลรายละเอียด"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "เต็มซีดี"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "ข้อมูลรายละเอียดจาก CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr "คุณไม่สามารถกำหนดเครื่องโฮสต์ด้วยโพรโทคอลนี้ได้ โปรดใช้ audiocd:/ แทน"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr "บัญชีผู้ใช้นี้ไม่มีสิทธิ์ในการอ่านอุปกรณ์ โปรดตรวจสอบสิทธิ์ในการอ่านอุปกรณ์"
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr "บัญชีผู้ใช้นี้ไม่มีสิทธิ์ในการเขียนไปยังอุปกรณ์ โปรดตรวจสอบสิทธิ์ในการเขียนไปยังอุปกรณ์"
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"ไม่ทราบข้อผิดพลาด หากคุณใส่แผ่นซีดีไว้ในตัวไดรฟ์ขับแผ่นแล้ว ให้ลองเรียกคำสั่ง cdparanoia -vsQ "
+"ด้วยตัวเอง (ไม่ต้องเป็นผู้ใช้ root) จากนั้นดูว่าเห็นรายการแทร็กหรือไม่ ? "
+"หากยังไม่เห็นให้ตรวจสอบสิทธิ์ในการใช้งานอุปกรณ์ซีดีของตัวคุณเอง และหากมีการใช้การจำลองคำสั่ง "
+"SCSI (โดยทั่วไปใช้กับเครื่องเขียนแผ่นซีดี/ดีวีดีแบบ IDE) "
+"ให้ลองตรวจสอบสิทธิ์ในการอ่านและเขียนไปยังอุปกรณ์แบบ SCSI โดยทั่วไปจะเป็นแฟ้มอุปกรณ์ /dev/"
+"sg0, /dev/sg1 เป็นต้น และหากยังไม่สามารถทำงานได้อีก ให้ลองพิมพ์ audiocd:/?device=/dev/"
+"sg0 (หรืออื่น ๆ แล้วแต่เครื่องของคุณ) เพื่อแจ้งให้โปรแกรม kio_audiocd "
+"ทราบว่าอุปกรณ์ซีดีรอมของคุณคือตัวใด"
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "AudioCD: พบส่วนเสียหายของแผ่นดิสก์บนแทร็กนี้ ซึ่งเสี่ยงต่อความเสียหายของข้อมูล"
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "ไม่สามารถอ่านข้อมูลเสียง %1 จากแผ่นซีดีได้"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "ไม่สามารถอ่าน %1 ได้: การเข้ารหัสผิดพลาด"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "แทร็ก %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "ชื่อโพรโทคอล"
+
+#~ msgid "Socket name"
+#~ msgstr "ชื่อซ็อกเก็ต"

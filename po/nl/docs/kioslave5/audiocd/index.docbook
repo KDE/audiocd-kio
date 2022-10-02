@@ -1,0 +1,321 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+&Otto.Bruggeman;&Rinse.Devries; 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Met deze io-slave kunt u audio-<acronym
+>cd</acronym
+>'s als een <quote
+>echt</quote
+> bestandssysteem te behandelen. De nummers op het album worden als bestanden gerepresenteerd en wanneer gekopieerd vanuit de map worden ze omgezet naar een door u gekozen digitaal audio-bestand. Dit verzekert u van een perfecte kopie van de audio-data.</para>
+
+<para
+>Om te zien hoe dit KIO-programma werkt, plaats een audio-<acronym
+>cd</acronym
+> in uw &CD-ROM;-station en typ het commando <userinput
+>audiocd:/</userinput
+> in het locatieveld van &konqueror;. Binnen enkele seconden ziet u een lijst van de albumnummers en een aantal mappen.</para>
+
+<para
+>Audio-<acronym
+>cd</acronym
+>'s hebben eigenlijk geen mappen, maar het audiocd KIO-programma maakt ze voor uw gemak aan. Als u in deze mappen kijkt zult u zien dat ze allemaal hetzelfde aantal nummers bevatten. Als u verbonden bent met het internet, dan zullen sommige mappen de titels van de nummers als bestandsnaam weergeven.</para>
+
+<para
+>De verschillende mappen geven het uitvoerformaat weer waarnaar u de nummers kunt converteren. U kiest een uitvoerformaat door de bijhorende map op de <acronym
+>cd</acronym
+> te openen.</para>
+
+<para
+>Als u een nummer uit de map <filename class="directory"
+>Ogg Vorbis</filename
+> sleept naar een ander &konqueror;-venster met uw persoonlijke map, dan wordt er een voortgangsdialoogvenster geopend die weergeeft dat het nummer van de <acronym
+>cd</acronym
+> wordt omgezet en als bestand op uw schijf wordt opgeslagen. . Merk op dat Ogg Vorbis een gecomprimeerd bestandsformaat is zodat het bestand in uw persoonlijke map flink kleiner uitvalt dan wanneer u het als een ongecomprimeerd formaat had gekopieerd.</para>
+
+<para
+>Het mechanisme hierachter is erg eenvoudig. Wanneer de audiocd KIO-programma gevraagd wordt een nummer uit de map <filename class="directory"
+>Ogg Vorbis</filename
+> te halen, dan wordt de data van de <acronym
+>cd</acronym
+> gehaald en omgezet naar het Ogg Vorbis-bestandsformaat. (<acronym
+>cd</acronym
+>-audio is niet een speciaal bestandsformaat maar alleen ruwe binaire data).</para>
+
+<para
+>U kunt ook proberen om een bestand dat eindigt op <literal role="extension"
+>.wav</literal
+> te slepen naar de &kde; Media speler &juk;. De procedure achter de schermen is dan bijna gelijk, maar in plaats van het coderen van de data in het Ogg Vorbis-bestandsformaat, wordt het door een heel eenvoudige conversie omgezet naar het  <quote
+>RIFF WAV</quote
+>-formaat. Dit is een ongecomprimeerd formaat dat door de meeste mediaspelers wordt ondersteund.</para>
+
+<para
+>&juk; zou zonder problemen de <literal role="extension"
+>.wav</literal
+> bestanden moeten afspelen. Als u toch problemen tegenkomt kunt u overwegen om de optie <option
+>paranoia_level</option
+> te gebruiken. Deze optie wordt hieronder verder uitgelegd.</para>
+
+<variablelist>
+<title
+>Opties</title>
+
+<varlistentry>
+<term
+><option
+>Apparaat</option
+></term>
+<listitem>
+<para
+>Stelt het pad naar de <acronym
+>cd</acronym
+>-speler in, &bijv; <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Normaliter kan het KIO-programma zelf de <acronym
+>cd</acronym
+>-speler waar met audio-<acronym
+>cd</acronym
+> vinden. Maar als dit niet het geval is, of als u meer dan een <acronym
+>cd</acronym
+>-speler hebt, dan kunt u deze optie gebruiken om de <acronym
+>cd</acronym
+>-speler handmatig op te geven. U kunt in de Configuratiemodule een standaardwaarde voor deze optie opgeven.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Stelt een sjabloon voor bestanden in, &bijv; <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Track %{number}</parameter
+></userinput
+>. Merk op dat u in het instellingenvenster een standaardwaarde voor deze optie kunt instellen. Er werschijnt een waarschuwing dat er geen bestanden zullen verschijnen als u hier een lege tekenreeks opgeeft.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Stelt een sjabloon voor albumnamen in, &bijv; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitel}</parameter
+></userinput
+>. Merk op dat u in het instellingenvenster een standaardwaarde voor deze optie kunt instellen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Stelt het 'nice'-niveau voor encoders in, &bijv; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Merk op dat u in het instellingenvenster een standaardwaarde voor deze optie kunt instellen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Stelt de hoeveelheid foutdetectie en -correctie in die zal worden gebruikt bij het converteren van de data.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Niveau 0</term>
+<listitem>
+<para
+>Geen detectie of correctie. Alleen van nut als u een perfecte <acronym
+>cd</acronym
+>-speler hebt (erg onwaarschijnlijk).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Niveau 1</term>
+<listitem>
+<para
+>Minimale foutdetectie en -correctie.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Niveau 2</term>
+<listitem>
+<para
+>Standaard. Geeft aan dat alleen een perfecte conversie zal worden geaccepteerd.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Opmerking: er zit een nadeel aan niveau 2. De conversie kan erg traag verlopen waardoor real-time digitale weergave niet goed werkt. Als u een goede kwaliteit <acronym
+>cd</acronym
+>-speler heeft (merk op dat duurder niet altijd beter is) dan merkt u waarschijnlijk geen vertraging, maar als u een erg slechte speler heeft dan kan het dagen (!) duren voor dat de audio data van 1 <acronym
+>cd</acronym
+> is geconverteerd.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Geeft aan welke ingang uit de <acronym
+>cd</acronym
+> Database er gebruikt dient te worden. Audio-<acronym
+>cd</acronym
+>'s hebben geen namen voor de nummers, maar de internet <acronym
+>cd</acronym
+> Database is een slim systeem dat een speciale identificator genereert van de nummers en de lengte van elke <acronym
+>cd</acronym
+> om een kruiskoppeling te maken met een namenlijst. Namenlijsten worden door de internetgemeenschap bijgedragen en beschikbaar gemaakt voor iedereen. Soms zullen er meerde ingangen zijn. U kunt opgeven welke u wilt gebruiken.</para>
+
+<para
+>U kunt uw eigen namenlijsten bijdragen door gebruik te maken van  &kscd;, &kde;'s <acronym
+>cd</acronym
+>-speler.</para>
+
+<para
+>Standaard probeert audiocd de beste te kiezen.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Voorbeelden</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Geeft een lijst van de nummers op de audio <acronym
+>cd</acronym
+> in <filename class="devicefile"
+>/dev/scd0</filename
+>, dat onder &Linux; het eerste <acronym
+>SCSI</acronym
+> &CD-ROM;-apparaat is. Als u nummers van de <acronym
+>cd</acronym
+> kopieert, dan zal m.b.v digitale audio extractie de data worden opgehaald, echter zonder foutdetectie en -correctie. Ingang 0 uit de internet <acronym
+>cd</acronym
+>-database zal worden geraadpleegd.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Veel voorkomende vragen (FAQ)</title>
+<qandaentry>
+<question>
+<para
+>Ik krijg de fout <errorname
+>Kon / niet lezen</errorname
+>. Hoe los ik dit op? Ik heb een audio-<acronym
+>cd</acronym
+> in mijn <acronym
+>cd</acronym
+>-speler.</para>
+</question>
+
+<answer>
+<para
+>Probeer <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> onder uw eigen gebruikersnaam uit te voeren (niet als <systemitem class="username"
+>root</systemitem
+>). Ziet u nu een lijst met nummers? Zo niet vergewis u er dan van dat u de nodige toegangsrechten heeft om de <acronym
+>cd</acronym
+>-speler te mogen benaderen. Als u <acronym
+>SCSI</acronym
+>-emulatie gebruikt (mogelijk als u een <acronym
+>IDE</acronym
+> <acronym
+>cd</acronym
+>-brander heeft) zorg er dan voor dat u toestemming hebt voor het algemene <acronym
+>SCSI</acronym
+>-apparaat. Dit apparaat heet  waarschijnlijk <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, &etc; Als het dan nog steeds niet werkt, probeer dan <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> o.i.d. te typen om de kio_audiocd io-slave te vertellen in welk apparaat uw &CD-ROM; is.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

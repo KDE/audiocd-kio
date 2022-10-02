@@ -1,0 +1,116 @@
+# Translation of kio_audiocd.po into Serbian.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2003, 2005, 2010, 2012, 2017.
+# Toplica Tanaskovic <toptan@kde.org.yu>, 2004.
+# Slobodan Simic <slsimic@gmail.com>, 2005.
+# Dalibor Djuric <daliborddjuric@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-03-05 03:17+0100\n"
+"PO-Revision-Date: 2017-09-28 17:59+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Часлав Илић"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "caslav.ilic@gmx.net"
+
+#: audiocd.cpp:80
+#, kde-format
+msgid "CDDB Information"
+msgstr "ЦДДБ подаци"
+
+#: audiocd.cpp:120
+#, kde-format
+msgid "Information"
+msgstr "Подаци"
+
+#: audiocd.cpp:120
+#, kde-format
+msgid "Full CD"
+msgstr "Цео ЦД"
+
+#: audiocd.cpp:285
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"<html>Не можете да наведете домаћина са овим протоколом. Уместо тога "
+"користите формат <tt>audiocd:/</tt>.</html>"
+
+#: audiocd.cpp:879
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Уређај нема дозволе читања за овај налог. Проверите дозволе за читање на "
+"уређају."
+
+#: audiocd.cpp:881
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Уређај нема дозволе писања за овај налог. Проверите дозволе за писање на "
+"уређају."
+
+#: audiocd.cpp:885
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"<html>Непозната грешка. Ако је ЦД у јединици, покушајте да извршите "
+"<tt>cdparanoia -vsQ</tt> под својим налогом (не као администратор). Видите "
+"ли списак нумера? Ако не, проверите имате ли дозволе за приступ ЦД јединици. "
+"Ако користите емулацију сказија (може бити ако имате ИДЕ ЦД писач) онда "
+"проверите имате ли дозволе читања и писања за генерички скази уређај, што је "
+"вероватно <tt>/dev/sg0</tt>, <tt>/dev/sg1</tt>, итд. Ако и даље не ради, "
+"покушајте да упишете <tt>audiocd:/?device=/dev/sg0</tt> (или слично) да "
+"бисте рекли У/И захвату аудио ЦД‑а који уређај је ЦД‑РОМ.</html>"
+
+#: audiocd.cpp:959
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"Аудио ЦД: оштећење диска откривено на овој нумери, ризик од кварења података."
+
+#: audiocd.cpp:965
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Грешка при читању аудио података за %1 са ЦД‑а"
+
+#: audiocd.cpp:975 audiocd.cpp:1053
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Не могу да прочитам %1: кодирање није успело"
+
+#: audiocd.cpp:1184
+#, kde-format
+msgid "Track %1"
+msgstr "Нумера %1"

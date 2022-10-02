@@ -1,0 +1,291 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Russian "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Николай</firstname
+><surname
+>Шафоростов</surname
+><affiliation
+><address
+><email
+>shafff@ukr.net</email
+></address
+></affiliation
+><contrib
+>Перевод на русский</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>16 сентября 2004 г.</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Обеспечивает работу со звуковыми <acronym
+>CD</acronym
+>. Дорожки представляются в виде файлов (в разных форматах) и при копировании их в локальную файловую систему они автоматически преобразуются в соответствующий формат.</para>
+
+<para
+>Чтобы понять, как это работает, вставьте звуковой компакт-диск в привод &CD-ROM; и наберите <userinput
+>audiocd:/</userinput
+> в строке адреса  &konqueror;. Через несколько секунд вы увидите список файлов-дорожек и папки.</para>
+
+<para
+>Звуковые компакт-диски не содержат папок, однако они были добавлены разработчиками канала audiocd для наглядности хранимых данных. В каждой папке находится одинаковый набор дорожек. Если у вас есть соединение с Интернетом, вместо названий дорожек в виде их номеров вы увидите реальные названия песен.</para>
+
+<para
+>Папки соответствуют различным форматом представления звуковых записей дорожек звукового компакт-диска.</para>
+
+<para
+>Например, если перетащить файл из папки <filename class="directory"
+>Ogg Vorbis</filename
+> в другое окно или вкладку &konqueror;, содержащие папку локального диска, то отобразится окно, показывающее состояние процесса преобразования звуковой дорожки в этот формат и сохранения в виде локального файла. Помните, что Ogg Vorbis &mdash; это сжатый формат хранения звуковых записей с потерей качества, поэтому нельзя пользоваться этим методом, если вы хотите записать точную копию звукового диска. Для этого существуют специальные программы.</para>
+
+<para
+>Механизм канала довольно прост. Когда каналу audiocd поступает запрос на получение дорожки из папки <filename class="directory"
+>Ogg Vorbis</filename
+>, он начинает считывать звуковую дорожку с компакт-диска, преобразуя её "на лету" в формат Ogg Vorbis (дорожки на звуковых компакт-дисках содержат несжатые звуковые записи).</para>
+
+<para
+>Файлы с расширением <literal role="extension"
+>.wav</literal
+> &mdash; точная копия звуковых дорожек (без потерь качества), поэтому они и занимают больше места. Попробуйте перетащить их на звуковой проигрыватель &juk;, и вы сможете прослушать дорожки с цифровой обработкой (например, у вас будет возможность включить эквалайзер). На самом деле, дорожки имеют несжатый формат <quote
+>RIFF WAV</quote
+>, который отличается от формата файлов <literal role="extension"
+>.cda</literal
+>, расположенных в каталоге компакт-диска, только "оформлением" (т.е. с адаптацией для обычной файловой системы). Этот формат может быть воспроизведён на подавляющем большинстве звуковых проигрывателей.</para>
+
+<para
+>Звуковой проигрыватель &juk; должен без проблем проигрывать файл <literal role="extension"
+>.wav</literal
+>, однако если он проигрывается с шумом (щелчками и т.п.), включите параметр <option
+>paranoia_level</option
+>, рассматриваемый ниже.</para>
+
+<variablelist>
+<title
+>Параметры</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Введите путь к приводу CD-ROM, например <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Обычно, если в системе несколько приводов, будет использован привод со звуковым <acronym
+>CD</acronym
+>, но если определить такой привод автоматически не получается, используйте этот параметр. Кроме того, устройство по умолчанию можно задать в диалоге настройки.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Установить шаблон имён файлов, например <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Track %{number}</parameter
+></userinput
+>. В диалоге настроек вы можете изменить значение по умолчанию и не указывать его каждый раз. Если вы укажете пустую строку, файлы не будут показаны.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Установить шаблон имён альбомов, например <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. В диалоге настройки можно изменить значение по умолчанию и не указывать его каждый раз.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Установить приоритет кодера, например <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. В диалоге настройки можно изменить значение по умолчанию и не указывать его каждый раз.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Величина коррекции ошибок чтения.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Уровень 0</term>
+<listitem>
+<para
+>Без коррекции ошибок. Полезно использовать, если ваш привод идеально читает компакт-диски.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Уровень 1</term>
+<listitem>
+<para
+>Простая коррекция ошибок.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Уровень 2</term>
+<listitem>
+<para
+>По умолчанию. Принимается только безупречное чтение.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Учтите, что при этом считывание может быть очень медленным, что затруднит одновременное проигрывание дорожки. Если вы обладатель высококачественного привода компакт-дисков (помните, что более высокая цена не всегда означает повышение качества), то, возможно, вы не заметите задержки. Однако на старых приводах получение звуковых записей с компакт-диска может занять дни!</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Обращаться к указанной базе данных <acronym
+>CD</acronym
+> в Интернете. Большинство звуковых компакт-дисков не содержат в себе названий дорожек, поэтому, чтобы не вводить их самостоятельно, вы можете воспользоваться чужим трудом. Названия дорожек, которые вы запрашиваете, определяются по длинам и количеству дорожек на диске. Базы данных дорожек компакт-дисков составляются интернет-сообществом и доступны для всех. Иногда запрос может вернуть несколько результатов, и тогда нужно будет выбрать один из них.</para>
+
+<para
+>Вы можете разместить в этой базе собственные названия дорожек через &kscd;, проигрыватель звуковых компакт-дисков &kde;.</para>
+
+<para
+>По умолчанию audiocd выбирает лучший вариант.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Примеры</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Получить список дорожек <acronym
+>CD</acronym
+>, вставленного в <acronym
+>SCSI</acronym
+>-привод <filename class="devicefile"
+>/dev/scd0</filename
+>. Считывать данные без коррекции, использовать <acronym
+>CDDB</acronym
+>-запись с номером 0.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Вопросы и ответы</title>
+<qandaentry>
+<question>
+<para
+>Как исправить ошибку <errorname
+>Файл или папка / не существует</errorname
+>? Звуковой компакт-диск вставлен в привод.</para>
+</question>
+
+<answer>
+<para
+>Выполните <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> с правами обычного пользователя (не от имени <systemitem class="username"
+>root</systemitem
+>). Если список дорожек не выдаётся, убедитесь, что у вас есть права доступа к приводу <acronym
+>CD</acronym
+>. Если вы используете эмуляцию <acronym
+>SCSI</acronym
+>, проверьте права доступа к <acronym
+>SCSI</acronym
+>-устройству (<filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+> или тому подобному). Если и это не работает, введите <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (или укажите другое правильное устройство) для указания, какое устройство привода компакт-дисков будет использовано.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

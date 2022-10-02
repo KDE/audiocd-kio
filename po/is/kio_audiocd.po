@@ -1,0 +1,131 @@
+# translation of kio_audiocd.po to Icelandic
+# Copyright (C) 2003, 2004, 2005, 2010 Free Software Foundation, Inc.
+#
+# Logi Ragnarsson <logi@logi.org>, 2003.
+# Jon Arnar Gudmundsson <jonarnar@jonarnar.com>, 2004.
+# Þröstur Svanbergsson <throstur@bylur.net>, 2004.
+# Sveinn í Felli <sveinki@nett.is>, 2010, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2022-08-02 11:45+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 19.12.3\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
+"\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+"Richard Allen, Logi Ragnarsson, Jón Arnar Guðmundsson, Þröstur Svanbergsson"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ra@ra.is, logi@logi.org, jonarnar@jonarnar.com, throstur@bylur.net"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Upplýsingar"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Allur geisladiskur"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB upplýsingar"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Þú getur ekki skilgreint vélarnafn með þessum samskiptastaðli. Vinsamlegast "
+"notaðu audiocd:/ í staðinn"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Vantar skilgreiningu tækis"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Tækið hefur ekki lesheimildir á þessum aðgangi. Athugaðu lesheimildirnar á "
+"tækinu."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Tækið hefur ekki skrifheimildir á þessum aðgangi. Athugaðu skrifheimildirnar "
+"á tækinu."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Óþekkt villa. Ef þú hefur geisladisk í tækinu getur þú reynt að keyra "
+"cdparanoia -vsQ með þínum heimildum (ekki sem kerfisstjóri). Sérðu "
+"lagalista? Ef ekki, athugaðu þá hvort þú hafir aðgangsheimildir að tækinu. "
+"Ef þú ert að nota SCSI eftirlíkingu (mögulegt ef þú hefur IDE CD skrifara) "
+"gangtu þá úr skugga um að þú hafir les og skrif heimildir á almenna SCSI "
+"tækið, líklega /dev/sg0, /dev/sg1, og svo frv. Ef ekkert af þessu virkar, "
+"reyndu þá að slá inn audiocd:/?device=/dev/sg0 (eða svipað) til að láta "
+"kio_audiocd vita hvaða tæki er CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"AudioCD: Galli fannst á disknum í þessu lagi. Hætt er við skemmdum á gögnum."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Villa við lestur hljóðgagna fyrir %1 frá geisladisknum"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Gat ekki lesið %1: kóðun tókst ekki"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Lag %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Heiti samskiptamáta"
+
+#~ msgid "Socket name"
+#~ msgstr "Heiti sökkuls"

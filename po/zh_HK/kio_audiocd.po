@@ -1,0 +1,114 @@
+# Chinese (Hong Kong) translation of kio_audiocd
+# Chih-Wei Huang <cwhuang@linux.org.tw>, 2001.
+# Walter Cheuk <wwycheuk@netvigator.com>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2001-08-27 17:07+CST\n"
+"Last-Translator: Chih-Wei Huang <cwhuang@linux.org.tw>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
+"Language: zh_HK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Chih-Wei Huang,Walter Cheuk"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "cwhuang@linux.org.tw,wwycheuk@netvigator.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr ""
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "全 CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr ""
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr "你無法使用此協定指定主機。請改為使用 audiocd:/ 格式。"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, fuzzy, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr "裝置沒有此帳號的讀取權限。 請檢查裝置的讀取權限。"
+
+#: audiocd.cpp:888
+#, fuzzy, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr "裝置沒有此帳號的寫入權限。 請檢查裝置的寫入權限。"
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"未知的錯誤。 如你有 CD 在光碟機中，試著以你自己（不是 root）執行 cdparanoia -"
+"vsQ 。你看到音軌清單嗎？如沒有，請確定你的存取光碟機的權限。如你正在使用 "
+"SCSI 模擬（可能你有 IDE CD 燒錄機），那麼請確定你有一般 SCSI 裝置（可能是 /"
+"dev/sg0 、/dev/sg1 等等）的讀寫權限。如果還未可以，試著鍵入 audiocd:/?"
+"device=/dev/sg0 (或類似指令)告訴 kio_audiocd 你的 CD-ROM 是哪個。"
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "AudioCD: 在此音軌上偵測到光碟有損壞，有可能資料已損毁。"
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "從 CD 讀取 %1 的音樂資料時發生錯訊"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, fuzzy, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "無法讀取 %1: 編碼失敗"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "音軌 %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "協定名稱"
+
+#~ msgid "Socket name"
+#~ msgstr "插座（Socket）名稱"

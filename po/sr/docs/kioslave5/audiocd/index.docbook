@@ -1,0 +1,287 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Serbian "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>Аудио ЦД</title>
+<articleinfo>
+<authorgroup>
+<author
+><personname
+><firstname
+>Рик</firstname
+> <surname
+>Хемсли</surname
+></personname
+> &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Бенџамин</firstname
+> <othername
+>К.</othername
+> <surname
+>Мејер</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Драган</firstname
+><surname
+>Пантелић</surname
+><affiliation
+><address
+><email
+>falcon-10@gmx.de</email
+></address
+></affiliation
+><contrib
+>превод</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>16. 9. 2004.</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Омогућава третирање аудио ЦД‑ова као „правих“ фајл система, где су нумере представљене као фајлови, и, кад се копирају из фасцикле, дигитално извучене са ЦД‑а. Ово обезбеђује савршену копију аудио података.</para>
+
+<para
+>Да бисте видели како овај захват ради, ставите аудио ЦД у ЦД‑РОМ јединицу и унесите <userinput
+>audiocd:/</userinput
+> у <application
+>К‑освајач</application
+>. За неколико секунди требало би да видите листу нумера и неколико фасцикли.</para>
+
+<para
+>Аудио ЦД‑ови немају заиста фасцикле, али их овај захват пружа као погодност. Ако погледате у ове фасцикле, видећете да свака садржи исти број нумера. Ако сте повезани на Интернет, у неким фасциклама ће имена фајлова бити стварни наслови нумера.</para>
+
+<para
+>Засебне фасцикле постоје зато да бисте могли изабрати формат у којем желите да слушате (или копирате) нумере са ЦД‑а.</para>
+
+<para
+>Ако превучете нумеру из фасцикле <filename class="directory"
+>Ogg Vorbis</filename
+> и испустите је на други прозор <application
+>К‑освајача</application
+>, отворен на вашој домаћој фасцикли, требало би да видите прозор напретка који показује да се нумера извлачи са ЦД‑а и уписује у фајл. Приметите да је ОГГ компресовани формат, због чега ће резултујући фајл у домаћој фасцикли бити знатно мањи него када бисте копирали сирове податке.</para>
+
+<para
+>Механизам иза овога је врло једноставан. Кад се од захвата затражи да добави нумеру из фасцикле <filename class="directory"
+>Ogg Vorbis</filename
+>, он почиње да извлачи дигиталне аудио податке са ЦД‑а. Док уписује податке у фајл у вашој домаћој фасцикли, истовремено их кодира у формат ОГГ Ворбис (ЦД аудио је сам по себи некомпресован).</para>
+
+<para
+>Можете покушати и да превучете фајл са наставком <literal role="extension"
+>.wav</literal
+> на КДЕ‑ов медија плејер <application
+>Џук</application
+>. Тада се иза сцене одвија сличан поступак, осим што се уместо кодирања аудио података у ОГГ Ворбис спроводи врло просто претварање сирових бинарних података (представљених <literal role="extension"
+>.cda</literal
+> фајловима у фасцикли на врху) у формат РИФФ ВАВ, некомпресован формат који разуме већина медија плејера.</para>
+
+<para
+><application
+>Џук</application
+> би требало без проблема да пусти ВАВ фајл, али ако проблема буде, размотрите употребу опције <option
+>paranoia_level</option
+> објашњене у наредном.</para>
+
+<variablelist>
+<title
+>Опције</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Поставља путању уређај са аудио ЦД‑ом, нпр. <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Захват ће нормално покушати да открије ЦД јединицу с убаченим аудио ЦД‑ом, али ако не успе, или има више ЦД јединица, можете употребити ову опцију. Подразумевану вредност ове опције можете задати у дијалогу за подешавање.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Поставља шаблон имена̂ фајлова, нпр. <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Numera %{number}</parameter
+></userinput
+>. Подразумевану вредност ове опције можете задати у дијалогу за подешавање. Пазите, ако поставите празну ниску, фајлови се неће појавити.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Поставља шаблон имена̂ албума, нпр. <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Подразумевану вредност ове опције можете задати у дијалогу за подешавање.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Поставља степен финоће за кодере, нпр. <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Подразумевану вредност ове опције можете задати у дијалогу за подешавање.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Поставља степен откривања и исправљања грешака при извлачењу података.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>ниво 0</term>
+<listitem>
+<para
+>Без откривања или исправљања. Корисно само ако имате савршену ЦД јединицу (мало вероватно).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>ниво 1</term>
+<listitem>
+<para
+>Основна провера и исправљање грешака.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>ниво 2</term>
+<listitem>
+<para
+>Подразумевано. Задаје да се прихвата само савршено извлачење.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Имајте у виду да ниво 2 има једну ману. Извлачење може да буде веома споро, због чега пуштање у стварном времену можда неће правилно радити. Ако имате ЦД јединицу доброг квалитета (скупља не значи нужно и већи квалитет) извлачење вероватно неће бити превише споро, али лошој јединици могу требати дани (!) да извуче аудио са једног ЦД‑а.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Задаје унос из ЦДДБ‑а који треба употребити за ЦД. Аудио ЦД‑ови не наводе имена нумера, али је зато ту ЦДДБ, паметна интернет база података који користи специјални јединствени идентификатор, састављен на основу броја и дужина нумера на ЦД‑у, за повезивање ЦД‑ова с листама нумера. Листе нумера прилажу појединци широм Интернета, тако да су свима на располагању. Понеки ЦД може имати више уноса, и тада овом опцијом задајете који употребити.</para>
+
+<para
+>Листе нумера које сами саставите можете предати <application
+>КсЦД‑ом</application
+>, КДЕ‑овим ЦД плејером.</para>
+
+<para
+>Захват аудио ЦД‑а подразумевано покушава да изабере најбољи.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Примери</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Даје листу нумера на аудио ЦД‑у убаченом у <filename class="devicefile"
+>/dev/scd0</filename
+>, што је под Линуксом први скази ЦД‑РОМ уређај. При копирању нумера са овог ЦД‑а, дигитално извлачење извешће се без исправки или откривања грешака. Употребиће се унос 0 из ЦДДБ‑а.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Често постављана питања</title>
+<qandaentry>
+<question>
+<para
+>Добијам <errorname
+>Фајл или фасцикла не постоји</errorname
+>. Како ово да поправим? Аудио ЦД јесте убачен у јединицу!</para>
+</question>
+
+<answer>
+<para
+>Покушајте да извршите <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> под својим налогом (не као <systemitem class="username"
+>root</systemitem
+>). Видите ли листу нумера? Ако не, обезбедите дозволу приступа ЦД уређају. Ако користите емулацију сказија (могуће ако имате ИДЕ ЦД писач), обезбедите дозволе за читање и писање на генерички скази уређај, који је вероватно <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, итд. Ако и даље не ради, покушајте да упишете <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (или томе слично) како бисте захвату аудио ЦД‑а ставили до знања који је уређај ЦД‑РОМ.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

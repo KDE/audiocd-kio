@@ -1,0 +1,128 @@
+# translation of kio_audiocd.po to Estonian
+# Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
+#
+# Peeter Russak <pezz@tkwcy.ee>, 2003.
+# Hasso Tepper <hasso@kde.org>, 2004, 2005.
+# Marek Laane <bald@smail.ee>, 2005-2007, 2010.
+# Mihkel Tõnnov <mihhkel@gmail.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-10-23 11:31+0200\n"
+"Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
+"Language-Team: Estonian <>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.08.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Peeter Russak"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "pezz@tkwcy.ee"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Info"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Kogu CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB teave"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Selle protokolli puhul pole võimalik serverit määrata. Palun kasuta formaati "
+"audiocd:/."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Seadet pole määratud"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Sellel kontol ei ole ole seadmes lugemisõigust. Kontrolli seadme "
+"lugemisõigusi."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Sellel kontol ei ole ole seadmes kirjutamisõigust. Kontrolli seadme "
+"kirjutamisõigusi."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Tundmatu viga. Kui CD on seadmes ikka olemas, proovi oma kasutaja alt (mitte "
+"kasutajana root) käsurealt käivitada käsk \"cdparanoia -vsQ\". Kas näed "
+"radade nimekirja? Kui ei, siis kontrolli, kas sul on olemas õigused CD-"
+"seadme kasutamiseks. Kui kasutad SCSI emulatsiooni (mis on tõenäoline, kui "
+"sul on IDE CD-kirjuti), kontrolli, kas sul on õigus kasutada üldist SCSI-"
+"seadet, mille asukoht on usutavasti /dev/sg0, /dev/sg1 vms. Kui ka nüüd "
+"midagi ei muutu, siis sisesta Konquerori asukohareale \"audiocd:/?device=/"
+"dev/sg0\" (või midagi sarnast), mis teatab moodulile kio_audiocd, milline on "
+"sinu CD-seade."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "AudioCD: sellel rajal on kahjustus, valitseb oht andmeid kaotada."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Viga %1 audioandmete lugemisel CD-lt"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "%1 lugemine nurjus: kodeerimine nurjus"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Rada %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Protokolli nimi"
+
+#~ msgid "Socket name"
+#~ msgstr "Sokli nimi"

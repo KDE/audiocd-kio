@@ -1,0 +1,380 @@
+#
+# Tamas Szanto <tszanto@interware.hu>, 2001.
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2010.
+# Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE 4.0\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-12-03 14:08+0100\n"
+"Last-Translator: Kristóf Kiszel <kiszel.kristof@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.03.70\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Szántó Tamás,Kiszel Kristóf"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "tszanto@interware.hu,ulysses@kubuntu.org"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
+#: audiocdconfig.ui:27
+#, kde-format
+msgid "&General"
+msgstr "&Általános"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:49
+#, fuzzy, kde-format
+#| msgid ""
+#| "If you uncheck this option, the slave will not try to use error "
+#| "correction which can be useful for reading damaged CDs. However, this "
+#| "feature can be problematic in some cases, so you can switch it off here."
+msgid ""
+"If you uncheck this option, the KIO worker will not try to use error "
+"correction which can be useful for reading damaged CDs. However, this "
+"feature can be problematic in some cases, so you can switch it off here."
+msgstr ""
+"Ha megszünteti az opció bejelöltségét, a protokoll nem fog hibajavítást "
+"használni, ami sérült CD-knél segítséget jelenthet. Ez a funkció bizonyos "
+"esetekben problémát okozhat, ezért itt ki lehet kapcsolni."
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:52
+#, kde-format
+msgid "Use &error correction when reading the CD"
+msgstr "Hiba&javítás a CD olvasása közben"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
+#: audiocdconfig.ui:62
+#, kde-format
+msgid "&Skip on errors"
+msgstr "A hibák át&ugrása"
+
+#. i18n: ectx: property (title), widget (QGroupBox, encoderPriority)
+#: audiocdconfig.ui:88
+#, kde-format
+msgid "Encoder Priority"
+msgstr "A kódoló prioritása"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: audiocdconfig.ui:113
+#, kde-format
+msgid "Highest"
+msgstr "Maximális"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: audiocdconfig.ui:123
+#, kde-format
+msgid "Lowest"
+msgstr "Minimális"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: audiocdconfig.ui:136
+#, kde-format
+msgid "Normal"
+msgstr "Normál"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabNames)
+#: audiocdconfig.ui:153
+#, kde-format
+msgid "&Names"
+msgstr "N&evek"
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
+#: audiocdconfig.ui:159
+#, kde-format
+msgid "File Name (without extension)"
+msgstr "Fájlnév (kiterjesztés nélkül)"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_3)
+#: audiocdconfig.ui:165 audiocdconfig.ui:331 audiocdconfig.ui:462
+#, kde-format
+msgid "The following macros will be expanded:"
+msgstr "A következő makrókat lehet használni:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel13)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21_2)
+#: audiocdconfig.ui:177 audiocdconfig.ui:373 audiocdconfig.ui:504
+#, kde-format
+msgid "Genre"
+msgstr "Műfaj"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16_2)
+#: audiocdconfig.ui:187 audiocdconfig.ui:363 audiocdconfig.ui:494
+#, no-c-format, kde-format
+msgid "%{year}"
+msgstr "%{év}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
+#: audiocdconfig.ui:197
+#, no-c-format, kde-format
+msgid "%{title}"
+msgstr "%{cím}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel5)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18_2)
+#: audiocdconfig.ui:207 audiocdconfig.ui:393 audiocdconfig.ui:524
+#, kde-format
+msgid "Album Title"
+msgstr "Albumcím"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20_2)
+#: audiocdconfig.ui:217 audiocdconfig.ui:343 audiocdconfig.ui:474
+#, kde-format
+msgid "Year"
+msgstr "Év"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
+#: audiocdconfig.ui:227
+#, kde-format
+msgid "Track Artist"
+msgstr "Előadó"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
+#: audiocdconfig.ui:237
+#, kde-format
+msgid "Track Title"
+msgstr "Cím"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19_2)
+#: audiocdconfig.ui:247 audiocdconfig.ui:383 audiocdconfig.ui:514
+#, kde-format
+msgid "Album Artist"
+msgstr "Előadó"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15_2)
+#: audiocdconfig.ui:257 audiocdconfig.ui:353 audiocdconfig.ui:484
+#, no-c-format, kde-format
+msgid "%{albumartist}"
+msgstr "%{az album előadója}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17_2)
+#: audiocdconfig.ui:267 audiocdconfig.ui:403 audiocdconfig.ui:534
+#, no-c-format, kde-format
+msgid "%{genre}"
+msgstr "%{műfaj}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
+#: audiocdconfig.ui:277
+#, no-c-format, kde-format
+msgid "%{trackartist}"
+msgstr "%{előadó}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14_2)
+#: audiocdconfig.ui:287 audiocdconfig.ui:413 audiocdconfig.ui:544
+#, no-c-format, kde-format
+msgid "%{albumtitle}"
+msgstr "%{albumcím}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: audiocdconfig.ui:297
+#, kde-format
+msgid "Track Number"
+msgstr "Sorszám"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
+#: audiocdconfig.ui:307
+#, no-c-format, kde-format
+msgid "%{number}"
+msgstr "%{szám}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
+#: audiocdconfig.ui:325
+#, kde-format
+msgid "Album Name"
+msgstr "Albumnév"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:447
+#, no-c-format, kde-format
+msgid ""
+"This defines where files will appear in relation to the encoder root, you "
+"can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
+msgstr ""
+"Megmondja, hogy hol jelenjenek meg a fájlok a kódoló gyökeréhez képest, "
+"alkönyvtárak létrehozásához a / használható. Példa: %{előadó}/%{albumcím}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:450
+#, kde-format
+msgid "Files Location"
+msgstr "Fájlok elérési útja"
+
+#. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
+#: audiocdconfig.ui:572
+#, no-c-format, kde-format
+msgid "%{albumtitle}/%{albumartist}"
+msgstr "%{albumcím}/%{előadó}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: audiocdconfig.ui:582
+#, kde-format
+msgid "Name Regular Expression Replacement"
+msgstr "Névhelyettesítő reguláris kifejezés"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
+#: audiocdconfig.ui:588
+#, kde-format
+msgid "Selection:"
+msgstr "Cserélendő:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: audiocdconfig.ui:599
+#, kde-format
+msgid ""
+"Regular expression used on all file names. For example using selection \" \" "
+"and replace with \"_\" would replace all the spaces with underlines.\n"
+msgstr ""
+"A reguláris kifejezés az összes fájlnévre fog vonatkozni. Ha a cserélendő "
+"ez: \" \" és a helyettesítő ez: \"_\", akkor minden szóköz helyére aláhúzás "
+"fog kerülni.\n"
+
+#. i18n: ectx: property (text), widget (QLabel, inputlabel)
+#: audiocdconfig.ui:612
+#, kde-format
+msgid "Input:"
+msgstr "Bemenet:"
+
+#. i18n: ectx: property (text), widget (QLabel, outputLabel)
+#: audiocdconfig.ui:622
+#, kde-format
+msgid "Output:"
+msgstr "Kimenet:"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleLabel)
+#: audiocdconfig.ui:632
+#, kde-format
+msgid "Example"
+msgstr "Példa"
+
+#. i18n: ectx: property (text), widget (QLabel, exampleOutput)
+#. i18n: ectx: property (text), widget (QLineEdit, example)
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:141
+#: kcmaudiocd.cpp:210
+#, kde-format
+msgid "Cool artist - example audio file.wav"
+msgstr "Egy remek művész - minta WAV-fájl"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
+#: audiocdconfig.ui:665
+#, kde-format
+msgid "Replace with:"
+msgstr "Csere ezzel:"
+
+#: kcmaudiocd.cpp:61
+#, kde-format
+msgid "%1 Encoder"
+msgstr "%1-kódoló"
+
+#: kcmaudiocd.cpp:92
+#, fuzzy, kde-format
+#| msgid "KDE Audio CD IO Slave"
+msgid "KDE Audio CD KIO Worker"
+msgstr "KDE 'audiocd' protokoll"
+
+#: kcmaudiocd.cpp:94
+#, kde-format
+msgid "Benjamin C. Meyer"
+msgstr "Benjamin C. Meyer"
+
+#: kcmaudiocd.cpp:94
+#, kde-format
+msgid "Former Maintainer"
+msgstr "Korábbi karbantartó"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Carsten Duvenhorst"
+msgstr "Carsten Duvenhorst"
+
+#: kcmaudiocd.cpp:95
+#, kde-format
+msgid "Original Author"
+msgstr "Eredeti szerző"
+
+#: kcmaudiocd.cpp:251
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
+#| "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#| "The slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location "
+#| "bar. In this module, you can configure encoding, and device settings. "
+#| "Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if "
+#| "the corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
+#| "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
+#| "system."
+msgid ""
+"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
+"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
+"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
+"In this module, you can configure encoding, and device settings. Note that "
+"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
+"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
+"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
+"system."
+msgstr ""
+"<h1>Az audiocd protokoll</h1>Az audiocd KDE-protokoll segítségével könnyen "
+"lehet WAV, FLAC, MP3 Ogg Vorbis vagy Opus fájlokat készíteni hang-CD-ről "
+"ill. DVD-lemezről. Használatához a Dolphin címsorába be kell írni az <i>"
+"\"audiocd:/\"</i> parancsot. Ebben a modulban a protokoll különféle "
+"paramétereit lehet módosítani, például a kódolás, a CDDB-lekérdezés és az "
+"eszközök jellemzőit. A FLAC, MP3, Ogg Vorbis és Opus kódolásokat csak akkor "
+"lehet kiválasztani, ha a megfelelő programkönyvtárak (libFLAC a FLAC-hoz és "
+"libvorbis az Ogghoz) és segédprogramok (lame az MP3-hoz és opus-tools az "
+"Opushoz) telepítve vannak."
+
+#~ msgid "kcmaudiocd"
+#~ msgstr "kcmaudiocd"
+
+#~ msgid "(c) 2000 - 2005 Audio CD developers"
+#~ msgstr "(C) Az Audiocd fejlesztői, 2000-2005."
+
+#~ msgid ""
+#~ "Specify a location for the drive you want to use. Normally, this is a "
+#~ "file inside the /dev folder representing your CD or DVD drive."
+#~ msgstr ""
+#~ "Adja meg a meghajtót kezelő eszköz nevét. Általában ez egy bejegyzés a /"
+#~ "dev könyvtárban."
+
+#~ msgid "/dev/cdrom"
+#~ msgstr "/dev/cdrom"
+
+#~ msgid ""
+#~ "Uncheck this if you want to specify a CD device different from the one "
+#~ "autoprobed"
+#~ msgstr ""
+#~ "Jelölje be ezt az opciót, ha a CD-t kezelő eszköz nem azonos az "
+#~ "automatikusan felismerttel"
+
+#~ msgid "&Specify CD Device:"
+#~ msgstr "&CD-eszköz:"
+
+#~ msgid "Report errors found on the cd."
+#~ msgstr "Figyelmeztetés a CD-n talált hibákra."

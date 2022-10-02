@@ -1,0 +1,110 @@
+# translation of kio_audiocd.po to Bengali
+# Deepayan Sarkar <deepayan@bengalinux.org>, 2004, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2006-02-05 12:57-0600\n"
+"Last-Translator: Deepayan Sarkar <deepayan@bengalinux.org>\n"
+"Language-Team: Bengali <kde-translation@bengalinux.org>\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr ""
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "পুরো সিডি"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr ""
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"এই প্রোটোকল-এ কোন হোস্ট নির্ধারণ করা সম্ভব নয়। অনুগ্রহ করে এর পরিবর্তে audiocd:/ "
+"ফর্ম্যাট ব্যবহার করুন।"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "সিডি থেকে %1-র অডিও তথ্য পড়তে সমস্যা হয়েছে"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, fuzzy, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "%1 পড়া যায়নি: এনকোডিং ব্যর্থ"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "ট্র্যাক %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "প্রোটোকল-এর নাম"
+
+#~ msgid "Socket name"
+#~ msgstr "সকেট-এর নাম"

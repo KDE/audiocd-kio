@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Estonian  "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@starman.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Võimaldab käsitleda audio <acronym
+>CD</acronym
+>-sid <quote
+>tõelise</quote
+> failisüsteemina, kus rajad kujutavad endast faile ning kataloogist kopeerimise korral eraldatakse digitaalselt <acronym
+>CD</acronym
+>-lt. See tagab audioandmete täpse kopeerimise.</para>
+
+<para
+>Kui soovid näha, kuidas see moodul töötab, sisesta audio <acronym
+>CD</acronym
+> &CD-ROM;-seadmesse ning kirjuta &konqueror;i aadressireale <userinput
+>audiocd:/</userinput
+>. Mõne sekundi järel peaksid nägema nimekirja radade ja mõne kataloogiga.</para>
+
+<para
+>Audio <acronym
+>CD</acronym
+>-l puuduvad tegelikult kataloogid, kuid mugavuse mõttes audiocd moodul neid näitab. Kui vaatad kataloogi sisse, näed, et nad kõik sisaldavad ühepalju radu. Kui oled ühendatud internetti, näitavad mõned kataloogid tegelikke radade nimetusi failinimedena.</para>
+
+<para
+>Põhjus, miks sellised kataloogid on olemas, seisab selles, et nii saad valida, millises vormingus soovid kuulata (või kopeerida) <acronym
+>CD</acronym
+> radu.</para>
+
+<para
+>Kui lohistad mõne raja kataloogist <filename class="directory"
+>Ogg Vorbis</filename
+> näiteks &konqueror;i aknasse, kus on avatud sinu kodukataloog, peaksid nägema edenemisakent, mis osutab, et rada tõmmatakse <acronym
+>CD</acronym
+>-lt ja salvestatakse failina. Pane tähele, et Ogg Vorbis vorming kasutab tihendust, nii et fail sinu kodukataloogis on oluliselt väiksem, kui see oleks olnud toorandmete kopeerimisel.</para>
+
+<para
+>Mehhanism on õigupoolest üsna lihtne. Kui audiocd moodul saab soovi tõmmata rada kataloogist <filename class="directory"
+>Ogg Vorbis</filename
+>, asub ta hankima digitaalseid audioandmeid <acronym
+>CD</acronym
+>-lt. Saates andmed sinu kodukataloogi loodavasse faili, kodeerib ta need ühtlasi Ogg Vorbise vormingusse (<acronym
+>CD</acronym
+> andmed ei ole algselt üheski konkreetses vormingus, kujutades endast toorandmeid).</para>
+
+<para
+>Sa võid ka proovida lohistada faili laiendiga <literal role="extension"
+>.wav</literal
+> otse &kde; meediamängija &juk; aknasse. Sellisel juhul on taustal toimuv sarnane, ainult et audioandmete Ogg Vorbise vormingusse kodeerimise asemel on teisendus veidi hõlpsam: binaarsed toorandmed (nagu need on juurkataloogis laiendiga <literal role="extension"
+>.cda</literal
+>) teisendatakse vormingusse <quote
+>RIFF WAV</quote
+> ning selle tihendamata vorminguga oskab ümber käia enamik meediamängijaid.</para>
+
+<para
+>&juk; peaks esitama ilma probleemideta faile laiendiga <literal role="extension"
+>.wav</literal
+>, kui aga see mingil põhjusel korda ei lähe, võiksid kasutada allpool seletatavat võtit <option
+>paranoia_level</option
+>.</para>
+
+<variablelist>
+<title
+>Võtmed</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Määrab audio <acronym
+>CD</acronym
+> asukoha, &eg; <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Normaalselt püüab moodul leida <acronym
+>CD</acronym
+>-seadme sisestatud <acronym
+>CD</acronym
+>-ga, kui see aga ei õnnestu või kui sul on enam kui üks <acronym
+>CD</acronym
+>-seade, võib see võti ära kuluda. Pane tähele, et seadistustedialoog võimaldab sisestada selle võtme vaikeväärtuse.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Määrab failinime malli, &eg; <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Rada %{number}</parameter
+></userinput
+>. Pane tähele, et seadistustedialoog võimaldab sisestada selle võtme vaikeväärtuse. Hoiatus: kui sa määrad selle väärtuseks tühja stringi, ei ole faile üldse näha.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Määrab albuminime malli, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Pane tähele, et seadistustedialoog võimaldab sisestada selle võtme vaikeväärtuse.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Määrab kodeerijatele protsessi viisakustaseme, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Pane tähele, et seadistustedialoog võimaldab sisestada selle võtme vaikeväärtuse.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Määrab andmete tõmbamisel kasutatava veatuvastus- ja parandusmäära.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Tase 0</term>
+<listitem>
+<para
+>Tuvastus või parandus puudub. Mõttekas ainult perfektse <acronym
+>CD</acronym
+> puhul (neid tuleb väga harva ette).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Tase 1</term>
+<listitem>
+<para
+>Lubab elementaarse veatuvastuse ja -paranduse.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Tase 2</term>
+<listitem>
+<para
+>Vaikeväärtus. Sätestab, et aktsepteeritav on ainult perfektne tõmbamine.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Pane tähele, et tasemel 2 on ka miinuseid. Tõmbamine võib olla väga aeglane ning digitaalne esitus reaalajas ei pruugi sugugi korralikult toimida. Kui sul on kvaliteetne <acronym
+>CD</acronym
+>-seade (kusjuures kallim seade ei tähenda veel kvaliteetsemat), ei pane sa aeglust vahest tähelegi, kuid kehvema seadme puhul võib üheainsa <acronym
+>CD</acronym
+> radade tõmbamiseks kuluda päevi!</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Määrab, millist interneti <acronym
+>CD</acronym
+> andmebaasi kirjet kasutada. Audio <acronym
+>CD</acronym
+>-de radadel nimesid pole, kuid interneti <acronym
+>CD</acronym
+> andmebaas on päris nutikas süsteem, mis kasutab <acronym
+>CD</acronym
+> radade numbri ja pikkuse järgi genereeritud spetsiaalseid unikaalseid identifikaatoreid radadele viitamiseks. Andmebaas saab andmeid internetikogukonnalt ning pakub neid kõigile vabalt. Aeg-ajalt võib küll esineda ka mitu kirjet korraga, sellisel juhul saadki valida, millist kasutada.</para>
+
+<para
+>Sa võid sinna saata ka oma andmed, kasutades &kde; <acronym
+>CD</acronym
+>-mängijat &kscd;.</para>
+
+<para
+>Vaikimisi üritab audiocd valida välja parima.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Näited</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Tulemus peaks olema audio <acronym
+>CD</acronym
+> radade nimekiri, mis on sisestatud seadmesse <filename class="devicefile"
+>/dev/scd0</filename
+>, mis &Linux; puhul tähendab esimest <acronym
+>SCSI</acronym
+> &CD-ROM;-seadet. Kui kopeerid andmeid <acronym
+>CD</acronym
+>-lt, sooritatakse see ilma veatuvastuse ja -paranduseta. Interneti <acronym
+>CD</acronym
+> andmebaasiga ühendust ei võeta.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Korduma kippuvad küsimused</title>
+<qandaentry>
+<question>
+<para
+>Saan veateate <errorname
+>Faili või kataloogi / ei ole olemas</errorname
+>. Mida nüüd teha? Audio <acronym
+>CD</acronym
+> on seadmes sees!</para>
+</question>
+
+<answer>
+<para
+>Proovi oma kasutajanime alt (mitte kui administraator ehk <systemitem class="username"
+>root</systemitem
+>) anda käsk <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+>. Kas nüüd näed radade nimekirja? Kui ei, siis kontrolli, kas sul on õigus kasutada <acronym
+>CD</acronym
+>-seadet. Kui kasutad <acronym
+>SCSI</acronym
+> emulatsiooni (mis on tõenäoline, kui sul on <acronym
+>IDE</acronym
+> <acronym
+>CD</acronym
+>-kirjutaja), kontrolli, kas sul on õigus kasutada üldist <acronym
+>SCSI</acronym
+> seadet, mille asukoht on usutavasti <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+> &etc; Kui ka nüüd midagi ei muutu, siis anna käsk <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (või midagi sarnast), mis teatab moodulile kio_audiocd, milline on sinu &CD-ROM;-seade.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

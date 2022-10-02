@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-08-05 10:41+0100\n"
+"Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
+"Language-Team: pt <kde-i18n-pt@kde.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-POFile-SpellExtra: audiocd vsQ dev kioaudiocd cdparanoia device sg \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Pedro Morais,José Nuno Pires"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "morais@kde.org,zepires@gmail.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Informação"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "CD Completo"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Informação do CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Pode indicar um computador com este protocolo. Por favor utilize o formato "
+"audiocd:/."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Falta a especificação do dispositivo"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"O dispositivo não tem permissões de leitura para esta conta.  Verifique as "
+"permissões de leitura no dispositivo."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"O dispositivo não tem permissões de escrita para esta conta.  Verifique as "
+"permissões de escrita no dispositivo."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Erro desconhecido.  Se tem um CD no leitor tente correr cdparanoia -vsQ com "
+"o seu utilizador (não root). Consegue ver uma lista de faixas? Se não, "
+"verifique se tem permissões para aceder ao dispositivo do CD. Se estiver a "
+"utilizar emulação SCSI (possível se tiver um gravador de CDs IDE) verifique "
+"que tem permissões de leitura e escrita no dispositivo SCSI genérico, que é "
+"provavelmente /dev/sg0, /dev/sg1, etc. Se mesmo assim não funcionar, tente "
+"escrever audiocd:/?device=/dev/sg0 (ou parecido) para dizer ao kio_audiocd "
+"em que dispositivo é que o CD-ROM está."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "CD Áudio: Disco danificado nesta faixa, risco de corrupção de dados."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Erro ao ler os dados áudio de %1 do CD"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Não foi possível ler o %1: a codificação falhou"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Faixa %1"

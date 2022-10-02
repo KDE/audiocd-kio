@@ -1,0 +1,132 @@
+# translation of kio_audiocd.po to
+# Copyright (C) 2003, 2004, 2006, 2008 Free Software Foundation, Inc.
+# Mikko Ikola <kola@netikka.fi>, 2003.
+# Mikko Ikola <ikola@iki.fi>, 2003, 2004, 2006.
+# Mikko Piippo <piippo@cc.helsinki.fi>, 2008.
+# Tommi Nieminen <translator@legisign.org>, 2011, 2020.
+#
+# KDE Finnish translation sprint participants:
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-12-13 16:41+0200\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-POT-Import-Date: 2012-12-01 22:24:33+0000\n"
+"X-Generator: Lokalize 20.08.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Mikko Ikola, Tommi Nieminen"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ikola@iki.fi, translator@legisign.org"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Tietoja"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Täysi CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB-tiedot"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Tämän yhteyskäytännön kanssa ei voida määritellä koneen nimeä. Käytä sen "
+"sijaan muotoa audiocd:/."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Laitemääritys puuttuu"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Laitteella ei ole lukuoikeuksia tälle tunnukselle. Tarkista laitteen "
+"lukuoikeudet."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Laitteella ei ole kirjoitusoikeuksia tälle tunnukselle. Tarkista laitteen "
+"kirjoitusoikeudet."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Tuntematon virhe. Jos CD-levy on asemassa, koita suorittaa komentoikkunassa "
+"komento \"cdparanoia -vsQ\" omalla käyttäjätunnuksella (ei pääkäyttäjänä). "
+"Jos ohjelman tulostuksessa ei näy kappalelistaa, varmista että sinulla on "
+"oikeudet CD-aseman käyttöön. Jos käytössä on SCSI-emulointi, (yleensä IDE-"
+"liitäntäisten kirjoittavien CD-asemien kanssa) varmista että sinulla on "
+"luku- ja kirjoitusoikeudet yleiseen SCSI-laitteeseen. Tämän laitenimi on "
+"yleensä /dev/sg0, /dev/sg1 tai vastaava. Jos tämäkään ei auta, koita "
+"kirjoittaa audiocd:/?device=/dev/sg0 (tms.) niin kio_audiocd tietää CD-"
+"aseman laitenimen."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"Ääni-CD: Viallinen kohta havaittu tässä kappaleessa, tieto saattaa olla "
+"vioittunut."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Virhe luettaessa äänidataa kohteelle %1 CD-levyltä."
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Ei voitu lukea kohdetta %1: koodaus epäonnistui"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Kappale %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Yhteyskäytännön nimi"
+
+#~ msgid "Socket name"
+#~ msgstr "Pistokkeen nimi"

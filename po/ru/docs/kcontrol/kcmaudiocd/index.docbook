@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Audio CD</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+><firstname
+>Мария</firstname
+><surname
+>Шикунова</surname
+> <affiliation
+><address
+><email
+>translation-team@basealt.ru</email
+></address
+></affiliation
+> <contrib
+>Перевод на русский</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>8 февраля 2019 г.</date>
+<releaseinfo
+>Приложения KDE 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Параметры системы</keyword>
+<keyword
+>аудио</keyword>
+<keyword
+>компакт-диск</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>Настройка модуля Audio CD</title>
+<para
+>Страница <guilabel
+>Настройка модуля Audio CD</guilabel
+> разделена на вкладки <guilabel
+>Общие</guilabel
+>, <guilabel
+>Имена файлов</guilabel
+> и вкладки, определяющие параметры кодеков.</para>
+
+<sect2 id="general-tab">
+<title
+>Вкладка «Общие»</title>
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Общие</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Общие</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Данная вкладка содержит параметры, применяемые к процессу считывания информации с компакт-диска.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Использовать коррекцию ошибок при чтении CD</guilabel
+></term>
+<listitem>
+<para
+>При записи Audio CD к каждому записываемому блоку добавляется 64 бита данных для корректировки ошибок. После этого, к каждому закодированному блоку добавляется 8 бит данных внутреннего кода или подканала, к которым обращается процесс при проигрывании CD. Отключение использования подобной корректировки ускоряет считывание данных, но может вызывать привести к нежелательным искажениям звука.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Пропускать при ошибках</guilabel
+></term>
+<listitem>
+<para
+>По умолчанию, при возникновении ошибки, данные не пропускаются. Это нужно для того, чтобы обеспечить наивысшее качество результата.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Приоритет кодека</guilabel
+></term>
+<listitem>
+<para
+>Возможно установить приоритет кодека, чтобы процесс кодирования не мешал выполнению параллельных задач (низкий приоритет) или выполнялся быстрее (высокий приоритет). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>Вкладка «Имена файлов»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Имена файлов</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Имена файлов</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Вкладка <guilabel
+>Имена файлов</guilabel
+> используется для точной настройки названий кодированных файлов. Возможно использование макросов и <ulink url="https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B3%D1%83%D0%BB%D1%8F%D1%80%D0%BD%D1%8B%D0%B5_%D0%B2%D1%8B%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F"
+>регулярных выражений</ulink
+> для создания файлов с именами, соответствующими конкретным требованиям.</para>
+
+<para
+>В нижней части страницы расположена область, в которой возможно протестировать формирование имени файла, чтобы убедиться, что нигде не были допущены ошибки.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>Вкладка «FLAC»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>FLAC</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>FLAC</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Вкладка FLAC доступна только если в модуле AudioCD присутствует библиотека libFLAC.</para>
+</note>
+
+<para
+>FLAC — это формат сжатия звука без потерь, свободный от каких-либо патентов или лицензионных сборов. Он сохраняет идеальное качество звуковых компакт-дисков при уменьшении размера файла приблизительно на 50%. Размер файла при использовании этого кодека намного больше, чем при использовании кодеков Opus, Ogg Vorbis или MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Степень сжатия FLAC</guilabel
+></term>
+<listitem>
+<para
+>Степень сжатия — это целое число от 0 до 8, которое представляет собой оптимальное соотношение между размером файла и скоростью сжатия.</para>
+<para
+>Степень сжатия 0 обеспечивает самое быстрое время сжатия, но приводит к созданию файла сравнительно большого размера.</para>
+<para
+>С другой стороны, степень сжатия 8 заметно замедляет процесс, но создаёт самый маленький по размеру файл.</para>
+<para
+>Так как FLAC по определению является кодеком без потерь, качество звука на выходе будет одинаковым независимо от уровня сжатия.</para>
+<para
+>Степени сжатия от 5 и выше заметно увеличивают время сжатия, но разница в размере файлов настолько мала, что их использование не рекомендуется.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>Вкладка «MP3»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>MP3</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>MP3</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Вкладка «MP3» доступна только если в системе установлена программа <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+>.</para>
+</note>
+
+<para
+>MP3 (или MPEG-1 Audio Layer III) — это лицензированный цифровой кодек звука, использующий метод сжатия с потерями. Несмотря на свои недостатки, это распространённый формат для кодирования аудио, который поддерживает большинство портативных проигрывателей.</para>
+
+<para
+>Модуль Audio CD использует сжатие данных с помощью приложения-кодировщика LAME для создания файлов <filename class="extension"
+>mp3</filename
+>. LAME считается лучшим приложением для кодирования аудио в MP3-формат в основном благодаря самоотверженной работе его разработчиков и модели разработки программы с открытыми исходными кодами, что позволило проекту привлечь инженерные ресурсы со всего мира.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Метод кодирования</guilabel
+></term>
+<listitem>
+<para
+>Битовый поток является мерой количества данных, используемых для представления одной секунды звуковой дорожки. Возможно установить <guilabel
+>Постоянный битовый поток</guilabel
+> для прогнозируемого размера файла. MP3-кодер также поддерживает параметр <guilabel
+>Переменный битовый поток</guilabel
+>, при котором значение битрейта колеблется в течение проигрывания всей дорожки в зависимости от сложности содержимого аудио. Более сложные интервалы данных кодируются с более высоким битрейтом; этот подход в целом обеспечивает лучшее звучание и меньший размер файла, чем метод кодирования с постоянным битовым потоком.</para>
+<para
+>Также возможно установить качество кодирования. Более низкое качество может ускорить процесс кодирования ценой потери некоторых данных.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Параметры</guilabel
+></term>
+<listitem>
+<para
+>Отметьте параметр <guilabel
+>Авторские права</guilabel
+>, если создаваемые данные защищены авторским правом.</para>
+<para
+>Отметьте параметр <guilabel
+>Оригинальный</guilabel
+>, если выгрузка данных была произведена из оригинального &CD;.</para>
+<para
+>При выборе параметра <guilabel
+>Кодирование ISO</guilabel
+> кодировщиком LAME будет наложено ограничение в 7680 бит на общий размер блока данных. Совместимость с ISO может быть важна для воспроизведения на аппаратных проигрывателях.</para>
+<para
+>Параметр <guilabel
+>Коррекция ошибок</guilabel
+> используется для добавления контрольной суммы к каждому блоку данных. Такая защита позволяет повысить стабильность хранения данных MP3.</para>
+<para
+>Параметр <guilabel
+>Записать тег ID3</guilabel
+> используется для того, чтобы LAME принудительно записывал <ulink url="https://ru.wikipedia.org/wiki/ID3_(%D0%BC%D0%B5%D1%82%D0%B0%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5)"
+>метаданные</ulink
+> в каждый созданный MP3-файл.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Параметры фильтра</guilabel
+></term>
+<listitem>
+<para
+>Возможно использовать фильтр частоты кодируемого звука. Фильтр нужен для ограничения кодирования высоких или низких частот. Большинство людей не слышит высокие частоты, а эти частоты самые <quote
+>дорогие</quote
+> по требуемому для их хранения месту, когда дело доходит до кодирования. Высокие частоты также иногда становятся причиной появления нежелательного искажения звука.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Параметры переменного битового потока</guilabel
+></term>
+<listitem>
+
+<para
+>Эта группа параметров позволяет задействовать настройки <guilabel
+>Средний битовый поток</guilabel
+> (принятый по умолчанию), <guilabel
+>Максимальный битовый поток</guilabel
+> или <guilabel
+>Минимальный битовый поток</guilabel
+>, а также дополнительно отметить опцию <guilabel
+>Строго придерживаться минимума</guilabel
+>.</para>
+<para
+>Значение 160 кбит/с является наилучшим вариантом для прослушивания музыки на портативном проигрывателе. Значения ниже 120 кбит/с могут значительно ухудшить качество кодируемой музыки, а значения выше 256 кбит/с излишни.</para>
+<para
+>Возможно использование опции <guilabel
+>Записать тег Xing VBR</guilabel
+>. Благодаря Xing появился кодировщик, известный своим тегом VBR, который обеспечивает более точный поиск в файлах с переменным битовым потоком. Среди прочего, тег Xing VBR содержит информацию об общей продолжительности файла MP3, что не всегда доступно в потоке MPEG.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>Вкладка «Opus»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Opus</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Opus</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Вкладка Opus доступна только если в системе установлены инструменты <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+>.</para>
+</note>
+
+<para
+>Opus — это полностью открытый, бесплатный универсальный кодек звука. Он не имеет себе равных при интерактивной передаче речи и музыки через Интернет; он также предназначен для приложений хранения и потоковой передачи.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Метод кодирования</guilabel
+></term>
+<listitem>
+<para
+>Этот параметр позволяет выбирать между опциями <guilabel
+>С опорой на сложность</guilabel
+> и <guilabel
+>С опорой на битовый поток</guilabel
+>. Первый вариант использует спекулятивные алгоритмы, что не позволяет точно определить размер получаемого в результате кодирования файла.</para>
+<itemizedlist>
+<listitem>
+<para
+>На выбор кодирования Opus между сложностью вычислительной мощности процессора и качеством/битрейтом влияет несколько вещей. Сложность кодирования варьируется между целыми числами от 0 до 10, где 0 — наиболее низкое качество, а 10 — наиболее высокое.</para>
+</listitem>
+<listitem>
+<para
+>Opus наиболее эффективен при работе с переменным битовым потоком (<guilabel
+>Средний битовый поток</guilabel
+>), установленным по умолчанию. Возможно использовать ограниченный переменный битовый поток (<guilabel
+>Ограниченный переменный битовый поток</guilabel
+>, аналог постоянного битрейта в MP3), когда требуется передача с низкой задержкой по относительно медленному соединению. В некоторых (редких) программах требуется постоянный битовый поток (<guilabel
+>Постоянный битовый поток</guilabel
+>).</para>
+<para
+>Для стереофонической музыки рекомендуется использовать битрейт 64-128 кбит/с.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Добавить сведения о дорожке</guilabel
+></term>
+<listitem>
+<para
+>Добавление описания звуковой дорожки в заголовок файла. Эта информация может быть получена из интернета в автоматическом режиме и просмотрена в музыкальном проигрывателе во время воспроизведения. Подробнее об этом смотрите в модуле «Доступ к CDDB» приложения &systemsettings;. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>Вкладка «Ogg Vorbis»</title>
+
+<screenshot>
+<screeninfo
+>Вкладка <guilabel
+>Ogg Vorbis</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Вкладка <guilabel
+>Ogg Vorbis</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Вкладка Ogg Vorbis доступна только если в модуле AudioCD присутствует библиотека <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+>.</para>
+</note>
+
+<para
+>Ogg Vorbis — это открытый бесплатный кодек звука для сжатия аудиофайлов с потерями. Он позволяет получить меньшие по размеру (по сравнению с MP3) файлы при таком же или более высоком качестве.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Метод кодирования</guilabel
+></term>
+<listitem>
+<para
+>Этот параметр позволяет выбирать между такими методами кодирования, как <guilabel
+>С опорой на качество</guilabel
+> и <guilabel
+>С опорой на битовый поток</guilabel
+>. Метод с опорой на качество использует спекулятивные алгоритмы, что не позволяет точно определить размер получаемого в результате кодирования файла.</para>
+<itemizedlist>
+<listitem>
+<para
+>Уровень качества кодирования кодеком Ogg Vorbis возможно задать числами от 0 до 10, где 0 — наиболее низкое качество, а 10 — наиболее высокое.</para>
+</listitem>
+<listitem>
+<para
+>В качестве альтернативы можно использовать переменный битовый поток. Возможен выбор между такими опциями, как <guilabel
+>Средний битовый поток</guilabel
+> (установлен по умолчанию), <guilabel
+>Максимальный битовый поток</guilabel
+> и <guilabel
+>Минимальный битовый поток</guilabel
+>.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Добавить сведения о дорожке</guilabel
+></term>
+<listitem>
+<para
+>Добавление описания звуковой дорожки в заголовок файла. Эта информация может быть получена из интернета в автоматическом режиме и просмотрена в музыкальном проигрывателе во время воспроизведения. Подробнее об этом смотрите в модуле «Доступ к CDDB» приложения &systemsettings;. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->

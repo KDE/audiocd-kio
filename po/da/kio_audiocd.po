@@ -1,0 +1,129 @@
+# translation of kio_audiocd.po to dansk
+# Danish translation of kio_audiocd
+# Copyright (C).
+#
+# Erik Kjær Pedersen <erik@binghamton.edu>, 2001, 2003, 2004, 2005.
+# Keld Simonsen <keld@dkuug.dk>, 2008.
+# Martin Schlander <mschlander@opensuse.org>, 2010, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-11-17 19:35+0100\n"
+"Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.04.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Erik Kjær Pedersen"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "erik@binghamton.edu"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Information"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Fuld CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB-information"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Du kan ikke angive en vært med denne protokol.  Brug venligst audiocd:/ "
+"formatet i stedet."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Mangler enhedsspecifikation"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Enheden har ikke læserettigheder for denne konto. Tjek læsetilladelserne  på "
+"enheden."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Enheden har ikke skriverettigheder for denne konto. Tjek skrivetilladelserne "
+"på enheden."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Ukendt fejl. Hvis du har en cd i enheden, så forsøg at køre cdparanoia -vsQ "
+"som dig selv (ikke systemadministrator). Ser du en sporliste? Hvis ikke, så "
+"sørg for at du har rettighed til at komme til cd-enheden. Hvis du bruger "
+"SCSI-emulering (muligt hvis du har en IDE cd-brænder), så sørg for at du har "
+"læse- og skrivrettigheder for den generelle SCSI-enhed, som formodentlig er /"
+"dev/sg0, /dev/sg1, osv. Hvis det stadigvæk ikke virker, så forsøg at skrive "
+"audiocd:/?device=/dev/sg0 (eller lignende) for at fortælle kio_audiocd "
+"hvilken enhed som er cd-rom enheden."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"Audiocd: Skader på cd'en opdaget for dette spor. Der er risiko for at data "
+"er blevet forvanskede."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Fejl ved læsning af lyddata for %1 fra CD'en"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Kunne ikke læse %1: indkodning mislykkedes"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Spor %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Protokolnavn"
+
+#~ msgid "Socket name"
+#~ msgstr "Sokkelnavn"

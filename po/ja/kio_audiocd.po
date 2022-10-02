@@ -1,0 +1,126 @@
+# Translation of kio_audiocd into Japanese.
+# This file is distributed under the same license as the kdemultimedia package.
+# Kaori Andou <parsley@happy.email.ne.jp>, 2004.
+# AWASHIRO Ikuya <ikuya@oooug.jp>, 2004.
+# Fumiaki Okushi <fumiaki@okushi.com>, 2005.
+# Shinichi Tsunoda <tsuno@ngy.1st.ne.jp>, 2005.
+# Yukiko Bando <ybando@k6.dion.ne.jp>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2010-09-26 11:43-0700\n"
+"Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
+"Language-Team: Japanese <kde-jp@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Ikuya Awashiro, Fumiaki Okushi,Shinichi Tsunoda"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ikuya@oooug.jp, fumiaki@okushi.com,tsuno@ngy.1st.ne.jp"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "情報"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "完全な CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB 情報"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"このプロトコルではホストを指定できません。代わりに audiocd:/ フォーマットを"
+"使ってください。"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"このアカウントにはデバイスの読み取り権限がありません。デバイスの読み取り許可"
+"を確認してください。"
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"このアカウントにはデバイスへの書き込み権限がありません。デバイスの書き込み許"
+"可を確認してください。"
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"未知のエラーです。CD がドライブに入っているのであれば、cdparanoia -vsQ をあな"
+"たのユーザ権限で (root ではなく) 実行してみてください。トラックリストが表示さ"
+"れますか？ 表示されない場合、CD デバイスへのアクセス許可があることを確認して"
+"ください。SCSI エミュレーションを使用している場合 (例えば IDE CD ライターを使"
+"用している場合)、汎用 SCSI デバイス (例えば /dev/sg0, /dev/sg1, ...) への読み"
+"書き許可があることを確認してください。それでも動作しない場合、CDROM デバイス"
+"を指定して、例えば audio:/?device=/dev/sg0 と入力して、kio_audiocd にどのデバ"
+"イスが CDROM なのか教えてください。"
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"オーディオ CD: このトラックにディスクの損傷を検出しました。データ圧縮が正しく"
+"行えない可能性があります。"
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "この CD から %1 の音声データを読み込み中にエラーが発生しました"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "%1 を読み込めませんでした: エンコードに失敗しました"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "トラック %1"

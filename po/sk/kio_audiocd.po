@@ -1,0 +1,124 @@
+# translation of kio_audiocd.po to Slovak
+# Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>, 2001.
+# Stanislav Visnovsky <visnovsky@kde.org>, 2003, 2004.
+# Richard Fric <Richard.Fric@kdemail.net>, 2006, 2009.
+# Michal Sulek <misurel@gmail.com>, 2009, 2010.
+# Matej Mrenica <matejm98mthw@gmail.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-09-26 16:26+0200\n"
+"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
+"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.08.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Stanislav Višňovský,Michal Šulek"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "visnovsky@kde.org,misurel@gmail.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Informácia"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Celé CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Informácie CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr "S tomto protokole nemôžete zadávať hostiteľa. Použite formát audiocd:/"
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Chýba špecifikácia zariadenia"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Zariadenie nemá pre tento účet práva na čítanie. Skontrolujte práva "
+"zariadenia na čítanie."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Zariadenie nemá pre tento účet práva na zápis. Skontrolujte práva zariadenia "
+"na zápis."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Neznáma chyba. Ak máte CD v mechanike, skúste spustiť cdparanoia -vsQ pod "
+"vlastným kontom (nie ako root). Vidíte zoznam skladieb? Ak nie, presvedčte "
+"sa, že máte práva na prístup k zariadeniu CD. Ak používate emuláciu SCSI "
+"(možné ak máte IDE CD napaľovačku) presvedčte sa, že máte práva na čítanie a "
+"zápis na všeobecné SCSI zariadenie, ktoré je pravdepodobne /dev/sg0, /dev/"
+"sg1, atď. Ak to stále nefunguje, skúste audiocd:/?device=/dev/sg0 (alebo "
+"podobne), aby ste povedali kio_audiocd, ktoré zariadenie je CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"Zvukové CD: zistené poškodenie disku na tejto stope, riziko poškodených dát."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Chyba pri čítaní zvukových dát pre %1 z CD"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Nepodarilo sa prečítať %1: zlyhalo kódovanie"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Stopa %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Názov protokolu"
+
+#~ msgid "Socket name"
+#~ msgstr "Názov soketu"

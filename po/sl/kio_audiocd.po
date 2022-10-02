@@ -1,0 +1,135 @@
+# translation of kio_audiocd.po to Slovenian
+# Translation of kio_audiocd.po to Slovenian
+# SLOVENIAN TRANSLATION OF K DESKTOP ENVIRONMENT.
+# Copyright (C) 2001, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+# $Id$
+# $Source$
+#
+# Andrej Vernekar <andrej.vernekar@moj.net>, 2001.
+# Gregor Rakar <gregor.rakar@kiss.si>, 2003, 2004, 2005.
+# Jure Repinc <jlp@holodeck1.com>, 2005, 2006, 2007, 2010.
+# Andrej Mernik <andrejm@ubuntu.si>, 2013.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2020-08-19 08:16+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 19.12.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Gregor Rakar,Jure Repinc,Andrej Mernik,Matjaž Jeran"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"gregor.rakar@kiss.si,jlp@holodeck1.com,andrejm@ubuntu.si,matjaz.jeran@amis."
+"net"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Podatki"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Ves CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "Podatki CDDB"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"S tem protokolom ne morete navesti gostitelja. Uporabite obliko audiocd:/."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Manjkajoči opis naprave"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Ta račun nima dovoljenj za branje s te naprave. Preverite dovoljenja za "
+"branje s te naprave."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Ta račun nima dovoljenj za pisanje na to napravo. Preverite dovoljenja za "
+"pisanje na to napravo."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Neznana napaka. Če imate CD v pogonu, poskusite zagnati »cdparanoia -vsQ« "
+"kot vi, ne kot skrbnik. Ali vidite seznam skladb? Če ne, preverite, da imate "
+"dovoljenje za dostop do naprave za CD-je. Če uporabljate posnemanje SCSI "
+"(kar je mogoče, če imate zapisovalnik CD-jev prek IDE), potem preverite, da "
+"imate dovoljenje za branje in pisanje po generični napravi SCSI, ki je "
+"verjetno /dev/sg0, /dev/sg1 itn. Če to še vedno ne deluje, potem poskusite "
+"natipkati audiocd:/?device=/dev/sg0 (ali podobno), da poveste kio_audiocd, "
+"katera naprava je vaš CD-ROM."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr ""
+"Glasbeni CD: zaznana poškodba diska pri tej skladbi, možnost okvare podatkov."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "Napaka med branjem zvočnih podatkov za %1 s CD-ja"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "Ni bilo mogoče prebrati %1: kodiranje ni uspelo"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Skladba %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "Ime protokola"
+
+#~ msgid "Socket name"
+#~ msgstr "Ime vtiča"

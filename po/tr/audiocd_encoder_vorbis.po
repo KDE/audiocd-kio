@@ -1,0 +1,271 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010.
+# Onur Küçük <onur@uludag.org.tr>, 2005.
+# Ozan Çağlayan <ozan@pardus.org.tr>, 2011.
+# obsoleteman <tulliana@gmail.com>, 2009.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdemultimedia-kde4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-05-20 03:08+0200\n"
+"PO-Revision-Date: 2022-05-05 12:22+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.0\n"
+
+#. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:10
+#, kde-format
+msgid "Vorbis Encoding Quality or Bitrate"
+msgstr "Vorbis Kayıt Kalitesi ya da Bit Oranı"
+
+#. i18n: ectx: label, entry (set_vorbis_min_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:15
+#, kde-format
+msgid "Minimal bitrate specified"
+msgstr "Belirtilen en yüksek bit oranı"
+
+#. i18n: ectx: label, entry (set_vorbis_max_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:19
+#, kde-format
+msgid "Maximal bitrate specified"
+msgstr "Belirtilen en yüksek bit oranı"
+
+#. i18n: ectx: label, entry (set_vorbis_nominal_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:23
+#, kde-format
+msgid "Average bitrate specified"
+msgstr "Ortalama bit oranı"
+
+#. i18n: ectx: label, entry (vorbis_comments), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:28
+#, kde-format
+msgid "Add Comments"
+msgstr "Açıklama Ekle"
+
+#. i18n: ectx: label, entry (vorbis_quality), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:32
+#, kde-format
+msgid "Quality"
+msgstr "Kalite"
+
+#. i18n: ectx: label, entry (vorbis_min_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:39
+#, kde-format
+msgid "Minimal bitrate"
+msgstr "En düşük bit oranı"
+
+#. i18n: ectx: label, entry (vorbis_max_br), group (Vorbis)
+#. i18n: ectx: label, entry (vorbis_nominal_br), group (Vorbis)
+#: audiocd_vorbis_encoder.kcfg:46 audiocd_vorbis_encoder.kcfg:53
+#: audiocd_vorbis_encoder.kcfg:61
+#, kde-format
+msgid "maximal bitrate"
+msgstr "En yüksek bit oranı"
+
+#. i18n: ectx: property (title), widget (QGroupBox, kcfg_vorbis_enc_method)
+#: encodervorbisconfig.ui:16
+#, kde-format
+msgid "&Encoding Method"
+msgstr "&Kodlama Yöntemi"
+
+#. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
+#: encodervorbisconfig.ui:22
+#, kde-format
+msgid "Quality based"
+msgstr "Kalite tabanlı"
+
+#. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
+#: encodervorbisconfig.ui:32
+#, kde-format
+msgid "Bitrate based"
+msgstr "Bit oranı tabanlı"
+
+#. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
+#: encodervorbisconfig.ui:45
+#, kde-format
+msgid "Vorbis Bitrate Settings"
+msgstr "Vorbis Bit Sıklığı Ayarları"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:58 encodervorbisconfig.ui:138
+#, kde-format
+msgid "32 kbps"
+msgstr "32 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:63 encodervorbisconfig.ui:143
+#, kde-format
+msgid "40 kbps"
+msgstr "40 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:68 encodervorbisconfig.ui:148
+#, kde-format
+msgid "48 kbps"
+msgstr "48 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:73 encodervorbisconfig.ui:153
+#, kde-format
+msgid "56 kbps"
+msgstr "56 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:78 encodervorbisconfig.ui:158
+#, kde-format
+msgid "64 kbps"
+msgstr "64 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:83 encodervorbisconfig.ui:163
+#, kde-format
+msgid "80 kbps"
+msgstr "80 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:88 encodervorbisconfig.ui:168
+#, kde-format
+msgid "96 kbps"
+msgstr "96 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:93 encodervorbisconfig.ui:173
+#, kde-format
+msgid "112 kbps"
+msgstr "112 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:98 encodervorbisconfig.ui:178
+#: encodervorbisconfig.ui:235
+#, kde-format
+msgid "128 kbps"
+msgstr "128 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:103 encodervorbisconfig.ui:183
+#: encodervorbisconfig.ui:240
+#, kde-format
+msgid "160 kbps"
+msgstr "160 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:108 encodervorbisconfig.ui:188
+#: encodervorbisconfig.ui:245
+#, kde-format
+msgid "192 kbps"
+msgstr "192 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#: encodervorbisconfig.ui:113 encodervorbisconfig.ui:193
+#, kde-format
+msgid "224 kbps"
+msgstr "224 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:118 encodervorbisconfig.ui:198
+#: encodervorbisconfig.ui:250
+#, kde-format
+msgid "256 kbps"
+msgstr "256 kbps"
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_nominal_br)
+#: encodervorbisconfig.ui:123 encodervorbisconfig.ui:203
+#: encodervorbisconfig.ui:255
+#, kde-format
+msgid "350 kbps"
+msgstr "350 kbps"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_min_br)
+#: encodervorbisconfig.ui:214
+#, kde-format
+msgid "M&inimal bitrate:"
+msgstr "En &düşük bit oranı:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_max_br)
+#: encodervorbisconfig.ui:224
+#, kde-format
+msgid "Ma&ximal bitrate:"
+msgstr "En &yüksek bit oranı:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_nominal_br)
+#: encodervorbisconfig.ui:263
+#, kde-format
+msgid "A&verage bitrate:"
+msgstr "&Ortalama bit oranı:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, vorbis_quality_settings)
+#: encodervorbisconfig.ui:276
+#, kde-format
+msgid "Vorbis &Quality Setting"
+msgstr "Vorbis Ka&lite Ayarları"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, vorbis_quality_settings)
+#: encodervorbisconfig.ui:279
+#, kde-format
+msgid ""
+"You can set the quality of the encoded stream here. A higher value implies a "
+"higher quality but encodes slower."
+msgstr ""
+"Kodlanmış akışın karmaşıklığını burada ayarlayabilirsiniz. Daha yüksek bir "
+"değer daha yüksek bir karmaşıklık anlamına gelir; ancak daha yavaş kodlar."
+
+#. i18n: ectx: property (whatsThis), widget (QDoubleSpinBox, kcfg_vorbis_quality)
+#: encodervorbisconfig.ui:297
+#, kde-format
+msgid "Higher is better but slower"
+msgstr "Daha yüksek daha iyidir; ancak daha yavaştır"
+
+#. i18n: ectx: property (title), widget (QGroupBox, GroupBox193)
+#: encodervorbisconfig.ui:307
+#, kde-format
+msgid "Options"
+msgstr "Seçenekler"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_vorbis_comments)
+#: encodervorbisconfig.ui:316
+#, kde-format
+msgid "Add &track information"
+msgstr "Parça bilgisi &ekle"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vorbis_comments)
+#: encodervorbisconfig.ui:319
+#, kde-format
+msgid ""
+"Add a description of the song to the file header. This makes it easy for the "
+"user to get advanced song information shown by his media player. You can get "
+"this information automatically via the Internet. Look at the <i>\"CDDB "
+"Retrieval\"</i> control module for details."
+msgstr ""
+"Şarkının bir açıklamasını dosya üstbilgisine ekleyin. Bu, kullanıcının ek "
+"şarkı bilgisini ortam oynatıcısında daha kolay almasını sağlar. Bu bilgiyi "
+"İnternet'ten otomatik olarak alabilirsiniz. Ayrıntılar için <i>\"CDDB Alımı"
+"\"</i>na bakın."

@@ -1,0 +1,337 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Portuguese "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>José</firstname
+><surname
+>Pires</surname
+><affiliation
+><address
+><email
+>zepires@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Permite o tratamento dos <acronym
+>CD</acronym
+>s áudio como se fosse um sistema de ficheiros <quote
+>real</quote
+>, em que as faixas são representadas como ficheiros e que, quando copiadas da pasta, são extraídas digitalmente do <acronym
+>CD</acronym
+>. Isto garante uma cópia perfeita dos dados de áudio.</para>
+
+<para
+>Para ver como funciona este 'slave', introduza um <acronym
+>CD</acronym
+> áudio no seu leitor de &CD-ROM; e escreva <userinput
+>audiocd:/</userinput
+> no &konqueror;. Numa questão de segundos poderá ver uma lista das faixas, bem como algumas pastas.</para>
+
+<para
+>Os <acronym
+>CD</acronym
+>s áudio não contêm, na realidade, pastas, mas o 'slave' audiocd disponibiliza-as por conveniência. Se olhar para dentro dessas pastas, verá que todas elas contém o mesmo número de faixas. Se estiver ligado à Internet, algumas pastas terão os títulos verdadeiros das faixas como nomes dos ficheiros.</para>
+
+<para
+>A razão pela qual existem estas pastas separadas tem a ver com a escolha do formato no qual quer ouvir (ou copiar) as faixas do <acronym
+>CD</acronym
+>.</para>
+
+<para
+>Se arrastar uma faixa da pasta <filename class="directory"
+>Ogg Vorbis</filename
+> e a largar noutra janela do &konqueror; aberta na sua pasta pessoal, vai aparecer uma janela de progresso para mostrar a faixa a ser extraída do <acronym
+>CD</acronym
+> e a ser gravada num ficheiro. Não se esqueça que o Ogg Vorbis é um formato comprimido, por isso o ficheiro na sua pasta pessoal aparecerá bastante mais pequeno do que se tivesse copiado os dados em bruto.</para>
+
+<para
+>O mecanismo por trás disto é muito simples. Quando é pedido ao 'slave' audiocd para obter uma faixa da pasta <filename class="directory"
+>Ogg Vorbis</filename
+>, ele começa a extrair os dados de áudio digital do <acronym
+>CD</acronym
+>. À medida que envia os dados para o ficheiro na sua pasta pessoal, vai codificando simultaneamente no formato Ogg Vorbis (o áudio do <acronym
+>CD</acronym
+> não está em nenhum formato especial no início, são apenas dados em bruto).</para>
+
+<para
+>Pode também tentar arrastar um ficheiro que termina em <literal role="extension"
+>.wav</literal
+> e largá-lo no Reprodutor Multimédia do &kde; Media Player, o &juk;. Neste caso, o procedimento que ocorre nos bastidores é semelhante, excepto que, em vez de codificar os dados áudio no formato Ogg Vorbis, é feita apenas uma conversão simples dos dados binários em bruto (representados pelos ficheiros <literal role="extension"
+>.cda</literal
+> na pasta de topo) para <quote
+>RIFF WAV</quote
+>, um formato não comprimido que a maioria dos leitores multimédia compreendem.</para>
+
+<para
+>O &juk; consegue tocar sem problemas um ficheiro <literal role="extension"
+>.wav</literal
+> mas, se existirem problemas, poderá pensar em utilizar a opção <option
+>paranoia_level</option
+>, como será explicada abaixo.</para>
+
+<variablelist>
+<title
+>Opções</title>
+
+<varlistentry>
+<term
+><option
+>device</option
+></term>
+<listitem>
+<para
+>Indique a localização do dispositivo de <acronym
+>CD</acronym
+> áudio, &pex; <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Normalmente, o 'slave' irá tentar descobrir um leitor de <acronym
+>CD</acronym
+> que tenha um <acronym
+>CD</acronym
+> inserido mas, se não o conseguir fazer ou se tiver mais do que uma unidade de <acronym
+>CD</acronym
+>, poderá tentar usar esta opção. Repare que a janela de configuração permite-lhe definir um valor por omissão para esta opção.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Define o modelo dos nomes de ficheiros, &eg; <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Faixa %{number}</parameter
+></userinput
+>. Lembre-se que a janela de configuração permite-lhe definir um valor por omissão para esta opção. Irá aparecer um aviso se você configurar este valor com um texto em branco.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Configura o modelo do nome dos álbuns, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Lembre-se que a janela de configuração permite-lhe definir um valor por omissão para esta opção.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Define o nível de 'nice' (associado à prioridade) dos codificadores, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Lembre-se que a janela de configuração permite-lhe definir um valor por omissão para esta opção.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Indica o nível de detecção e correcção de erros usado ao extrair os dados.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Nível 0</term>
+<listitem>
+<para
+>Não é feita qualquer detecção ou correcção. Só é útil se tiver uma unidade de <acronym
+>CD</acronym
+>s perfeita (pouco provável).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Nível 1</term>
+<listitem>
+<para
+>Permite a detecção e correcção de erros básica.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Nível 2</term>
+<listitem>
+<para
+>Por omissão. Indica que só é aceitável uma extracção perfeita.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Repare que existe uma desvantagem com o nível 2. A extracção pode ser muito lenta, por isso a reprodução digital em tempo real pode não funcionar correctamente. Se você tiver uma unidade de <acronym
+>CD</acronym
+>s de boa qualidade (lembre-se que mais caro não significa necessariamente melhor qualidade) provavelmente não terá uma extracção lenta, mas uma unidade de fraca qualidade pode levar dias (!) a extrair o áudio de um <acronym
+>CD</acronym
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Indica que os nomes das faixas do <acronym
+>CD</acronym
+> inserido serão pesquisadas na Base de Dados de <acronym
+>CD</acronym
+>s da Internet. Os <acronym
+>CD</acronym
+>s áudio não têm nomes das faixas, mas a Base de Dados de <acronym
+>CD</acronym
+>s da Internet é um sistema inteligente que utiliza um identificador especial gerado a partir do número e do tamanho das faixas em cada <acronym
+>CD</acronym
+> para referenciar uma lista de faixas. Essas listas são contribuídas pela comunidade da Internet e são tornadas públicas para todos. Ocasionalmente, poderão existir vários itens iguais. Nesse caso, poderá indicar qual deseja usar.</para>
+
+<para
+>Pode enviar as suas próprias listas de músicas com o &kscd;, o leitor de <acronym
+>CD</acronym
+>s do &kde;.</para>
+
+<para
+>Por omissão, o 'audiocd' tenta obter a melhor.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Exemplos</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Obtém uma lista das faixas do <acronym
+>CD</acronym
+> áudio introduzido no dispositivo  <filename class="devicefile"
+>/dev/scd0</filename
+>, que no &Linux; corresponde ao primeiro &CD-ROM; <acronym
+>SCSI</acronym
+>. Se copiar faixas do <acronym
+>CD</acronym
+>, a extracção digital será feita sem detecção ou correcção de erros. Será usado o item 0 do <acronym
+>CDDB</acronym
+>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Perguntas Frequentes (FAQ)</title>
+<qandaentry>
+<question>
+<para
+>Costuma aparecer <errorname
+>O ficheiro ou pasta / não existe</errorname
+>. Como corrijo isto? Tenho um <acronym
+>CD</acronym
+> áudio no meu leitor!</para>
+</question>
+
+<answer>
+<para
+>Tente executar <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> com o seu próprio utilizador (não como <systemitem class="username"
+>root</systemitem
+>). Aparece-lhe uma lista de faixas? Se não, verifique se tem permissões para aceder ao dispositivo do <acronym
+>CD</acronym
+>. Se estiver a utilizar uma emulação de <acronym
+>SCSI</acronym
+> (possivelmente se tiver um gravador de <acronym
+>CD</acronym
+>s <acronym
+>IDE</acronym
+>) então verifique que tem permissões para aceder ao dispositivo <acronym
+>SCSI</acronym
+> genérico, que é provavelmente o <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, &etc;. Se mesmo assim não funcionar, tente executar <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (ou algo do género) para dizer ao 'kio_audiocd' em que dispositivo se encontra o seu &CD-ROM;.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

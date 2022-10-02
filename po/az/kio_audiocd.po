@@ -1,0 +1,116 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the audiocd-kio package.
+#
+# Kheyyam Gojayev <xxmn77@gmail.com>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: audiocd-kio\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2021-03-15 12:57+0400\n"
+"Last-Translator: Kheyyam Gojayev <xxmn77@gmail.com>\n"
+"Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Xəyyam Qocayev"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "xxmn77@gmail.com"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "Məlumat"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "Tam CD"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB məlumatı"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"Siz host'u bu protokol ilə göstərə bilməzsiniz. Əvəzinə audiocd:/ "
+"formatından istifadə edin."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr "Cihazın xüsusiyyətləri göstərilməyib"
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"Bu hesabın cihazı oxuma icazəsi yoxdur Cihazı oxuma icazələrini yoxlayın"
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"Bu hesabın cihazı yazma icazəsi yoxdur Cihazı yazma icazələrini yoxlayın"
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"Naməlum xəta. Əgər sürücünüzdə CD varsa özünüz (kök imtiyazı olmadan) "
+"cdparanoia -vsQ başlatmağa cəhd edin. Cığırlardan ibarət siyahını "
+"görürsünüz? Əgər görmürsünüzsə CD cihazınıza girişə icazənizin olduğuna əmin "
+"olun. Əgər SCSİ emulyasiyası aktivdirsə (İDE CD yazıcınız olduqda bu "
+"mümkündür) əmin olun ki, sizin dev/sg0, /dev/sg1 və s. kimi adlana bilən "
+"SCSİ cihazınıza yazmaq və oxumaq icazəniz var.  Əgər bu da işləməzsə o zaman "
+"kio_audicd moduluna hansı CD-ROM cihazları ilə işləməli olduğunu göstərmək "
+"üçün audiocd:/?device=/dev/sg0 (və ya buna oxşar) daxil edərək yoxlayın."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "Audio CD: Bu cığır diskdəzədələnib, ola bilsin məlumatlar korlanıb."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "CD-dən audio məlumatların %1 üçün oxunmasında xəta "
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "%1 oxuna bilmir: şifrələmə alınmadı"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "Cığır %1"

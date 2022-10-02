@@ -1,0 +1,126 @@
+# translation of kio_audiocd.po to Persian
+# MaryamSadat Razavi <razavi@itland.ir>, 2006.
+# Nasim Daniarzadeh <daniarzadeh@itland.ir>, 2006.
+# Nazanin Kazemi <kazemi@itland.ir>, 2006, 2007.
+# Tahereh Dadkhahfar <dadkhahfar@itland.ir>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: kio_audiocd\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"PO-Revision-Date: 2007-06-26 08:27+0330\n"
+"Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
+"Language-Team: Persian <kde-i18n-fa@kde.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "مریم سادات رضوی"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "razavi@itland.ir"
+
+#: audiocd.cpp:115
+#, kde-format
+msgid "Information"
+msgstr "اطلاعات"
+
+#: audiocd.cpp:116
+#, kde-format
+msgid "Full CD"
+msgstr "دیسک فشرده کامل"
+
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, fuzzy, kde-format
+#| msgid "Information"
+msgid "CDDB Information"
+msgstr "اطلاعات"
+
+#: audiocd.cpp:490
+#, kde-format
+msgid ""
+"You cannot specify a host with this protocol. Please use the audiocd:/ "
+"format instead."
+msgstr ""
+"با این قرارداد نمی‌توانید یک میزبان مشخص کنید. لطفاً، به جای آن از قالب "
+"audiocd:/  استفاده کنید."
+
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
+#, kde-format
+msgid ""
+"Device does not have read permissions for this account.  Check the read "
+"permissions on the device."
+msgstr ""
+"دستگاه، مجوزهای خواندن برای این حساب را ندارد.  مجوزهای خواندن روی دستگاه را "
+"بررسی کنید."
+
+#: audiocd.cpp:888
+#, kde-format
+msgid ""
+"Device does not have write permissions for this account.  Check the write "
+"permissions on the device."
+msgstr ""
+"دستگاه، مجوزهازهای نوشتن برای این حساب را ندارد.  مجوزهای نوشتن روی این "
+"دستگاه را بررسی کنید."
+
+#: audiocd.cpp:894
+#, kde-format
+msgid ""
+"Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
+"yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
+msgstr ""
+"خطای ناشناخته. اگر در گرداننده، دیسک فشرده دارید، سعی کنید cdparanoia -vsQ "
+"را به عنوان خود )و نه کاربر ارشد( اجرا کنید. یک فهرست شیار می‌بینید؟ در غیر "
+"این صورت، مطمئن شوید که مجوز دستیابی به دستگاه دیسک فشرده را دارید. اگر در "
+"حال استفاده از تقلید اسکازی هستید، )در صورت امکان اگر یک نویسنده دیسک فشرده "
+"آی دی ای دارید( مطمئن شوید که مجوزها را روی دستگاه اسکازی عمومی، که ممکن "
+"است  /dev/sg0، /dev/sg1، و غیره باشد،  بخوانید و بنویسید. اگر هنوز کار "
+"نمی‌کند، تحریر audiocd:/?device=/dev/sg0 )یا موارد مشابه( را امتحان کنید تا "
+"به kio_audiocd بگویید که دیسک فشرده شما کدام دستگاه است."
+
+#: audiocd.cpp:972
+#, kde-format
+msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
+msgstr "دیسک صوتی: آسیب دیسک روی این شیار آشکار شد، احتمال خرابی داده."
+
+#: audiocd.cpp:979
+#, kde-format
+msgid "Error reading audio data for %1 from the CD"
+msgstr "خطای خواندن داده صوتی برای %1 از دیسک فشرده"
+
+#: audiocd.cpp:989 audiocd.cpp:1067
+#, kde-format
+msgid "Could not read %1: encoding failed"
+msgstr "%1 را نتوانست بخواند: خرابی در کدبندی"
+
+#: audiocd.cpp:1198
+#, kde-format
+msgid "Track %1"
+msgstr "شیار %1"
+
+#~ msgid "Protocol name"
+#~ msgstr "نام قرارداد"
+
+#~ msgid "Socket name"
+#~ msgstr "نام سوکت"
