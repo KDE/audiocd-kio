@@ -76,7 +76,7 @@
 <para
 >També podreu escollir arrossegar un fitxer amb l'extensió <literal role="extension"
 >.wav</literal
-> i deixar-lo anar en el reproductor de suports &juk; del &kde;. En aquest cas, el procediment intern que se seguirà és semblant, excepte que en comptes de codificar les dades al format Ogg Vorbis, el desarà després d'una senzilla conversió des de les dades binàries pures (que és el que representen els fitxers <literal role="extension"
+> i deixar-lo anar en el reproductor multimèdia &juk; del &kde;. En aquest cas, el procediment intern que se seguirà és semblant, excepte que en comptes de codificar les dades al format Ogg Vorbis, el desarà després d'una senzilla conversió des de les dades binàries pures (que és el que representen els fitxers <literal role="extension"
 >.cda</literal
 > a la carpeta més alta) cap al format <quote
 >RIFF WAV</quote
