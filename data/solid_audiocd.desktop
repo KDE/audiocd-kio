@@ -9,7 +9,6 @@ Exec=kioclient5 exec audiocd:/?device=%d
 Icon=system-file-manager
 Name=Open with File Manager
 Name[ar]=افتح بمدير الملفات
-Name[ast]=Abrir col xestor de ficheros
 Name[az]=Fayl menecerində açın
 Name[bg]=Отваряне с файлов мениджър
 Name[bs]=Otvori menadžerom datoteka
