@@ -20,6 +20,7 @@ include(GenerateExportHeader)
 include(CheckStructHasMember)
 include(FeatureSummary)
 include(KDEGitCommitHooks)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
 if (QT_MAJOR_VERSION STREQUAL 6)
@@ -80,13 +81,9 @@ endif()
 configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
 #############################
-add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050F02
-    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
-    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
-)
-
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+    KF 5.100.0
+    )
 add_subdirectory(plugins)
 add_subdirectory(kcmaudiocd)
 add_subdirectory(data)
