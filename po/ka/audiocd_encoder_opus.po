@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2022-09-26 06:35+0200\n"
+"PO-Revision-Date: 2022-11-25 12:34+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
@@ -213,6 +213,8 @@ msgid ""
 "You can set the complexity of the encoded stream here. A higher value "
 "implies a higher complexity but encodes slower."
 msgstr ""
+"აქ შეგიძლიათ დასაკოდირებელი ნაკადის სირთულე დააყენოთ. რაც მაღალია "
+"მნიშვნელობა, მით მეტია სირთულე, მაგრამ მით უფრო ნელდება ენკოდერი."
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:286
@@ -242,6 +244,10 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
+"დაამატეთ სიმღერის აღწერა ფაილის თავსართში. ეს აადვილებს სიმღერის ინფორმაციის "
+"შესახებ დამატებითი დეტალების გამოტანას. ამ ინფორმაციის მიღება ავტომატურად, "
+"ინტერნეტიდან შეგიძლიათ. დეტალებისთვის იხილეთ <I>\"CDDB-დან მიღების\"</I> "
+"კონტროლის მოდული."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:346
