@@ -82,7 +82,7 @@ configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
 #############################
 ecm_set_disabled_deprecation_versions(QT 5.15.2
-    KF 5.100.0
+    KF 5.101.0
     )
 add_subdirectory(plugins)
 add_subdirectory(kcmaudiocd)
