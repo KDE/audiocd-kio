@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2022-02-05 12:23+0000\n"
+"PO-Revision-Date: 2022-12-28 13:34+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
-"Language-Team: Romanian\n"
+"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -38,26 +38,22 @@ msgstr "&Generale"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you uncheck this option, the slave will not try to use error "
-#| "correction which can be useful for reading damaged CDs. However, this "
-#| "feature can be problematic in some cases, so you can switch it off here."
+#, kde-format
 msgid ""
 "If you uncheck this option, the KIO worker will not try to use error "
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"Dacă dezactivați această opțiune, atunci nu va fi utilizată corectarea "
-"erorilor. Acest lucru este util la citirea CD-urilor defecte. Totuși, "
-"această facilitate poate fi problematică în unele cazuri, astfel încît ar "
-"trebui să o dezactivați."
+"Dacă dezactivați această opțiune, lucrătorul KIO nu va încerca să folosească "
+"corectarea erorilor care poate fi utilă la citirea CD-urilor deteriorate. "
+"Totuși, această caracteristică poate fi problematică în unele cazuri, de "
+"aceea o puteți dezactiva aici."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:52
 #, kde-format
 msgid "Use &error correction when reading the CD"
-msgstr "Utilizează corecția &erorilor la citirea discului"
+msgstr "Folosește corecția &erorilor la citirea discului"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
 #: audiocdconfig.ui:62
@@ -299,10 +295,9 @@ msgid "%1 Encoder"
 msgstr "Codor %1"
 
 #: kcmaudiocd.cpp:92
-#, fuzzy, kde-format
-#| msgid "KDE Audio CD IO Slave"
+#, kde-format
 msgid "KDE Audio CD KIO Worker"
-msgstr "Sclav I/O CD Audio pentru KDE"
+msgstr "Lucrător KIO Audio CD pentru KDE"
 
 #: kcmaudiocd.cpp:94
 #, kde-format
@@ -325,14 +320,7 @@ msgid "Original Author"
 msgstr "Autorul original"
 
 #: kcmaudiocd.cpp:251
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
-#| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. In "
-#| "this module, you can configure encoding, and device settings. Note that "
-#| "MP3 and Ogg Vorbis encoding are only available if KDE was built with a "
-#| "recent version of the LAME or Ogg Vorbis libraries."
+#, kde-format
 msgid ""
 "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
 "FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
@@ -343,13 +331,14 @@ msgid ""
 "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
 "system."
 msgstr ""
-"<h1>Dispozitiv I/O CD Audio</h1> Acest modul vă permite să extrageți cu "
-"ușurință fișiere WAV, MP3 sau Ogg Vorbis din CD-ROM-ul sau DVD-ul "
-"dumneavoastră. El este invocat dacă scrieți <i>„audiocd:/”</i> în bara de "
-"locație a Konqueror. În acest modul puteți configura toate aspectele privind "
-"codarea, căutarea în baza de date CDDB și setările specifice de dispozitiv. "
-"Codările MP3 și Ogg Vorbis sînt disponibile numai dacă KDE a fost compilat "
-"cu versiuni recente ale librăriilor „LAME” sau „Ogg Vorbis”."
+"<h1>CD-uri audio</h1> Lucrătorul KIO pentru CD audio creați cu ușurință "
+"fișiere WAV, FLAC, MP3, Ogg Vorbis sau Opus din CD-uri sau DVD-uri audio. "
+"Acesta e invocat tastând <i>„audiocd:/”</i> în bara de locuri a lui Dolphin. "
+"În acest modul puteți configura codarea și parametrii dispozitivului. "
+"Rețineți că codările FLAC, MP3, Ogg Vorbis și Opus sunt disponibile numai "
+"dacă bibliotecile (libFLAC pentru FLAC și libvorbis pentru Ogg) și "
+"utilitarele (lame pentru MP3 și opus-tools pentru Opus) corespunzătoare sunt "
+"instalate în sistem."
 
 #~ msgid "kcmaudiocd"
 #~ msgstr "kcmaudiocd"
