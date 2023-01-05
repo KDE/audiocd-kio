@@ -72,6 +72,7 @@ Comment[ca]=Configuració del procés de treball d'E/S dels CD àudio
 Comment[ca@valencia]=Configuració del procés de treball d'E/S dels CD àudio
 Comment[da]=Indstilling af IO-worker til lyd-cd'er
 Comment[de]=Einrichtung des Ein-/Ausgabemoduls für Audio-CDs
+Comment[el]=Διαμόρφωση Audiocd IO Worker
 Comment[en_GB]=Audiocd IO Worker Configuration
 Comment[es]=Configuración del proceso de E/S Audiocd
 Comment[eu]=Audiocd SI behargina konfiguratzea
