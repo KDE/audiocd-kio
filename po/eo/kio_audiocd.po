@@ -1,14 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# translation of kio_audiocd.pot to Esperanto
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Axel Rousseau <axel@esperanto-jeunes.org>, 2001.
+# Wolfram Diestel <wolfram@steloj.de>, 2001.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2001-05-22 21:00GMT\n"
-"Last-Translator: Wolfram Diestel <wolfram@steloj.de>\n"
+"PO-Revision-Date: 2023-01-04 22:00+01\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -35,14 +37,13 @@ msgstr "Informo"
 #: audiocd.cpp:116
 #, kde-format
 msgid "Full CD"
-msgstr ""
+msgstr "Plena KD"
 
 #: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
 #: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
-#, fuzzy, kde-format
-#| msgid "Information"
+#, kde-format
 msgid "CDDB Information"
-msgstr "Informo"
+msgstr "CDDB Informo"
 
 #: audiocd.cpp:490
 #, kde-format
@@ -103,9 +104,3 @@ msgstr ""
 #, kde-format
 msgid "Track %1"
 msgstr "Peco %1"
-
-#~ msgid "Protocol name"
-#~ msgstr "Protokola nomo"
-
-#~ msgid "Socket name"
-#~ msgstr "Kontaktinga nomo"
