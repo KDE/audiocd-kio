@@ -1,15 +1,17 @@
 # translation of kcmaudiocd.po to esperanto
 # Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the audiocd-kio package.
 # Wolfram Diestel <wolfram@steloj.de>, 2002.
 # Pierre-Marie Pédrot <pedrotpmx@wanadoo.fr>, 2007.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2007-12-08 19:56+0100\n"
-"Last-Translator: Pierre-Marie Pédrot <pedrotpmx@wanadoo.fr>\n"
+"PO-Revision-Date: 2023-01-08 21:45+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -21,12 +23,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Wolfram Diestel"
+msgstr "Wolfram Diestel,Pierre-Marie Pédrot,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wolfram@steloj.de"
+msgstr "wolfram@steloj.de,pedrotpmx@wanadoo.fr,okellogg@users.sourceforge.net"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:27
@@ -36,19 +38,15 @@ msgstr "Ĝ&eneralo"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you uncheck this option, the slave will not try to use error "
-#| "correction which can be useful for reading damaged CDs. However, this "
-#| "feature can be problematic in some cases, so you can switch it off here."
+#, kde-format
 msgid ""
 "If you uncheck this option, the KIO worker will not try to use error "
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"Se vi malsâltas tiun opcion, la sklavo ne provos uzi erarokorektadon, kiu "
-"povus esti utila por legi damaĝitajn lumdiskojn. Aliflanke tiu funkcio povus "
-"kaŭzi iujn problemojn en kelkaj okazoj, tiam vi povas malaktivigi ĝin tie."
+"Se vi malsâltas tiun opcion, la KIO-laboranto ne provos uzi erarokorektadon, "
+"kiu povus esti utila por legi damaĝitajn lumdiskojn. Aliflanke tiu funkcio "
+"povus kaŭzi iujn problemojn en kelkaj okazoj, tiam vi povas malŝalti ĝin tie."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:52
@@ -228,10 +226,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:572
-#, fuzzy, no-c-format, kde-format
-#| msgid "%{albumartist}"
+#, no-c-format, kde-format
 msgid "%{albumtitle}/%{albumartist}"
-msgstr "%{albumartist}"
+msgstr "%{albumtitle}/%{albumartist}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
 #: audiocdconfig.ui:582
@@ -293,10 +290,9 @@ msgid "%1 Encoder"
 msgstr "%1 kodilo"
 
 #: kcmaudiocd.cpp:92
-#, fuzzy, kde-format
-#| msgid "KDE Audio CD IO Slave"
+#, kde-format
 msgid "KDE Audio CD KIO Worker"
-msgstr "KDE sona-KD IO-sklavo"
+msgstr "KDE KIO-Laboranto por Son-KD"
 
 #: kcmaudiocd.cpp:94
 #, kde-format
@@ -319,14 +315,7 @@ msgid "Original Author"
 msgstr ""
 
 #: kcmaudiocd.cpp:251
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
-#| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. In "
-#| "this module, you can configure encoding, and device settings. Note that "
-#| "MP3 and Ogg Vorbis encoding are only available if KDE was built with a "
-#| "recent version of the LAME or Ogg Vorbis libraries."
+#, kde-format
 msgid ""
 "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
 "FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
@@ -337,38 +326,10 @@ msgid ""
 "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
 "system."
 msgstr ""
-"<h1>Sonaj KD</h1> Tiu sklavo permesas facile ricevi sondosierojn en formo "
-"WAV, MP3 aŭ Ogg Vorbis el via muzika lumdisko (KD aŭ DVD). La sklavon vi "
-"vokas tajpante <i>\"audiocd:/\"</i> en la lokobreto de Konkeror. En tiu "
-"modulo vi povas agordi la kodadon kaj aparatan agordon. Notu, ke MP3- kaj "
-"Ogg-Vorbis-kodado eblas nur, se KDE estas instalita kun aktuala versio de la "
-"Lame aŭ Ogg-Vorbis bibliotekoj."
-
-#~ msgid "kcmaudiocd"
-#~ msgstr "kcmaudiocd"
-
-#~ msgid "(c) 2000 - 2005 Audio CD developers"
-#~ msgstr "(c) 2000 - 2005 sona-KD programistoj"
-
-#~ msgid ""
-#~ "Specify a location for the drive you want to use. Normally, this is a "
-#~ "file inside the /dev folder representing your CD or DVD drive."
-#~ msgstr ""
-#~ "Donu lokon de la aparato, kiun vi volas uzi. Normale tio estas dosiero en "
-#~ "la dosierujo /dev, reprezentanta vian lumdiskingon."
-
-#~ msgid "/dev/cdrom"
-#~ msgstr "/dev/cdrom"
-
-#~ msgid ""
-#~ "Uncheck this if you want to specify a CD device different from the one "
-#~ "autoprobed"
-#~ msgstr ""
-#~ "Malŝaltu tion, se vi volas uzi lumdiskan aparaton alian ol la aŭtomate "
-#~ "trovitan"
-
-#~ msgid "&Specify CD Device:"
-#~ msgstr "&Doni KD aparaton:"
-
-#~ msgid "Report errors found on the cd."
-#~ msgstr "Raporti la erarojn trovitajn sur la KD."
+"<h1>Sonaj KD</h1> Tiu KIO-laboranto permesas facile ricevi sondosierojn en "
+"formo WAV, FLAC, MP3 Ogg Vorbis aŭ Opus el via muzika lumdisko (KD aŭ DVD). "
+"La KIO-laboranton vi vokas tajpante <i>\"audiocd:/\"</i> en la lokobreto de "
+"Dolfin. En tiu modulo vi povas agordi la kodadon kaj aparatan agordon. Notu, "
+"ke FLAC-, MP3-, OggVorbis- kaj Opus-kodado eblas nur, se la respondaj "
+"bibliotekoj (libFLAC por FLAC kaj libvorbis por Ogg) estas instalataj en via "
+"sistemo."
