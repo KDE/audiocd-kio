@@ -6,20 +6,21 @@
 # Mickael Sibelle <kimael@gmail.com>, 2008.
 # xavier <xavier.besnard@neuf.fr>, 2012, 2013, 2020.
 #
+# Xavier BESNARD <xavier.besnard]neuf.fr>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2020-08-07 12:52+0200\n"
-"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2023-01-10 18:43+0100\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 20.04.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -99,18 +100,18 @@ msgstr ""
 "vsQ » en tant que simple utilisateur (non comme administrateur). Voyez-vous "
 "la liste des pistes ? Si la réponse est non, veuillez vous assurer que vous "
 "possédez les permissions nécessaires pour accéder au lecteur CD. Si vous "
-"utilisez l'émulation SCSI (possible si vous avez un graveur IDE), veuillez "
-"vous assurer d'avoir les droits de lecture et d'écriture sur le périphérique "
-"SCSI générique, qui est probablement /dev/sg0, /dev/sg1, etc. Si ça ne "
-"fonctionne toujours pas, essayez de saisir audiocd:/ ? device=/dev/sg0 (ou "
-"quelque chose de similaire) pour dire à « kio_audiocd » à quel périphérique "
-"correspond votre lecteur CD-ROM."
+"utilisez l'émulation « SCSI » (possible si vous avez un graveur IDE), "
+"veuillez vous assurer d'avoir les droits de lecture et d'écriture sur le "
+"périphérique « SCSI » générique, qui est probablement /dev/sg0, /dev/sg1, "
+"etc. Si ça ne fonctionne toujours pas, essayez de saisir audiocd:/ ? device=/"
+"dev/sg0 (ou quelque chose de similaire) pour dire à « kio_audiocd » à quel "
+"périphérique correspond votre lecteur CD-ROM."
 
 #: audiocd.cpp:972
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
-"Audiocd : le disque est endommagé sur cette piste, il est possible que les "
+"AudioCD : le disque est endommagé sur cette piste, il est possible que les "
 "données soient corrompues."
 
 #: audiocd.cpp:979
