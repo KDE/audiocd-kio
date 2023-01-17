@@ -97,7 +97,7 @@ msgstr "Basada en la taxa de bits"
 #: encoderopusconfig.ui:46
 #, kde-format
 msgid "Opus Bitrate Settings"
-msgstr "Configuració de la taxa de bits de l'Opus"
+msgstr "Configureu la taxa de bits d'Opus"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:52
@@ -223,7 +223,7 @@ msgstr ""
 #: encoderopusconfig.ui:286
 #, kde-format
 msgid "Opus Co&mplexity Setting"
-msgstr "Opció de la co&mplexitat de l'Opus"
+msgstr "Opció de la co&mplexitat d'Opus"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, complexitySlider)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, kcfg_opus_complexity)
