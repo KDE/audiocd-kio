@@ -94,7 +94,7 @@ msgstr "Basada en la taxa de bits"
 #: encodervorbisconfig.ui:45
 #, kde-format
 msgid "Vorbis Bitrate Settings"
-msgstr "Configuració de la taxa de bits del Vorbis"
+msgstr "Configureu la taxa de bits de Vorbis"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
