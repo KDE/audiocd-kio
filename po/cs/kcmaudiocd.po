@@ -1,6 +1,6 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Vít Pelčák <vit@pelcak.org>, 2010, 2017, 2019.
+# Vít Pelčák <vit@pelcak.org>, 2010, 2017, 2019, 2023.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2013.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2019-08-23 09:55+0200\n"
+"PO-Revision-Date: 2023-01-24 15:21+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -42,6 +42,10 @@ msgid ""
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
+"Zrušíte-li tuto volbu, tak se nástroj KIO pokusí nepoužívat opravu chyb, což "
+"je vhodné pro čtení poškozených CD médií. Je však nutné upozornit, že tato "
+"funkce může v některých případech způsobit problémy, takže je zde možné ji "
+"vypnout."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:52
@@ -289,7 +293,7 @@ msgstr "Enkodér %1"
 #: kcmaudiocd.cpp:92
 #, kde-format
 msgid "KDE Audio CD KIO Worker"
-msgstr ""
+msgstr "Nástroj KIO pro KDE Audio CD"
 
 #: kcmaudiocd.cpp:94
 #, kde-format
@@ -323,3 +327,12 @@ msgid ""
 "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
 "system."
 msgstr ""
+"<h1>Zvuková CD</h1> Nástroj KIO pro zvukové CD umožňuje snadno ukládat obsah "
+"zvukových CD nebo DVD disků do formátů WAV, FLAC, MP3 Ogg Vorbis nebo Opus. "
+"Klient je spuštěn zadáním <i>\"audiocd:/\"</i> do panelu umístění v "
+"Dolphinu. V tomto ovládacím modulu je možné nastavit všechny možnosti "
+"nástroje KIO jako kódování, hledání v CDDB databázi a nastavení zařízení. Je "
+"třeba poznamenat, že kódování do formátů FLAC, MP3, Ogg Vorbis a OPUS je k "
+"dispozici pouze v případě, že máte v systému k dispozici odpovídající "
+"knihovny (libFLAC pro FLAC a libvorbis pro Ogg) a nástroje (lame pro MP3 a "
+"opus-tools pro Opus)."
