@@ -25,7 +25,7 @@ target_include_directories(audiocdplugins
 )
 target_link_libraries(audiocdplugins
     PUBLIC
-        KF5::KIOCore
+        KF${KF_MAJOR_VERSION}::KIOCore
         KF5::Cddb
 )
 

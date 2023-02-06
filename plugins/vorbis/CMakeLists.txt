@@ -14,7 +14,7 @@ target_link_libraries(audiocd_encoder_vorbis
     OGGVORBIS::vorbis
     audiocdplugins
     KF5::Cddb
-    KF5::I18n
+    KF${KF_MAJOR_VERSION}::I18n
     Qt::Widgets
 )
 

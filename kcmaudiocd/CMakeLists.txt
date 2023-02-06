@@ -15,8 +15,8 @@ target_include_directories(kcm_audiocd
 
 target_link_libraries(kcm_audiocd
     audiocdplugins 
-    KF5::KCMUtils
-    KF5::I18n
+    KF${KF_MAJOR_VERSION}::KCMUtils
+    KF${KF_MAJOR_VERSION}::I18n
 )
 
 install(TARGETS kcm_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR})

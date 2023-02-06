@@ -25,7 +25,7 @@ target_include_directories(audiocd_encoder_lame
 target_link_libraries(audiocd_encoder_lame 
     audiocdplugins
     KF5::Cddb
-    KF5::I18n
+    KF${KF_MAJOR_VERSION}::I18n
     Qt::Widgets
 )
 

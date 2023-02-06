@@ -21,13 +21,20 @@ include(CheckStructHasMember)
 include(FeatureSummary)
 include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    set(QT_REQUIRED_VERSION "6.4.0")
+    set(KF_MIN_VERSION "5.240.0")
+    set(KF_MAJOR_VERSION "6")
+else()
+    set(KF_MAJOR_VERSION "5")
+endif()
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
 if (QT_MAJOR_VERSION STREQUAL 6)
     find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
 endif()
 
-find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
     I18n
     DocTools
@@ -81,7 +88,7 @@ endif()
 configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
 #############################
-ecm_set_disabled_deprecation_versions(QT 5.15.2
+ecm_set_disabled_deprecation_versions(QT 6.4
     KF 5.101.0
     )
 add_subdirectory(plugins)
@@ -109,7 +116,7 @@ set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
 target_link_libraries(kio_audiocd
     audiocdplugins
     KF5::CompactDisc
-    KF5::I18n
+    KF${KF_MAJOR_VERSION}::I18n
     Qt::Widgets
     Cdparanoia::Cdparanoia
 )
