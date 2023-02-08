@@ -8,32 +8,34 @@
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007.
 # Jeff Huang <s8321414@gmail.com>, 2016.
 # pan93412 <pan93412@gmail.com>, 2018, 2019.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2019-02-07 01:18+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2023-02-07 19:34+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 18.12.1\n"
+"X-Generator: Lokalize 23.03.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "陳英傑,ChaoHsiung Liao,Frank Weng(a.k.a. Franklin), Jeff Huang"
+msgstr ""
+"陳英傑,ChaoHsiung Liao,Frank Weng(a.k.a. Franklin), Jeff Huang, Kisaragi Hiu"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "r5224205@ms.cc.ntu.edu.tw,pesder@seed.net.tw,franklin@goodhorse.idv.tw, "
-"s8321414@gmail.com"
+"s8321414@gmail.com, mail@kisaragi-hiu.com"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:27
@@ -43,18 +45,14 @@ msgstr "一般(&G)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you uncheck this option, the slave will not try to use error "
-#| "correction which can be useful for reading damaged CDs. However, this "
-#| "feature can be problematic in some cases, so you can switch it off here."
+#, kde-format
 msgid ""
 "If you uncheck this option, the KIO worker will not try to use error "
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"假如你不選擇此選項，程式將不會嘗試使用有助於讀取損壞 CD 的錯誤修正功能。然而"
-"此特性在某些狀況可能有問題，因此你可以在此關掉它。"
+"假如你不選擇此選項，此 KIO Worker 將不會嘗試使用有助於讀取損壞 CD 用的錯誤修"
+"正功能。然而此功能在某些狀況可能有問題，因此你可以在此關掉它。"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:52
@@ -204,7 +202,7 @@ msgstr "%{albumtitle}"
 #: audiocdconfig.ui:297
 #, kde-format
 msgid "Track Number"
-msgstr "音軌數量"
+msgstr "音軌號碼"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
 #: audiocdconfig.ui:307
@@ -225,7 +223,7 @@ msgid ""
 "This defines where files will appear in relation to the encoder root, you "
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
-"這裡定義哪些檔案會出現在編碼器的根。您可以用 / 建立子目錄。例如："
+"這裡定義檔案會出現在哪裡，相對於編碼器的根。您可以用 / 建立子目錄。例如："
 "%{albumartist}/%{albumtitle}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
@@ -300,10 +298,9 @@ msgid "%1 Encoder"
 msgstr "%1 編碼器"
 
 #: kcmaudiocd.cpp:92
-#, fuzzy, kde-format
-#| msgid "KDE Audio CD IO Slave"
+#, kde-format
 msgid "KDE Audio CD KIO Worker"
-msgstr "KDE Audio-CD IO Slave"
+msgstr "KDE Audio CD KIO Worker"
 
 #: kcmaudiocd.cpp:94
 #, kde-format
@@ -326,16 +323,7 @@ msgid "Original Author"
 msgstr "原始作者"
 
 #: kcmaudiocd.cpp:251
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#| "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
-#| "The slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location "
-#| "bar. In this module, you can configure encoding, and device settings. "
-#| "Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if "
-#| "the corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-#| "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-#| "system."
+#, kde-format
 msgid ""
 "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
 "FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
@@ -346,8 +334,8 @@ msgid ""
 "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
 "system."
 msgstr ""
-"<h1>音樂 CD</h1>Audio CD IO-Slave 讓您能輕易地從您的音樂 CD-ROM 或 DVD 建立 "
-"wav 、FLAC、MP3、Ogg Vorbis 或 Opus 檔案。您可以在 Dolphin 的位址列鍵入 "
+"<h1>音樂 CD</h1>Audio CD KIO Worker 讓您能輕易地從您的音樂 CD-ROM 或 DVD 建"
+"立 wav 、FLAC、MP3、Ogg Vorbis 或 Opus 檔案。您可以在 Dolphin 的位址列輸入 "
 "<i>“audiocd:/”</i> 來呼叫它。在此模組中，您可以設定編碼、 CDDB 查詢和裝置設"
 "定。註：要先在您的系統中安裝對應的函式庫 (用於 FLAC 的 libFLAC 和 用於 Ogg 的"
 "libvorbis) 以及工具程式 (用於 MP3 的 lame 和用於 Opus 的 opus-tools)才能使用 "
