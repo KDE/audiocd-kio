@@ -1,6 +1,7 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"kcmaudiocd\")
 
-add_library(kcm_audiocd MODULE)
+kcoreaddons_add_plugin(kcm_audiocd INSTALL_NAMESPACE "plasma/kcms/systemsettings_qwidgets")
+kcmutils_generate_desktop_file(kcm_audiocd)
 
 target_sources(kcm_audiocd PRIVATE
     kcmaudiocd.cpp kcmaudiocd.h
@@ -18,10 +19,6 @@ target_link_libraries(kcm_audiocd
     KF${KF_MAJOR_VERSION}::KCMUtils
     KF${KF_MAJOR_VERSION}::I18n
 )
-
-install(TARGETS kcm_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR})
-
-install(FILES audiocd.desktop  DESTINATION  ${KDE_INSTALL_KSERVICESDIR})
 
 ########### add handbook ################
 

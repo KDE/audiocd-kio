@@ -35,7 +35,7 @@
 
 #include <audiocdencoder.h>
 
-K_PLUGIN_FACTORY(Factory, registerPlugin<KAudiocdModule>();)
+K_PLUGIN_CLASS_WITH_JSON(KAudiocdModule, "kcm_audiocd.json")
 
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     : KCModule(parent)
