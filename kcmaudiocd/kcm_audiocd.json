@@ -1,6 +1,7 @@
 {
     "Categories": "Qt;KDE;X-KDE-settings-sound;",
     "KPlugin": {
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=AudioCD-KIO",
         "Description": "Audiocd IO Worker Configuration",
         "Description[ar]": "ضبط عامل الدخل والخرج للأقراص الصوتية",
         "Description[az]": "Audiocd IO işləyicisi tənzimləməsi",
