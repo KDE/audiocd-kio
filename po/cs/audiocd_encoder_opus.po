@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
-# Vit Pelcak <vit@pelcak.org>, 2019.
+# Vit Pelcak <vit@pelcak.org>, 2019, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2019-02-12 13:26+0100\n"
+"PO-Revision-Date: 2023-02-14 10:11+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,31 +15,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 18.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Complexity or Bitrate"
-msgstr ""
+msgstr "Kódování Vorbis podle komplexity nebo datového toku"
 
 #. i18n: ectx: label, entry (set_opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:15
 #, kde-format
 msgid "Constant bitrate specified"
-msgstr ""
+msgstr "Zadán konstantní datový tok"
 
 #. i18n: ectx: label, entry (set_opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:19
 #, kde-format
 msgid "Constrained variable bitrate specified"
-msgstr ""
+msgstr "Zadán datový tok s omezenou proměnlivostí"
 
 #. i18n: ectx: label, entry (set_opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:23
 #, kde-format
 msgid "Average variable bitrate specified"
-msgstr ""
+msgstr "Zadán průměr proměnlivého datového toku"
 
 #. i18n: ectx: label, entry (opus_comments), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:28
@@ -51,7 +51,7 @@ msgstr "Přidat komentáře"
 #: audiocd_opus_encoder.kcfg:32
 #, kde-format
 msgid "Complexity"
-msgstr ""
+msgstr "Komplexita"
 
 #. i18n: ectx: label, entry (opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:39
@@ -63,13 +63,13 @@ msgstr "Konstantní datový tok"
 #: audiocd_opus_encoder.kcfg:46
 #, kde-format
 msgid "Constrained variable bitrate"
-msgstr ""
+msgstr "Datový tok s omezenou proměnlivostí"
 
 #. i18n: ectx: label, entry (opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:53
 #, kde-format
 msgid "Average variable bitrate"
-msgstr ""
+msgstr "Průměr proměnlivého datového toku"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_enc_method)
 #: encoderopusconfig.ui:17
@@ -81,7 +81,7 @@ msgstr "M&etoda kódování"
 #: encoderopusconfig.ui:23
 #, kde-format
 msgid "Complexity based"
-msgstr ""
+msgstr "Podle komplexity"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:33
@@ -197,13 +197,13 @@ msgstr "256 kbps"
 #: encoderopusconfig.ui:127
 #, kde-format
 msgid "Co&nstrained variable bitrate:"
-msgstr ""
+msgstr "Datový tok s omeze&nou proměnlivostí:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:202
 #, kde-format
 msgid "A&verage variable bitrate:"
-msgstr ""
+msgstr "Průměr proměnli&vého datového toku:"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:283
@@ -212,12 +212,14 @@ msgid ""
 "You can set the complexity of the encoded stream here. A higher value "
 "implies a higher complexity but encodes slower."
 msgstr ""
+"Zde můžete nastavit komplexitu výsledného zvuku. Vyšší hodnota znamená vyšší "
+"komplexitu, ale také pomalejší zpracování."
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:286
 #, kde-format
 msgid "Opus Co&mplexity Setting"
-msgstr ""
+msgstr "Nastavení ko&mplexity Opus"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, complexitySlider)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, kcfg_opus_complexity)
