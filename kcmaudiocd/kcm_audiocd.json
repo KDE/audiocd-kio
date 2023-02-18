@@ -12,6 +12,7 @@
         "Description[it]": "Configurazione dell'IO Worker per i CD Audio",
         "Description[ka]": "Audiocd IO დამხმარე პროცესის მორგება",
         "Description[nl]": "Configuratie van audioCD KIO-programma",
+        "Description[pt]": "Configuração do Módulo de E/S de CD's-Áudio",
         "Description[sl]": "Konfiguracija audiocd IO worker",
         "Description[tr]": "Ses CD'si Girdi-Çıktı Çalışanı Yapılandırması",
         "Description[uk]": "Налаштування обробника введення-виведення «Audiocd»",
