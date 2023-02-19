@@ -3,6 +3,7 @@
     "KPlugin": {
         "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=AudioCD-KIO",
         "Description": "Audiocd IO Worker Configuration",
+        "Description[az]": "Audiocd IO modulu ayarları",
         "Description[bg]": "Настройки на Audiocd IO обработване",
         "Description[ca@valencia]": "Configureu el procés de treball d'E/S dels CD àudio",
         "Description[ca]": "Configuració del procés de treball d'E/S dels CD àudio",
