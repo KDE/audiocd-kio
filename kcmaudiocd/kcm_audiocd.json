@@ -8,6 +8,7 @@
         "Description[ca@valencia]": "Configureu el procés de treball d'E/S dels CD àudio",
         "Description[ca]": "Configuració del procés de treball d'E/S dels CD àudio",
         "Description[cs]": "Nastavení nástroje IO pro zvuková CD",
+        "Description[en_GB]": "Audiocd IO Worker Configuration",
         "Description[eu]": "Audiocd SI behargina konfiguratzea",
         "Description[fr]": "Configuration du module de traitement d'entrées / sorties « audiocd »",
         "Description[ia]": "Configuration de Audiocd IO Worker",
