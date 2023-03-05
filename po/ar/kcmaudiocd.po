@@ -297,7 +297,7 @@ msgstr "مرمِز %1"
 #: kcmaudiocd.cpp:92
 #, kde-format
 msgid "KDE Audio CD KIO Worker"
-msgstr "عامل دخل/خرج لأقراص الصوت المدمجة لكدي"
+msgstr "عامل دخل/خرج لأقراص الصوت المدمجة لكِيدِي"
 
 #: kcmaudiocd.cpp:94
 #, kde-format
