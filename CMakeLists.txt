@@ -41,20 +41,37 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     KIO
     KCMUtils
 )
-find_package(KF5Cddb 5.1)
-set_package_properties(KF5Cddb PROPERTIES
-    DESCRIPTION "KF5 branch for CDDB library"
-    URL "https://commits.kde.org/libkcddb"
-    TYPE REQUIRED
-    PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
-)
-find_package(KF5CompactDisc)
-set_package_properties(KF5CompactDisc PROPERTIES
-    DESCRIPTION "KCompactDisc library"
-    URL "https://commits.kde.org/libkcompactdisc"
-    TYPE REQUIRED
-    PURPOSE "libkcompactdisc is used to access CD drives."
-)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(KCompactDisc6)
+    set_package_properties(KCompactDisc6 PROPERTIES
+        DESCRIPTION "KCompactDisc library"
+        URL "https://commits.kde.org/libkcompactdisc"
+        TYPE REQUIRED
+        PURPOSE "libkcompactdisc is used to access CD drives."
+    )
+    find_package(KCddb6 5.1)
+    set_package_properties(KCddb6 PROPERTIES
+        DESCRIPTION "Library used to retrieve audio CD metadata from the Internet"
+        URL "https://commits.kde.org/libkcddb"
+        TYPE REQUIRED
+        PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
+    )
+else()
+    find_package(KF5CompactDisc)
+    set_package_properties(KF5CompactDisc PROPERTIES
+        DESCRIPTION "KCompactDisc library"
+        URL "https://commits.kde.org/libkcompactdisc"
+        TYPE REQUIRED
+        PURPOSE "libkcompactdisc is used to access CD drives."
+    )
+    find_package(KF5Cddb 5.1)
+    set_package_properties(KF5Cddb PROPERTIES
+        DESCRIPTION "Library used to retrieve audio CD metadata from the Internet"
+        URL "https://commits.kde.org/libkcddb"
+        TYPE REQUIRED
+        PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
+    )
+endif()
 
 find_package(Cdparanoia REQUIRED)
 
@@ -109,13 +126,14 @@ set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
 
 target_link_libraries(kio_audiocd
     audiocdplugins
-    KF5::CompactDisc
     KF${KF_MAJOR_VERSION}::I18n
     Qt::Widgets
     Cdparanoia::Cdparanoia
 )
-if (TARGET Qt6::Core5Compat)
-    target_link_libraries(kio_audiocd Qt6::Core5Compat)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(kio_audiocd Qt6::Core5Compat KCompactDisc6)
+else()
+    target_link_libraries(kio_audiocd KF5::CompactDisc)
 endif()
 
 install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/kio)

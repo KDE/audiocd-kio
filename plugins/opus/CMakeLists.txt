@@ -17,10 +17,14 @@ target_include_directories(audiocd_encoder_opus
 
 target_link_libraries(audiocd_encoder_opus
     audiocdplugins
-    KF5::Cddb
     KF${KF_MAJOR_VERSION}::I18n
     Qt::Widgets
 )
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(audiocd_encoder_opus KCddb6)
+else()
+    target_link_libraries(audiocd_encoder_opus KF5::Cddb)
+endif()
 
 install(TARGETS audiocd_encoder_opus  DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
