@@ -56,12 +56,6 @@ set_package_properties(KF5CompactDisc PROPERTIES
     PURPOSE "libkcompactdisc is used to access CD drives."
 )
 
-ecm_setup_version(${audiocd_VERSION}
-    VARIABLE_PREFIX AUDIOCDPLUGINS
-    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_version.h"
-    SOVERSION 5
-)
-
 find_package(Cdparanoia REQUIRED)
 
 cmake_push_check_state()
