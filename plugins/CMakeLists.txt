@@ -14,6 +14,8 @@ add_subdirectory(opus)
 
 ########### next target ###############
 
+set(AUDIOCDPLUGINS_INSTALL_INCLUDEDIR "${KDE_INSTALL_INCLUDEDIR}/audiocdplugins")
+
 add_library(audiocdplugins SHARED)
 
 target_sources(audiocdplugins PRIVATE
@@ -45,7 +47,7 @@ install(TARGETS audiocdplugins ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/audiocdplugins_export.h
     audiocdencoder.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}
+    DESTINATION ${AUDIOCDPLUGINS_INSTALL_INCLUDEDIR}
     COMPONENT Devel
 )
 

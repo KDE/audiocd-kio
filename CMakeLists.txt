@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(audiocd VERSION "5.0.0")
+project(audiocd VERSION "5.1.0")
 
 set(QT_MIN_VERSION "5.15.2")
 set(KF_MIN_VERSION "5.96.0")
