@@ -5,7 +5,7 @@
 # ./SuperbepS <superbeps@bglug.it>, 2005.
 # Giuseppe Ravasio <gravasio@kng.it>, 2006, 2007.
 # Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2018, 2019, 2022.
-# Paolo Zamponi <zapaolo@email.it>, 2020.
+# Paolo Zamponi <feus73@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
