@@ -1,26 +1,27 @@
 # translation of kcmaudiocd.po to galician
 # Copyright (C) 2003, 2004, 2006, 2007, 2009 Free Software Foundation, Inc.
-#
 # Javier Jardón <javierjc@mundo-r.com>, 2003, 2004.
 # Xabi G. Feal <xabigf@gmx.net>, 2006.
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2009.
 # Miguel Branco <mgl.branco@gmail.com>, 2009.
 # Manuel A. Vazquez <xixirei@yahoo.es>, 2011, 2012.
 # Marce Villarino <mvillarino@kde-espana.org>, 2013.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2019-03-28 12:10+0100\n"
+"PO-Revision-Date: 2023-04-28 17:36+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -40,19 +41,16 @@ msgstr "&Xeral"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you uncheck this option, the slave will not try to use error "
-#| "correction which can be useful for reading damaged CDs. However, this "
-#| "feature can be problematic in some cases, so you can switch it off here."
+#, kde-format
 msgid ""
 "If you uncheck this option, the KIO worker will not try to use error "
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"Se desmarca esta opción, o escravo non intentará empregar a corrección de "
-"erros que pode ser útil para ler CDs danados. Porén, esta característica "
-"pode ser problemática nalgúns casos, polo que pode desactivala aquí."
+"Se desmarca esta opción, o traballador de KIO non intentará empregar a "
+"corrección de erros que pode ser útil para ler CDs danados. Porén, esta "
+"característica pode ser problemática nalgúns casos, polo que pode "
+"desactivala aquí."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:52
@@ -300,10 +298,9 @@ msgid "%1 Encoder"
 msgstr "Codificador %1"
 
 #: kcmaudiocd.cpp:92
-#, fuzzy, kde-format
-#| msgid "KDE Audio CD IO Slave"
+#, kde-format
 msgid "KDE Audio CD KIO Worker"
-msgstr "IOslave de CD de son para KDE"
+msgstr "Traballador de KIO de CD de son de KDE"
 
 #: kcmaudiocd.cpp:94
 #, kde-format
@@ -326,16 +323,7 @@ msgid "Original Author"
 msgstr "Autor orixinal."
 
 #: kcmaudiocd.cpp:251
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#| "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
-#| "The slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location "
-#| "bar. In this module, you can configure encoding, and device settings. "
-#| "Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if "
-#| "the corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-#| "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-#| "system."
+#, kde-format
 msgid ""
 "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
 "FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
@@ -346,13 +334,13 @@ msgid ""
 "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
 "system."
 msgstr ""
-"<h1>CDs de son</h1>O ioslave de CD de son permítelle crear ficheiros WAV, "
-"FLAC, MP3, Ogg Vorbis ou Opus do seu CD-ROM ou dispositivo DVD de son. O "
-"ioslave invócase escribindo <i>audiocd:/</i> na barra de lugares de Dolphin. "
-"Neste módulo podes configurar todos os aspectos do ioslave como codificación "
-"e opcións de dispositivo. Lembra que a codificación de FLAC, MP3, Ogg Vorbis "
-"e Opus só están dispoñíbeis se as bibliotecas (libFLAC para FLAC e libvorbis "
-"para Ogg) e ferramentas (lame para MP3 e opus-tools para Opus) "
+"<h1>CDs de son</h1>O traballador de KIO de CD de son permítelle crear "
+"ficheiros WAV, FLAC, MP3, Ogg Vorbis ou Opus do seu CD-ROM ou dispositivo "
+"DVD de son. O traballador de KIO invócase escribindo <i>audiocd:/</i> na "
+"barra de lugares de Dolphin. Neste módulo podes configurar as opcións de "
+"codificación e de dispositivos. Lembra que a codificación de FLAC, MP3, Ogg "
+"Vorbis e Opus só están dispoñíbeis se as bibliotecas (libFLAC para FLAC e "
+"libvorbis para Ogg) e ferramentas (lame para MP3 e opus-tools para Opus) "
 "correspondentes están instaladas no sistema."
 
 #~ msgid "kcmaudiocd"
