@@ -15,6 +15,7 @@
         "Description[eu]": "Audiocd SI behargina konfiguratzea",
         "Description[fi]": "Ääni-CD-siirräntätyöskentelijän asetukset",
         "Description[fr]": "Configuration du module de traitement d'entrées / sorties « audiocd »",
+        "Description[gl]": "Configuración do traballador IO de audiocd",
         "Description[ia]": "Configuration de Audiocd IO Worker",
         "Description[is]": "Stillingar Audiocd IO-vinnslu",
         "Description[it]": "Configurazione dell'IO Worker per i CD Audio",
