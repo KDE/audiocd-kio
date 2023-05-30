@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2023-01-08 21:45+0100\n"
+"PO-Revision-Date: 2023-05-29 21:25+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -217,12 +217,14 @@ msgid ""
 "This defines where files will appear in relation to the encoder root, you "
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
+"Tio difinas kie dosieroj aperos rilate al la kodila radiko; povas uzi / por "
+"krei subdosierujojn. Ekz.: %{albumartist}/%{albumtitle} "
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:450
 #, kde-format
 msgid "Files Location"
-msgstr ""
+msgstr "Loko de Dosieroj"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:572
@@ -312,7 +314,7 @@ msgstr "Carsten Duvenhorst"
 #: kcmaudiocd.cpp:95
 #, kde-format
 msgid "Original Author"
-msgstr ""
+msgstr "Origina Aŭtoro"
 
 #: kcmaudiocd.cpp:251
 #, kde-format

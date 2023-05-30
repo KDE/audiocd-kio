@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2023-01-04 22:00+01\n"
+"PO-Revision-Date: 2023-05-29 21:25+01\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
@@ -51,6 +51,8 @@ msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
 msgstr ""
+"Vi ne povas doni gastiganton kun ĉi tiu protokolo. Bonvolu uzu la audiocd:/ "
+"formaton anstataŭe."
 
 #: audiocd.cpp:874
 #, kde-format
@@ -64,6 +66,8 @@ msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
+"Aparato ne havas legpermesojn por ĉi tiu konto.  Kontrolu la legopermesojn "
+"de la aparato."
 
 #: audiocd.cpp:888
 #, kde-format
@@ -71,6 +75,8 @@ msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
+"Aparato ne havas skribpermesojn por ĉi tiu konto.  Kontrolu la "
+"skribopermesojn de la aparato."
 
 #: audiocd.cpp:894
 #, kde-format
@@ -88,17 +94,17 @@ msgstr ""
 #: audiocd.cpp:972
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
-msgstr ""
+msgstr "AudioCD: Detektis diskan damaĝon sur ĉi trako, risko de datumdifekto."
 
 #: audiocd.cpp:979
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr ""
+msgstr "Eraro legante aŭdaĵdatenojn por %1 de la KD"
 
 #: audiocd.cpp:989 audiocd.cpp:1067
 #, kde-format
 msgid "Could not read %1: encoding failed"
-msgstr ""
+msgstr "Ne povis legi %1: kodigo malsukcesis"
 
 #: audiocd.cpp:1198
 #, kde-format
