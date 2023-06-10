@@ -37,14 +37,21 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KAudiocdModule, "kcm_audiocd.json")
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
     : KCModule(parent)
+#else
+KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
+    : KCModule(parent, md)
+#endif
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     Q_UNUSED(lst);
+#endif
 
-    auto box = new QVBoxLayout(this);
+    auto box = new QVBoxLayout(widget());
 
-    audioConfig = new AudiocdConfig(this);
+    audioConfig = new AudiocdConfig(widget());
 
     box->addWidget(audioConfig);
     setButtons(Default | Apply | Help);
@@ -93,13 +100,22 @@ KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
 
     about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), QStringLiteral("ben@meyerhome.net"));
     about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), QStringLiteral("duvenhorst@duvnet.de"));
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     setAboutData(about);
+#endif
 }
 
 KAudiocdModule::~KAudiocdModule()
 {
     delete config;
 }
+
+#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5, 105, 0)
+QWidget *KAudiocdModule::widget()
+{
+    return this;
+}
+#endif
 
 QString removeQoutes(const QString &text)
 {
@@ -227,7 +243,11 @@ void KAudiocdModule::slotModuleChanged() {
 
 void KAudiocdModule::slotConfigChanged() {
     configChanged = true;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     Q_EMIT changed(true);
+#else
+    setNeedsSave(true);
+#endif
 }
 
 /*
@@ -245,6 +265,7 @@ void KAudiocdModule::slotEcEnable() {
   slotConfigChanged();
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 QString KAudiocdModule::quickHelp() const
 {
     return i18n(
@@ -261,5 +282,6 @@ QString KAudiocdModule::quickHelp() const
         "opus-tools for Opus)"
         " are installed in your system.");
 }
+#endif
 
 #include "kcmaudiocd.moc"
