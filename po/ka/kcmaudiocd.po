@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"POT-Creation-Date: 2023-06-11 00:46+0000\n"
 "PO-Revision-Date: 2023-02-03 16:34+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -274,8 +274,8 @@ msgstr "მაგალითი"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:141
-#: kcmaudiocd.cpp:210
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
+#: kcmaudiocd.cpp:226
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "მოსაწონი ხელოვანი - მაგალითად აუდიო ფაილი.wav"
@@ -286,37 +286,37 @@ msgstr "მოსაწონი ხელოვანი - მაგალი�
 msgid "Replace with:"
 msgstr "ჩანაცვლება:"
 
-#: kcmaudiocd.cpp:61
+#: kcmaudiocd.cpp:68
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1-ის ენკოდერი"
 
-#: kcmaudiocd.cpp:92
+#: kcmaudiocd.cpp:99
 #, kde-format
 msgid "KDE Audio CD KIO Worker"
 msgstr "KDE Audio CD KIO დამხმარე პროცესი"
 
-#: kcmaudiocd.cpp:94
+#: kcmaudiocd.cpp:101
 #, kde-format
 msgid "Benjamin C. Meyer"
 msgstr "Benjamin C. Meyer"
 
-#: kcmaudiocd.cpp:94
+#: kcmaudiocd.cpp:101
 #, kde-format
 msgid "Former Maintainer"
 msgstr "ყოფილი პროგრამისტი"
 
-#: kcmaudiocd.cpp:95
+#: kcmaudiocd.cpp:102
 #, kde-format
 msgid "Carsten Duvenhorst"
 msgstr "Carsten Duvenhorst"
 
-#: kcmaudiocd.cpp:95
+#: kcmaudiocd.cpp:102
 #, kde-format
 msgid "Original Author"
 msgstr "საწყისი ავტორი"
 
-#: kcmaudiocd.cpp:251
+#: kcmaudiocd.cpp:272
 #, kde-format
 msgid ""
 "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "

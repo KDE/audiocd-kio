@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"POT-Creation-Date: 2023-06-11 00:46+0000\n"
 "PO-Revision-Date: 2023-01-10 18:43+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -289,8 +289,8 @@ msgstr "Exemple"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:141
-#: kcmaudiocd.cpp:210
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
+#: kcmaudiocd.cpp:226
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Artiste - fichier audio d'exemple « file.wav »."
@@ -301,37 +301,37 @@ msgstr "Artiste - fichier audio d'exemple « file.wav »."
 msgid "Replace with:"
 msgstr "Remplacer par :"
 
-#: kcmaudiocd.cpp:61
+#: kcmaudiocd.cpp:68
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Encodeur %1"
 
-#: kcmaudiocd.cpp:92
+#: kcmaudiocd.cpp:99
 #, kde-format
 msgid "KDE Audio CD KIO Worker"
 msgstr "Module d'entrées / sorties « AudioCD » de KDE"
 
-#: kcmaudiocd.cpp:94
+#: kcmaudiocd.cpp:101
 #, kde-format
 msgid "Benjamin C. Meyer"
 msgstr "Benjamin C. Meyer"
 
-#: kcmaudiocd.cpp:94
+#: kcmaudiocd.cpp:101
 #, kde-format
 msgid "Former Maintainer"
 msgstr "Ancien mainteneur"
 
-#: kcmaudiocd.cpp:95
+#: kcmaudiocd.cpp:102
 #, kde-format
 msgid "Carsten Duvenhorst"
 msgstr "Carsten Duvenhorst"
 
-#: kcmaudiocd.cpp:95
+#: kcmaudiocd.cpp:102
 #, kde-format
 msgid "Original Author"
 msgstr "Auteur originel"
 
-#: kcmaudiocd.cpp:251
+#: kcmaudiocd.cpp:272
 #, kde-format
 msgid ""
 "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
