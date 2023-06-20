@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2023-06-17 10:53+0200\n"
+"PO-Revision-Date: 2023-06-19 13:02+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -30,19 +30,19 @@ msgstr "Calidade de codificación ou taxa de bits de Vorbis"
 #: audiocd_vorbis_encoder.kcfg:15
 #, kde-format
 msgid "Minimal bitrate specified"
-msgstr "Taxa de bits mínima especificada"
+msgstr "Taxa de bits mínima indicada"
 
 #. i18n: ectx: label, entry (set_vorbis_max_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:19
 #, kde-format
 msgid "Maximal bitrate specified"
-msgstr "Taxa de bits máxima especificada"
+msgstr "Taxa de bits máxima indicada"
 
 #. i18n: ectx: label, entry (set_vorbis_nominal_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:23
 #, kde-format
 msgid "Average bitrate specified"
-msgstr "Taxa de bits media especificada"
+msgstr "Taxa de bits media indicada"
 
 #. i18n: ectx: label, entry (vorbis_comments), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:28
@@ -233,7 +233,7 @@ msgid ""
 "You can set the quality of the encoded stream here. A higher value implies a "
 "higher quality but encodes slower."
 msgstr ""
-"Aquí podes estabelecer a calidade da retransmisión codificada. Un valor máis "
+"Aquí podes definir a calidade da retransmisión codificada. Un valor máis "
 "alto implica unha calidade maior pero codifícase máis lentamente."
 
 #. i18n: ectx: property (whatsThis), widget (QDoubleSpinBox, kcfg_vorbis_quality)
@@ -264,6 +264,6 @@ msgid ""
 "Retrieval\"</i> control module for details."
 msgstr ""
 "Engade unha descrición da canción á cabeceira do ficheiro. Isto fai máis "
-"doado para o usuario mostrar información avanzada da canción no reprodutor "
+"doado para o usuario amosar información avanzada da canción no reprodutor "
 "multimedia. Podes obter esta información automaticamente por Internet. "
 "Consulte o módulo de control <i>«Obtención CDDB»</i> para máis detalles."

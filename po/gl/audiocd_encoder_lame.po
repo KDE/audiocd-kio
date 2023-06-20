@@ -5,20 +5,21 @@
 # Marce Villarino <mvillarino@users.sourceforge.net>, 2008.
 # Miguel Branco <mgl.branco@gmail.com>, 2009, 2012.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2017-10-27 08:00+0100\n"
+"PO-Revision-Date: 2023-06-19 13:01+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -528,7 +529,7 @@ msgstr "Taxa de bits &mínima:"
 #: encoderlameconfig.ui:496
 #, kde-format
 msgid "This selects the minimal bitrate used for encoding."
-msgstr "Isto selecciona a taxa de bits mínima empregada na codificación."
+msgstr "Isto selecciona a taxa de bits mínima usada na codificación."
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:598
