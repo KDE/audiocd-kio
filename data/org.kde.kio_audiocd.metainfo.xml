@@ -63,7 +63,7 @@
   <summary xml:lang="eu">Audio CDen integrazio gardena KDE Plasma eta KDE aplikazioekin, datuak bihurtzeko gaitasunarekin</summary>
   <summary xml:lang="fi">Ääni-CD:iden läpinäkyvä integrointi KDE Plasmaan ja Plasma-sovelluksiin tiedonmuunnosominaisuuksin</summary>
   <summary xml:lang="fr">Intégration transparente des CD audio à Plasma et aux applications KDE avec des fonctionnalités de conversion des données</summary>
-  <summary xml:lang="gl">Integración transparente de CD de son con KDE Plasma e aplicativos de KDE con funcionalidades de conversión de datos</summary>
+  <summary xml:lang="gl">Integración transparente de CD de son con KDE Plasma e aplicacións de KDE con funcionalidades de conversión de datos.</summary>
   <summary xml:lang="hu">Hang CD-k transzparens integrációja a KDE Plasmába és az adatkonverziós képességekkel rendelkező KDE alkalmazásokba</summary>
   <summary xml:lang="ia">Integration transparente de audio CDs con KDE Plasma e applicationes de KDE con capacitates de conversion de datos</summary>
   <summary xml:lang="id">CD audio yang terintegrasi transparan dengan Plasma KDE dan aplikasi KDE</summary>
@@ -102,7 +102,7 @@
     <p xml:lang="eu">KIO AudioCD, KIO-jakitun diren aplikazioei (Dolphin edo k3b esaterako) audio CDetako audioa eta CD testu datuak atzitzen uzten dien KIO behargin bat da. Arrastatu eta jareginez audio datuen bihurketa gardena egiten uzten du formatu ezagunetara eta konfiguratzeko Sistema-Ezarpenetako modulu bat du erabilgarri "Multimedia" atalean.</p>
     <p xml:lang="fi">Ääni-CD-KIO on KIO-asiakas, joka mahdollistaa KIO-sovellusten (kuten Dolphinin tai K3b:n) pääsyn ääni-CD-levyjen ääni- ja CD-tekstitietoon. Se mahdollistaa äänitiedon muuntamisen vetämällä ja pudottamalla suosittuihin tiedostomuotoihin. Sillä on Multimedia-osiossa oma asetusmoduulinsa.</p>
     <p xml:lang="fr">KIO AudioCD est un module d'entrées / sorties permettant aux applications compatibles « kio » (comme Dolphin ou k3b) d'accéder aux données audio et texte des disques compacts (CD) audio. Ce module permet de convertir les données audio dans de nombreux formats populaires à l'aide d'une opération de glisser-déposer. Il dispose d'un module dans la section « Multimédia » de la Configuration du système.</p>
-    <p xml:lang="gl">KIO AudioCD é un traballador de KIO que permite aos aplicativos compatíbeis con KIO (como Dolphin ou k3b) para acceder aos datos de son e texto de CD dos discos compactos de son. Permite converter de maneira transparente, arrastrando e soltando, os datos de son en formatos populares, e ten un módulo de configuración na «Configuración do sistema», na sección «Multimedia».</p>
+    <p xml:lang="gl">KIO AudioCD é un traballador de KIO que permite ás aplicacións compatíbeis con KIO (como Dolphin ou k3b) para acceder aos datos de son e texto de CD dos discos compactos de son. Permite converter de maneira transparente, arrastrando e soltando, os datos de son en formatos populares, e ten un módulo de configuración na «Configuración do sistema», na sección «Multimedia».</p>
     <p xml:lang="ia">KIO AudioCD es un travaliator (worker) KIO que habilita applicationes conscie de KIO (tal como Dolphin o K3b) a acceder a datos audio e de texto de CD sur discos de compacte audio. Illo permitte conversion transparente de traher e  deponer de datos audio in le formatos popular e ha un modulo de Preferentias de Systema de configuration  disponibile in le section "Multipedia"</p>
     <p xml:lang="it">KIO AudioCD è un KIO worker che consente alle applicazioni che gestiscono KIO (come Dolphin o k3b) di accedere ai dati audio e testuali dei CD audio. Permette una conversione trasparente tramite trascinamento dei dati audio nei formati audio più popolari, e dispone di un modulo in Impostazioni di sistema, nella sezione «Multimedia».</p>
     <p xml:lang="ka">KIO AudioCD-ი KIO-ის დამხმარე პროცესია, რომელიც KIO-სთან მომუშავე აპლიკაციებს (მაგალითად Dolphin-ს ან K3b-ს) საშუალებას აძლევთ, იქონიონ წვდომა ხმაზე და CD-ტექსტზე, რომელიც დისკზეა. ის საშუალებას გაძლევთ, მარტივი გადათრევით გარდაქმნათ აუდიო მონაცემები პოპულარულ ფორმატებში და გააჩნია სისტემის მორგების მოდული, რომელიც "მულტიმედიის" სექციაშია ხელმისაწვდომი.</p>
@@ -144,7 +144,7 @@
       <caption xml:lang="eu">KIO AudioCD konfiguratzeko leihoa</caption>
       <caption xml:lang="fi">Ääni-CD-KIO:n asetusikkuna</caption>
       <caption xml:lang="fr">Fenêtre de configuration de KIO AudioCD</caption>
-      <caption xml:lang="gl">Xanela de configuración de KIO AudioCD</caption>
+      <caption xml:lang="gl">Xanela de configuración de KIO AudioCD.</caption>
       <caption xml:lang="hu">KIO AudioCD beállítóablak</caption>
       <caption xml:lang="ia">Fenestra de configuration de KIO AudioCD</caption>
       <caption xml:lang="id">Jendela konfigurasi KIO AudioCD </caption>
