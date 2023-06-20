@@ -47,7 +47,7 @@ msgid ""
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"Se desmarca esta opción, o traballador de KIO non intentará empregar a "
+"Se desmarca esta opción, o traballador de KIO non intentará usar a "
 "corrección de erros que pode ser útil para ler CD danados. Porén, esta "
 "característica pode ser problemática nalgúns casos, polo que pode "
 "desactivala aquí."
@@ -222,8 +222,7 @@ msgid ""
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
 "Isto define onde aparecerán os ficheiros en relación á raíz do codificador. "
-"Poderás empregar / para crear subdirectorios. P.ex. %{albumartist}/"
-"%{albumtitle} "
+"Poderás usar / para crear subdirectorios. P.ex. %{albumartist}/%{albumtitle} "
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:450

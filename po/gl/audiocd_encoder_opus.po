@@ -212,8 +212,8 @@ msgid ""
 "You can set the complexity of the encoded stream here. A higher value "
 "implies a higher complexity but encodes slower."
 msgstr ""
-"Aquí podes estabelecer a complexidade da retransmisión codificada. Un valor "
-"máis alto implica unha complexidade maior pero codifícase máis lentamente."
+"Aquí podes definir a complexidade da retransmisión codificada. Un valor máis "
+"alto implica unha complexidade maior pero codifícase máis lentamente."
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:286
@@ -244,7 +244,7 @@ msgid ""
 "Retrieval\"</i> control module for details."
 msgstr ""
 "Engade unha descrición da canción á cabeceira do ficheiro. Isto fai máis "
-"doado para o usuario mostrar información avanzada da canción no reprodutor "
+"doado para o usuario amosar información avanzada da canción no reprodutor "
 "multimedia. Podes obter esta información automaticamente por Internet. "
 "Consulte o módulo de control <i>«Obtención CDDB»</i> para máis detalles."
 
