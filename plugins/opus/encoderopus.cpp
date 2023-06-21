@@ -262,3 +262,5 @@ QString EncoderOpus::lastErrorMessage() const
 {
     return d->lastErrorMessage;
 }
+
+#include "moc_encoderopus.cpp"

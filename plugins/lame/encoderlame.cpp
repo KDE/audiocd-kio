@@ -374,3 +374,5 @@ QString EncoderLame::lastErrorMessage() const
 {
     return d->lastErrorMessage;
 }
+
+#include "moc_encoderlame.cpp"

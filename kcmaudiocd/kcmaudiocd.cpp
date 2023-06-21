@@ -285,3 +285,4 @@ QString KAudiocdModule::quickHelp() const
 #endif
 
 #include "kcmaudiocd.moc"
+#include "moc_kcmaudiocd.cpp"
