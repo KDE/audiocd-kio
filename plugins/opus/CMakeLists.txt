@@ -22,6 +22,6 @@ target_link_libraries(audiocd_encoder_opus
     KCddb6
 )
 
-install(TARGETS audiocd_encoder_opus  DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS audiocd_encoder_opus  DESTINATION ${KDE_INSTALL_PLUGINDIR}/audiocd)
 
 install(FILES audiocd_opus_encoder.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
