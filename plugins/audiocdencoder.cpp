@@ -54,7 +54,7 @@ void AudioCDEncoder::findAllPlugins(KIO::WorkerBase *worker, QList<AudioCDEncode
 
     const auto libraryPaths{QCoreApplication::libraryPaths()};
     for (const QString &path : libraryPaths) {
-        QDir dir(path);
+        QDir dir(path + QLatin1String("/audiocd"));
         if (!dir.exists()) {
             // qCDebug(AUDIOCD_KIO_LOG) << "Library path" << path << "does not exist";
             continue;

@@ -16,4 +16,4 @@ target_link_libraries(audiocd_encoder_wav
     audiocdplugins 
 )
 
-install(TARGETS audiocd_encoder_wav  DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS audiocd_encoder_wav  DESTINATION ${KDE_INSTALL_PLUGINDIR}/audiocd)

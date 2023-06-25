@@ -22,7 +22,7 @@ else()
     target_link_libraries(audiocd_encoder_vorbis KF5::Cddb)
 endif()
 
-install(TARGETS audiocd_encoder_vorbis  DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS audiocd_encoder_vorbis  DESTINATION ${KDE_INSTALL_PLUGINDIR}/audiocd)
 
 install(FILES audiocd_vorbis_encoder.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
 
