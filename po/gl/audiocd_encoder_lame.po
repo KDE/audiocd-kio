@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2023-06-19 13:01+0200\n"
+"PO-Revision-Date: 2023-06-24 10:57+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -195,7 +195,7 @@ msgstr "Con &copyright"
 #: encoderlameconfig.ui:31
 #, kde-format
 msgid "Mark MP3 file as copyrighted"
-msgstr "Marcar o ficheiro MP3 como con copyright"
+msgstr "Marcar o ficheiro MP3 como con dereitos de autor."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_copyright)
 #: encoderlameconfig.ui:34
@@ -213,7 +213,7 @@ msgstr "Orixi&nal"
 #: encoderlameconfig.ui:47
 #, kde-format
 msgid "Mark MP3 file as an original"
-msgstr "Marcar o ficheiro MP3 como orixinal"
+msgstr "Marcar o ficheiro MP3 como orixinal."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_original)
 #: encoderlameconfig.ui:50
@@ -231,7 +231,7 @@ msgstr "Codificación &ISO"
 #: encoderlameconfig.ui:60
 #, kde-format
 msgid "Try to use strict ISO encoding"
-msgstr "Intentar usar estritamente a codificación ISO"
+msgstr "Intentar usar estritamente a codificación ISO."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_iso)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vbr_max_br)
@@ -260,7 +260,7 @@ msgid ""
 "If checked and if cddb support is available, an id3 tag will be appended"
 msgstr ""
 "Se esta opción está marcada e está dispoñíbel a compatibilidade con cddb, "
-"engadirase unha etiqueta id3"
+"engadirase unha etiqueta id3."
 
 #. i18n: ectx: property (title), widget (QGroupBox, buttonGroup1)
 #: encoderlameconfig.ui:109
