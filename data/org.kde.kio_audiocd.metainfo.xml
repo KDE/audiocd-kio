@@ -176,9 +176,9 @@
   </categories>
   <icon type="stock">media-optical-audio</icon>
   <releases>
+    <release version="5.1.0" date="2023-07-06"/>
     <release version="5.1.0" date="2023-06-08"/>
     <release version="5.1.0" date="2023-05-11"/>
     <release version="5.1.0" date="2023-04-20"/>
-    <release version="5.0.0" date="2023-03-02"/>
   </releases>
 </component>
