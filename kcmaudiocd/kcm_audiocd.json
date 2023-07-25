@@ -29,6 +29,7 @@
         "Description[pt_BR]": "Configuração do IO worker de CD de áudio",
         "Description[ru]": "Настройка модуля AudioCD",
         "Description[sl]": "Konfiguracija audiocd IO worker",
+        "Description[sv]": "Inställning av I/O-arbetare för ljud-cd",
         "Description[tr]": "Ses CD'si Girdi-Çıktı Çalışanı Yapılandırması",
         "Description[uk]": "Налаштування обробника введення-виведення «Audiocd»",
         "Description[x-test]": "xxAudiocd IO Worker Configurationxx",
