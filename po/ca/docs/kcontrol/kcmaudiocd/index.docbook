@@ -197,7 +197,7 @@
 ></term>
 <listitem>
 <para
->El nivell de compressió és un valor enter entre 0 i 8 que representa la compensació entre la mida del fitxer i la velocitat de compressió.</para>
+>El nivell de compressió és un valor enter entre 0 i 8 que representa l'equilibri entre la mida del fitxer i la velocitat de compressió.</para>
 <para
 >Establir el nivell de compressió a 0 produirà un temps més curt de compressió, però generarà un fitxer comparativament gran.</para>
 <para
