@@ -22,7 +22,7 @@ include(FeatureSummary)
 include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
 if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.4.0")
+    set(QT_REQUIRED_VERSION "6.5.0")
     set(KF_MIN_VERSION "5.240.0")
     set(KF_MAJOR_VERSION "6")
 else()
@@ -99,7 +99,7 @@ endif()
 configure_file(config-audiocd.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-audiocd.h)
 
 #############################
-ecm_set_disabled_deprecation_versions(QT 6.4
+ecm_set_disabled_deprecation_versions(QT 6.5
     KF 5.101.0
     )
 add_subdirectory(plugins)
