@@ -3,6 +3,7 @@
         "audiocd": {
             "Class": ":local",
             "Icon": "media-optical-audio",
+            "ShowPreviews": false,
             "X-DocPath": "kioslave5/audiocd/index.html",
             "copyFromFile": true,
             "copyToFile": false,
@@ -23,8 +24,7 @@
             "output": "filesystem",
             "protocol": "audiocd",
             "reading": true,
-            "writing": false,
-            "ShowPreviews": false
+            "writing": false
         }
     }
 }
