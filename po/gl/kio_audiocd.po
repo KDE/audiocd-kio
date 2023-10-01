@@ -117,7 +117,7 @@ msgstr "Erro ao ler os datos de son para %1 desde o CD"
 #: audiocd.cpp:989 audiocd.cpp:1067
 #, kde-format
 msgid "Could not read %1: encoding failed"
-msgstr "Non se puido ler %1: fallou a codificación"
+msgstr "Non foi posíbel ler %1: fallou a codificación"
 
 #: audiocd.cpp:1198
 #, kde-format
