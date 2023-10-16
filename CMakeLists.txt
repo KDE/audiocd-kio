@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(audiocd VERSION "5.1.0")
 
-set(QT_MIN_VERSION "5.15.2")
-set(KF_MIN_VERSION "5.96.0")
+set(QT_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "5.240.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -21,27 +21,17 @@ include(CheckStructHasMember)
 include(FeatureSummary)
 include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.5.0")
-    set(KF_MIN_VERSION "5.240.0")
-    set(KF_MAJOR_VERSION "6")
-else()
-    set(KF_MAJOR_VERSION "5")
-endif()
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
-if (QT_MAJOR_VERSION STREQUAL 6)
-    find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
-endif()
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
 
-find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
     I18n
     DocTools
     KIO
     KCMUtils
 )
-if (QT_MAJOR_VERSION STREQUAL "6")
     find_package(KCompactDisc6)
     set_package_properties(KCompactDisc6 PROPERTIES
         DESCRIPTION "KCompactDisc library"
@@ -56,22 +46,6 @@ if (QT_MAJOR_VERSION STREQUAL "6")
         TYPE REQUIRED
         PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
     )
-else()
-    find_package(KF5CompactDisc)
-    set_package_properties(KF5CompactDisc PROPERTIES
-        DESCRIPTION "KCompactDisc library"
-        URL "https://commits.kde.org/libkcompactdisc"
-        TYPE REQUIRED
-        PURPOSE "libkcompactdisc is used to access CD drives."
-    )
-    find_package(KF5Cddb 5.1)
-    set_package_properties(KF5Cddb PROPERTIES
-        DESCRIPTION "Library used to retrieve audio CD metadata from the Internet"
-        URL "https://commits.kde.org/libkcddb"
-        TYPE REQUIRED
-        PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
-    )
-endif()
 
 find_package(Cdparanoia REQUIRED)
 
@@ -126,17 +100,13 @@ set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
 
 target_link_libraries(kio_audiocd
     audiocdplugins
-    KF${KF_MAJOR_VERSION}::I18n
+    KF6::I18n
     Qt::Widgets
     Cdparanoia::Cdparanoia
 )
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kio_audiocd Qt6::Core5Compat KCompactDisc6)
-else()
-    target_link_libraries(kio_audiocd KF5::CompactDisc)
-endif()
+target_link_libraries(kio_audiocd Qt6::Core5Compat KCompactDisc6)
 
-install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/kio)
+install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/kio)
 
 ecm_qt_install_logging_categories(
     EXPORT AUDIOCD

@@ -16,8 +16,8 @@ target_include_directories(kcm_audiocd
 
 target_link_libraries(kcm_audiocd
     audiocdplugins 
-    KF${KF_MAJOR_VERSION}::KCMUtils
-    KF${KF_MAJOR_VERSION}::I18n
+    KF6::KCMUtils
+    KF6::I18n
 )
 
 ########### add handbook ################

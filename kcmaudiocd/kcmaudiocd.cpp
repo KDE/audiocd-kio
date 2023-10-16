@@ -37,18 +37,9 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KAudiocdModule, "kcm_audiocd.json")
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-KAudiocdModule::KAudiocdModule(QWidget *parent, const QVariantList &lst)
-    : KCModule(parent)
-#else
 KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
     : KCModule(parent, md)
-#endif
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    Q_UNUSED(lst);
-#endif
-
     auto box = new QVBoxLayout(widget());
 
     audioConfig = new AudiocdConfig(widget());
@@ -95,27 +86,12 @@ KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
     connect(audioConfig->kcfg_replaceInput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
-
-    auto about = new KAboutData(QStringLiteral("kcmaudiocd"), i18n("KDE Audio CD KIO Worker"), QStringLiteral(AUDIOCDPLUGINS_VERSION_STRING));
-
-    about->addAuthor(i18n("Benjamin C. Meyer"), i18n("Former Maintainer"), QStringLiteral("ben@meyerhome.net"));
-    about->addAuthor(i18n("Carsten Duvenhorst"), i18n("Original Author"), QStringLiteral("duvenhorst@duvnet.de"));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    setAboutData(about);
-#endif
 }
 
 KAudiocdModule::~KAudiocdModule()
 {
     delete config;
 }
-
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5, 105, 0)
-QWidget *KAudiocdModule::widget()
-{
-    return this;
-}
-#endif
 
 QString removeQoutes(const QString &text)
 {
@@ -243,11 +219,7 @@ void KAudiocdModule::slotModuleChanged() {
 
 void KAudiocdModule::slotConfigChanged() {
     configChanged = true;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    Q_EMIT changed(true);
-#else
     setNeedsSave(true);
-#endif
 }
 
 /*
@@ -264,25 +236,6 @@ void KAudiocdModule::slotEcEnable() {
 
   slotConfigChanged();
 }
-
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-QString KAudiocdModule::quickHelp() const
-{
-    return i18n(
-        "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily"
-        " create wav, FLAC, MP3, Ogg Vorbis or Opus files from your "
-        "audio CD-ROMs or DVDs."
-        " The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in "
-        "Dolphin's location"
-        " bar. In this module, you can configure"
-        " encoding, and device settings. Note that FLAC, MP3, Ogg Vorbis,"
-        " and Opus encoding are only available if the corresponding "
-        "libraries (libFLAC for"
-        " FLAC and libvorbis for Ogg) and utilities (lame for MP3 and "
-        "opus-tools for Opus)"
-        " are installed in your system.");
-}
-#endif
 
 #include "kcmaudiocd.moc"
 #include "moc_kcmaudiocd.cpp"

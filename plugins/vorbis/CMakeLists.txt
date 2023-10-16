@@ -13,15 +13,10 @@ kconfig_add_kcfg_files(audiocd_encoder_vorbis audiocd_vorbis_encoder.kcfgc)
 target_link_libraries(audiocd_encoder_vorbis 
     OGGVORBIS::vorbis
     audiocdplugins
-    KF${KF_MAJOR_VERSION}::I18n
+    KF6::I18n
     Qt::Widgets
+    KCddb6
 )
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(audiocd_encoder_vorbis KCddb6)
-else()
-    target_link_libraries(audiocd_encoder_vorbis KF5::Cddb)
-endif()
-
 install(TARGETS audiocd_encoder_vorbis  DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
 install(FILES audiocd_vorbis_encoder.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})

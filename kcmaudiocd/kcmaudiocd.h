@@ -51,15 +51,8 @@ class KAudiocdModule : public KCModule
     Q_OBJECT
 
 public:
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    explicit KAudiocdModule(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
-#else
     explicit KAudiocdModule(QObject *parent, const KPluginMetaData &md);
-#endif
     ~KAudiocdModule() override;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QString quickHelp() const override;
-#endif
 
 public Q_SLOTS:
   void defaults() override;
@@ -72,17 +65,14 @@ private Q_SLOTS:
   void slotEcEnable();
   void slotModuleChanged();
 
-private:
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5, 105, 0)
-    QWidget *widget();
-#endif
-    KConfig *config = nullptr;
-    bool configChanged = false;
+  private:
+  KConfig *config = nullptr;
+  bool configChanged = false;
 
-    int getBitrateIndex(int value);
+  int getBitrateIndex(int value);
 
-    QList<KConfigDialogManager *> encoderSettings;
-    AudiocdConfig *audioConfig = nullptr;
+  QList<KConfigDialogManager *> encoderSettings;
+  AudiocdConfig *audioConfig = nullptr;
 };
 
 #endif // KCMAUDIOCD_H

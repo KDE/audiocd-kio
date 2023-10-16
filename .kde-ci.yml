@@ -12,14 +12,3 @@ Dependencies:
     'frameworks/kcmutils': '@latest-kf6'
     'multimedia/libkcddb': '@same'
     'multimedia/libkcompactdisc': '@same'
-
-- 'on': ['Linux/Qt5', 'FreeBSD/Qt5']
-  'require':
-    'frameworks/extra-cmake-modules': '@stable'
-    'frameworks/kconfig': '@stable'
-    'frameworks/ki18n': '@stable'
-    'frameworks/kdoctools': '@stable'
-    'frameworks/kio': '@stable'
-    'frameworks/kcmutils': '@stable'
-    'multimedia/libkcddb': '@same'
-    'multimedia/libkcompactdisc': '@same'

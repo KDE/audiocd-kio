@@ -33,13 +33,9 @@ target_include_directories(audiocdplugins
 )
 target_link_libraries(audiocdplugins
     PUBLIC
-        KF${KF_MAJOR_VERSION}::KIOCore
+        KF6::KIOCore
+	KCddb6
 )
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(audiocdplugins PUBLIC KCddb6)
-else()
-    target_link_libraries(audiocdplugins PUBLIC KF5::Cddb)
-endif()
 
 generate_export_header(audiocdplugins 
     EXPORT_MACRO_NAME AUDIOCDPLUGINS_EXPORT
