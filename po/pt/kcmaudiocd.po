@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-11 00:46+0000\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-07-06 09:18+0100\n"
 "Last-Translator: José Nuno Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -271,8 +271,8 @@ msgstr "Exemplo"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
-#: kcmaudiocd.cpp:226
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Artista fixe - ficheiro de exemplo audio.wav"
@@ -283,53 +283,41 @@ msgstr "Artista fixe - ficheiro de exemplo audio.wav"
 msgid "Replace with:"
 msgstr "Substituir por:"
 
-#: kcmaudiocd.cpp:68
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Codificador %1"
 
-#: kcmaudiocd.cpp:99
-#, kde-format
-msgid "KDE Audio CD KIO Worker"
-msgstr "KIO Slave de CDs Áudio do KDE"
+#~ msgid "KDE Audio CD KIO Worker"
+#~ msgstr "KIO Slave de CDs Áudio do KDE"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr "Benjamin C. Meyer"
+#~ msgid "Benjamin C. Meyer"
+#~ msgstr "Benjamin C. Meyer"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Former Maintainer"
-msgstr "Manutenção Anterior"
+#~ msgid "Former Maintainer"
+#~ msgstr "Manutenção Anterior"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr "Carsten Duvenhorst"
+#~ msgid "Carsten Duvenhorst"
+#~ msgstr "Carsten Duvenhorst"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Original Author"
-msgstr "Autor Original"
+#~ msgid "Original Author"
+#~ msgstr "Autor Original"
 
-#: kcmaudiocd.cpp:272
-#, kde-format
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
-"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr ""
-"<h1>CD's de Áudio</h1>O 'IO Slave' de CDs Áudio permite ao utilizador obter "
-"facilmente WAVs, MP3s ou ficheiros Ogg Vorbis a partir do seu leitor de CD-"
-"ROMs ou DVDs. O 'IO Slave' é invocado escrevendo <i>\"audiocd:/\"</i> na "
-"barra de localização do Dolphin. Neste módulo poderá configurar todos os "
-"aspectos do 'IO Slave' como a codificação e a configuração do dispositivo. "
-"Lembre-se que a codificação de FLAC, MP3 e Ogg Vorbis só estão disponíveis "
-"se estiverem instaladas as bibliotecas e utilitários correspondentes no seu "
-"sistema."
+#~ msgid ""
+#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
+#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
+#~ "location bar. In this module, you can configure encoding, and device "
+#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
+#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
+#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
+#~ "installed in your system."
+#~ msgstr ""
+#~ "<h1>CD's de Áudio</h1>O 'IO Slave' de CDs Áudio permite ao utilizador "
+#~ "obter facilmente WAVs, MP3s ou ficheiros Ogg Vorbis a partir do seu "
+#~ "leitor de CD-ROMs ou DVDs. O 'IO Slave' é invocado escrevendo <i>"
+#~ "\"audiocd:/\"</i> na barra de localização do Dolphin. Neste módulo poderá "
+#~ "configurar todos os aspectos do 'IO Slave' como a codificação e a "
+#~ "configuração do dispositivo. Lembre-se que a codificação de FLAC, MP3 e "
+#~ "Ogg Vorbis só estão disponíveis se estiverem instaladas as bibliotecas e "
+#~ "utilitários correspondentes no seu sistema."

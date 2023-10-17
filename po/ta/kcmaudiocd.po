@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-11 00:46+0000\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2004-12-07 02:23-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -270,8 +270,8 @@ msgstr "உதாரணம்"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
-#: kcmaudiocd.cpp:226
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "கூல் ஆர்டிஸ்ட் - உதாரணம் கேட்பொலி file.wav"
@@ -282,55 +282,33 @@ msgstr "கூல் ஆர்டிஸ்ட் - உதாரணம் கே�
 msgid "Replace with:"
 msgstr "உடன் இடம்மாற்று:"
 
-#: kcmaudiocd.cpp:68
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr ""
 
-#: kcmaudiocd.cpp:99
-#, fuzzy, kde-format
-msgid "KDE Audio CD KIO Worker"
-msgstr "KDE ஒலி-குறுந்தட்டு அடிமைக் கட்டுப்பாட்டுப் பகுதி"
+#, fuzzy
+#~ msgid "KDE Audio CD KIO Worker"
+#~ msgstr "KDE ஒலி-குறுந்தட்டு அடிமைக் கட்டுப்பாட்டுப் பகுதி"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr ""
-
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Former Maintainer"
-msgstr ""
-
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr ""
-
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Original Author"
-msgstr ""
-
-#: kcmaudiocd.cpp:272
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
-#| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. In "
-#| "this module, you can configure encoding, and device settings. Note that "
-#| "MP3 and Ogg Vorbis encoding are only available if KDE was built with a "
-#| "recent version of the LAME or Ogg Vorbis libraries."
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
-"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr "<h1>ஒலி குறுதட்டுகள்</h1> ஒலி குறுந்தட்டு IO-"
+#, fuzzy
+#~| msgid ""
+#~| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
+#~| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
+#~| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. "
+#~| "In this module, you can configure encoding, and device settings. Note "
+#~| "that MP3 and Ogg Vorbis encoding are only available if KDE was built "
+#~| "with a recent version of the LAME or Ogg Vorbis libraries."
+#~ msgid ""
+#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
+#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
+#~ "location bar. In this module, you can configure encoding, and device "
+#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
+#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
+#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
+#~ "installed in your system."
+#~ msgstr "<h1>ஒலி குறுதட்டுகள்</h1> ஒலி குறுந்தட்டு IO-"
 
 #~ msgid "kcmaudiocd"
 #~ msgstr "கேசிஎம் ஒலிகுறுந்தட்டு"

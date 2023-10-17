@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-11 00:46+0000\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2013-02-23 17:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -275,8 +275,8 @@ msgstr "उदाहरण"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
-#: kcmaudiocd.cpp:226
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "कूल आर्टिस्ट - उदाहरण ऑडिओ फाईल.wav"
@@ -287,49 +287,24 @@ msgstr "कूल आर्टिस्ट - उदाहरण ऑडिओ फ
 msgid "Replace with:"
 msgstr "या सह बदला :"
 
-#: kcmaudiocd.cpp:68
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 एन्कोडर"
 
-#: kcmaudiocd.cpp:99
-#, fuzzy, kde-format
-#| msgid "KDE Audio CD IO Slave"
-msgid "KDE Audio CD KIO Worker"
-msgstr "केडीई ऑडिओ सीडी IO स्लेव्ह"
+#, fuzzy
+#~| msgid "KDE Audio CD IO Slave"
+#~ msgid "KDE Audio CD KIO Worker"
+#~ msgstr "केडीई ऑडिओ सीडी IO स्लेव्ह"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr "बेंजामिन सी. मेयर"
+#~ msgid "Benjamin C. Meyer"
+#~ msgstr "बेंजामिन सी. मेयर"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Former Maintainer"
-msgstr "पूर्वीचा पालक"
+#~ msgid "Former Maintainer"
+#~ msgstr "पूर्वीचा पालक"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr "कार्स्टन डुव्हेनहोर्स्ट"
-
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Original Author"
-msgstr ""
-
-#: kcmaudiocd.cpp:272
-#, kde-format
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
-"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr ""
+#~ msgid "Carsten Duvenhorst"
+#~ msgstr "कार्स्टन डुव्हेनहोर्स्ट"
 
 #~ msgid "kcmaudiocd"
 #~ msgstr "केसीएम-ऑडिओ-सीडी"

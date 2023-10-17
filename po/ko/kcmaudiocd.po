@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-11 00:46+0000\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-07-13 15:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -273,8 +273,8 @@ msgstr "예제"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
-#: kcmaudiocd.cpp:226
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "인기있는 아티스트 - 예제 오디오 파일.wav"
@@ -285,54 +285,42 @@ msgstr "인기있는 아티스트 - 예제 오디오 파일.wav"
 msgid "Replace with:"
 msgstr "다음으로 바꿈:"
 
-#: kcmaudiocd.cpp:68
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 인코더"
 
-#: kcmaudiocd.cpp:99
-#, kde-format
-msgid "KDE Audio CD KIO Worker"
-msgstr "KDE 오디오 CD IO 워커"
+#~ msgid "KDE Audio CD KIO Worker"
+#~ msgstr "KDE 오디오 CD IO 워커"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr "Benjamin C. Meyer"
+#~ msgid "Benjamin C. Meyer"
+#~ msgstr "Benjamin C. Meyer"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Former Maintainer"
-msgstr "이전 관리자"
+#~ msgid "Former Maintainer"
+#~ msgstr "이전 관리자"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr "Carsten Duvenhorst"
+#~ msgid "Carsten Duvenhorst"
+#~ msgstr "Carsten Duvenhorst"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Original Author"
-msgstr "원 작성자"
+#~ msgid "Original Author"
+#~ msgstr "원 작성자"
 
-#: kcmaudiocd.cpp:272
-#, kde-format
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
-"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr ""
-"<h1>오디오 CD</h1>오디오 CD IO 워커는 오디오 CD나 DVD에서 쉽게 WAV, MP3, Ogg "
-"Vorbis, Opus 파일을 만들 수 있도록 도와 줍니다. Dolphin의 주소 표시줄에 <i>"
-"\"audiocd:/\"</i>를 입력해서 실행할 수 있습니다. 이 모듈에서 인코더와 장치 설"
-"정을 할 수 있습니다. FLAC, MP3, Ogg Vorbis 및 Opus 인코딩을 사용하려면 개별 "
-"라이브러리(FLAC: libFLAC, Ogg: libvorbis) 또는 유틸리티(MP3: lame, Opus: "
-"opus-tools)가 설치되어 있어야 합니다."
+#~ msgid ""
+#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
+#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
+#~ "location bar. In this module, you can configure encoding, and device "
+#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
+#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
+#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
+#~ "installed in your system."
+#~ msgstr ""
+#~ "<h1>오디오 CD</h1>오디오 CD IO 워커는 오디오 CD나 DVD에서 쉽게 WAV, MP3, "
+#~ "Ogg Vorbis, Opus 파일을 만들 수 있도록 도와 줍니다. Dolphin의 주소 표시줄"
+#~ "에 <i>\"audiocd:/\"</i>를 입력해서 실행할 수 있습니다. 이 모듈에서 인코더"
+#~ "와 장치 설정을 할 수 있습니다. FLAC, MP3, Ogg Vorbis 및 Opus 인코딩을 사용"
+#~ "하려면 개별 라이브러리(FLAC: libFLAC, Ogg: libvorbis) 또는 유틸리티(MP3: "
+#~ "lame, Opus: opus-tools)가 설치되어 있어야 합니다."
 
 #~ msgid "kcmaudiocd"
 #~ msgstr "kcmaudiocd"

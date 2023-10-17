@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-11 00:46+0000\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-07-06 12:29+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -281,8 +281,8 @@ msgstr "Voorbeeld"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
-#: kcmaudiocd.cpp:226
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Gave artiest - voorbeeldgeluidsbestand.wav"
@@ -293,57 +293,45 @@ msgstr "Gave artiest - voorbeeldgeluidsbestand.wav"
 msgid "Replace with:"
 msgstr "Vervangen door:"
 
-#: kcmaudiocd.cpp:68
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1-codering"
 
-#: kcmaudiocd.cpp:99
-#, kde-format
-msgid "KDE Audio CD KIO Worker"
-msgstr "KDE Audio-cd KIO-programma"
+#~ msgid "KDE Audio CD KIO Worker"
+#~ msgstr "KDE Audio-cd KIO-programma"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr "Benjamin C. Meyer"
+#~ msgid "Benjamin C. Meyer"
+#~ msgstr "Benjamin C. Meyer"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Former Maintainer"
-msgstr "Vorige onderhouder"
+#~ msgid "Former Maintainer"
+#~ msgstr "Vorige onderhouder"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr "Carsten Duvenhorst"
+#~ msgid "Carsten Duvenhorst"
+#~ msgstr "Carsten Duvenhorst"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Original Author"
-msgstr "Oorspronkelijke auteur"
+#~ msgid "Original Author"
+#~ msgstr "Oorspronkelijke auteur"
 
-#: kcmaudiocd.cpp:272
-#, kde-format
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
-"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr ""
-"<h1>Audio-cd</h1> Met het KIO-programma Audio-cd kunt u op eenvoudige wijze "
-"wav-, FLAC-, MP3-, Ogg Vorbis- of Opus-bestanden maken vanuit audio-cd's of "
-"dvd's. Het KIO-programma wordt aangeroepen door <i>\"audiocd:/\"</i> te "
-"typen in de locatiebalk van Dolphin. In deze module kunt u de codering, het "
-"zoeken in de CDDB-database en de apparaatinstellingen instellen. Opmerking: "
-"FLAC-, MP3-, Ogg Vorbis- en Opus-codering is alleen beschikbaar als de "
-"overeenkomstige bibliotheken (libFLAC voor FLAC en libvorbis voor Ogg) en "
-"hulpmiddelen (lame voor MP3 en opus-tools voor Opus) in uw systeem zijn "
-"geïnstalleerd."
+#~ msgid ""
+#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
+#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
+#~ "location bar. In this module, you can configure encoding, and device "
+#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
+#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
+#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
+#~ "installed in your system."
+#~ msgstr ""
+#~ "<h1>Audio-cd</h1> Met het KIO-programma Audio-cd kunt u op eenvoudige "
+#~ "wijze wav-, FLAC-, MP3-, Ogg Vorbis- of Opus-bestanden maken vanuit audio-"
+#~ "cd's of dvd's. Het KIO-programma wordt aangeroepen door <i>\"audiocd:/\"</"
+#~ "i> te typen in de locatiebalk van Dolphin. In deze module kunt u de "
+#~ "codering, het zoeken in de CDDB-database en de apparaatinstellingen "
+#~ "instellen. Opmerking: FLAC-, MP3-, Ogg Vorbis- en Opus-codering is alleen "
+#~ "beschikbaar als de overeenkomstige bibliotheken (libFLAC voor FLAC en "
+#~ "libvorbis voor Ogg) en hulpmiddelen (lame voor MP3 en opus-tools voor "
+#~ "Opus) in uw systeem zijn geïnstalleerd."
 
 #~ msgid "kcmaudiocd"
 #~ msgstr "kcmaudiocd"

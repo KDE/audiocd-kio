@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-11 00:46+0000\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-08-02 22:05+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -276,8 +276,8 @@ msgstr "Exempel"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
-#: kcmaudiocd.cpp:226
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Bra artist - exempelljudfil.wav"
@@ -288,55 +288,44 @@ msgstr "Bra artist - exempelljudfil.wav"
 msgid "Replace with:"
 msgstr "Ersätt med:"
 
-#: kcmaudiocd.cpp:68
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 kodare"
 
-#: kcmaudiocd.cpp:99
-#, kde-format
-msgid "KDE Audio CD KIO Worker"
-msgstr "KDE:s ljud-cd I/O-arbetare"
+#~ msgid "KDE Audio CD KIO Worker"
+#~ msgstr "KDE:s ljud-cd I/O-arbetare"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr "Benjamin C. Meyer"
+#~ msgid "Benjamin C. Meyer"
+#~ msgstr "Benjamin C. Meyer"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Former Maintainer"
-msgstr "Tidigare utvecklare"
+#~ msgid "Former Maintainer"
+#~ msgstr "Tidigare utvecklare"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr "Carsten Duvenhorst"
+#~ msgid "Carsten Duvenhorst"
+#~ msgstr "Carsten Duvenhorst"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Original Author"
-msgstr "Ursprunglig upphovsman"
+#~ msgid "Original Author"
+#~ msgstr "Ursprunglig upphovsman"
 
-#: kcmaudiocd.cpp:272
-#, kde-format
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
-"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr ""
-"<h1>Ljud-cd</h1> I/O-arbetaren för ljud-cd gör det möjligt att enkelt skapa "
-"wav-, FLAC-, MP3- eller Ogg Vorbis-filer från ljud-cd-rom eller ljud-dvd. "
-"Arbetaren anropas genom att skriva <i>\"audiocd:/\"</i> i Dolphins platsrad. "
-"I den här modulen kan du anpassa kodning och enhetsinställningar. Observera "
-"att Flac-, MP3-, Ogg Vorbis-, och Opus-kodning endast är tillgänglig om "
-"motsvarande bibliotek (libFLAC för FLAC och libvorbis för Ogg) och verktyg "
-"(lame för MP3 och opus-tools för Opus) är installerade på systemet."
+#~ msgid ""
+#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
+#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
+#~ "location bar. In this module, you can configure encoding, and device "
+#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
+#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
+#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
+#~ "installed in your system."
+#~ msgstr ""
+#~ "<h1>Ljud-cd</h1> I/O-arbetaren för ljud-cd gör det möjligt att enkelt "
+#~ "skapa wav-, FLAC-, MP3- eller Ogg Vorbis-filer från ljud-cd-rom eller "
+#~ "ljud-dvd. Arbetaren anropas genom att skriva <i>\"audiocd:/\"</i> i "
+#~ "Dolphins platsrad. I den här modulen kan du anpassa kodning och "
+#~ "enhetsinställningar. Observera att Flac-, MP3-, Ogg Vorbis-, och Opus-"
+#~ "kodning endast är tillgänglig om motsvarande bibliotek (libFLAC för FLAC "
+#~ "och libvorbis för Ogg) och verktyg (lame för MP3 och opus-tools för Opus) "
+#~ "är installerade på systemet."
 
 #~ msgid "kcmaudiocd"
 #~ msgstr "IM ljud-cd"

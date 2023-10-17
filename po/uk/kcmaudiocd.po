@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-11 00:46+0000\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-07-06 08:31+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -278,8 +278,8 @@ msgstr "Приклад"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:157
-#: kcmaudiocd.cpp:226
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Крутий виконавець - зразок звукового файла.wav"
@@ -290,55 +290,44 @@ msgstr "Крутий виконавець - зразок звукового фа
 msgid "Replace with:"
 msgstr "Замінити на:"
 
-#: kcmaudiocd.cpp:68
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Кодер %1"
 
-#: kcmaudiocd.cpp:99
-#, kde-format
-msgid "KDE Audio CD KIO Worker"
-msgstr "Обробник введення-виведення аудіо-КД для KDE"
+#~ msgid "KDE Audio CD KIO Worker"
+#~ msgstr "Обробник введення-виведення аудіо-КД для KDE"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr "Benjamin C. Meyer"
+#~ msgid "Benjamin C. Meyer"
+#~ msgstr "Benjamin C. Meyer"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Former Maintainer"
-msgstr "Попередній супровідник"
+#~ msgid "Former Maintainer"
+#~ msgstr "Попередній супровідник"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr "Carsten Duvenhorst"
+#~ msgid "Carsten Duvenhorst"
+#~ msgstr "Carsten Duvenhorst"
 
-#: kcmaudiocd.cpp:102
-#, kde-format
-msgid "Original Author"
-msgstr "Початковий автор"
+#~ msgid "Original Author"
+#~ msgstr "Початковий автор"
 
-#: kcmaudiocd.cpp:272
-#, kde-format
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The KIO "
-"worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr ""
-"<h1>Аудіо-КД</h1> обробник введення-виведення аудіо-КД надає можливість "
-"легко створювати файли wav, FLAC, MP3,и Ogg Vorbis чи Opus з ваших КД або "
-"DVD. Обробник можна викликати ввівши <i>«audiocd:/»</i> у рядку адреси "
-"Dolphin. За допомогою цього модуля можна налаштувати кодування і параметри "
-"пристрою. Примітка: кодування FLAC, MP3, Ogg Vorbis і Opus доступні, лише "
-"якщо у вашій системі встановлено відповідні бібліотеки (libFLAC для FLAC і "
-"libvorbis для Ogg) та програми (lame для MP3 та opus-tools для Opus) ."
+#~ msgid ""
+#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
+#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
+#~ "location bar. In this module, you can configure encoding, and device "
+#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
+#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
+#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
+#~ "installed in your system."
+#~ msgstr ""
+#~ "<h1>Аудіо-КД</h1> обробник введення-виведення аудіо-КД надає можливість "
+#~ "легко створювати файли wav, FLAC, MP3,и Ogg Vorbis чи Opus з ваших КД або "
+#~ "DVD. Обробник можна викликати ввівши <i>«audiocd:/»</i> у рядку адреси "
+#~ "Dolphin. За допомогою цього модуля можна налаштувати кодування і "
+#~ "параметри пристрою. Примітка: кодування FLAC, MP3, Ogg Vorbis і Opus "
+#~ "доступні, лише якщо у вашій системі встановлено відповідні бібліотеки "
+#~ "(libFLAC для FLAC і libvorbis для Ogg) та програми (lame для MP3 та opus-"
+#~ "tools для Opus) ."
 
 #~ msgid "kcmaudiocd"
 #~ msgstr "kcmaudiocd"
