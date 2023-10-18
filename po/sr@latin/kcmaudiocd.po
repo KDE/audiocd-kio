@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2019-09-16 03:06+0200\n"
+"POT-Creation-Date: 2023-10-17 00:41+0000\n"
 "PO-Revision-Date: 2017-09-28 17:59+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -39,11 +39,15 @@ msgstr "&Opšte"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If you uncheck this option, the slave will not try to use error "
+#| "correction which can be useful for reading damaged CDs. However, this "
+#| "feature can be problematic in some cases, so you can switch it off here."
 msgid ""
-"If you uncheck this option, the slave will not try to use error correction "
-"which can be useful for reading damaged CDs. However, this feature can be "
-"problematic in some cases, so you can switch it off here."
+"If you uncheck this option, the KIO worker will not try to use error "
+"correction which can be useful for reading damaged CDs. However, this "
+"feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
 "Ako isključite ovu opciju uređaj neće pokušati ispravljanje grešaka, koja "
 "može biti korisna za čitanje oštećenih CD‑ova. Međutim, ponekad ova "
@@ -287,8 +291,8 @@ msgstr "Primer"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:148
-#: kcmaudiocd.cpp:221
+#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
+#: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Umetnik faca - primer zvučnog fajla.wav"
@@ -299,57 +303,47 @@ msgstr "Umetnik faca - primer zvučnog fajla.wav"
 msgid "Replace with:"
 msgstr "Zameni sa:"
 
-#: kcmaudiocd.cpp:64
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Koder %1|/|Koder za $[aku %1]"
 
-#: kcmaudiocd.cpp:98
-#, kde-format
-msgid "KDE Audio CD IO Slave"
-msgstr "KDE U/I zahvat za audio CD‑ove"
+#~ msgid "KDE Audio CD IO Slave"
+#~ msgstr "KDE U/I zahvat za audio CD‑ove"
 
-#: kcmaudiocd.cpp:100
-#, kde-format
-msgid "Benjamin C. Meyer"
-msgstr "Bendžamin K. Mejer"
+#~ msgid "Benjamin C. Meyer"
+#~ msgstr "Bendžamin K. Mejer"
 
-#: kcmaudiocd.cpp:100
-#, kde-format
-msgid "Former Maintainer"
-msgstr "Bivši održavalac"
+#~ msgid "Former Maintainer"
+#~ msgstr "Bivši održavalac"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Carsten Duvenhorst"
-msgstr "Karsten Duvenhorst"
+#~ msgid "Carsten Duvenhorst"
+#~ msgstr "Karsten Duvenhorst"
 
-#: kcmaudiocd.cpp:101
-#, kde-format
-msgid "Original Author"
-msgstr "Prvobitni autor"
+#~ msgid "Original Author"
+#~ msgstr "Prvobitni autor"
 
-#: kcmaudiocd.cpp:265
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
-#| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. In "
-#| "this module, you can configure encoding, and device settings. Note that "
-#| "MP3 and Ogg Vorbis encoding are only available if KDE was built with a "
-#| "recent version of the LAME or Ogg Vorbis libraries."
-msgid ""
-"<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create wav, "
-"FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. The "
-"slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location bar. "
-"In this module, you can configure encoding, and device settings. Note that "
-"FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if the "
-"corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
-"utilities (lame for MP3 and opus-tools for Opus) are installed in your "
-"system."
-msgstr ""
-"<h1>Audio CD‑ovi</h1><p>U/I zahvat za audio CD‑ove omogućava lako stvaranje "
-"WAV, MP3 i OGG Vorbis fajlova sa CD‑ROM‑a ili DVD‑a. Pokreće se kucanjem "
-"<tt>audiocd:/</tt> u K‑osvajačevoj traci lokacije. U ovom modulu možete "
-"podesiti kodiranje i postavke uređaja. MP3 i OGG Vorbis kodiranje moguće je "
-"samo ako je KDE izgrađen sa novijom verzijom biblioteka Lame i Vorbis.</p>"
+#, fuzzy
+#~| msgid ""
+#~| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
+#~| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
+#~| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. "
+#~| "In this module, you can configure encoding, and device settings. Note "
+#~| "that MP3 and Ogg Vorbis encoding are only available if KDE was built "
+#~| "with a recent version of the LAME or Ogg Vorbis libraries."
+#~ msgid ""
+#~ "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
+#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
+#~ "The slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's location "
+#~ "bar. In this module, you can configure encoding, and device settings. "
+#~ "Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only available if "
+#~ "the corresponding libraries (libFLAC for FLAC and libvorbis for Ogg) and "
+#~ "utilities (lame for MP3 and opus-tools for Opus) are installed in your "
+#~ "system."
+#~ msgstr ""
+#~ "<h1>Audio CD‑ovi</h1><p>U/I zahvat za audio CD‑ove omogućava lako "
+#~ "stvaranje WAV, MP3 i OGG Vorbis fajlova sa CD‑ROM‑a ili DVD‑a. Pokreće se "
+#~ "kucanjem <tt>audiocd:/</tt> u K‑osvajačevoj traci lokacije. U ovom modulu "
+#~ "možete podesiti kodiranje i postavke uređaja. MP3 i OGG Vorbis kodiranje "
+#~ "moguće je samo ako je KDE izgrađen sa novijom verzijom biblioteka Lame i "
+#~ "Vorbis.</p>"

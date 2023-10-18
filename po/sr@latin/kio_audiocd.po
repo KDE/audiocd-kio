@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-03-05 03:17+0100\n"
+"POT-Creation-Date: 2022-09-27 00:44+0000\n"
 "PO-Revision-Date: 2017-09-28 17:59+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -31,22 +31,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "caslav.ilic@gmx.net"
 
-#: audiocd.cpp:80
-#, kde-format
-msgid "CDDB Information"
-msgstr "CDDB podaci"
-
-#: audiocd.cpp:120
+#: audiocd.cpp:115
 #, kde-format
 msgid "Information"
 msgstr "Podaci"
 
-#: audiocd.cpp:120
+#: audiocd.cpp:116
 #, kde-format
 msgid "Full CD"
 msgstr "Ceo CD"
 
-#: audiocd.cpp:285
+#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
+#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#, kde-format
+msgid "CDDB Information"
+msgstr "CDDB podaci"
+
+#: audiocd.cpp:490
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -55,7 +56,13 @@ msgstr ""
 "<html>Ne možete da navedete domaćina sa ovim protokolom. Umesto toga "
 "koristite format <tt>audiocd:/</tt>.</html>"
 
-#: audiocd.cpp:879
+#: audiocd.cpp:874
+#, kde-format
+msgctxt "The URL does not include a device name"
+msgid "Missing device specification"
+msgstr ""
+
+#: audiocd.cpp:884
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
@@ -64,7 +71,7 @@ msgstr ""
 "Uređaj nema dozvole čitanja za ovaj nalog. Proverite dozvole za čitanje na "
 "uređaju."
 
-#: audiocd.cpp:881
+#: audiocd.cpp:888
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
@@ -73,7 +80,7 @@ msgstr ""
 "Uređaj nema dozvole pisanja za ovaj nalog. Proverite dozvole za pisanje na "
 "uređaju."
 
-#: audiocd.cpp:885
+#: audiocd.cpp:894
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -94,24 +101,24 @@ msgstr ""
 "pokušajte da upišete <tt>audiocd:/?device=/dev/sg0</tt> (ili slično) da "
 "biste rekli U/I zahvatu audio CD‑a koji uređaj je CD‑ROM.</html>"
 
-#: audiocd.cpp:959
+#: audiocd.cpp:972
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
 "Audio CD: oštećenje diska otkriveno na ovoj numeri, rizik od kvarenja "
 "podataka."
 
-#: audiocd.cpp:965
+#: audiocd.cpp:979
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "Greška pri čitanju audio podataka za %1 sa CD‑a"
 
-#: audiocd.cpp:975 audiocd.cpp:1053
+#: audiocd.cpp:989 audiocd.cpp:1067
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "Ne mogu da pročitam %1: kodiranje nije uspelo"
 
-#: audiocd.cpp:1184
+#: audiocd.cpp:1198
 #, kde-format
 msgid "Track %1"
 msgstr "Numera %1"
