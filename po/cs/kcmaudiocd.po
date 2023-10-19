@@ -289,38 +289,3 @@ msgstr "Nahradit za:"
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Enkodér %1"
-
-#~ msgid "KDE Audio CD KIO Worker"
-#~ msgstr "Nástroj KIO pro KDE Audio CD"
-
-#~ msgid "Benjamin C. Meyer"
-#~ msgstr "Benjamin C. Meyer"
-
-#~ msgid "Former Maintainer"
-#~ msgstr "Bývalý správce"
-
-#~ msgid "Carsten Duvenhorst"
-#~ msgstr "Carsten Duvenhorst"
-
-#~ msgid "Original Author"
-#~ msgstr "Původní autor"
-
-#~ msgid ""
-#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
-#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
-#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
-#~ "location bar. In this module, you can configure encoding, and device "
-#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
-#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
-#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
-#~ "installed in your system."
-#~ msgstr ""
-#~ "<h1>Zvuková CD</h1> Nástroj KIO pro zvukové CD umožňuje snadno ukládat "
-#~ "obsah zvukových CD nebo DVD disků do formátů WAV, FLAC, MP3 Ogg Vorbis "
-#~ "nebo Opus. Klient je spuštěn zadáním <i>\"audiocd:/\"</i> do panelu "
-#~ "umístění v Dolphinu. V tomto ovládacím modulu je možné nastavit všechny "
-#~ "možnosti nástroje KIO jako kódování, hledání v CDDB databázi a nastavení "
-#~ "zařízení. Je třeba poznamenat, že kódování do formátů FLAC, MP3, Ogg "
-#~ "Vorbis a OPUS je k dispozici pouze v případě, že máte v systému k "
-#~ "dispozici odpovídající knihovny (libFLAC pro FLAC a libvorbis pro Ogg) a "
-#~ "nástroje (lame pro MP3 a opus-tools pro Opus)."
