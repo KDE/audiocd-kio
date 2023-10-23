@@ -32,20 +32,20 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     KIO
     KCMUtils
 )
-    find_package(KCompactDisc6)
-    set_package_properties(KCompactDisc6 PROPERTIES
-        DESCRIPTION "KCompactDisc library"
-        URL "https://commits.kde.org/libkcompactdisc"
-        TYPE REQUIRED
-        PURPOSE "libkcompactdisc is used to access CD drives."
-    )
-    find_package(KCddb6 5.1)
-    set_package_properties(KCddb6 PROPERTIES
-        DESCRIPTION "Library used to retrieve audio CD metadata from the Internet"
-        URL "https://commits.kde.org/libkcddb"
-        TYPE REQUIRED
-        PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
-    )
+find_package(KCompactDisc6)
+set_package_properties(KCompactDisc6 PROPERTIES
+    DESCRIPTION "KCompactDisc library"
+    URL "https://commits.kde.org/libkcompactdisc"
+    TYPE REQUIRED
+    PURPOSE "libkcompactdisc is used to access CD drives."
+)
+find_package(KCddb6 5.1)
+set_package_properties(KCddb6 PROPERTIES
+    DESCRIPTION "Library used to retrieve audio CD metadata from the Internet"
+    URL "https://commits.kde.org/libkcddb"
+    TYPE REQUIRED
+    PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
+)
 
 find_package(Cdparanoia REQUIRED)
 
