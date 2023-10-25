@@ -510,7 +510,7 @@ msgstr "Escriu la marca VBR de &Xing"
 #, kde-format
 msgid ""
 "This writes additional information related to VBR as introduced by Xing."
-msgstr "Escriu informació addicional referida al VBR com ha proposat Xing."
+msgstr "Escriu informació addicional referida a la VBR com ha proposat Xing."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_min_hard)
 #: encoderlameconfig.ui:483
