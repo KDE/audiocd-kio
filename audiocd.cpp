@@ -82,7 +82,7 @@ extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
     qunsetenv("SESSION_MANAGER");
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("kio_audiocd"));
-    KLocalizedString::setApplicationDomain("kio_audiocd");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kio_audiocd"));
 
     if (argc != 4) {
         fprintf(stderr, "Usage: kio_audiocd protocol pool app\n");
