@@ -34,9 +34,7 @@
 <para
 >Permet tractar els <acronym
 >CD</acronym
-> d'àudio com a un sistema de fitxers <quote
->real</quote
->, a on les pistes estan representades com a fitxers i quan es copien des de la carpeta són extretes en format digital des del <acronym
+> d'àudio com a un sistema de fitxers «real», a on les pistes estan representades com a fitxers i quan es copien des de la carpeta són extretes en format digital des del <acronym
 >CD</acronym
 >. Així s'assegura una còpia perfecta de tot el contingut.</para>
 
@@ -78,9 +76,7 @@
 >.wav</literal
 > i deixar-lo anar en el reproductor multimèdia &juk; del &kde;. En aquest cas, el procediment intern que se seguirà és semblant, excepte que en comptes de codificar les dades al format Ogg Vorbis, el desarà després d'una senzilla conversió des de les dades binàries pures (que és el que representen els fitxers <literal role="extension"
 >.cda</literal
-> a la carpeta més alta) cap al format <quote
->RIFF WAV</quote
->, el qual és un format sense comprimir reconegut per la majoria de reproductors multimèdia.</para>
+> a la carpeta més alta) cap al format «RIFF WAV», el qual és un format sense comprimir reconegut per la majoria de reproductors multimèdia.</para>
 
 <para
 >El &juk; hauria de reproduir sense problemes els fitxers <literal role="extension"
@@ -295,7 +291,7 @@
 ></userinput
 > des del vostre compte (no com a <systemitem class="username"
 >root</systemitem
->). Veieu una llista de pistes? Si no és així, assegureu-vos que teniu permisos per accedir al dispositiu de <acronym
+>). Veieu una llista de pistes? Si no és així, assegureu-vos que teniu permisos per a accedir al dispositiu de <acronym
 >CD</acronym
 >. Si esteu emprant l'emulació <acronym
 >SCSI</acronym

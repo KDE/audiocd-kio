@@ -151,7 +151,7 @@
 <para
 >La pestanya <guilabel
 >Noms</guilabel
-> es pot utilitzar per ajustar els noms dels fitxers per a les dades codificades. És possible utilitzar algunes macros i <ulink url="https://en.wikipedia.org/wiki/Regular_expression"
+> es pot utilitzar per a ajustar els noms dels fitxers per a les dades codificades. És possible utilitzar algunes macros i <ulink url="https://en.wikipedia.org/wiki/Regular_expression"
 >expressions regulars</ulink
 > per a produir els noms exactament amb les vostres necessitats.</para>
 
@@ -287,7 +287,7 @@
 <para
 >L'element <guilabel
 >Protecció contra errors</guilabel
-> CRC es pot utilitzar per afegir una suma de verificació a cada marc de dades. Aquesta protecció pot millorar l'estabilitat de l'emmagatzematge de les dades MP3.</para>
+> CRC es pot utilitzar per a afegir una suma de verificació a cada marc de dades. Aquesta protecció pot millorar l'estabilitat de l'emmagatzematge de les dades MP3.</para>
 <para
 >L'element <guilabel
 >Escriu la marca ID3</guilabel
@@ -304,9 +304,7 @@
 ></term>
 <listitem>
 <para
->És possible aplicar el filtratge de l'amplada de banda a les dades. S'utilitza per a limitar les freqüències altes o baixes que estan codificades. Igualment, la majoria de nosaltres no podem escoltar les freqüències altes, i són les més <quote
->cares</quote
-> pel que fa a la codificació. També tendeixen a ser la causa dels artefactes.</para>
+>És possible aplicar el filtratge de l'amplada de banda a les dades. S'utilitza per a limitar les freqüències altes o baixes que estan codificades. Igualment, la majoria de nosaltres no podem escoltar les freqüències altes, i són les més «cares» pel que fa a la codificació. També tendeixen a ser la causa dels artefactes.</para>
 </listitem>
 </varlistentry>
 
@@ -328,7 +326,7 @@
 >El valor mínim és un límit físic</guilabel
 >.</para>
 <para
->160 kb/s és una bona opció per escoltar música en un reproductor portàtil. Qualsevol cosa per sota dels 120 kb/s pot ser insatisfactori per a la música i qualsevol cosa per sobre dels 256 kb/s probablement serà excessiva.</para>
+>160 kb/s és una bona opció per a escoltar música en un reproductor portàtil. Qualsevol cosa per sota dels 120 kb/s pot ser insatisfactori per a la música i qualsevol cosa per sobre dels 256 kb/s probablement serà excessiva.</para>
 <para
 >També és possible <guilabel
 >Escriu la marca VBR de Xing</guilabel
@@ -410,7 +408,7 @@
 ></term>
 <listitem>
 <para
->Quan estigui marcada, afegirà una descripció de la cançó a la capçalera del fitxer. Això facilitarà a l'usuari obtenir informació avançada sobre la cançó mostrada pel seu reproductor multimèdia. Podeu obtenir aquesta informació automàticament a través d'Internet. Mireu el mòdul de recuperació CDDB del &systemsettings; per obtenir més informació. </para>
+>Quan estigui marcada, afegirà una descripció de la cançó a la capçalera del fitxer. Això facilitarà a l'usuari obtenir informació avançada sobre la cançó mostrada pel seu reproductor multimèdia. Podeu obtenir aquesta informació automàticament a través d'Internet. Mireu el mòdul de recuperació CDDB del &systemsettings; per a obtenir més informació. </para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -486,7 +484,7 @@
 ></term>
 <listitem>
 <para
->Quan estigui marcada, afegirà una descripció de la cançó a la capçalera del fitxer. Això facilitarà a l'usuari obtenir informació avançada sobre la cançó mostrada pel seu reproductor multimèdia. Podeu obtenir aquesta informació automàticament a través d'Internet. Mireu el mòdul de recuperació CDDB del &systemsettings; per obtenir més informació. </para>
+>Quan estigui marcada, afegirà una descripció de la cançó a la capçalera del fitxer. Això facilitarà a l'usuari obtenir informació avançada sobre la cançó mostrada pel seu reproductor multimèdia. Podeu obtenir aquesta informació automàticament a través d'Internet. Mireu el mòdul de recuperació CDDB del &systemsettings; per a obtenir més informació. </para>
 </listitem>
 </varlistentry>
 </variablelist>
