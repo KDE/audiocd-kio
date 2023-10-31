@@ -5,13 +5,13 @@
 # H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010.
 # Onur Küçük <onur@uludag.org.tr>, 2005.
 # obsoleteman <tulliana@gmail.com>, 2009.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2023-09-02 22:58+0300\n"
+"PO-Revision-Date: 2023-10-30 22:42+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -68,7 +68,7 @@ msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
-"Aygıtın bu hesap için okuma izinleri yok. Aygıt üzerindeki okuma izinlerini "
+"Aygıtın bu hesap için okuma izinleri yok. Aygıttaki okuma izinlerini "
 "denetleyin."
 
 #: audiocd.cpp:888
@@ -77,7 +77,7 @@ msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
-"Aygıtın bu hesap için yazma izinleri yok. Aygıt üzerindeki yazma izinlerini "
+"Aygıtın bu hesap için yazma izinleri yok. Aygıttaki yazma izinlerini "
 "denetleyin."
 
 #: audiocd.cpp:894
@@ -92,18 +92,19 @@ msgid ""
 "audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
 "CD-ROM is."
 msgstr ""
-"Bilinmeyen hata. İçeride CD var ise cdparanoia -vsQ komutunu kendiniz olarak "
-"(ana kullanıcı değil) çalıştırın. Parça listesini görüyor musunuz? "
-"Görmüyorsanız CD aygıtına erişim yetkiniz olduğuna emin olun. SCSI "
-"öykünücüsü kullanıyorsanız (IDE CD yazıcınız var ise olabilir) genel SCSI "
-"aygıtına (/dev/sg0, /dev/sg1 vs.) okuma ve yazma yetkiniz olduğundan emin "
-"olun. Hâlâ çalışmıyor ise kio_audiocd'ye CD-Rom aygıtınızın hangisi olduğunu "
-"anlatmak için audiocd:/?device=/dev/sg0 komutunu yazın."
+"Bilinmeyen hata. Sürücüde bir CD varsa cdparanoia -vsQ komutunu kendi "
+"kullanıcınızdan çalıştırmayı deneyin (root olarak değil). Bir parça listesi "
+"görüyor musunuz? Görmüyorsanız CD aygıtına erişiminiz olduğundan emin olun. "
+"SCSI öykünmesi kullanıyorsanız (bir IDE CD yazıcınız varsa olasıdır) genel "
+"SCSI aygıtında okuma/yazma izinleriniz olduğundan emin olun, büyük "
+"olasılıkla /dev/sg0/dev/sg1, vb. olabilir. Hâlâ çalışmıyorsa kio_audiocd'ye "
+"hangi aygıtınızın CD-ROM olduğunu söylemek için audiocd:/?device=/dev/sg0 "
+"(veya benzerini) kullanın."
 
 #: audiocd.cpp:972
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
-msgstr "AudioCD: Disk otomatik hata algılaması bu şarkıda hata buldu."
+msgstr "AudioCD: Bu parçada disk hasarı algılandı, veri bozulması riski var."
 
 #: audiocd.cpp:979
 #, kde-format
