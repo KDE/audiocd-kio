@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
 #
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2022-05-05 12:22+0300\n"
+"PO-Revision-Date: 2023-10-30 19:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,37 +15,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Complexity or Bitrate"
-msgstr "Vorbis Kodlama Karmaşıklığı veya Bit Oranı"
+msgstr "Vorbis Kodlama Karmaşıklığı veya Bit Hızı"
 
 #. i18n: ectx: label, entry (set_opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:15
 #, kde-format
 msgid "Constant bitrate specified"
-msgstr "Beliritilen sabit bit oranı"
+msgstr "Belirtilen sabit bit hızı"
 
 #. i18n: ectx: label, entry (set_opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:19
 #, kde-format
 msgid "Constrained variable bitrate specified"
-msgstr "Belirtilen sınırlı değişken bit oranı"
+msgstr "Belirtilen sınırlı değişken bit hızı"
 
 #. i18n: ectx: label, entry (set_opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:23
 #, kde-format
 msgid "Average variable bitrate specified"
-msgstr "Belirtilen ortalama değişken bit oranı"
+msgstr "Belirtilen ortalama değişken bit hızı"
 
 #. i18n: ectx: label, entry (opus_comments), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:28
 #, kde-format
 msgid "Add Comments"
-msgstr "Yorumlar Ekle"
+msgstr "Açıklama Ekle"
 
 #. i18n: ectx: label, entry (opus_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:32
@@ -57,19 +57,19 @@ msgstr "Karmaşıklık"
 #: audiocd_opus_encoder.kcfg:39
 #, kde-format
 msgid "Constant bitrate"
-msgstr "Sabit bit oranı"
+msgstr "Sabit bit hızı"
 
 #. i18n: ectx: label, entry (opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:46
 #, kde-format
 msgid "Constrained variable bitrate"
-msgstr "Sınırlı değişken bit oranı"
+msgstr "Kısıtlı değişken bit hızı"
 
 #. i18n: ectx: label, entry (opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:53
 #, kde-format
 msgid "Average variable bitrate"
-msgstr "Ortalama değişken bit oranı"
+msgstr "Ortalama değişken bit hızı"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_enc_method)
 #: encoderopusconfig.ui:17
@@ -87,19 +87,19 @@ msgstr "Karmaşıklık tabanlı"
 #: encoderopusconfig.ui:33
 #, kde-format
 msgid "Bitrate based"
-msgstr "Bit oranı tabanlı"
+msgstr "Bit hızı tabanlı"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:46
 #, kde-format
 msgid "Opus Bitrate Settings"
-msgstr "Opus Bit Oranı Ayarları"
+msgstr "Opus Bit Hızı Ayarları"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:52
 #, kde-format
 msgid "C&onstant bitrate:"
-msgstr "S&abit bit oranı:"
+msgstr "S&abit bit hızı:"
 
 #. i18n: ectx: property (currentText), widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
@@ -197,13 +197,13 @@ msgstr "256 kbps"
 #: encoderopusconfig.ui:127
 #, kde-format
 msgid "Co&nstrained variable bitrate:"
-msgstr "Sınırlandırılmış değişken bit oranı:"
+msgstr "Kısıtlı değişken bit hızı:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:202
 #, kde-format
 msgid "A&verage variable bitrate:"
-msgstr "Ortalama değişken bit oranı:"
+msgstr "Ortalama değişken bit hızı:"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:283
@@ -246,10 +246,10 @@ msgstr ""
 "Şarkının bir açıklamasını dosya üstbilgisine ekleyin. Bu, kullanıcının ek "
 "şarkı bilgisini ortam oynatıcısında daha kolay almasını sağlar. Bu bilgiyi "
 "İnternet'ten otomatik olarak alabilirsiniz. Ayrıntılar için <i>\"CDDB Alımı"
-"\"</i>na bakın."
+"\"</i> denetim modülüne bakın."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:346
 #, kde-format
 msgid "Add &track information"
-msgstr "&Parça bilgisi ekle"
+msgstr "&Parça bilgisini ekle"

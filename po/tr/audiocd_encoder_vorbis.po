@@ -6,13 +6,13 @@
 # Onur Küçük <onur@uludag.org.tr>, 2005.
 # Ozan Çağlayan <ozan@pardus.org.tr>, 2011.
 # obsoleteman <tulliana@gmail.com>, 2009.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2022-05-05 12:22+0300\n"
+"PO-Revision-Date: 2023-10-30 22:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,31 +20,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Quality or Bitrate"
-msgstr "Vorbis Kayıt Kalitesi ya da Bit Oranı"
+msgstr "Vorbis Kodlama Kalitesi veya Bit Hızı"
 
 #. i18n: ectx: label, entry (set_vorbis_min_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:15
 #, kde-format
 msgid "Minimal bitrate specified"
-msgstr "Belirtilen en yüksek bit oranı"
+msgstr "Belirtilen en düşük bit hızı"
 
 #. i18n: ectx: label, entry (set_vorbis_max_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:19
 #, kde-format
 msgid "Maximal bitrate specified"
-msgstr "Belirtilen en yüksek bit oranı"
+msgstr "Belirtilen en yüksek bit hızı"
 
 #. i18n: ectx: label, entry (set_vorbis_nominal_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:23
 #, kde-format
 msgid "Average bitrate specified"
-msgstr "Ortalama bit oranı"
+msgstr "Belirtilen ortalama bit hızı"
 
 #. i18n: ectx: label, entry (vorbis_comments), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:28
@@ -62,7 +62,7 @@ msgstr "Kalite"
 #: audiocd_vorbis_encoder.kcfg:39
 #, kde-format
 msgid "Minimal bitrate"
-msgstr "En düşük bit oranı"
+msgstr "En düşük bit hızı"
 
 #. i18n: ectx: label, entry (vorbis_max_br), group (Vorbis)
 #. i18n: ectx: label, entry (vorbis_nominal_br), group (Vorbis)
@@ -70,7 +70,7 @@ msgstr "En düşük bit oranı"
 #: audiocd_vorbis_encoder.kcfg:61
 #, kde-format
 msgid "maximal bitrate"
-msgstr "En yüksek bit oranı"
+msgstr "En yüksek bit hızı"
 
 #. i18n: ectx: property (title), widget (QGroupBox, kcfg_vorbis_enc_method)
 #: encodervorbisconfig.ui:16
@@ -88,13 +88,13 @@ msgstr "Kalite tabanlı"
 #: encodervorbisconfig.ui:32
 #, kde-format
 msgid "Bitrate based"
-msgstr "Bit oranı tabanlı"
+msgstr "Bit hızı tabanlı"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:45
 #, kde-format
 msgid "Vorbis Bitrate Settings"
-msgstr "Vorbis Bit Sıklığı Ayarları"
+msgstr "Vorbis Bit Hızı Ayarları"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
@@ -208,19 +208,19 @@ msgstr "350 kbps"
 #: encodervorbisconfig.ui:214
 #, kde-format
 msgid "M&inimal bitrate:"
-msgstr "En &düşük bit oranı:"
+msgstr "En &düşük bit hızı:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_max_br)
 #: encodervorbisconfig.ui:224
 #, kde-format
 msgid "Ma&ximal bitrate:"
-msgstr "En &yüksek bit oranı:"
+msgstr "En &yüksek bit hızı:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_nominal_br)
 #: encodervorbisconfig.ui:263
 #, kde-format
 msgid "A&verage bitrate:"
-msgstr "&Ortalama bit oranı:"
+msgstr "&Ortalama bit hızı:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_quality_settings)
 #: encodervorbisconfig.ui:276
@@ -254,7 +254,7 @@ msgstr "Seçenekler"
 #: encodervorbisconfig.ui:316
 #, kde-format
 msgid "Add &track information"
-msgstr "Parça bilgisi &ekle"
+msgstr "&Parça bilgisini ekle"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vorbis_comments)
 #: encodervorbisconfig.ui:319
@@ -267,5 +267,5 @@ msgid ""
 msgstr ""
 "Şarkının bir açıklamasını dosya üstbilgisine ekleyin. Bu, kullanıcının ek "
 "şarkı bilgisini ortam oynatıcısında daha kolay almasını sağlar. Bu bilgiyi "
-"İnternet'ten otomatik olarak alabilirsiniz. Ayrıntılar için <i>\"CDDB Alımı"
-"\"</i>na bakın."
+"internetten otomatik olarak alabilirsiniz. Ayrıntılar için <i>\"CDDB Alımı"
+"\"</i> denetim modülüne bakın."
