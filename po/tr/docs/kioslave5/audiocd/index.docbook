@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Turkish "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Emir</firstname
+><surname
+>SARI</surname
+><affiliation
+><address
+><email
+>emir_sari@îcloud.com</email
+></address
+></affiliation
+><contrib
+>Çeviri</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Ses <acronym
+>CD</acronym
+>'lerinin, parçaların dosya olarak temsil edildiği ve klasörden kopyalandığında sayısal olarak <acronym
+>CD</acronym
+>'den çıkarıldığı <quote
+>gerçek</quote
+> dosya sistemi gibi işlenmesine olanak tanır. Bu, ses verisinin mükemmel bir kopyasını sağlar.</para>
+
+<para
+>Bu KIO işçisinin nasıl çalıştığını görmek için &CD-ROM; sürücünüze bir ses <acronym
+>CD'si</acronym
+> yerleştirin ve &konqueror;'a <userinput
+>audiocd:/</userinput
+> yazın. Birkaç saniye içinde parçaların ve bazı klasörlerin bir listesini görmelisiniz.</para>
+
+<para
+>Ses <acronym
+>CD</acronym
+>'lerinin gerçekte klasörleri yoktur; ancak audiocd KIO işçisi bunları kolaylık sağlamak için sağlar. Bu klasörlerin içine bakarsanız hepsinin aynı sayıda parça içerdiğini göreceksiniz. İnternete bağlıysanız bazı klasörlerde gerçek parça adları dosya adları olarak gösterilir.</para>
+
+<para
+>Bu ayrı klasörlerin var olmasının nedeni, <acronym
+>CD</acronym
+> üzerindeki parçaları hangi biçimde dinlemek (veya kopyalamak) istediğinizi seçebilmenizdir.</para>
+
+<para
+><filename class="directory"
+>Ogg Vorbis</filename
+> klasöründen bir parçayı sürükleyip ana klasörünüzde açık olan başka bir &konqueror; penceresine bırakırsanız parçanın <acronym
+>CD</acronym
+>'den çıkarıldığını ve bir dosyaya kaydedildiğini gösteren bir ilerleme penceresi görürsünüz. Ogg Vorbis'in sıkıştırılmış bir biçim olduğunu unutmayın, bu nedenle ana klasörünüzdeki dosya, ham veriyi kopyalamış olsaydınız olacağından çok daha küçük görünecektir.</para>
+
+<para
+>Bunun arkasındaki mekanizma oldukça basittir. audiocd KIO işçisinden <filename class="directory"
+>Ogg Vorbis</filename
+> klasöründen bir parça alması istendiğinde, sayısal ses verisini <acronym
+>CD</acronym
+>'den çıkarmaya başlar. Veriyi ana klasörünüzdeki dosyaya gönderirken aynı anda onu Ogg Vorbis biçiminde kodlar (<acronym
+>CD</acronym
+> sesi, normalde sıkıştırılmamış bir biçimdedir).</para>
+
+<para
+>Ayrıca <literal role="extension"
+>.wav</literal
+> ile biten bir dosyayı sürükleyip &kde;'nin &juk; ortam oynatıcısına bırakmayı da deneyebilirsiniz, Bu durumda, sahne arkasında gerçekleşen prosedür benzerdir; ancak ses verisinin Ogg Vorbis biçiminde kodlanması yerine, ham ikili veriden (üst düzey klasördeki <literal role="extension"
+>.cda</literal
+> dosyalarından), çoğu ortam oynatıcısının anladığı sıkıştırılmamış bir biçim olan <quote
+>RIFF WAV</quote
+> biçimine çok basit bir dönüşüme tabi tutulur.</para>
+
+<para
+>&juk;, <literal role="extension"
+>.wav</literal
+> dosyalarını sıkıntısızca çalmalıdır; ancak bir sorun yaşarsanız aşağıda açıklanan <option
+>paranoia_level</option
+> seçeneğini kullanmayı düşünebilirsiniz.</para>
+
+<variablelist>
+<title
+>Seçenekler</title>
+
+<varlistentry>
+<term
+><option
+>aygıt</option
+></term>
+<listitem>
+<para
+>Sese olan yolu <acronym
+>CD</acronym
+> aygıtınıza ayarlayın; örneğin, <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Normalde KIO işçisi, içinde bir ses <acronym
+>CD</acronym
+>'si olan takılı bir <acronym
+>CD</acronym
+> bulmaya çalışır; ancak başarısız olursa veya birden çok <acronym
+>CD</acronym
+> sürücünüz varsa bu seçeneği denemek isteyebilirsiniz. Yapılandırma iletişim kutusunun bunun için öntanımlı bir değer ayarlamanıza izin verdiğini unutmayın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Dosya adı şablonunu ayarlayın; &eg;, <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Parça %{number}</parameter
+></userinput
+>. Yapılandırma iletişim kutusunun bu seçenek için öntanımlı bir değer ayarlamanıza izin verdiğini unutmayın. Boş bir dizi olarak ayarlarsanız hiçbir dosyanın görünmeyeceğine dair bir uyarı gösterilir.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Albüm adı şablonunu ayarlayın; &eg;, <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Yapılandırma iletişim kutusunun bu seçenek için öntanımlı bir değer ayarlamanıza izin verdiğini unutmayın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Kodlayıcılar için süreç öncelik değerini ayarlar; &eg;, <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Yapılandırma iletişim kutusunun bu seçenek için öntanımlı bir değer ayarlamanıza izin verdiğini unutmayın.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>Veri çıkarırken kullanılan hata algılama ve düzeltme miktarını ayarlayın.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Düzey 0</term>
+<listitem>
+<para
+>Algılama veya düzeltme yok. Yalnızca mükemmel bir <acronym
+>CD</acronym
+> sürücünüz varsa kullanışlıdır (pek olası değil).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Düzey 1</term>
+<listitem>
+<para
+>Temel hata denetimini ve düzeltmesini etkinleştirin.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Düzey 2</term>
+<listitem>
+<para
+>Öntanımlı. Yalnızca mükemmel bir çıkarmanın kabul edileceğini belirtir.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>2. düzeyin bir dezavantajı olduğunu unutmayın. Çıkarma çok yavaş olabilir, dolayısıyla gerçek zamanlı sayısal çalma düzgün çalışmayabilir. Kaliteli bir <acronym
+>CD</acronym
+> sürücünüz varsa (daha pahalının mutlaka daha iyi kalite anlamına gelmediğini unutmayın), o zaman büyük olasılıkla çok yavaş çıkarma deneyimi yaşamazsınız; ancak kötü bir sürücünün bir <acronym
+>CD</acronym
+>'deki sesi çıkarması günler(!) alabilir.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Hangi İnternet <acronym
+>CD</acronym
+> Veritabanı girdisinin kullanılacağını belirtin. Ses <acronym
+>CD</acronym
+>'lerinin parça adları yoktur; ancak İnternet <acronym
+>CD</acronym
+> Veritabanı, bir parça listesine çapraz başvuru vermek için her <acronym
+>CD</acronym
+>'deki parçaların sayısı ve uzunluğundan oluşturulan özel bir benzersiz tanımlayıcı kullanan akıllı bir sistemdir. Parça listeleri, internetteki herkes tarafından katkıda bulunulur ve kullanımına sunulur. Bazen birden fazla girdi olacaktır. Hangisini kullanacağınızı belirtebilirsiniz.</para>
+
+<para
+>&kscd;, &kde; <acronym
+>CD</acronym
+> çalarını kullanarak kendi parça listelerinizi gönderebilirsiniz.</para>
+
+<para
+>Öntanımlı olarak audiocd, en iyisini seçmeye çalışır.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Örnekler</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>&Linux; üzerindeki ilk <acronym
+>SCSI</acronym
+> &CD-ROM; aygıtını belirten <filename class="devicefile"
+>/dev/scd0</filename
+> içindeki ses <acronym
+>CD</acronym
+>'sindeki parçaların listesini verir. Parçaları <acronym
+>CD</acronym
+>'den kopyalarsanız sayısal çıkarma hata düzeltme veya algılama kullanmadan gerçekleştirilir. <acronym
+>CDDB</acronym
+> veritabanındaki 0. girdi kullanılacaktır.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Sıkça Sorulan Sorular</title>
+<qandaentry>
+<question>
+<para
+><errorname
+>Dosya/Klasör yok</errorname
+> hatasını alıyorum. Bunu nasıl düzeltebilirim? Sürücümde bir ses <acronym
+>CD</acronym
+>'si var!</para>
+</question>
+
+<answer>
+<para
+><userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> komutunu kendi kullanıcınızdan çalıştırmayı deneyin (<systemitem class="username"
+>root</systemitem
+> olarak değil). Bir parça listesi görüyor musunuz? Görmüyorsanız <acronym
+>CD</acronym
+> aygıtına erişiminiz olduğundan emin olun. <acronym
+>SCSI</acronym
+> öykünmesi kullanıyorsanız (bir <acronym
+>IDE</acronym
+> <acronym
+>CD</acronym
+> yazıcınız varsa olasıdır) genel <acronym
+>SCSI</acronym
+> aygıtında okuma/yazma izinleriniz olduğundan emin olun, büyük olasılıkla <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, vb. olabilir. Hâlâ çalışmıyorsa kio_audiocd'ye hangi aygıtınızın &CD-ROM; olduğunu söylemek için <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (veya benzerini) kullanın.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>

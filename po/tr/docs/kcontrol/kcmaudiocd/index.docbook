@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Turkish "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Ses CD'si</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+><firstname
+>Emir</firstname
+><surname
+>SARI</surname
+><affiliation
+><address
+><email
+>emir_sari@îcloud.com</email
+></address
+></affiliation
+><contrib
+>Çeviri</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>2019-02-08</date>
+<releaseinfo
+>Uygulamalar 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Sistem Ayarları</keyword>
+<keyword
+>ses</keyword>
+<keyword
+>kompakt disk</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>Ses CD'si KIO İşçisi Yapılandırması</title>
+<para
+><guilabel
+>Audiocd KIO İşçisi Yapılandırması</guilabel
+> sayfası; <guilabel
+>Genel</guilabel
+> <guilabel
+>Adlar</guilabel
+> ve kodlayıcı parametreleri sekmesi olarak üçe ayrılır.</para>
+
+<sect2 id="general-tab">
+<title
+>Genel Sekmesi</title>
+<screenshot>
+<screeninfo
+><guilabel
+>Genel</guilabel
+> sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+><guilabel
+>Genel</guilabel
+> sekmesi</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Bu sekme, CD'den veri okuma işleminin tamamı için geçerli olan genel parametreleri içerir.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>CD'yi okurken hata düzeltmesi kullan</guilabel
+></term>
+<listitem>
+<para
+>Ses CD'si yazarken, işlem her kareye 64 bitlik hata düzeltme verisi ekler. Bundan sonra, kodlanmış karelerin her birine, CD çalınırken denetim ve adresleme için kullanılan 8 bitlik alt kod veya alt kanal verisi eklenir. Bu tür veri düzeltmelerinin yok sayılması okumayı hızlandırabilir; ancak aynı zamanda bazı istenmeyen kalıntılar da üretebilir.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Hataları atla</guilabel
+></term>
+<listitem>
+<para
+>Öntanımlı ayar, ortamın hatalarını asla atlamamaktır. Sonuçların yüksek kalitesini sağlamak için bu gereklidir.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Kodlayıcı Önceliği</guilabel
+></term>
+<listitem>
+<para
+>Kodlayıcı işleminin sizi paralel olarak başka bazı görevleri yapmanızı engellememesini sağlamak (daha düşük değerler) veya kodlamayı hızlandırmak (daha yüksek değerler) için kodlayıcı önceliğini belirlemek olanaklıdır. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>Adlar Sekmesi</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>Adlar</guilabel
+> sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+><guilabel
+>Adlar</guilabel
+> sekmesi</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Adlar</guilabel
+> sekmesi, kodlanan verinin dosya adlarının ince ayarını yapmak için kullanılabilir. Gereksinimlerinize göre istediğiniz adları elde etmek için makrolar ve <ulink url="https://tr.wikipedia.org/wiki/D%C3%BCzenli_ifade"
+>düzenli ifadeler</ulink
+> kullanılabilir.</para>
+
+<para
+>Doğru adların üretileceğini kanıtlamak için sayfanın alt kısmındaki etkileşimli sınama alanını kullanabilirsiniz.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>FLAC Kodlayıcısı Sekmesi</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>FLAC Kodlayıcısı</guilabel
+> sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+><guilabel
+>FLAC Kodlayıcısı</guilabel
+> sekmesi</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>FLAC kodlayıcı sekmesi yalnızca Audiocd KIO işçisi libFLAC ile derlenmişse kullanılabilir.</para>
+</note>
+
+<para
+>FLAC; herhangi bir patent veya lisans ücreti gerektirmeyen, kayıpsız, sıkıştırılmış bir ses biçimidir. Dosya boyutunu yaklaşık %​50 oranında azaltırken mükemmel CD ses kalitesini korur. Bu kodlayıcı bileşeni kullanıldığında dosya boyutu Opus, Ogg Vorbis veya MP3'ten çok daha büyüktür.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>FLAC sıkıştırması düzeyi</guilabel
+></term>
+<listitem>
+<para
+>Sıkıştırma düzeyi, dosya boyutu ile sıkıştırma hızı arasındaki dengeyi temsil eden 0 ile 8 arasında bir tamsayı değeridir.</para>
+<para
+>Sıkıştırma düzeyini 0'a ayarlamak en kısa sıkıştırma süresini sağlar; ancak karşılaştırılabilir derecede büyük bir dosya oluşturur.</para>
+<para
+>Öte yandan 8'lik bir sıkıştırma düzeyi, sıkıştırmayı oldukça yavaşlatır; ancak en küçük dosyayı üretir.</para>
+<para
+>FLAC, tanımı gereği kayıpsız bir kodlayıcı bileşeni olduğundan, çıkışın ses kalitesinin, sıkıştırma düzeyinden bağımsız olarak tümüyle aynı olduğunu unutmayın.</para>
+<para
+>Ayrıca, 5'in üzerindeki düzeyler sıkıştırma süresini önemli ölçüde artırır; ancak yalnızca biraz daha küçük bir dosya oluşturur ve önerilmez.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>MP3 Kodlayıcısı Sekmesi</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>MP3 Kodlayıcısı</guilabel
+> sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+><guilabel
+>MP3 Kodlayıcısı</guilabel
+> sekmesi</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>MP3 kodlayıcısı sekmesi yalnızca sisteminizde <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+> izlenceleri kuruluysa kullanılabilir.</para>
+</note>
+
+<para
+>MP3 (veya MPEG-1 Ses Katmanı III), kayıplı veri sıkıştırma biçimini kullanan patentli bir sayısal ses kodlama bileşenidir. Eksikliklerine rağmen, tüketici ses depolaması için yaygın bir biçimdir ve taşınabilir müzik çalarlarda geniş çapta desteklenir.</para>
+
+<para
+>Audiocd KIO işçisi, <filename class="extension"
+>mp3</filename
+> dosyaları oluşturmak için LAME kodlayıcısını kullanır. LAME, çoğunlukla geliştiricilerinin özverili çalışmaları ve projenin dünyanın her yerinden mühendislik kaynaklarından yararlanmasına olanak tanıyan açık kaynak lisanslama modeli sayesinde en iyi MP3 kodlayıcısı olarak kabul ediliyor.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodlama Yöntemi</guilabel
+></term>
+<listitem>
+<para
+>Bit hızı, ses parçasının bir saniyesini temsil etmek için kullanılan veri miktarının bir ölçüsüdür. Tahmin edilebilir dosya boyutu için <guilabel
+>Sabit bit hızı</guilabel
+> belirlemek olanaklıdır. MP3 kodlayıcısı ayrıca <guilabel
+>Değişken bit hızı</guilabel
+> ayarını da destekler; bu, bit hızı değerinin, ses içeriğinin karmaşıklığına bağlı olarak parça boyunca dalgalandığı anlamına gelir. Daha karmaşık veri aralıkları, daha az karmaşık olanlara göre daha yüksek bir bit hızıyla kodlanır; bu yaklaşım, parça boyunca sabit bir bit hızına sahip olmaktan genel olarak daha iyi kalite ve daha küçük bir dosya sağlar.</para>
+<para
+>Ayrıca kodlamanın kalitesini de tanımlayabilirsiniz. Düşük kalite, bir miktar veri kaybı karşılığında kodlama sürecini hızlandırabilir.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Seçenekler</guilabel
+></term>
+<listitem>
+<para
+>Üretilen veriler telif hakkıyla korunuyorsa <guilabel
+>Telif hakkıyla korunuyor</guilabel
+> ögesini işaretleyin.</para>
+<para
+>Verinin çıkarılması özgün &CD;'den yapılıyorsa <guilabel
+>Özgün</guilabel
+> ögesini işaretleyin.</para>
+<para
+><guilabel
+>ISO kodlaması</guilabel
+> ögesi işaretlendiğinde, LAME, toplam kare boyutu üzerinde 7680 bit sınırlamasını uygular. CD çalarlar için ISO ile uyumluluk önemli olabilir.</para>
+<para
+>CRC <guilabel
+>hata koruması</guilabel
+> ögesi, her veri karesine bir sağlama toplamı eklemek için kullanılabilir. Bu tür bir koruma, MP3 verisini depolamanın kararlılığını artırabilir.</para>
+<para
+><guilabel
+>ID3 etiketini yaz</guilabel
+> ögesi, LAME'in üretilen her bir MP3 dosyasına <ulink url="https://en.wikipedia.org/wiki/ID3"
+>ID3 üst verisini</ulink
+> eklemesini sağlar.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Süzgeç Ayarları</guilabel
+></term>
+<listitem>
+<para
+>Verilere bant genişliği süzgeci uygulamak olanaklıdır. Kodlanan yüksek veya düşük frekansları sınırlamak için kullanılır. Zaten çoğumuz yüksek frekansları duyamayız ve kodlama söz konusu olduğunda bit bazında en <quote
+>pahalı</quote
+> olanlardır. Ayrıca kalıntıların nedeni olma eğilimindedirler.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Değişken Bit Hızı Ayarları</guilabel
+></term>
+<listitem>
+
+<para
+>Ayrıca öntanımlı olan <guilabel
+>Ortalama bit hızı</guilabel
+>'nı veya <guilabel
+>En yüksek bit hızı</guilabel
+>, <guilabel
+>En düşük bit hızı</guilabel
+> ve <guilabel
+>En düşük değer sabit bir sınırdır</guilabel
+> seçeneklerini kullanabilirsiniz.</para>
+<para
+>160 kb/sn, taşınabilir bir çalarda müzik dinlemek için iyi bir seçimdir. 120 kb/sn'nin altındaki herhangi bir değer müzik için yetersiz olabilir ve 256 kb/sn'nin üzerindeki herhangi bir değer büyük olasılıkla aşırıdır.</para>
+<para
+>Dosyaya <guilabel
+>Xing VBR etiketini yaz</guilabel
+>'mak da olanaklıdır. Xing, değişken bit hızına sahip dosyalar içinde daha doğru arama yapılmasını sağlayan VBR etiketiyle dikkat çeken bir kodlayıcı oluşturmaktan sorumluydu. Xing'in VBR etiketi, diğer şeylerin yanı sıra, bir MP3 dosyasının toplam süresi hakkında bilgi içerir; bu, MPEG akışında başka türlü kolayca bulunamayan bir şeydir.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>Opus Kodlayısıcı Sekmesi</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>Opus Kodlayıcısı</guilabel
+> sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+><guilabel
+>Opus Kodlayıcısı</guilabel
+> sekmesi</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Opus kodlayıcısı sekmesi yalnızca sisteminizde <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+> izlenceleri kuruluysa kullanılabilir.</para>
+</note>
+
+<para
+>Opus tümüyle açık, telifsiz, çok yönlü bir ses kodlayıcısı bileşenidir. Opus, internet üzerinden etkileşimli konuşma ve müzik aktarımı konusunda eşsizdir; ancak aynı zamanda depolama ve akış uygulamaları için de tasarlanmıştır.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodlama Yöntemi</guilabel
+></term>
+<listitem>
+<para
+>Bu ayar, <guilabel
+>Karmaşıklık tabanlı</guilabel
+> ve <guilabel
+>Bit hızı tabanlı</guilabel
+> kodlama arasında seçim yapmanıza olanak tanır. Karmaşıklığa dayalı kodlama, sonuçların öngörülemeyen boyutunun maliyeti için bazı spekülatif algoritmalar kullanır.</para>
+<itemizedlist>
+<listitem>
+<para
+>CPU karmaşıklığı ile kalite/bit hızı arasındaki Opus kodlayıcısı seçimini etkileyen birkaç şey vardır. Kodlamanın karmaşıklığı, 0'dan 10'a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
+</listitem>
+<listitem>
+<para
+>Opus, öntanımlı olan değişken bit hızıyla (<guilabel
+>Ortalama değişken bit hızı</guilabel
+>) çalışırken daha verimlidir. Nispeten yavaş bir bağlantı üzerinden düşük gecikmeli iletim gerektiğinde, kısıtlı değişken bit hızı (<guilabel
+>Kısıtlı değişken bit hızı</guilabel
+>, MP3 için sabit bit hızının bir benzeri) kullanmak olanaklıdır. Bazı (nadir) uygulamalarda sabit bit hızı (<guilabel
+>Sabit bit hızı</guilabel
+>) gereklidir.</para>
+<para
+>Çift kanallı müzik için 64-128 kbit/sn bit hızının kullanılması tavsiye edilir.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Parça bilgisini ekle</guilabel
+></term>
+<listitem>
+<para
+>İşaretlendiğinde, şarkının açıklamasını dosya başlığına ekleyin. Bu, kullanıcının ortam oynatıcısı tarafından gösterilen gelişmiş şarkı bilgilerini almasını kolaylaştırır. Bu bilgiyi internet üzerinden otomatik olarak alabilirsiniz. Ayrıntılar için &systemsettings; CDDB Alma modülüne bakın. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>Ogg Vorbis Kodlayıcısı Sekmesi</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>Ogg Vorbis Kodlayıcısı</guilabel
+> sekmesi</screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+><guilabel
+>Ogg Vorbis Kodlayıcısı</guilabel
+> sekmesi</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Ogg Vorbis kodlayıcı sekmesi yalnızca Audiocd KIO işçisi <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+> ile derlenmişse kullanılabilir.</para>
+</note>
+
+<para
+>Ogg Vorbis, kayıplı ses sıkıştırmaya yönelik açık ve telifsiz bir ses kodlayıcısı bileşenidir. Eşdeğer veya daha yüksek kalitede MP3'ten daha küçük dosyalar üretir.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Kodlama Yöntemi</guilabel
+></term>
+<listitem>
+<para
+>Bu ayar, <guilabel
+>Kalite tabanlı</guilabel
+> ve <guilabel
+>Bit hızı tabanlı</guilabel
+> kodlama arasında seçim yapmanıza olanak tanır. Kalite tabanlı kodlama, sonuçların öngörülemeyen boyutunun maliyeti için bazı spekülatif algoritmalar kullanır.</para>
+<itemizedlist>
+<listitem>
+<para
+>Ogg Vorbis kodlamasının kalitesi, 0'dan 10'a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
+</listitem>
+<listitem>
+<para
+>Alternatif değişken olarak bit hızı kullanılabilir. Öntanımlı olan <guilabel
+>Ortalama bit hızı</guilabel
+> veya <guilabel
+>En yüksek bit hızı</guilabel
+> ve <guilabel
+>En düşük bit hızı</guilabel
+> arasında seçim yapmak olanaklıdır.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Parça bilgisini ekle</guilabel
+></term>
+<listitem>
+<para
+>İşaretlendiğinde, şarkının açıklamasını dosya başlığına ekleyin. Bu, kullanıcının ortam oynatıcısı tarafından gösterilen gelişmiş şarkı bilgilerini almasını kolaylaştırır. Bu bilgiyi internet üzerinden otomatik olarak alabilirsiniz. Ayrıntılar için &systemsettings; CDDB Alma modülüne bakın. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
