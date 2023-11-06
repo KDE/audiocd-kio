@@ -144,7 +144,7 @@ void KAudiocdModule::save() {
         return;
 
     {
-        KConfigGroup cg(config, "CDDA");
+        KConfigGroup cg(config, QStringLiteral("CDDA"));
 
         cg.writeEntry("disable_paranoia", !(audioConfig->ec_enable_check->isChecked()));
         cg.writeEntry("never_skip", !(audioConfig->ec_skip_check->isChecked()));
@@ -152,19 +152,19 @@ void KAudiocdModule::save() {
     }
 
   {
-    KConfigGroup cg(config, "FileName");
-    cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
-    cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
-    cg.writeEntry("show_file_location", audioConfig->fileLocationGroupBox->isChecked());
-    cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
-    cg.writeEntry("regexp_example", audioConfig->example->text());
+      KConfigGroup cg(config, QStringLiteral("FileName"));
+      cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
+      cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
+      cg.writeEntry("show_file_location", audioConfig->fileLocationGroupBox->isChecked());
+      cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
+      cg.writeEntry("regexp_example", audioConfig->example->text());
 
-    // save quoted if required
-    QString replaceInput = audioConfig->kcfg_replaceInput->text();
-    QString replaceOutput = audioConfig->kcfg_replaceOutput->text();
-    if (needsQoutes(replaceInput)) {
-        replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
-    }
+      // save quoted if required
+      QString replaceInput = audioConfig->kcfg_replaceInput->text();
+      QString replaceOutput = audioConfig->kcfg_replaceOutput->text();
+      if (needsQoutes(replaceInput)) {
+          replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
+      }
     if (needsQoutes(replaceOutput)) {
         replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
     }
@@ -184,22 +184,22 @@ void KAudiocdModule::save() {
 void KAudiocdModule::load() {
 
   {
-    KConfigGroup cg(config, "CDDA");
+      KConfigGroup cg(config, QStringLiteral("CDDA"));
 
-    audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia", false)));
-    audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip", true)));
-    audioConfig->niceLevel->setValue(cg.readEntry("niceLevel", 0));
+      audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia", false)));
+      audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip", true)));
+      audioConfig->niceLevel->setValue(cg.readEntry("niceLevel", 0));
   }
 
   {
-    KConfigGroup cg(config, "FileName");
-    audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
-    audioConfig->albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
-    audioConfig->fileLocationGroupBox->setChecked(cg.readEntry("show_file_location", false));
-    audioConfig->fileLocationLineEdit->setText(cg.readEntry("file_location_template", QString()));
-    audioConfig->kcfg_replaceInput->setText(cg.readEntry("regexp_search"));
-    audioConfig->kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));
-    audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
+      KConfigGroup cg(config, QStringLiteral("FileName"));
+      audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
+      audioConfig->albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
+      audioConfig->fileLocationGroupBox->setChecked(cg.readEntry("show_file_location", false));
+      audioConfig->fileLocationLineEdit->setText(cg.readEntry("file_location_template", QString()));
+      audioConfig->kcfg_replaceInput->setText(cg.readEntry("regexp_search"));
+      audioConfig->kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));
+      audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
   }
 
   for (int i = 0; i < encoderSettings.size(); ++i) {

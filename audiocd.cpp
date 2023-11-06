@@ -1129,7 +1129,7 @@ void AudioCDProtocol::parseURLArgs(const QUrl &url)
 void AudioCDProtocol::loadSettings()
 {
     const KConfig *config = new KConfig(QStringLiteral("kcmaudiocdrc"), KConfig::NoGlobals);
-    const KConfigGroup groupCDDA(config, "CDDA");
+    const KConfigGroup groupCDDA(config, QStringLiteral("CDDA"));
 
     d->device = QString(); // clear device
     d->paranoiaLevel = 1; // enable paranoia error correction, but allow skipping
@@ -1152,7 +1152,7 @@ void AudioCDProtocol::loadSettings()
     }
 
     // The default track filename template
-    const KConfigGroup groupFileName(config, "FileName");
+    const KConfigGroup groupFileName(config, QStringLiteral("FileName"));
     d->fileNameTemplate = groupFileName.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}");
     d->albumNameTemplate = groupFileName.readEntry("album_name_template", "%{albumartist} - %{albumtitle}");
     if (groupFileName.readEntry("show_file_location", false))
