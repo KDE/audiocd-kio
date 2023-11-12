@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-17 00:41+0000\n"
-"PO-Revision-Date: 2023-11-06 01:10+0100\n"
+"PO-Revision-Date: 2023-11-12 00:54+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -58,7 +58,7 @@ msgstr ""
 #: audiocdconfig.ui:88
 #, kde-format
 msgid "Encoder Priority"
-msgstr ""
+msgstr "Prioridá del codificador"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: audiocdconfig.ui:113
@@ -76,7 +76,7 @@ msgstr ""
 #: audiocdconfig.ui:136
 #, kde-format
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabNames)
 #: audiocdconfig.ui:153
@@ -104,7 +104,7 @@ msgstr ""
 #: audiocdconfig.ui:177 audiocdconfig.ui:373 audiocdconfig.ui:504
 #, kde-format
 msgid "Genre"
-msgstr ""
+msgstr "Xéneru"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel10)
 #. i18n: ectx: property (text), widget (QLabel, textLabel16)
@@ -134,7 +134,7 @@ msgstr ""
 #: audiocdconfig.ui:217 audiocdconfig.ui:343 audiocdconfig.ui:474
 #, kde-format
 msgid "Year"
-msgstr ""
+msgstr "Añu"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
 #: audiocdconfig.ui:227
@@ -234,7 +234,7 @@ msgstr ""
 #: audiocdconfig.ui:588
 #, kde-format
 msgid "Selection:"
-msgstr ""
+msgstr "Seleición:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: audiocdconfig.ui:599
@@ -248,19 +248,19 @@ msgstr ""
 #: audiocdconfig.ui:612
 #, kde-format
 msgid "Input:"
-msgstr ""
+msgstr "Entrada:"
 
 #. i18n: ectx: property (text), widget (QLabel, outputLabel)
 #: audiocdconfig.ui:622
 #, kde-format
 msgid "Output:"
-msgstr ""
+msgstr "Salida:"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleLabel)
 #: audiocdconfig.ui:632
 #, kde-format
 msgid "Example"
-msgstr ""
+msgstr "Exemplu"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #. i18n: ectx: property (text), widget (QLineEdit, example)

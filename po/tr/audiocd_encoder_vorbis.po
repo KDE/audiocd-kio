@@ -2,17 +2,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 # H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010.
 # Onur Küçük <onur@uludag.org.tr>, 2005.
 # Ozan Çağlayan <ozan@pardus.org.tr>, 2011.
 # obsoleteman <tulliana@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2023-10-30 22:38+0300\n"
+"PO-Revision-Date: 2023-11-11 23:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
@@ -267,5 +268,5 @@ msgid ""
 msgstr ""
 "Şarkının bir açıklamasını dosya üstbilgisine ekleyin. Bu, kullanıcının ek "
 "şarkı bilgisini ortam oynatıcısında daha kolay almasını sağlar. Bu bilgiyi "
-"internetten otomatik olarak alabilirsiniz. Ayrıntılar için <i>\"CDDB Alımı"
-"\"</i> denetim modülüne bakın."
+"internetten kendiliğinden alabilirsiniz. Ayrıntılar için <i>\"CDDB Alımı\"</"
+"i> denetim modülüne bakın."
