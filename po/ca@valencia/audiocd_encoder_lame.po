@@ -196,13 +196,13 @@ msgstr "Amb cop&yright"
 #: encoderlameconfig.ui:31
 #, kde-format
 msgid "Mark MP3 file as copyrighted"
-msgstr "Marca al fitxer MP3 com amb copyright"
+msgstr "Marca el fitxer MP3 com amb copyright"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_copyright)
 #: encoderlameconfig.ui:34
 #, kde-format
 msgid "Mark MP3 file as copyrighted."
-msgstr "Marca al fitxer MP3 com amb copyright."
+msgstr "Marca el fitxer MP3 com amb copyright."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_original)
 #: encoderlameconfig.ui:41
@@ -214,13 +214,13 @@ msgstr "Origi&nal"
 #: encoderlameconfig.ui:47
 #, kde-format
 msgid "Mark MP3 file as an original"
-msgstr "Marca al fitxer MP3 com original"
+msgstr "Marca el fitxer MP3 com original"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_original)
 #: encoderlameconfig.ui:50
 #, kde-format
 msgid "Mark MP3 file as an original."
-msgstr "Marca al fitxer MP3 com original."
+msgstr "Marca el fitxer MP3 com original."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_iso)
 #: encoderlameconfig.ui:57
@@ -260,8 +260,7 @@ msgstr "E&scriu la marca ID3"
 msgid ""
 "If checked and if cddb support is available, an id3 tag will be appended"
 msgstr ""
-"Si està seleccionada i hi ha disponible l'ús de CDDB, s'afegirà un marcador "
-"ID3"
+"Si se selecciona i hi ha disponible l'ús de CDDB, s'afegirà un marcador ID3"
 
 #. i18n: ectx: property (title), widget (QGroupBox, buttonGroup1)
 #: encoderlameconfig.ui:109
