@@ -26,3 +26,4 @@ CMakeLists.txt.user*
 *.gcov
 .reuse
 .clang-format
+.cache
