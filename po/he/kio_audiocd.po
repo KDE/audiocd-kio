@@ -13,31 +13,32 @@
 # Igal <koala@linux.net>, 2004.
 # tahmar1900 <tahmar1900@gmail.com>, 2006, 2008.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2017-05-16 07:02-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: hebrew <kde-l10n-he@kde.org>\n"
+"PO-Revision-Date: 2023-12-05 09:39+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Omer Korner"
+msgstr "Omer Korner,צוות התרגום של KDE ישראל"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "omerkorner@gmail.com"
+msgstr "omerkorner@gmail.com,kde-l10n-he@kde.org"
 
 #: audiocd.cpp:115
 #, kde-format
@@ -51,39 +52,36 @@ msgstr "תקליטור מלא"
 
 #: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
 #: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
-#, fuzzy, kde-format
+#, kde-format
 msgid "CDDB Information"
-msgstr "מידע"
+msgstr "מידע מ־CDDB"
 
 #: audiocd.cpp:490
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
-msgstr ""
-"אינך יכול לקבוע מארח בעזרת פרוטוקול זה. אנא השתמש בתבנית audiocd:/ במקום."
+msgstr "אי אפשר לקבוע מארח בעזרת פרוטוקול זה. נא השתמש בתבנית audiocd:/‎ במקום."
 
 #: audiocd.cpp:874
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
-msgstr ""
+msgstr "חסר מפרט התקן"
 
 #: audiocd.cpp:884
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
-msgstr ""
-"ההתקן אינו בעל הרשאות קריאה למשתמש זה. אנא בדוק את הרשאות הקריאה של ההתקן."
+msgstr "בהתקן אין הרשאות קריאה למשתמש זה. נא לבדוק את הרשאות הקריאה של ההתקן."
 
 #: audiocd.cpp:888
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
-msgstr ""
-"ההתקן אינו בעל הרשאות כתיבה למשתמש זה. אנא בדוק את הרשאות הכתיבה של ההתקן."
+msgstr "בהתקן אין הרשאות כתיבה למשתמש זה. נא לבדוק את הרשאות הכתיבה של ההתקן."
 
 #: audiocd.cpp:894
 #, kde-format
@@ -97,27 +95,28 @@ msgid ""
 "audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
 "CD-ROM is."
 msgstr ""
-"שגיאה בלתי מובנת. אם ישנו תקליטור בכונן נסה להריץ את cdparanoia - vsQ כמשתמש "
-"שלך(לא כroot). האם אתה רואה רשימת שירים? אם לא, וודא שיש לך הרשאה לגישה "
-"לדיסק. אם אתה משתמש באמולצית SCSI (אפשרי אם יש ברשותך צורב IDE), בדוק היטב "
-"שיש לך הרשאות לקריאה וכתיבה על התקן ה SCSI הג'נרי, שהוא בדרך כלל /dev/sg0 , /"
-"dev/sg1 וכדומה. אם זה עדיין לא עובד, נסה לכתוב audiocd:/?device=/dev/sg0 (או "
-"דומה לזה) כדי לאומר ל kio_audiocd איזה מההתקנים הוא כונן התקליטורים שלך."
+"שגיאה לא מוכרת. אם יש תקליטור בכונן כדאי לנסות להריץ את cdparanoia - vsQ דרך "
+"המשתמש שלך (לא כ־root). האם מופיעה רשימת רשומות? אם לא, נא לוודא שיש לך "
+"הרשאת גישה לכונן. במקרה של שימוש בהדמיית SCSI (יכול להיות בהנחה שיש לך צורב "
+"IDE), כדאי לבדוק היטב שיש לך הרשאות לקריאה וכתיבה מול התקן ה SCSI הגנרי, "
+"שהוא בדרך כלל ‎/dev/sg0,‏ ‎/dev/sg1 וכדומה. אם זה עדיין לא עובד, עדיף לנסות "
+"לכתוב audiocd:/?device=/dev/sg0 (או משהו כזה) כדי להעביר הנחיה ל־kio_audiocd "
+"איזה מההתקנים הוא כונן התקליטורים שלך."
 
 #: audiocd.cpp:972
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
-msgstr "AudioCD: פגיעה בתקליטור זוהתה על שיר זה, סכנה של שגיאת מידע."
+msgstr "AudioCD: זוהתה פגיעה בתקליטור ברצועה זו, סכנת פגם נתונים."
 
 #: audiocd.cpp:979
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr "שגיאה תוך קריאת נתוני שמע ל-%1 מהתקליטור"
+msgstr "שגיאה בקריאת נתוני שמע ל־%1 מהתקליטור"
 
 #: audiocd.cpp:989 audiocd.cpp:1067
 #, kde-format
 msgid "Could not read %1: encoding failed"
-msgstr "לא הייתה אפשרות לקרוא %1: קידוד נכשל"
+msgstr "לא הייתה אפשרות לקרוא את %1: קידוד נכשל"
 
 #: audiocd.cpp:1198
 #, kde-format

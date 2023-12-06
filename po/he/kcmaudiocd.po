@@ -18,19 +18,20 @@
 # tahmar1900 <tahmar1900@gmail.com>, 2005, 2006, 2008.
 # Diego Iastrubni <elcuco@kde.org>, 2005.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-17 00:41+0000\n"
-"PO-Revision-Date: 2017-05-24 08:52-0400\n"
-"Last-Translator: Elkana Bardugo <ttv200@gmail.com>\n"
-"Language-Team: hebrew <kde-l10n-he@kde.org>\n"
+"PO-Revision-Date: 2023-12-05 09:32+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -52,31 +53,27 @@ msgstr "&כללי"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you uncheck this option, the slave will not try to use error "
-#| "correction which can be useful for reading damaged CDs. However, this "
-#| "feature can be problematic in some cases, so you can switch it off here."
+#, kde-format
 msgid ""
 "If you uncheck this option, the KIO worker will not try to use error "
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"אם לא בדקת את האפשרות הזאת, העבד לא ינסה להשתמש בתיקון שגיאות דבר שיכול "
-"להיות מאוד שימושי לקריאת תקליטורים בעלי נזקים. בכל מקרה, התכונה הזאת יכולה "
-"להביא בעיות בכמה מהמקרים, אז אתה יכול לכבות אותה כאן."
+"ביטול סימון האפשרות יגרום לתהליך הביצוע של KIO לא לנסות להשתמש בתיקון שגיאות "
+"שיכול להיות שימוש לקריאת תקליטורים פגומים. עם זאת, היכולת הזאת יכולה לגרום "
+"לתקלות בחלק מהמקרים, לכן אפשר לכבות אותה מכאן."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:52
 #, kde-format
 msgid "Use &error correction when reading the CD"
-msgstr "השתמש &במתקן שגיאות בזמן קריאת התקליטור"
+msgstr "להשתמש ב&תיקון שגיאות בזמן קריאת תקליטור"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
 #: audiocdconfig.ui:62
 #, kde-format
 msgid "&Skip on errors"
-msgstr "&דלג על שגיאות"
+msgstr "&דילוג על שגיאות"
 
 #. i18n: ectx: property (title), widget (QGroupBox, encoderPriority)
 #: audiocdconfig.ui:88
@@ -88,13 +85,13 @@ msgstr "עדיפות המקודד"
 #: audiocdconfig.ui:113
 #, kde-format
 msgid "Highest"
-msgstr "הכי גבוה"
+msgstr "הכי גבוהה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: audiocdconfig.ui:123
 #, kde-format
 msgid "Lowest"
-msgstr "הכי נמוך"
+msgstr "הכי נמוכה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: audiocdconfig.ui:136
@@ -136,13 +133,13 @@ msgstr "סגנון"
 #: audiocdconfig.ui:187 audiocdconfig.ui:363 audiocdconfig.ui:494
 #, no-c-format, kde-format
 msgid "%{year}"
-msgstr "%{שנה}"
+msgstr "%{year}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
 #: audiocdconfig.ui:197
 #, no-c-format, kde-format
 msgid "%{title}"
-msgstr "%{כותרת}"
+msgstr "%{title}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
 #. i18n: ectx: property (text), widget (QLabel, textLabel18)
@@ -164,13 +161,13 @@ msgstr "שנה"
 #: audiocdconfig.ui:227
 #, kde-format
 msgid "Track Artist"
-msgstr "יוצר השיר"
+msgstr "יוצר הרצועה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
 #: audiocdconfig.ui:237
 #, kde-format
 msgid "Track Title"
-msgstr "כותרת השיר"
+msgstr "כותרת הרצועה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel9)
 #. i18n: ectx: property (text), widget (QLabel, textLabel19)
@@ -186,7 +183,7 @@ msgstr "יוצר האלבום"
 #: audiocdconfig.ui:257 audiocdconfig.ui:353 audiocdconfig.ui:484
 #, no-c-format, kde-format
 msgid "%{albumartist}"
-msgstr "%{יוצרהאלבום}"
+msgstr "%{albumartist}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel12)
 #. i18n: ectx: property (text), widget (QLabel, textLabel17)
@@ -194,13 +191,13 @@ msgstr "%{יוצרהאלבום}"
 #: audiocdconfig.ui:267 audiocdconfig.ui:403 audiocdconfig.ui:534
 #, no-c-format, kde-format
 msgid "%{genre}"
-msgstr "%{סגנון}"
+msgstr "%{genre}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
 #: audiocdconfig.ui:277
 #, no-c-format, kde-format
 msgid "%{trackartist}"
-msgstr "%{יוצרהשיר}"
+msgstr "%{trackartist}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #. i18n: ectx: property (text), widget (QLabel, textLabel14)
@@ -208,19 +205,19 @@ msgstr "%{יוצרהשיר}"
 #: audiocdconfig.ui:287 audiocdconfig.ui:413 audiocdconfig.ui:544
 #, no-c-format, kde-format
 msgid "%{albumtitle}"
-msgstr "%{כותרתאלבום}"
+msgstr "%{albumtitle}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: audiocdconfig.ui:297
 #, kde-format
 msgid "Track Number"
-msgstr "מספר השיר"
+msgstr "מספר הרצועה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
 #: audiocdconfig.ui:307
 #, no-c-format, kde-format
 msgid "%{number}"
-msgstr "%{מספר}"
+msgstr "%{number}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
 #: audiocdconfig.ui:325
@@ -235,6 +232,8 @@ msgid ""
 "This defines where files will appear in relation to the encoder root, you "
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
+"מגדיר איפה יופיעו הקבצים ביחס לבסיס המקודד, אפשר להשתמש ב־/ כדי ליצור ת־"
+"תיקיות. למשל: %{albumartist}/%{albumtitle}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:450
@@ -244,15 +243,15 @@ msgstr "מיקום קבצים"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:572
-#, fuzzy, no-c-format, kde-format
+#, no-c-format, kde-format
 msgid "%{albumtitle}/%{albumartist}"
-msgstr "%{יוצרהאלבום}"
+msgstr "%{albumtitle}/%{albumartist}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
 #: audiocdconfig.ui:582
 #, kde-format
 msgid "Name Regular Expression Replacement"
-msgstr "שם הביטוי הרגולרי הוחלף"
+msgstr "החלפת שמות עם ביטוי רגולרי"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
 #: audiocdconfig.ui:588
@@ -267,8 +266,8 @@ msgid ""
 "Regular expression used on all file names. For example using selection \" \" "
 "and replace with \"_\" would replace all the spaces with underlines.\n"
 msgstr ""
-"משתמשים בביטוי רגולרי על שמות קבצים. לדוגמה  כבחירה \" \" והחלפה \"_\" זה "
-"יחליף את כל הרווחים לקו תחתי. \n"
+"ביטוי רגולרי שיחול על כל שמות הקבצים. למשל שימוש בבחירה „ ” והחלפה ב־„_” "
+"יחליף את כל הרווחים בקווים תחתיים.\n"
 
 #. i18n: ectx: property (text), widget (QLabel, inputlabel)
 #: audiocdconfig.ui:612
@@ -294,18 +293,18 @@ msgstr "דוגמה"
 #: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
-msgstr "אמן מגניב \"-\" דוגמא קובץ שמע.wav"
+msgstr "אמן מגניב - קובץ שמע לדוגמה.wav"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
 #: audiocdconfig.ui:665
 #, kde-format
 msgid "Replace with:"
-msgstr "החלף עם:"
+msgstr "החלפה ב־:"
 
 #: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
-msgstr "%1 מקודד"
+msgstr "מקודד %1"
 
 #, fuzzy
 #~| msgid "KDE Audio CD IO Slave"
