@@ -28,6 +28,7 @@
         "Description[pt]": "Configuração do Módulo de E/S de CD's-Áudio",
         "Description[pt_BR]": "Configuração do IO worker de CD de áudio",
         "Description[ru]": "Настройка модуля AudioCD",
+        "Description[sk]": "Nastavenie IO klienta pre zvukové CD",
         "Description[sl]": "Konfiguracija audiocd IO worker",
         "Description[sv]": "Inställning av I/O-arbetare för ljud-cd",
         "Description[tr]": "Ses CD'si Girdi-Çıktı İşçisi Yapılandırması",
