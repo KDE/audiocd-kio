@@ -4,8 +4,8 @@
 # Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 # Ludovic Grossard <grossard@kde.org>, 2003, 2004, 2005, 2007, 2009, 2010.
 # Mickael Sibelle <kimael@gmail.com>, 2008.
-# xavier <xavier.besnard@neuf.fr>, 2012, 2013, 2020.
-# Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
+# Xavier Besnard <xavier.besnard@kde.org>, 2012, 2013, 2020.
+# Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
 msgid ""
 msgstr ""
