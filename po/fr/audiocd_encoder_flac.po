@@ -1,5 +1,5 @@
 # Vincent Pinon <vpinon@kde.org>, 2017.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020.
+# Xavier Besnard <xavier.besnard@kde.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_flac\n"
