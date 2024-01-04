@@ -19,6 +19,7 @@
         "Description[fr]": "Configuration du module de traitement d'entrées / sorties « audiocd »",
         "Description[gl]": "Configuración do traballador IO de audiocd.",
         "Description[he]": "הגדרות מעבד משנה קלט פלט של תקליטור שמע",
+        "Description[hu]": "Hang CD I/O-szolgáltatás beállítása",
         "Description[ia]": "Configuration de Audiocd IO Worker",
         "Description[is]": "Stillingar Audiocd IO-vinnslu",
         "Description[it]": "Configurazione dell'IO Worker per i CD Audio",
