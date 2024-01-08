@@ -4,23 +4,23 @@
 # This file is distributed under the same license as the audiocd_encoder_lame package.
 # Laurenţiu Buzdugan <lbuz@rolix.org>, 2008".
 # Sergiu Bivol <sergiu@cip.md>, 2008.
-# Sergiu Bivol <sergiu@cip.md>, 2009, 2022.
+# Sergiu Bivol <sergiu@cip.md>, 2009, 2022, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2022-02-05 12:32+0000\n"
+"PO-Revision-Date: 2024-01-07 17:36+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
-"Language-Team: Romanian\n"
+"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -141,44 +141,44 @@ msgstr "Valoarea ratei de biți medii"
 #: audiocd_lame_encoder.kcfg:112
 #, kde-format
 msgid "Enable the lowpass filter"
-msgstr ""
+msgstr "Activează filtrul pentru frecvențe joase"
 
 #. i18n: ectx: label, entry (lowfilterfreq), group (Lame)
 #: audiocd_lame_encoder.kcfg:116
 #, kde-format
 msgid "Value of the cutoff frequency for the lowpass filter"
-msgstr ""
+msgstr "Valoarea pragului de frecvență a filtrului pentru frecvențe joase"
 
 #. i18n: ectx: label, entry (enable_highpass), group (Lame)
 #: audiocd_lame_encoder.kcfg:121
 #, kde-format
 msgid "Enable the highpass filter"
-msgstr ""
+msgstr "Activează filtrul pentru frecvențe înalte"
 
 #. i18n: ectx: label, entry (highfilterfreq), group (Lame)
 #: audiocd_lame_encoder.kcfg:125
 #, kde-format
 msgid "Value of the cutoff frequency for the highpass filter"
-msgstr ""
+msgstr "Valoarea pragului de frecvență a filtrului pentru frecvențe înalte"
 
 #. i18n: ectx: label, entry (set_lpf_width), group (Lame)
 #: audiocd_lame_encoder.kcfg:130
 #, kde-format
 msgid "Lowpass filter width"
-msgstr ""
+msgstr "Lățimea filtrului pentru frecvențe joase"
 
 #. i18n: ectx: label, entry (lowfilterwidth), group (Lame)
 #: audiocd_lame_encoder.kcfg:134
 #, kde-format
 msgid "Lowpass filter width value"
-msgstr ""
+msgstr "Valoarea lățimii filtrului pentru frecvențe joase"
 
 #. i18n: ectx: label, entry (set_hpf_width), group (Lame)
 #. i18n: ectx: label, entry (highfilterwidth), group (Lame)
 #: audiocd_lame_encoder.kcfg:139 audiocd_lame_encoder.kcfg:143
 #, kde-format
 msgid "Highpass filter width"
-msgstr ""
+msgstr "Lățimea filtrului pentru frecvențe înalte"
 
 #. i18n: ectx: property (title), widget (QGroupBox, GroupBox1_2)
 #: encoderlameconfig.ui:16
@@ -260,12 +260,14 @@ msgstr "&Scrie etichetă ID3"
 msgid ""
 "If checked and if cddb support is available, an id3 tag will be appended"
 msgstr ""
+"Dacă e activată și dacă platforma CDDB e disponibilă, un marcaj ID3 va fi "
+"atașat"
 
 #. i18n: ectx: property (title), widget (QGroupBox, buttonGroup1)
 #: encoderlameconfig.ui:109
 #, kde-format
 msgid "Encoding Method"
-msgstr "Metodă codificare"
+msgstr "Metodă de codificare"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
 #: encoderlameconfig.ui:117
@@ -293,6 +295,9 @@ msgid ""
 "channels. Note that choosing <i>\"Mono\"</i> reduces file size, but also "
 "kills the stereo signal."
 msgstr ""
+"Această opțiune controlează dacă fișierele MP3 sunt înregistrate cu un canal "
+"sau două. Rețineți că alegând <i>Mono</i> se reduce dimensiunea fișierului, "
+"dar elimină semnalul stereofonic."
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:181
@@ -549,7 +554,7 @@ msgstr "Setări filtru"
 #: encoderlameconfig.ui:709
 #, kde-format
 msgid "Apply &lowpass filter above"
-msgstr ""
+msgstr "Ap&lică filtrul pentru frecvențe joase peste"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_lowfilterfreq)
 #. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_highfilterfreq)
@@ -565,19 +570,19 @@ msgstr " Hz"
 #: encoderlameconfig.ui:729
 #, kde-format
 msgid "Apply &highpass filter below"
-msgstr ""
+msgstr "Aplică &filtrul pentru frecvențe înalte sub"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_lpf_width)
 #: encoderlameconfig.ui:752
 #, kde-format
 msgid "Low&pass filter width"
-msgstr ""
+msgstr "Lățimea &filtrului pentru frecvențe joase"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_hpf_width)
 #: encoderlameconfig.ui:775
 #, kde-format
 msgid "Highpa&ss filter width"
-msgstr ""
+msgstr "Lățimea filtrului pentru fre&cvențe înalte"
 
 #~ msgid "Specify avera&ge bitrate:"
 #~ msgstr "Specificați rata de biți &medie:"
