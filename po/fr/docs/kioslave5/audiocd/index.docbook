@@ -76,7 +76,7 @@
 <para
 >Vous pouvez également essayer de glisser un fichier dont le nom se termine par <literal role="extension"
 >.wav</literal
-> et de le déposer dans le lecteur multimédia de &kde;, &juk;. Dans ce cas, la procédure est similaire, sauf qu'au lieu d'encoder les données au format Ogg Vorbis, les données sont simplement converties du format brut (représenté à la racine du cd-rom par <literal role="extension"
+> et de le déposer dans le lecteur multimédia de &kde;, &juk;. Dans ce cas, la procédure est similaire, sauf qu'au lieu d'encoder les données au format « Ogg Vorbis », les données sont simplement converties du format brut (représenté à la racine du CD-ROM par <literal role="extension"
 >.cda</literal
 >) vers le format <quote
 >RIFF WAV</quote
@@ -129,7 +129,7 @@
 >audiocd:/<option
 >?fileNameTemplate</option
 >=<parameter
->Track %{number}</parameter
+>Piste %{number}</parameter
 ></userinput
 >. Notez que la boîte de dialogue de configuration vous permet de régler une valeur par défaut. Attention, si vous laissez cette option vide, aucun fichier ne sera affiché.</para>
 </listitem>
@@ -292,7 +292,7 @@
 >-vsQ</option
 ></userinput
 > en tant qu'utilisateur (pas en <systemitem class="username"
->superutilisateur</systemitem
+>administrateur</systemitem
 >). Voyez-vous la liste des pistes ? Si vous ne la voyez pas, assurez-vous que vous avez la permission d'accéder au lecteur <acronym
 >CD</acronym
 >. Si vous utilisez l'émulation <acronym
