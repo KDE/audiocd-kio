@@ -28,7 +28,7 @@
 
 #include "ui_encodervorbisconfig.h"
 
-#include <audiocdencoder.h>
+#include "audiocdencoder.h"
 
 class EncoderVorbisConfig : public QWidget, public Ui::EncoderVorbisConfig
 {

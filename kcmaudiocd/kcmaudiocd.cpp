@@ -33,7 +33,7 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-#include <audiocdencoder.h>
+#include "audiocdencoder.h"
 
 K_PLUGIN_CLASS_WITH_JSON(KAudiocdModule, "kcm_audiocd.json")
 

@@ -25,7 +25,7 @@
 
 #include "ui_encoderflacconfig.h"
 
-#include <audiocdencoder.h>
+#include "audiocdencoder.h"
 
 class EncoderFLACConfig : public QWidget, public Ui::EncoderFLACConfig {
 public:

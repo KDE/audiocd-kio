@@ -26,7 +26,7 @@
 #ifndef ENCODER_CDA_H
 #define ENCODER_CDA_H
 
-#include <audiocdencoder.h>
+#include "audiocdencoder.h"
 #include <cstdlib>
 #include <sys/stat.h>
 #include <unistd.h>
