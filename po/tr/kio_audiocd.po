@@ -5,13 +5,13 @@
 # H. İbrahim Güngör <ibrahim@pardus.org.tr>, 2010.
 # Onur Küçük <onur@uludag.org.tr>, 2005.
 # obsoleteman <tulliana@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2023-10-30 22:42+0300\n"
+"PO-Revision-Date: 2024-02-09 17:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -97,7 +97,7 @@ msgstr ""
 "görüyor musunuz? Görmüyorsanız CD aygıtına erişiminiz olduğundan emin olun. "
 "SCSI öykünmesi kullanıyorsanız (bir IDE CD yazıcınız varsa olasıdır) genel "
 "SCSI aygıtında okuma/yazma izinleriniz olduğundan emin olun, büyük "
-"olasılıkla /dev/sg0/dev/sg1, vb. olabilir. Hâlâ çalışmıyorsa kio_audiocd'ye "
+"olasılıkla /dev/sg0/dev/sg1, vb. olabilir. Hâlâ çalışmıyorsa kio_audiocd’ye "
 "hangi aygıtınızın CD-ROM olduğunu söylemek için audiocd:/?device=/dev/sg0 "
 "(veya benzerini) kullanın."
 
@@ -109,7 +109,7 @@ msgstr "AudioCD: Bu parçada disk hasarı algılandı, veri bozulması riski var
 #: audiocd.cpp:979
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr "CD'den %1 için ses verisi okuma hatası"
+msgstr "CD’den %1 için ses verisi okuma hatası"
 
 #: audiocd.cpp:989 audiocd.cpp:1067
 #, kde-format

@@ -8,7 +8,7 @@
 
 <articleinfo>
 <title
->Ses CD'si</title>
+>Ses CD’si</title>
 
 <authorgroup>
 <author
@@ -71,7 +71,7 @@
 
 <sect1 id="audiocd-page">
 <title
->Ses CD'si KIO İşçisi Yapılandırması</title>
+>Ses CD’si KIO İşçisi Yapılandırması</title>
 <para
 ><guilabel
 >Audiocd KIO İşçisi Yapılandırması</guilabel
@@ -102,17 +102,17 @@
 </screenshot>
 
 <para
->Bu sekme, CD'den veri okuma işleminin tamamı için geçerli olan genel parametreleri içerir.</para>
+>Bu sekme, CD’den veri okuma işleminin tamamı için geçerli olan genel parametreleri içerir.</para>
 
 <variablelist>
 <varlistentry
 ><term
 ><guilabel
->CD'yi okurken hata düzeltmesi kullan</guilabel
+>CD’yi okurken hata düzeltmesi kullan</guilabel
 ></term>
 <listitem>
 <para
->Ses CD'si yazarken, işlem her kareye 64 bitlik hata düzeltme verisi ekler. Bundan sonra, kodlanmış karelerin her birine, CD çalınırken denetim ve adresleme için kullanılan 8 bitlik alt kod veya alt kanal verisi eklenir. Bu tür veri düzeltmelerinin yok sayılması okumayı hızlandırabilir; ancak aynı zamanda bazı istenmeyen kalıntılar da üretebilir.</para>
+>Ses CD’si yazarken, işlem her kareye 64 bitlik hata düzeltme verisi ekler. Bundan sonra, kodlanmış karelerin her birine, CD çalınırken denetim ve adresleme için kullanılan 8 bitlik alt kod veya alt kanal verisi eklenir. Bu tür veri düzeltmelerinin yok sayılması okumayı hızlandırabilir; ancak aynı zamanda bazı istenmeyen kalıntılar da üretebilir.</para>
 </listitem>
 </varlistentry>
 
@@ -201,7 +201,7 @@
 </note>
 
 <para
->FLAC; herhangi bir patent veya lisans ücreti gerektirmeyen, kayıpsız, sıkıştırılmış bir ses biçimidir. Dosya boyutunu yaklaşık %​50 oranında azaltırken mükemmel CD ses kalitesini korur. Bu kodlayıcı bileşeni kullanıldığında dosya boyutu Opus, Ogg Vorbis veya MP3'ten çok daha büyüktür.</para>
+>FLAC; herhangi bir patent veya lisans ücreti gerektirmeyen, kayıpsız, sıkıştırılmış bir ses biçimidir. Dosya boyutunu yaklaşık %​50 oranında azaltırken mükemmel CD ses kalitesini korur. Bu kodlayıcı bileşeni kullanıldığında dosya boyutu Opus, Ogg Vorbis veya MP3’ten çok daha büyüktür.</para>
 
 <variablelist>
 <varlistentry
@@ -213,13 +213,13 @@
 <para
 >Sıkıştırma düzeyi, dosya boyutu ile sıkıştırma hızı arasındaki dengeyi temsil eden 0 ile 8 arasında bir tamsayı değeridir.</para>
 <para
->Sıkıştırma düzeyini 0'a ayarlamak en kısa sıkıştırma süresini sağlar; ancak karşılaştırılabilir derecede büyük bir dosya oluşturur.</para>
+>Sıkıştırma düzeyini 0’a ayarlamak en kısa sıkıştırma süresini sağlar; ancak karşılaştırılabilir derecede büyük bir dosya oluşturur.</para>
 <para
->Öte yandan 8'lik bir sıkıştırma düzeyi, sıkıştırmayı oldukça yavaşlatır; ancak en küçük dosyayı üretir.</para>
+>Öte yandan 8’lik bir sıkıştırma düzeyi, sıkıştırmayı oldukça yavaşlatır; ancak en küçük dosyayı üretir.</para>
 <para
 >FLAC, tanımı gereği kayıpsız bir kodlayıcı bileşeni olduğundan, çıkışın ses kalitesinin, sıkıştırma düzeyinden bağımsız olarak tümüyle aynı olduğunu unutmayın.</para>
 <para
->Ayrıca, 5'in üzerindeki düzeyler sıkıştırma süresini önemli ölçüde artırır; ancak yalnızca biraz daha küçük bir dosya oluşturur ve önerilmez.</para>
+>Ayrıca, 5’in üzerindeki düzeyler sıkıştırma süresini önemli ölçüde artırır; ancak yalnızca biraz daha küçük bir dosya oluşturur ve önerilmez.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -305,7 +305,7 @@
 <para
 ><guilabel
 >ID3 etiketini yaz</guilabel
-> ögesi, LAME'in üretilen her bir MP3 dosyasına <ulink url="https://en.wikipedia.org/wiki/ID3"
+> ögesi, LAME’in üretilen her bir MP3 dosyasına <ulink url="https://en.wikipedia.org/wiki/ID3"
 >ID3 üst verisini</ulink
 > eklemesini sağlar.</para>
 </listitem>
@@ -342,11 +342,11 @@
 >En düşük değer sabit bir sınırdır</guilabel
 > seçeneklerini kullanabilirsiniz.</para>
 <para
->160 kb/sn, taşınabilir bir çalarda müzik dinlemek için iyi bir seçimdir. 120 kb/sn'nin altındaki herhangi bir değer müzik için yetersiz olabilir ve 256 kb/sn'nin üzerindeki herhangi bir değer büyük olasılıkla aşırıdır.</para>
+>160 kb/sn, taşınabilir bir çalarda müzik dinlemek için iyi bir seçimdir. 120 kb/sn’nin altındaki herhangi bir değer müzik için yetersiz olabilir ve 256 kb/sn’nin üzerindeki herhangi bir değer büyük olasılıkla aşırıdır.</para>
 <para
 >Dosyaya <guilabel
 >Xing VBR etiketini yaz</guilabel
->'mak da olanaklıdır. Xing, değişken bit hızına sahip dosyalar içinde daha doğru arama yapılmasını sağlayan VBR etiketiyle dikkat çeken bir kodlayıcı oluşturmaktan sorumluydu. Xing'in VBR etiketi, diğer şeylerin yanı sıra, bir MP3 dosyasının toplam süresi hakkında bilgi içerir; bu, MPEG akışında başka türlü kolayca bulunamayan bir şeydir.</para>
+>’mak da olanaklıdır. Xing, değişken bit hızına sahip dosyalar içinde daha doğru arama yapılmasını sağlayan VBR etiketiyle dikkat çeken bir kodlayıcı oluşturmaktan sorumluydu. Xing’in VBR etiketi, diğer şeylerin yanı sıra, bir MP3 dosyasının toplam süresi hakkında bilgi içerir; bu, MPEG akışında başka türlü kolayca bulunamayan bir şeydir.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -400,7 +400,7 @@
 <itemizedlist>
 <listitem>
 <para
->CPU karmaşıklığı ile kalite/bit hızı arasındaki Opus kodlayıcısı seçimini etkileyen birkaç şey vardır. Kodlamanın karmaşıklığı, 0'dan 10'a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
+>CPU karmaşıklığı ile kalite/bit hızı arasındaki Opus kodlayıcısı seçimini etkileyen birkaç şey vardır. Kodlamanın karmaşıklığı, 0’dan 10’a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
 </listitem>
 <listitem>
 <para
@@ -460,7 +460,7 @@
 </note>
 
 <para
->Ogg Vorbis, kayıplı ses sıkıştırmaya yönelik açık ve telifsiz bir ses kodlayıcısı bileşenidir. Eşdeğer veya daha yüksek kalitede MP3'ten daha küçük dosyalar üretir.</para>
+>Ogg Vorbis, kayıplı ses sıkıştırmaya yönelik açık ve telifsiz bir ses kodlayıcısı bileşenidir. Eşdeğer veya daha yüksek kalitede MP3’ten daha küçük dosyalar üretir.</para>
 
 <variablelist>
 <varlistentry
@@ -478,7 +478,7 @@
 <itemizedlist>
 <listitem>
 <para
->Ogg Vorbis kodlamasının kalitesi, 0'dan 10'a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
+>Ogg Vorbis kodlamasının kalitesi, 0’dan 10’a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
 </listitem>
 <listitem>
 <para

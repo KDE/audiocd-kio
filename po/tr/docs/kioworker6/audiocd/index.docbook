@@ -56,8 +56,8 @@
 
 <para
 >Bu KIO işçisinin nasıl çalıştığını görmek için &CD-ROM; sürücünüze bir ses <acronym
->CD'si</acronym
-> yerleştirin ve &konqueror;'a <userinput
+>CD’si</acronym
+> yerleştirin ve &konqueror;’a <userinput
 >audiocd:/</userinput
 > yazın. Birkaç saniye içinde parçaların ve bazı klasörlerin bir listesini görmelisiniz.</para>
 
@@ -76,7 +76,7 @@
 >Ogg Vorbis</filename
 > klasöründen bir parçayı sürükleyip ana klasörünüzde açık olan başka bir &konqueror; penceresine bırakırsanız parçanın <acronym
 >CD</acronym
->'den çıkarıldığını ve bir dosyaya kaydedildiğini gösteren bir ilerleme penceresi görürsünüz. Ogg Vorbis'in sıkıştırılmış bir biçim olduğunu unutmayın, bu nedenle ana klasörünüzdeki dosya, ham veriyi kopyalamış olsaydınız olacağından çok daha küçük görünecektir.</para>
+>’den çıkarıldığını ve bir dosyaya kaydedildiğini gösteren bir ilerleme penceresi görürsünüz. Ogg Vorbis’in sıkıştırılmış bir biçim olduğunu unutmayın, bu nedenle ana klasörünüzdeki dosya, ham veriyi kopyalamış olsaydınız olacağından çok daha küçük görünecektir.</para>
 
 <para
 >Bunun arkasındaki mekanizma oldukça basittir. audiocd KIO işçisinden <filename class="directory"
@@ -323,7 +323,7 @@
 >/dev/sg0</filename
 >, <filename class="devicefile"
 >/dev/sg1</filename
->, vb. olabilir. Hâlâ çalışmıyorsa kio_audiocd'ye hangi aygıtınızın &CD-ROM; olduğunu söylemek için <userinput
+>, vb. olabilir. Hâlâ çalışmıyorsa kio_audiocd’ye hangi aygıtınızın &CD-ROM; olduğunu söylemek için <userinput
 >audiocd:/?device=/dev/sg0</userinput
 > (veya benzerini) kullanın.</para
 > 
