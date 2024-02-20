@@ -76,16 +76,16 @@ KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
     connect(audioConfig->niceLevel, &QSlider::valueChanged, this, &KAudiocdModule::slotConfigChanged);
 
     // File Name
-    connect(audioConfig->fileNameLineEdit, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
-    connect(audioConfig->albumNameLineEdit, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
-    connect(audioConfig->fileLocationLineEdit, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->fileNameLineEdit, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->albumNameLineEdit, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->fileLocationLineEdit, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->fileLocationGroupBox, &QGroupBox::clicked, this, &KAudiocdModule::slotConfigChanged);
-    connect(audioConfig->kcfg_replaceInput, &QLineEdit::textChanged, this, &KAudiocdModule::updateExample);
-    connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::updateExample);
-    connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::updateExample);
-    connect(audioConfig->kcfg_replaceInput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
-    connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
-    connect(audioConfig->example, &QLineEdit::textChanged, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->kcfg_replaceInput, &QLineEdit::textEdited, this, &KAudiocdModule::updateExample);
+    connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textEdited, this, &KAudiocdModule::updateExample);
+    connect(audioConfig->example, &QLineEdit::textEdited, this, &KAudiocdModule::updateExample);
+    connect(audioConfig->kcfg_replaceInput, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->example, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
 }
 
 KAudiocdModule::~KAudiocdModule()
