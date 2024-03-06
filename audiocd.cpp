@@ -50,7 +50,7 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
 #include <QFile>
 #include <QFileInfo>
 #include <QHash>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QUrlQuery>
 
 #include "audiocd_kio_debug.h"
@@ -1166,11 +1166,11 @@ void AudioCDProtocol::loadSettings()
     // (only spaces) value is not supported by KConfig, so the space has to be
     // quoted, but then here the regexp searches really for " " instead of just
     // the space. Alex
-    QRegExp qoutedString(QLatin1String("^\".*\"$"));
-    if (qoutedString.exactMatch(d->rsearch)) {
+    const QRegularExpression qoutedString(QLatin1String("^\".*\"$"));
+    if (const auto match = qoutedString.match(d->rsearch); match.hasMatch()) {
         d->rsearch = d->rsearch.mid(1, d->rsearch.length() - 2);
     }
-    if (qoutedString.exactMatch(d->rreplace)) {
+    if (const auto match = qoutedString.match(d->rreplace); match.hasMatch()) {
         d->rreplace = d->rreplace.mid(1, d->rreplace.length() - 2);
     }
 

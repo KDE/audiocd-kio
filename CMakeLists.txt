@@ -23,7 +23,6 @@ include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
-find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
 
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
@@ -100,11 +99,11 @@ set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
 
 target_link_libraries(kio_audiocd
     audiocdplugins
+    KCompactDisc6
     KF6::I18n
     Qt::Widgets
     Cdparanoia::Cdparanoia
 )
-target_link_libraries(kio_audiocd Qt6::Core5Compat KCompactDisc6)
 
 install(TARGETS kio_audiocd  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/kio)
 
