@@ -8,13 +8,13 @@
 # Gregor Rakar <gregor.rakar@kiss.si>, 2003, 2004, 2005.
 # Jure Repinc <jlp@holodeck1.com>, 2005, 2006, 2007, 2010.
 # Andrej Mernik <andrejm@ubuntu.si>, 2013, 2014, 2016.
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2019, 2022.
+# SPDX-FileCopyrightText: 2019, 2022, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-17 00:41+0000\n"
-"PO-Revision-Date: 2022-07-07 07:42+0200\n"
+"PO-Revision-Date: 2024-03-16 11:42+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 
@@ -126,13 +126,13 @@ msgstr "Zvrst"
 #: audiocdconfig.ui:187 audiocdconfig.ui:363 audiocdconfig.ui:494
 #, no-c-format, kde-format
 msgid "%{year}"
-msgstr "%{leto}"
+msgstr "%{year}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
 #: audiocdconfig.ui:197
 #, no-c-format, kde-format
 msgid "%{title}"
-msgstr "%{naslov}"
+msgstr "%{title}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
 #. i18n: ectx: property (text), widget (QLabel, textLabel18)
@@ -176,7 +176,7 @@ msgstr "Izvajalec albuma"
 #: audiocdconfig.ui:257 audiocdconfig.ui:353 audiocdconfig.ui:484
 #, no-c-format, kde-format
 msgid "%{albumartist}"
-msgstr "%{izvajalec_albuma}"
+msgstr "%{albumartist}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel12)
 #. i18n: ectx: property (text), widget (QLabel, textLabel17)
@@ -184,13 +184,13 @@ msgstr "%{izvajalec_albuma}"
 #: audiocdconfig.ui:267 audiocdconfig.ui:403 audiocdconfig.ui:534
 #, no-c-format, kde-format
 msgid "%{genre}"
-msgstr "%{zvrst}"
+msgstr "%{genre}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
 #: audiocdconfig.ui:277
 #, no-c-format, kde-format
 msgid "%{trackartist}"
-msgstr "%{izvajalec_skladbe}"
+msgstr "%{trackartist}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
 #. i18n: ectx: property (text), widget (QLabel, textLabel14)
@@ -198,7 +198,7 @@ msgstr "%{izvajalec_skladbe}"
 #: audiocdconfig.ui:287 audiocdconfig.ui:413 audiocdconfig.ui:544
 #, no-c-format, kde-format
 msgid "%{albumtitle}"
-msgstr "%{album}"
+msgstr "%{albumtitle}"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: audiocdconfig.ui:297
@@ -210,7 +210,7 @@ msgstr "Št. skladbe"
 #: audiocdconfig.ui:307
 #, no-c-format, kde-format
 msgid "%{number}"
-msgstr "%{številka}"
+msgstr "%{number}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
 #: audiocdconfig.ui:325
@@ -226,8 +226,7 @@ msgid ""
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
 "To določa relativni položaj datotek glede na vrhnjo mapo kodirnika. Za "
-"ustvaritev podmap lahko uporabite znak »/«, npr. %{izvajalec_albuma}/"
-"%{album} "
+"ustvaritev podmap lahko uporabite znak /, npr .%{albumartist}/%{albumtitle} "
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:450
@@ -239,7 +238,7 @@ msgstr "Mesto datotek"
 #: audiocdconfig.ui:572
 #, no-c-format, kde-format
 msgid "%{albumtitle}/%{albumartist}"
-msgstr "%{album}/%{izvajalec_albuma}"
+msgstr "%{albumtitle}/%{albumartist}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
 #: audiocdconfig.ui:582
@@ -260,8 +259,8 @@ msgid ""
 "Regular expression used on all file names. For example using selection \" \" "
 "and replace with \"_\" would replace all the spaces with underlines.\n"
 msgstr ""
-"Regularni izraz, ki se uporablja pri vseh imenih datotek. Npr. uporaba »_« "
-"in zamenjava z » « bi zamenjala vse podčrtaje s presledki.\n"
+"Regularni izraz, ki se uporablja pri vseh imenih datotek. Npr. uporaba \" \" "
+"in zamenjava z \"_\" bi zamenjala vse presledke s podčrtaji.\n"
 
 #. i18n: ectx: property (text), widget (QLabel, inputlabel)
 #: audiocdconfig.ui:612
