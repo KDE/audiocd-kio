@@ -69,6 +69,7 @@
   <summary xml:lang="hu">Hang CD-k transzparens integrációja a KDE Plasmába és az adatkonverziós képességekkel rendelkező KDE alkalmazásokba</summary>
   <summary xml:lang="ia">Integration transparente de audio CDs con KDE Plasma e applicationes de KDE con capacitates de conversion de datos</summary>
   <summary xml:lang="id">CD audio yang terintegrasi transparan dengan Plasma KDE dan aplikasi KDE</summary>
+  <summary xml:lang="is">Gagnsæ samþætting hljóðgeisladiska við KDE Plasma og forrita KDE með yfirfærslueiginleikum fyrir gögn</summary>
   <summary xml:lang="it">Integrazione trasparente con KDE Plasma e le applicazioni di KDE dei CD audio con capacità di conversione dei dati</summary>
   <summary xml:lang="ka">AudioCD-ების გამჭვირვალე ინტეგრაცია KDE Plasma-სთან და KDE-ის აპლიკაციებთან მონაცემების გადაყვანის შესაძლებლობებით</summary>
   <summary xml:lang="ko">KDE Plasma 및 KDE 앱과 오디오 CD 통합 및 데이터 변환 제공</summary>
@@ -82,7 +83,7 @@
   <summary xml:lang="sk">Transparentná integrácia audio CD s KDE Plasma a KDE aplikáciami s možnosťami dátovej konverzie</summary>
   <summary xml:lang="sl">Transparentna integracija avdio CD-jev s programi KDE Plasma in KDE z možnostjo pretvorbe podatkov</summary>
   <summary xml:lang="sv">Transparent integrering av ljud-cd med KDE Plasma och KDE-program med datakonverteringsmöjlighet</summary>
-  <summary xml:lang="tr">Ses CD'lerinin KDE Plasma ve KDE uygulamalarıyla veri dönüştürme yeteneklerini de içerecek biçimde saydam tümleştirmesi</summary>
+  <summary xml:lang="tr">Ses CD’lerinin KDE Plasma ve KDE uygulamalarıyla veri dönüştürme yeteneklerini de içerecek biçimde saydam tümleştirmesi</summary>
   <summary xml:lang="uk">Прозора інтеграція із можливістю перетворення даних звукових компакт-дисків до Плазми та програм KDE</summary>
   <summary xml:lang="x-test">xxTransparent integration of audio CDs with KDE Plasma and KDE applications with data conversion capabilitiesxx</summary>
   <summary xml:lang="zh-CN">KDE Plasma 和 KDE 应用程序的音频 CD 透明集成从属程序，具有数据转换功能</summary>
@@ -108,6 +109,7 @@
     <p xml:lang="he">KIO לתקליטורי שמע הוא מעבד משנה של KIO שמאפשר ליישומים שמודעים ל־KIO (כגון Dolphin או K3b) לגשת לשמע ולנתוני הטקסט בתקליטורי שמע. הוא מאפשר המרה עם גרירה והשלכה של נתוני שמע לתסדירי קבצים נפוצים ויש לו מודול הגדרות מערכת שזמין תחת הסעיף „מולטימדיה”.</p>
     <p xml:lang="hu">A KIO AudioCD egy KIO-szolgáltatás, amely lehetővé teszi a KIO-t támogató alkalmazásoknak (például a Dolphin vagy a K3b) hanglemezek hang- és CD-szöveg adatainak elérését. Képes a hangadatokat transzparensen átkonvertálni a népszerű formátumokba a fogd és vidd módszerrel, a beállításai pedig a Rendszerbeállítások „Multimédia” szekciójában érhetők el.</p>
     <p xml:lang="ia">KIO AudioCD es un travaliator (worker) KIO que habilita applicationes conscie de KIO (tal como Dolphin o K3b) a acceder a datos audio e de texto de CD sur discos de compacte audio. Illo permitte conversion transparente de traher e  deponer de datos audio in le formatos popular e ha un modulo de Preferentias de Systema de configuration  disponibile in le section "Multipedia"</p>
+    <p xml:lang="is">KIO AudioCD er KIO-vinnsla sem gerir forritum sem taka mið af KIO (eins ogDolphin eða k3b) kleift að opna hljóð- og textagögn á hljóðgeisladiskum. Það býður upp á gagnsæja yfirfærslu á hljóðgögnum í vinsæl skráasnið með því einu að draga og sleppa, og býður upp á grunnstillingaeiningu í Kerfisstillingum í hlutanum "Margmiðlun".</p>
     <p xml:lang="it">KIO AudioCD è un KIO worker che consente alle applicazioni che gestiscono KIO (come Dolphin o k3b) di accedere ai dati audio e testuali dei CD audio. Permette una conversione trasparente tramite trascinamento dei dati audio nei formati audio più popolari, e dispone di un modulo in Impostazioni di sistema, nella sezione «Multimedia».</p>
     <p xml:lang="ka">KIO AudioCD-ი KIO-ის დამხმარე პროცესია, რომელიც KIO-სთან მომუშავე აპლიკაციებს (მაგალითად Dolphin-ს ან K3b-ს) საშუალებას აძლევთ, იქონიონ წვდომა ხმაზე და CD-ტექსტზე, რომელიც დისკზეა. ის საშუალებას გაძლევთ, მარტივი გადათრევით გარდაქმნათ აუდიო მონაცემები პოპულარულ ფორმატებში და გააჩნია სისტემის მორგების მოდული, რომელიც "მულტიმედიის" სექციაშია ხელმისაწვდომი.</p>
     <p xml:lang="ko">KIO 오디오 CD는 Dolphin 및 K3b 등 KIO를 사용할 수 있는 앱에서 오디오 CD와 CD 텍스트 데이터에 접근할 수 있는 KIO 워커입니다. 오디오 데이터를 자주 사용하는 형식으로 드래그 앤 드롭을 사용하여 변환할 수 있으며 시스템 설정의 "멀티미디어" 부분에서 설정할 수 있습니다.</p>
@@ -155,7 +157,7 @@
       <caption xml:lang="hu">KIO AudioCD beállítóablak</caption>
       <caption xml:lang="ia">Fenestra de configuration de KIO AudioCD</caption>
       <caption xml:lang="id">Jendela konfigurasi KIO AudioCD </caption>
-      <caption xml:lang="is">Stillingagluggi KIO AudioCD</caption>
+      <caption xml:lang="is">Grunnstillingagluggi KIO AudioCD</caption>
       <caption xml:lang="it">Finestra di configurazione di KIO AudioCD</caption>
       <caption xml:lang="ka">KIO AudioCD -ის მორგების ფანჯარა</caption>
       <caption xml:lang="ko">KIO 오디오 CD 설정 창</caption>
