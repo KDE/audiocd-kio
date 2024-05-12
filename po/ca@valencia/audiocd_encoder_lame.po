@@ -259,8 +259,7 @@ msgstr "E&scriu la marca ID3"
 #, kde-format
 msgid ""
 "If checked and if cddb support is available, an id3 tag will be appended"
-msgstr ""
-"Si se selecciona i hi ha disponible l'ús de CDDB, s'afegirà un marcador ID3"
+msgstr "Si es marca i hi ha disponible l'ús de CDDB, s'afegirà un marcador ID3"
 
 #. i18n: ectx: property (title), widget (QGroupBox, buttonGroup1)
 #: encoderlameconfig.ui:109
