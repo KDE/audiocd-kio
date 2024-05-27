@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-17 00:41+0000\n"
-"PO-Revision-Date: 2024-02-09 17:45+0300\n"
+"PO-Revision-Date: 2024-05-27 00:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -242,7 +242,7 @@ msgstr "%{albumtitle}/%{albumartist}"
 #: audiocdconfig.ui:582
 #, kde-format
 msgid "Name Regular Expression Replacement"
-msgstr "Ad - Düzenli İfadeleri Değiştirmesi"
+msgstr "Ad–Düzenli İfade Değiştirmesi"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
 #: audiocdconfig.ui:588
@@ -257,8 +257,8 @@ msgid ""
 "Regular expression used on all file names. For example using selection \" \" "
 "and replace with \"_\" would replace all the spaces with underlines.\n"
 msgstr ""
-"Düzenli ifadeler bütün dosya adlarında kullanılabilir. Örneğin, \" \" seçimi "
-"kullanılarak ve \"_\" ile değiştirilerek dosya adlarındaki tüm boşluklar alt "
+"Düzenli ifadeler bütün dosya adlarında kullanılabilir. Örneğin, ‘ ’ seçimi "
+"kullanılarak ve ‘_’ ile değiştirilerek dosya adlarındaki tüm boşluklar alt "
 "çizgilerle değiştirilebilir.\n"
 
 #. i18n: ectx: property (text), widget (QLabel, inputlabel)
@@ -285,7 +285,7 @@ msgstr "Örnek"
 #: kcmaudiocd.cpp:202
 #, kde-format
 msgid "Cool artist - example audio file.wav"
-msgstr "Mükemmel sanatçı - örnek ses dosyası file.wav"
+msgstr "Mükemmel sanatçı – Örnek ses dosyası file.wav"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
 #: audiocdconfig.ui:665
