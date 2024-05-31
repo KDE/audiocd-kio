@@ -1,7 +1,6 @@
 # translation of kcmaudiocd.po to
-# Version: $Revision: 1681059 $
+# Version: $Revision: 1681191 $
 # Norbert Popiołek <norbert@kde.com.pl>\n"
-# Krzysztof Lichota, 2004.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002, 2003.
 # Mikolaj Machowski <mikmach@wp.pl>, 2004, 2005.
@@ -9,6 +8,7 @@
 # Robert Gomulka <rgom@o2.pl>, 2006.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007, 2011.
 # Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012, 2016, 2019, 2022.
+# Krzysztof Lichota, 2004.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2019-05-20 03:08+0200\n"
-"PO-Revision-Date: 2023-10-19 21:45+0100\n"
+"PO-Revision-Date: 2024-05-30 07:49+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -220,7 +220,7 @@ msgstr ""
 #: encoderopusconfig.ui:286
 #, kde-format
 msgid "Opus Co&mplexity Setting"
-msgstr "Opus Komplekseco Agordo"
+msgstr "Opus Agordo de Ko&mplekseco"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, complexitySlider)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, kcfg_opus_complexity)
