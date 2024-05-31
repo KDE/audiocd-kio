@@ -1,13 +1,13 @@
 # translation of kio_audiocd.po to
-# Version: $Revision: 1681059 $
+# Version: $Revision: 1681191 $
 # Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-#
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003.
 # Mikolaj Machowski <mikmach@wp.pl>, 2004, 2005.
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2006.
 # Robert Gomulka <rgom@o2.pl>, 2006.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007.
 # Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012, 2020.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
