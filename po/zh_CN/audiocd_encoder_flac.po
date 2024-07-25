@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/audiocd-kio/audiocd_encoder_flac.pot\n"
-"X-Crowdin-File-ID: 46560\n"
+"X-Crowdin-File: /kf6-stable/messages/audiocd-kio/audiocd_encoder_flac.pot\n"
+"X-Crowdin-File-ID: 53080\n"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: label, entry (flac_compression_level), group (Flac)
