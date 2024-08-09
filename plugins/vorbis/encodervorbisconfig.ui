@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>375</width>
+    <width>501</width>
     <height>408</height>
    </rect>
   </property>
@@ -19,21 +19,27 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QHBoxLayout">
-      <item>
+     <layout class="QFormLayout" name="formLayout_2">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="vorbis_enc_bitrate">
+        <property name="text">
+         <string>Bi&amp;trate based</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
        <widget class="QRadioButton" name="vorbis_enc_quality">
         <property name="text">
          <string>&amp;Quality based</string>
         </property>
         <property name="checked">
          <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="vorbis_enc_bitrate">
-        <property name="text">
-         <string>Bi&amp;trate based</string>
         </property>
        </widget>
       </item>
@@ -52,87 +58,17 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout">
-      <item row="0" column="1">
-       <widget class="QComboBox" name="kcfg_vorbis_min_br">
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="kcfg_set_vorbis_max_br">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
-        <property name="currentIndex">
-         <number>1</number>
+        <property name="text">
+         <string>Ma&amp;ximal bitrate:</string>
         </property>
-        <item>
-         <property name="text">
-          <string>32 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>40 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>48 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>56 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>64 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>80 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>96 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>112 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>128 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>160 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>192 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>224 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>256 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>350 kbps</string>
-         </property>
-        </item>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="2">
        <widget class="QComboBox" name="kcfg_vorbis_max_br">
         <property name="enabled">
          <bool>false</bool>
@@ -212,7 +148,110 @@
         </item>
        </widget>
       </item>
-      <item row="0" column="0">
+      <item row="1" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <widget class="QComboBox" name="kcfg_vorbis_min_br">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>32 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>112 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>224 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>350 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="kcfg_set_vorbis_nominal_br">
+        <property name="text">
+         <string>A&amp;verage bitrate:</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
        <widget class="QCheckBox" name="kcfg_set_vorbis_min_br">
         <property name="enabled">
          <bool>true</bool>
@@ -222,17 +261,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="kcfg_set_vorbis_max_br">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string>Ma&amp;ximal bitrate:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
+      <item row="2" column="2">
        <widget class="QComboBox" name="kcfg_vorbis_nominal_br">
         <property name="currentIndex">
          <number>1</number>
@@ -264,15 +293,18 @@
         </item>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="kcfg_set_vorbis_nominal_br">
-        <property name="text">
-         <string>A&amp;verage bitrate:</string>
+      <item row="1" column="3">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
-        <property name="checked">
-         <bool>true</bool>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
         </property>
-       </widget>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -288,9 +320,28 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QHBoxLayout">
-      <item>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="qualityLabel">
+        <property name="text">
+         <string>Quality</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
        <widget class="QDoubleSpinBox" name="kcfg_vorbis_quality">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="whatsThis">
          <string>Higher is better but slower</string>
         </property>
@@ -319,7 +370,20 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QVBoxLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item>
        <widget class="QCheckBox" name="kcfg_vorbis_comments">
         <property name="enabled">
@@ -332,6 +396,19 @@
          <string>Add &amp;track information</string>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -355,14 +432,12 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>vorbis_enc_quality</tabstop>
   <tabstop>kcfg_set_vorbis_min_br</tabstop>
   <tabstop>kcfg_set_vorbis_max_br</tabstop>
   <tabstop>kcfg_set_vorbis_nominal_br</tabstop>
   <tabstop>kcfg_vorbis_min_br</tabstop>
   <tabstop>kcfg_vorbis_max_br</tabstop>
   <tabstop>kcfg_vorbis_nominal_br</tabstop>
-  <tabstop>kcfg_vorbis_quality</tabstop>
   <tabstop>kcfg_vorbis_comments</tabstop>
  </tabstops>
  <resources/>

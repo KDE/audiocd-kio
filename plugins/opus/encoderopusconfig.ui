@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>375</width>
+    <width>332</width>
     <height>408</height>
    </rect>
   </property>
@@ -19,8 +19,14 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QHBoxLayout">
-      <item>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <item row="1" column="1">
        <widget class="QRadioButton" name="kcfg_opus_enc_complexity">
         <property name="text">
          <string>Comp&amp;lexity based</string>
@@ -30,7 +36,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="1">
        <widget class="QRadioButton" name="kcfg_opus_enc_bitrate">
         <property name="text">
          <string>Bi&amp;trate based</string>
@@ -52,14 +58,7 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout">
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="kcfg_set_opus_cbr">
-        <property name="text">
-         <string>C&amp;onstant bitrate:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
+      <item row="0" column="2">
        <widget class="QComboBox" name="kcfg_opus_cbr">
         <property name="enabled">
          <bool>false</bool>
@@ -127,92 +126,44 @@
         </item>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="kcfg_set_opus_cvbr">
-        <property name="text">
-         <string>Co&amp;nstrained variable bitrate:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="kcfg_opus_cvbr">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="currentText">
-         <string>96 kbps</string>
-        </property>
-        <property name="currentIndex">
-         <number>6</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>6 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>12 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>24 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>48 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>64 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>80 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>96 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>128 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>160 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>192 kbps</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>256 kbps</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="2" column="0">
+      <item row="2" column="1">
        <widget class="QRadioButton" name="kcfg_set_opus_vbr">
         <property name="text">
-         <string>A&amp;verage variable bitrate:</string>
+         <string>Avera&amp;ge variable bitrate:</string>
         </property>
         <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="0" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="kcfg_set_opus_cbr">
+        <property name="text">
+         <string>Cons&amp;tant bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="kcfg_set_opus_cvbr">
+        <property name="text">
+         <string>Co&amp;nstrained variable bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
        <widget class="QComboBox" name="kcfg_opus_vbr">
         <property name="enabled">
          <bool>true</bool>
@@ -280,6 +231,87 @@
         </item>
        </widget>
       </item>
+      <item row="1" column="2">
+       <widget class="QComboBox" name="kcfg_opus_cvbr">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentText">
+         <string>96 kbps</string>
+        </property>
+        <property name="currentIndex">
+         <number>6</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>6 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
     </widget>
    </item>
@@ -294,11 +326,23 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QHBoxLayout">
-      <item>
+     <layout class="QFormLayout" name="formLayout_3">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QSlider" name="complexitySlider">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="whatsThis">
            <string>Higher is better but slower</string>
           </property>
@@ -324,7 +368,7 @@
         </item>
        </layout>
       </item>
-      <item>
+      <item row="0" column="1">
        <widget class="QSpinBox" name="kcfg_opus_complexity">
         <property name="whatsThis">
          <string>Higher is better but slower</string>
@@ -351,8 +395,14 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QVBoxLayout">
-      <item>
+     <layout class="QFormLayout" name="formLayout_2">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <item row="0" column="0">
        <widget class="QCheckBox" name="kcfg_opus_comments">
         <property name="enabled">
          <bool>true</bool>
