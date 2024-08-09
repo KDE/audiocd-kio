@@ -30,6 +30,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     DocTools
     KIO
     KCMUtils
+    WidgetsAddons
 )
 find_package(KCompactDisc6)
 set_package_properties(KCompactDisc6 PROPERTIES

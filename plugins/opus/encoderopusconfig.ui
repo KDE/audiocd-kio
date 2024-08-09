@@ -16,11 +16,14 @@
      <property name="title">
       <string>&amp;Encoding Method</string>
      </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
      <layout class="QHBoxLayout">
       <item>
        <widget class="QRadioButton" name="kcfg_opus_enc_complexity">
         <property name="text">
-         <string>Complexity based</string>
+         <string>Comp&amp;lexity based</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -30,7 +33,7 @@
       <item>
        <widget class="QRadioButton" name="kcfg_opus_enc_bitrate">
         <property name="text">
-         <string>Bitrate based</string>
+         <string>Bi&amp;trate based</string>
         </property>
        </widget>
       </item>
@@ -45,8 +48,11 @@
      <property name="title">
       <string>Opus Bitrate Settings</string>
      </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
      <layout class="QGridLayout">
-       <item row="0" column="0">
+      <item row="0" column="0">
        <widget class="QRadioButton" name="kcfg_set_opus_cbr">
         <property name="text">
          <string>C&amp;onstant bitrate:</string>
@@ -285,25 +291,34 @@
      <property name="title">
       <string>Opus Co&amp;mplexity Setting</string>
      </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
      <layout class="QHBoxLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QSlider" name="complexitySlider">
           <property name="whatsThis">
-            <string>Higher is better but slower</string>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <string>Higher is better but slower</string>
           </property>
           <property name="minimum">
-            <number>0</number>
+           <number>0</number>
           </property>
           <property name="maximum">
-            <number>10</number>
+           <number>10</number>
           </property>
           <property name="value">
-            <number>10</number>
+           <number>10</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="tickPosition">
+           <enum>QSlider::TickPosition::TicksBelow</enum>
+          </property>
+          <property name="tickInterval">
+           <number>1</number>
           </property>
          </widget>
         </item>
@@ -333,6 +348,9 @@
      <property name="title">
       <string>Options</string>
      </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
      <layout class="QVBoxLayout">
       <item>
        <widget class="QCheckBox" name="kcfg_opus_comments">
@@ -353,10 +371,16 @@
    <item>
     <spacer name="spacer9">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
+      <enum>QSizePolicy::Policy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
     </spacer>
    </item>
@@ -369,78 +393,208 @@
    <signal>toggled(bool)</signal>
    <receiver>opus_bitrate_settings</receiver>
    <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_opus_enc_complexity</sender>
    <signal>toggled(bool)</signal>
    <receiver>opus_complexity_settings</receiver>
    <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_cbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_cbr</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_cbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_cvbr</receiver>
    <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_cbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_vbr</receiver>
    <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_cvbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_cvbr</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_cvbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_cbr</receiver>
    <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_cvbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_vbr</receiver>
    <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_vbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_vbr</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_vbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_cvbr</receiver>
    <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_set_opus_vbr</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_opus_cbr</receiver>
    <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>kcfg_opus_complexity</sender>
    <signal>valueChanged(int)</signal>
    <receiver>complexitySlider</receiver>
    <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>complexitySlider</sender>
    <signal>valueChanged(int)</signal>
    <receiver>kcfg_opus_complexity</receiver>
    <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
  </connections>
 </ui>

@@ -41,6 +41,7 @@ KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
     : KCModule(parent, md)
 {
     auto box = new QVBoxLayout(widget());
+    box->setContentsMargins(0, 0, 0, 0);
 
     audioConfig = new AudiocdConfig(widget());
 
@@ -93,18 +94,18 @@ KAudiocdModule::~KAudiocdModule()
     delete config;
 }
 
-QString removeQoutes(const QString &text)
+QString removeQuotes(const QString &text)
 {
-    QString deqoutedString = text;
-    QRegularExpression qoutedStringRegExp(QStringLiteral("^\".*\"$"));
-    QRegularExpressionMatch hasQuotes = qoutedStringRegExp.match(text);
+    QString dequotedString = text;
+    QRegularExpression quotedStringRegExp(QStringLiteral("^\".*\"$"));
+    QRegularExpressionMatch hasQuotes = quotedStringRegExp.match(text);
     if (hasQuotes.hasMatch()) {
-        deqoutedString = text.mid(1, text.length() - 2);
+        dequotedString = text.mid(1, text.length() - 2);
     }
-    return deqoutedString;
+    return dequotedString;
 }
 
-bool needsQoutes(const QString &text)
+bool needsQuotes(const QString &text)
 {
     QRegularExpression spaceAtTheBeginning(QStringLiteral("^\\s+.*$"));
     QRegularExpression spaceAtTheEnd(QStringLiteral("^.*\\s+$"));
@@ -117,9 +118,9 @@ void KAudiocdModule::updateExample()
 {
     QString text = audioConfig->example->text();
 
-    const QString deqoutedReplaceInput = removeQoutes(audioConfig->kcfg_replaceInput->text());
-    const QString deqoutedReplaceOutput = removeQoutes(audioConfig->kcfg_replaceOutput->text());
-    text.replace(QRegularExpression(deqoutedReplaceInput), deqoutedReplaceOutput);
+    const QString dequotedReplaceInput = removeQuotes(audioConfig->kcfg_replaceInput->text());
+    const QString dequotedReplaceOutput = removeQuotes(audioConfig->kcfg_replaceOutput->text());
+    text.replace(QRegularExpression(dequotedReplaceInput), dequotedReplaceOutput);
     audioConfig->exampleOutput->setText(text);
 }
 
@@ -162,12 +163,12 @@ void KAudiocdModule::save() {
       // save quoted if required
       QString replaceInput = audioConfig->kcfg_replaceInput->text();
       QString replaceOutput = audioConfig->kcfg_replaceOutput->text();
-      if (needsQoutes(replaceInput)) {
+      if (needsQuotes(replaceInput)) {
           replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
       }
-    if (needsQoutes(replaceOutput)) {
-        replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
-    }
+      if (needsQuotes(replaceOutput)) {
+          replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
+      }
     cg.writeEntry("regexp_search", replaceInput);
     cg.writeEntry("regexp_replace", replaceOutput);
   }

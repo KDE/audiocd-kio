@@ -25,6 +25,7 @@ target_include_directories(audiocd_encoder_lame
 target_link_libraries(audiocd_encoder_lame 
     audiocdplugins
     KF6::I18n
+    KF6::WidgetsAddons
     Qt::Widgets
     KCddb6
 )

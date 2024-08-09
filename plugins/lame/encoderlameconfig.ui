@@ -1,910 +1,1084 @@
-<ui version="4.0" stdsetdef="1" >
-  <class>EncoderLameConfig</class>
-  <widget class="QWidget" name="EncoderLameConfig" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>471</width>
-        <height>598</height>
-      </rect>
-    </property>
-    <layout class="QGridLayout" >
-      <item row="0" column="1" >
-        <widget class="QGroupBox" name="GroupBox1_2" >
-          <property name="title" >
-            <string>Options</string>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EncoderLameConfig</class>
+ <widget class="QWidget" name="EncoderLameConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>471</width>
+    <height>676</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="buttonGroup1">
+     <property name="title">
+      <string>Encoding Method</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <item row="4" column="0" colspan="3">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLabel" name="TextLabel3_2">
+          <property name="text">
+           <string>Low</string>
           </property>
-          <layout class="QVBoxLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
-            <item>
-              <widget class="QCheckBox" name="kcfg_copyright" >
-                <property name="text" >
-                  <string>Cop&amp;yrighted</string>
-                </property>
-                <property name="toolTip" stdset="0" >
-                  <string>Mark MP3 file as copyrighted</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>Mark MP3 file as copyrighted.</string>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QCheckBox" name="kcfg_original" >
-                <property name="text" >
-                  <string>Origi&amp;nal</string>
-                </property>
-                <property name="checked" >
-                  <bool>true</bool>
-                </property>
-                <property name="toolTip" stdset="0" >
-                  <string>Mark MP3 file as an original</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>Mark MP3 file as an original.</string>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QCheckBox" name="kcfg_iso" >
-                <property name="text" >
-                  <string>&amp;ISO encoding</string>
-                </property>
-                <property name="toolTip" stdset="0" >
-                  <string>Try to use strict ISO encoding</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>This selects the maximal bitrate used for encoding.</string>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QCheckBox" name="kcfg_crc" >
-                <property name="text" >
-                  <string>&amp;Error protection</string>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QCheckBox" name="kcfg_id3_tag" >
-                <property name="text" >
-                  <string>&amp;Write ID3 tag</string>
-                </property>
-                <property name="checked" >
-                  <bool>true</bool>
-                </property>
-                <property name="toolTip" stdset="0" >
-                  <string>If checked and if cddb support is available, an id3 tag will be appended</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>If checked and if cddb support is available, an id3 tag will be appended</string>
-                </property>
-              </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>0</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-          </layout>
-        </widget>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="kcfg_quality">
+          <property name="minimum">
+           <number>-9</number>
+          </property>
+          <property name="maximum">
+           <number>0</number>
+          </property>
+          <property name="pageStep">
+           <number>1</number>
+          </property>
+          <property name="value">
+           <number>-7</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="tickPosition">
+           <enum>QSlider::TickPosition::TicksBelow</enum>
+          </property>
+          <property name="tickInterval">
+           <number>1</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="TextLabel2_2">
+          <property name="text">
+           <string>High</string>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item row="0" column="0" >
-        <widget class="QGroupBox" name="buttonGroup1" >
-          <property name="title" >
-            <string>Encoding Method</string>
-          </property>
-          <layout class="QGridLayout" >
-            <item rowspan="1" row="4" column="0" colspan="3" >
-              <layout class="QHBoxLayout" >
-                <item>
-                  <widget class="QLabel" name="TextLabel3_2" >
-                    <property name="text" >
-                      <string>Low</string>
-                    </property>
-                    <property name="wordWrap" >
-                      <bool>false</bool>
-                    </property>
-                  </widget>
-                </item>
-                <item>
-                  <widget class="QSlider" name="kcfg_quality" >
-                    <property name="minimum" >
-                      <number>-9</number>
-                    </property>
-                    <property name="maximum" >
-                      <number>0</number>
-                    </property>
-                    <property name="pageStep" >
-                      <number>1</number>
-                    </property>
-                    <property name="value" >
-                      <number>-7</number>
-                    </property>
-                    <property name="orientation" >
-                      <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="tickPosition" >
-                      <enum>QSlider::NoTicks</enum>
-                    </property>
-                  </widget>
-                </item>
-                <item>
-                  <widget class="QLabel" name="TextLabel2_2" >
-                    <property name="text" >
-                      <string>High</string>
-                    </property>
-                    <property name="wordWrap" >
-                      <bool>false</bool>
-                    </property>
-                  </widget>
-                </item>
-              </layout>
-            </item>
-            <item rowspan="1" row="3" column="0" colspan="3" >
-              <widget class="QLabel" name="TextLabel1_2" >
-                <property name="text" >
-                  <string>&amp;Quality:</string>
-                </property>
-                <property name="alignment" >
-                  <set>Qt::AlignLeft</set>
-                </property>
-                <property name="buddy" stdset="0" >
-                  <cstring>kcfg_quality</cstring>
-                </property>
-                <property name="wordWrap" >
-                  <bool>false</bool>
-                </property>
-              </widget>
-            </item>
-            <item rowspan="1" row="1" column="0" colspan="2" >
-              <widget class="QComboBox" name="kcfg_stereo" >
-                <property name="whatsThis" stdset="0" >
-                  <string>This option controls whether MP3 files are recorded with one or two channels. Note that choosing &lt;i>"Mono"&lt;/i> reduces file size, but also kills the stereo signal.</string>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>Stereo</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>Joint Stereo</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>Dual Channel</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>Mono</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-            <item row="0" column="0" >
-              <widget class="QRadioButton" name="kcfg_bitrate_constant" >
-                <property name="text" >
-                  <string>Constant bitrate</string>
-                </property>
-              </widget>
-            </item>
-            <item row="0" column="1" >
-              <widget class="QRadioButton" name="kcfg_bitrate_variable" >
-                <property name="text" >
-                  <string>Variable bitrate</string>
-                </property>
-                <property name="checked" >
-                  <bool>true</bool>
-                </property>
-              </widget>
-            </item>
-            <item row="2" column="0">
-             <spacer name="verticalSpacer1">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>6</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="5" column="0">
-             <spacer name="verticalSpacer2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>0</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-          </layout>
-        </widget>
+      <item row="3" column="0" colspan="3">
+       <widget class="QLabel" name="TextLabel1_2">
+        <property name="text">
+         <string>&amp;Quality:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignLeading</set>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+        <property name="buddy">
+         <cstring>kcfg_quality</cstring>
+        </property>
+       </widget>
       </item>
-      <item row="4" column="0" >
-        <spacer name="spacer11" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>16</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
+      <item row="1" column="0" colspan="2">
+       <widget class="QComboBox" name="kcfg_stereo">
+        <property name="whatsThis">
+         <string>This option controls whether MP3 files are recorded with one or two channels. Note that choosing &lt;i&gt;&quot;Mono&quot;&lt;/i&gt; reduces file size, but also kills the stereo signal.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Stereo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Joint Stereo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Dual Channel</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mono</string>
+         </property>
+        </item>
+       </widget>
       </item>
-      <item rowspan="1" row="3" column="0" colspan="2" >
-        <widget class="QGroupBox" name="vbr_settings" >
-          <property name="enabled" >
-            <bool>true</bool>
-          </property>
-          <property name="title" >
-            <string>Variable Bitrate Settings</string>
-          </property>
-          <layout class="QGridLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
-            <item row="3" column="0" >
-              <widget class="QCheckBox" name="kcfg_vbr_average_br" >
-                <property name="text" >
-                  <string>Avera&amp;ge bitrate:</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>This selects the average bitrate used for encoding.</string>
-                </property>
-              </widget>
-            </item>
-            <item row="2" column="1" >
-              <widget class="QComboBox" name="kcfg_vbr_max_brate" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="currentIndex" >
-                  <number>13</number>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>32 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>40 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>48 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>56 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>64 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>80 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>96 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>112 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>128 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>160 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>192 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>224 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>256 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>320 kbs</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-            <item row="2" column="0" >
-              <widget class="QCheckBox" name="kcfg_vbr_max_br" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="text" >
-                  <string>Maximal bi&amp;trate:</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>This selects the maximal bitrate used for encoding.</string>
-                </property>
-              </widget>
-            </item>
-            <item rowspan="1" row="4" column="0" colspan="2" >
-              <widget class="QCheckBox" name="kcfg_vbr_xing_tag" >
-                <property name="text" >
-                  <string>Write &amp;Xing VBR tag</string>
-                </property>
-                <property name="checked" >
-                  <bool>true</bool>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>This writes additional information related to VBR as introduced by Xing.</string>
-                </property>
-              </widget>
-            </item>
-            <item row="3" column="1" >
-              <widget class="QComboBox" name="kcfg_vbr_mean_brate" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="currentIndex" >
-                  <number>9</number>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>32 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>40 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>48 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>56 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>64 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>80 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>96 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>112 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>128 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>160 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>192 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>224 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>256 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>320 kbs</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-            <item rowspan="1" row="1" column="0" colspan="2" >
-              <widget class="QCheckBox" name="kcfg_vbr_min_hard" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="text" >
-                  <string>Minimal &amp;value is a hard limit</string>
-                </property>
-              </widget>
-            </item>
-            <item row="0" column="0" >
-              <widget class="QCheckBox" name="kcfg_vbr_min_br" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="text" >
-                  <string>Minimal &amp;bitrate:</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>This selects the minimal bitrate used for encoding.</string>
-                </property>
-              </widget>
-            </item>
-            <item row="0" column="1" >
-              <widget class="QComboBox" name="kcfg_vbr_min_brate" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="currentIndex" >
-                  <number>1</number>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>32 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>40 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>48 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>56 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>64 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>80 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>96 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>112 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>128 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>160 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>192 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>224 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>256 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>320 kbs</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="kcfg_bitrate_constant">
+        <property name="text">
+         <string>Constant bitrate</string>
+        </property>
+       </widget>
       </item>
-      <item rowspan="1" row="2" column="0" colspan="2" >
-        <widget class="QGroupBox" name="cbr_settings" >
-          <property name="title" >
-            <string>Constant Bitrate Settings</string>
-          </property>
-          <layout class="QHBoxLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
-            <item>
-              <widget class="QLabel" name="TextLabel4_2" >
-                <property name="text" >
-                  <string>Bitrate:</string>
-                </property>
-                <property name="buddy" stdset="0" >
-                  <cstring>kcfg_cbr_bitrate</cstring>
-                </property>
-                <property name="wordWrap" >
-                  <bool>false</bool>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QComboBox" name="kcfg_cbr_bitrate" >
-                <property name="currentIndex" >
-                  <number>9</number>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>The higher the bitrate, the better the quality and the larger the file.</string>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>32 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>40 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>48 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>56 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>64 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>80 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>96 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>112 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>128 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>160 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>192 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>224 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>256 kbs</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>320 kbs</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="kcfg_bitrate_variable">
+        <property name="text">
+         <string>Variab&amp;le bitrate</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
-      <item rowspan="1" row="1" column="0" colspan="2" >
-        <widget class="QGroupBox" name="GroupBox83_2" >
-          <property name="title" >
-            <string>Filter Settings</string>
-          </property>
-          <property name="alignment" >
-            <set>Qt::AlignVCenter|Qt::AlignLeft</set>
-          </property>
-          <layout class="QGridLayout" >
-            <property name="margin" >
-              <number>11</number>
-            </property>
-            <property name="spacing" >
-              <number>6</number>
-            </property>
-            <item row="0" column="0" >
-              <widget class="QCheckBox" name="kcfg_enable_lowpass" >
-                <property name="text" >
-                  <string>Apply &amp;lowpass filter above</string>
-                </property>
-              </widget>
-            </item>
-            <item row="1" column="0" >
-              <widget class="QSpinBox" name="kcfg_lowfilterfreq" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="suffix" >
-                  <string> Hz</string>
-                </property>
-                <property name="maximum" >
-                  <number>20000</number>
-                </property>
-              </widget>
-            </item>
-            <item row="2" column="0" >
-              <widget class="QCheckBox" name="kcfg_enable_highpass" >
-                <property name="text" >
-                  <string>Apply &amp;highpass filter below</string>
-                </property>
-              </widget>
-            </item>
-            <item row="3" column="0" >
-              <widget class="QSpinBox" name="kcfg_highfilterfreq" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="suffix" >
-                  <string> Hz</string>
-                </property>
-                <property name="maximum" >
-                  <number>200</number>
-                </property>
-              </widget>
-            </item>
-            <item row="0" column="1" >
-              <widget class="QCheckBox" name="kcfg_set_lpf_width" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="text" >
-                  <string>Low&amp;pass filter width</string>
-                </property>
-              </widget>
-            </item>
-            <item row="1" column="1" >
-              <widget class="QSpinBox" name="kcfg_lowfilterwidth" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="suffix" >
-                  <string> Hz</string>
-                </property>
-                <property name="maximum" >
-                  <number>5000</number>
-                </property>
-              </widget>
-            </item>
-            <item row="2" column="1" >
-              <widget class="QCheckBox" name="kcfg_set_hpf_width" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="text" >
-                  <string>Highpa&amp;ss filter width</string>
-                </property>
-              </widget>
-            </item>
-            <item row="3" column="1" >
-              <widget class="QSpinBox" name="kcfg_highfilterwidth" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="suffix" >
-                  <string> Hz</string>
-                </property>
-                <property name="maximum" >
-                  <number>50</number>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+      <item row="2" column="0">
+       <spacer name="verticalSpacer1">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Policy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>6</height>
+         </size>
+        </property>
+       </spacer>
       </item>
-    </layout>
-  </widget>
-    <tabstops>
-    <tabstop>kcfg_bitrate_variable</tabstop>
-    <tabstop>kcfg_stereo</tabstop>
-    <tabstop>kcfg_quality</tabstop>
-    <tabstop>kcfg_copyright</tabstop>
-    <tabstop>kcfg_original</tabstop>
-    <tabstop>kcfg_iso</tabstop>
-    <tabstop>kcfg_crc</tabstop>
-    <tabstop>kcfg_id3_tag</tabstop>
-    <tabstop>kcfg_cbr_bitrate</tabstop>
-    <tabstop>kcfg_vbr_min_br</tabstop>
-    <tabstop>kcfg_vbr_min_hard</tabstop>
-    <tabstop>kcfg_vbr_max_br</tabstop>
-    <tabstop>kcfg_vbr_average_br</tabstop>
-    <tabstop>kcfg_vbr_xing_tag</tabstop>
-    <tabstop>kcfg_vbr_min_brate</tabstop>
-    <tabstop>kcfg_vbr_max_brate</tabstop>
-    <tabstop>kcfg_vbr_mean_brate</tabstop>
-    <tabstop>kcfg_enable_lowpass</tabstop>
-    <tabstop>kcfg_lowfilterfreq</tabstop>
-    <tabstop>kcfg_enable_highpass</tabstop>
-    <tabstop>kcfg_highfilterfreq</tabstop>
-    <tabstop>kcfg_set_lpf_width</tabstop>
-    <tabstop>kcfg_lowfilterwidth</tabstop>
-    <tabstop>kcfg_set_hpf_width</tabstop>
-    <tabstop>kcfg_highfilterwidth</tabstop>
-  </tabstops>
-  <connections>
-    <connection>
-      <sender>kcfg_bitrate_constant</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>cbr_settings</receiver>
-      <slot>setVisible(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_enable_highpass</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_highfilterfreq</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_enable_highpass</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_highfilterwidth</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_enable_lowpass</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_lowfilterfreq</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_enable_lowpass</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_lowfilterwidth</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_enable_highpass</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_set_hpf_width</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_enable_lowpass</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_set_lpf_width</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_vbr_average_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vbr_max_br</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_vbr_max_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vbr_max_brate</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_vbr_average_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vbr_mean_brate</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_vbr_average_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vbr_min_br</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_vbr_min_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vbr_min_brate</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_vbr_min_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vbr_min_hard</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_bitrate_variable</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>vbr_settings</receiver>
-      <slot>setVisible(bool)</slot>
-    </connection>
-  </connections>
+      <item row="5" column="0">
+       <spacer name="verticalSpacer2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>0</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QGroupBox" name="vbr_settings">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Variable Bitrate Settings</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <property name="margin" stdset="0">
+       <number>11</number>
+      </property>
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="kcfg_vbr_average_br">
+        <property name="whatsThis">
+         <string>This selects the average bitrate used for encoding.</string>
+        </property>
+        <property name="text">
+         <string>Avera&amp;ge bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="kcfg_vbr_max_brate">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentIndex">
+         <number>13</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>32 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>112 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>224 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>320 kbs</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="kcfg_vbr_max_br">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="whatsThis">
+         <string>This selects the maximal bitrate used for encoding.</string>
+        </property>
+        <property name="text">
+         <string>Maximal bi&amp;trate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QCheckBox" name="kcfg_vbr_xing_tag">
+        <property name="whatsThis">
+         <string>This writes additional information related to VBR as introduced by Xing.</string>
+        </property>
+        <property name="text">
+         <string>Write &amp;Xing VBR tag</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="kcfg_vbr_mean_brate">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentIndex">
+         <number>9</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>32 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>112 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>224 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>320 kbs</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QCheckBox" name="kcfg_vbr_min_hard">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Minimal &amp;value is a hard limit</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="kcfg_vbr_min_br">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="whatsThis">
+         <string>This selects the minimal bitrate used for encoding.</string>
+        </property>
+        <property name="text">
+         <string>Minimal &amp;bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="kcfg_vbr_min_brate">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>32 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>112 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>224 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>320 kbs</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QGroupBox" name="cbr_settings">
+     <property name="title">
+      <string>Constant Bitrate Settings</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QHBoxLayout">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="margin" stdset="0">
+       <number>11</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="TextLabel4_2">
+        <property name="text">
+         <string>Bi&amp;trate:</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+        <property name="buddy">
+         <cstring>kcfg_cbr_bitrate</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="kcfg_cbr_bitrate">
+        <property name="whatsThis">
+         <string>The higher the bitrate, the better the quality and the larger the file.</string>
+        </property>
+        <property name="currentIndex">
+         <number>9</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>32 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>112 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>224 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>320 kbs</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <spacer name="spacer11">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Policy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="2">
+    <widget class="QGroupBox" name="GroupBox1_2">
+     <property name="title">
+      <string>Options</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="margin" stdset="0">
+       <number>11</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="kcfg_copyright">
+        <property name="toolTip">
+         <string>Mark MP3 file as copyrighted</string>
+        </property>
+        <property name="whatsThis">
+         <string>Mark MP3 file as copyrighted.</string>
+        </property>
+        <property name="text">
+         <string>Cop&amp;yrighted</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="kcfg_original">
+        <property name="toolTip">
+         <string>Mark MP3 file as an original</string>
+        </property>
+        <property name="whatsThis">
+         <string>Mark MP3 file as an original.</string>
+        </property>
+        <property name="text">
+         <string>Origi&amp;nal</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="kcfg_iso">
+        <property name="toolTip">
+         <string>Try to use strict ISO encoding</string>
+        </property>
+        <property name="whatsThis">
+         <string>This selects the maximal bitrate used for encoding.</string>
+        </property>
+        <property name="text">
+         <string>&amp;ISO encoding</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="kcfg_crc">
+        <property name="text">
+         <string>&amp;Error protection</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="kcfg_id3_tag">
+        <property name="toolTip">
+         <string>If checked and if cddb support is available, an id3 tag will be appended</string>
+        </property>
+        <property name="whatsThis">
+         <string>If checked and if cddb support is available, an id3 tag will be appended</string>
+        </property>
+        <property name="text">
+         <string>&amp;Write ID3 tag</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>0</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QGroupBox" name="GroupBox83_2">
+     <property name="title">
+      <string>Filter Settings</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <property name="margin" stdset="0">
+       <number>11</number>
+      </property>
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="kcfg_enable_lowpass">
+        <property name="text">
+         <string>Apply &amp;lowpass filter above</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QSpinBox" name="kcfg_lowfilterfreq">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="suffix">
+         <string> Hz</string>
+        </property>
+        <property name="maximum">
+         <number>20000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="kcfg_enable_highpass">
+        <property name="text">
+         <string>Apply &amp;highpass filter below</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QSpinBox" name="kcfg_highfilterfreq">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="suffix">
+         <string> Hz</string>
+        </property>
+        <property name="maximum">
+         <number>200</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="kcfg_set_lpf_width">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Low&amp;pass filter width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="kcfg_lowfilterwidth">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="suffix">
+         <string> Hz</string>
+        </property>
+        <property name="maximum">
+         <number>5000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="kcfg_set_hpf_width">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Highpa&amp;ss filter width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="kcfg_highfilterwidth">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="suffix">
+         <string> Hz</string>
+        </property>
+        <property name="maximum">
+         <number>50</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="KSeparator" name="kseparator">
+     <property name="frameShape">
+      <enum>QFrame::Shape::VLine</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KSeparator</class>
+   <extends>QFrame</extends>
+   <header>kseparator.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>kcfg_bitrate_variable</tabstop>
+  <tabstop>kcfg_stereo</tabstop>
+  <tabstop>kcfg_quality</tabstop>
+  <tabstop>kcfg_copyright</tabstop>
+  <tabstop>kcfg_original</tabstop>
+  <tabstop>kcfg_iso</tabstop>
+  <tabstop>kcfg_crc</tabstop>
+  <tabstop>kcfg_id3_tag</tabstop>
+  <tabstop>kcfg_cbr_bitrate</tabstop>
+  <tabstop>kcfg_vbr_min_br</tabstop>
+  <tabstop>kcfg_vbr_min_hard</tabstop>
+  <tabstop>kcfg_vbr_max_br</tabstop>
+  <tabstop>kcfg_vbr_average_br</tabstop>
+  <tabstop>kcfg_vbr_xing_tag</tabstop>
+  <tabstop>kcfg_vbr_min_brate</tabstop>
+  <tabstop>kcfg_vbr_max_brate</tabstop>
+  <tabstop>kcfg_vbr_mean_brate</tabstop>
+  <tabstop>kcfg_enable_lowpass</tabstop>
+  <tabstop>kcfg_lowfilterfreq</tabstop>
+  <tabstop>kcfg_enable_highpass</tabstop>
+  <tabstop>kcfg_highfilterfreq</tabstop>
+  <tabstop>kcfg_set_lpf_width</tabstop>
+  <tabstop>kcfg_lowfilterwidth</tabstop>
+  <tabstop>kcfg_set_hpf_width</tabstop>
+  <tabstop>kcfg_highfilterwidth</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>kcfg_bitrate_constant</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cbr_settings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_enable_highpass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_highfilterfreq</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_enable_highpass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_highfilterwidth</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_enable_lowpass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_lowfilterfreq</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_enable_lowpass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_lowfilterwidth</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_enable_highpass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_set_hpf_width</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_enable_lowpass</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_set_lpf_width</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_vbr_average_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vbr_max_br</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_vbr_max_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vbr_max_brate</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_vbr_average_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vbr_mean_brate</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_vbr_average_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vbr_min_br</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_vbr_min_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vbr_min_brate</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_vbr_min_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vbr_min_hard</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_bitrate_variable</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vbr_settings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

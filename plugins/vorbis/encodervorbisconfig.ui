@@ -1,411 +1,515 @@
-<ui version="4.0" stdsetdef="1" >
-  <class>EncoderVorbisConfig</class>
-  <widget class="QWidget" name="EncoderVorbisConfig" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>375</width>
-        <height>408</height>
-      </rect>
-    </property>
-    <layout class="QVBoxLayout" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EncoderVorbisConfig</class>
+ <widget class="QWidget" name="EncoderVorbisConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>375</width>
+    <height>408</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QGroupBox" name="kcfg_vorbis_enc_method">
+     <property name="title">
+      <string>&amp;Encoding Method</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QHBoxLayout">
       <item>
-        <widget class="QGroupBox" name="kcfg_vorbis_enc_method" >
-          <property name="title" >
-            <string>&amp;Encoding Method</string>
-          </property>
-          <layout class="QHBoxLayout" >
-            <item>
-              <widget class="QRadioButton" name="vorbis_enc_quality" >
-                <property name="text" >
-                  <string>Quality based</string>
-                </property>
-                <property name="checked" >
-                  <bool>true</bool>
-                </property>
-              </widget>
-            </item>
-            <item>
-              <widget class="QRadioButton" name="vorbis_enc_bitrate" >
-                <property name="text" >
-                  <string>Bitrate based</string>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+       <widget class="QRadioButton" name="vorbis_enc_quality">
+        <property name="text">
+         <string>&amp;Quality based</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item>
-        <widget class="QGroupBox" name="vorbis_bitrate_settings" >
-          <property name="enabled" >
-            <bool>true</bool>
-          </property>
-          <property name="title" >
-            <string>Vorbis Bitrate Settings</string>
-          </property>
-          <layout class="QGridLayout" >
-            <item row="0" column="1" >
-              <widget class="QComboBox" name="kcfg_vorbis_min_br" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="currentIndex" >
-                  <number>1</number>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>32 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>40 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>48 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>56 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>64 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>80 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>96 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>112 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>128 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>160 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>192 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>224 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>256 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>350 kbps</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-            <item row="1" column="1" >
-              <widget class="QComboBox" name="kcfg_vorbis_max_br" >
-                <property name="enabled" >
-                  <bool>false</bool>
-                </property>
-                <property name="currentIndex" >
-                  <number>13</number>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>32 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>40 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>48 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>56 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>64 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>80 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>96 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>112 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>128 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>160 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>192 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>224 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>256 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>350 kbps</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-            <item row="0" column="0" >
-              <widget class="QCheckBox" name="kcfg_set_vorbis_min_br" >
-                <property name="enabled" >
-                  <bool>true</bool>
-                </property>
-                <property name="text" >
-                  <string>M&amp;inimal bitrate:</string>
-                </property>
-              </widget>
-            </item>
-            <item row="1" column="0" >
-              <widget class="QCheckBox" name="kcfg_set_vorbis_max_br" >
-                <property name="enabled" >
-                  <bool>true</bool>
-                </property>
-                <property name="text" >
-                  <string>Ma&amp;ximal bitrate:</string>
-                </property>
-              </widget>
-            </item>
-            <item row="2" column="1" >
-              <widget class="QComboBox" name="kcfg_vorbis_nominal_br" >
-                <property name="currentIndex" >
-                  <number>1</number>
-                </property>
-                <item>
-                  <property name="text" >
-                    <string>128 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>160 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>192 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>256 kbps</string>
-                  </property>
-                </item>
-                <item>
-                  <property name="text" >
-                    <string>350 kbps</string>
-                  </property>
-                </item>
-              </widget>
-            </item>
-            <item row="2" column="0" >
-              <widget class="QCheckBox" name="kcfg_set_vorbis_nominal_br" >
-                <property name="text" >
-                  <string>A&amp;verage bitrate:</string>
-                </property>
-                <property name="checked" >
-                  <bool>true</bool>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+       <widget class="QRadioButton" name="vorbis_enc_bitrate">
+        <property name="text">
+         <string>Bi&amp;trate based</string>
+        </property>
+       </widget>
       </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="vorbis_bitrate_settings">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Vorbis Bitrate Settings</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <item row="0" column="1">
+       <widget class="QComboBox" name="kcfg_vorbis_min_br">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>32 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>112 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>224 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>350 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="kcfg_vorbis_max_br">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="currentIndex">
+         <number>13</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>32 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>48 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>64 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>80 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>96 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>112 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>224 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>350 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="kcfg_set_vorbis_min_br">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>M&amp;inimal bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="kcfg_set_vorbis_max_br">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>Ma&amp;ximal bitrate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="kcfg_vorbis_nominal_br">
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>128 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>160 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>192 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>256 kbps</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>350 kbps</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="kcfg_set_vorbis_nominal_br">
+        <property name="text">
+         <string>A&amp;verage bitrate:</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="vorbis_quality_settings">
+     <property name="whatsThis">
+      <string>You can set the quality of the encoded stream here. A higher value implies a higher quality but encodes slower.</string>
+     </property>
+     <property name="title">
+      <string>Vorbis &amp;Quality Setting</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QHBoxLayout">
       <item>
-        <widget class="QGroupBox" name="vorbis_quality_settings" >
-          <property name="title" >
-            <string>Vorbis &amp;Quality Setting</string>
-          </property>
-          <property name="whatsThis" stdset="0" >
-            <string>You can set the quality of the encoded stream here. A higher value implies a higher quality but encodes slower.</string>
-          </property>
-          <layout class="QHBoxLayout" >
-            <item>
-              <widget class="QDoubleSpinBox" name="kcfg_vorbis_quality" >
-                <property name="value" >
-                  <number>0</number>
-                </property>
-                <property name="minimum" >
-                  <number>0.0</number>
-                </property>
-                <property name="maximum" >
-                  <number>10.0</number>
-                </property>
-                <property name="decimals" >
-                  <number>1</number>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>Higher is better but slower</string>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+       <widget class="QDoubleSpinBox" name="kcfg_vorbis_quality">
+        <property name="whatsThis">
+         <string>Higher is better but slower</string>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.000000000000000</double>
+        </property>
+       </widget>
       </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="GroupBox193">
+     <property name="title">
+      <string>Options</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout">
       <item>
-        <widget class="QGroupBox" name="GroupBox193" >
-          <property name="title" >
-            <string>Options</string>
-          </property>
-          <layout class="QVBoxLayout" >
-            <item>
-              <widget class="QCheckBox" name="kcfg_vorbis_comments" >
-                <property name="enabled" >
-                  <bool>true</bool>
-                </property>
-                <property name="text" >
-                  <string>Add &amp;track information</string>
-                </property>
-                <property name="whatsThis" stdset="0" >
-                  <string>Add a description of the song to the file header. This makes it easy for the user to get advanced song information shown by his media player. You can get this information automatically via the Internet. Look at the &lt;i>"CDDB Retrieval"&lt;/i> control module for details.</string>
-                </property>
-              </widget>
-            </item>
-          </layout>
-        </widget>
+       <widget class="QCheckBox" name="kcfg_vorbis_comments">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="whatsThis">
+         <string>Add a description of the song to the file header. This makes it easy for the user to get advanced song information shown by his media player. You can get this information automatically via the Internet. Look at the &lt;i&gt;&quot;CDDB Retrieval&quot;&lt;/i&gt; control module for details.</string>
+        </property>
+        <property name="text">
+         <string>Add &amp;track information</string>
+        </property>
+       </widget>
       </item>
-      <item>
-        <spacer name="spacer9" >
-          <property name="sizeHint" >
-            <size>
-              <width>20</width>
-              <height>51</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
-    </layout>
-  </widget>
-  <tabstops>
-    <tabstop>vorbis_enc_quality</tabstop>
-    <tabstop>kcfg_set_vorbis_min_br</tabstop>
-    <tabstop>kcfg_set_vorbis_max_br</tabstop>
-    <tabstop>kcfg_set_vorbis_nominal_br</tabstop>
-    <tabstop>kcfg_vorbis_min_br</tabstop>
-    <tabstop>kcfg_vorbis_max_br</tabstop>
-    <tabstop>kcfg_vorbis_nominal_br</tabstop>
-    <tabstop>kcfg_vorbis_quality</tabstop>
-    <tabstop>kcfg_vorbis_comments</tabstop>
-  </tabstops>
-  <connections>
-    <connection>
-      <sender>vorbis_enc_bitrate</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>vorbis_bitrate_settings</receiver>
-      <slot>setVisible(bool)</slot>
-    </connection>
-    <connection>
-      <sender>vorbis_enc_quality</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>vorbis_quality_settings</receiver>
-      <slot>setVisible(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_set_vorbis_nominal_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_set_vorbis_max_br</receiver>
-      <slot>setDisabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_set_vorbis_nominal_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_set_vorbis_min_br</receiver>
-      <slot>setDisabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_set_vorbis_nominal_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vorbis_nominal_br</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_set_vorbis_max_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vorbis_max_br</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_set_vorbis_min_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_vorbis_min_br</receiver>
-      <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_set_vorbis_max_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_set_vorbis_nominal_br</receiver>
-      <slot>setDisabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>kcfg_set_vorbis_min_br</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>kcfg_set_vorbis_nominal_br</receiver>
-      <slot>setDisabled(bool)</slot>
-    </connection>
-  </connections>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="spacer9">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Policy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>51</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>vorbis_enc_quality</tabstop>
+  <tabstop>kcfg_set_vorbis_min_br</tabstop>
+  <tabstop>kcfg_set_vorbis_max_br</tabstop>
+  <tabstop>kcfg_set_vorbis_nominal_br</tabstop>
+  <tabstop>kcfg_vorbis_min_br</tabstop>
+  <tabstop>kcfg_vorbis_max_br</tabstop>
+  <tabstop>kcfg_vorbis_nominal_br</tabstop>
+  <tabstop>kcfg_vorbis_quality</tabstop>
+  <tabstop>kcfg_vorbis_comments</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>vorbis_enc_bitrate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vorbis_bitrate_settings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vorbis_enc_quality</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vorbis_quality_settings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_set_vorbis_nominal_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_set_vorbis_max_br</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_set_vorbis_nominal_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_set_vorbis_min_br</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_set_vorbis_nominal_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vorbis_nominal_br</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_set_vorbis_max_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vorbis_max_br</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_set_vorbis_min_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_vorbis_min_br</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_set_vorbis_max_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_set_vorbis_nominal_br</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_set_vorbis_min_br</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_set_vorbis_nominal_br</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
