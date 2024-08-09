@@ -14,7 +14,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Flac compression level</string>
+      <string>Flac Compression Level</string>
      </property>
      <property name="flat">
       <bool>true</bool>
