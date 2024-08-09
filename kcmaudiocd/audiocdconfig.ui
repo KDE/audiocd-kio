@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>848</width>
-    <height>501</height>
+    <width>825</width>
+    <height>527</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -32,7 +32,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="documentMode">
       <bool>true</bool>
@@ -41,101 +41,143 @@
       <attribute name="title">
        <string>&amp;General</string>
       </attribute>
-      <layout class="QGridLayout">
-       <item row="3" column="0" colspan="3">
-        <widget class="QGroupBox" name="encoderPriority">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QFormLayout" name="formLayout">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
+         </property>
+         <property name="formAlignment">
+          <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+         </property>
+         <item row="0" column="1">
+          <widget class="QCheckBox" name="ec_enable_check">
+           <property name="whatsThis">
+            <string>If you uncheck this option, the KIO worker will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
+           </property>
+           <property name="text">
+            <string>Use &amp;error correction when reading the CD</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QCheckBox" name="ec_skip_check">
+           <property name="text">
+            <string>&amp;Skip on errors</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="encoderPriorityGroupBox">
          <property name="title">
           <string>Encoder Priority</string>
          </property>
          <property name="flat">
           <bool>true</bool>
          </property>
-         <layout class="QGridLayout">
-          <item row="1" column="0">
-           <widget class="QLabel" name="textLabel2">
-            <property name="text">
-             <string>Highest</string>
-            </property>
-            <property name="wordWrap">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="3">
-           <widget class="QSlider" name="niceLevel">
-            <property name="minimum">
-             <number>-19</number>
-            </property>
-            <property name="maximum">
-             <number>19</number>
-            </property>
-            <property name="singleStep">
-             <number>5</number>
-            </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Orientation::Horizontal</enum>
             </property>
-            <property name="tickPosition">
-             <enum>QSlider::TickPosition::TicksBelow</enum>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QWidget" name="encoderPriority" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>500</width>
+              <height>0</height>
+             </size>
             </property>
-            <property name="tickInterval">
-             <number>1</number>
-            </property>
+            <layout class="QGridLayout">
+             <item row="0" column="0" colspan="3">
+              <widget class="QSlider" name="niceLevel">
+               <property name="minimumSize">
+                <size>
+                 <width>350</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="minimum">
+                <number>-19</number>
+               </property>
+               <property name="maximum">
+                <number>19</number>
+               </property>
+               <property name="singleStep">
+                <number>5</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="tickPosition">
+                <enum>QSlider::TickPosition::TicksBelow</enum>
+               </property>
+               <property name="tickInterval">
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="textLabel3">
+               <property name="text">
+                <string>Lowest</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="textLabel4">
+               <property name="text">
+                <string>Normal</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="textLabel2">
+               <property name="text">
+                <string>Highest</string>
+               </property>
+               <property name="wordWrap">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="textLabel4">
-            <property name="text">
-             <string>Normal</string>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="textLabel3">
-            <property name="text">
-             <string>Lowest</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>false</bool>
-            </property>
-           </widget>
+           </spacer>
           </item>
          </layout>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="ec_skip_check">
-         <property name="text">
-          <string>&amp;Skip on errors</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="3">
-        <widget class="QCheckBox" name="ec_enable_check">
-         <property name="whatsThis">
-          <string>If you uncheck this option, the KIO worker will not try to use error correction which can be useful for reading damaged CDs. However, this feature can be problematic in some cases, so you can switch it off here.</string>
-         </property>
-         <property name="text">
-          <string>Use &amp;error correction when reading the CD</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
+       <item>
         <spacer name="Spacer5">
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>
@@ -774,7 +816,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>ec_enable_check</tabstop>
   <tabstop>niceLevel</tabstop>
   <tabstop>fileNameLineEdit</tabstop>
   <tabstop>albumNameLineEdit</tabstop>
