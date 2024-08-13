@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-17 00:41+0000\n"
+"POT-Creation-Date: 2024-08-13 00:38+0000\n"
 "PO-Revision-Date: 2010-07-01 01:01+0300\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -29,13 +29,13 @@ msgid "Your emails"
 msgstr "rch@richard.eu.org, dgvirtual@akl.lt"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
-#: audiocdconfig.ui:27
+#: audiocdconfig.ui:42
 #, kde-format
 msgid "&General"
 msgstr "&Bendros"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
-#: audiocdconfig.ui:49
+#: audiocdconfig.ui:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "If you uncheck this option, the slave will not try to use error "
@@ -51,201 +51,153 @@ msgstr ""
 "gali sukelti problemų, todėl galite čia ją išjungti."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
-#: audiocdconfig.ui:52
+#: audiocdconfig.ui:59
 #, kde-format
 msgid "Use &error correction when reading the CD"
 msgstr "Naudoti &klaidų korekciją skaitant CD"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
-#: audiocdconfig.ui:62
+#: audiocdconfig.ui:69
 #, kde-format
 msgid "&Skip on errors"
 msgstr "&Praleisti klaidos atveju"
 
-#. i18n: ectx: property (title), widget (QGroupBox, encoderPriority)
-#: audiocdconfig.ui:88
+#. i18n: ectx: property (title), widget (QGroupBox, encoderPriorityGroupBox)
+#: audiocdconfig.ui:81
 #, kde-format
 msgid "Encoder Priority"
 msgstr "Enkoderio prioritetas"
 
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: audiocdconfig.ui:113
-#, kde-format
-msgid "Highest"
-msgstr "Aukščiausias"
-
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: audiocdconfig.ui:123
+#: audiocdconfig.ui:146
 #, kde-format
 msgid "Lowest"
 msgstr "Žemiausias"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: audiocdconfig.ui:136
+#: audiocdconfig.ui:159
 #, kde-format
 msgid "Normal"
 msgstr "Normalus"
 
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: audiocdconfig.ui:172
+#, kde-format
+msgid "Highest"
+msgstr "Aukščiausias"
+
 #. i18n: ectx: attribute (title), widget (QWidget, tabNames)
-#: audiocdconfig.ui:153
+#: audiocdconfig.ui:218
 #, kde-format
 msgid "&Names"
 msgstr "&Pavadinimai"
 
-#. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
-#: audiocdconfig.ui:159
-#, kde-format
-msgid "File Name (without extension)"
-msgstr "Failo pavadinimas (be plėtinio)"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
-#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_2)
-#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_3)
-#: audiocdconfig.ui:165 audiocdconfig.ui:331 audiocdconfig.ui:462
-#, kde-format
-msgid "The following macros will be expanded:"
-msgstr "Šios makrokomandos bus išplėstos:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel13)
-#. i18n: ectx: property (text), widget (QLabel, textLabel21)
-#. i18n: ectx: property (text), widget (QLabel, textLabel21_2)
-#: audiocdconfig.ui:177 audiocdconfig.ui:373 audiocdconfig.ui:504
-#, kde-format
-msgid "Genre"
-msgstr "Žanras"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel10)
-#. i18n: ectx: property (text), widget (QLabel, textLabel16)
-#. i18n: ectx: property (text), widget (QLabel, textLabel16_2)
-#: audiocdconfig.ui:187 audiocdconfig.ui:363 audiocdconfig.ui:494
-#, no-c-format, kde-format
-msgid "%{year}"
-msgstr "%{metai}"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
-#: audiocdconfig.ui:197
-#, no-c-format, kde-format
-msgid "%{title}"
-msgstr "%{pavadinimas}"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel5)
-#. i18n: ectx: property (text), widget (QLabel, textLabel18)
-#. i18n: ectx: property (text), widget (QLabel, textLabel18_2)
-#: audiocdconfig.ui:207 audiocdconfig.ui:393 audiocdconfig.ui:524
-#, kde-format
-msgid "Album Title"
-msgstr "Albumo pavadinimas"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel11)
-#. i18n: ectx: property (text), widget (QLabel, textLabel20)
-#. i18n: ectx: property (text), widget (QLabel, textLabel20_2)
-#: audiocdconfig.ui:217 audiocdconfig.ui:343 audiocdconfig.ui:474
-#, kde-format
-msgid "Year"
-msgstr "Metai"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
-#: audiocdconfig.ui:227
-#, kde-format
-msgid "Track Artist"
-msgstr "Takelio atlikėjas"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
-#: audiocdconfig.ui:237
-#, kde-format
-msgid "Track Title"
-msgstr "Takelio pavadinimas"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel9)
-#. i18n: ectx: property (text), widget (QLabel, textLabel19)
-#. i18n: ectx: property (text), widget (QLabel, textLabel19_2)
-#: audiocdconfig.ui:247 audiocdconfig.ui:383 audiocdconfig.ui:514
-#, kde-format
-msgid "Album Artist"
-msgstr "Albumo atlikėjas"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel8)
-#. i18n: ectx: property (text), widget (QLabel, textLabel15)
-#. i18n: ectx: property (text), widget (QLabel, textLabel15_2)
-#: audiocdconfig.ui:257 audiocdconfig.ui:353 audiocdconfig.ui:484
-#, no-c-format, kde-format
-msgid "%{albumartist}"
-msgstr "%{albumo_atlikėjas}"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel12)
-#. i18n: ectx: property (text), widget (QLabel, textLabel17)
-#. i18n: ectx: property (text), widget (QLabel, textLabel17_2)
-#: audiocdconfig.ui:267 audiocdconfig.ui:403 audiocdconfig.ui:534
-#, no-c-format, kde-format
-msgid "%{genre}"
-msgstr "%{žanras}"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
-#: audiocdconfig.ui:277
-#, no-c-format, kde-format
-msgid "%{trackartist}"
-msgstr "%{takelio_atlikėjas}"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel6)
-#. i18n: ectx: property (text), widget (QLabel, textLabel14)
-#. i18n: ectx: property (text), widget (QLabel, textLabel14_2)
-#: audiocdconfig.ui:287 audiocdconfig.ui:413 audiocdconfig.ui:544
-#, no-c-format, kde-format
-msgid "%{albumtitle}"
-msgstr "%{albumo_pavadinimas}"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel7)
-#: audiocdconfig.ui:297
-#, kde-format
-msgid "Track Number"
-msgstr "Takelio numeris"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
-#: audiocdconfig.ui:307
-#, no-c-format, kde-format
-msgid "%{number}"
-msgstr "%{number}"
-
 #. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
-#: audiocdconfig.ui:325
+#: audiocdconfig.ui:224
 #, kde-format
 msgid "Album Name"
 msgstr "Albumo pavadinimas"
 
-#. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
-#: audiocdconfig.ui:447
-#, no-c-format, kde-format
-msgid ""
-"This defines where files will appear in relation to the encoder root, you "
-"can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
-msgstr ""
-
-#. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
-#: audiocdconfig.ui:450
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_2)
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_3)
+#: audiocdconfig.ui:233 audiocdconfig.ui:483 audiocdconfig.ui:689
 #, kde-format
-msgid "Files Location"
-msgstr "Failų vieta"
+msgid "The following macros will be expanded:"
+msgstr "Šios makrokomandos bus išplėstos:"
 
-#. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
-#: audiocdconfig.ui:572
+#. i18n: ectx: property (text), widget (QLabel, textLabel20)
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20_2)
+#: audiocdconfig.ui:245 audiocdconfig.ui:535 audiocdconfig.ui:761
+#, kde-format
+msgid "Year"
+msgstr "Metai"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel15)
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15_2)
+#: audiocdconfig.ui:255 audiocdconfig.ui:575 audiocdconfig.ui:751
 #, no-c-format, kde-format
-msgid "%{albumtitle}/%{albumartist}"
-msgstr "%{albumo_pavadinimas}/%{albumo_atlikėjas}"
+msgid "%{albumartist}"
+msgstr "%{albumo_atlikėjas}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel16)
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16_2)
+#: audiocdconfig.ui:265 audiocdconfig.ui:505 audiocdconfig.ui:721
+#, no-c-format, kde-format
+msgid "%{year}"
+msgstr "%{metai}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel21)
+#. i18n: ectx: property (text), widget (QLabel, textLabel13)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21_2)
+#: audiocdconfig.ui:275 audiocdconfig.ui:495 audiocdconfig.ui:701
+#, kde-format
+msgid "Genre"
+msgstr "Žanras"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel19)
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19_2)
+#: audiocdconfig.ui:285 audiocdconfig.ui:565 audiocdconfig.ui:771
+#, kde-format
+msgid "Album Artist"
+msgstr "Albumo atlikėjas"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel18)
+#. i18n: ectx: property (text), widget (QLabel, textLabel5)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18_2)
+#: audiocdconfig.ui:295 audiocdconfig.ui:525 audiocdconfig.ui:711
+#, kde-format
+msgid "Album Title"
+msgstr "Albumo pavadinimas"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel17)
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17_2)
+#: audiocdconfig.ui:305 audiocdconfig.ui:585 audiocdconfig.ui:731
+#, no-c-format, kde-format
+msgid "%{genre}"
+msgstr "%{žanras}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel14)
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14_2)
+#: audiocdconfig.ui:315 audiocdconfig.ui:605 audiocdconfig.ui:741
+#, no-c-format, kde-format
+msgid "%{albumtitle}"
+msgstr "%{albumo_pavadinimas}"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
-#: audiocdconfig.ui:582
+#: audiocdconfig.ui:365
 #, kde-format
 msgid "Name Regular Expression Replacement"
 msgstr "Įprastųjų išraiškų varduose keitimas"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
-#: audiocdconfig.ui:588
+#: audiocdconfig.ui:374
 #, kde-format
 msgid "Selection:"
 msgstr "Pasirinkimas:"
 
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
+#: audiocdconfig.ui:384
+#, kde-format
+msgid "Replace with:"
+msgstr "Keisti į:"
+
+#. i18n: ectx: property (text), widget (QLineEdit, example)
+#. i18n: ectx: property (text), widget (QLabel, exampleOutput)
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
+#: kcmaudiocd.cpp:203
+#, kde-format
+msgid "Cool artist - example audio file.wav"
+msgstr "Kietas atlikėjas – pavyzdinis garso failas.wav"
+
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: audiocdconfig.ui:599
+#: audiocdconfig.ui:402
 #, kde-format
 msgid ""
 "Regular expression used on all file names. For example using selection \" \" "
@@ -256,38 +208,93 @@ msgstr ""
 "pabraukimais.\n"
 
 #. i18n: ectx: property (text), widget (QLabel, inputlabel)
-#: audiocdconfig.ui:612
+#: audiocdconfig.ui:418
 #, kde-format
 msgid "Input:"
 msgstr "Įvestis:"
 
 #. i18n: ectx: property (text), widget (QLabel, outputLabel)
-#: audiocdconfig.ui:622
+#: audiocdconfig.ui:428
 #, kde-format
 msgid "Output:"
 msgstr "Išvestis:"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleLabel)
-#: audiocdconfig.ui:632
+#: audiocdconfig.ui:458
 #, kde-format
 msgid "Example"
 msgstr "Pavyzdys"
 
-#. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#. i18n: ectx: property (text), widget (QLineEdit, example)
-#: audiocdconfig.ui:642 audiocdconfig.ui:652 kcmaudiocd.cpp:133
-#: kcmaudiocd.cpp:202
+#. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
+#: audiocdconfig.ui:474
 #, kde-format
-msgid "Cool artist - example audio file.wav"
-msgstr "Kietas atlikėjas – pavyzdinis garso failas.wav"
+msgid "File Name (without extension)"
+msgstr "Failo pavadinimas (be plėtinio)"
 
-#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
-#: audiocdconfig.ui:665
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
+#: audiocdconfig.ui:515
+#, no-c-format, kde-format
+msgid "%{title}"
+msgstr "%{pavadinimas}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
+#: audiocdconfig.ui:545
 #, kde-format
-msgid "Replace with:"
-msgstr "Keisti į:"
+msgid "Track Artist"
+msgstr "Takelio atlikėjas"
 
-#: kcmaudiocd.cpp:59
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
+#: audiocdconfig.ui:555
+#, kde-format
+msgid "Track Title"
+msgstr "Takelio pavadinimas"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
+#: audiocdconfig.ui:595
+#, no-c-format, kde-format
+msgid "%{trackartist}"
+msgstr "%{takelio_atlikėjas}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: audiocdconfig.ui:615
+#, kde-format
+msgid "Track Number"
+msgstr "Takelio numeris"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
+#: audiocdconfig.ui:625
+#, no-c-format, kde-format
+msgid "%{number}"
+msgstr "%{number}"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:643
+#, no-c-format, kde-format
+msgid ""
+"This defines where files will appear in relation to the encoder root, you "
+"can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:646
+#, fuzzy, kde-format
+#| msgid "Files Location"
+msgid "File &Location"
+msgstr "Failų vieta"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
+#: audiocdconfig.ui:664
+#, kde-format
+msgid "Use file location macros"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
+#: audiocdconfig.ui:799
+#, no-c-format, kde-format
+msgid "%{albumtitle}/%{albumartist}"
+msgstr "%{albumo_pavadinimas}/%{albumo_atlikėjas}"
+
+#: kcmaudiocd.cpp:60
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 įkodavimas"

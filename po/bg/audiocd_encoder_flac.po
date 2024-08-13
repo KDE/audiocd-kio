@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2019-05-20 03:08+0200\n"
+"POT-Creation-Date: 2024-08-13 00:38+0000\n"
 "PO-Revision-Date: 2022-06-28 11:22+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -19,9 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 22.04.2\n"
 
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: label, entry (flac_compression_level), group (Flac)
-#: audiocd_flac_encoder.kcfg:9 encoderflacconfig.ui:17
+#: audiocd_flac_encoder.kcfg:9
 #, kde-format
 msgid "Flac compression level"
+msgstr "Ниво на компресия на Flac"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: encoderflacconfig.ui:17
+#, fuzzy, kde-format
+#| msgid "Flac compression level"
+msgid "Flac Compression Level"
 msgstr "Ниво на компресия на Flac"

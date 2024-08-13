@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_flac\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2019-05-20 03:08+0200\n"
+"POT-Creation-Date: 2024-08-13 00:38+0000\n"
 "PO-Revision-Date: 2016-12-12 12:07+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -13,9 +13,15 @@ msgstr ""
 "X-POFile-SpellExtra: FLAC\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: label, entry (flac_compression_level), group (Flac)
-#: audiocd_flac_encoder.kcfg:9 encoderflacconfig.ui:17
+#: audiocd_flac_encoder.kcfg:9
 #, kde-format
 msgid "Flac compression level"
+msgstr "Nível de compressão do FLAC"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: encoderflacconfig.ui:17
+#, fuzzy, kde-format
+#| msgid "Flac compression level"
+msgid "Flac Compression Level"
 msgstr "Nível de compressão do FLAC"
