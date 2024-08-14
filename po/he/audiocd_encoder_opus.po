@@ -1,21 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2023-12-07 15:39+0200\n"
+"PO-Revision-Date: 2024-08-13 08:22+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Lokalize 24.05.2\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -81,17 +80,15 @@ msgstr "שיטת &קידוד"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Complexity based"
+#, kde-format
 msgid "Comp&lexity based"
-msgstr "מבוסס סיבוכיות"
+msgstr "מבוסס &סיבוכיות"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "מבוסס קצב סיביות"
+msgstr "מבוסס &קצב סיביות"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:55
@@ -193,15 +190,13 @@ msgstr "256 קסל״ש"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
-#, fuzzy, kde-format
-#| msgid "A&verage variable bitrate:"
+#, kde-format
 msgid "Avera&ge variable bitrate:"
 msgstr "קצב סיביות משתנה ממו&צע:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
-#, fuzzy, kde-format
-#| msgid "C&onstant bitrate:"
+#, kde-format
 msgid "Cons&tant bitrate:"
 msgstr "קצב סיביות &קבוע:"
 

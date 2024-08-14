@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2022-09-26 06:15+0200\n"
+"PO-Revision-Date: 2024-08-13 05:56+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. i18n: ectx: label, entry (flac_compression_level), group (Flac)
 #: audiocd_flac_encoder.kcfg:9
@@ -26,7 +26,6 @@ msgstr "Flac-ის შეკუმშვის დონე"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: encoderflacconfig.ui:17
-#, fuzzy, kde-format
-#| msgid "Flac compression level"
+#, kde-format
 msgid "Flac Compression Level"
 msgstr "Flac-ის შეკუმშვის დონე"

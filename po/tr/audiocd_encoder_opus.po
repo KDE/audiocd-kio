@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-05-27 01:02+0300\n"
+"PO-Revision-Date: 2024-08-13 13:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
@@ -80,17 +80,15 @@ msgstr "&Kodlama Yöntemi"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Complexity based"
+#, kde-format
 msgid "Comp&lexity based"
-msgstr "Karmaşıklık tabanlı"
+msgstr "Karmaşık&lık tabanlı"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Bit hızı tabanlı"
+msgstr "Bi&t hızı tabanlı"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:55
@@ -192,17 +190,15 @@ msgstr "256 kbps"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
-#, fuzzy, kde-format
-#| msgid "A&verage variable bitrate:"
+#, kde-format
 msgid "Avera&ge variable bitrate:"
-msgstr "Ortalama değişken bit hızı:"
+msgstr "Ortala&ma değişken bit hızı:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
-#, fuzzy, kde-format
-#| msgid "C&onstant bitrate:"
+#, kde-format
 msgid "Cons&tant bitrate:"
-msgstr "S&abit bit hızı:"
+msgstr "Sa&bit bit hızı:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cvbr)
 #: encoderopusconfig.ui:162

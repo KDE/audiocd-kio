@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-05-27 01:02+0300\n"
+"PO-Revision-Date: 2024-08-13 13:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
@@ -82,17 +82,15 @@ msgstr "&Kodlama Yöntemi"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
 #: encodervorbisconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Bit hızı tabanlı"
+msgstr "Bi&t hızı tabanlı"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
 #: encodervorbisconfig.ui:39
-#, fuzzy, kde-format
-#| msgid "Quality based"
+#, kde-format
 msgid "&Quality based"
-msgstr "Kalite tabanlı"
+msgstr "&Kalite tabanlı"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:55

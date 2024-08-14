@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-05-27 01:01+0300\n"
+"PO-Revision-Date: 2024-08-13 13:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -499,10 +499,9 @@ msgstr "ID3 etiketini &yaz"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:620
-#, fuzzy, kde-format
-#| msgid "Bitrate:"
+#, kde-format
 msgid "Bi&trate:"
-msgstr "Bit hızı:"
+msgstr "Bi&t hızı:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
 #: encoderlameconfig.ui:633
@@ -525,23 +524,21 @@ msgstr "Bit hızı:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
-#, fuzzy, kde-format
-#| msgid "Constant Bitrate"
+#, kde-format
 msgid "Co&nstant"
-msgstr "Sabit bit hızı"
+msgstr "Sa&bit"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
-#, fuzzy, kde-format
-#| msgid "Variable Bitrate"
+#, kde-format
 msgid "Variab&le"
-msgstr "Değişken bit hızı"
+msgstr "&Değişken"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "Ses kanalları:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
@@ -582,10 +579,9 @@ msgstr "Tek kanal"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: encoderlameconfig.ui:821
-#, fuzzy, kde-format
-#| msgid "&Quality:"
+#, kde-format
 msgid "Quality:"
-msgstr "&Kalite:"
+msgstr "Kalite:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
 #: encoderlameconfig.ui:830

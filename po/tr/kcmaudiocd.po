@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-05-27 00:58+0300\n"
+"PO-Revision-Date: 2024-08-13 13:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -283,16 +283,15 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
-#, fuzzy, kde-format
-#| msgid "Files Location"
+#, kde-format
 msgid "File &Location"
-msgstr "Dosyaların Konumu"
+msgstr "Dosya &Konumu"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
 #: audiocdconfig.ui:664
 #, kde-format
 msgid "Use file location macros"
-msgstr ""
+msgstr "Dosya konumu makrolarını kullan"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:799

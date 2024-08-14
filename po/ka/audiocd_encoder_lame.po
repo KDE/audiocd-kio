@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2022-09-26 06:54+0200\n"
+"PO-Revision-Date: 2024-08-13 05:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -496,10 +496,9 @@ msgstr "ID3 ჭდის &ჩაწერა"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:620
-#, fuzzy, kde-format
-#| msgid "Bitrate:"
+#, kde-format
 msgid "Bi&trate:"
-msgstr "სიჩქარე:"
+msgstr "ბი&ტური სიჩქარე:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
 #: encoderlameconfig.ui:633
@@ -521,23 +520,21 @@ msgstr "სიჩქარე:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
-#, fuzzy, kde-format
-#| msgid "Constant Bitrate"
+#, kde-format
 msgid "Co&nstant"
-msgstr "მუდმივი ბიტრეიტი"
+msgstr "&მუდმივი"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
-#, fuzzy, kde-format
-#| msgid "Variable Bitrate"
+#, kde-format
 msgid "Variab&le"
-msgstr "ცვლადი ბიტური სიჩქარე"
+msgstr "ცვ&ლადი"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "აუდიო არხები:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
@@ -577,10 +574,9 @@ msgstr "მონო"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: encoderlameconfig.ui:821
-#, fuzzy, kde-format
-#| msgid "&Quality:"
+#, kde-format
 msgid "Quality:"
-msgstr "&ხარისხი:"
+msgstr "ხარისხი:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
 #: encoderlameconfig.ui:830
