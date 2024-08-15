@@ -4,7 +4,7 @@
 # Giuseppe Ravasio <gravasio@bglug.it>, 2004, 2005.
 # ./SuperbepS <superbeps@bglug.it>, 2005.
 # Giuseppe Ravasio <gravasio@kng.it>, 2006, 2007.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2018, 2019, 2022.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2018, 2019, 2022, 2024.
 # Paolo Zamponi <feus73@gmail.com>, 2020.
 #
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"

@@ -1,8 +1,10 @@
 # translation of audiocd_encoder_vorbis.po to Italian
 # Copyright (C) 2004, 2007 Free Software Foundation, Inc.
-#
 # Giuseppe Ravasio <gravasio@bglug.it>, 2004.
 # Giuseppe Ravasio <gravasio@kng.it>, 2007.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2024.
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
@@ -16,6 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10

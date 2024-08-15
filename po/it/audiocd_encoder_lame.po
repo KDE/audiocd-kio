@@ -1,8 +1,8 @@
 # translation of audiocd_encoder_lame.po to Italian
 # Copyright (C) 2004, 2009 Free Software Foundation, Inc.
 # Giuseppe Ravasio <gravasio@bglug.it>, 2004.
-# Riccardo Iaconelli <riccardo@kde.org> 2008.
-# Luigi Toscano <luigi.toscano@tiscali.it> 2019.
+# Riccardo Iaconelli <riccardo@kde.org>, 2008.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2019, 2024.
 #
 msgid ""
 msgstr ""
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
