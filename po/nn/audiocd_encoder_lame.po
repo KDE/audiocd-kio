@@ -594,9 +594,3 @@ msgstr "Låg"
 #, kde-format
 msgid "High"
 msgstr "Høg"
-
-#~ msgid "Constant bitrate"
-#~ msgstr "Konstant bitrate"
-
-#~ msgid "Variable bitrate"
-#~ msgstr "Variabel bitrate"

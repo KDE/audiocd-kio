@@ -1,15 +1,15 @@
 # translation of audiocd_encoder_lame.po to Italian
 # Copyright (C) 2004, 2009 Free Software Foundation, Inc.
 # Giuseppe Ravasio <gravasio@bglug.it>, 2004.
-# Riccardo Iaconelli <riccardo@kde.org> 2008.
-# Luigi Toscano <luigi.toscano@tiscali.it> 2019.
+# Riccardo Iaconelli <riccardo@kde.org>, 2008.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2019, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2019-09-12 15:07+0200\n"
+"PO-Revision-Date: 2024-08-13 17:24+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -495,10 +496,9 @@ msgstr "&Scrivi tag ID3"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:620
-#, fuzzy, kde-format
-#| msgid "Bitrate:"
+#, kde-format
 msgid "Bi&trate:"
-msgstr "Bitrate:"
+msgstr "Bi&trate:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
 #: encoderlameconfig.ui:633
@@ -521,23 +521,21 @@ msgstr "Bitrate:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
-#, fuzzy, kde-format
-#| msgid "Constant Bitrate"
+#, kde-format
 msgid "Co&nstant"
-msgstr "Bitrate costante"
+msgstr "Costa&nte"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
-#, fuzzy, kde-format
-#| msgid "Variable Bitrate"
+#, kde-format
 msgid "Variab&le"
-msgstr "Bitrate variabile"
+msgstr "Variabi&le"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "Canali audio:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
@@ -577,10 +575,9 @@ msgstr "Mono"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: encoderlameconfig.ui:821
-#, fuzzy, kde-format
-#| msgid "&Quality:"
+#, kde-format
 msgid "Quality:"
-msgstr "&Qualità:"
+msgstr "Qualità:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
 #: encoderlameconfig.ui:830

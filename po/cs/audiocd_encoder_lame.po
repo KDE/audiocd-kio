@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Vit Pelcak <vit@pelcak.org>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2023-03-16 16:36+0100\n"
+"PO-Revision-Date: 2024-08-14 09:17+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -494,10 +494,9 @@ msgstr "Za&psat ID3 značku"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:620
-#, fuzzy, kde-format
-#| msgid "Bitrate:"
+#, kde-format
 msgid "Bi&trate:"
-msgstr "Datový tok:"
+msgstr "Da&tový tok:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
 #: encoderlameconfig.ui:633
@@ -521,23 +520,21 @@ msgstr "Datový tok:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
-#, fuzzy, kde-format
-#| msgid "Constant Bitrate"
+#, kde-format
 msgid "Co&nstant"
-msgstr "Konstantní datový tok"
+msgstr "Ko&nstantní"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
-#, fuzzy, kde-format
-#| msgid "Variable Bitrate"
+#, kde-format
 msgid "Variab&le"
-msgstr "Variabilní datový tok"
+msgstr "Pro&měnlivý"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "Zvukové kanály:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
@@ -577,10 +574,9 @@ msgstr "Mono"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: encoderlameconfig.ui:821
-#, fuzzy, kde-format
-#| msgid "&Quality:"
+#, kde-format
 msgid "Quality:"
-msgstr "&Kvalita:"
+msgstr "Kvalita:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
 #: encoderlameconfig.ui:830
@@ -593,9 +589,3 @@ msgstr "Nízká"
 #, kde-format
 msgid "High"
 msgstr "Vysoká"
-
-#~ msgid "Constant bitrate"
-#~ msgstr "Konstantní datový tok"
-
-#~ msgid "Variable bitrate"
-#~ msgstr "Variabilní datový tok"

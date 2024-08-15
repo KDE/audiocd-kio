@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the audiocd-kio package.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2016.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2016-12-12 20:43+0100\n"
+"PO-Revision-Date: 2024-08-13 17:24+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (flac_compression_level), group (Flac)
 #: audiocd_flac_encoder.kcfg:9
@@ -25,7 +25,6 @@ msgstr "Livello di compressione per Flac"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: encoderflacconfig.ui:17
-#, fuzzy, kde-format
-#| msgid "Flac compression level"
+#, kde-format
 msgid "Flac Compression Level"
 msgstr "Livello di compressione per Flac"

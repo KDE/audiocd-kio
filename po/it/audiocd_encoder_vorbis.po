@@ -1,14 +1,16 @@
 # translation of audiocd_encoder_vorbis.po to Italian
 # Copyright (C) 2004, 2007 Free Software Foundation, Inc.
-#
 # Giuseppe Ravasio <gravasio@bglug.it>, 2004.
 # Giuseppe Ravasio <gravasio@kng.it>, 2007.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2024.
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2011-07-09 00:40+0200\n"
+"PO-Revision-Date: 2024-08-13 17:23+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,6 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
@@ -76,17 +79,15 @@ msgstr "M&etodo di codifica"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
 #: encodervorbisconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Basato sul bitrate"
+msgstr "Basato sul bi&trate"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
 #: encodervorbisconfig.ui:39
-#, fuzzy, kde-format
-#| msgid "Quality based"
+#, kde-format
 msgid "&Quality based"
-msgstr "Basato sulla qualità"
+msgstr "Basato sulla &qualità"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:55

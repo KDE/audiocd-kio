@@ -595,9 +595,3 @@ msgstr "Lav"
 #, kde-format
 msgid "High"
 msgstr "Høy"
-
-#~ msgid "Constant bitrate"
-#~ msgstr "Konstant bitrate"
-
-#~ msgid "Variable bitrate"
-#~ msgstr "Variabel bitrate"

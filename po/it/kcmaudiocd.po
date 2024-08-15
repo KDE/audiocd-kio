@@ -4,7 +4,7 @@
 # Giuseppe Ravasio <gravasio@bglug.it>, 2004, 2005.
 # ./SuperbepS <superbeps@bglug.it>, 2005.
 # Giuseppe Ravasio <gravasio@kng.it>, 2006, 2007.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2018, 2019, 2022.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2018, 2019, 2022, 2024.
 # Paolo Zamponi <feus73@gmail.com>, 2020.
 #
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2022-07-11 00:42+0200\n"
+"PO-Revision-Date: 2024-08-13 17:23+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -281,16 +281,15 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
-#, fuzzy, kde-format
-#| msgid "Files Location"
+#, kde-format
 msgid "File &Location"
-msgstr "Posizione dei file"
+msgstr "Posizione dei fi&le"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
 #: audiocdconfig.ui:664
 #, kde-format
 msgid "Use file location macros"
-msgstr ""
+msgstr "Usa macro per la posizione del file"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:799

@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
-# Vit Pelcak <vit@pelcak.org>, 2019, 2023.
+# SPDX-FileCopyrightText: 2019, 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2023-02-14 10:11+0100\n"
+"PO-Revision-Date: 2024-08-14 09:16+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
@@ -79,17 +79,15 @@ msgstr "M&etoda kódování"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Complexity based"
+#, kde-format
 msgid "Comp&lexity based"
-msgstr "Podle komplexity"
+msgstr "Podle komp&lexity"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Datový tok"
+msgstr "Podle datového to&ku"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:55
@@ -191,15 +189,13 @@ msgstr "256 kbps"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
-#, fuzzy, kde-format
-#| msgid "A&verage variable bitrate:"
+#, kde-format
 msgid "Avera&ge variable bitrate:"
 msgstr "Průměr proměnli&vého datového toku:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
-#, fuzzy, kde-format
-#| msgid "C&onstant bitrate:"
+#, kde-format
 msgid "Cons&tant bitrate:"
 msgstr "K&onstantní datový tok:"
 
