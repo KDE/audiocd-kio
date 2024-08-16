@@ -25,7 +25,6 @@ msgstr "FLAC 压缩级别"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: encoderflacconfig.ui:17
-#, fuzzy, kde-format
-#| msgid "Flac compression level"
+#, kde-format
 msgid "Flac Compression Level"
-msgstr "FLAC 压缩级别"
+msgstr ""
