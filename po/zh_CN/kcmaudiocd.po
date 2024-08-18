@@ -274,13 +274,13 @@ msgstr ""
 #: audiocdconfig.ui:646
 #, kde-format
 msgid "File &Location"
-msgstr ""
+msgstr "文件位置(&L)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
 #: audiocdconfig.ui:664
 #, kde-format
 msgid "Use file location macros"
-msgstr ""
+msgstr "使用文件位置宏"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:799

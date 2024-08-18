@@ -1,15 +1,15 @@
 # translation of audiocd_encoder_vorbis.po to
 # Copyright (C) 2004, 2007 Free Software Foundation, Inc.
+# Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007.
+# SPDX-FileCopyrightText: 2012, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 # Krzysztof Lichota, 2004.
-# Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2012-01-15 11:06+0100\n"
+"PO-Revision-Date: 2024-08-17 09:38+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -18,30 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Quality or Bitrate"
-msgstr "Jakość lub szybkość transmisji kodowania Vorbis"
+msgstr "Jakość lub szybkość bitowa kodowania Vorbis"
 
 #. i18n: ectx: label, entry (set_vorbis_min_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:15
 #, kde-format
 msgid "Minimal bitrate specified"
-msgstr "Podana minimalna szybkość transmisji"
+msgstr "Podana minimalna szybkość bitowa"
 
 #. i18n: ectx: label, entry (set_vorbis_max_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:19
 #, kde-format
 msgid "Maximal bitrate specified"
-msgstr "Podana maksymalna szybkość transmisji"
+msgstr "Podana maksymalna szybkość bitowa"
 
 #. i18n: ectx: label, entry (set_vorbis_nominal_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:23
 #, kde-format
 msgid "Average bitrate specified"
-msgstr "Podana średnia szybkość transmisji"
+msgstr "Podana średnia szybkość bitowa"
 
 #. i18n: ectx: label, entry (vorbis_comments), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:28
@@ -60,7 +61,7 @@ msgstr "Jakość"
 #: audiocd_vorbis_encoder.kcfg:39
 #, kde-format
 msgid "Minimal bitrate"
-msgstr "Minimalna szybkość transmisji"
+msgstr "Minimalna szybkość bitowa"
 
 #. i18n: ectx: label, entry (vorbis_max_br), group (Vorbis)
 #. i18n: ectx: label, entry (vorbis_nominal_br), group (Vorbis)
@@ -68,39 +69,37 @@ msgstr "Minimalna szybkość transmisji"
 #: audiocd_vorbis_encoder.kcfg:61
 #, kde-format
 msgid "maximal bitrate"
-msgstr "Maksymalna szybkość transmisji"
+msgstr "Maksymalna szybkość bitowa"
 
 #. i18n: ectx: property (title), widget (QGroupBox, kcfg_vorbis_enc_method)
 #: encodervorbisconfig.ui:17
 #, kde-format
 msgid "&Encoding Method"
-msgstr "Metoda &kodowania"
+msgstr "Sposób &kodowania"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
 #: encodervorbisconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Na podstawie szybkości transmisji"
+msgstr "Oparty na szybkości bi&towej"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
 #: encodervorbisconfig.ui:39
-#, fuzzy, kde-format
-#| msgid "Quality based"
+#, kde-format
 msgid "&Quality based"
-msgstr "Na podstawie jakości"
+msgstr "&Oparty na jakości"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:55
 #, kde-format
 msgid "Vorbis Bitrate Settings"
-msgstr "Ustawienia szybkości transmisji Vorbis"
+msgstr "Ustawienia szybkości bitowej Vorbis"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_max_br)
 #: encodervorbisconfig.ui:67
 #, kde-format
 msgid "Ma&ximal bitrate:"
-msgstr "Ma&ksymalna szybkość transmisji:"
+msgstr "Ma&ksymalna szybkość bitowa:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
@@ -214,13 +213,13 @@ msgstr "350 kbps"
 #: encodervorbisconfig.ui:247
 #, kde-format
 msgid "A&verage bitrate:"
-msgstr "Ś&rednia szybkość transmisji:"
+msgstr "Ś&rednia szybkość bitowa:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_min_br)
 #: encodervorbisconfig.ui:260
 #, kde-format
 msgid "M&inimal bitrate:"
-msgstr "&Minimalna szybkość transmisji:"
+msgstr "&Minimalna szybkość bitowa:"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, vorbis_quality_settings)
 #: encodervorbisconfig.ui:315
@@ -248,7 +247,7 @@ msgstr "Wyższa wartość jest lepsza, ale wolniejsza"
 #: encodervorbisconfig.ui:368
 #, kde-format
 msgid "Options"
-msgstr "Opcje"
+msgstr "Ustawienia"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vorbis_comments)
 #: encodervorbisconfig.ui:393

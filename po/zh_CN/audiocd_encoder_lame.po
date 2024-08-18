@@ -495,7 +495,7 @@ msgstr "写入 ID3 标签(&W)"
 #: encoderlameconfig.ui:620
 #, kde-format
 msgid "Bi&trate:"
-msgstr ""
+msgstr "码率(&T)："
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
 #: encoderlameconfig.ui:633
@@ -519,19 +519,19 @@ msgstr "码率："
 #: encoderlameconfig.ui:770
 #, kde-format
 msgid "Co&nstant"
-msgstr ""
+msgstr "固定(&N)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
 #, kde-format
 msgid "Variab&le"
-msgstr ""
+msgstr "可变(&L)"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "声道："
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
@@ -572,7 +572,7 @@ msgstr "单声道"
 #: encoderlameconfig.ui:821
 #, kde-format
 msgid "Quality:"
-msgstr ""
+msgstr "画质："
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
 #: encoderlameconfig.ui:830

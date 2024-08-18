@@ -27,4 +27,4 @@ msgstr "FLAC 压缩级别"
 #: encoderflacconfig.ui:17
 #, kde-format
 msgid "Flac Compression Level"
-msgstr ""
+msgstr "FLAC 压缩级别"

@@ -78,13 +78,13 @@ msgstr "编码方式(&E)"
 #: encodervorbisconfig.ui:32
 #, kde-format
 msgid "Bi&trate based"
-msgstr ""
+msgstr "基于码率(&T)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
 #: encodervorbisconfig.ui:39
 #, kde-format
 msgid "&Quality based"
-msgstr ""
+msgstr "基于品质(&Q)"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:55
