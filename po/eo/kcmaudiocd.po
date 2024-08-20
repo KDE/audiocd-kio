@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2023-05-29 21:25+0100\n"
+"PO-Revision-Date: 2024-08-19 21:47+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -276,16 +276,15 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
-#, fuzzy, kde-format
-#| msgid "Files Location"
+#, kde-format
 msgid "File &Location"
-msgstr "Loko de Dosieroj"
+msgstr "Dosiera &Loko"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
 #: audiocdconfig.ui:664
 #, kde-format
 msgid "Use file location macros"
-msgstr ""
+msgstr "Uzi dosierejajn makroojn"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:799
@@ -296,37 +295,4 @@ msgstr "%{albumtitle}/%{albumartist}"
 #: kcmaudiocd.cpp:60
 #, kde-format
 msgid "%1 Encoder"
-msgstr "%1 kodilo"
-
-#~ msgid "KDE Audio CD KIO Worker"
-#~ msgstr "KDE KIO-Laboranto por Son-KD"
-
-#~ msgid "Benjamin C. Meyer"
-#~ msgstr "Benjamin C. Meyer"
-
-#~ msgid "Former Maintainer"
-#~ msgstr "Antaŭa prizorganto"
-
-#~ msgid "Carsten Duvenhorst"
-#~ msgstr "Carsten Duvenhorst"
-
-#~ msgid "Original Author"
-#~ msgstr "Origina Aŭtoro"
-
-#~ msgid ""
-#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
-#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
-#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
-#~ "location bar. In this module, you can configure encoding, and device "
-#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
-#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
-#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
-#~ "installed in your system."
-#~ msgstr ""
-#~ "<h1>Sonaj KD</h1> Tiu KIO-laboranto permesas facile ricevi sondosierojn "
-#~ "en formo WAV, FLAC, MP3 Ogg Vorbis aŭ Opus el via muzika lumdisko (KD aŭ "
-#~ "DVD). La KIO-laboranton vi vokas tajpante <i>\"audiocd:/\"</i> en la "
-#~ "lokobreto de Dolfin. En tiu modulo vi povas agordi la kodadon kaj "
-#~ "aparatan agordon. Notu, ke FLAC-, MP3-, OggVorbis- kaj Opus-kodado eblas "
-#~ "nur, se la respondaj bibliotekoj (libFLAC por FLAC kaj libvorbis por Ogg) "
-#~ "estas instalataj en via sistemo."
+msgstr "%1 Kodilo"
