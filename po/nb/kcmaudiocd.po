@@ -277,7 +277,6 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
 #, fuzzy, kde-format
-#| msgid "Files Location"
 msgid "File &Location"
 msgstr "Filplassering"
 

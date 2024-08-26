@@ -499,7 +499,6 @@ msgstr "&Lagra ID3-info"
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:620
 #, fuzzy, kde-format
-#| msgid "Bitrate:"
 msgid "Bi&trate:"
 msgstr "Bitrate:"
 
@@ -524,14 +523,12 @@ msgstr "Bitrate:"
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
 #, fuzzy, kde-format
-#| msgid "Constant Bitrate"
 msgid "Co&nstant"
 msgstr "Konstant bitrate"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
 #, fuzzy, kde-format
-#| msgid "Variable Bitrate"
 msgid "Variab&le"
 msgstr "Variabel bitrate"
 
@@ -579,7 +576,6 @@ msgstr "Mono"
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: encoderlameconfig.ui:821
 #, fuzzy, kde-format
-#| msgid "&Quality:"
 msgid "Quality:"
 msgstr "&Kvalitet:"
 

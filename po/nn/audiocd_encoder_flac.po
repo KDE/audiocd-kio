@@ -28,6 +28,5 @@ msgstr "Komprimeringsnivå for FLAC"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: encoderflacconfig.ui:17
 #, fuzzy, kde-format
-#| msgid "Flac compression level"
 msgid "Flac Compression Level"
 msgstr "Komprimeringsnivå for FLAC"

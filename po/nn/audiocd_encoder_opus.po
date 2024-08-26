@@ -82,14 +82,12 @@ msgstr "&Kodingsmetode"
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
 #, fuzzy, kde-format
-#| msgid "Complexity based"
 msgid "Comp&lexity based"
 msgstr "Kompleksitetsbasert"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
 #, fuzzy, kde-format
-#| msgid "Bitrate based"
 msgid "Bi&trate based"
 msgstr "Bitratebasert"
 
@@ -194,14 +192,12 @@ msgstr "256 kb/s"
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
 #, fuzzy, kde-format
-#| msgid "A&verage variable bitrate:"
 msgid "Avera&ge variable bitrate:"
 msgstr "&Gjennomsnittleg variabel bitrate:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
 #, fuzzy, kde-format
-#| msgid "C&onstant bitrate:"
 msgid "Cons&tant bitrate:"
 msgstr "K&onstant bitrate:"
 
