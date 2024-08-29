@@ -4,31 +4,32 @@
 # Maris Nartiss <maris.kde@gmail.com>, 2007.
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2007, 2008.
 # Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2012.
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-27 00:44+0000\n"
-"PO-Revision-Date: 2012-01-11 23:52+0200\n"
-"Last-Translator: Rūdofls Mazurs <rudolfs.mazurs@gmail.com>\n"
+"PO-Revision-Date: 2024-08-27 16:29+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Māris Nartišs"
+msgstr "Māris Nartišs, Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "maris.kde@gmail.com"
+msgstr "maris.kde@gmail.com, toms.trasuns@posteo.net"
 
 #: audiocd.cpp:115
 #, kde-format
@@ -52,14 +53,14 @@ msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
 msgstr ""
-"Izmantojot šo protokolu jūs nevarat norādīt resursdatoru. Lūdzu izmantojiet "
-"tā vietā audiocd:/ formātu."
+"Izmantojot šo protokolu, nevarat norādīt resursdatoru. Tā vietā izmantojiet "
+"„audiocd:/“ formātu."
 
 #: audiocd.cpp:874
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
-msgstr ""
+msgstr "Trūkst ierīces specifikācijas"
 
 #: audiocd.cpp:884
 #, kde-format
@@ -67,8 +68,8 @@ msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
-"Šim kontam nav lasīšanas tiesību izvēlētajai ierīcei. Pārbaudiet lasīšanas "
-"tiesības ierīcei."
+"Šim kontam nav lasīšanas tiesību šai ierīcei. Pārbaudiet lasīšanas tiesības "
+"ierīcei."
 
 #: audiocd.cpp:888
 #, kde-format
@@ -76,8 +77,8 @@ msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
-"Šim kontam nav rakstīšanas tiesību izvēlētajai ierīcei. Pārbaudiet "
-"rakstīšanas tiesības ierīcei."
+"Šim kontam nav rakstīšanas tiesību šai ierīcei. Pārbaudiet rakstīšanas "
+"tiesības ierīcei."
 
 #: audiocd.cpp:894
 #, kde-format
@@ -91,31 +92,32 @@ msgid ""
 "audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
 "CD-ROM is."
 msgstr ""
-"Nezināma kļūda. Ja jums lasītājā ir CD, tad mēģiniet darbināt cdparanoia -"
-"vsQ kā jūs pats (nevis root). Vai jūs redzat celiņu sarakstu? Ja nē, tad "
-"pārliecinieties, ka jums ir tiesības piekļūt CD ierīcei. Ja izmantojat SCSI "
-"emulāciju (iespējams, ja jums ir IDE CD rakstīšanas ierīcei), tad "
-"pārliecinieties, ka jums ir lasīšanas un rakstīšanas atļaujas vispārīgām "
-"SCSI ierīcēm, kas visticamāk ir /dev/sg0, /dev/sg1 utml. Ja joprojām "
-"nedarbojas, pamēģiniet ierakstīt auidiocd:/?device=/dev/sg0 (vai līdzīgu), "
-"lai pateiktu kio_audiocd kura ir CD-ROM ierīce."
+"Nezināma kļūda. Ja diskdzinī ir ievietots kompaktdisks, tad mēģiniet palaist "
+"„cdparanoia -vsQ“ kā jūs pats (nevis saknes lietotājs). Vai redzat celiņu "
+"sarakstu? Ja neredzat, tad pārliecinieties, ka jums ir tiesības piekļūt "
+"diskdzinim. Ja izmantojat SCSI emulāciju (iespējams, ja jums ir IDE CD "
+"rakstīšanas ierīcei), tad pārliecinieties, ka jums ir lasīšanas un "
+"rakstīšanas atļaujas vispārīgām SCSI ierīcēm, kas visticamāk ir „/dev/sg0“, "
+"„/dev/sg1“ u.tml. Ja komanda joprojām nedarbojas, pamēģiniet ierakstīt "
+"audiocd:/?device=/dev/sg0 (vai līdzīgu), lai „kio_audiocd“ pateiktu, kura ir "
+"CD-ROM ierīce."
 
 #: audiocd.cpp:972
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
-"AudioCD: Šajā celiņā ir konstatēts diska bojājums. Pastāv datu bojājuma "
+"„AudioCD“: šajā celiņā ir konstatēts diska bojājums. Pastāv datu bojājuma "
 "draudi."
 
 #: audiocd.cpp:979
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr "Kļūda nolasot %1 audio datus no CD"
+msgstr "Kļūda nolasot „%1“ audio datus no CD"
 
 #: audiocd.cpp:989 audiocd.cpp:1067
 #, kde-format
 msgid "Could not read %1: encoding failed"
-msgstr "Nevar nolasīt %1: kodēšana neizdevās"
+msgstr "Nevar nolasīt „%1“: kodēšana neizdevās"
 
 #: audiocd.cpp:1198
 #, kde-format

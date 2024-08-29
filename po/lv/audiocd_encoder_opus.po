@@ -1,99 +1,100 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
 #
-# SPDX-FileCopyrightText: 2020, 2024 Giovanni Sora <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-08-28 15:42+0200\n"
-"Last-Translator: giovanni <g.sora@tiscali.it>\n"
-"Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
-"Language: ia\n"
+"PO-Revision-Date: 2024-08-27 13:07+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Complexity or Bitrate"
-msgstr "Complexitte o frequentia de bit de codifica de Vorbis"
+msgstr "„Vorbis“ kodējuma sarežģītība jeb bitātrums"
 
 #. i18n: ectx: label, entry (set_opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:15
 #, kde-format
 msgid "Constant bitrate specified"
-msgstr "Frequentia de bit constante specificate"
+msgstr "Norādīts nemainīgs bitātrums"
 
 #. i18n: ectx: label, entry (set_opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:19
 #, kde-format
 msgid "Constrained variable bitrate specified"
-msgstr "Frequentia de bit variabile constringite specificate"
+msgstr "Norādīts mainīgs bitātrums ar robežām"
 
 #. i18n: ectx: label, entry (set_opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:23
 #, kde-format
 msgid "Average variable bitrate specified"
-msgstr "Medie frequentia de bit variabile specificate"
+msgstr "Norādīts vidējais mainīgais bitātrums"
 
 #. i18n: ectx: label, entry (opus_comments), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:28
 #, kde-format
 msgid "Add Comments"
-msgstr "Adde commentos"
+msgstr "Pievienot komentārus"
 
 #. i18n: ectx: label, entry (opus_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:32
 #, kde-format
 msgid "Complexity"
-msgstr "Complexitate"
+msgstr "Sarežģītība"
 
 #. i18n: ectx: label, entry (opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:39
 #, kde-format
 msgid "Constant bitrate"
-msgstr "Frequentia de bit constante"
+msgstr "Nemainīgs bitātrums"
 
 #. i18n: ectx: label, entry (opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:46
 #, kde-format
 msgid "Constrained variable bitrate"
-msgstr "Frequentia de bit variabile constringite"
+msgstr "Ierobežots mainīgs bitātrums"
 
 #. i18n: ectx: label, entry (opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:53
 #, kde-format
 msgid "Average variable bitrate"
-msgstr "Medie frequentia de bit variabile"
+msgstr "Vidējais mainīgais bitātrums"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_enc_method)
 #: encoderopusconfig.ui:17
 #, kde-format
 msgid "&Encoding Method"
-msgstr "M&ethodo de codification"
+msgstr "&Kodējuma metode"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
 #, kde-format
 msgid "Comp&lexity based"
-msgstr "Basate sur Comp&lexitate"
+msgstr "Ba&lstīta sarežģītībā"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
 #, kde-format
 msgid "Bi&trate based"
-msgstr "Basate sur le frequen&tia de bit"
+msgstr "Bals&tīta bitātrumā"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:55
 #, kde-format
 msgid "Opus Bitrate Settings"
-msgstr "Preferentias de frequentia de bit de Opus"
+msgstr "„Opus“ bitātruma iestatījumi"
 
 #. i18n: ectx: property (currentText), widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
@@ -191,19 +192,19 @@ msgstr "256 kbps"
 #: encoderopusconfig.ui:132
 #, kde-format
 msgid "Avera&ge variable bitrate:"
-msgstr "Medie fre&quentia de bit variabile:"
+msgstr "&Vidējais mainīgais bitātrums:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
 #, kde-format
 msgid "Cons&tant bitrate:"
-msgstr "Frequentia de bit cons&tante:"
+msgstr "Nemainīgs bi&tātrums:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cvbr)
 #: encoderopusconfig.ui:162
 #, kde-format
 msgid "Co&nstrained variable bitrate:"
-msgstr "Frequentia de bit variabile co&nstringite:"
+msgstr "Ierobežots mai&nīgs bitātrums:"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:321
@@ -212,27 +213,27 @@ msgid ""
 "You can set the complexity of the encoded stream here. A higher value "
 "implies a higher complexity but encodes slower."
 msgstr ""
-"Tu pote fixar le complexitate de l fluxo codificate hic. Un valor plus "
-"altessa implica un complexitate maior ma un codification plus lente."
+"Te varat iestatīt kodējuma straumes sarežģītību. Lielāka vērtība nozīmē "
+"augstāku sarežģītību, bet lēnāku kodēšanu."
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:324
 #, kde-format
 msgid "Opus Co&mplexity Setting"
-msgstr "Preferentias de co&mplexitate de Opus"
+msgstr "„Opus“ &sarežģītības iestatījums"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, complexitySlider)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, kcfg_opus_complexity)
 #: encoderopusconfig.ui:347 encoderopusconfig.ui:374
 #, kde-format
 msgid "Higher is better but slower"
-msgstr "Plus alte es melior ma plus lente"
+msgstr "Augstāka ir labāka, bet lēnāka"
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileOptions)
 #: encoderopusconfig.ui:393
 #, kde-format
 msgid "Options"
-msgstr "Optiones"
+msgstr "Opcijas"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:411
@@ -243,13 +244,13 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"Adde un description del canto al capite de file. Isto rende facile pro le "
-"usator obtener le information avantiate del canto monstrate per iste "
-"reproductor de media. Tu pote obtener iste informatio de modo automatic via "
-"Internet. Tu reguarda al modulo <i>\"Recupero de CDDB\"</i> pro detalios."
+"Datnes galvenai pievienot skaņdarba aprakstu. Tas atskaņošanas programmai "
+"atvieglos papildu informācijas iegūšanu par šo skaņdarbu. Šo informāciju "
+"varat saņemt automātiski no interneta. Lai uzzinātu vairāk, aplūkojiet "
+"<i>„CDDB izgūšana“</i> vadības moduli."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:414
 #, kde-format
 msgid "Add &track information"
-msgstr "Adde information de &tracia"
+msgstr "Pievienot &celiņa informāciju"
