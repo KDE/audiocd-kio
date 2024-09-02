@@ -1,27 +1,24 @@
 # Translation of kcmaudiocd to Spanish
-# kdcmaudiocd
-# Copyright (C) 2002 KDE.
 #
-# Salvador Gimeno Zanón <salgiza@ono.com>, 2002, 2004, 2005.
-# Salvador Gimeno Zanón <salgiza@jazzfree.com>, 2003.
-# Pablo de Vicente <p.devicente@wanadoo.es>, 2004.
-# santi <santi@kde-es.org>, 2005.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2005, 2006, 2007, 2016.
-# Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>, 2008, 2010.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2016, 2019, 2022.
+# SPDX-FileCopyrightText: 2002, 2003, 2004, 2005 Salvador Gimeno Zanón <salgiza@ono.com>
+# SPDX-FileCopyrightText: 2004 Pablo de Vicente <p.devicente@wanadoo.es>
+# SPDX-FileCopyrightText: 2005 santi <santi@kde-es.org>
+# SPDX-FileCopyrightText: 2005, 2006, 2007, 2016 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2008 2010 Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>
+# SPDX-FileCopyrightText: 2016, 2019, 2022, 2024 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2022-07-09 17:54+0200\n"
+"PO-Revision-Date: 2024-08-31 16:50+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -286,16 +283,15 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
-#, fuzzy, kde-format
-#| msgid "Files Location"
+#, kde-format
 msgid "File &Location"
-msgstr "Ubicación de los archivos"
+msgstr "Ubicación de&l archivo"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
 #: audiocdconfig.ui:664
 #, kde-format
 msgid "Use file location macros"
-msgstr ""
+msgstr "Usar macros de ubicación de archivos"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:799
@@ -307,38 +303,3 @@ msgstr "%{albumtitle}/%{albumartist}"
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Codificador %1"
-
-#~ msgid "KDE Audio CD KIO Worker"
-#~ msgstr "Proceso KIO de CD de audio de KDE"
-
-#~ msgid "Benjamin C. Meyer"
-#~ msgstr "Benjamin C. Meyer"
-
-#~ msgid "Former Maintainer"
-#~ msgstr "Anterior encargado"
-
-#~ msgid "Carsten Duvenhorst"
-#~ msgstr "Carsten Duvenhorst"
-
-#~ msgid "Original Author"
-#~ msgstr "Autor original"
-
-#~ msgid ""
-#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
-#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
-#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
-#~ "location bar. In this module, you can configure encoding, and device "
-#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
-#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
-#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
-#~ "installed in your system."
-#~ msgstr ""
-#~ "<h1>CD de audio</h1> El proceso KIO de Audio CD le permite crear "
-#~ "fácilmente archivos WAV, FLAC, MP3 Ogg Vorbis u Opus a partir de sus CD "
-#~ "de audio o DVD. Para invocar al proceso, escriba <i>«audiocd:/»</i> en la "
-#~ "barra de ubicación de Dolphin. En este módulo puede configurar la "
-#~ "codificación, y la configuración de los dispositivos. Tenga en cuenta que "
-#~ "la codificación a FLAC, MP3, Ogg Vorbis y Opus solo estará disponible si "
-#~ "las correspondientes librerías (libFLAC para FLAC y libvorbis para Ogg) y "
-#~ "utilidades (lame para MP3 y opus-tools para Opus) están instaladas en sus "
-#~ "sistema."
