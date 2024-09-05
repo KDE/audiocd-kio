@@ -40,7 +40,8 @@ public:
  * Opus encoder.
  * Check out https://opus-codec.org/ for lots of information.
  */
-class EncoderOpus : public QObject, public AudioCDEncoder {
+class EncoderOpus : public QObject, public AudioCDEncoder
+{
     Q_OBJECT
 
 public:

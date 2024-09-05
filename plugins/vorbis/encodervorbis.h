@@ -44,8 +44,8 @@ public:
  * Ogg Vorbis encoder.
  * Check out https://xiph.org/vorbis/ for more information.
  */
-class EncoderVorbis : public AudioCDEncoder {
-
+class EncoderVorbis : public AudioCDEncoder
+{
 public:
     explicit EncoderVorbis(KIO::WorkerBase *worker);
     ~EncoderVorbis() override;
@@ -54,25 +54,25 @@ public:
     {
         return QLatin1String("Ogg Vorbis");
     }
-  bool init() override;
-  void loadSettings() override;
-  unsigned long size(long time_secs) const override;
-  const char *fileType() const override
-  {
-      return "ogg";
-  }
-  const char *mimeType() const override;
-  void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
-  long readInit(long size) override;
-  long read(qint16 *buf, int frames) override;
-  long readCleanup() override;
-  QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
+    bool init() override;
+    void loadSettings() override;
+    unsigned long size(long time_secs) const override;
+    const char *fileType() const override
+    {
+        return "ogg";
+    }
+    const char *mimeType() const override;
+    void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
+    long readInit(long size) override;
+    long read(qint16 *buf, int frames) override;
+    long readCleanup() override;
+    QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
 
-  private:
-  long flush_vorbis();
+private:
+    long flush_vorbis();
 
-  class Private;
-  Private *d;
+    class Private;
+    Private *d;
 };
 
 #endif // ENCODER_VORBIS_H

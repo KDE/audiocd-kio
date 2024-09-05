@@ -36,45 +36,45 @@
  * Does little more than copy the data and make sure it is in the right
  * endian.
  */
-class EncoderCda : public AudioCDEncoder {
-
+class EncoderCda : public AudioCDEncoder
+{
 public:
     explicit EncoderCda(KIO::WorkerBase *worker)
         : AudioCDEncoder(worker)
     {
     }
-  ~EncoderCda() override
-  {
-  }
-  bool init() override
-  {
-      return true;
-  }
-  void loadSettings() override
-  {
-  }
-  unsigned long size(long time_secs) const override;
-  QString type() const override
-  {
-      return QLatin1String("CDA");
-  }
-  const char *mimeType() const override;
-  const char *fileType() const override
-  {
-      return "cda";
-  }
-  void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
-  {
-  }
-  long readInit(long) override
-  {
-      return 0;
-  }
-  long read(qint16 *buf, int frames) override;
-  long readCleanup() override
-  {
-      return 0;
-  }
+    ~EncoderCda() override
+    {
+    }
+    bool init() override
+    {
+        return true;
+    }
+    void loadSettings() override
+    {
+    }
+    unsigned long size(long time_secs) const override;
+    QString type() const override
+    {
+        return QLatin1String("CDA");
+    }
+    const char *mimeType() const override;
+    const char *fileType() const override
+    {
+        return "cda";
+    }
+    void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
+    {
+    }
+    long readInit(long) override
+    {
+        return 0;
+    }
+    long read(qint16 *buf, int frames) override;
+    long readCleanup() override
+    {
+        return 0;
+    }
 };
 
 #endif // ENCODER_CDA_H

@@ -32,7 +32,8 @@ class AudioCDEncoder;
 
 struct cdrom_drive;
 
-namespace AudioCD {
+namespace AudioCD
+{
 
 /**
  * The core class of the audiocd:// KIO worker.

@@ -43,8 +43,8 @@ AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::WorkerBase *worker, QLis
 }
 }
 
-class EncoderFLAC::Private {
-
+class EncoderFLAC::Private
+{
 public:
     FLAC__StreamEncoder *encoder;
     FLAC__StreamMetadata **metadata;
@@ -110,7 +110,8 @@ EncoderFLAC::EncoderFLAC(KIO::WorkerBase *worker)
 #endif
 }
 
-EncoderFLAC::~EncoderFLAC() {
+EncoderFLAC::~EncoderFLAC()
+{
     if (d->encoder)
         FLAC__stream_encoder_delete(d->encoder);
     delete d;
@@ -135,7 +136,8 @@ bool EncoderFLAC::init()
     return true;
 }
 
-void EncoderFLAC::loadSettings() {
+void EncoderFLAC::loadSettings()
+{
 #if defined(FLAC_API_VERSION_CURRENT) && FLAC_API_VERSION_CURRENT > 7
     Settings *settings = Settings::self();
     d->compression_level = settings->flac_compression_level();
@@ -145,12 +147,14 @@ void EncoderFLAC::loadSettings() {
 }
 
 // Estimate size to be 5/8 of uncompressed size.
-unsigned long EncoderFLAC::size(long time_secs) const {
+unsigned long EncoderFLAC::size(long time_secs) const
+{
     long uncompressed = (time_secs * (44100 * 2 * 2));
     return (uncompressed / 8) * 5 + 1000;
 }
 
-long EncoderFLAC::readInit(long size) {
+long EncoderFLAC::readInit(long size)
+{
     qCDebug(AUDIOCD_KIO_LOG) << "EncoderFLAC::readInit() called";
     d->data = 0;
 #if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7

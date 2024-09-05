@@ -27,7 +27,8 @@
 
 #include "audiocdencoder.h"
 
-class EncoderFLACConfig : public QWidget, public Ui::EncoderFLACConfig {
+class EncoderFLACConfig : public QWidget, public Ui::EncoderFLACConfig
+{
 public:
     explicit EncoderFLACConfig(QWidget *parent = nullptr)
         : QWidget(parent)
@@ -40,8 +41,8 @@ public:
  * FLAC encoder.
  * Check out https://xiph.org/flac/ for more information.
  */
-class EncoderFLAC : public AudioCDEncoder {
-
+class EncoderFLAC : public AudioCDEncoder
+{
 public:
     explicit EncoderFLAC(KIO::WorkerBase *worker);
     ~EncoderFLAC() override;
@@ -50,27 +51,27 @@ public:
     {
         return QLatin1String("FLAC");
     }
-  bool init() override;
-  void loadSettings() override;
-  unsigned long size(long time_secs) const override;
-  const char *fileType() const override
-  {
-      return "flac";
-  }
-  const char *mimeType() const override
-  {
-      return "audio/x-flac";
-  }
-  void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
-  long readInit(long size) override;
-  long read(qint16 *buf, int frames) override;
-  long readCleanup() override;
-  QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
+    bool init() override;
+    void loadSettings() override;
+    unsigned long size(long time_secs) const override;
+    const char *fileType() const override
+    {
+        return "flac";
+    }
+    const char *mimeType() const override
+    {
+        return "audio/x-flac";
+    }
+    void fillSongInfo(KCDDB::CDInfo info, int track, const QString &comment) override;
+    long readInit(long size) override;
+    long read(qint16 *buf, int frames) override;
+    long readCleanup() override;
+    QWidget *getConfigureWidget(KConfigSkeleton **manager) const override;
 
-  class Private;
+    class Private;
 
-  private:
-  Private *d;
+private:
+    Private *d;
 };
 
 #endif // ENCODER_FLAC_H

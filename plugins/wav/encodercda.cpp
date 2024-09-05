@@ -25,9 +25,10 @@
 
 #include "encodercda.h"
 
-unsigned long EncoderCda::size(long time_secs) const {
+unsigned long EncoderCda::size(long time_secs) const
+{
     // return (time_secs *   (44100 * 2 * 16))/8;
-    return (time_secs)*176400;
+    return (time_secs) * 176400;
 }
 
 const char *EncoderCda::mimeType() const

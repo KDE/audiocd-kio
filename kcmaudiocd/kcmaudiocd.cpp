@@ -124,7 +124,8 @@ void KAudiocdModule::updateExample()
     audioConfig->exampleOutput->setText(text);
 }
 
-void KAudiocdModule::defaults() {
+void KAudiocdModule::defaults()
+{
     audioConfig->ec_enable_check->setChecked(true);
     audioConfig->ec_skip_check->setChecked(false);
     audioConfig->niceLevel->setValue(0);
@@ -140,7 +141,8 @@ void KAudiocdModule::defaults() {
     audioConfig->albumNameLineEdit->setText(QStringLiteral("%{albumartist} - %{albumtitle}"));
 }
 
-void KAudiocdModule::save() {
+void KAudiocdModule::save()
+{
     if (!configChanged)
         return;
 
@@ -152,63 +154,64 @@ void KAudiocdModule::save() {
         cg.writeEntry("niceLevel", audioConfig->niceLevel->value());
     }
 
-  {
-      KConfigGroup cg(config, QStringLiteral("FileName"));
-      cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
-      cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
-      cg.writeEntry("show_file_location", audioConfig->fileLocationGroupBox->isChecked());
-      cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
-      cg.writeEntry("regexp_example", audioConfig->example->text());
+    {
+        KConfigGroup cg(config, QStringLiteral("FileName"));
+        cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
+        cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
+        cg.writeEntry("show_file_location", audioConfig->fileLocationGroupBox->isChecked());
+        cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
+        cg.writeEntry("regexp_example", audioConfig->example->text());
 
-      // save quoted if required
-      QString replaceInput = audioConfig->kcfg_replaceInput->text();
-      QString replaceOutput = audioConfig->kcfg_replaceOutput->text();
-      if (needsQuotes(replaceInput)) {
-          replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
-      }
-      if (needsQuotes(replaceOutput)) {
-          replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
-      }
-    cg.writeEntry("regexp_search", replaceInput);
-    cg.writeEntry("regexp_replace", replaceOutput);
-  }
+        // save quoted if required
+        QString replaceInput = audioConfig->kcfg_replaceInput->text();
+        QString replaceOutput = audioConfig->kcfg_replaceOutput->text();
+        if (needsQuotes(replaceInput)) {
+            replaceInput = QLatin1Char('\"') + replaceInput + QLatin1Char('\"');
+        }
+        if (needsQuotes(replaceOutput)) {
+            replaceOutput = QLatin1Char('\"') + replaceOutput + QLatin1Char('\"');
+        }
+        cg.writeEntry("regexp_search", replaceInput);
+        cg.writeEntry("regexp_replace", replaceOutput);
+    }
 
-  for (int i = 0; i < encoderSettings.size(); ++i) {
-      encoderSettings.at(i)->updateSettings();
-  }
+    for (int i = 0; i < encoderSettings.size(); ++i) {
+        encoderSettings.at(i)->updateSettings();
+    }
 
-  config->sync();
+    config->sync();
 
-  configChanged = false;
+    configChanged = false;
 }
 
-void KAudiocdModule::load() {
+void KAudiocdModule::load()
+{
+    {
+        KConfigGroup cg(config, QStringLiteral("CDDA"));
 
-  {
-      KConfigGroup cg(config, QStringLiteral("CDDA"));
+        audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia", false)));
+        audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip", true)));
+        audioConfig->niceLevel->setValue(cg.readEntry("niceLevel", 0));
+    }
 
-      audioConfig->ec_enable_check->setChecked(!(cg.readEntry("disable_paranoia", false)));
-      audioConfig->ec_skip_check->setChecked(!(cg.readEntry("never_skip", true)));
-      audioConfig->niceLevel->setValue(cg.readEntry("niceLevel", 0));
-  }
+    {
+        KConfigGroup cg(config, QStringLiteral("FileName"));
+        audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
+        audioConfig->albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
+        audioConfig->fileLocationGroupBox->setChecked(cg.readEntry("show_file_location", false));
+        audioConfig->fileLocationLineEdit->setText(cg.readEntry("file_location_template", QString()));
+        audioConfig->kcfg_replaceInput->setText(cg.readEntry("regexp_search"));
+        audioConfig->kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));
+        audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
+    }
 
-  {
-      KConfigGroup cg(config, QStringLiteral("FileName"));
-      audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
-      audioConfig->albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
-      audioConfig->fileLocationGroupBox->setChecked(cg.readEntry("show_file_location", false));
-      audioConfig->fileLocationLineEdit->setText(cg.readEntry("file_location_template", QString()));
-      audioConfig->kcfg_replaceInput->setText(cg.readEntry("regexp_search"));
-      audioConfig->kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));
-      audioConfig->example->setText(cg.readEntry("example", i18n("Cool artist - example audio file.wav")));
-  }
-
-  for (int i = 0; i < encoderSettings.size(); ++i) {
-      encoderSettings.at(i)->updateWidgets();
-  }
+    for (int i = 0; i < encoderSettings.size(); ++i) {
+        encoderSettings.at(i)->updateWidgets();
+    }
 }
 
-void KAudiocdModule::slotModuleChanged() {
+void KAudiocdModule::slotModuleChanged()
+{
     for (int i = 0; i < encoderSettings.size(); ++i) {
         KConfigDialogManager *widget = encoderSettings.at(i);
         if (widget->hasChanged()) {
@@ -218,7 +221,8 @@ void KAudiocdModule::slotModuleChanged() {
     }
 }
 
-void KAudiocdModule::slotConfigChanged() {
+void KAudiocdModule::slotConfigChanged()
+{
     configChanged = true;
     setNeedsSave(true);
 }
@@ -226,16 +230,17 @@ void KAudiocdModule::slotConfigChanged() {
 /*
 #    slot for the error correction settings
 */
-void KAudiocdModule::slotEcEnable() {
-  if (!(audioConfig->ec_skip_check->isChecked())) {
-    audioConfig->ec_skip_check->setChecked(true);
-  } else {
-    if (audioConfig->ec_skip_check->isEnabled()) {
-      audioConfig->ec_skip_check->setChecked(false);
+void KAudiocdModule::slotEcEnable()
+{
+    if (!(audioConfig->ec_skip_check->isChecked())) {
+        audioConfig->ec_skip_check->setChecked(true);
+    } else {
+        if (audioConfig->ec_skip_check->isEnabled()) {
+            audioConfig->ec_skip_check->setChecked(false);
+        }
     }
-  }
 
-  slotConfigChanged();
+    slotConfigChanged();
 }
 
 #include "kcmaudiocd.moc"

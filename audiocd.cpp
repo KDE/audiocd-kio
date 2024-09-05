@@ -109,7 +109,8 @@ enum Which_dir {
     SubDir // A directory created from the Album name configuration
 };
 
-class AudioCDProtocol::Private {
+class AudioCDProtocol::Private
+{
 public:
     Private()
         : s_info(i18n("Information"))
@@ -443,7 +444,8 @@ bool AudioCDProtocol::getSectorsForRequest(struct cdrom_drive *drive, long &firs
     return true;
 }
 
-static uint findInformationFileNumber(const QString &filename, uint max) {
+static uint findInformationFileNumber(const QString &filename, uint max)
+{
     if (filename == QStringLiteral("%1.txt").arg(i18n("CDDB Information")))
         return 1;
 
@@ -1033,7 +1035,7 @@ KIO::WorkerResult AudioCDProtocol::paranoiaRead(struct cdrom_drive *drive,
                 totalSize(estSize + diff);
                 lastSize = estSize + diff;
             } else {
-                int margin = (int)((percentDone)*75);
+                int margin = (int)((percentDone) * 75);
                 // Don't bother really trying until almost half way done.
                 if (percentDone <= .40)
                     margin = 7;

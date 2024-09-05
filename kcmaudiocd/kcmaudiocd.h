@@ -55,24 +55,24 @@ public:
     ~KAudiocdModule() override;
 
 public Q_SLOTS:
-  void defaults() override;
-  void save() override;
-  void load() override;
+    void defaults() override;
+    void save() override;
+    void load() override;
 
 private Q_SLOTS:
-  void updateExample();
-  void slotConfigChanged();
-  void slotEcEnable();
-  void slotModuleChanged();
+    void updateExample();
+    void slotConfigChanged();
+    void slotEcEnable();
+    void slotModuleChanged();
 
-  private:
-  KConfig *config = nullptr;
-  bool configChanged = false;
+private:
+    KConfig *config = nullptr;
+    bool configChanged = false;
 
-  int getBitrateIndex(int value);
+    int getBitrateIndex(int value);
 
-  QList<KConfigDialogManager *> encoderSettings;
-  AudiocdConfig *audioConfig = nullptr;
+    QList<KConfigDialogManager *> encoderSettings;
+    AudiocdConfig *audioConfig = nullptr;
 };
 
 #endif // KCMAUDIOCD_H

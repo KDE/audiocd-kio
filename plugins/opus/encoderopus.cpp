@@ -125,7 +125,8 @@ void EncoderOpus::loadSettings()
     d->write_opus_comments = settings->opus_comments();
 }
 
-unsigned long EncoderOpus::size(long time_secs) const {
+unsigned long EncoderOpus::size(long time_secs) const
+{
     return (time_secs * d->bitrate * 1000) / 8;
 }
 

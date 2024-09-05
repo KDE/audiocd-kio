@@ -45,8 +45,8 @@ AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::WorkerBase *worker, QLis
 static const int vorbis_nominal_bitrates[] = {128, 160, 192, 256, 350};
 static const int vorbis_bitrates[] = {32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 350};
 
-class EncoderVorbis::Private {
-
+class EncoderVorbis::Private
+{
 public:
     ogg_stream_state os; /* take physical pages, weld into a logical stream of packets */
     ogg_page og; /* one Ogg bitstream page.  Vorbis packets are inside */
@@ -176,28 +176,29 @@ long EncoderVorbis::flush_vorbis()
     return processed;
 }
 
-unsigned long EncoderVorbis::size(long time_secs) const {
-  long vorbis_size;
-  switch (d->vorbis_encode_method) {
-  case 0: // quality based encoding
-  {
-    // Estimated numbers based on the Vorbis FAQ:
-    // https://xiph.org/vorbis/faq/#quality
+unsigned long EncoderVorbis::size(long time_secs) const
+{
+    long vorbis_size;
+    switch (d->vorbis_encode_method) {
+    case 0: // quality based encoding
+    {
+        // Estimated numbers based on the Vorbis FAQ:
+        // https://xiph.org/vorbis/faq/#quality
 
-    static long vorbis_q_bitrate[] = {60, 74, 86, 106, 120, 152, 183, 207, 239, 309, 440};
-    long quality = static_cast<long>(d->vorbis_quality);
-    if (quality < 0 || quality > 10)
-      quality = 3;
-    vorbis_size = (time_secs * vorbis_q_bitrate[quality] * 1000) / 8;
+        static long vorbis_q_bitrate[] = {60, 74, 86, 106, 120, 152, 183, 207, 239, 309, 440};
+        long quality = static_cast<long>(d->vorbis_quality);
+        if (quality < 0 || quality > 10)
+            quality = 3;
+        vorbis_size = (time_secs * vorbis_q_bitrate[quality] * 1000) / 8;
 
-    break;
-  }
-  default: // bitrate based encoding
-      vorbis_size = (time_secs * d->vorbis_bitrate / 8);
-      break;
-  }
+        break;
+    }
+    default: // bitrate based encoding
+        vorbis_size = (time_secs * d->vorbis_bitrate / 8);
+        break;
+    }
 
-  return vorbis_size;
+    return vorbis_size;
 }
 
 const char *EncoderVorbis::mimeType() const

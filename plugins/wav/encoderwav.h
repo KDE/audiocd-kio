@@ -35,34 +35,34 @@
  * Wav audio "encoder"
  * Takes the CDA take and adds the standard wav header.
  */
-class EncoderWav : public EncoderCda {
-
+class EncoderWav : public EncoderCda
+{
 public:
     explicit EncoderWav(KIO::WorkerBase *worker)
         : EncoderCda(worker)
     {
     }
-  ~EncoderWav() override
-  {
-  }
-  bool init() override
-  {
-      return true;
-  }
-  unsigned long size(long time_secs) const override;
-  QString type() const override
-  {
-      return QLatin1String("Wav");
-  }
-  const char *fileType() const override
-  {
-      return "wav";
-  }
-  const char *mimeType() const override;
-  void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
-  {
-  }
-  long readInit(long size) override;
+    ~EncoderWav() override
+    {
+    }
+    bool init() override
+    {
+        return true;
+    }
+    unsigned long size(long time_secs) const override;
+    QString type() const override
+    {
+        return QLatin1String("Wav");
+    }
+    const char *fileType() const override
+    {
+        return "wav";
+    }
+    const char *mimeType() const override;
+    void fillSongInfo(KCDDB::CDInfo, int, const QString &) override
+    {
+    }
+    long readInit(long size) override;
 };
 
 #endif // ENCODER_WAV_H

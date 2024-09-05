@@ -34,8 +34,9 @@ AUDIOCDPLUGINS_EXPORT void create_audiocd_encoders(KIO::WorkerBase *worker, QLis
 }
 }
 
-unsigned long EncoderWav::size(long time_secs) const {
-  return (EncoderCda::size(time_secs) + 44);
+unsigned long EncoderWav::size(long time_secs) const
+{
+    return (EncoderCda::size(time_secs) + 44);
 }
 
 const char *EncoderWav::mimeType() const

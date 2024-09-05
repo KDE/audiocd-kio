@@ -76,7 +76,7 @@ void AudioCDEncoder::findAllPlugins(KIO::WorkerBase *worker, QList<AudioCDEncode
                 QFunctionPointer function = loadPlugin(fi.absoluteFilePath());
                 if (function) {
                     void (*functionPointer)(KIO::WorkerBase *, QList<AudioCDEncoder *> &) =
-                        (void (*)(KIO::WorkerBase * worker, QList<AudioCDEncoder *> & encoders)) function;
+                        (void (*)(KIO::WorkerBase *worker, QList<AudioCDEncoder *> &encoders))function;
                     functionPointer(worker, encoders);
                 }
             }

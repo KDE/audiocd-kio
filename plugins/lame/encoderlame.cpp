@@ -229,7 +229,8 @@ void EncoderLame::loadSettings()
     }
 }
 
-unsigned long EncoderLame::size(long time_secs) const {
+unsigned long EncoderLame::size(long time_secs) const
+{
     return (time_secs * d->bitrate * 1000) / 8;
 }
 
