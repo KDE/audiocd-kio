@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"POT-Creation-Date: 2024-09-06 00:39+0000\n"
 "PO-Revision-Date: 2001-08-27 17:07+CST\n"
 "Last-Translator: Chih-Wei Huang <cwhuang@linux.org.tw>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -26,50 +26,50 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "cwhuang@linux.org.tw,wwycheuk@netvigator.com"
 
-#: audiocd.cpp:115
+#: audiocd.cpp:116
 #, kde-format
 msgid "Information"
 msgstr ""
 
-#: audiocd.cpp:116
+#: audiocd.cpp:117
 #, kde-format
 msgid "Full CD"
 msgstr "全 CD"
 
-#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
-#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
+#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
 #, kde-format
 msgid "CDDB Information"
 msgstr ""
 
-#: audiocd.cpp:490
+#: audiocd.cpp:492
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
 msgstr "你無法使用此協定指定主機。請改為使用 audiocd:/ 格式。"
 
-#: audiocd.cpp:874
+#: audiocd.cpp:876
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr ""
 
-#: audiocd.cpp:884
+#: audiocd.cpp:886
 #, fuzzy, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr "裝置沒有此帳號的讀取權限。 請檢查裝置的讀取權限。"
 
-#: audiocd.cpp:888
+#: audiocd.cpp:890
 #, fuzzy, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr "裝置沒有此帳號的寫入權限。 請檢查裝置的寫入權限。"
 
-#: audiocd.cpp:894
+#: audiocd.cpp:896
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -87,22 +87,22 @@ msgstr ""
 "dev/sg0 、/dev/sg1 等等）的讀寫權限。如果還未可以，試著鍵入 audiocd:/?"
 "device=/dev/sg0 (或類似指令)告訴 kio_audiocd 你的 CD-ROM 是哪個。"
 
-#: audiocd.cpp:972
+#: audiocd.cpp:974
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr "AudioCD: 在此音軌上偵測到光碟有損壞，有可能資料已損毁。"
 
-#: audiocd.cpp:979
+#: audiocd.cpp:981
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "從 CD 讀取 %1 的音樂資料時發生錯訊"
 
-#: audiocd.cpp:989 audiocd.cpp:1067
+#: audiocd.cpp:991 audiocd.cpp:1069
 #, fuzzy, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "無法讀取 %1: 編碼失敗"
 
-#: audiocd.cpp:1198
+#: audiocd.cpp:1200
 #, kde-format
 msgid "Track %1"
 msgstr "音軌 %1"

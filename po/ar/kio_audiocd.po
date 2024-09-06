@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"POT-Creation-Date: 2024-09-06 00:39+0000\n"
 "PO-Revision-Date: 2021-12-11 22:40+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -31,23 +31,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "metehyi@free.fr,zayed.alsaidi@gmail.com"
 
-#: audiocd.cpp:115
+#: audiocd.cpp:116
 #, kde-format
 msgid "Information"
 msgstr "معلومات"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:117
 #, kde-format
 msgid "Full CD"
 msgstr "قرص كامل"
 
-#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
-#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
+#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
 #, kde-format
 msgid "CDDB Information"
 msgstr "معلومات CDDB"
 
-#: audiocd.cpp:490
+#: audiocd.cpp:492
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -55,13 +55,13 @@ msgid ""
 msgstr ""
 "لا يمكنك تحديد المضيف بهذه الميفاق. الرجاء أستخدام هيئة audiocd:/ كبديل."
 
-#: audiocd.cpp:874
+#: audiocd.cpp:876
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr "يفتقد مواصفات الجهاز"
 
-#: audiocd.cpp:884
+#: audiocd.cpp:886
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
@@ -70,7 +70,7 @@ msgstr ""
 "الجهاز ليس لديه صلاحيات القراءة لهذا الحساب. تأكد من صلاحيات القراءة على "
 "الجهاز."
 
-#: audiocd.cpp:888
+#: audiocd.cpp:890
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
@@ -79,7 +79,7 @@ msgstr ""
 "الجهاز ليس لديه صلاحيات الكتابة لهذا الحساب. تأكد من صلاحيات الكتابة على "
 "الجهاز."
 
-#: audiocd.cpp:894
+#: audiocd.cpp:896
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -100,23 +100,23 @@ msgstr ""
 "حاول إدخال الأمر audiocd:/?device=/dev/sg0 ( او ما يشابه ) لإطلاع "
 "kio_audiocd عن  أي من الأجهِزة هو جِهازك الحالي CD-ROM."
 
-#: audiocd.cpp:972
+#: audiocd.cpp:974
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
 "قرص مدمج صوتي: اكتشاف عطل على هذا المسار ، احتمال أنّ تكون البيانات فاسدة"
 
-#: audiocd.cpp:979
+#: audiocd.cpp:981
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "خطأ عند قراءة بيانات صوتية لِــ %1 من القرص المدمج"
 
-#: audiocd.cpp:989 audiocd.cpp:1067
+#: audiocd.cpp:991 audiocd.cpp:1069
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "لا يمكن قراءة %1: الترميز فشل"
 
-#: audiocd.cpp:1198
+#: audiocd.cpp:1200
 #, kde-format
 msgid "Track %1"
 msgstr "المسار %1"

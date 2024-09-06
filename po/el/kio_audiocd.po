@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:44+0000\n"
+"POT-Creation-Date: 2024-09-06 00:39+0000\n"
 "PO-Revision-Date: 2020-08-30 10:35+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -32,23 +32,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sng@hellug.gr"
 
-#: audiocd.cpp:115
+#: audiocd.cpp:116
 #, kde-format
 msgid "Information"
 msgstr "Πληροφορίες"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:117
 #, kde-format
 msgid "Full CD"
 msgstr "Ολόκληρο CD"
 
-#: audiocd.cpp:447 audiocd.cpp:451 audiocd.cpp:519 audiocd.cpp:536
-#: audiocd.cpp:661 audiocd.cpp:760 audiocd.cpp:762 audiocd.cpp:768
+#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
+#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
 #, kde-format
 msgid "CDDB Information"
 msgstr "Πληροφορίες CDDB"
 
-#: audiocd.cpp:490
+#: audiocd.cpp:492
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -57,13 +57,13 @@ msgstr ""
 "Δεν μπορείτε να ορίσετε έναν κόμβο με αυτό το πρωτόκολλο. Παρακαλώ "
 "χρησιμοποιήστε το audiocd:/ αντ' αυτού."
 
-#: audiocd.cpp:874
+#: audiocd.cpp:876
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr "Λείπει η προδιαγραφή της συσκευής"
 
-#: audiocd.cpp:884
+#: audiocd.cpp:886
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
@@ -72,7 +72,7 @@ msgstr ""
 "Η συσκευή δεν έχει άδεια ανάγνωσης για αυτό το λογαριασμό.  Ελέγξτε την "
 "άδεια ανάγνωσης της συσκευής."
 
-#: audiocd.cpp:888
+#: audiocd.cpp:890
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
@@ -81,7 +81,7 @@ msgstr ""
 "Η συσκευή δεν έχει άδεια εγγραφής για αυτό το λογαριασμό.  Ελέγξτε την άδεια "
 "εγγραφής της συσκευής."
 
-#: audiocd.cpp:894
+#: audiocd.cpp:896
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -102,24 +102,24 @@ msgstr ""
 "πάλι δε δουλεύει, πληκτρολογήστε audiocd:/?device=/dev/sg0 (ή κάτι παρόμοιο) "
 "για να πληροφορήσετε το kio_audiocd ποια συσκευή είναι το CD-ROM σας."
 
-#: audiocd.cpp:972
+#: audiocd.cpp:974
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
 "CD ήχου: Ο δίσκος είναι κατεστραμμένος σε αυτό το κομμάτι. Υπάρχει κίνδυνος "
 "λήψης εσφαλμένων δεδομένων."
 
-#: audiocd.cpp:979
+#: audiocd.cpp:981
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "Σφάλμα ανάγνωσης δεδομένων ήχου για το %1 από το CD"
 
-#: audiocd.cpp:989 audiocd.cpp:1067
+#: audiocd.cpp:991 audiocd.cpp:1069
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "Αδύνατη η ανάγνωση του %1: η κωδικοποίηση απέτυχε"
 
-#: audiocd.cpp:1198
+#: audiocd.cpp:1200
 #, kde-format
 msgid "Track %1"
 msgstr "Κομμάτι %1"
