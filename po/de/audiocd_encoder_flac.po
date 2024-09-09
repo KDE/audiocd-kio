@@ -1,20 +1,22 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Burkhard Lück <lueck@hube-lueck.de>, 2017.
+# SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_flac\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2017-01-21 21:00+0100\n"
-"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"PO-Revision-Date: 2024-09-07 14:24+0200\n"
+"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #. i18n: ectx: label, entry (flac_compression_level), group (Flac)
 #: audiocd_flac_encoder.kcfg:9
@@ -24,7 +26,6 @@ msgstr "Flac-Komprimierungsstufe"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: encoderflacconfig.ui:17
-#, fuzzy, kde-format
-#| msgid "Flac compression level"
+#, kde-format
 msgid "Flac Compression Level"
 msgstr "Flac-Komprimierungsstufe"
