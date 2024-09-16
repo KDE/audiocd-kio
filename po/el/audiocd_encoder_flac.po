@@ -25,7 +25,6 @@ msgstr "Επίπεδο συμπίεσης flac"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: encoderflacconfig.ui:17
-#, fuzzy, kde-format
-#| msgid "Flac compression level"
+#, kde-format
 msgid "Flac Compression Level"
 msgstr "Επίπεδο συμπίεσης flac"
