@@ -132,6 +132,7 @@
     "X-KDE-Keywords[ko]": "Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate,오디오 CD,인코딩,비트 전송률",
     "X-KDE-Keywords[mr]": "ऑडिओ CD,CD,Ogg,Vorbis,एन्कोडिंग,CDDA,बिटदर",
     "X-KDE-Keywords[nds]": "Audio-CD,Klang-CD,CD,Ogg,Vorbis,Koderen,CDDA,Bitrate",
+    "X-KDE-Keywords[pl]": "Audio CD,CD,Ogg,Vorbis,Kodowanie,CDDA,Szybkość bitowa",
     "X-KDE-Keywords[pt_BR]": "CD de áudio,CD,Ogg,Vorbis,Codificação,CDDA,Taxa de bits",
     "X-KDE-Keywords[ro]": "Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate,codare,disc audio,rată de biți",
     "X-KDE-Keywords[ru]": "Audio CD,CD,Ogg,Vorbis,Кодирование,CDDA,битрейт",
@@ -144,6 +145,7 @@
     "X-KDE-Keywords[sv]": "ljud-cd,cd,Ogg,Vorbis,kodning,CDDA,bithastighet",
     "X-KDE-Keywords[tr]": "Ses CDsi,CD,Ogg,Vorbis,Kodlama,CDDA,Bit oranı",
     "X-KDE-Keywords[ug]": "ئۈن CD،CD،Ogg،Vorbis،كودلىنىش،CDDA،Bitrate",
+    "X-KDE-Keywords[uk]": "Audio CD,CD,Аудіо-КД,КД,Ogg,Vorbis,кодування,CDDA,частота,дискретизація",
     "X-KDE-Keywords[zh_TW]": "Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "audio-and-video"
