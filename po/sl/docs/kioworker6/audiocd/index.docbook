@@ -1,0 +1,332 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Slovenian "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+></email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>16.09.2004</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>Omogoča obravnavo zvočnih <acronym
+>CD</acronym
+>-jev kot <quote
+>pravega</quote
+> datotečnega sistema, kjer so skladbe predstavljene kot datoteke in so, ko so kopirane iz mape, digitalno ekstrahirane iz <acronym
+>CD-ja</acronym
+> 
+>. To zagotavlja popolno kopijo zvočnih podatkov.</para>
+
+<para
+>Če želite videti, kako deluje ta KIO worker, vstavite zvočni <acronym
+>CD</acronym
+> v svoj &CD-ROM; pogon in vnesite <userinput
+>audiocd:/</userinput
+> v &konqueror;. V nekaj sekundah bi morali videti seznam skladb in nekaj map.</para>
+
+<para
+>Zvočni <acronym
+>CD</acronym
+>-ji v resnici nimajo map, vendar jih audiocd KIO worker ponuja kot priročnost. Če pogledate v te mape, boste videli, da vse vsebujejo enako število skladb. Če ste povezani v internet, bodo nekatere mape imele kot imena datotek prikazane dejanske naslove skladb.</para>
+
+<para
+>Razlog za obstoj teh ločenih map je ta, da lahko izberete, v kateri obliki želite poslušati (ali kopirati) skladbe na <acronym
+>CD</acronym
+>.</para>
+
+<para
+>Če povlečete skladbo iz mape <filename class="directory"
+>Ogg Vorbis</filename
+> in jo spustite na drugo &konqueror; odprto okno v domači mapi, bi morali videti okno napredka, ki prikazuje, da se skladba ekstrahira iz <acronym
+>CD-ja</acronym
+> in shranjuje v datoteko. Upoštevajte, da je Ogg Vorbis stisnjen format, zato bo datoteka v domači mapi videti precej manjša, kot bi bila, če bi kopirali neobdelane podatke.</para>
+
+<para
+>Mehanizem za tem je precej preprost. Ko je audiocd KIO worker pozvan, naj pridobi skladbo iz mape <filename class="directory"
+>Ogg Vorbis</filename
+>, začne ekstrahirati digitalne zvočne podatke iz <acronym
+>CD</acronym
+>. Ko pošlje podatke v datoteko v domači mapi, jih hkrati kodira v formatu Ogg Vorbis (zvok <acronym
+>CD</acronym
+> je za začetek v nestisnjenem formatu).</para>
+
+<para
+>Poskusite lahko tudi povleči datoteko, ki se konča z <literal role="extension"
+>.wav</literal
+>, in jo spustite na &kde; Medijski predvajalnik, &juk;. V tem primeru je postopek, ki poteka v zakulisju, podoben, le da namesto kodiranja zvočnih podatkov v formatu Ogg Vorbis poteka zelo preprosta pretvorba iz neobdelanih binarnih podatkov (kar je <literal role="extension" 
+>.cda</literal
+> v mapi na najvišji ravni predstavljajo) v format <quote
+>RIFF WAV</quote
+>, nestisnjen format, ki ga razume večina medijskih predvajalnikov.</para>
+
+<para
+>&juk; naj bi z veseljem predvajal datoteko <literal role="extension"
+>.wav</literal
+>, če pa ima težave, lahko razmislite o uporabi možnosti <option
+>paranoia_level</option
+>, ki je razložena spodaj.</para>
+
+<variablelist>
+<title
+>Možnosti</title>
+
+<varlistentry>
+<term
+><option
+>naprava</option
+></term>
+<listitem>
+<para
+>Nastavite pot do avdio <acronym
+>CD</acronym
+> naprave, &eg; <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. Običajno bo KIO worker poskušal najti <acronym
+>CD</acronym
+> pogon z vstavljenim zvočnim <acronym
+>CD</acronym
+>, če pa ne uspe ali imate več kot en <acronym
+>CD</acronym
+> naprave, boste morda želeli poskusiti to možnost. Upoštevajte, da vam konfiguracijsko pogovorno okno omogoča nastavitev privzete vrednosti za to možnost.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>Nastavite predlogo imena datoteke, &eg; <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Skladba %{number}</parameter
+></userinput
+>. Upoštevajte, da vam konfiguracijsko pogovorno okno omogoča nastavitev privzete vrednosti za to možnost. Opozorilo, da če ga nastavite na prazen niz, se nobena datoteka ne prikaže.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>Nastavite predlogo imena albuma, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. Upoštevajte, da vam konfiguracijsko pogovorno okno omogoča nastavitev privzete vrednosti za to možnost.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>Nastavi raven obdelave za kodirnike, &eg; <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. Upoštevajte, da vam konfiguracijsko pogovorno okno omogoča nastavitev privzete vrednosti za to možnost.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>raven_paranoje</option
+></term>
+<listitem>
+<para
+>Nastavite količino zaznavanja napak in popravkov, uporabljenih pri pridobivanju podatkov.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Raven 0</term>
+<listitem>
+<para
+>Brez odkrivanja ali popravka. Uporabno le, če imate popoln <acronym
+>CD</acronym
+> pogon (malo verjetno).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Raven 1</term>
+<listitem>
+<para
+>Omogoči osnovno preverjanje in popravljanje napak.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Raven 2</term>
+<listitem>
+<para
+>Privzeto. Določa, da bo sprejet le popoln izvleček.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Upoštevajte, da ima stopnja 2 slabost. Ekstrakcija je lahko zelo počasna, zato digitalno predvajanje v realnem času morda ne bo delovalo pravilno. Če imate pogon <acronym
+>CD</acronym
+> dobre kakovosti (upoštevajte, da dražje ne pomeni nujno boljše kakovosti), verjetno ne boste doživeli zelo počasnega ekstrahiranja, vendar pa lahko ekstrahiranje slabega pogona traja nekaj dni (!). zvok z enega <acronym
+>CD</acronym
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>cddbChoice</option
+></term>
+<listitem>
+
+<para
+>Določite, kateri vnos internetne <acronym
+>CD</acronym
+> baze podatkov naj se uporabi. Zvočni <acronym
+>CD</acronym
+>-ji nimajo imen skladb, toda internetna zbirka podatkov <acronym
+>CD</acronym
+> je pameten sistem, ki uporablja poseben enoličen identifikator, ustvarjen iz števila in dolžine skladb na vsakem <acronym
+>CD</acronym
+> za navzkrižno sklicevanje na seznam skladb. Sezname skladb prispevajo internetne skupnosti in so na voljo vsem. Občasno bo več vnosov. Določite lahko, katerega želite uporabiti.</para>
+
+<para
+>Z uporabo &kscd;, &kde;-jevega predvajalnika <acronym
+>CD</acronym
+>, lahko sami posredujete sezname sledi.</para>
+
+<para
+>Audiocd privzeto poskuša izbrati najboljšega.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>Primeri</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>Poda seznam sledi na avdio <acronym
+>CD</acronym
+>, ki je vstavljen v <filename class="devicefile"
+>/dev/scd0</filename
+>, kar v &Linux;u predstavlja prvi <acronym
+>SCSI</acronym
+> &CD-ROM; pogon. Če prepišete sledi s <acronym
+>CD</acronym
+>, ne bo izvedeno ne preverjanja kot tudi brez odpravljanja napak. Internetna baza podatkov ne bo kontaktirana.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>Pogosto zastavljana vprašanja</title>
+<qandaentry>
+<question>
+<para
+>Dobim <errorname
+>Datoteka ali mapa / ne obstaja</errorname
+>. Kako popraviti to? V pogonu imam avdio <acronym
+>CD</acronym
+>!</para>
+</question>
+
+<answer>
+<para
+>Poizkusite pognati <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> pod svojim računom (ne kot <systemitem class="username"
+>root</systemitem
+>. Ali vidite seznam sledi? Če ne, preverite, ali imate dovoljenje za dostop do <acronym
+>CD</acronym
+> naprave. Če uporabljate <acronym
+>SCSI</acronym
+> emulacijo (je možno, če imate <acronym
+>EIDE</acronym
+> zapisovalnik), potem preverite dovoljenja generične <acronym
+>SCSI</acronym
+> naprave, ki je verjetno <filename class="devicefile"
+>/dev/sg0</filename
+>, <filename class="devicefile"
+>/dev/sg1</filename
+>, itd. Če še vedno ne dela, poizkusite z <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (ali čim podobnim), da poveste kio_audiocd, katera naprava je vaš &CD-ROM;.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>
