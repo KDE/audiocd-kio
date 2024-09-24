@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Slovenian "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>Avdio-CD</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+></email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>08.02.2019</date>
+<releaseinfo
+>Applications 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Sistemske nastavitve</keyword>
+<keyword
+>zvok</keyword>
+<keyword
+>zgoščenka</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>Konfiguracija Audiocd KIO Worker</title>
+<para
+>Stran <guilabel
+>Konfiguracija Audiocd KIO worker</guilabel
+> je razdeljena na zavihek <guilabel
+>Splošno</guilabel
+>, zavihek <guilabel
+>Imena</guilabel
+> in zavihke parametrov kodirnika.</para>
+
+<sect2 id="general-tab">
+<title
+>Zavihek Splošno</title>
+<screenshot>
+<screeninfo
+>Zavihek <guilabel
+>Splošno</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Zavihek <guilabel
+>Splošno</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Ta zavihek vsebuje splošne parametre, ki veljajo za celoten proces branja podatkov s CD-ja.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Pri branju CD-ja uporabite popravek napak</guilabel
+></term>
+<listitem>
+<para
+>Pri zapisovanju zvočnega CD-ja postopek vsakemu okvirju doda 64 bitov podatkov za popravljanje napak. Po tem se vsakemu od kodiranih okvirjev doda 8 bitov podatkov podkode ali podkanala, ki se uporabljajo za nadzor in naslavljanje pri predvajanju CD-ja. Ignoriranje takega popravka podatkov lahko pospeši branje, lahko pa povzroči tudi nekatere neželene artefakte.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Preskoči napake</guilabel
+></term>
+<listitem>
+<para
+>Privzeto je, da se napake medija nikoli ne preskočijo. To je potrebno za zagotovitev visoke kakovosti rezultatov.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Prednost kodirnika</guilabel
+></term>
+<listitem>
+<para
+>Možno je določiti prioriteto kodirnika, da zagotovite, da vam postopek kodirnika ne bo preprečil vzporednega izvajanja nekaterih drugih nalog (nižje vrednosti) ali da pospešite kodiranje (višje vrednosti). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>Zavihek Imena</title>
+
+<screenshot>
+<screeninfo
+>Zavihek <guilabel
+>Imena</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Zavihek <guilabel
+>Imena</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Zavihek <guilabel
+>Imena</guilabel
+> lahko uporabite za natančno nastavitev imen datotek za kodirane podatke. Možno je uporabiti nekatere makre in <ulink url="https://en.wikipedia.org/wiki/Regular_expression"
+>regularne izraze</ulink
+> za ustvarjanje imen točno po vaših potrebah.</para>
+
+<para
+>Uporabite lahko polje za interaktivno testiranje na dnu strani, da dokažete, da bodo ustvarjena pravilna imena.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>Zavihek kodirnika FLAC</title>
+
+<screenshot>
+<screeninfo
+>Zavihek <guilabel
+>Kodirnik FLAC</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Zavihek <guilabel
+>Kodirnik FLAC</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Zavihek kodirnika FLAC je na voljo le, če je bil Audiocd KIO worker preveden z libFLAC.</para>
+</note>
+
+<para
+>FLAC je format stisnjenega zvoka brez izgub brez kakršnih koli patentov ali licenčnin. Ohranja popolno kakovost zvoka CD-ja, hkrati pa zmanjša velikost datoteke za približno 50%. Pri uporabi tega kodeka je velikost datoteke veliko večja od Opus, Ogg Vorbis ali MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Stopnja kompresije Flac</guilabel
+></term>
+<listitem>
+<para
+>Stopnja stiskanja je celoštevilska vrednost med 0 in 8, ki predstavlja kompromis med velikostjo datoteke in hitrostjo stiskanja.</para>
+<para
+>Če nastavite stopnjo stiskanja na 0, dobite najkrajši čas stiskanja, vendar ustvarite primerljivo veliko datoteko.</para>
+<para
+>Po drugi strani pa stopnja stiskanja 8 naredi stiskanje precej počasno, vendar ustvari najmanjšo datoteko.</para>
+<para
+>Upoštevajte, da je FLAC po definiciji kodek brez izgub, zato je kakovost zvoka izhoda popolnoma enaka ne glede na stopnjo stiskanja.</para>
+<para
+>Prav tako ravni nad 5 dramatično povečajo čas stiskanja, vendar ustvarijo le nekoliko manjše datoteka in niso priporočljivi.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>Zavihek kodirnika MP3</title>
+
+<screenshot>
+<screeninfo
+>Zavihek <guilabel
+>Kodirnik MP3</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Zavihek <guilabel
+>Kodirnik MP3</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Zavihek kodirnika MP3 je na voljo samo, če so v sistemu nameščeni pripomočki <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+>.</para>
+</note>
+
+<para
+>MP3 (ali MPEG-1 Audio Layer III) je patentiran digitalni zvočni kodek, ki uporablja obliko stiskanja podatkov z izgubo. Kljub pomanjkljivostim je običajen format za shranjevanje zvoka potrošnikov in je široko podprt v prenosnih predvajalnikih glasbe.</para>
+
+<para
+>Audiocd KIO worker uporablja kodirnik LAME za izdelavo datotek <filename class="extension"
+>mp3</filename
+>. LAME velja za najboljši MP3 kodirnik, predvsem po zaslugi predanega dela njegovih razvijalcev in odprtokodnega licenčnega modela, ki je projektu omogočil vključitev inženirskih virov z vsega sveta.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Metoda kodiranja</guilabel
+></term>
+<listitem>
+<para
+>Bitna hitrost je merilo količine podatkov, uporabljenih za predstavitev sekunde zvočnega posnetka. Možno je določiti <guilabel
+>Konstantno bitno hitrost</guilabel
+> za predvidljivo velikost datoteke. MP3 kodirnik podpira tudi nastavitev <guilabel
+>Spremenljiva bitna hitrost</guilabel
+>, kar pomeni, da vrednost bitne hitrosti niha vzdolž skladbe glede na kompleksnost zvočne vsebine. Kompleksnejši intervali podatkov so kodirani z višjo bitno hitrostjo kot manj kompleksni; ta pristop daje na splošno boljšo kakovost in manjšo datoteko kot če bi imeli konstantno bitno hitrost v celotni skladbi.</para>
+<para
+>Določite lahko tudi kakovost kodiranja. Nižja kakovost lahko pospeši postopek kodiranja za ceno nekaj izgube podatkov.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Možnosti</guilabel
+></term>
+<listitem>
+<para
+>Preverite element <guilabel
+>Avtorsko zaščiteno</guilabel
+>, če so proizvedeni podatki zaščiteni z avtorskimi pravicami.</para>
+<para
+>Preverite element <guilabel
+>Izvirnik</guilabel
+>, če je ekstrakcija podatkov narejena iz izvirnega &CD;.</para>
+<para
+>Ko je postavka <guilabel
+>ISO kodiranje</guilabel
+> označena, bo LAME uveljavil 7680-bitno omejitev skupne velikosti okvirja. Združljivost z ISO je lahko pomembna za predvajalnike strojne opreme.</para>
+<para
+>Element CRC <guilabel
+>Zaščita pred napakami</guilabel
+> lahko uporabite za dodajanje kontrolne vsote vsakemu podatkovnemu okviru. Takšna zaščita lahko poveča stabilnost shranjevanja podatkov MP3.</para>
+<para
+>Element <guilabel
+>Zapiši oznako ID3</guilabel
+> se uporablja za uveljavitev LAME, da zapiše <ulink url="https://en.wikipedia.org/wiki/ID3"
+>metapodatke ID3</ulink
+> v vsako izdelano datoteko MP3 .</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Nastavitve filtra</guilabel
+></term>
+<listitem>
+<para
+>Za podatke je mogoče uporabiti filtriranje pasovne širine. Uporablja se za omejevanje visokih ali nizkih frekvenc, ki so kodirane. Večina nas tako ali tako ne more slišati visokih frekvenc in so <quote
+>dražje</quote
+> po bitnih točkah, ko gre za kodiranje. Ponavadi so tudi vzrok za artefakte.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>Nastavitve spremenljive bitne hitrosti</guilabel
+></term>
+<listitem>
+
+<para
+>Izberete lahko tudi <guilabel
+>Povprečno bitno hitrost</guilabel
+>, ki je privzeta, ali <guilabel
+>Največjo bitno hitrost</guilabel
+>, <guilabel
+>Najmanjšo bitno hitrost</guilabel
+> in ali je <guilabel
+>Minimalna vrednost trda omejitev </guilabel
+>.</para>
+<para
+>160 kb/s je dobra izbira za poslušanje glasbe na prenosnem predvajalniku. Vse pod 120 kb/s je lahko nezadovoljivo za glasbo, vse nad 256 kb/s pa je verjetno pretirano.</para>
+<para
+>Možno je tudi <guilabel
+>Vpisati oznako Xing VBR</guilabel
+> v datoteko. Xing je bil odgovoren za ustvarjanje kodirnika, ki je znan po oznaki VBR, ki omogoča natančnejše iskanje v datotekah s spremenljivo bitno hitrostjo. Xingova oznaka VBR med drugim vsebuje informacije o skupnem trajanju datoteke MP3, kar sicer ni na voljo v toku MPEG.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>Zavihek kodirnika Opus</title>
+
+<screenshot>
+<screeninfo
+>Zavihek <guilabel
+>Kodirnik Opus</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Zavihek <guilabel
+>Kodirnik Opus</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Zavihek kodirnika Opus je na voljo le, če je v sistemu nameščen <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+>.</para>
+</note>
+
+<para
+>Opus je popolnoma odprt, brezplačen, zelo vsestranski zvočni kodek. Opus je neprimerljiv za interaktivni prenos govora in glasbe prek interneta, vendar je namenjen tudi aplikacijam za shranjevanje in pretakanje.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Metoda kodiranja</guilabel
+></term>
+<listitem>
+<para
+>Ta nastavitev vam omogoča izbiro med kodiranjem <guilabel
+>na osnovi kompleksnosti</guilabel
+> in <guilabel
+>na osnovi bitne hitrosti</guilabel
+>. Kodiranje na podlagi kompleksnosti uporablja nekaj špekulativnih algoritmov za ceno nepredvidljive velikosti rezultatov.</para>
+<itemizedlist>
+<listitem>
+<para
+>Na izbiro kodirnika Opus med kompleksnostjo procesorja in kakovostjo/bitno hitrostjo vpliva več stvari. Kompleksnost kodiranja lahko izberete s celim številom od 0 do 10, kjer 0 pomeni najnižjo kakovost, 10 pa najvišjo kakovost.</para>
+</listitem>
+<listitem>
+<para
+>Opus je učinkovitejši pri delovanju s spremenljivo bitno hitrostjo (<guilabel
+>Povprečna spremenljiva bitna hitrost</guilabel
+>), ki je privzeta. Možno je uporabiti omejeno spremenljivo bitno hitrost (<guilabel
+>Omejena spremenljiva bitna hitrost</guilabel
+>, analog stalne bitne hitrosti za MP3), kadar je potreben prenos z nizko zakasnitvijo prek relativno počasne povezave. V nekaterih (redkih) aplikacijah je potrebna stalna bitna hitrost (<guilabel
+>Konstantna bitna hitrost</guilabel
+>).</para>
+<para
+>Za stereo glasbo je priporočljiva uporaba bitne hitrosti 64–128 kbit/s.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Dodajte informacije o sledi</guilabel
+></term>
+<listitem>
+<para
+>Ko je označeno, dodajte opis pesmi v glavo datoteke. To uporabniku olajša pridobivanje naprednih informacij o pesmi, ki jih prikaže njegov multimedijski predvajalnik. Te informacije lahko samodejno dobite prek interneta. Poglej &systemsettings; Modul CDDB Retrieval za podrobnosti. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>Zavihek kodirnika Ogg Vorbis</title>
+
+<screenshot>
+<screeninfo
+>Zavihek <guilabel
+>Kodirnik Ogg Vorbis</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>Zavihek <guilabel
+>Kodirnik Ogg Vorbis </guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>Zavihek kodirnika Ogg Vorbis je na voljo le, če je bil Audiocd KIO worker preveden z <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+>.</para>
+</note>
+
+<para
+>Ogg Vorbis je odprt in brezplačen zvočni kodek za stiskanje zvoka z izgubo. Proizvaja manjše datoteke kot MP3 z enakovredno ali višjo kakovostjo.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>Metoda kodiranja</guilabel
+></term>
+<listitem>
+<para
+>Ta nastavitev vam omogoča izbiro med kodiranjem <guilabel
+>na podlagi kakovosti</guilabel
+> in <guilabel
+>na osnovi bitne hitrosti</guilabel
+>. Kodiranje, ki temelji na kakovosti, uporablja nekaj špekulativnih algoritmov za ceno nepredvidljive velikosti rezultatov.</para>
+<itemizedlist>
+<listitem>
+<para
+>Kakovost kodiranja Ogg Vorbis lahko izberete s celim številom od 0 do 10, kjer 0 pomeni najnižjo kakovost, 10 pa najvišjo kakovost.</para>
+</listitem>
+<listitem>
+<para
+>Kot alternativo se lahko uporabi spremenljiva bitna hitrost. Izberete lahko <guilabel
+>Povprečno bitno hitrost</guilabel
+>, ki je privzeta, ali <guilabel
+>Največjo bitno hitrost</guilabel
+> in <guilabel
+>Najmanjšo bitno hitrost</guilabel
+>.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>Dodajte informacije o sledi</guilabel
+></term>
+<listitem>
+<para
+>Ko je označeno, dodajte opis pesmi v glavo datoteke. To uporabniku olajša pridobivanje naprednih informacij o pesmi, ki jih prikaže njegov multimedijski predvajalnik. Te informacije lahko samodejno dobite prek interneta. Poglej &systemsettings; Modul CDDB Retrieval za podrobnosti. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
