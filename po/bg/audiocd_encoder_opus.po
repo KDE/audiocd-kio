@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the audiocd-kio package.
 #
 # Automatically generated, 2022.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2022-07-02 14:10+0200\n"
+"PO-Revision-Date: 2024-09-23 15:29+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
-"Language-Team: \n"
+"Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
@@ -81,15 +81,13 @@ msgstr "&Метод на кодиране"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Complexity based"
+#, kde-format
 msgid "Comp&lexity based"
 msgstr "Комплексност базиран"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
 msgstr "Битрейт базиран"
 
@@ -193,17 +191,15 @@ msgstr "256 кб/сек"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
-#, fuzzy, kde-format
-#| msgid "A&verage variable bitrate:"
+#, kde-format
 msgid "Avera&ge variable bitrate:"
 msgstr "Среден ва&риращ битрейт:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
-#, fuzzy, kde-format
-#| msgid "C&onstant bitrate:"
+#, kde-format
 msgid "Cons&tant bitrate:"
-msgstr "&Постоянен битрейт"
+msgstr "&Постоянен битрейт:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cvbr)
 #: encoderopusconfig.ui:162
