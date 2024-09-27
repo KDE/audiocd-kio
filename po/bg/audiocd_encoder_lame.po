@@ -591,9 +591,3 @@ msgstr "Ниско"
 #, kde-format
 msgid "High"
 msgstr "Високо"
-
-#~ msgid "Constant bitrate"
-#~ msgstr "Постоянен битов поток"
-
-#~ msgid "Variable bitrate"
-#~ msgstr "Променлив битов поток"
