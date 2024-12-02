@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-04-07 11:08+0300\n"
+"PO-Revision-Date: 2024-10-17 18:06+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -18,8 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-POT-Import-Date: 2012-12-01 22:24:31+0000\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
@@ -80,17 +79,15 @@ msgstr "&Pakkausmenetelmä"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
 #: encodervorbisconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Bittinopeuspohjainen"
+msgstr "&Bittinopeuspohjainen"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
 #: encodervorbisconfig.ui:39
-#, fuzzy, kde-format
-#| msgid "Quality based"
+#, kde-format
 msgid "&Quality based"
-msgstr "Laatupohjainen"
+msgstr "&Laatupohjainen"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:55
