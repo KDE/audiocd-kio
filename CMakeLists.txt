@@ -27,7 +27,6 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Widgets)
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
     I18n
-    DocTools
     KIO
     KCMUtils
     WidgetsAddons
@@ -45,6 +44,11 @@ set_package_properties(KCddb6 PROPERTIES
     URL "https://commits.kde.org/libkcddb"
     TYPE REQUIRED
     PURPOSE "libkcddb is used to retrieve audio CD meta data from the internet."
+)
+find_package(KF6DocTools ${KF_MIN_VERSION})
+set_package_properties(KF6DocTools PROPERTIES
+    DESCRIPTION "Tools to generate documentation"
+    TYPE OPTIONAL
 )
 
 find_package(Cdparanoia REQUIRED)
@@ -79,7 +83,6 @@ ecm_set_disabled_deprecation_versions(QT 6.7
 add_subdirectory(plugins)
 add_subdirectory(kcmaudiocd)
 add_subdirectory(data)
-add_subdirectory(doc)
 
 add_library(kio_audiocd MODULE)
 target_sources(kio_audiocd PRIVATE
@@ -114,8 +117,12 @@ ecm_qt_install_logging_categories(
     DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
 
+if (KF6DocTools_FOUND)
+    add_subdirectory(doc)
+    kdoctools_install(po)
+endif()
+
 ki18n_install(po)
-kdoctools_install(po)
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
