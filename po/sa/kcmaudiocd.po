@@ -1,0 +1,294 @@
+# Sanskrit translations for audiocd-kio package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the audiocd-kio package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: audiocd-kio\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"PO-Revision-Date: 2024-12-13 19:09+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Sanskrit\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "भवतः नामानि"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "भवतः ईमेलपत्राणि"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
+#: audiocdconfig.ui:42
+#, kde-format
+msgid "&General"
+msgstr "&सामान्य"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:56
+#, kde-format
+msgid ""
+"If you uncheck this option, the KIO worker will not try to use error "
+"correction which can be useful for reading damaged CDs. However, this "
+"feature can be problematic in some cases, so you can switch it off here."
+msgstr ""
+"यदि भवान् एतत् विकल्पं अनचेक् करोति तर्हि KIO कार्यकर्ता त्रुटिशुद्धिकरणस्य उपयोगं कर्तुं न "
+"प्रयतते यत् क्षतिग्रस्त-सीडी-पठनाय उपयोगी भवितुम् अर्हति । परन्तु एतत् विशेषता केषुचित् "
+"सन्दर्भेषु समस्याप्रदं भवितुम् अर्हति, अतः भवान् अत्र एतत् निष्क्रियं कर्तुं शक्नोति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
+#: audiocdconfig.ui:59
+#, kde-format
+msgid "Use &error correction when reading the CD"
+msgstr "CD पठन् &error correction इत्यस्य उपयोगं कुर्वन्तु"
+
+#. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
+#: audiocdconfig.ui:69
+#, kde-format
+msgid "&Skip on errors"
+msgstr "&दोषेषु त्यजन्तु"
+
+#. i18n: ectx: property (title), widget (QGroupBox, encoderPriorityGroupBox)
+#: audiocdconfig.ui:81
+#, kde-format
+msgid "Encoder Priority"
+msgstr "एन्कोडर प्राथमिकता"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: audiocdconfig.ui:146
+#, kde-format
+msgid "Lowest"
+msgstr "न्यूनतमम्"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: audiocdconfig.ui:159
+#, kde-format
+msgid "Normal"
+msgstr "सामान्य"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: audiocdconfig.ui:172
+#, kde-format
+msgid "Highest"
+msgstr "सर्वोच्चम्"
+
+#. i18n: ectx: attribute (title), widget (QWidget, tabNames)
+#: audiocdconfig.ui:218
+#, kde-format
+msgid "&Names"
+msgstr "&नाम"
+
+#. i18n: ectx: property (title), widget (QGroupBox, albumNameGroupBox)
+#: audiocdconfig.ui:224
+#, kde-format
+msgid "Album Name"
+msgstr "एल्बम नाम"
+
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_2)
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
+#. i18n: ectx: property (text), widget (QLabel, fileNameLabel_3)
+#: audiocdconfig.ui:233 audiocdconfig.ui:483 audiocdconfig.ui:689
+#, kde-format
+msgid "The following macros will be expanded:"
+msgstr "निम्नलिखित मैक्रोः विस्तारिताः भविष्यन्ति:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel20)
+#. i18n: ectx: property (text), widget (QLabel, textLabel11)
+#. i18n: ectx: property (text), widget (QLabel, textLabel20_2)
+#: audiocdconfig.ui:245 audiocdconfig.ui:535 audiocdconfig.ui:761
+#, kde-format
+msgid "Year"
+msgstr "वर्ष"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel15)
+#. i18n: ectx: property (text), widget (QLabel, textLabel8)
+#. i18n: ectx: property (text), widget (QLabel, textLabel15_2)
+#: audiocdconfig.ui:255 audiocdconfig.ui:575 audiocdconfig.ui:751
+#, no-c-format, kde-format
+msgid "%{albumartist}"
+msgstr "%{अल्बुमार्टिस्ट}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel16)
+#. i18n: ectx: property (text), widget (QLabel, textLabel10)
+#. i18n: ectx: property (text), widget (QLabel, textLabel16_2)
+#: audiocdconfig.ui:265 audiocdconfig.ui:505 audiocdconfig.ui:721
+#, no-c-format, kde-format
+msgid "%{year}"
+msgstr "%{वर्ष}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel21)
+#. i18n: ectx: property (text), widget (QLabel, textLabel13)
+#. i18n: ectx: property (text), widget (QLabel, textLabel21_2)
+#: audiocdconfig.ui:275 audiocdconfig.ui:495 audiocdconfig.ui:701
+#, kde-format
+msgid "Genre"
+msgstr "मातुर्"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel19)
+#. i18n: ectx: property (text), widget (QLabel, textLabel9)
+#. i18n: ectx: property (text), widget (QLabel, textLabel19_2)
+#: audiocdconfig.ui:285 audiocdconfig.ui:565 audiocdconfig.ui:771
+#, kde-format
+msgid "Album Artist"
+msgstr "एल्बम कलाकार"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel18)
+#. i18n: ectx: property (text), widget (QLabel, textLabel5)
+#. i18n: ectx: property (text), widget (QLabel, textLabel18_2)
+#: audiocdconfig.ui:295 audiocdconfig.ui:525 audiocdconfig.ui:711
+#, kde-format
+msgid "Album Title"
+msgstr "एल्बम शीर्षक"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel17)
+#. i18n: ectx: property (text), widget (QLabel, textLabel12)
+#. i18n: ectx: property (text), widget (QLabel, textLabel17_2)
+#: audiocdconfig.ui:305 audiocdconfig.ui:585 audiocdconfig.ui:731
+#, no-c-format, kde-format
+msgid "%{genre}"
+msgstr "%{मातुर्}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel14)
+#. i18n: ectx: property (text), widget (QLabel, textLabel6)
+#. i18n: ectx: property (text), widget (QLabel, textLabel14_2)
+#: audiocdconfig.ui:315 audiocdconfig.ui:605 audiocdconfig.ui:741
+#, no-c-format, kde-format
+msgid "%{albumtitle}"
+msgstr "%{एल्बमशीर्षक}"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: audiocdconfig.ui:365
+#, kde-format
+msgid "Name Regular Expression Replacement"
+msgstr "नाम नियमित अभिव्यक्ति प्रतिस्थापन"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
+#: audiocdconfig.ui:374
+#, kde-format
+msgid "Selection:"
+msgstr "चयनम् : १."
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
+#: audiocdconfig.ui:384
+#, kde-format
+msgid "Replace with:"
+msgstr "प्रतिस्थापनं कृत्वा : १."
+
+#. i18n: ectx: property (text), widget (QLineEdit, example)
+#. i18n: ectx: property (text), widget (QLabel, exampleOutput)
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
+#: kcmaudiocd.cpp:205
+#, kde-format
+msgid "Cool artist - example audio file.wav"
+msgstr "मस्त कलाकार - उदाहरण audio file.wav"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: audiocdconfig.ui:402
+#, kde-format
+msgid ""
+"Regular expression used on all file names. For example using selection \" \" "
+"and replace with \"_\" would replace all the spaces with underlines.\n"
+msgstr ""
+"सर्वेषु सञ्चिकानामेषु प्रयुक्तं नियमितव्यञ्जनम् । यथा \" \" चयनस्य उपयोगेन \"_\" इत्यनेन "
+"प्रतिस्थापनं च कृत्वा सर्वाणि रिक्तस्थानानि रेखांकनानि प्रतिस्थापयिष्यन्ति ।\n"
+
+#. i18n: ectx: property (text), widget (QLabel, inputlabel)
+#: audiocdconfig.ui:418
+#, kde-format
+msgid "Input:"
+msgstr "निवेशः : १."
+
+#. i18n: ectx: property (text), widget (QLabel, outputLabel)
+#: audiocdconfig.ui:428
+#, kde-format
+msgid "Output:"
+msgstr "उत्पादनम् : १."
+
+#. i18n: ectx: property (text), widget (QLabel, exampleLabel)
+#: audiocdconfig.ui:458
+#, kde-format
+msgid "Example"
+msgstr "उदाहरण"
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
+#: audiocdconfig.ui:474
+#, kde-format
+msgid "File Name (without extension)"
+msgstr "सञ्चिकानाम (विस्ताररहितम्) २."
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
+#: audiocdconfig.ui:515
+#, no-c-format, kde-format
+msgid "%{title}"
+msgstr "%{शीर्षक}"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
+#: audiocdconfig.ui:545
+#, kde-format
+msgid "Track Artist"
+msgstr "ट्रैक कलाकार"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3_3)
+#: audiocdconfig.ui:555
+#, kde-format
+msgid "Track Title"
+msgstr "पटल शीर्षक"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
+#: audiocdconfig.ui:595
+#, no-c-format, kde-format
+msgid "%{trackartist}"
+msgstr "%{trackartist} इति ।"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel7)
+#: audiocdconfig.ui:615
+#, kde-format
+msgid "Track Number"
+msgstr "ट्रैक नम्बर"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4_2)
+#: audiocdconfig.ui:625
+#, no-c-format, kde-format
+msgid "%{number}"
+msgstr "%{संख्या}"
+
+#. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:643
+#, no-c-format, kde-format
+msgid ""
+"This defines where files will appear in relation to the encoder root, you "
+"can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
+msgstr ""
+"एतेन एन्कोडर मूलस्य सम्बन्धे सञ्चिकाः कुत्र दृश्यन्ते इति परिभाषितं भवति, उपनिर्देशिकाः "
+"निर्मातुं / इत्यस्य उपयोगं कर्तुं शक्नुवन्ति । यथा- %{albumartist}/%{albumtitle} "
+
+#. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
+#: audiocdconfig.ui:646
+#, kde-format
+msgid "File &Location"
+msgstr "सञ्चिका &स्थान"
+
+#. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
+#: audiocdconfig.ui:664
+#, kde-format
+msgid "Use file location macros"
+msgstr "सञ्चिकास्थानमैक्रोस् उपयुज्यताम्"
+
+#. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
+#: audiocdconfig.ui:799
+#, no-c-format, kde-format
+msgid "%{albumtitle}/%{albumartist}"
+msgstr "%{एल्बमशीर्षक}/%{एल्बुमार्टिस्ट}"
+
+#: kcmaudiocd.cpp:60
+#, kde-format
+msgid "%1 Encoder"
+msgstr "%1 एन्कोडर"
