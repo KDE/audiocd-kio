@@ -1,4 +1,4 @@
-# Sanskrit translations for audiocd-kio package.
+# Hindi translations for audiocd-kio package.
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
 # Kali <EMAIL@ADDRESS>, 2024.
@@ -8,92 +8,91 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-12-13 19:09+0530\n"
+"PO-Revision-Date: 2024-12-15 15:57+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
-"Language: sa\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>2);\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Complexity or Bitrate"
-msgstr "Vorbis Encoding Complexity अथवा Bitrate"
+msgstr ""
 
 #. i18n: ectx: label, entry (set_opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:15
 #, kde-format
 msgid "Constant bitrate specified"
-msgstr "नित्यं बिटरेट् निर्दिष्टम्"
+msgstr ""
 
 #. i18n: ectx: label, entry (set_opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:19
 #, kde-format
 msgid "Constrained variable bitrate specified"
-msgstr "निर्दिष्टः बाध्यचरः बिटरेट्"
+msgstr ""
 
 #. i18n: ectx: label, entry (set_opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:23
 #, kde-format
 msgid "Average variable bitrate specified"
-msgstr "औसतचर बिटरेट् निर्दिष्टः"
+msgstr ""
 
 #. i18n: ectx: label, entry (opus_comments), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:28
 #, kde-format
 msgid "Add Comments"
-msgstr "टिप्पणीं योजयतु"
+msgstr ""
 
 #. i18n: ectx: label, entry (opus_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:32
 #, kde-format
 msgid "Complexity"
-msgstr "जटिलता"
+msgstr ""
 
 #. i18n: ectx: label, entry (opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:39
 #, kde-format
 msgid "Constant bitrate"
-msgstr "नित्यं बिटरेट्"
+msgstr ""
 
 #. i18n: ectx: label, entry (opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:46
 #, kde-format
 msgid "Constrained variable bitrate"
-msgstr "बाध्य चर बिटरेट"
+msgstr ""
 
 #. i18n: ectx: label, entry (opus_vbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:53
 #, kde-format
 msgid "Average variable bitrate"
-msgstr "औसत चर बिटरेट्"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_enc_method)
 #: encoderopusconfig.ui:17
 #, kde-format
 msgid "&Encoding Method"
-msgstr "&एन्कोडिंग विधि"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
 #, kde-format
 msgid "Comp&lexity based"
-msgstr "जटिलता आधारित"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
 #, kde-format
 msgid "Bi&trate based"
-msgstr "Bi&trate आधारित"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:55
 #, kde-format
 msgid "Opus Bitrate Settings"
-msgstr "ओपस बिट्रेट सेटिंग्स"
+msgstr ""
 
 #. i18n: ectx: property (currentText), widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
@@ -105,7 +104,7 @@ msgstr "ओपस बिट्रेट सेटिंग्स"
 #: encoderopusconfig.ui:209 encoderopusconfig.ui:240 encoderopusconfig.ui:277
 #, kde-format
 msgid "96 kbps"
-msgstr "९६ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -113,7 +112,7 @@ msgstr "९६ केबीपीएस"
 #: encoderopusconfig.ui:74 encoderopusconfig.ui:179 encoderopusconfig.ui:247
 #, kde-format
 msgid "6 kbps"
-msgstr "६ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -121,7 +120,7 @@ msgstr "६ केबीपीएस"
 #: encoderopusconfig.ui:79 encoderopusconfig.ui:184 encoderopusconfig.ui:252
 #, kde-format
 msgid "12 kbps"
-msgstr "१२ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -129,7 +128,7 @@ msgstr "१२ केबीपीएस"
 #: encoderopusconfig.ui:84 encoderopusconfig.ui:189 encoderopusconfig.ui:257
 #, kde-format
 msgid "24 kbps"
-msgstr "२४ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -137,7 +136,7 @@ msgstr "२४ केबीपीएस"
 #: encoderopusconfig.ui:89 encoderopusconfig.ui:194 encoderopusconfig.ui:262
 #, kde-format
 msgid "48 kbps"
-msgstr "४८ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -145,7 +144,7 @@ msgstr "४८ केबीपीएस"
 #: encoderopusconfig.ui:94 encoderopusconfig.ui:199 encoderopusconfig.ui:267
 #, kde-format
 msgid "64 kbps"
-msgstr "६४ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -153,7 +152,7 @@ msgstr "६४ केबीपीएस"
 #: encoderopusconfig.ui:99 encoderopusconfig.ui:204 encoderopusconfig.ui:272
 #, kde-format
 msgid "80 kbps"
-msgstr "८० केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -161,7 +160,7 @@ msgstr "८० केबीपीएस"
 #: encoderopusconfig.ui:109 encoderopusconfig.ui:214 encoderopusconfig.ui:282
 #, kde-format
 msgid "128 kbps"
-msgstr "१२८ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -169,7 +168,7 @@ msgstr "१२८ केबीपीएस"
 #: encoderopusconfig.ui:114 encoderopusconfig.ui:219 encoderopusconfig.ui:287
 #, kde-format
 msgid "160 kbps"
-msgstr "१६० केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -177,7 +176,7 @@ msgstr "१६० केबीपीएस"
 #: encoderopusconfig.ui:119 encoderopusconfig.ui:224 encoderopusconfig.ui:292
 #, kde-format
 msgid "192 kbps"
-msgstr "१९२ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -185,25 +184,25 @@ msgstr "१९२ केबीपीएस"
 #: encoderopusconfig.ui:124 encoderopusconfig.ui:229 encoderopusconfig.ui:297
 #, kde-format
 msgid "256 kbps"
-msgstr "२५६ केबीपीएस"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
 #, kde-format
 msgid "Avera&ge variable bitrate:"
-msgstr "औसत&ge चर बिटरेट: ."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
 #, kde-format
 msgid "Cons&tant bitrate:"
-msgstr "Cons&tant बिटरेट् : १."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cvbr)
 #: encoderopusconfig.ui:162
 #, kde-format
 msgid "Co&nstrained variable bitrate:"
-msgstr "सह&nstrained चर बिटरेट: 1.1."
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:321
@@ -212,27 +211,25 @@ msgid ""
 "You can set the complexity of the encoded stream here. A higher value "
 "implies a higher complexity but encodes slower."
 msgstr ""
-"अत्र एन्कोडेड् स्ट्रीम इत्यस्य जटिलतां सेट् कर्तुं शक्नुवन्ति । उच्चतरं मूल्यं उच्चतरजटिलतां सूचयति "
-"परन्तु मन्दतरं संकेतयति ।"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_complexity_settings)
 #: encoderopusconfig.ui:324
 #, kde-format
 msgid "Opus Co&mplexity Setting"
-msgstr "ओपस Co&mplexity सेटिंग"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, complexitySlider)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, kcfg_opus_complexity)
 #: encoderopusconfig.ui:347 encoderopusconfig.ui:374
 #, kde-format
 msgid "Higher is better but slower"
-msgstr "उच्चतरं श्रेष्ठं किन्तु मन्दतरम्"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileOptions)
 #: encoderopusconfig.ui:393
 #, kde-format
 msgid "Options"
-msgstr "विकल्पाः"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:411
@@ -243,12 +240,9 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"सञ्चिकाशीर्षके गीतस्य वर्णनं योजयन्तु । एतेन उपयोक्त्रे स्वस्य मीडियाप्लेयर् द्वारा दर्शिता "
-"उन्नतगीतसूचना प्राप्तुं सुलभं भवति । अन्तर्जालमाध्यमेन स्वयमेव एतां सूचनां प्राप्तुं शक्नुवन्ति । "
-"विवरणार्थं <i>&quot;CDDB Retrieval&quot;</i> नियन्त्रणमॉड्यूल् पश्यन्तु ।"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:414
 #, kde-format
 msgid "Add &track information"
-msgstr "सूचनां योजयन्तु &परीक्षणं कुर्वन्तु"
+msgstr ""
