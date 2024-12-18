@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-06 00:39+0000\n"
-"PO-Revision-Date: 2024-08-19 15:28+0200\n"
+"PO-Revision-Date: 2024-12-16 22:44+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -190,13 +190,14 @@ msgstr "Selección:"
 msgid "Replace with:"
 msgstr "Substituír por:"
 
+# skip-rule: trasno-file_reverse
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
 #: kcmaudiocd.cpp:205
 #, kde-format
 msgid "Cool artist - example audio file.wav"
-msgstr "Artista xenial - ficheiro de son de exemplo ficheiro.wav"
+msgstr "Artista xenial — ficheiro.wav de son de exemplo"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: audiocdconfig.ui:402
