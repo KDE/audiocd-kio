@@ -3,19 +3,21 @@
 # This file is distributed under the same license as the audiocd-kio package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-06 00:39+0000\n"
-"PO-Revision-Date: 2024-12-13 19:09+0530\n"
-"Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
+"PO-Revision-Date: 2024-12-20 21:51+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: English <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -175,13 +177,13 @@ msgstr "नाम नियमित अभिव्यक्ति प्रत
 #: audiocdconfig.ui:374
 #, kde-format
 msgid "Selection:"
-msgstr "चयनम् : १."
+msgstr "चयनम् :"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
 #: audiocdconfig.ui:384
 #, kde-format
 msgid "Replace with:"
-msgstr "प्रतिस्थापनं कृत्वा : १."
+msgstr "प्रतिस्थापनं कृत्वा :"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
@@ -205,13 +207,13 @@ msgstr ""
 #: audiocdconfig.ui:418
 #, kde-format
 msgid "Input:"
-msgstr "निवेशः : १."
+msgstr "निवेशः :"
 
 #. i18n: ectx: property (text), widget (QLabel, outputLabel)
 #: audiocdconfig.ui:428
 #, kde-format
 msgid "Output:"
-msgstr "उत्पादनम् : १."
+msgstr "उत्पादनम् :"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleLabel)
 #: audiocdconfig.ui:458
@@ -223,7 +225,7 @@ msgstr "उदाहरण"
 #: audiocdconfig.ui:474
 #, kde-format
 msgid "File Name (without extension)"
-msgstr "सञ्चिकानाम (विस्ताररहितम्) २."
+msgstr "सञ्चिकानाम (विस्ताररहितम्)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
 #: audiocdconfig.ui:515

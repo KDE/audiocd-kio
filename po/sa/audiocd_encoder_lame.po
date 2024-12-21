@@ -3,19 +3,21 @@
 # This file is distributed under the same license as the audiocd-kio package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-12-13 19:09+0530\n"
-"Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
+"PO-Revision-Date: 2024-12-20 21:51+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -231,7 +233,7 @@ msgstr "एतेन एन्कोडिंग् कृते उपयुज
 #: encoderlameconfig.ui:181
 #, kde-format
 msgid "Minimal &bitrate:"
-msgstr "न्यूनतम &बिटरेट् : १."
+msgstr "न्यूनतम &बिटरेट् :"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_min_brate)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vbr_mean_brate)
@@ -383,7 +385,7 @@ msgstr "एतेन एन्कोडिंग् कृते उपयुज
 #: encoderlameconfig.ui:271
 #, kde-format
 msgid "Avera&ge bitrate:"
-msgstr "औसत&ge बिटरेट् : १."
+msgstr "औसत&ge बिटरेट् :"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vbr_max_br)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_iso)
@@ -396,7 +398,7 @@ msgstr "एतेन एन्कोडिंग् कृते उपयुज
 #: encoderlameconfig.ui:284
 #, kde-format
 msgid "Maximal bi&trate:"
-msgstr "अधिकतम द्वि&दरः : १."
+msgstr "अधिकतम द्वि&दरः :"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_vbr_xing_tag)
 #: encoderlameconfig.ui:371
@@ -496,7 +498,7 @@ msgstr "&ID3 टैग लिखें"
 #: encoderlameconfig.ui:620
 #, kde-format
 msgid "Bi&trate:"
-msgstr "बि&उपचारः : १."
+msgstr "बि&उपचारः :"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
 #: encoderlameconfig.ui:633
@@ -514,7 +516,7 @@ msgstr "एन्कोडिंग विधि"
 #: encoderlameconfig.ui:763
 #, kde-format
 msgid "Bitrate:"
-msgstr "बिट्रेट् : १."
+msgstr "बिट्रेट् :"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
@@ -532,7 +534,7 @@ msgstr "चर&ले"
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr "श्रव्यचैनलः : १."
+msgstr "श्रव्यचैनलः :"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
