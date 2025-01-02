@@ -69,8 +69,6 @@ private:
     KConfig *config = nullptr;
     bool configChanged = false;
 
-    int getBitrateIndex(int value);
-
     QList<KConfigDialogManager *> encoderSettings;
     AudiocdConfig *audioConfig = nullptr;
 };
