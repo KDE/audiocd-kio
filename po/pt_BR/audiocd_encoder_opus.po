@@ -1,21 +1,22 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
 #
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2019.
+# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2019-03-20 15:31-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"PO-Revision-Date: 2025-02-06 00:44-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
@@ -79,17 +80,15 @@ msgstr "Método de &codificação"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Complexity based"
+#, kde-format
 msgid "Comp&lexity based"
-msgstr "Baseado na complexidade"
+msgstr "Baseado na comp&lexidade"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_bitrate)
 #: encoderopusconfig.ui:42
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Baseado na taxa de bits"
+msgstr "Baseado na taxa de bi&ts"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:55
@@ -191,15 +190,13 @@ msgstr "256 kbps"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
-#, fuzzy, kde-format
-#| msgid "A&verage variable bitrate:"
+#, kde-format
 msgid "Avera&ge variable bitrate:"
 msgstr "Taxa de bits variável mé&dia:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_cbr)
 #: encoderopusconfig.ui:155
-#, fuzzy, kde-format
-#| msgid "C&onstant bitrate:"
+#, kde-format
 msgid "Cons&tant bitrate:"
 msgstr "Taxa de bits c&onstante:"
 
