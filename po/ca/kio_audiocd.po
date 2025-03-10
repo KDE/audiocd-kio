@@ -125,9 +125,3 @@ msgstr "No s'ha pogut llegir %1: ha fallat la codificació"
 #, kde-format
 msgid "Track %1"
 msgstr "Peça %1"
-
-#~ msgid "Protocol name"
-#~ msgstr "Nom del protocol"
-
-#~ msgid "Socket name"
-#~ msgstr "Nom del sòcol"
