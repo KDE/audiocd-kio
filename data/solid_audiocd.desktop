@@ -5,7 +5,7 @@ Type=Service
 X-KDE-Priority=TopLevel
 
 [Desktop Action open]
-Exec=kioclient5 exec audiocd:/?device=%d
+Exec=kioclient exec audiocd:/?device=%d
 Icon=media-default-album
 Name=Open Audio with File Manager
 Name[ar]=افتح الصوت بمدير الملفات
