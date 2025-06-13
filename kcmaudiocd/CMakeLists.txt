@@ -22,4 +22,6 @@ target_link_libraries(kcm_audiocd
 
 ########### add handbook ################
 
-add_subdirectory(doc)
+if(KF6DocTools_FOUND)
+    add_subdirectory(doc)
+endif()
