@@ -1,13 +1,15 @@
-# Translation of audiocd_encoder_flac to Spanish
+# Spanish translations for audiocd_encoder_flac.po package.
+# Copyright (C) 2016-2025 This file is copyright:
+# This file is distributed under the same license as the audiocd-kio package.
 #
 # SPDX-FileCopyrightText: 2016 Eloy Cuadra <ecuadra@eloihr.net>
-# SPDX-FileCopyrightText: 2024 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_flac\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-08-31 16:47+0200\n"
+"PO-Revision-Date: 2025-06-18 01:32+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"

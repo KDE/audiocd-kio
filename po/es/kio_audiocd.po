@@ -1,19 +1,19 @@
-# translation of kio_audiocd.po to Spanish
-# Copyright (C) 2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
+# Spanish translations for kio_audiocd.po package.
+# Copyright (C) 2003-2025 This file is copyright:
+# This file is distributed under the same license as the audiocd-kio package.
 #
-# Salvador Gimeno Zanón <salgiza@jazzfree.com>, 2003.
-# Salvador Gimeno Zanón <salgiza@ono.com>, 2004, 2005.
-# santi <santi@kde-es.org>, 2005.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2007.
-# Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2008.
-# Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>, 2010.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2020.
+# SPDX-FileCopyrightText: 2003 Salvador Gimeno Zanón <salgiza@jazzfree.com>
+# SPDX-FileCopyrightText: 2004, 2005 Salvador Gimeno Zanón <salgiza@ono.com>
+# SPDX-FileCopyrightText: 2005 santi <santi@kde-es.org>
+# SPDX-FileCopyrightText: 2007 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2008, 2010 Enrique Matias Sanchez (Quique) <cronopios@gmail.com>
+# SPDX-FileCopyrightText: 2020, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-06 00:39+0000\n"
-"PO-Revision-Date: 2020-08-01 16:36+0200\n"
+"PO-Revision-Date: 2025-06-18 01:33+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
