@@ -5,19 +5,20 @@
 # Jon Arnar Gudmundsson <jonarnar@jonarnar.com>, 2004.
 # Þröstur Svanbergsson <throstur@bylur.net>, 2004.
 # Sveinn í Felli <sveinki@nett.is>, 2010, 2022.
+# SPDX-FileCopyrightText: 2025 Gummi <gudmundure@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-06 00:39+0000\n"
-"PO-Revision-Date: 2022-08-02 11:45+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic\n"
+"PO-Revision-Date: 2025-07-11 19:01+0000\n"
+"Last-Translator: Gummi <gudmundure@gmail.com>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 "\n"
@@ -55,8 +56,8 @@ msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
 msgstr ""
-"Þú getur ekki skilgreint vélarnafn með þessum samskiptastaðli. Vinsamlegast "
-"notaðu audiocd:/ í staðinn"
+"Þú getur ekki skilgreint vélarheiti með þessum samskiptastaðli. Notaðu "
+"audiocd:/-sniðið í staðinn"
 
 #: audiocd.cpp:876
 #, kde-format
@@ -94,14 +95,14 @@ msgid ""
 "audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
 "CD-ROM is."
 msgstr ""
-"Óþekkt villa. Ef þú hefur geisladisk í tækinu getur þú reynt að keyra "
-"cdparanoia -vsQ með þínum heimildum (ekki sem kerfisstjóri). Sérðu "
-"lagalista? Ef ekki, athugaðu þá hvort þú hafir aðgangsheimildir að tækinu. "
-"Ef þú ert að nota SCSI eftirlíkingu (mögulegt ef þú hefur IDE CD skrifara) "
-"gangtu þá úr skugga um að þú hafir les og skrif heimildir á almenna SCSI "
-"tækið, líklega /dev/sg0, /dev/sg1, og svo frv. Ef ekkert af þessu virkar, "
-"reyndu þá að slá inn audiocd:/?device=/dev/sg0 (eða svipað) til að láta "
-"kio_audiocd vita hvaða tæki er CD-ROM."
+"Óþekkt villa. Ef þú ert með geisladisk í tækinu getur þú reynt að keyra "
+"cdparanoia -vsQ með þínum heimildum (ekki sem rót). Sérðu lagalista? Ef ekki "
+"skaltu athuga hvort þú sért með aðgangsheimildir að tækinu. Ef þú ert að "
+"nota SCSI hermingu (mögulegt ef þú hefur IDE CD skrifara) skaltu ganga úr "
+"skugga um að þú hafir les- og skrifheimildir á almenna SCSI tækinu, sem er "
+"líklega /dev/sg0, /dev/sg1, o.s.frv. Ef ekkert af þessu virkar skaltu prófa "
+"að slá inn audiocd:/?device=/dev/sg0 (eða svipað) til að láta kio_audiocd "
+"vita hvaða tæki er CD-ROM."
 
 #: audiocd.cpp:974
 #, kde-format
@@ -112,7 +113,7 @@ msgstr ""
 #: audiocd.cpp:981
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr "Villa við lestur hljóðgagna fyrir %1 frá geisladisknum"
+msgstr "Villa við lestur hljóðgagna fyrir %1 af geisladisknum"
 
 #: audiocd.cpp:991 audiocd.cpp:1069
 #, kde-format
