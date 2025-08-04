@@ -2,7 +2,7 @@
 # translation of audiocd_encoder_lame.po to
 # Language AR translations for PACKAGE package.
 # Automatically generated, 2007.
-# SPDX-FileCopyrightText: 2008, 2021, 2024 zayed <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2008, 2021, 2024, 2025 zayed <zayed.alsaidi@gmail.com>
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # hayig2000 <hayig2000@gmail.com>, 2008.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-08-15 12:16+0400\n"
+"PO-Revision-Date: 2025-08-03 15:22+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -229,7 +229,7 @@ msgstr "إعدادات  معدل البت المتغير"
 #: encoderlameconfig.ui:178
 #, kde-format
 msgid "This selects the minimal bitrate used for encoding."
-msgstr "هذا يستخدَم الحد اﻷدنى للبت للتشفير."
+msgstr "يحدد هذا الحد الأدنى لمعدل البت المستخدم للترميز."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_min_br)
 #: encoderlameconfig.ui:181
@@ -381,7 +381,7 @@ msgstr "320 kbs"
 #: encoderlameconfig.ui:268
 #, kde-format
 msgid "This selects the average bitrate used for encoding."
-msgstr "هذا يستخدَم متوسط البت للتشفير."
+msgstr "يحدد هذا متوسط معدل البت المستخدم للترميز."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_average_br)
 #: encoderlameconfig.ui:271
@@ -394,7 +394,7 @@ msgstr "ال&متوسط معدل للبت:"
 #: encoderlameconfig.ui:281 encoderlameconfig.ui:543
 #, kde-format
 msgid "This selects the maximal bitrate used for encoding."
-msgstr "هذا يستخدَم الحد اﻷقصى للبت للتشفير."
+msgstr "يحدد هذا الحد الأقصى لمعدل البت المستخدم للترميز."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_max_br)
 #: encoderlameconfig.ui:284
