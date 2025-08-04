@@ -6,13 +6,13 @@
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # ahmad samawi <ahmad.samawi@gmail.com>, 2008, 2009.
-# SPDX-FileCopyrightText: 2009, 2021, 2022, 2024 zayed <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2009, 2021, 2022, 2024, 2025 zayed <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-06 00:39+0000\n"
-"PO-Revision-Date: 2024-08-15 12:20+0400\n"
+"PO-Revision-Date: 2025-08-03 15:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -229,7 +229,7 @@ msgstr "مثال"
 #: audiocdconfig.ui:474
 #, kde-format
 msgid "File Name (without extension)"
-msgstr "اسم الملفّ (بدون الامتداد)"
+msgstr "اسم الملفّ (دون الامتداد)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
 #: audiocdconfig.ui:515
@@ -274,7 +274,7 @@ msgid ""
 "This defines where files will appear in relation to the encoder root, you "
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
-"يحدد هذا المكان الذي ستظهر فيه الملفات فيما يتعلق بجذر برنامج التشفير، يمكنك "
+"يحدد هذا المكان الذي ستظهر فيه الملفات فيما يتعلق بجذر برنامج التعمية، يمكنك "
 "استخدام / لإنشاء أدلة فرعية. على سبيل المثال:%{albumartist}/%{albumtitle} "
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
