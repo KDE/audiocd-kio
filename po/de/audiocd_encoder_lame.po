@@ -4,20 +4,21 @@
 # Thomas Reitelbach <tr@erdfunkstelle.de>, 2006, 2007, 2008.
 # Martin Ereth <martin.ereth@arcor.de>, 2007, 2008.
 # Burkhard Lück <lueck@hube-lueck.de>, 2009, 2019, 2021.
+# SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-09-07 14:25+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-08-03 18:29+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -53,7 +54,7 @@ msgstr "Byte-Reihenfolge"
 #: audiocd_lame_encoder.kcfg:40
 #, kde-format
 msgid "Copyrighted"
-msgstr "Copyright"
+msgstr "Urheberrechtlich geschützt"
 
 #. i18n: ectx: label, entry (original), group (Lame)
 #: audiocd_lame_encoder.kcfg:44
@@ -77,7 +78,7 @@ msgstr "Fehlerkorrektur"
 #: audiocd_lame_encoder.kcfg:56
 #, kde-format
 msgid "Write ID3 Tag"
-msgstr "Metadaten schreiben"
+msgstr "ID3-Metadaten schreiben"
 
 #. i18n: ectx: property (title), widget (QGroupBox, cbr_settings)
 #. i18n: ectx: label, entry (cbr_bitrate), group (Lame)
@@ -144,7 +145,7 @@ msgstr "Tiefpassfilter aktivieren"
 #: audiocd_lame_encoder.kcfg:116
 #, kde-format
 msgid "Value of the cutoff frequency for the lowpass filter"
-msgstr "Wert der Grenzfrequenz des Tiefpassfilters"
+msgstr "Grenzfrequenz des Tiefpassfilters"
 
 #. i18n: ectx: label, entry (enable_highpass), group (Lame)
 #: audiocd_lame_encoder.kcfg:121
@@ -156,7 +157,7 @@ msgstr "Hochpassfilter aktivieren"
 #: audiocd_lame_encoder.kcfg:125
 #, kde-format
 msgid "Value of the cutoff frequency for the highpass filter"
-msgstr "Wert der Grenzfrequenz des Hochpassfilters"
+msgstr "Grenzfrequenz des Hochpassfilters"
 
 #. i18n: ectx: label, entry (set_lpf_width), group (Lame)
 #: audiocd_lame_encoder.kcfg:130
@@ -168,7 +169,7 @@ msgstr "Filterbreite des Tiefpass"
 #: audiocd_lame_encoder.kcfg:134
 #, kde-format
 msgid "Lowpass filter width value"
-msgstr "Filterbreite des Tiefpass"
+msgstr "Filterbreite des Tiefpasses"
 
 #. i18n: ectx: label, entry (set_hpf_width), group (Lame)
 #. i18n: ectx: label, entry (highfilterwidth), group (Lame)
@@ -379,7 +380,7 @@ msgstr "320 kBit/s"
 #: encoderlameconfig.ui:268
 #, kde-format
 msgid "This selects the average bitrate used for encoding."
-msgstr "Dies setzt die durchschnittlichee Bitrate für die Kodierung."
+msgstr "Dies setzt die durchschnittliche Bitrate für die Kodierung."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_average_br)
 #: encoderlameconfig.ui:271
@@ -406,7 +407,7 @@ msgstr "Ma&ximale Bitrate:"
 msgid ""
 "This writes additional information related to VBR as introduced by Xing."
 msgstr ""
-"Dies schreibt erweiterte Informationen über die variable Bitrate in die "
+"Dies schreibt erweiterte Informationen zu VBR (variable Bitrate) in die "
 "Dateien, wie von Xing eingeführt."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_xing_tag)
@@ -431,19 +432,19 @@ msgstr "Optionen"
 #: encoderlameconfig.ui:511
 #, kde-format
 msgid "Mark MP3 file as copyrighted"
-msgstr "MP3-Datei als kopiergeschützt markieren"
+msgstr "MP3-Datei als urheberrechtlich geschützt markieren"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_copyright)
 #: encoderlameconfig.ui:514
 #, kde-format
 msgid "Mark MP3 file as copyrighted."
-msgstr "MP3-Datei als kopiergeschützt markieren."
+msgstr "MP3-Datei als urheberrechtlich geschützt markieren."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_copyright)
 #: encoderlameconfig.ui:517
 #, kde-format
 msgid "Cop&yrighted"
-msgstr "&Kopiergeschützt"
+msgstr "&Urheberrechtlich geschützt"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_original)
 #: encoderlameconfig.ui:524
@@ -514,7 +515,7 @@ msgstr ""
 #: encoderlameconfig.ui:735
 #, kde-format
 msgid "Encoding Method"
-msgstr "Kodier-Methode"
+msgstr "Kodiermethode"
 
 #. i18n: ectx: property (text), widget (QLabel, bitrateLabel)
 #: encoderlameconfig.ui:763
@@ -548,9 +549,9 @@ msgid ""
 "channels. Note that choosing <i>\"Mono\"</i> reduces file size, but also "
 "kills the stereo signal."
 msgstr ""
-"Mit dieser Einstellung kann die Anzahl der Kanäle in der MP3-Datei gewählt "
-"werden. Zu beachten ist, dass <i>„Mono“</i> die Dateigröße reduziert, damit "
-"aber das Stereosignal vernichtet wird."
+"Mit dieser Einstellung wird die Mono- oder Stereo-Aufnahme für die MP3-Datei "
+"gewählt. Zu beachten ist, dass <i>„Mono“</i> zwar die Dateigröße reduziert, "
+"jedoch geht das Stereosignal unwiederbringlich verloren."
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:798
