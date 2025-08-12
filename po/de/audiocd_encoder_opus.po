@@ -3,27 +3,28 @@
 # Frederik Schwarzer <schwarzer@kde.org>, 2019.
 # Burkhard Lück <lueck@hube-lueck.de>, 2019, 2020, 2021.
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
+# SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_opus\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-09-07 14:26+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-07-30 20:53+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Complexity or Bitrate"
-msgstr "Vorbis-Kodierungskomplexität oder -bitrate"
+msgstr "Vorbis-Kodierungskomplexität oder Bitrate"
 
 #. i18n: ectx: label, entry (set_opus_cbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:15
@@ -77,7 +78,7 @@ msgstr "Durchschnittliche variable Bitrate"
 #: encoderopusconfig.ui:17
 #, kde-format
 msgid "&Encoding Method"
-msgstr "&Kodier-Methode"
+msgstr "&Kodiermethode"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
@@ -95,7 +96,7 @@ msgstr "&Bitratenbasiert"
 #: encoderopusconfig.ui:55
 #, kde-format
 msgid "Opus Bitrate Settings"
-msgstr "Einstellungen zur Opus-Bitrate "
+msgstr "Einstellungen zur Opus-Bitrate"
 
 #. i18n: ectx: property (currentText), widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
@@ -245,11 +246,10 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"Fügt dem Vorspann der Datei zusätzliche Informationen über das Stück hinzu. "
-"Das macht es für den Benutzer leichter, zusätzliche Informationen in seinem "
-"jeweiligen Wiedergabeprogramm zu sehen. Diese Informationen können "
-"automatisch aus dem Internet geholt werden. Siehe dazu das Kontrollmodul "
-"<i>„CDDB-Abfrage“</i>."
+"Beschreibung des Stücks den Metadaten der Datei hinzufügen. Dies macht es "
+"möglich, erweiterte Informationen im Medienspieler zu sehen. Solche "
+"Zusatzinformationen können automatisch aus dem Internet geholt werden. Für "
+"weitere Details siehe Informationen zum Kontrollmodul <i>„CDDB-Abfrage“</i>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:414

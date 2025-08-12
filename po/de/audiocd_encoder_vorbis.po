@@ -4,26 +4,27 @@
 # Martin Ereth <martin.ereth@arcor.de>, 2007.
 # Burkhard Lück <lueck@hube-lueck.de>, 2011, 2019.
 # Frederik Schwarzer <schwarzer@kde.org>, 2011.
+# SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-09-07 14:27+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-07-30 20:59+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Quality or Bitrate"
-msgstr "Vorbis-Kodierungsqualität oder -bitrate"
+msgstr "Vorbis-Kodierungsqualität oder Bitrate"
 
 #. i18n: ectx: label, entry (set_vorbis_min_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:15
@@ -74,25 +75,25 @@ msgstr "Maximale Bitrate"
 #: encodervorbisconfig.ui:17
 #, kde-format
 msgid "&Encoding Method"
-msgstr "&Kodier-Methode"
+msgstr "&Kodiermethode"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
 #: encodervorbisconfig.ui:32
 #, kde-format
 msgid "Bi&trate based"
-msgstr "&Bitratenbasiert"
+msgstr "&bitratenbasiert"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
 #: encodervorbisconfig.ui:39
 #, kde-format
 msgid "&Quality based"
-msgstr "&Qualitätsbasiert"
+msgstr "&qualitätsbasiert"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:55
 #, kde-format
 msgid "Vorbis Bitrate Settings"
-msgstr "Einstellungen zur Vorbis-Bitrate "
+msgstr "Einstellungen zur Vorbis-Bitrate"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_max_br)
 #: encodervorbisconfig.ui:67
@@ -227,14 +228,14 @@ msgid ""
 "You can set the quality of the encoded stream here. A higher value implies a "
 "higher quality but encodes slower."
 msgstr ""
-"Sie können die Qualität der Kodierung einstellen. Ein hoher Wert ergibt eine "
-"bessere Qualität, allerdings dauert die Kodierung länger."
+"Hier können Sie die Qualität der Kodierung einstellen. Ein hoher Wert ergibt "
+"eine bessere Qualität, allerdings dauert die Kodierung länger."
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_quality_settings)
 #: encodervorbisconfig.ui:318
 #, kde-format
 msgid "Vorbis &Quality Setting"
-msgstr "Einstellungen zur Vorbis-&Qualität"
+msgstr "Einstellung der Vorbis-&Qualität"
 
 #. i18n: ectx: property (whatsThis), widget (QDoubleSpinBox, kcfg_vorbis_quality)
 #: encodervorbisconfig.ui:346
@@ -257,11 +258,10 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"Fügt dem Vorspann der Datei zusätzliche Informationen über das Stück hinzu. "
-"Das macht es für den Benutzer leichter, zusätzliche Informationen in seinem "
-"jeweiligen Wiedergabeprogramm zu sehen. Diese Informationen können "
-"automatisch aus dem Internet geholt werden. Siehe dazu das Kontrollmodul "
-"<i>„CDDB-Abfrage“</i>."
+"Beschreibung des Stücks den Metadaten der Datei hinzufügen. Dies macht es "
+"möglich, erweiterte Informationen im Medienspieler zu sehen. Solche "
+"Zusatzinformationen können automatisch aus dem Internet geholt werden. Für "
+"weitere Details siehe Informationen zum Kontrollmodul <i>„CDDB-Abfrage“</i>."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vorbis_comments)
 #: encodervorbisconfig.ui:396
