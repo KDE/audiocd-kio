@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
-# SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2024-08-15 12:14+0400\n"
+"PO-Revision-Date: 2025-08-21 10:25+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -46,7 +46,7 @@ msgstr "معدل البت متغير محدد"
 #: audiocd_opus_encoder.kcfg:28
 #, kde-format
 msgid "Add Comments"
-msgstr "اضف تعليقات"
+msgstr "أضف تعليقات"
 
 #. i18n: ectx: label, entry (opus_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:32
@@ -244,7 +244,7 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"إضافة الوصف إلى عنوان الرأس لملفّ اﻷغنية. هذا يسهل إظهار معلومات المقطوعة "
+"أضف الوصف إلى عنوان الرأس لملفّ اﻷغنية. هذا يسهل إظهار معلومات المقطوعة "
 "للمستخدم.. يمكن الحصول على هذه المعلومات مباشرة من اﻷنترنت.. انظر إلى تحكم "
 "وحدة <i>\"CDDB Retrieval\"</i>  للتفاصيل"
 
@@ -252,4 +252,4 @@ msgstr ""
 #: encoderopusconfig.ui:414
 #, kde-format
 msgid "Add &track information"
-msgstr "إضافة معلومات المق&طوعة"
+msgstr "أضف معلومات المق&طوعة"
