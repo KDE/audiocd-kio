@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
 #
-# Sveinn í Felli <sv1@fellsnet.is>, 2022.
+# SPDX-FileCopyrightText: 2022, 2025 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-13 00:38+0000\n"
-"PO-Revision-Date: 2022-08-02 11:56+0000\n"
+"PO-Revision-Date: 2025-09-16 10:33+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #. i18n: ectx: label, entry (flac_compression_level), group (Flac)
 #: audiocd_flac_encoder.kcfg:9
@@ -25,7 +25,6 @@ msgstr "Þjöppunarstig FLAC"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: encoderflacconfig.ui:17
-#, fuzzy, kde-format
-#| msgid "Flac compression level"
+#, kde-format
 msgid "Flac Compression Level"
 msgstr "Þjöppunarstig FLAC"
