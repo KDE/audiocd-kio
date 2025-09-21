@@ -201,7 +201,7 @@
 </note>
 
 <para
->FLAC es un formato de audio comprimido sin pérdida libre de patentes u honorarios de licencias. Mantiene la calidad de audio perfecta reduciendo el tamaño del archivo un 50%. El tamaño de los archivos al usar este codec es mucho mayor que con Opus, Ogg Vorbis o MP3.</para>
+>FLAC es un formato de audio comprimido sin pérdida libre de patentes u honorarios de licencias. Mantiene la calidad de audio perfecta reduciendo el tamaño del archivo un 50 %. El tamaño de los archivos al usar este codec es mucho mayor que con Opus, Ogg Vorbis o MP3.</para>
 
 <variablelist>
 <varlistentry
