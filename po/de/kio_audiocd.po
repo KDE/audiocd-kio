@@ -1,14 +1,14 @@
-# Carsten Niehaus <cniehaus@kde.org>, 2002.
-# Arnold Krille <arnold@arnoldarts.de>, 2003, 2004, 2005.
-# Stephan Johach <hunsum@gmx.de>, 2003, 2005.
-#  <arnold@roederberg.dyndns.org>, 2004.
-# Thomas Diehl <thd@kde.org>, 2004.
-# Arnold Krille <arnold@roederberg.dyndns.org>, 2005.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2006.
-# Martin Ereth <martin.ereth@arcor.de>, 2007.
-# Panagiotis Papadopoulos <pano_90@gmx.net>, 2009.
-# Frederik Schwarzer <schwarzer@kde.org>, 2010.
-# Burkhard Lück <lueck@hube-lueck.de>, 2020.
+# SPDX-FileCopyrightText: 2002 Carsten Niehaus <cniehaus@kde.org>
+# SPDX-FileCopyrightText: 2003, 2004, 2005 Arnold Krille <arnold@arnoldarts.de>
+# SPDX-FileCopyrightText: 2003, 2005 Stephan Johach <hunsum@gmx.de>
+# <arnold@roederberg.dyndns.org>, 2004.
+# SPDX-FileCopyrightText: 2004 Thomas Diehl <thd@kde.org>
+# SPDX-FileCopyrightText: 2005 Arnold Krille <arnold@roederberg.dyndns.org>
+# SPDX-FileCopyrightText: 2006 Thomas Reitelbach <tr@erdfunkstelle.de>
+# SPDX-FileCopyrightText: 2007 Martin Ereth <martin.ereth@arcor.de>
+# SPDX-FileCopyrightText: 2009 Panagiotis Papadopoulos <pano_90@gmx.net>
+# SPDX-FileCopyrightText: 2010 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2020 Burkhard Lück <lueck@hube-lueck.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"

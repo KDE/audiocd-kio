@@ -1,9 +1,9 @@
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
-# Arnold Krille <arnold@arnoldarts.de>, 2004.
-# Stephan Johach <hunsum@gmx.de>, 2005.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2006, 2007, 2008.
-# Martin Ereth <martin.ereth@arcor.de>, 2007, 2008.
-# Burkhard Lück <lueck@hube-lueck.de>, 2009, 2019, 2021.
+# SPDX-FileCopyrightText: 2004 Arnold Krille <arnold@arnoldarts.de>
+# SPDX-FileCopyrightText: 2005 Stephan Johach <hunsum@gmx.de>
+# SPDX-FileCopyrightText: 2006, 2007, 2008 Thomas Reitelbach <tr@erdfunkstelle.de>
+# SPDX-FileCopyrightText: 2007, 2008 Martin Ereth <martin.ereth@arcor.de>
+# SPDX-FileCopyrightText: 2009, 2019, 2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
