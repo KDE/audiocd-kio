@@ -3,10 +3,10 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2002, 2003, 2004, 2005, 2007, 2010, 2020.
-# Albert Astals Cid <aacid@kde.org>, 2004.
-# Manuel Tortosa <manutortosa@gmail.com>, 2010.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2020.
+# SPDX-FileCopyrightText: 2002, 2003, 2004, 2005, 2007, 2010, 2020 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2004 Albert Astals Cid <aacid@kde.org>
+# SPDX-FileCopyrightText: 2010 Manuel Tortosa <manutortosa@gmail.com>
+# SPDX-FileCopyrightText: 2020 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
