@@ -359,12 +359,12 @@ KIO::WorkerResult AudioCDProtocol::initRequest(const QUrl &url, struct cdrom_dri
                 d->which_dir = FullCD;
                 d->fname = path.mid(d->s_fullCD.length() + 1);
                 d->req_allTracks = true;
-            } else if (d->templateFileLocation.startsWith(path)) {
+            } else if (!d->templateFileLocation.isEmpty() && d->templateFileLocation.startsWith(path)) {
                 d->which_dir = SubDir;
                 d->encoder_dir_type = encoderTypeWAV;
                 remainingDirPath = d->templateFileLocation.mid(path.length());
                 d->fname = QString();
-            } else if (path.startsWith(d->templateFileLocation)) {
+            } else if (!d->templateFileLocation.isEmpty() && path.startsWith(d->templateFileLocation)) {
                 d->encoder_dir_type = encoderTypeWAV;
                 remainingDirPath = QString();
                 d->fname = path.mid(d->templateFileLocation.length() + 1);
