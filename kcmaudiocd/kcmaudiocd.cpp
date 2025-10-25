@@ -80,7 +80,7 @@ KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
     connect(audioConfig->fileNameLineEdit, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->albumNameLineEdit, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->fileLocationLineEdit, &QLineEdit::textEdited, this, &KAudiocdModule::slotConfigChanged);
-    connect(audioConfig->fileLocationGroupBox, &QGroupBox::clicked, this, &KAudiocdModule::slotConfigChanged);
+    connect(audioConfig->fileLocationCheckBox, &QCheckBox::clicked, this, &KAudiocdModule::slotConfigChanged);
     connect(audioConfig->kcfg_replaceInput, &QLineEdit::textEdited, this, &KAudiocdModule::updateExample);
     connect(audioConfig->kcfg_replaceOutput, &QLineEdit::textEdited, this, &KAudiocdModule::updateExample);
     connect(audioConfig->example, &QLineEdit::textEdited, this, &KAudiocdModule::updateExample);
@@ -158,7 +158,7 @@ void KAudiocdModule::save()
         KConfigGroup cg(config, QStringLiteral("FileName"));
         cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
         cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
-        cg.writeEntry("show_file_location", audioConfig->fileLocationGroupBox->isChecked());
+        cg.writeEntry("show_file_location", audioConfig->fileLocationCheckBox->isChecked());
         cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
         cg.writeEntry("regexp_example", audioConfig->example->text());
 
@@ -198,7 +198,7 @@ void KAudiocdModule::load()
         KConfigGroup cg(config, QStringLiteral("FileName"));
         audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
         audioConfig->albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
-        audioConfig->fileLocationGroupBox->setChecked(cg.readEntry("show_file_location", false));
+        audioConfig->fileLocationCheckBox->setChecked(cg.readEntry("show_file_location", false));
         audioConfig->fileLocationLineEdit->setText(cg.readEntry("file_location_template", QString()));
         audioConfig->kcfg_replaceInput->setText(cg.readEntry("regexp_search"));
         audioConfig->kcfg_replaceOutput->setText(cg.readEntry("regexp_replace"));
