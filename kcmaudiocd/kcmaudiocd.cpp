@@ -213,6 +213,8 @@ void KAudiocdModule::load()
     for (int i = 0; i < encoderSettings.size(); ++i) {
         encoderSettings.at(i)->updateWidgets();
     }
+
+    audioConfig->fileLocationVerticalWidget->setEnabled(audioConfig->fileLocationCheckBox->isChecked());
 }
 
 void KAudiocdModule::slotModuleChanged()
