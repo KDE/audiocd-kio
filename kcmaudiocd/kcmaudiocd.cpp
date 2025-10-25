@@ -159,8 +159,13 @@ void KAudiocdModule::save()
         cg.writeEntry("file_name_template", audioConfig->fileNameLineEdit->text());
         cg.writeEntry("album_name_template", audioConfig->albumNameLineEdit->text());
         cg.writeEntry("show_file_location", audioConfig->fileLocationCheckBox->isChecked());
-        cg.writeEntry("file_location_template", audioConfig->fileLocationLineEdit->text());
         cg.writeEntry("regexp_example", audioConfig->example->text());
+        QString location = audioConfig->fileLocationLineEdit->text();
+        // ensure FileLocation doesn't end with '/'
+        while (location.endsWith(QLatin1Char('/'))) {
+            location.chop(1);
+        }
+        cg.writeEntry("file_location_template", location);
 
         // save quoted if required
         QString replaceInput = audioConfig->kcfg_replaceInput->text();
