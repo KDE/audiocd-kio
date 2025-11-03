@@ -26,7 +26,6 @@
 #include <QSlider>
 #include <QVBoxLayout>
 
-#include <KAboutData>
 #include <KConfigDialogManager>
 #include <KConfigGroup>
 #include <KConfigSkeleton>
