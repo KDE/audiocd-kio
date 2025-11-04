@@ -285,7 +285,7 @@ msgid ""
 "This defines where files will appear in relation to the encoder root, you "
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
-"Ceci définit où les fichiers apparaîtront par rapport à l'emplacement de "
+"Ceci définit où les fichiers apparaitront par rapport à l'emplacement de "
 "base de l'encodeur. Vous pouvez utiliser ou créer des sous-dossiers. Par "
 "exemple %{albumartist}/%{albumtitle}"
 
