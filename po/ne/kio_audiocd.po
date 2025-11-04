@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2007-08-20 12:35+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -17,16 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n !=1\n"
 "\n"
 "X-Generator: KBabel 1.11.4\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "श्यामकृष्ण बल"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "shyamkrishna_bal@yahoo.com"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -112,6 +102,14 @@ msgstr "%1 पढ्न सकेन: सङ्केतन असफल भय�
 #, kde-format
 msgid "Track %1"
 msgstr "ट्रयाक %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "श्यामकृष्ण बल"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "shyamkrishna_bal@yahoo.com"
 
 #~ msgid "Protocol name"
 #~ msgstr "प्रोटोकल नाम"

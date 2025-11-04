@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2020-08-05 09:50+0200\n"
 "Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -22,16 +22,6 @@ msgstr ""
 "X-Generator: Lokalize 20.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Josep M. Ferrer,Albert Astals Cid"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "txemaq@gmail.com,aacid@kde.org"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -125,6 +115,14 @@ msgstr "No s'ha pogut llegir %1: ha fallat la codificació"
 #, kde-format
 msgid "Track %1"
 msgstr "Peça %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Josep M. Ferrer,Albert Astals Cid"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "txemaq@gmail.com,aacid@kde.org"
 
 #~ msgid "Protocol name"
 #~ msgstr "Nom del protocol"

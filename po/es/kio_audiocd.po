@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2025-06-09 01:41+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -22,19 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 20.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-"Eloy Cuadra,Salvador Gimeno Zanón,Enrique Matías Sánchez,Víctor Rodrigo "
-"Córdoba"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-"ecuadra@eloihr.net,salgiza@ono.com,cronopios@gmail.com,vrcordoba@gmail.com"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -127,3 +114,14 @@ msgstr "No se ha podido leer %1: la codificación ha fallado"
 #, kde-format
 msgid "Track %1"
 msgstr "Pista %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr ""
+#~ "Eloy Cuadra,Salvador Gimeno Zanón,Enrique Matías Sánchez,Víctor Rodrigo "
+#~ "Córdoba"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "ecuadra@eloihr.net,salgiza@ono.com,cronopios@gmail.com,vrcordoba@gmail.com"

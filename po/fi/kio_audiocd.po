@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2020-12-13 16:41+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -19,16 +19,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Mikko Ikola, Tommi Nieminen"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "ikola@iki.fi, translator@legisign.org"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -122,6 +112,14 @@ msgstr "Ei voitu lukea kohdetta %1: koodaus epäonnistui"
 #, kde-format
 msgid "Track %1"
 msgstr "Kappale %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Mikko Ikola, Tommi Nieminen"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "ikola@iki.fi, translator@legisign.org"
 
 #~ msgid "Protocol name"
 #~ msgstr "Yhteyskäytännön nimi"

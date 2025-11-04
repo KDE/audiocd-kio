@@ -1,5 +1,5 @@
 # translation of kio_audiocd.po to
-# Version: $Revision: 1689624 $
+# Version: $Revision: 1721955 $
 # Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003.
 # Mikolaj Machowski <mikmach@wp.pl>, 2004, 2005.
@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2020-11-14 11:59+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -22,16 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Mikołaj Machowski"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "mikmach@wp.pl"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -124,6 +114,14 @@ msgstr "Nie można odczytać %1: kodowanie nie powiodło się"
 #, kde-format
 msgid "Track %1"
 msgstr "Ścieżka %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Mikołaj Machowski"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "mikmach@wp.pl"
 
 #~ msgid "Protocol name"
 #~ msgstr "Nazwa protokołu"

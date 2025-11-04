@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2005-01-04 23:57-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -15,20 +15,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#, fuzzy, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-"_: NAME OF TRANSLATORS\n"
-"tamilpc team"
-
-#, fuzzy, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-"_: EMAIL OF TRANSLATORS\n"
-"tamilpc@ambalam.com"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -113,6 +99,20 @@ msgstr "%1ஐ படிக்க இயலவில்லை: ஒத்திச
 #, kde-format
 msgid "Track %1"
 msgstr "தடம்%1"
+
+#, fuzzy
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "tamilpc team"
+
+#, fuzzy
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "tamilpc@ambalam.com"
 
 #~ msgid "Protocol name"
 #~ msgstr "நெறிமுறை பெயர்"

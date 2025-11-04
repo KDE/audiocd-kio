@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2010-09-26 11:43-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -22,16 +22,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Ikuya Awashiro, Fumiaki Okushi,Shinichi Tsunoda"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "ikuya@oooug.jp, fumiaki@okushi.com,tsuno@ngy.1st.ne.jp"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -124,3 +114,11 @@ msgstr "%1 を読み込めませんでした: エンコードに失敗しまし�
 #, kde-format
 msgid "Track %1"
 msgstr "トラック %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Ikuya Awashiro, Fumiaki Okushi,Shinichi Tsunoda"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "ikuya@oooug.jp, fumiaki@okushi.com,tsuno@ngy.1st.ne.jp"

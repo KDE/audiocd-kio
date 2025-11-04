@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2024-08-14 19:20+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -22,16 +22,6 @@ msgstr ""
 "X-Generator: Lokalize 23.04.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Andriy Rysin,Іван Петрущак"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "rysin@kde.org,ivanpetrouchtchak@yahoo.com"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:42
@@ -191,8 +181,8 @@ msgstr "Замінити на:"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
-#: kcmaudiocd.cpp:205
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
+#: kcmaudiocd.cpp:209
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Крутий виконавець - зразок звукового файла.wav"
@@ -296,10 +286,18 @@ msgstr "Макрос розташування файлів"
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle}/%{albumartist}"
 
-#: kcmaudiocd.cpp:60
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Кодер %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Andriy Rysin,Іван Петрущак"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "rysin@kde.org,ivanpetrouchtchak@yahoo.com"
 
 #~ msgid "KDE Audio CD KIO Worker"
 #~ msgstr "Обробник введення-виведення аудіо-КД для KDE"

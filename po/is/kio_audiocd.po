@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2025-07-11 19:01+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -22,17 +22,6 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 "\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-"Richard Allen, Logi Ragnarsson, Jón Arnar Guðmundsson, Þröstur Svanbergsson"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "ra@ra.is, logi@logi.org, jonarnar@jonarnar.com, throstur@bylur.net"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -124,6 +113,16 @@ msgstr "Gat ekki lesið %1: kóðun tókst ekki"
 #, kde-format
 msgid "Track %1"
 msgstr "Lag %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr ""
+#~ "Richard Allen, Logi Ragnarsson, Jón Arnar Guðmundsson, Þröstur "
+#~ "Svanbergsson"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "ra@ra.is, logi@logi.org, jonarnar@jonarnar.com, throstur@bylur.net"
 
 #~ msgid "Protocol name"
 #~ msgstr "Heiti samskiptamáta"

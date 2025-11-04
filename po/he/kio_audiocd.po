@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2023-12-05 09:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -29,16 +29,6 @@ msgstr ""
 "X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Omer Korner,צוות התרגום של KDE ישראל"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "omerkorner@gmail.com,kde-l10n-he@kde.org"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -122,6 +112,14 @@ msgstr "לא הייתה אפשרות לקרוא את %1: קידוד נכשל"
 #, kde-format
 msgid "Track %1"
 msgstr "רצועה %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Omer Korner,צוות התרגום של KDE ישראל"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "omerkorner@gmail.com,kde-l10n-he@kde.org"
 
 #~ msgid "Protocol name"
 #~ msgstr "שם הפרוטוקול"

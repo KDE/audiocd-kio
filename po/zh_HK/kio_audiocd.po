@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2001-08-27 17:07+CST\n"
 "Last-Translator: Chih-Wei Huang <cwhuang@linux.org.tw>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -15,16 +15,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Chih-Wei Huang,Walter Cheuk"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "cwhuang@linux.org.tw,wwycheuk@netvigator.com"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -106,6 +96,14 @@ msgstr "無法讀取 %1: 編碼失敗"
 #, kde-format
 msgid "Track %1"
 msgstr "音軌 %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Chih-Wei Huang,Walter Cheuk"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "cwhuang@linux.org.tw,wwycheuk@netvigator.com"
 
 #~ msgid "Protocol name"
 #~ msgstr "協定名稱"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2010-05-11 11:20+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -18,16 +18,6 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "ខឹម សុខែម,​អេង វណ្ណៈ, អោក ពិសិដ្ឋ​"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "khoemsokhem@khmeros.info,​​evannak@khmeros.info,piseth_dv@khmeros.info"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:42
@@ -191,8 +181,8 @@ msgstr "ជំនួស​​ដោយ ៖"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
-#: kcmaudiocd.cpp:205
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
+#: kcmaudiocd.cpp:209
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "សិល្បករ​ល្បី-ឧទាហរណ៍ អូឌីយ៉ូ file.wav​"
@@ -296,10 +286,19 @@ msgstr ""
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle}/%{albumartist}"
 
-#: kcmaudiocd.cpp:60
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 អ៊ិនកូឌ័រ"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "ខឹម សុខែម,​អេង វណ្ណៈ, អោក ពិសិដ្ឋ​"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "khoemsokhem@khmeros.info,​​evannak@khmeros.info,piseth_dv@khmeros.info"
 
 #, fuzzy
 #~| msgid "KDE Audio CD IO Slave"

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2024-08-14 10:41+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -31,16 +31,6 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Generator: Lokalize 23.08.5\n"
 "X-Text-Markup: kde4\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Julien Rabier, Simon Depiets"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "julien.rabier@gmail.com, sdepiets@gmail.com"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:42
@@ -201,8 +191,8 @@ msgstr "Remplacer par :"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
-#: kcmaudiocd.cpp:205
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
+#: kcmaudiocd.cpp:209
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Artiste - fichier audio d'exemple « file.wav »."
@@ -285,7 +275,7 @@ msgid ""
 "This defines where files will appear in relation to the encoder root, you "
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
-"Ceci définit où les fichiers apparaîtront par rapport à l'emplacement de "
+"Ceci définit où les fichiers apparaitront par rapport à l'emplacement de "
 "base de l'encodeur. Vous pouvez utiliser ou créer des sous-dossiers. Par "
 "exemple %{albumartist}/%{albumtitle}"
 
@@ -307,10 +297,18 @@ msgstr "Utiliser les macros d'emplacement de fichiers"
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle} / %{albumartist}"
 
-#: kcmaudiocd.cpp:60
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Encodeur %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Julien Rabier, Simon Depiets"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "julien.rabier@gmail.com, sdepiets@gmail.com"
 
 #~ msgid "KDE Audio CD KIO Worker"
 #~ msgstr "Module d'entrées / sorties « AudioCD » de KDE"

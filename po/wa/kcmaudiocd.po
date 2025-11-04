@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2007-09-17 23:20+0200\n"
 "Last-Translator: Pablo Saratxaga <pablo@walon.org>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -16,16 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Jean Cayron,Lorint Hendschel,Pablo Saratxaga"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "jean.cayron@gmail.com,laurent.hendschel@skynet.be,pablo@walon.org"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:42
@@ -182,8 +172,8 @@ msgstr "Mete el plaece:"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
-#: kcmaudiocd.cpp:205
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
+#: kcmaudiocd.cpp:209
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Plaijhant årtisse - fitchî so d' egzimpe.wav"
@@ -286,10 +276,18 @@ msgstr ""
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumartist}"
 
-#: kcmaudiocd.cpp:60
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Ecôdeu %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Jean Cayron,Lorint Hendschel,Pablo Saratxaga"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "jean.cayron@gmail.com,laurent.hendschel@skynet.be,pablo@walon.org"
 
 #, fuzzy
 #~| msgid "KDE Audio CD IO Slave"

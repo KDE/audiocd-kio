@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2025-07-11 19:05+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -23,20 +23,6 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 "\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-"Pjetur G. Hjaltason, Stígur Snæsson, Richard Allen, Arnar Leósson, Guðmundur "
-"Erlingsson"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-"pjetur@pjetur.net, stigur@vortex.is, ra@ra.is, leosson@frisurf.no, "
-"gudmundure@gmail.com"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:42
@@ -197,8 +183,8 @@ msgstr "Skipta út með:"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
-#: kcmaudiocd.cpp:205
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
+#: kcmaudiocd.cpp:209
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Svalur höfundur - sýnishorn.wav"
@@ -301,10 +287,22 @@ msgstr "Nota skráastaðsetningarfjölva"
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle}/%{albumartist}"
 
-#: kcmaudiocd.cpp:60
+#: kcmaudiocd.cpp:59
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 kóðari"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr ""
+#~ "Pjetur G. Hjaltason, Stígur Snæsson, Richard Allen, Arnar Leósson, "
+#~ "Guðmundur Erlingsson"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "pjetur@pjetur.net, stigur@vortex.is, ra@ra.is, leosson@frisurf.no, "
+#~ "gudmundure@gmail.com"
 
 #~ msgid "KDE Audio CD KIO Worker"
 #~ msgstr "KDE CD-hljómdiska KIO-vinnsla"

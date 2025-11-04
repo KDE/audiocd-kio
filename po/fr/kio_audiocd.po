@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:39+0000\n"
+"POT-Creation-Date: 2025-11-04 00:41+0000\n"
 "PO-Revision-Date: 2023-01-10 18:43+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -24,16 +24,6 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Ludovic Grossard"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "grossard@kde.org"
 
 #: audiocd.cpp:116
 #, kde-format
@@ -128,6 +118,14 @@ msgstr "Impossible de lire %1 : l'encodage a échoué"
 #, kde-format
 msgid "Track %1"
 msgstr "Piste %1"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Ludovic Grossard"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "grossard@kde.org"
 
 #~ msgid "Protocol name"
 #~ msgstr "Nom du protocole"
