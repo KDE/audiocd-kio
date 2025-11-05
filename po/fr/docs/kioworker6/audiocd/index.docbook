@@ -114,7 +114,7 @@
 >CD</acronym
 > audio a été inséré. S'il n'y arrive pas ou bien si vous avez plusieurs lecteurs <acronym
 >CD</acronym
->, vous pouvez utiliser cette option. Veuillez noter que la boîte de dialogue de configuration vous permet de régler une valeur par défaut pour cette option.</para>
+>, vous pouvez utiliser cette option. Veuillez noter que la boite de dialogue de configuration vous permet de régler une valeur par défaut pour cette option.</para>
 </listitem>
 </varlistentry>
 
@@ -131,7 +131,7 @@
 >=<parameter
 >Piste %{number}</parameter
 ></userinput
->. Notez que la boîte de dialogue de configuration vous permet de régler une valeur par défaut. Attention, si vous laissez cette option vide, aucun fichier ne sera affiché.</para>
+>. Notez que la boite de dialogue de configuration vous permet de régler une valeur par défaut. Attention, si vous laissez cette option vide, aucun fichier ne sera affiché.</para>
 </listitem>
 </varlistentry>
 
@@ -148,7 +148,7 @@
 >=<parameter
 >%{albumartist} %{albumtitle}</parameter
 ></userinput
->. Notez que la boîte de dialogue de configuration vous permet de régler une valeur par défaut.</para>
+>. Notez que la boite de dialogue de configuration vous permet de régler une valeur par défaut.</para>
 </listitem>
 </varlistentry>
 
@@ -165,7 +165,7 @@
 >=<parameter
 >niceLevel=10</parameter
 ></userinput
->. Notez que la boîte de dialogue de configuration vous permet de régler une valeur par défaut.</para>
+>. Notez que la boite de dialogue de configuration vous permet de régler une valeur par défaut.</para>
 </listitem>
 </varlistentry>
 
