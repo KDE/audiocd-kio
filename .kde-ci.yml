@@ -8,7 +8,7 @@ Dependencies:
     'frameworks/kconfig': '@latest-kf6'
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kdoctools': '@latest-kf6'
+    'frameworks/solid': '@latest-kf6'
     'frameworks/kio': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'
     'multimedia/libkcddb': '@same'
-    'multimedia/libkcompactdisc': '@same'

@@ -36,13 +36,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     KIO
     KCMUtils
     WidgetsAddons
-)
-find_package(KCompactDisc6)
-set_package_properties(KCompactDisc6 PROPERTIES
-    DESCRIPTION "KCompactDisc library"
-    URL "https://commits.kde.org/libkcompactdisc"
-    TYPE REQUIRED
-    PURPOSE "libkcompactdisc is used to access CD drives."
+    Solid
 )
 find_package(KCddb6 5.1)
 set_package_properties(KCddb6 PROPERTIES
@@ -109,8 +103,8 @@ set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
 
 target_link_libraries(kio_audiocd
     audiocdplugins
-    KCompactDisc6
     KF6::I18n
+    KF6::Solid
     Qt::Widgets
     Cdparanoia::Cdparanoia
 )
