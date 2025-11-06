@@ -79,7 +79,7 @@ extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
     // QApplication uses libkcddb which needs a valid kapp pointer
     // GUIenabled must be true as libkcddb sometimes wants to communicate
     // with the user
-    qunsetenv("SESSION_MANAGER");
+    QCoreApplication::setAttribute(Qt::AA_DisableSessionManager);
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("kio_audiocd"));
     KLocalizedString::setApplicationDomain(QByteArrayLiteral("kio_audiocd"));
