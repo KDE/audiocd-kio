@@ -187,6 +187,10 @@
   <categories>
     <category>Audio</category>
   </categories>
+  <developer id="org.kde">
+    <name translate="no">KDE</name>
+    <url>https://kde.org</url>
+  </developer>
   <icon type="stock">media-optical-audio</icon>
   <releases>
     <release version="5.1.0" date="2025-11-06"/>
