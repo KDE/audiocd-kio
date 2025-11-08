@@ -12,3 +12,6 @@ Dependencies:
     'frameworks/kcmutils': '@latest-kf6'
     'multimedia/libkcddb': '@same'
     'multimedia/libkcompactdisc': '@same'
+
+Options:
+ require-passing-tests-on: ['@all']
