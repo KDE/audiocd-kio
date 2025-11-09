@@ -282,11 +282,3 @@ msgstr "%{albumtitle}/%{albumartist}"
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 编码器"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "KDE 中国, Guo Yunhe, Tyson Tan"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "kde-china@kde.org, i@guoyunhe.me, tds00@qq.com"
