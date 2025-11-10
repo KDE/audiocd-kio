@@ -112,11 +112,3 @@ msgstr "Klarte ikkje lesa %1: Feil ved koding"
 #, kde-format
 msgid "Track %1"
 msgstr "Spor %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Gaute Hvoslef Kvalnes,Karl Ove Hufthammer"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "gaute@verdsveven.com,karl@huftis.org"

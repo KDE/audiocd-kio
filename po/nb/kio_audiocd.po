@@ -111,11 +111,3 @@ msgstr "Klarte ikke lese %1: koding mislyktes"
 #, kde-format
 msgid "Track %1"
 msgstr "Spor %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Nils Kristian Tomren"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "slx@nilsk.net"

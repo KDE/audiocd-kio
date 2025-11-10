@@ -106,11 +106,3 @@ msgstr "Грешка при четене на %1: грешно кодиране"
 #, kde-format
 msgid "Track %1"
 msgstr "Песен %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Радостин Раднев"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "radnev@yahoo.com"

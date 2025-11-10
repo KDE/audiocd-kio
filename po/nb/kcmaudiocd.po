@@ -286,11 +286,3 @@ msgstr "%{albumtitle}/%{albumartist}"
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 Enkoder"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Axel Bojer,Knut Yrvin,Nils Kristian Tomren"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "fri_programvare@bojer.no,knut.yrvin@gmail.com,slx@nilsk.net"
