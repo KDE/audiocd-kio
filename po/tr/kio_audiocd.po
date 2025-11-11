@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdemultimedia-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-04 00:41+0000\n"
+"POT-Creation-Date: 2025-11-11 00:41+0000\n"
 "PO-Revision-Date: 2024-05-27 00:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -21,23 +21,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 24.07.70\n"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:119
 #, kde-format
 msgid "Information"
 msgstr "Bilgi"
 
-#: audiocd.cpp:117
+#: audiocd.cpp:120
 #, kde-format
 msgid "Full CD"
 msgstr "Bütün CD"
 
-#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
-#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
+#: audiocd.cpp:417 audiocd.cpp:421 audiocd.cpp:489 audiocd.cpp:506
+#: audiocd.cpp:684 audiocd.cpp:782 audiocd.cpp:784 audiocd.cpp:790
 #, kde-format
 msgid "CDDB Information"
 msgstr "CDDB Bilgisi"
 
-#: audiocd.cpp:492
+#: audiocd.cpp:460
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -46,13 +46,13 @@ msgstr ""
 "Bu iletişim kuralıyla bir makine belirtmelisiniz. Lütfen audiocd:/ biçimini "
 "kullanın."
 
-#: audiocd.cpp:876
+#: audiocd.cpp:896
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr "Aygıt belirtimi eksik"
 
-#: audiocd.cpp:886
+#: audiocd.cpp:906
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
@@ -61,7 +61,7 @@ msgstr ""
 "Aygıtın bu hesap için okuma izinleri yok. Aygıttaki okuma izinlerini "
 "denetleyin."
 
-#: audiocd.cpp:890
+#: audiocd.cpp:910
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
@@ -70,7 +70,7 @@ msgstr ""
 "Aygıtın bu hesap için yazma izinleri yok. Aygıttaki yazma izinlerini "
 "denetleyin."
 
-#: audiocd.cpp:896
+#: audiocd.cpp:916
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -91,22 +91,22 @@ msgstr ""
 "hangi aygıtınızın CD-ROM olduğunu söylemek için audiocd:/?device=/dev/sg0 "
 "(veya benzerini) kullanın."
 
-#: audiocd.cpp:974
+#: audiocd.cpp:994
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr "AudioCD: Bu parçada disk hasarı algılandı, veri bozulması riski var."
 
-#: audiocd.cpp:981
+#: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "CD’den %1 için ses verisi okuma hatası"
 
-#: audiocd.cpp:991 audiocd.cpp:1069
+#: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "%1 okunamadı: Kodlama başarısız"
 
-#: audiocd.cpp:1200
+#: audiocd.cpp:1220
 #, kde-format
 msgid "Track %1"
 msgstr "Parça %1"

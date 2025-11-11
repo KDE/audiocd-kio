@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-04 00:41+0000\n"
+"POT-Creation-Date: 2025-11-11 00:41+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -19,23 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
 "X-Generator: Lokalize 24.08.2\n"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:119
 #, kde-format
 msgid "Information"
 msgstr "सूचना"
 
-#: audiocd.cpp:117
+#: audiocd.cpp:120
 #, kde-format
 msgid "Full CD"
 msgstr "पूर्ण सीडी"
 
-#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
-#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
+#: audiocd.cpp:417 audiocd.cpp:421 audiocd.cpp:489 audiocd.cpp:506
+#: audiocd.cpp:684 audiocd.cpp:782 audiocd.cpp:784 audiocd.cpp:790
 #, kde-format
 msgid "CDDB Information"
 msgstr "CDDB सूचना"
 
-#: audiocd.cpp:492
+#: audiocd.cpp:460
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -44,27 +44,27 @@ msgstr ""
 "एतेन प्रोटोकॉलेन सह होस्ट् निर्दिष्टुं न शक्नुवन्ति । कृपया तस्य स्थाने audiocd:/ प्रारूपस्य "
 "उपयोगं कुर्वन्तु ।"
 
-#: audiocd.cpp:876
+#: audiocd.cpp:896
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr "यन्त्रविनिर्देशः अनुपलब्धः"
 
-#: audiocd.cpp:886
+#: audiocd.cpp:906
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr "अस्य खातेः पठन-अनुमतिः उपकरणे नास्ति ।  यन्त्रे पठन-अनुमत्यानि पश्यन्तु ।"
 
-#: audiocd.cpp:890
+#: audiocd.cpp:910
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr "अस्य खातेः लेखनस्य अनुमतिः उपकरणस्य नास्ति ।  यन्त्रे लेखन-अनुमतिः पश्यन्तु ।"
 
-#: audiocd.cpp:896
+#: audiocd.cpp:916
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -84,22 +84,22 @@ msgstr ""
 "यदि अद्यापि कार्यं न करोति तर्हि kio_audiocd इत्यस्मै कथयितुं audiocd:/?device=/dev/"
 "sg0 (अथवा तत्सदृशं) टङ्कयितुं प्रयतस्व सीडी-रोम इति ।"
 
-#: audiocd.cpp:974
+#: audiocd.cpp:994
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr "AudioCD: अस्मिन् पटले डिस्कक्षतिः ज्ञाता, दत्तांशभ्रष्टतायाः जोखिमः।"
 
-#: audiocd.cpp:981
+#: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "CD तः %1 कृते श्रव्यदत्तांशपठने त्रुटिः"
 
-#: audiocd.cpp:991 audiocd.cpp:1069
+#: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "%1 पठितुं न शक्तम्: एन्कोडिंग् विफलम्"
 
-#: audiocd.cpp:1200
+#: audiocd.cpp:1220
 #, kde-format
 msgid "Track %1"
 msgstr "%1 पटलः"

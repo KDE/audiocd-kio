@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-04 00:41+0000\n"
+"POT-Creation-Date: 2025-11-11 00:41+0000\n"
 "PO-Revision-Date: 2020-09-09 09:12+0200\n"
 "Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -23,23 +23,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:119
 #, kde-format
 msgid "Information"
 msgstr "Information"
 
-#: audiocd.cpp:117
+#: audiocd.cpp:120
 #, kde-format
 msgid "Full CD"
 msgstr "Gesamte CD"
 
-#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
-#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
+#: audiocd.cpp:417 audiocd.cpp:421 audiocd.cpp:489 audiocd.cpp:506
+#: audiocd.cpp:684 audiocd.cpp:782 audiocd.cpp:784 audiocd.cpp:790
 #, kde-format
 msgid "CDDB Information"
 msgstr "CDDB-Informationen"
 
-#: audiocd.cpp:492
+#: audiocd.cpp:460
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -48,13 +48,13 @@ msgstr ""
 "Bei diesem Protokoll ist eine Serverangabe nicht möglich. Bitte benutzen Sie "
 "dafür das Format „audiocd:/“."
 
-#: audiocd.cpp:876
+#: audiocd.cpp:896
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr "Fehlende Geräteangabe"
 
-#: audiocd.cpp:886
+#: audiocd.cpp:906
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
@@ -63,7 +63,7 @@ msgstr ""
 "Sie haben nicht die nötigen Rechte zum Lesen von diesem Gerät. Bitte prüfen "
 "Sie die Leserechte für dieses Gerät."
 
-#: audiocd.cpp:890
+#: audiocd.cpp:910
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
@@ -72,7 +72,7 @@ msgstr ""
 "Sie haben nicht die nötigen Rechte zum Schreiben auf das Gerät. Bitte prüfen "
 "Sie die Schreibrechte für das Gerät."
 
-#: audiocd.cpp:896
+#: audiocd.cpp:916
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -95,24 +95,24 @@ msgstr ""
 "audiocd:/?device=/dev/sg0 (mit dem passenden Gerät) dem Ein-/Ausgabemodul "
 "für Audio-CDs Ihr Gerät bekannt zu machen."
 
-#: audiocd.cpp:974
+#: audiocd.cpp:994
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
 "AudioCD: Das Medium ist offenbar beschädigt. Die geschriebenen Daten könnten "
 "fehlerhaft sein."
 
-#: audiocd.cpp:981
+#: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "Beim Lesen der Audiodaten von CD für %1 ist ein Fehler aufgetreten."
 
-#: audiocd.cpp:991 audiocd.cpp:1069
+#: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "%1 kann nicht gelesen werden: Die Kodierung ist fehlgeschlagen"
 
-#: audiocd.cpp:1200
+#: audiocd.cpp:1220
 #, kde-format
 msgid "Track %1"
 msgstr "Stück %1"

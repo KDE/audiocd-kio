@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-04 00:41+0000\n"
+"POT-Creation-Date: 2025-11-11 00:41+0000\n"
 "PO-Revision-Date: 2005-01-04 23:57-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -16,23 +16,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:119
 #, kde-format
 msgid "Information"
 msgstr ""
 
-#: audiocd.cpp:117
+#: audiocd.cpp:120
 #, kde-format
 msgid "Full CD"
 msgstr "முழு குறுந்தகடு"
 
-#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
-#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
+#: audiocd.cpp:417 audiocd.cpp:421 audiocd.cpp:489 audiocd.cpp:506
+#: audiocd.cpp:684 audiocd.cpp:782 audiocd.cpp:784 audiocd.cpp:790
 #, kde-format
 msgid "CDDB Information"
 msgstr ""
 
-#: audiocd.cpp:492
+#: audiocd.cpp:460
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -41,27 +41,27 @@ msgstr ""
 "இந்த நெறிமுறையோடு புரவலனை குறிக்க முடியாது. அதற்குப் பதிலாக ஒலி குறுந்தகடை "
 "பயன்படுத்தவும்:/வடிவமைப்பு"
 
-#: audiocd.cpp:876
+#: audiocd.cpp:896
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr ""
 
-#: audiocd.cpp:886
+#: audiocd.cpp:906
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
 
-#: audiocd.cpp:890
+#: audiocd.cpp:910
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
 
-#: audiocd.cpp:896
+#: audiocd.cpp:916
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -78,24 +78,24 @@ msgstr ""
 "அணுக அனுமதி இருக்கிறதா என்பதை உறுதி செய்துகொள்ளவும். நீங்கள் SCSI முனையத்தை "
 "பயன்படுத்தினால் (உங்களிடம் ஒரு IDE CD எழுதி இருக்கலாம்) பிறகு"
 
-#: audiocd.cpp:974
+#: audiocd.cpp:994
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
 "கேட்பொலி குறுந்தகடு: இந்த பாதையில் வட்டின் பழுது கண்டுபிடிக்கபட்டது, தரவு "
 "பழுதடைந்துள்ளது."
 
-#: audiocd.cpp:981
+#: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "குறுந்தகட்டில் இருந்து %1க்கான ஆடியோ தகவலை படிக்கையில் பிழை"
 
-#: audiocd.cpp:991 audiocd.cpp:1069
+#: audiocd.cpp:1011 audiocd.cpp:1089
 #, fuzzy, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "%1ஐ படிக்க இயலவில்லை: ஒத்திசைவில் தோல்வி"
 
-#: audiocd.cpp:1200
+#: audiocd.cpp:1220
 #, kde-format
 msgid "Track %1"
 msgstr "தடம்%1"

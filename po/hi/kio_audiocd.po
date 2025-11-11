@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-04 00:41+0000\n"
+"POT-Creation-Date: 2025-11-11 00:41+0000\n"
 "PO-Revision-Date: 2007-12-31 13:15+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -18,24 +18,24 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:119
 #, kde-format
 msgid "Information"
 msgstr "जानकारी"
 
-#: audiocd.cpp:117
+#: audiocd.cpp:120
 #, kde-format
 msgid "Full CD"
 msgstr "पूरी सीडी"
 
-#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
-#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
+#: audiocd.cpp:417 audiocd.cpp:421 audiocd.cpp:489 audiocd.cpp:506
+#: audiocd.cpp:684 audiocd.cpp:782 audiocd.cpp:784 audiocd.cpp:790
 #, fuzzy, kde-format
 #| msgid "Information"
 msgid "CDDB Information"
 msgstr "जानकारी"
 
-#: audiocd.cpp:492
+#: audiocd.cpp:460
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
@@ -44,27 +44,27 @@ msgstr ""
 "इस प्रोटोकॉल के द्वारा आप एक होस्ट उल्लेखित नहीं कर सकते हैं. बदले में कृपया ऑडियो सीडी:/ "
 "फॉर्मेट इस्तेमाल करें."
 
-#: audiocd.cpp:876
+#: audiocd.cpp:896
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr ""
 
-#: audiocd.cpp:886
+#: audiocd.cpp:906
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
 
-#: audiocd.cpp:890
+#: audiocd.cpp:910
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
 
-#: audiocd.cpp:896
+#: audiocd.cpp:916
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -77,22 +77,22 @@ msgid ""
 "CD-ROM is."
 msgstr ""
 
-#: audiocd.cpp:974
+#: audiocd.cpp:994
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr "ऑडियो-सीडी: इस ट्रैक पर डिस्क खराबी का पता चला, डाटा खराब होने का जोखिम है."
 
-#: audiocd.cpp:981
+#: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "सीडी से %1 के लिए ऑडियो डाटा पढ़ने में त्रुटि"
 
-#: audiocd.cpp:991 audiocd.cpp:1069
+#: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "%1 को पढ़ा नहीं जा सका: एनकोडिंग असफल"
 
-#: audiocd.cpp:1200
+#: audiocd.cpp:1220
 #, kde-format
 msgid "Track %1"
 msgstr "ट्रैक %1"

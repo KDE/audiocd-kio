@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-04 00:41+0000\n"
+"POT-Creation-Date: 2025-11-11 00:41+0000\n"
 "PO-Revision-Date: 2010-05-11 11:19+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -18,50 +18,50 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "\n"
 
-#: audiocd.cpp:116
+#: audiocd.cpp:119
 #, kde-format
 msgid "Information"
 msgstr "ព័ត៌មាន"
 
-#: audiocd.cpp:117
+#: audiocd.cpp:120
 #, kde-format
 msgid "Full CD"
 msgstr "ស៊ីឌី​ទាំងមូល"
 
-#: audiocd.cpp:449 audiocd.cpp:453 audiocd.cpp:521 audiocd.cpp:538
-#: audiocd.cpp:663 audiocd.cpp:762 audiocd.cpp:764 audiocd.cpp:770
+#: audiocd.cpp:417 audiocd.cpp:421 audiocd.cpp:489 audiocd.cpp:506
+#: audiocd.cpp:684 audiocd.cpp:782 audiocd.cpp:784 audiocd.cpp:790
 #, kde-format
 msgid "CDDB Information"
 msgstr "ព័ត៌មាន CDDB"
 
-#: audiocd.cpp:492
+#: audiocd.cpp:460
 #, kde-format
 msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
 msgstr "អ្នក​មិន​អាច​បញ្ជាក់​ម៉ាស៊ីន​មួយ​​ជា​មួយ​ពិធីការ​នេះ​បានទេ ។ សូម​ប្រើ​ទ្រង់ទ្រាយ audiocd ៖/ ជំនួស​វិញ ។"
 
-#: audiocd.cpp:876
+#: audiocd.cpp:896
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
 msgstr ""
 
-#: audiocd.cpp:886
+#: audiocd.cpp:906
 #, kde-format
 msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr "ឧបករណ៍​មិនមាន​សិទ្ធិ​អាន​សម្រាប់​គណនី​នេះ​ទេ ។ ពិនិត្យ​មើល​សិទ្ធិ​អាន​នៅលើ​ឧបករណ៍ ។"
 
-#: audiocd.cpp:890
+#: audiocd.cpp:910
 #, kde-format
 msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr "ឧបករណ៍​មិនមាន​សិទ្ធិ​​សរសេរ​សម្រាប់​គណនី​នេះ​ទេ ។ ពិនិត្យ​សិទ្ធិសរសេរ​នៅលើ​ឧបករណ៍ ។"
 
-#: audiocd.cpp:896
+#: audiocd.cpp:916
 #, kde-format
 msgid ""
 "Unknown error.  If you have a cd in the drive try running cdparanoia -vsQ as "
@@ -80,22 +80,22 @@ msgstr ""
 "ជា /dev/sg0, /dev/sg1, ។ល។... ប្រសិន​បើ​វា​នៅ​តែ​មិន​ធ្វើ​ការ ព្យាយាម​វាយ audiocd:/?"
 "device=/dev/sg0 (ឬ​ដូច​គ្នា) នឹង tell kio_audiocd ដែល​ជា​​ឧបករណ៍​ស៊ីឌី​រ៉ូម​របស់​​អ្នក ។"
 
-#: audiocd.cpp:974
+#: audiocd.cpp:994
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr "អូឌីយ៉ូ​ស៊ីឌី ៖ បាន​រក​ឃើញ​ថាស​​ខូស​​​នៅ​លើ​បទ​នេះ ប្រឈម​មុខ​នឹង​ការ​ខូច​ទិន្នន័យ ។"
 
-#: audiocd.cpp:981
+#: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
 msgstr "កំហុស​ក្នុង​ការ​អាន​ទិន្នន័យ​អូឌីយ៉ូ​សម្រាប់ %1 ពី​ស៊ីឌី"
 
-#: audiocd.cpp:991 audiocd.cpp:1069
+#: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format
 msgid "Could not read %1: encoding failed"
 msgstr "មិនអាច​អាន %1 ៖ ការ​អ៊ិនកូដ​បាន​បរាជ័យ"
 
-#: audiocd.cpp:1200
+#: audiocd.cpp:1220
 #, kde-format
 msgid "Track %1"
 msgstr "បទ %1"
