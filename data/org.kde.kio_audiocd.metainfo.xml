@@ -49,6 +49,13 @@
   <name xml:lang="zh-CN">KIO AudioCD</name>
   <name xml:lang="zh-TW">KIO AudioCD</name>
   <summary>Integration of audio CDs with KDE applications</summary>
+  <summary xml:lang="ca">Integració dels CD d'àudio amb les aplicacions de KDE</summary>
+  <summary xml:lang="he">שילוב של תקליטורי שמע עם יישומי KDE</summary>
+  <summary xml:lang="ka">აუდიო CD-ების ინტეგრაცია KDE-ის აპლიკაციებთან</summary>
+  <summary xml:lang="pt-BR">Integração de CDs de áudio com aplicativos KDE</summary>
+  <summary xml:lang="sl">Integracija zvočnih CD-jev z aplikacijami KDE</summary>
+  <summary xml:lang="tr">Ses CD’lerinin KDE uygulamalarıyla tümleşimi</summary>
+  <summary xml:lang="uk">Інтеграція звукових компакт-дисків з програмами KDE</summary>
   <description>
     <p>KIO AudioCD is a KIO worker that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.</p>
     <p xml:lang="ar">عامل الدخل والخرج للأقراص الصوتية هو ملحق يمكن التطبيقات المدركة لـKIO (مثل دولفين و k3b) من الوصول إلى الأقراص الصوتية وبياناتها النصية. وكذلك تسمح التحويل بينات الصوتية إلى الترميزات المشهورة عن طريق السحب وإفلات. يوجد وحدة ضبط خاصة بها في إعدادات النظام تحت قسم الوسائط.</p>
@@ -121,7 +128,7 @@
       <caption xml:lang="id">Jendela konfigurasi KIO AudioCD </caption>
       <caption xml:lang="is">Grunnstillingagluggi KIO AudioCD</caption>
       <caption xml:lang="it">Finestra di configurazione di KIO AudioCD</caption>
-      <caption xml:lang="ka">KIO AudioCD -ის მორგების ფანჯარა</caption>
+      <caption xml:lang="ka">KIO AudioCD-ის მორგების ფანჯარა</caption>
       <caption xml:lang="ko">KIO 오디오 CD 설정 창</caption>
       <caption xml:lang="lv">„KIO AudioCD“ konfigurācijas logs</caption>
       <caption xml:lang="nl">Instellingenvenster van KIO AudioCD</caption>
