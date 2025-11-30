@@ -55,7 +55,7 @@
 >. Isto garante uma cópia perfeita dos dados áudio.</para>
 
 <para
->Para ver como funciona este 'slave', introduza um <acronym
+>Para ver como funciona este KIO, introduza um <acronym
 >CD</acronym
 > de áudio na sua unidade de &CD-ROM; e digite <userinput
 >audiocd:/</userinput
@@ -64,7 +64,7 @@
 <para
 >Os <acronym
 >CD</acronym
->s de áudio não contém, na realidade, pastas, mas o 'slave' audiocd as disponibiliza por conveniência. Se olhar dentro dessas pastas, verá que todas elas contém o mesmo número de faixas. Se estiver conectado à Internet, algumas pastas terão os títulos verdadeiros das faixas como nomes dos arquivos.</para>
+>s de áudio não contém, na realidade, pastas, mas o KIO do audiocd as disponibiliza por conveniência. Se olhar dentro dessas pastas, verá que todas elas contém o mesmo número de faixas. Se estiver conectado à Internet, algumas pastas terão os títulos verdadeiros das faixas como nomes dos arquivos.</para>
 
 <para
 >A razão pela qual existem estas pastas separadas tem a ver com a escolha do formato no qual deseja ouvir (ou copiar) as faixas do <acronym
@@ -79,7 +79,7 @@
 > e sendo salva num arquivo. Não se esqueça que o Ogg Vorbis é um formato comprimido, por isso o arquivo na sua pasta pessoal parecerá bem menor do que se tivesse copiado os dados brutos.</para>
 
 <para
->O mecanismo por trás disto é muito simples. Quando é pedido ao 'slave' audiocd para obter uma faixa da pasta <filename class="directory"
+>O mecanismo por trás disto é muito simples. Quando é pedido ao KIO do audiocd para obter uma faixa da pasta <filename class="directory"
 >Ogg Vorbis</filename
 >, ele começa a extrair os dados de áudio digital do <acronym
 >CD</acronym
@@ -122,7 +122,7 @@
 >=<parameter
 >/dev/sdc</parameter
 ></userinput
->. Normalmente o 'slave' irá tentar descobrir uma unidade de <acronym
+>. Normalmente o KIO irá tentar descobrir uma unidade de <acronym
 >CD</acronym
 > que tenha um <acronym
 >CD</acronym
@@ -323,7 +323,7 @@
 >/dev/sg0</filename
 >, <filename class="devicefile"
 >/dev/sg1</filename
->. Se mesmo assim não funcionar, tente executar <userinput
+>, &etc;. Se mesmo assim não funcionar, tente executar <userinput
 >audiocd:/?device=/dev/sg0</userinput
 > (ou similar) para dizer ao kio_audiocd em que dispositivo se encontra o seu &CD-ROM;.</para
 > 
