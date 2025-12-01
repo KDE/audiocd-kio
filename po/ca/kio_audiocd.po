@@ -115,17 +115,3 @@ msgstr "No s'ha pogut llegir %1: ha fallat la codificació"
 #, kde-format
 msgid "Track %1"
 msgstr "Peça %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Josep M. Ferrer,Albert Astals Cid"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "txemaq@gmail.com,aacid@kde.org"
-
-#~ msgid "Protocol name"
-#~ msgstr "Nom del protocol"
-
-#~ msgid "Socket name"
-#~ msgstr "Nom del sòcol"
