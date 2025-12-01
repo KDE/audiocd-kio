@@ -49,8 +49,11 @@
   <name xml:lang="zh-CN">KIO AudioCD</name>
   <name xml:lang="zh-TW">KIO AudioCD</name>
   <summary>Integration of audio CDs with KDE applications</summary>
+  <summary xml:lang="ar">تكامل الأقراص المدمجة الصوتية مع تطبيقات كيدي</summary>
   <summary xml:lang="bg">Интеграция на аудио компактдискове с KDE приложения</summary>
   <summary xml:lang="ca">Integració dels CD d'àudio amb les aplicacions de KDE</summary>
+  <summary xml:lang="eu">Audio CDak KDE aplikazioekin bateratzea</summary>
+  <summary xml:lang="fr">Intégration des CD audio avec les applications de KDE</summary>
   <summary xml:lang="he">שילוב של תקליטורי שמע עם יישומי KDE</summary>
   <summary xml:lang="ka">აუდიო CD-ების ინტეგრაცია KDE-ის აპლიკაციებთან</summary>
   <summary xml:lang="nl">Integratie van audio-cd's met KDE toepassingen</summary>
@@ -58,6 +61,7 @@
   <summary xml:lang="sl">Integracija zvočnih CD-jev z aplikacijami KDE</summary>
   <summary xml:lang="tr">Ses CD’lerinin KDE uygulamalarıyla tümleşimi</summary>
   <summary xml:lang="uk">Інтеграція звукових компакт-дисків з програмами KDE</summary>
+  <summary xml:lang="zh-TW">KDE 應用程式的音訊 CD 整合</summary>
   <description>
     <p>KIO AudioCD is a KIO worker that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Multimedia" section.</p>
     <p xml:lang="ar">عامل الدخل والخرج للأقراص الصوتية هو ملحق يمكن التطبيقات المدركة لـKIO (مثل دولفين و k3b) من الوصول إلى الأقراص الصوتية وبياناتها النصية. وكذلك تسمح التحويل بينات الصوتية إلى الترميزات المشهورة عن طريق السحب وإفلات. يوجد وحدة ضبط خاصة بها في إعدادات النظام تحت قسم الوسائط.</p>
