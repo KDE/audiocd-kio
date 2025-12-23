@@ -39,7 +39,7 @@
 </authorgroup>
 
 <date
->2004-09-16</date>
+>2004‒09‒16</date>
 <releaseinfo
 >2.30.00</releaseinfo>
 
@@ -48,9 +48,9 @@
 <para
 >Ses <acronym
 >CD</acronym
->'lerinin, parçaların dosya olarak temsil edildiği ve klasörden kopyalandığında sayısal olarak <acronym
+>’lerinin, parçaların dosya olarak temsil edildiği ve klasörden kopyalandığında sayısal olarak <acronym
 >CD</acronym
->'den çıkarıldığı <quote
+>’den çıkarıldığı <quote
 >gerçek</quote
 > dosya sistemi gibi işlenmesine olanak tanır. Bu, ses verisinin mükemmel bir kopyasını sağlar.</para>
 
@@ -64,7 +64,7 @@
 <para
 >Ses <acronym
 >CD</acronym
->'lerinin gerçekte klasörleri yoktur; ancak audiocd KIO işçisi bunları kolaylık sağlamak için sağlar. Bu klasörlerin içine bakarsanız hepsinin aynı sayıda parça içerdiğini göreceksiniz. İnternete bağlıysanız bazı klasörlerde gerçek parça adları dosya adları olarak gösterilir.</para>
+>’lerinin gerçekte klasörleri yoktur; ancak audiocd KIO işçisi bunları kolaylık sağlamak için sağlar. Bu klasörlerin içine bakarsanız hepsinin aynı sayıda parça içerdiğini göreceksiniz. İnternete bağlıysanız bazı klasörlerde gerçek parça adları dosya adları olarak gösterilir.</para>
 
 <para
 >Bu ayrı klasörlerin var olmasının nedeni, <acronym
@@ -83,14 +83,14 @@
 >Ogg Vorbis</filename
 > klasöründen bir parça alması istendiğinde, sayısal ses verisini <acronym
 >CD</acronym
->'den çıkarmaya başlar. Veriyi ana klasörünüzdeki dosyaya gönderirken aynı anda onu Ogg Vorbis biçiminde kodlar (<acronym
+>’den çıkarmaya başlar. Veriyi ana klasörünüzdeki dosyaya gönderirken aynı anda onu Ogg Vorbis biçiminde kodlar (<acronym
 >CD</acronym
 > sesi, normalde sıkıştırılmamış bir biçimdedir).</para>
 
 <para
 >Ayrıca <literal role="extension"
 >.wav</literal
-> ile biten bir dosyayı sürükleyip &kde;'nin &juk; ortam oynatıcısına bırakmayı da deneyebilirsiniz, Bu durumda, sahne arkasında gerçekleşen prosedür benzerdir; ancak ses verisinin Ogg Vorbis biçiminde kodlanması yerine, ham ikili veriden (üst düzey klasördeki <literal role="extension"
+> ile biten bir dosyayı sürükleyip &kde;’nin &juk; ortam oynatıcısına bırakmayı da deneyebilirsiniz, Bu durumda, sahne arkasında gerçekleşen prosedür benzerdir; ancak ses verisinin Ogg Vorbis biçiminde kodlanması yerine, ham ikili veriden (üst düzey klasördeki <literal role="extension"
 >.cda</literal
 > dosyalarından), çoğu ortam oynatıcısının anladığı sıkıştırılmamış bir biçim olan <quote
 >RIFF WAV</quote
@@ -124,7 +124,7 @@
 ></userinput
 >. Normalde KIO işçisi, içinde bir ses <acronym
 >CD</acronym
->'si olan takılı bir <acronym
+>’si olan takılı bir <acronym
 >CD</acronym
 > bulmaya çalışır; ancak başarısız olursa veya birden çok <acronym
 >CD</acronym
@@ -228,7 +228,7 @@
 >CD</acronym
 > sürücünüz varsa (daha pahalının mutlaka daha iyi kalite anlamına gelmediğini unutmayın), o zaman büyük olasılıkla çok yavaş çıkarma deneyimi yaşamazsınız; ancak kötü bir sürücünün bir <acronym
 >CD</acronym
->'deki sesi çıkarması günler(!) alabilir.</para>
+>’deki sesi çıkarması günler(!) alabilir.</para>
 </listitem>
 </varlistentry>
 
@@ -244,11 +244,11 @@
 >CD</acronym
 > Veritabanı girdisinin kullanılacağını belirtin. Ses <acronym
 >CD</acronym
->'lerinin parça adları yoktur; ancak İnternet <acronym
+>’lerinin parça adları yoktur; ancak İnternet <acronym
 >CD</acronym
 > Veritabanı, bir parça listesine çapraz başvuru vermek için her <acronym
 >CD</acronym
->'deki parçaların sayısı ve uzunluğundan oluşturulan özel bir benzersiz tanımlayıcı kullanan akıllı bir sistemdir. Parça listeleri, internetteki herkes tarafından katkıda bulunulur ve kullanımına sunulur. Bazen birden fazla girdi olacaktır. Hangisini kullanacağınızı belirtebilirsiniz.</para>
+>’deki parçaların sayısı ve uzunluğundan oluşturulan özel bir benzersiz tanımlayıcı kullanan akıllı bir sistemdir. Parça listeleri, internetteki herkes tarafından katkıda bulunulur ve kullanımına sunulur. Bazen birden fazla girdi olacaktır. Hangisini kullanacağınızı belirtebilirsiniz.</para>
 
 <para
 >&kscd;, &kde; <acronym
@@ -277,9 +277,9 @@
 >/dev/scd0</filename
 > içindeki ses <acronym
 >CD</acronym
->'sindeki parçaların listesini verir. Parçaları <acronym
+>’sindeki parçaların listesini verir. Parçaları <acronym
 >CD</acronym
->'den kopyalarsanız sayısal çıkarma hata düzeltme veya algılama kullanmadan gerçekleştirilir. <acronym
+>’den kopyalarsanız sayısal çıkarma hata düzeltme veya algılama kullanmadan gerçekleştirilir. <acronym
 >CDDB</acronym
 > veritabanındaki 0. girdi kullanılacaktır.</para>
 </listitem>
@@ -296,7 +296,7 @@
 >Dosya/Klasör yok</errorname
 > hatasını alıyorum. Bunu nasıl düzeltebilirim? Sürücümde bir ses <acronym
 >CD</acronym
->'si var!</para>
+>’si var!</para>
 </question>
 
 <answer>

@@ -41,7 +41,7 @@
 </authorgroup>
 
 <date
->2019-02-08</date>
+>2019‒02‒08</date>
 <releaseinfo
 >Uygulamalar 19.04</releaseinfo>
 
@@ -291,7 +291,7 @@
 >Telif hakkıyla korunuyor</guilabel
 > ögesini işaretleyin.</para>
 <para
->Verinin çıkarılması özgün &CD;'den yapılıyorsa <guilabel
+>Verinin çıkarılması özgün &CD;’den yapılıyorsa <guilabel
 >Özgün</guilabel
 > ögesini işaretleyin.</para>
 <para
@@ -334,7 +334,7 @@
 <para
 >Ayrıca öntanımlı olan <guilabel
 >Ortalama bit hızı</guilabel
->'nı veya <guilabel
+>’nı veya <guilabel
 >En yüksek bit hızı</guilabel
 >, <guilabel
 >En düşük bit hızı</guilabel
@@ -412,7 +412,7 @@
 >Sabit bit hızı</guilabel
 >) gereklidir.</para>
 <para
->Çift kanallı müzik için 64-128 kbit/sn bit hızının kullanılması tavsiye edilir.</para>
+>Çift kanallı müzik için 64–128 kbit/sn bit hızının kullanılması tavsiye edilir.</para>
 </listitem>
 </itemizedlist>
 </listitem>
