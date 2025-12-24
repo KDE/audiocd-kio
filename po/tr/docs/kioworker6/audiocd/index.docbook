@@ -242,11 +242,11 @@
 <para
 >Hangi İnternet <acronym
 >CD</acronym
-> Veritabanı girdisinin kullanılacağını belirtin. Ses <acronym
+> Veri tabanı girdisinin kullanılacağını belirtin. Ses <acronym
 >CD</acronym
 >’lerinin parça adları yoktur; ancak İnternet <acronym
 >CD</acronym
-> Veritabanı, bir parça listesine çapraz başvuru vermek için her <acronym
+> Veri tabanı, bir parça listesine çapraz başvuru vermek için her <acronym
 >CD</acronym
 >’deki parçaların sayısı ve uzunluğundan oluşturulan özel bir benzersiz tanımlayıcı kullanan akıllı bir sistemdir. Parça listeleri, internetteki herkes tarafından katkıda bulunulur ve kullanımına sunulur. Bazen birden fazla girdi olacaktır. Hangisini kullanacağınızı belirtebilirsiniz.</para>
 
@@ -281,7 +281,7 @@
 >CD</acronym
 >’den kopyalarsanız sayısal çıkarma hata düzeltme veya algılama kullanmadan gerçekleştirilir. <acronym
 >CDDB</acronym
-> veritabanındaki 0. girdi kullanılacaktır.</para>
+> veri tabanındaki 0. girdi kullanılacaktır.</para>
 </listitem>
 </varlistentry>
 </variablelist>
