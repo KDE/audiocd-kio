@@ -1,4 +1,3 @@
-# SPDX-FileCopyrightText: 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2002 Carsten Niehaus <cniehaus@kde.org>
 # SPDX-FileCopyrightText: 2003, 2004, 2005 Arnold Krille <arnold@arnoldarts.de>
 # SPDX-FileCopyrightText: 2003, 2005 Stephan Johach <hunsum@gmx.de>
@@ -7,6 +6,7 @@
 # SPDX-FileCopyrightText: 2007 Martin Ereth <martin.ereth@arcor.de>
 # SPDX-FileCopyrightText: 2009, 2010 Panagiotis Papadopoulos <pano_90@gmx.net>
 # SPDX-FileCopyrightText: 2010, 2011, 2016, 2022 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2010, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2019 Burkhard Lück <lueck@hube-lueck.de>
 msgid ""
 msgstr ""
