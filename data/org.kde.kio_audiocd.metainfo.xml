@@ -54,7 +54,7 @@
   <summary xml:lang="ca">Integració dels CD d'àudio amb les aplicacions de KDE</summary>
   <summary xml:lang="ca-valencia">Integració dels CD d'àudio amb les aplicacions de KDE</summary>
   <summary xml:lang="cs">Integrace zvukových CD s aplikacemi KDE</summary>
-  <summary xml:lang="de">Integration von Audio-CDs in die KDE-Anwendungen</summary>
+  <summary xml:lang="de">Integration von Audio-CDs in KDE-Anwendungen</summary>
   <summary xml:lang="es">Integración de CDs de audio con aplicaciones de KDE</summary>
   <summary xml:lang="eu">Audio CDak KDE aplikazioekin bateratzea</summary>
   <summary xml:lang="fr">Intégration des CD audio avec les applications de KDE</summary>
@@ -74,9 +74,11 @@
   <summary xml:lang="zh-TW">KDE 應用程式的音訊 CD 整合</summary>
   <description>
     <p>KIO AudioCD is a KIO worker that enables KIO-aware applications (such as Dolphin or k3b) to access audio and CD text data on the audio compact disks. It allows transparent drag and drop conversion of audio data into the popular formats and has a configuration System Settings module available in the "Connected Devices" section.</p>
+    <p xml:lang="ar">عامل الدخل والخرج للأقراص الصوتية هو ملحق يمكن التطبيقات المدركة لـKIO (مثل دولفين و k3b) من الوصول إلى الأقراص الصوتية وبياناتها النصية. وكذلك تسمح التحويل بينات الصوتية إلى الترميزات المشهورة عن طريق السحب وإفلات. يوجد وحدة ضبط خاصة بها في إعدادات النظام تحت قسم "الأجهزة المتصلة".</p>
     <p xml:lang="bg">KIO AudioCD позволява на приложенията, работещи с KIO (като например Dolphin или k3b) да имат достъп до аудио и CD текстови данни на аудио дисковете. Програмата позволява прозрачно преобразуване с влачене и пускане на аудио данни в различни популярни формати и има модул за конфигуриране в Системни настройки, достъпен в раздел „Свързани устройства“.</p>
     <p xml:lang="ca">El KIO AudioCD és un procés de treball KIO que habilita les aplicacions que admeten el KIO (com el Dolphin o el K3b) per a accedir a l'àudio CD i a les dades de text dels discs compactes d'àudio. Permet la conversió transparent de dades d'àudio en arrossegar i deixar anar cap als formats usuals i té un mòdul de configuració a l'Arranjament del sistema a la secció «Dispositius connectats».</p>
     <p xml:lang="ca-valencia">KIO AudioCD és un procés de treball KIO que habilita les aplicacions que admeten KIO (com Dolphin o K3b) per a accedir a l'àudio CD i a les dades de text dels discs compactes d'àudio. Permet la conversió transparent de dades d'àudio en arrossegar i deixar anar cap als formats usuals i té un mòdul a Configuració del sistema en la secció «Dispositius connectats».</p>
+    <p xml:lang="de">KIO AudioCD ist ein Ein-/Ausgabemodul, mit dem Anwendungen wie Dolphin oder K3b auf Audio und CD-Textdaten von Audio-CDs zugreifen können. Durch Ziehen und Ablegen werden Audiodaten transparent in populäre Formate umgewandelt. In den Systemeinstellungen gibt es dazu ein Einrichtungsmodul im Abschnitt „Verbundene Geräte“.</p>
     <p xml:lang="fr">KIO AudioCD est un module d'entrées / sorties (KIO) permettant aux applications compatibles « KIO » (comme Dolphin ou k3b) d'accéder aux données audio et texte des disques compacts (CD) audio. Ce module permet de convertir les données audio dans de nombreux formats populaires à l'aide d'une opération de glisser-déposer. Il dispose dans la configuration du système d'un module dans la section « Périphériques connectés » .</p>
     <p xml:lang="he">KIO לתקליטורי שמע הוא מעבד משנה של KIO שמאפשר ליישומים שמודעים ל־KIO (כגון Dolphin או K3b) לגשת לשמע ולנתוני הטקסט בתקליטורי שמע. הוא מאפשר המרה עם גרירה והשלכה של נתוני שמע לתסדירי קבצים נפוצים ויש לו מודול הגדרות מערכת שזמין תחת הסעיף „התקנים מחוברים”.</p>
     <p xml:lang="ka">KIO AudioCD წარმოადგენს KIO-ის დამხმარე პროცესს, რომელიც KIO-სთან მომუშავე აპლიკაციებს (მაგალითად Dolphin-ს ან K3b-ს) საშუალებას აძლევთ, იქონიონ წვდომა ხმაზე და CD-ტექსტზე, რომელიც დისკზეა. ის საშუალებას გაძლევთ, მარტივი გადათრევით გარდაქმნათ აუდიო მონაცემები პოპულარულ ფორმატებში და გააჩნია სისტემის მორგების მოდული, რომელიც "დაკავშირებული მოწყობილობების" სექციაშია ხელმისაწვდომი.</p>
