@@ -4,7 +4,7 @@ kcoreaddons_add_plugin(kcm_audiocd INSTALL_NAMESPACE "plasma/kcms/systemsettings
 kcmutils_generate_desktop_file(kcm_audiocd)
 
 target_sources(kcm_audiocd PRIVATE
-    kcmaudiocd.cpp kcmaudiocd.h
+    kcmaudiocd.cpp kcmaudiocd.h kcmaudiocdmoduledata.cpp kcmaudiocdmoduledata.h
 )
 
 ki18n_wrap_ui(kcm_audiocd audiocdconfig.ui)
@@ -18,6 +18,7 @@ target_link_libraries(kcm_audiocd
     audiocdplugins 
     KF6::KCMUtils
     KF6::I18n
+    KF6::Solid
 )
 
 ########### add handbook ################

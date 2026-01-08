@@ -158,5 +158,6 @@
     "X-KDE-Keywords[zh_CN]": "Audio CD,音频 CD,CD,guangpan,bianma,malv,bitelv,光盘,Ogg,Vorbis,Encoding,编码,CDDA,Bitrate,码率,比特率",
     "X-KDE-Keywords[zh_TW]": "Audio CD,CD,Ogg,Vorbis,Encoding,CDDA,Bitrate",
     "X-KDE-ParentApp": "kcontrol",
-    "X-KDE-System-Settings-Parent-Category": "hardware"
+    "X-KDE-System-Settings-Parent-Category": "hardware",
+    "X-KDE-System-Settings-Uses-ModuleData": true
 }

@@ -33,8 +33,9 @@
 #include <KPluginFactory>
 
 #include "audiocdencoder.h"
+#include "kcmaudiocdmoduledata.h"
 
-K_PLUGIN_CLASS_WITH_JSON(KAudiocdModule, "kcm_audiocd.json")
+K_PLUGIN_FACTORY_WITH_JSON(KAudiocdModuleFactory, "kcm_audiocd.json", registerPlugin<KAudiocdModule>(); registerPlugin<AudioCDModuleData>();)
 
 KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
     : KCModule(parent, md)
