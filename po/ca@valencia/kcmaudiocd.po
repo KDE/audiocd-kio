@@ -46,7 +46,7 @@ msgstr ""
 #: audiocdconfig.ui:59
 #, kde-format
 msgid "Use &error correction when reading the CD"
-msgstr "Utilitza l'esmena d'&errors en llegir el CD"
+msgstr "Utilitza l'esmena d'&errors mentre es llig el CD"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
 #: audiocdconfig.ui:69
@@ -292,11 +292,3 @@ msgstr "%{albumtitle}/%{albumartist}"
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Codificador %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Sebastià Pla i Sanz,Antoni Bella,Josep M. Ferrer"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "sps@sastia.com,antonibella5@yahoo.com,txemaq@gmail.com"

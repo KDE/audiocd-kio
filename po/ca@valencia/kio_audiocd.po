@@ -104,7 +104,8 @@ msgstr ""
 #: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr "S'ha produït un error en llegir les dades d'àudio per a %1 des del CD"
+msgstr ""
+"S'ha produït un error mentre es llegien les dades d'àudio per a %1 des del CD"
 
 #: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format
@@ -115,11 +116,3 @@ msgstr "No s'ha pogut llegir %1: ha fallat la codificació"
 #, kde-format
 msgid "Track %1"
 msgstr "Peça %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Josep M. Ferrer,Albert Astals Cid"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "txemaq@gmail.com,aacid@kde.org"
