@@ -46,7 +46,7 @@ msgstr ""
 #: audiocdconfig.ui:59
 #, kde-format
 msgid "Use &error correction when reading the CD"
-msgstr "Utilitza l'esmena d'&errors en llegir el CD"
+msgstr "Utilitza l'esmena d'&errors mentre es llig el CD"
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_skip_check)
 #: audiocdconfig.ui:69
