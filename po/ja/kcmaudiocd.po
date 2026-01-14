@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"POT-Creation-Date: 2026-01-14 00:43+0000\n"
 "PO-Revision-Date: 2010-09-26 11:43-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -189,8 +189,8 @@ msgstr "次と置換:"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
-#: kcmaudiocd.cpp:209
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
+#: kcmaudiocd.cpp:210
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Cool artist - example audio file.wav"
@@ -292,7 +292,7 @@ msgstr ""
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle}/%{albumartist}"
 
-#: kcmaudiocd.cpp:59
+#: kcmaudiocd.cpp:60
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1 エンコーダ"

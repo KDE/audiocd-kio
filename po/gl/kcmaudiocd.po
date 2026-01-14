@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"POT-Creation-Date: 2026-01-14 00:43+0000\n"
 "PO-Revision-Date: 2024-12-16 22:44+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -183,8 +183,8 @@ msgstr "Substituír por:"
 # skip-rule: trasno-file_reverse
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
-#: kcmaudiocd.cpp:209
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
+#: kcmaudiocd.cpp:210
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Artista xenial — ficheiro.wav de son de exemplo"
@@ -288,7 +288,7 @@ msgstr "Usar macros de localización de ficheiro."
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle}/%{albumartist}"
 
-#: kcmaudiocd.cpp:59
+#: kcmaudiocd.cpp:60
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Codificador %1"

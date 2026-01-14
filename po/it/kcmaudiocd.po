@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"POT-Creation-Date: 2026-01-14 00:43+0000\n"
 "PO-Revision-Date: 2024-08-13 17:23+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -181,8 +181,8 @@ msgstr "Sostituisci con:"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
-#: kcmaudiocd.cpp:209
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
+#: kcmaudiocd.cpp:210
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Un bravo artista - esempio di file audio.wav"
@@ -287,7 +287,7 @@ msgstr "Usa macro per la posizione del file"
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle}/%{albumartist}"
 
-#: kcmaudiocd.cpp:59
+#: kcmaudiocd.cpp:60
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Codificatore %1"

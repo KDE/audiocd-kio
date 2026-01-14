@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"POT-Creation-Date: 2026-01-14 00:43+0000\n"
 "PO-Revision-Date: 2010-04-30 14:04+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -181,8 +181,8 @@ msgstr "แทนที่ด้วย:"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:134
-#: kcmaudiocd.cpp:209
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
+#: kcmaudiocd.cpp:210
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "ศิลปินในดวงใจ - ตัวอย่างชื่อเพลง.wav"
@@ -286,7 +286,7 @@ msgstr ""
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{ชื่ออัลบั้ม}/%{ชื่อศิลปินของอัลบั้ม}"
 
-#: kcmaudiocd.cpp:59
+#: kcmaudiocd.cpp:60
 #, kde-format
 msgid "%1 Encoder"
 msgstr "ตัวเข้ารหัส %1"
