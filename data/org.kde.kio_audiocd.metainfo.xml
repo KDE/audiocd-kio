@@ -189,6 +189,7 @@
   </categories>
   <icon type="stock">media-optical-audio</icon>
   <releases>
+    <release version="5.1.25122" date="2026-02-05"/>
     <release version="5.1.25121" date="2026-01-08"/>
     <release version="5.1.25120" date="2025-12-11"/>
     <release version="5.1.0" date="2025-11-06"/>
