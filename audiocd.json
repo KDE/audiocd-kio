@@ -4,7 +4,7 @@
             "Class": ":local",
             "Icon": "media-optical-audio",
             "ShowPreviews": false,
-            "X-DocPath": "kioslave5/audiocd/index.html",
+            "X-DocPath": "kioworker6/audiocd/index.html",
             "copyFromFile": true,
             "copyToFile": false,
             "deleting": false,
