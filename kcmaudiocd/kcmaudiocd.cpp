@@ -137,7 +137,7 @@ void KAudiocdModule::defaults()
         encoderSettings.at(i)->updateWidgetsDefault();
     }
 
-    audioConfig->fileNameLineEdit->setText(QStringLiteral("%{trackartist} - %{number} - %{title}"));
+    audioConfig->fileNameLineEdit->setText(QStringLiteral("%{number} - %{trackartist} - %{title}"));
     audioConfig->albumNameLineEdit->setText(QStringLiteral("%{albumartist} - %{albumtitle}"));
 }
 
@@ -201,7 +201,7 @@ void KAudiocdModule::load()
 
     {
         KConfigGroup cg(config, QStringLiteral("FileName"));
-        audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{trackartist} - %{number} - %{title}"));
+        audioConfig->fileNameLineEdit->setText(cg.readEntry("file_name_template", "%{number} - %{trackartist} - %{title}"));
         audioConfig->albumNameLineEdit->setText(cg.readEntry("album_name_template", "%{albumartist} - %{albumtitle}"));
         audioConfig->fileLocationCheckBox->setChecked(cg.readEntry("show_file_location", false));
         audioConfig->fileLocationLineEdit->setText(cg.readEntry("file_location_template", QString()));
