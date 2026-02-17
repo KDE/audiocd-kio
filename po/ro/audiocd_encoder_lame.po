@@ -2,16 +2,15 @@
 # translation of audiocd_encoder_lame to Romanian
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the audiocd_encoder_lame package.
-# Laurenţiu Buzdugan <lbuz@rolix.org>, 2008".
-# SPDX-FileCopyrightText: 2008, 2025 Sergiu Bivol <sergiu@cip.md>
-# Sergiu Bivol <sergiu@cip.md>, 2009, 2022, 2024.
+# Laurenţiu Buzdugan <lbuz@rolix.org>, 2008.
+# SPDX-FileCopyrightText: 2008, 2009, 2022, 2024, 2025, 2026 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2025-12-12 10:29+0000\n"
+"PO-Revision-Date: 2026-02-16 22:23+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -230,7 +229,7 @@ msgstr "Setări rată de biți variabilă"
 #: encoderlameconfig.ui:178
 #, kde-format
 msgid "This selects the minimal bitrate used for encoding."
-msgstr "Aceasta alege rata de biți minimă folosită pentru codificare."
+msgstr "Aceasta alege rata de biți minimă folosită pentru codare."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_min_br)
 #: encoderlameconfig.ui:181
@@ -382,7 +381,7 @@ msgstr "320 kb/s"
 #: encoderlameconfig.ui:268
 #, kde-format
 msgid "This selects the average bitrate used for encoding."
-msgstr "Aceasta alege rata de biți medie utilizată pentru codificare."
+msgstr "Aceasta alege rata de biți medie folosită pentru codare."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_average_br)
 #: encoderlameconfig.ui:271
@@ -395,7 +394,7 @@ msgstr "Rată &de biți medie:"
 #: encoderlameconfig.ui:281 encoderlameconfig.ui:543
 #, kde-format
 msgid "This selects the maximal bitrate used for encoding."
-msgstr "Aceasta alege rata de biți maximă folosită pentru codificare."
+msgstr "Aceasta alege rata de biți maximă folosită pentru codare."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vbr_max_br)
 #: encoderlameconfig.ui:284
@@ -516,7 +515,7 @@ msgstr ""
 #: encoderlameconfig.ui:735
 #, kde-format
 msgid "Encoding Method"
-msgstr "Metodă de codificare"
+msgstr "Metodă de codare"
 
 #. i18n: ectx: property (text), widget (QLabel, bitrateLabel)
 #: encoderlameconfig.ui:763
