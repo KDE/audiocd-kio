@@ -522,17 +522,15 @@ msgstr "Ráta giotán:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
-#, fuzzy, kde-format
-#| msgid "Constant Bitrate"
+#, kde-format
 msgid "Co&nstant"
-msgstr "Ráta Tairiseach Giotán"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
-#, fuzzy, kde-format
-#| msgid "Variable Bitrate"
+#, kde-format
 msgid "Variab&le"
-msgstr "Ráta Inathraithe Giotán"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
@@ -594,24 +592,3 @@ msgstr "Íseal"
 #, kde-format
 msgid "High"
 msgstr "Ard"
-
-#~ msgid "Constant bitrate"
-#~ msgstr "Ráta tairiseach giotán"
-
-#~ msgid "Variable bitrate"
-#~ msgstr "Ráta inathraithe giotán"
-
-#~ msgid "Specify avera&ge bitrate:"
-#~ msgstr "Sonraigh an meánráta &giotán:"
-
-#~ msgid "Lowpass filter cutoff above"
-#~ msgstr "Uasphointe scoite an scagaire ísealphasach"
-
-#~ msgid "Lowpass filter cutoff above Value"
-#~ msgstr "Uasphointe scoite an scagaire ísealphasach"
-
-#~ msgid "Highpass filter cutoff above"
-#~ msgstr "Uasphointe scoite an scagaire ardphasach"
-
-#~ msgid "Highpass filter cutoff above Value"
-#~ msgstr "Uasphointe scoite an scagaire ardphasach"
