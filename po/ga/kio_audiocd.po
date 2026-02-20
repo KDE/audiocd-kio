@@ -109,17 +109,3 @@ msgstr "Ní féidir %1 a léamh: theip ar ionchódú"
 #, kde-format
 msgid "Track %1"
 msgstr "Amhrán %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Séamus Ó Ciardhuáin,Kevin Scannell"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "seoc@iolfree.ie,kscanne@gmail.com"
-
-#~ msgid "Protocol name"
-#~ msgstr "Ainm an phrótacail"
-
-#~ msgid "Socket name"
-#~ msgstr "Ainm an tsoicéid"

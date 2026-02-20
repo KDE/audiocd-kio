@@ -25,19 +25,12 @@ msgstr "&Ginearálta"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:56
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you uncheck this option, the slave will not try to use error "
-#| "correction which can be useful for reading damaged CDs. However, this "
-#| "feature can be problematic in some cases, so you can switch it off here."
+#, kde-format
 msgid ""
 "If you uncheck this option, the KIO worker will not try to use error "
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"Má dhíthiceálann tú an rogha seo, ní úsáidfidh an sclábhaí ceartú earráidí, "
-"gné áisiúil nuair is dlúthdhiosca loite atá ann.  Ag an am céanna, tá roinnt "
-"fadhbanna leis an ngné seo agus is féidir é a dhíchumasú anseo."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:59
@@ -270,10 +263,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
-#, fuzzy, kde-format
-#| msgid "Files Location"
+#, kde-format
 msgid "File &Location"
-msgstr "Suíomh na gComhad"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
 #: audiocdconfig.ui:664
@@ -291,80 +283,3 @@ msgstr "%{albumtitle}/%{albumartist}"
 #, kde-format
 msgid "%1 Encoder"
 msgstr "Ionchódóir %1"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Séamus Ó Ciardhuáin,Kevin Scannell"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "seoc@iolfree.ie,kscanne@gmail.com"
-
-#, fuzzy
-#~| msgid "KDE Audio CD IO Slave"
-#~ msgid "KDE Audio CD KIO Worker"
-#~ msgstr "Sclábhaí I/A Audiocd le haghaidh KDE"
-
-#~ msgid "Benjamin C. Meyer"
-#~ msgstr "Benjamin C. Meyer"
-
-#~ msgid "Former Maintainer"
-#~ msgstr "Iarchothaitheoir"
-
-#~ msgid "Carsten Duvenhorst"
-#~ msgstr "Carsten Duvenhorst"
-
-#, fuzzy
-#~| msgid ""
-#~| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#~| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
-#~| "is invoked by typing <i>\"audiocd:/\"</i> in Konqueror's location bar. "
-#~| "In this module, you can configure encoding, and device settings. Note "
-#~| "that MP3 and Ogg Vorbis encoding are only available if KDE was built "
-#~| "with a recent version of the LAME or Ogg Vorbis libraries."
-#~ msgid ""
-#~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
-#~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
-#~ "The KIO worker is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
-#~ "location bar. In this module, you can configure encoding, and device "
-#~ "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
-#~ "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
-#~ "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
-#~ "installed in your system."
-#~ msgstr ""
-#~ "<h1>Dlúthdhioscaí Fuaime</h1> Le Sclábhaí I/A AudioCD is féidir leat "
-#~ "comhaid .wav, MP3, nó Ogg Vorbis a chruthú as CD-ROM nó DVD fuaime gan "
-#~ "stró.  Tosaítear an sclábhaí trí <i>\"audiocd:/\"</i> a chur isteach i "
-#~ "mbarra suímh Konqueror. Sa mhodúl seo, is féidir socruithe ionchódaithe "
-#~ "agus do ghléas fuaime a chumrú.  Tabhair faoi deara nach bhfuil "
-#~ "ionchóduithe MP3 ná Ogg Vorbis ar fáil mura raibh leagan le déanaí de "
-#~ "leabharlann LAME nó Ogg Vorbis agat nuair a thóg tú KDE."
-
-#~ msgid "kcmaudiocd"
-#~ msgstr "kcmaudiocd"
-
-#~ msgid "(c) 2000 - 2005 Audio CD developers"
-#~ msgstr "© 2000 - 2005 Forbróirí Audio CD"
-
-#~ msgid ""
-#~ "Specify a location for the drive you want to use. Normally, this is a "
-#~ "file inside the /dev folder representing your CD or DVD drive."
-#~ msgstr ""
-#~ "Tabhair suíomh an tiomántáin atá uait. De ghnáth, seo é comhad laistigh "
-#~ "d'fhillteán /dev a sheasann do do thiomántán CD nó DVD."
-
-#~ msgid "/dev/cdrom"
-#~ msgstr "/dev/cdrom"
-
-#~ msgid ""
-#~ "Uncheck this if you want to specify a CD device different from the one "
-#~ "autoprobed"
-#~ msgstr ""
-#~ "Díthiceáil é seo más mian leat gléas dlúthdhiosca a shonrú nach ionann "
-#~ "agus an ceann a braitheadh go huathoibríoch"
-
-#~ msgid "&Specify CD Device:"
-#~ msgstr "&Sonraigh Gléas Dlúthdhiosca:"
-
-#~ msgid "Report errors found on the cd."
-#~ msgstr "Tabhair tuairisc ar earráidí a aimsíodh ar an dlúthdhiosca."
