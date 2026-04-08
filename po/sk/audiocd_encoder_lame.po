@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -493,8 +493,7 @@ msgstr "Zapí&sať ID3 značku"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:620
-#, fuzzy, kde-format
-#| msgid "Bitrate:"
+#, kde-format
 msgid "Bi&trate:"
 msgstr "Dátový tok:"
 
@@ -518,23 +517,21 @@ msgstr "Dátový tok:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
-#, fuzzy, kde-format
-#| msgid "Constant Bitrate"
+#, kde-format
 msgid "Co&nstant"
-msgstr "Konštantný dátový tok"
+msgstr "&Konštantný"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
-#, fuzzy, kde-format
-#| msgid "Variable Bitrate"
+#, kde-format
 msgid "Variab&le"
-msgstr "Premenlivý dátový tok"
+msgstr "Premen&livý"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "Zvukové kanály:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
@@ -574,8 +571,7 @@ msgstr "Mono"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: encoderlameconfig.ui:821
-#, fuzzy, kde-format
-#| msgid "&Quality:"
+#, kde-format
 msgid "Quality:"
 msgstr "&Kvalita:"
 

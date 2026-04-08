@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:42
@@ -267,8 +267,7 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
-#, fuzzy, kde-format
-#| msgid "Files Location"
+#, kde-format
 msgid "File &Location"
 msgstr "Umiestnenie súborov"
 
@@ -276,7 +275,7 @@ msgstr "Umiestnenie súborov"
 #: audiocdconfig.ui:664
 #, kde-format
 msgid "Use file location macros"
-msgstr ""
+msgstr "Použiť makrá umiestnenia súborov"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:799
@@ -298,7 +297,6 @@ msgstr "%1 kódovanie"
 #~ msgstr "visnovsky@nenya.ms.mff.cuni.cz,misurel@gmail.com"
 
 #, fuzzy
-#~| msgid "KDE Audio CD IO Slave"
 #~ msgid "KDE Audio CD KIO Worker"
 #~ msgstr "Klient KDE pre zvukové CD"
 
@@ -315,15 +313,6 @@ msgstr "%1 kódovanie"
 #~ msgstr "Pôvodný autor"
 
 #, fuzzy
-#~| msgid ""
-#~| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
-#~| "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or "
-#~| "DVDs. The slave is invoked by typing <i>\"audiocd:/\"</i> in Dolphin's "
-#~| "location bar. In this module, you can configure encoding, and device "
-#~| "settings. Note that FLAC, MP3, Ogg Vorbis, and Opus encoding are only "
-#~| "available if the corresponding libraries (libFLAC for FLAC and libvorbis "
-#~| "for Ogg) and utilities (lame for MP3 and opus-tools for Opus) are "
-#~| "installed in your system."
 #~ msgid ""
 #~ "<h1>Audio CDs</h1> The Audio CD KIO Worker enables you to easily create "
 #~ "wav, FLAC, MP3, Ogg Vorbis or Opus files from your audio CD-ROMs or DVDs. "
