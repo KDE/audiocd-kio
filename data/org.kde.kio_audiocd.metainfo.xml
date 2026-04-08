@@ -165,6 +165,7 @@
   </developer>
   <icon type="stock">media-optical-audio</icon>
   <releases>
+    <release version="5.1.26040" date="2026-04-16"/>
     <release version="5.1.25123" date="2026-03-05"/>
     <release version="5.1.25122" date="2026-02-05"/>
     <release version="5.1.25121" date="2026-01-08"/>
