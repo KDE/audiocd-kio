@@ -1,22 +1,22 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the audiocd-kio package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SPDX-FileCopyrightText: 2026 charlotte <altronic25@protonmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Irish Gaelic <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2026-03-20 18:36+0000\n"
+"Last-Translator: charlotte <altronic25@protonmail.com>\n"
+"Language-Team: Irish\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
 "3 : 4\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #. i18n: ectx: label, entry (opus_enc_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:10
@@ -46,7 +46,7 @@ msgstr ""
 #: audiocd_opus_encoder.kcfg:28
 #, kde-format
 msgid "Add Comments"
-msgstr ""
+msgstr "Cuir Nótaí Leis"
 
 #. i18n: ectx: label, entry (opus_complexity), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:32
@@ -58,7 +58,7 @@ msgstr ""
 #: audiocd_opus_encoder.kcfg:39
 #, kde-format
 msgid "Constant bitrate"
-msgstr ""
+msgstr "Ráta tairiseach giotán"
 
 #. i18n: ectx: label, entry (opus_cvbr), group (Vorbis)
 #: audiocd_opus_encoder.kcfg:46
@@ -76,7 +76,7 @@ msgstr ""
 #: encoderopusconfig.ui:17
 #, kde-format
 msgid "&Encoding Method"
-msgstr ""
+msgstr "Modh &Ionchódaithe"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_opus_enc_complexity)
 #: encoderopusconfig.ui:32
@@ -88,13 +88,13 @@ msgstr ""
 #: encoderopusconfig.ui:42
 #, kde-format
 msgid "Bi&trate based"
-msgstr ""
+msgstr "Bunai&the ar an ráta giotán"
 
 #. i18n: ectx: property (title), widget (QGroupBox, opus_bitrate_settings)
 #: encoderopusconfig.ui:55
 #, kde-format
 msgid "Opus Bitrate Settings"
-msgstr ""
+msgstr "Socruithe Ráta Giotán Opus"
 
 #. i18n: ectx: property (currentText), widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
@@ -106,7 +106,7 @@ msgstr ""
 #: encoderopusconfig.ui:209 encoderopusconfig.ui:240 encoderopusconfig.ui:277
 #, kde-format
 msgid "96 kbps"
-msgstr ""
+msgstr "96 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -114,7 +114,7 @@ msgstr ""
 #: encoderopusconfig.ui:74 encoderopusconfig.ui:179 encoderopusconfig.ui:247
 #, kde-format
 msgid "6 kbps"
-msgstr ""
+msgstr "6 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -122,7 +122,7 @@ msgstr ""
 #: encoderopusconfig.ui:79 encoderopusconfig.ui:184 encoderopusconfig.ui:252
 #, kde-format
 msgid "12 kbps"
-msgstr ""
+msgstr "12 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -130,7 +130,7 @@ msgstr ""
 #: encoderopusconfig.ui:84 encoderopusconfig.ui:189 encoderopusconfig.ui:257
 #, kde-format
 msgid "24 kbps"
-msgstr ""
+msgstr "24 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -138,7 +138,7 @@ msgstr ""
 #: encoderopusconfig.ui:89 encoderopusconfig.ui:194 encoderopusconfig.ui:262
 #, kde-format
 msgid "48 kbps"
-msgstr ""
+msgstr "48 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -146,7 +146,7 @@ msgstr ""
 #: encoderopusconfig.ui:94 encoderopusconfig.ui:199 encoderopusconfig.ui:267
 #, kde-format
 msgid "64 kbps"
-msgstr ""
+msgstr "64 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -154,7 +154,7 @@ msgstr ""
 #: encoderopusconfig.ui:99 encoderopusconfig.ui:204 encoderopusconfig.ui:272
 #, kde-format
 msgid "80 kbps"
-msgstr ""
+msgstr "80 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -162,7 +162,7 @@ msgstr ""
 #: encoderopusconfig.ui:109 encoderopusconfig.ui:214 encoderopusconfig.ui:282
 #, kde-format
 msgid "128 kbps"
-msgstr ""
+msgstr "128 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -170,7 +170,7 @@ msgstr ""
 #: encoderopusconfig.ui:114 encoderopusconfig.ui:219 encoderopusconfig.ui:287
 #, kde-format
 msgid "160 kbps"
-msgstr ""
+msgstr "160 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -178,7 +178,7 @@ msgstr ""
 #: encoderopusconfig.ui:119 encoderopusconfig.ui:224 encoderopusconfig.ui:292
 #, kde-format
 msgid "192 kbps"
-msgstr ""
+msgstr "192 kbps"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -186,7 +186,7 @@ msgstr ""
 #: encoderopusconfig.ui:124 encoderopusconfig.ui:229 encoderopusconfig.ui:297
 #, kde-format
 msgid "256 kbps"
-msgstr ""
+msgstr "256 kbps"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
@@ -225,13 +225,13 @@ msgstr ""
 #: encoderopusconfig.ui:347 encoderopusconfig.ui:374
 #, kde-format
 msgid "Higher is better but slower"
-msgstr ""
+msgstr "Is níos fearr é socrú níos airde, ach níos moille"
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileOptions)
 #: encoderopusconfig.ui:393
 #, kde-format
 msgid "Options"
-msgstr ""
+msgstr "Roghanna"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:411
@@ -242,9 +242,14 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
+"Déan cur síos ar an amhrán do cheanntásc an chomhaid. Is féidir le "
+"seinnteoirí meán an fhaisnéis seo a úsáid chun eolas cabhrach a thaispeáint "
+"don úsáideoir. Is féidir an fhaisnéis seo a fháil go díreach ón Idirlíon.  "
+"Féach ar mhodúl rialaithe <i>\"Aisghabháil CDDB\"</i> chun tuilleadh sonraí "
+"a fháil."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:414
 #, kde-format
 msgid "Add &track information"
-msgstr ""
+msgstr "Cuir eolas faoin &amhrán leis"
