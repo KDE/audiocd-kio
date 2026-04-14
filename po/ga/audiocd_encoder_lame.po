@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kdemultimedia/audiocd_encoder_lame.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2026-01-28 22:53+0000\n"
-"Last-Translator: Charlotte <altronic25@protonmail.com>\n"
+"PO-Revision-Date: 2026-03-20 18:54+0000\n"
+"Last-Translator: charlotte <altronic25@protonmail.com>\n"
 "Language-Team: Irish\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
 "3 : 4\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -524,19 +525,19 @@ msgstr "Ráta giotán:"
 #: encoderlameconfig.ui:770
 #, kde-format
 msgid "Co&nstant"
-msgstr ""
+msgstr "&Tairiseach"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
 #, kde-format
 msgid "Variab&le"
-msgstr ""
+msgstr "&Inathraithe"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "Cainéil fuaime:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
