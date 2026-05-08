@@ -94,7 +94,6 @@ ecm_qt_declare_logging_category(kio_audiocd
     IDENTIFIER AUDIOCD_KIO_LOG
     CATEGORY_NAME kf.kio.workers.audiocd
     OLD_CATEGORY_NAMES kf5.kio.audiocd kf.kio.slaves.audiocd
-    DEFAULT_SEVERITY Warning
     DESCRIPTION "audiocd KIO worker"
     EXPORT AUDIOCD
 )
