@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-16 19:32-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #: audiocd.cpp:119
 #, kde-format
@@ -45,7 +46,7 @@ msgstr ""
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
-msgstr ""
+msgstr "ئۈسكۈنە بەلگىلىنىشى يوقاپ كەتتى"
 
 #: audiocd.cpp:906
 #, kde-format
@@ -53,7 +54,7 @@ msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
-"بۇ ھېساباتنىڭ ئۈسكۈنىنى ئوقۇش ھوقۇقى يوق. بۇ ئۈسكۈنىنىڭ ئوقۇش ھوقۇقىنى "
+"بۇ ھېساباتنىڭ ئۈسكۈنىنى ئوقۇش ھوقۇقى يوق. بۇ ئۈسكۈنىنىڭ ئوقۇش ئىجازەتنى "
 "تەكشۈرۈڭ."
 
 #: audiocd.cpp:910
@@ -62,7 +63,7 @@ msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
-"بۇ ھېساباتنىڭ ئۈسكۈنىگە يېزىش ھوقۇقى يوق. بۇ ئۈسكۈنىنىڭ يېزىش ھوقۇقىنى "
+"بۇ ھېساباتنىڭ ئۈسكۈنىگە يېزىش ھوقۇقى يوق. بۇ ئۈسكۈنىنىڭ يېزىش ئىجازەتنى "
 "تەكشۈرۈڭ."
 
 #: audiocd.cpp:916
@@ -91,13 +92,13 @@ msgstr ""
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
-"AudioCD: بۇ يولدىكى دىسكىنىڭ بۇزۇلغانلىقىنى بايقىدى، سانلىق-مەلۇماتنىڭ "
+"AudioCD: بۇ يولدىكى دىسكىنىڭ بۇزۇلغانلىقىنى بايقىدى، سانلىق مەلۇماتنىڭ "
 "بۇزۇلۇش خەتىرى بار."
 
 #: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr "CD دىن %1 ئۈن سانلىق-مەلۇماتىنى ئوقۇۋاتقاندا خاتالىق كۆرۈلدى"
+msgstr "CD دىن %1 ئۈن سانلىق مەلۇماتىنى ئوقۇۋاتقاندا خاتالىق كۆرۈلدى"
 
 #: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format

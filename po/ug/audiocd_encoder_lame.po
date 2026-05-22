@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: audiocd_encoder_lame\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-16 19:31-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #. i18n: ectx: label, entry (bitrate_constant), group (Lame)
 #: audiocd_lame_encoder.kcfg:11
@@ -493,17 +494,16 @@ msgstr "ID3 بەلگە ياز(&W)"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel4_2)
 #: encoderlameconfig.ui:620
-#, fuzzy, kde-format
-#| msgid "Bitrate:"
+#, kde-format
 msgid "Bi&trate:"
-msgstr "بىت تېزلىكى:"
+msgstr "بىت نىسبىتى(&T):"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_cbr_bitrate)
 #: encoderlameconfig.ui:633
 #, kde-format
 msgid "The higher the bitrate, the better the quality and the larger the file."
 msgstr ""
-"بىت نىسبىتى قانچە يۇقىرى بولسا سۈپىتى شۇنچە ياخشى ھەمدە ھۆججەتمۇ شۇنچەچوڭ "
+"بىت نىسبىتى قانچە يۇقىرى بولسا سۈپىتى شۇنچە ياخشى ھەمدە ھۆججەتمۇ شۇنچە چوڭ "
 "بولىدۇ."
 
 #. i18n: ectx: property (title), widget (QGroupBox, buttonGroup1)
@@ -520,23 +520,21 @@ msgstr "بىت تېزلىكى:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_constant)
 #: encoderlameconfig.ui:770
-#, fuzzy, kde-format
-#| msgid "Constant Bitrate"
+#, kde-format
 msgid "Co&nstant"
-msgstr "تۇراقلىق بىت تېزلىكى"
+msgstr "مۇقىم(&N)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_bitrate_variable)
 #: encoderlameconfig.ui:777
-#, fuzzy, kde-format
-#| msgid "Variable Bitrate"
+#, kde-format
 msgid "Variab&le"
-msgstr "ئۆزگىرىشچان بىت نىسبىتى"
+msgstr "ئۆزگەرگۈچى(&L)"
 
 #. i18n: ectx: property (text), widget (QLabel, garfsLabel)
 #: encoderlameconfig.ui:787
 #, kde-format
 msgid "Audio channels:"
-msgstr ""
+msgstr "ئۈن قانال:"
 
 #. i18n: ectx: property (whatsThis), widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:794
@@ -546,21 +544,21 @@ msgid ""
 "channels. Note that choosing <i>\"Mono\"</i> reduces file size, but also "
 "kills the stereo signal."
 msgstr ""
-"بۇ تاللانما MP3 ھۆججەتنىڭ تاق ئاۋاز يولى ياكى قوش ئاۋاز يولىدا ئۈن ئېلىشنى "
-"تىزگىنلەيدۇ. دىققەت، <i>\"يەككە يوللۇق ئاۋاز\"</i> تاللانسا ھۆججەت سىغىمى "
-"كىچىكلەيدۇ ئەمما سىتېرېئولۇق ئاۋاز سىگنالى تۆۋەنلەيدۇ."
+"بۇ تاللانما MP3 ھۆججەتنىڭ يەككە ئاۋاز يولى ياكى قوش ئاۋاز يولىدا ئۈن ئېلىشنى "
+"تىزگىنلەيدۇ. دىققەت، <i>«يەككە يوللۇق ئاۋاز»</i> تاللانسا ھۆججەت سىغىمى "
+"كىچىكلەيدۇ ئەمما ئىستېرېئولۇق ئاۋاز سىگنالى تۆۋەنلەيدۇ."
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:798
 #, kde-format
 msgid "Stereo"
-msgstr "ستېرېئو"
+msgstr "ئىستېرېئو"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:803
 #, kde-format
 msgid "Joint Stereo"
-msgstr "بىرلەشمە سىتېرېئولۇق ئاۋاز"
+msgstr "بىرلەشمە ئىستېرېئولۇق ئاۋاز"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_stereo)
 #: encoderlameconfig.ui:808
@@ -576,10 +574,9 @@ msgstr "يەككە يوللۇق ئاۋاز"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #: encoderlameconfig.ui:821
-#, fuzzy, kde-format
-#| msgid "&Quality:"
+#, kde-format
 msgid "Quality:"
-msgstr "سۈپىتى(&Q):"
+msgstr "سۈپەت:"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel3_2)
 #: encoderlameconfig.ui:830

@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-14 00:43+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-16 19:32-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #. i18n: ectx: attribute (title), widget (QWidget, tabGeneral)
 #: audiocdconfig.ui:42
@@ -25,20 +26,16 @@ msgstr "ئادەتتىكى(&G)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:56
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you uncheck this option, the slave will not try to use error "
-#| "correction which can be useful for reading damaged CDs. However, this "
-#| "feature can be problematic in some cases, so you can switch it off here."
+#, kde-format
 msgid ""
 "If you uncheck this option, the KIO worker will not try to use error "
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"ئەگەر بۇ تاللانمىنى تاللىسىڭىز، ئارقا ئۇچ خاتانى تۈزىتىش ئىقتىدارىنى "
-"ئىشلەتمەيدۇ، بۇ ئىقتىدار بۇزۇلغان CD نى ئوقۇغاندا كېرەكلىك بولۇشى مۇمكىن. "
-"ئەمما ئۇنىڭدا بەزى ئەھۋاللاردا مەسىلە كۆرۈلۈشى مۇمكىن، شۇڭلاشقا بۇ جايدا "
-"ئۇينى تاقىسىڭىز بولىدۇ."
+"ئەگەر بۇ تاللانمىنى تاللىمىسىڭىز، خىزمەت پىروگراممىسى خاتانى تۈزىتىش "
+"ئىقتىدارىنى ئىشلەتمەيدۇ، بۇ ئىقتىدار بۇزۇلغان CD نى ئوقۇغاندا كېرەكلىك "
+"بولۇشى مۇمكىن. ئەمما ئۇنىڭدا بەزى ئەھۋاللاردا مەسىلە كۆرۈلۈشى مۇمكىن، "
+"شۇڭلاشقا بۇ جايدا ئۇنى تاقىسىڭىز بولىدۇ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:59
@@ -56,7 +53,7 @@ msgstr "خاتادىن ئاتلا(&S)"
 #: audiocdconfig.ui:81
 #, kde-format
 msgid "Encoder Priority"
-msgstr "كودلىغۇچنىڭ مەرتىۋىسى"
+msgstr "كودلىغۇچ ئالدىنلىقى"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: audiocdconfig.ui:146
@@ -68,7 +65,7 @@ msgstr "ئەڭ تۆۋەن"
 #: audiocdconfig.ui:159
 #, kde-format
 msgid "Normal"
-msgstr "نورمال"
+msgstr "ئادەتتىكى"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: audiocdconfig.ui:172
@@ -134,7 +131,7 @@ msgstr "ئېقىم"
 #: audiocdconfig.ui:285 audiocdconfig.ui:565 audiocdconfig.ui:771
 #, kde-format
 msgid "Album Artist"
-msgstr "ئالبوم ئورۇنلىغۇچىسى"
+msgstr "ناخشا توپلىمى سەنئەتكارى"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel18)
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
@@ -142,7 +139,7 @@ msgstr "ئالبوم ئورۇنلىغۇچىسى"
 #: audiocdconfig.ui:295 audiocdconfig.ui:525 audiocdconfig.ui:711
 #, kde-format
 msgid "Album Title"
-msgstr "ئالبوم ماۋزۇسى"
+msgstr "ناخشا توپلىمى ماۋزۇسى"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel17)
 #. i18n: ectx: property (text), widget (QLabel, textLabel12)
@@ -193,27 +190,27 @@ msgid ""
 "Regular expression used on all file names. For example using selection \" \" "
 "and replace with \"_\" would replace all the spaces with underlines.\n"
 msgstr ""
-"ھەممە ھۆججەت ئاتىدا ئىشلەتكەن مۇنتىزىم ئىپادە. مەسىلەن\" \" تاللاشقا "
-"ئىشلىتىپ، ئۇنى \"_\" غا ئالماشتۇرىدۇ، بۇ ھەممە بوشلۇقنى ئاستى سىزىققا "
+"ھەممە ھۆججەت ئاتىدا ئىشلەتكەن مۇنتىزىم ئىپادە. مەسىلەن«» تاللاشقا ئىشلىتىپ، "
+"ئۇنى «_» غا ئالماشتۇرىدۇ، بۇ ھەممە بوشلۇقنى ئاستى سىزىققا "
 "ئالماشتۇرىدىغانلىقىنى بىلدۈرىدۇ.\n"
 
 #. i18n: ectx: property (text), widget (QLabel, inputlabel)
 #: audiocdconfig.ui:418
 #, kde-format
 msgid "Input:"
-msgstr "كىرگۈز:"
+msgstr "كىرگۈزۈش:"
 
 #. i18n: ectx: property (text), widget (QLabel, outputLabel)
 #: audiocdconfig.ui:428
 #, kde-format
 msgid "Output:"
-msgstr "چىقار:"
+msgstr "چىقىرىش:"
 
 #. i18n: ectx: property (text), widget (QLabel, exampleLabel)
 #: audiocdconfig.ui:458
 #, kde-format
 msgid "Example"
-msgstr "مىساللار"
+msgstr "مىسال"
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileNameGroupBox)
 #: audiocdconfig.ui:474
@@ -270,16 +267,15 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
-#, fuzzy, kde-format
-#| msgid "Files Location"
+#, kde-format
 msgid "File &Location"
-msgstr "ھۆججەتلەرنىڭ ئورنى"
+msgstr "ھۆججەت ئورنى(&L)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, fileLocationCheckBox)
 #: audiocdconfig.ui:664
 #, kde-format
 msgid "Use file location macros"
-msgstr ""
+msgstr "ھۆججەت ئورنى ماكرو ئىشلىتىدۇ"
 
 #. i18n: ectx: property (text), widget (QLineEdit, fileLocationLineEdit)
 #: audiocdconfig.ui:799
@@ -300,7 +296,6 @@ msgstr "كودلىغۇچ %1"
 #~ msgid "Your emails"
 #~ msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
 
-#, fuzzy
 #~| msgid "KDE Audio CD IO Slave"
 #~ msgid "KDE Audio CD KIO Worker"
 #~ msgstr "KDE ئۈن CD كىرگۈزۈش چىقىرىش ئارقا ئۇچى"
@@ -314,7 +309,6 @@ msgstr "كودلىغۇچ %1"
 #~ msgid "Carsten Duvenhorst"
 #~ msgstr "Carsten Duvenhorst"
 
-#, fuzzy
 #~| msgid ""
 #~| "<h1>Audio CDs</h1> The Audio CD IO-Slave enables you to easily create "
 #~| "wav, MP3 or Ogg Vorbis files from your audio CD-ROMs or DVDs. The slave "
