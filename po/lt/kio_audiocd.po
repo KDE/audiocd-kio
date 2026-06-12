@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2011-06-23 12:42+0300\n"
+"PO-Revision-Date: 2026-06-12 01:18+0300\n"
 "Last-Translator: Tomas Straupis <tomasstraupis@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #: audiocd.cpp:119
 #, kde-format
@@ -40,14 +40,14 @@ msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
 msgstr ""
-"Naudodami šį protokolą negalite nurodyti mazgo. Vietoje to naudokite "
+"Naudodami šį protokolą negalite nurodyti mazgo. Vietoj to, naudokite "
 "audiocd:/ formatą."
 
 #: audiocd.cpp:896
 #, kde-format
 msgctxt "The URL does not include a device name"
 msgid "Missing device specification"
-msgstr ""
+msgstr "Trūksta įrenginio specifikacijos"
 
 #: audiocd.cpp:906
 #, kde-format
@@ -55,8 +55,8 @@ msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
-"Įrenginys neturi skaitymo leidimų šiai paskyrai. Patikrinkite įrenginio "
-"skaitymo leidimus."
+"Įrenginys neturi skaitymo leidimų, skirtų šiai paskyrai. Patikrinkite "
+"skaitymo leidimus įrenginyje."
 
 #: audiocd.cpp:910
 #, kde-format
@@ -64,8 +64,8 @@ msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
-"Įrenginys neturi rašymo leidimų šiai paskyrai. Patikrinkite įrenginio rašymo "
-"leidimus."
+"Įrenginys neturi rašymo leidimų, skirtų šiai paskyrai. Patikrinkite rašymo "
+"leidimus įrenginyje."
 
 #: audiocd.cpp:916
 #, kde-format
@@ -79,30 +79,32 @@ msgid ""
 "audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
 "CD-ROM is."
 msgstr ""
-"Nežinoma klaida. Jei turite cd optiniame įrenginyje, bandykite paleisti "
-"cdparanoia -vSQ be root teisių. Ar matote takelių sąrašą? Jei ne, "
-"įsitikinkite, kad turite reikiamas teises pasiekti optinį įrenginį. Jei jūs "
-"naudojate SCSI emuliaciją (galbūt turite IDE CD įrašantį įrenginį) tuomet "
-"įsitikinkite, kad turite laidimą skaityti ir perrašyti į SCSI įrenginį, "
-"kuris galbūt yra /dev/sg0, /dev/sg1, etc.. Jei tai nepadės, mėginkite "
-"surinkti audiocd:/?device=/dev/sg0 (priklausomai nuo įrenginio buvimo "
-"vietos), nurodydami kio_audiocd, kuris įrenginys yra jūsų CD-ROM"
+"Nežinoma klaida. Jei optiniame įrenginyje yra CD, pabandykite paleisti "
+"cdparanoia -vsQ patys, nesinaudodami pagrindinio naudotojo (root) teisėmis. "
+"Ar matote takelių sąrašą? Jei ne, įsitikinkite, kad turite leidimą pasiekti "
+"optinį CD įrenginį. Jei naudojate SCSI emuliaciją (galbūt, turite IDE CD "
+"įrašymo įrenginį) tada įsitikinkite, kad turite leidimą skaityti ir rašyti į "
+"SCSI įrenginį, kuris, tikriausiai, yra /dev/sg0, /dev/sg1, ir t.t. Jei tai "
+"nepadeda, pamėginkite parašyti audiocd:/?device=/dev/sg0 (ar panašiai, "
+"priklausomai nuo įrenginio buvimo vietos), kad nurodytumėte kio_audiocd, "
+"kuris įrenginys yra jūsų CD-ROM."
 
 #: audiocd.cpp:994
 #, kde-format
 msgid "AudioCD: Disk damage detected on this track, risk of data corruption."
 msgstr ""
-"AudioCD: šiame takelyje yra disko pažeidimas, rizikuojate sugadinti duomenis."
+"AudioCD: Šiame takelyje aptiktas disko pažeidimas, yra sugadintų duomenų "
+"rizika."
 
 #: audiocd.cpp:1001
 #, kde-format
 msgid "Error reading audio data for %1 from the CD"
-msgstr "Skaitant audio duomenis takeliui %1šiame CD įvyko klaida"
+msgstr "Klaida skaitant %1 garso įrašo duomenis iš šio CD"
 
 #: audiocd.cpp:1011 audiocd.cpp:1089
 #, kde-format
 msgid "Could not read %1: encoding failed"
-msgstr "Nepavyksta perskaityti %1: kodavimas nepavyko"
+msgstr "Nepavyko perskaityti %1: kodavimas patyrė nesėkmę"
 
 #: audiocd.cpp:1220
 #, kde-format

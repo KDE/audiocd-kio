@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2011-06-23 12:28+0300\n"
+"PO-Revision-Date: 2026-06-12 00:37+0300\n"
 "Last-Translator: Tomas Straupis <tomasstraupis@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -15,37 +15,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. i18n: ectx: label, entry (vorbis_enc_method), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:10
 #, kde-format
 msgid "Vorbis Encoding Quality or Bitrate"
-msgstr "Vorbis perkodavimo kokybė arba bitų dažnis"
+msgstr "Vorbis kodavimo kokybė arba pralaidumas"
 
 #. i18n: ectx: label, entry (set_vorbis_min_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:15
 #, kde-format
 msgid "Minimal bitrate specified"
-msgstr "Minimalus nurodytas bitų dažnis"
+msgstr "Mažiausias nurodytas pralaidumas"
 
 #. i18n: ectx: label, entry (set_vorbis_max_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:19
 #, kde-format
 msgid "Maximal bitrate specified"
-msgstr "Maksimalus nurodytas bitų dažnis"
+msgstr "Didžiausias nurodytas pralaidumas"
 
 #. i18n: ectx: label, entry (set_vorbis_nominal_br), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:23
 #, kde-format
 msgid "Average bitrate specified"
-msgstr "Vidutinis nurodytas bitų dažnis"
+msgstr "Vidutinis nurodytas pralaidumas"
 
 #. i18n: ectx: label, entry (vorbis_comments), group (Vorbis)
 #: audiocd_vorbis_encoder.kcfg:28
 #, kde-format
 msgid "Add Comments"
-msgstr "Pridėti komentarus"
+msgstr "Pridėti komentarų"
 
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 #. i18n: ectx: label, entry (vorbis_quality), group (Vorbis)
@@ -58,7 +58,7 @@ msgstr "Kokybė"
 #: audiocd_vorbis_encoder.kcfg:39
 #, kde-format
 msgid "Minimal bitrate"
-msgstr "Minimalus bitų dažnis"
+msgstr "Mažiausias pralaidumas"
 
 #. i18n: ectx: label, entry (vorbis_max_br), group (Vorbis)
 #. i18n: ectx: label, entry (vorbis_nominal_br), group (Vorbis)
@@ -66,39 +66,37 @@ msgstr "Minimalus bitų dažnis"
 #: audiocd_vorbis_encoder.kcfg:61
 #, kde-format
 msgid "maximal bitrate"
-msgstr "Maksimalus bitų dažnis"
+msgstr "didžiausias pralaidumas"
 
 #. i18n: ectx: property (title), widget (QGroupBox, kcfg_vorbis_enc_method)
 #: encodervorbisconfig.ui:17
 #, kde-format
 msgid "&Encoding Method"
-msgstr "Įkodavimo &būdas"
+msgstr "&Kodavimo metodas"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_bitrate)
 #: encodervorbisconfig.ui:32
-#, fuzzy, kde-format
-#| msgid "Bitrate based"
+#, kde-format
 msgid "Bi&trate based"
-msgstr "Paremtas bitų dažniu"
+msgstr "Pagrįstas pralai&dumu"
 
 #. i18n: ectx: property (text), widget (QRadioButton, vorbis_enc_quality)
 #: encodervorbisconfig.ui:39
-#, fuzzy, kde-format
-#| msgid "Quality based"
+#, kde-format
 msgid "&Quality based"
-msgstr "Paremtas kokybe"
+msgstr "Pagrįstas &kokybe"
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_bitrate_settings)
 #: encodervorbisconfig.ui:55
 #, kde-format
 msgid "Vorbis Bitrate Settings"
-msgstr "Vorbis bitų dažnio nuostatos"
+msgstr "Vorbis pralaidumo nuostatos"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_max_br)
 #: encodervorbisconfig.ui:67
 #, kde-format
 msgid "Ma&ximal bitrate:"
-msgstr "Ma&ksimalus bitų dažnis:"
+msgstr "&Didžiausias pralaidumas:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
@@ -212,13 +210,13 @@ msgstr "350 kbps"
 #: encodervorbisconfig.ui:247
 #, kde-format
 msgid "A&verage bitrate:"
-msgstr "Vid&utinis bitų dažnis:"
+msgstr "Vid&utinis pralaidumas:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_min_br)
 #: encodervorbisconfig.ui:260
 #, kde-format
 msgid "M&inimal bitrate:"
-msgstr "M&inimalus bitų dažnis:"
+msgstr "&Mažiausias pralaidumas:"
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, vorbis_quality_settings)
 #: encodervorbisconfig.ui:315
@@ -227,8 +225,8 @@ msgid ""
 "You can set the quality of the encoded stream here. A higher value implies a "
 "higher quality but encodes slower."
 msgstr ""
-"Jūs galite nurodyti perkoduoto srauto kokybę. Didesnė reikšmė reiškia "
-"aukštesnę kokybę, bet įkodavimas vyks lėčiau."
+"Čia galite nurodyti koduojamo srauto kokybę. Didesnė reikšmė numano "
+"aukštesnę kokybę, bet kodavimas vyks lėčiau."
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_quality_settings)
 #: encodervorbisconfig.ui:318
@@ -240,7 +238,7 @@ msgstr "Vorbis &kokybės nuostatos"
 #: encodervorbisconfig.ui:346
 #, kde-format
 msgid "Higher is better but slower"
-msgstr "Daugiau geriau, bet lėčiau"
+msgstr "Didesnė reikšmė yra geriau, bet lėčiau"
 
 #. i18n: ectx: property (title), widget (QGroupBox, GroupBox193)
 #: encodervorbisconfig.ui:368
@@ -257,10 +255,10 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"Pridėti informaciją apie dainą į failo puslapinę antraštę. Tai palengvins "
-"naudotojui gauti dainos informaciją šio grotuvo pagalba. Jūs galite gauti "
-"šią informaciją tiesiog iš žiniatinklio. Žiūrėkite  <i>\"CDDB Retrieval\"</"
-"i> valdymo modulį, norėdami sužinoti daugiau detalių."
+"Pridėti informaciją apie dainą į failo antraštę. Tai leis naudotojui "
+"lengviau gauti dainos informaciją, kurią rodo medijos leistuvė. Jūs galite "
+"gauti šią informaciją automatiškai internetu. Išsamesnei informacijai "
+"žiūrėkite <i>„CDDB atsisiuntimas“</i> valdymo modulį."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vorbis_comments)
 #: encodervorbisconfig.ui:396
