@@ -24,6 +24,7 @@
 #include <QCheckBox>
 #include <QRegularExpression>
 #include <QSlider>
+#include <QTabBar>
 #include <QVBoxLayout>
 
 #include <KConfigDialogManager>
@@ -44,6 +45,7 @@ KAudiocdModule::KAudiocdModule(QObject *parent, const KPluginMetaData &md)
     box->setContentsMargins(0, 0, 0, 0);
 
     audioConfig = new AudiocdConfig(widget());
+    audioConfig->tabWidget->tabBar()->setExpanding(true);
 
     box->addWidget(audioConfig);
     setButtons(Default | Apply | Help);
