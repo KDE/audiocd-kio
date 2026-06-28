@@ -186,7 +186,7 @@ msgstr "Substituïx per:"
 #: kcmaudiocd.cpp:210
 #, kde-format
 msgid "Cool artist - example audio file.wav"
-msgstr "Artista súper - exemple de fitxer àudio.wav"
+msgstr "Artista súper – exemple de fitxer àudio.wav"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: audiocdconfig.ui:402
@@ -195,9 +195,9 @@ msgid ""
 "Regular expression used on all file names. For example using selection \" \" "
 "and replace with \"_\" would replace all the spaces with underlines.\n"
 msgstr ""
-"Les expressions regulars s'utilitzen a tots els noms de fitxer. Per exemple, "
-"seleccionant per « » i substituint amb «_» se substituiran tots els espais "
-"per subratllats.\n"
+"Les expressions regulars s'utilitzen en tots els noms de fitxer. Per "
+"exemple, seleccionant per « » i substituint amb «_» se substituiran tots els "
+"espais per subratllats.\n"
 
 #. i18n: ectx: property (text), widget (QLabel, inputlabel)
 #: audiocdconfig.ui:418
