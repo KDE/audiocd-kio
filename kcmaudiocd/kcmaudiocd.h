@@ -27,7 +27,6 @@
 #ifndef KCMAUDIOCD_H
 #define KCMAUDIOCD_H
 
-#include "kcoreaddons_version.h"
 #include <KCModule>
 #include <KConfig>
 #include <QList>
