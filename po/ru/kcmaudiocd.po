@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-14 00:43+0000\n"
+"POT-Creation-Date: 2026-07-14 00:42+0000\n"
 "PO-Revision-Date: 2025-02-13 11:50+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -186,8 +186,8 @@ msgstr "Заменить на:"
 
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
-#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
-#: kcmaudiocd.cpp:210
+#: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:137
+#: kcmaudiocd.cpp:212
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "Хороший исполнитель - пример звукового файла file.wav"
@@ -291,7 +291,7 @@ msgstr "Использовать макросы пути расположени�
 msgid "%{albumtitle}/%{albumartist}"
 msgstr "%{albumtitle}/%{albumartist}"
 
-#: kcmaudiocd.cpp:60
+#: kcmaudiocd.cpp:62
 #, kde-format
 msgid "%1 Encoder"
 msgstr "%1"
