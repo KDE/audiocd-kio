@@ -54,7 +54,7 @@ set_package_properties(KF6DocTools PROPERTIES
 find_package(Cdparanoia REQUIRED)
 
 cmake_push_check_state()
-set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${CDPARANOIA_INCLUDE_DIR})
+set(CMAKE_REQUIRED_INCLUDES ${CDPARANOIA_INCLUDE_DIR})
 check_struct_has_member("struct cdrom_drive" "ioctl_device_name" "cdda_interface.h" CDDA_IOCTL_DEVICE_EXISTS)
 cmake_pop_check_state()
 if(CDDA_IOCTL_DEVICE_EXISTS)
