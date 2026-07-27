@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2002 Carsten Niehaus <cniehaus@kde.org>
-# SPDX-FileCopyrightText: 2003, 2004, 2005 Arnold Krille <arnold@arnoldarts.de>
 # SPDX-FileCopyrightText: 2003, 2005 Stephan Johach <hunsum@gmx.de>
+# SPDX-FileCopyrightText: 2003-2005 Arnold Krille <arnold@arnoldarts.de>
 # SPDX-FileCopyrightText: 2004 <arnold@roederberg.dyndns.org>
 # SPDX-FileCopyrightText: 2004 Thomas Diehl <thd@kde.org>
 # SPDX-FileCopyrightText: 2005 Arnold Krille <arnold@roederberg.dyndns.org>
