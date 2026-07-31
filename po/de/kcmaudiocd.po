@@ -266,7 +266,7 @@ msgid ""
 msgstr ""
 "Hiermit wird der Speicherort für die Dateien relativ zum Basisordner des "
 "Kodierers festgelegt. Dabei kann „/“ (Schrägstrich) für die Erstellung von "
-"Unterordnern verwendet werden (z. B. %{albumartist}/%{albumtitle})."
+"Unterordnern verwendet werden (z. B. %{albumartist}/%{albumtitle})."
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
