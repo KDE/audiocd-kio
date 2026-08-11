@@ -197,7 +197,7 @@
 
 <note>
 <para
->Die Karteikarte FLAC-Kodierer ist nur vorhanden, wenn das Ein-/Ausgabemodul Audiocd mit libFLAC kompiliert wurde.</para>
+>Die Karteikarte FLAC-Kodierer ist nur vorhanden, wenn das Ein-/Ausgabemodul für Audio-CDs mit libFLAC kompiliert wurde.</para>
 </note>
 
 <para
@@ -213,13 +213,13 @@
 <para
 >Die Komprimierungsstufe ist ein ganzzahliger Wert zwischen 0 und 8, der einen Kompromiss zwischen Dateigröße und der Geschwindigkeit der Komprimierung darstellt.</para>
 <para
->Die Einstellung der Komprimierungsstufe auf 0 ergibt die kürzeste Komprimierungszeit, erzeugt aber erzeugt aber eine vergleichsweise große Datei.</para>
+>Die Einstellung der Komprimierungsstufe auf 0 ergibt die kürzeste Komprimierungszeit, erzeugt aber eine vergleichsweise große Datei.</para>
 <para
 >Eine Komprimierungsstufe von 8 hingegen macht die Komprimierung recht langsam, erzeugt aber die kleinste Datei.</para>
 <para
 >FLAC ist per Definition ein verlustfreier Codec, daher ist die Audioqualität der Ausgabe unabhängig von der Komprimierungsstufe immer gleich.</para>
 <para
->Außerdem erhöhen Stufen über 5 die Komprimierungszeit drastisch, erzeugen aber eine nur eine geringfügig kleinere Datei und werden daher nicht empfohlen.</para>
+>Außerdem erhöhen Stufen über 5 die Komprimierungszeit drastisch, erzeugen aber nur eine geringfügig kleinere Datei und werden daher nicht empfohlen.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -258,7 +258,7 @@
 >MP3 oder MPEG Audio Layer III ist eine patentierte verlustbehaftete komprimierte Kodierung für digitales Audio.Trotz der Mängel ist sie ein gebräuchliches Format zum Speichern von digitalem Audio und wird von fast jedem tragbaren Mediengerät unterstützt.</para>
 
 <para
->Das Ein-/Ausgabemoduls für Audio-CDs verwendet den LAME-Kodierer, um <filename class="extension"
+>Das Ein-/Ausgabemodul für Audio-CDs verwendet den LAME-Kodierer, um <filename class="extension"
 >mp3</filename
 >-Dateien zu erzeugen. LAME gilt als der beste MP3-Kodierer, vor allem dank der engagierten Arbeit seiner Entwickler und des Open-Source-Lizenzmodells, das es dem Projekt ermöglichte, auf technische Ressourcen aus der ganzen Welt zurückzugreifen.</para>
 
@@ -338,7 +338,7 @@
 >Maximale Bitrate</guilabel
 > und <guilabel
 >Minimale Bitrate</guilabel
-> einstellen und wählen, und ob der <guilabel
+> einstellen und wählen, ob der <guilabel
 >Minimale Wert eine harte Grenze ist</guilabel
 >.</para>
 <para
@@ -454,10 +454,9 @@
 
 <note>
 <para
->Die Karteikarte Ogg-Vorbis-Kodierer ist nur vorhanden, wenn das Ein-/Ausgabemodul Audiocd mit <ulink url="https://xiph.org/vorbis/"
+>Die Karteikarte Ogg-Vorbis-Kodierer ist nur vorhanden, wenn das Ein-/Ausgabemodul für Audio-CDs mit <ulink url="https://xiph.org/vorbis/"
 >libvorbis</ulink
-> kompiliert wurde
->.</para>
+> kompiliert wurde.</para>
 </note>
 
 <para
@@ -483,7 +482,7 @@
 </listitem>
 <listitem>
 <para
->Als Alternative kann eine variable Bitrate benutzt werden. Sie können die <guilabel
+>Als Alternative kann eine variable Bitrate verwendet werden. Sie können die <guilabel
 >Durchschnittliche Bitrate</guilabel
 > (Voreinstellung) oder die <guilabel
 >Maximale Bitrate</guilabel
