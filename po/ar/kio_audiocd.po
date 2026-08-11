@@ -5,13 +5,13 @@
 # waleed fathalla <fathalla_w@yahoo.com>, 2004.
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# zayed <zayed.alsaidi@gmail.com>, 2008, 2021.
+# SPDX-FileCopyrightText: 2008, 2021, 2026 zayed <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2021-12-11 22:40+0400\n"
+"PO-Revision-Date: 2026-08-10 18:05+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: audiocd.cpp:119
 #, kde-format
@@ -57,8 +58,7 @@ msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
-"الجهاز ليس لديه صلاحيات القراءة لهذا الحساب. تأكد من صلاحيات القراءة على "
-"الجهاز."
+"الجهاز ليس لديه أذون القراءة لهذا الحساب. تأكد من أذون القراءة على الجهاز."
 
 #: audiocd.cpp:910
 #, kde-format
@@ -66,8 +66,7 @@ msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
-"الجهاز ليس لديه صلاحيات الكتابة لهذا الحساب. تأكد من صلاحيات الكتابة على "
-"الجهاز."
+"الجهاز ليس لديه أذون الكتابة لهذا الحساب. تأكد من أذون الكتابة على الجهاز."
 
 #: audiocd.cpp:916
 #, kde-format

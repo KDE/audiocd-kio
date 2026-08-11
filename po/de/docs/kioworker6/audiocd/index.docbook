@@ -55,21 +55,21 @@
 > ausgelesen werden. Dies garantiert eine perfekte Kopie der Audiodaten.</para>
 
 <para
->Um zu sehen, wie dieses Modul arbeitet, legen Sie eine Audio-<acronym
+>Um zu sehen, wie dieses Ein-/Ausgabemodul arbeitet, legen Sie eine Audio-<acronym
 >CD</acronym
-> in Ihr &CD-ROM;-Laufwerk ein und geben <userinput
+> in Ihr &CD-ROM;-Laufwerk ein und geben Sie <userinput
 >audiocd:/</userinput
 > im &konqueror; ein. Innerhalb weniger Sekunden sollten Sie eine Liste von Stücken und einige Ordner sehen.</para>
 
 <para
 >Auf Audio-<acronym
 >CD</acronym
->s gibt es eigentlich keine Ordner, aber das audiocd-Modul stellt diese nützliche Erweiterung bereit. Wenn Sie in diese Ordner schauen, werden Sie feststellen, dass sie alle die gleiche Anzahl Titel enthalten. Falls Sie mit dem Internet verbunden sind, werden in einigen Verzeichnissen sogar die Stück-Titel als Dateinamen angezeigt.</para>
+>s gibt es eigentlich keine Ordner, aber das Ein-/Ausgabemodul für Audio-CDs stellt diese nützliche Erweiterung aus Komfortgründen bereit. Wenn Sie in diese Ordner schauen, werden Sie feststellen, dass sie alle die gleiche Titelanzahl enthalten. Falls Sie mit dem Internet verbunden sind, werden in einigen Verzeichnissen sogar die Stück-Titel als Dateinamen angezeigt.</para>
 
 <para
 >Diese separaten Ordner existieren, damit Sie auswählen können, in welchem Format Sie die Stücke auf der <acronym
 >CD</acronym
-> anhören (oder kopieren) wollen.</para>
+> anhören (oder kopieren) möchten.</para>
 
 <para
 >Wenn Sie einen Titel aus dem Ordner <filename class="directory"
@@ -79,13 +79,13 @@
 > ausgelesen und in einer Datei gespeichert wird. Beachten Sie, dass Ogg Vorbis ein komprimiertes Format ist, sodass die gespeicherte Datei erheblich kleiner sein wird als eine von den Rohdaten kopierte.</para>
 
 <para
->Der Mechanismus dahinter ist recht einfach. Wenn das audiocd-Modul aufgefordert wird, einen Titel aus dem Ordner <filename class="directory"
+>Der Mechanismus dahinter ist recht einfach. Wenn das Ein-/Ausgabemodul für Audio-CDs aufgefordert wird, einen Titel aus dem Ordner <filename class="directory"
 >Ogg Vorbis</filename
-> zu erzeugen, liest es die digitalen Audiodaten von der <acronym
+> abzurufen, liest es die digitalen Audiodaten von der <acronym
 >CD</acronym
->. Während das Modul die Daten zur Speicherung in eine Datei ablegt, werden diese in das Format Ogg Vorbis umgewandelt (<acronym
+>. Während das Modul die Daten zur Zwischenspeicherung in einer Datei in Ihrem Benutzerordner ablegt, werden diese in das Format „Ogg Vorbis“ umgewandelt (<acronym
 >CD</acronym
->-Audio ist kein spezielles Format, es sind einfach binäre Daten).</para>
+>-Audio ist ein unkomprimiertes Format für Audio-Daten).</para>
 
 <para
 >Sie könnten auch versuchen, eine auf <literal role="extension"
@@ -122,7 +122,7 @@
 >=<parameter
 >/dev/sdc</parameter
 ></userinput
->. Normalerweise wird das Modul versuchen, ein <acronym
+>. Normalerweise wird das Ein-/Ausgabemodul versuchen, ein <acronym
 >CD</acronym
 >-Laufwerk mit einer eingelegten Audio-<acronym
 >CD</acronym
@@ -226,7 +226,7 @@
 <para
 >Beachten Sie, dass es einen Nachteil der Stufe 2 gibt: Das Auslesen kann sehr langsam sein, sodass das digitale Abspielen in Echtzeit möglicherweise nicht korrekt arbeitet. Falls Sie ein qualitativ hochwertiges <acronym
 >CD</acronym
->-Laufwerk besitzen (dabei gilt, dass teurer nicht notwendigerweise auch bessere Qualität bedeutet), werden Sie ein langsames Auslesen wahrscheinlich nicht erleben, aber ein schlechtes Laufwerk kann Tage brauchen (!), um die Audiodaten einer einzigen <acronym
+>-Laufwerk besitzen (dabei gilt, dass teurer nicht notwendigerweise auch bessere Qualität bedeutet), werden Sie ein langsames Auslesen wahrscheinlich nicht erleben, aber ein schlechtes Laufwerk kann Tage benötigen (!), um die Audiodaten einer einzigen <acronym
 >CD</acronym
 > auszulesen. </para>
 </listitem>
