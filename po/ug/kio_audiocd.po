@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: kio_audiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2026-05-28 17:09-0400\n"
+"PO-Revision-Date: 2026-09-22 18:02+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,6 @@ msgid ""
 "You cannot specify a host with this protocol. Please use the audiocd:/ "
 "format instead."
 msgstr ""
-"سىز بۇ كېلىشىمدە بىر ماشىنا بەلگىلىيەلمەيسىز. audiocd:/ پىچىمىنى ئىشلىتىڭ."
 
 #: audiocd.cpp:896
 #, kde-format
@@ -54,8 +53,6 @@ msgid ""
 "Device does not have read permissions for this account.  Check the read "
 "permissions on the device."
 msgstr ""
-"بۇ ھېساباتنىڭ ئۈسكۈنىنى ئوقۇش ھوقۇقى يوق. بۇ ئۈسكۈنىنىڭ ئوقۇش ئىجازەتنى "
-"تەكشۈرۈڭ."
 
 #: audiocd.cpp:910
 #, kde-format
@@ -63,8 +60,6 @@ msgid ""
 "Device does not have write permissions for this account.  Check the write "
 "permissions on the device."
 msgstr ""
-"بۇ ھېساباتنىڭ ئۈسكۈنىگە يېزىش ھوقۇقى يوق. بۇ ئۈسكۈنىنىڭ يېزىش ئىجازەتنى "
-"تەكشۈرۈڭ."
 
 #: audiocd.cpp:916
 #, kde-format
@@ -78,15 +73,14 @@ msgid ""
 "audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
 "CD-ROM is."
 msgstr ""
-"يوچۇن خاتالىق. ئەگەر قوزغاتقۇچىڭىزدا بىر CD بولسا نۆۋەتتىكى "
-"سالاھىيىتىڭىز(root ئەمەس)دە cdparanoia -vsQ نى ئىجرا قىلىڭ. ناخشا تىزىمىنى "
-"كۆردىڭىزمۇ؟ ئەگەر كۆرمىگەن بولسىڭىز، CD ئۈسكۈنىنى زىيارەت قىلىش ھوقۇقىڭىز "
-"بارلىقىنى جەزملەڭ. ئەگەر SCSI تەقلىد ئۈسكۈنە (بەلكىم IDE CD ئويغۇچىڭىز "
-"بولۇشى مۇمكىن) ئىشلەتسىڭىز ئۇنداقتا ئادەتتىكى SCSI ئۈسكۈنىنى ئوقۇش يېزىش "
-"ھوقۇقىڭىزنىڭ بارلىقىنى جەزملەڭ، بۇ ئۈسكۈنىلەر /dev/sg0 ، /dev/sg1 "
-"قاتارلىقلار بولۇشى مۇمكىن. ئەگەر بۇلارنىڭ ھەممىسى كارغا كەلمىسە، audiocd:/?"
-"device=/dev/sg0 (ياكى مۇشۇنىڭغا ئوخشاش ھەرپ)نى كىرگۈزۈپ kio_audiocd غا CD-"
-"ROM نىڭ زادى قايسى ئۈسكۈنە ئىكەنلىكىنى ئۇقتۇرۇڭ."
+"نامەلۇم خاتالىق.  If you have a cd in the drive try running cdparanoia -vsQ "
+"as yourself (not root). Do you see a track list? If not, make sure you have "
+"permission to access the CD device. If you are using SCSI emulation "
+"(possible if you have an IDE CD writer) then make sure you check that you "
+"have read and write permissions on the generic SCSI device, which is "
+"probably /dev/sg0, /dev/sg1, etc.. If it still does not work, try typing "
+"audiocd:/?device=/dev/sg0 (or similar) to tell kio_audiocd which device your "
+"CD-ROM is."
 
 #: audiocd.cpp:994
 #, kde-format

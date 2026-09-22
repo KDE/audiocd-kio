@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-14 00:42+0000\n"
-"PO-Revision-Date: 2026-05-28 17:08-0400\n"
+"PO-Revision-Date: 2026-09-22 18:02+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,10 +32,6 @@ msgid ""
 "correction which can be useful for reading damaged CDs. However, this "
 "feature can be problematic in some cases, so you can switch it off here."
 msgstr ""
-"ئەگەر بۇ تاللانمىنى تاللىمىسىڭىز، خىزمەت پىروگراممىسى خاتانى تۈزىتىش "
-"ئىقتىدارىنى ئىشلەتمەيدۇ، بۇ ئىقتىدار بۇزۇلغان CD نى ئوقۇغاندا كېرەكلىك "
-"بولۇشى مۇمكىن. ئەمما ئۇنىڭدا بەزى ئەھۋاللاردا مەسىلە كۆرۈلۈشى مۇمكىن، "
-"شۇڭلاشقا بۇ جايدا ئۇنى تاقىسىڭىز بولىدۇ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, ec_enable_check)
 #: audiocdconfig.ui:59
@@ -107,7 +103,7 @@ msgstr "يىل"
 #: audiocdconfig.ui:255 audiocdconfig.ui:575 audiocdconfig.ui:751
 #, no-c-format, kde-format
 msgid "%{albumartist}"
-msgstr "%{albumartist}"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel16)
 #. i18n: ectx: property (text), widget (QLabel, textLabel10)
@@ -115,7 +111,7 @@ msgstr "%{albumartist}"
 #: audiocdconfig.ui:265 audiocdconfig.ui:505 audiocdconfig.ui:721
 #, no-c-format, kde-format
 msgid "%{year}"
-msgstr "%{year}"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel21)
 #. i18n: ectx: property (text), widget (QLabel, textLabel13)
@@ -147,7 +143,7 @@ msgstr "ناخشا توپلىمى ماۋزۇسى"
 #: audiocdconfig.ui:305 audiocdconfig.ui:585 audiocdconfig.ui:731
 #, no-c-format, kde-format
 msgid "%{genre}"
-msgstr "%{genre}"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel14)
 #. i18n: ectx: property (text), widget (QLabel, textLabel6)
@@ -155,7 +151,7 @@ msgstr "%{genre}"
 #: audiocdconfig.ui:315 audiocdconfig.ui:605 audiocdconfig.ui:741
 #, no-c-format, kde-format
 msgid "%{albumtitle}"
-msgstr "%{albumtitle}"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
 #: audiocdconfig.ui:365
@@ -190,9 +186,6 @@ msgid ""
 "Regular expression used on all file names. For example using selection \" \" "
 "and replace with \"_\" would replace all the spaces with underlines.\n"
 msgstr ""
-"ھەممە ھۆججەت ئاتىدا ئىشلەتكەن مۇنتىزىم ئىپادە. مەسىلەن«» تاللاشقا ئىشلىتىپ، "
-"ئۇنى «_» غا ئالماشتۇرىدۇ، بۇ ھەممە بوشلۇقنى ئاستى سىزىققا "
-"ئالماشتۇرىدىغانلىقىنى بىلدۈرىدۇ.\n"
 
 #. i18n: ectx: property (text), widget (QLabel, inputlabel)
 #: audiocdconfig.ui:418
@@ -222,7 +215,7 @@ msgstr "ھۆججەت ئاتى (كېڭەيتىلگەن ئاتى يوق)"
 #: audiocdconfig.ui:515
 #, no-c-format, kde-format
 msgid "%{title}"
-msgstr "%{title}"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_4)
 #: audiocdconfig.ui:545
@@ -240,7 +233,7 @@ msgstr "نەغمە ئاتى"
 #: audiocdconfig.ui:595
 #, no-c-format, kde-format
 msgid "%{trackartist}"
-msgstr "%{trackartist}"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: audiocdconfig.ui:615
@@ -252,7 +245,7 @@ msgstr "نەغمە نومۇرى"
 #: audiocdconfig.ui:625
 #, no-c-format, kde-format
 msgid "%{number}"
-msgstr "%{number}"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:643
@@ -261,9 +254,6 @@ msgid ""
 "This defines where files will appear in relation to the encoder root, you "
 "can use / to create subdirectories. E.g: %{albumartist}/%{albumtitle} "
 msgstr ""
-"بۇ جايدا ھۆججەتنىڭ كودلىغۇچ غول مۇندەرىجىسى بىلەن بولغان نىسپىي ئورنى "
-"بەلگىلىنىدۇ، سىز  / نى ئىشلىتىپ تارماق قىسقۇچ قۇرالايسىز. مەسىلەن: "
-"%{albumartist}/%{albumtitle} "
 
 #. i18n: ectx: property (title), widget (QGroupBox, fileLocationGroupBox)
 #: audiocdconfig.ui:646
@@ -281,7 +271,7 @@ msgstr "ھۆججەت ئورنى ماكرو ئىشلىتىدۇ"
 #: audiocdconfig.ui:799
 #, no-c-format, kde-format
 msgid "%{albumtitle}/%{albumartist}"
-msgstr "%{albumtitle}/%{albumartist}"
+msgstr ""
 
 #: kcmaudiocd.cpp:62
 #, kde-format

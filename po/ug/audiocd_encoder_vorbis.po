@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: audiocd_encoder_vorbis\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2026-05-28 17:08-0400\n"
+"PO-Revision-Date: 2026-09-22 18:02+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,56 +104,56 @@ msgstr "ئەڭ چوڭ بىت نىسبىتى(&X):"
 #: encodervorbisconfig.ui:81 encodervorbisconfig.ui:174
 #, kde-format
 msgid "32 kbps"
-msgstr "32 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:86 encodervorbisconfig.ui:179
 #, kde-format
 msgid "40 kbps"
-msgstr "40 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:91 encodervorbisconfig.ui:184
 #, kde-format
 msgid "48 kbps"
-msgstr "48 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:96 encodervorbisconfig.ui:189
 #, kde-format
 msgid "56 kbps"
-msgstr "56 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:101 encodervorbisconfig.ui:194
 #, kde-format
 msgid "64 kbps"
-msgstr "64 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:106 encodervorbisconfig.ui:199
 #, kde-format
 msgid "80 kbps"
-msgstr "80 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:111 encodervorbisconfig.ui:204
 #, kde-format
 msgid "96 kbps"
-msgstr "96 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:116 encodervorbisconfig.ui:209
 #, kde-format
 msgid "112 kbps"
-msgstr "112 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
@@ -162,7 +162,7 @@ msgstr "112 kbps"
 #: encodervorbisconfig.ui:271
 #, kde-format
 msgid "128 kbps"
-msgstr "128 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
@@ -171,7 +171,7 @@ msgstr "128 kbps"
 #: encodervorbisconfig.ui:276
 #, kde-format
 msgid "160 kbps"
-msgstr "160 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
@@ -180,14 +180,14 @@ msgstr "160 kbps"
 #: encodervorbisconfig.ui:281
 #, kde-format
 msgid "192 kbps"
-msgstr "192 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:136 encodervorbisconfig.ui:229
 #, kde-format
 msgid "224 kbps"
-msgstr "224 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
@@ -196,7 +196,7 @@ msgstr "224 kbps"
 #: encodervorbisconfig.ui:286
 #, kde-format
 msgid "256 kbps"
-msgstr "256 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
@@ -205,7 +205,7 @@ msgstr "256 kbps"
 #: encodervorbisconfig.ui:291
 #, kde-format
 msgid "350 kbps"
-msgstr "350 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_set_vorbis_nominal_br)
 #: encodervorbisconfig.ui:247
@@ -226,8 +226,6 @@ msgid ""
 "You can set the quality of the encoded stream here. A higher value implies a "
 "higher quality but encodes slower."
 msgstr ""
-"سىز بۇ جايدا كودلاش ئېقىمىنىڭ سۈپىتىنى تەڭشىيەلەيسىز. قىممىتى قانچە يۇقىرى "
-"بولسا سۈپىتىمۇ يۇقىرى ئەمما كودلاش ئاستىراق  بولىدۇ."
 
 #. i18n: ectx: property (title), widget (QGroupBox, vorbis_quality_settings)
 #: encodervorbisconfig.ui:318
@@ -256,10 +254,6 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"ھۆججەت بېشىغا ناخشا چۈشەندۈرۈشىنى قوشىدۇ. بۇنداق بولغاندا ئىشلەتكۈچى چالغۇدا "
-"ناخشىنىڭ ئالىي ئۇچۇرىنى كۆرسىتىش تېخىمۇ قولايلىشىدۇ. سىز ئىنتېرنېتتىن بۇ "
-"ئۇچۇرغا ئاپتوماتىك ئېرىشەلەيسىز. <i>\"CDDB ئېرىشىش\"</i> تىزگىن بۆلىكىدىكى "
-"تەپسىلاتنى كۆرۈڭ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_vorbis_comments)
 #: encodervorbisconfig.ui:396

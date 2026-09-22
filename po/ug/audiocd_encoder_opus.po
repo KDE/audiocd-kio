@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audiocd-kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2026-05-28 17:08-0400\n"
+"PO-Revision-Date: 2026-09-22 18:02+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -106,7 +106,7 @@ msgstr ""
 #: encoderopusconfig.ui:209 encoderopusconfig.ui:240 encoderopusconfig.ui:277
 #, kde-format
 msgid "96 kbps"
-msgstr "96 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -138,7 +138,7 @@ msgstr ""
 #: encoderopusconfig.ui:89 encoderopusconfig.ui:194 encoderopusconfig.ui:262
 #, kde-format
 msgid "48 kbps"
-msgstr "48 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -146,7 +146,7 @@ msgstr "48 kbps"
 #: encoderopusconfig.ui:94 encoderopusconfig.ui:199 encoderopusconfig.ui:267
 #, kde-format
 msgid "64 kbps"
-msgstr "64 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -154,7 +154,7 @@ msgstr "64 kbps"
 #: encoderopusconfig.ui:99 encoderopusconfig.ui:204 encoderopusconfig.ui:272
 #, kde-format
 msgid "80 kbps"
-msgstr "80 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -162,7 +162,7 @@ msgstr "80 kbps"
 #: encoderopusconfig.ui:109 encoderopusconfig.ui:214 encoderopusconfig.ui:282
 #, kde-format
 msgid "128 kbps"
-msgstr "128 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -170,7 +170,7 @@ msgstr "128 kbps"
 #: encoderopusconfig.ui:114 encoderopusconfig.ui:219 encoderopusconfig.ui:287
 #, kde-format
 msgid "160 kbps"
-msgstr "160 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -178,7 +178,7 @@ msgstr "160 kbps"
 #: encoderopusconfig.ui:119 encoderopusconfig.ui:224 encoderopusconfig.ui:292
 #, kde-format
 msgid "192 kbps"
-msgstr "192 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_cbr)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_opus_vbr)
@@ -186,7 +186,7 @@ msgstr "192 kbps"
 #: encoderopusconfig.ui:124 encoderopusconfig.ui:229 encoderopusconfig.ui:297
 #, kde-format
 msgid "256 kbps"
-msgstr "256 kbps"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_set_opus_vbr)
 #: encoderopusconfig.ui:132
@@ -242,10 +242,6 @@ msgid ""
 "this information automatically via the Internet. Look at the <i>\"CDDB "
 "Retrieval\"</i> control module for details."
 msgstr ""
-"ھۆججەت بېشىغا ناخشا چۈشەندۈرۈشىنى قوشىدۇ. بۇنداق بولغاندا ئىشلەتكۈچى چالغۇدا "
-"ناخشىنىڭ ئالىي ئۇچۇرىنى كۆرسىتىش تېخىمۇ قولايلىشىدۇ. سىز ئىنتېرنېتتىن بۇ "
-"ئۇچۇرغا ئاپتوماتىك ئېرىشەلەيسىز. <i>\"CDDB ئېرىشىش\"</i> تىزگىن بۆلىكىدىكى "
-"تەپسىلاتنى كۆرۈڭ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_opus_comments)
 #: encoderopusconfig.ui:414
