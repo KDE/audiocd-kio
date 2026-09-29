@@ -106,7 +106,6 @@ msgstr "Параметры битового потока Vorbis"
 msgid "Ma&ximal bitrate:"
 msgstr "М&аксимальный битовый поток:"
 
-# [https://bugs.kde.org/show_bug.cgi?id=265435] BUGME: change "kbs" to "kbps"
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_max_br)
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_vorbis_min_br)
 #: encodervorbisconfig.ui:81 encodervorbisconfig.ui:174
