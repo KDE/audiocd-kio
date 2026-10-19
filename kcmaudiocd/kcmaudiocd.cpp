@@ -187,6 +187,7 @@ void KAudiocdModule::save()
     config->sync();
 
     configChanged = false;
+    setNeedsSave(false);
 }
 
 void KAudiocdModule::load()
@@ -215,6 +216,9 @@ void KAudiocdModule::load()
     }
 
     audioConfig->fileLocationVerticalWidget->setEnabled(audioConfig->fileLocationCheckBox->isChecked());
+
+    configChanged = false;
+    setNeedsSave(false);
 }
 
 void KAudiocdModule::slotModuleChanged()
