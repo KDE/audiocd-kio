@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmaudiocd\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:42+0000\n"
+"POT-Creation-Date: 2026-10-20 00:51+0000\n"
 "PO-Revision-Date: 2024-08-13 08:22+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -194,7 +194,7 @@ msgstr "החלפה ב־:"
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:137
-#: kcmaudiocd.cpp:212
+#: kcmaudiocd.cpp:213
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "אמן מגניב - קובץ שמע לדוגמה.wav"
