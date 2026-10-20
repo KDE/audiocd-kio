@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-14 00:43+0000\n"
+"POT-Creation-Date: 2026-10-20 03:13+0000\n"
 "PO-Revision-Date: 2013-02-23 17:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -180,7 +180,7 @@ msgstr "या सह बदला :"
 #. i18n: ectx: property (text), widget (QLineEdit, example)
 #. i18n: ectx: property (text), widget (QLabel, exampleOutput)
 #: audiocdconfig.ui:394 audiocdconfig.ui:438 kcmaudiocd.cpp:135
-#: kcmaudiocd.cpp:210
+#: kcmaudiocd.cpp:211
 #, kde-format
 msgid "Cool artist - example audio file.wav"
 msgstr "कूल आर्टिस्ट - उदाहरण ऑडिओ फाईल.wav"
