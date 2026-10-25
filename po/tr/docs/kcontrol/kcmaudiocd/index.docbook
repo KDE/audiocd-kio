@@ -211,7 +211,7 @@
 ></term>
 <listitem>
 <para
->Sıkıştırma düzeyi, dosya boyutu ile sıkıştırma hızı arasındaki dengeyi temsil eden 0 ile 8 arasında bir tamsayı değeridir.</para>
+>Sıkıştırma düzeyi, dosya boyutu ile sıkıştırma hızı arasındaki dengeyi temsil eden 0 ile 8 arasında bir tam sayı değeridir.</para>
 <para
 >Sıkıştırma düzeyini 0’a ayarlamak en kısa sıkıştırma süresini sağlar; ancak karşılaştırılabilir derecede büyük bir dosya oluşturur.</para>
 <para
@@ -400,7 +400,7 @@
 <itemizedlist>
 <listitem>
 <para
->CPU karmaşıklığı ile kalite/bit hızı arasındaki Opus kodlayıcısı seçimini etkileyen birkaç şey vardır. Kodlamanın karmaşıklığı, 0’dan 10’a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
+>CPU karmaşıklığı ile kalite/bit hızı arasındaki Opus kodlayıcısı seçimini etkileyen birkaç şey vardır. Kodlamanın karmaşıklığı, 0’dan 10’a kadar bir tam sayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
 </listitem>
 <listitem>
 <para
@@ -478,7 +478,7 @@
 <itemizedlist>
 <listitem>
 <para
->Ogg Vorbis kodlamasının kalitesi, 0’dan 10’a kadar bir tamsayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
+>Ogg Vorbis kodlamasının kalitesi, 0’dan 10’a kadar bir tam sayı kullanılarak seçilebilir; burada 0 en düşük kaliteyi, 10 ise en yüksek kaliteyi verir.</para>
 </listitem>
 <listitem>
 <para
