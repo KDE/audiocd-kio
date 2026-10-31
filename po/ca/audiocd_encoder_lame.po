@@ -595,9 +595,3 @@ msgstr "Baixa"
 #, kde-format
 msgid "High"
 msgstr "Alta"
-
-#~ msgid "Constant bitrate"
-#~ msgstr "Taxa de bits constant"
-
-#~ msgid "Variable bitrate"
-#~ msgstr "Taxa de bits variable"
