@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Arabic "INCLUDE">
+]>
+<article id="kcm_audiocd" lang="&language;">
+
+<articleinfo>
+<title
+>قرص صوتي</title>
+
+<authorgroup>
+<author
+><firstname
+>Yuri</firstname
+> <surname
+>Chornoivan</surname
+> <affiliation
+><address
+>yurchor@ukr.net</address
+></affiliation
+></author>
+
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<date
+>2019-02-08</date>
+<releaseinfo
+>تطبيقات 19.04</releaseinfo>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>إعدادات النّظام</keyword>
+<keyword
+>صوت</keyword>
+<keyword
+>قرص مضغوط</keyword>
+<keyword
+>cdda</keyword>
+<keyword
+>wav</keyword>
+<keyword
+>mp3</keyword>
+<keyword
+>ogg</keyword>
+<keyword
+>FLAC</keyword>
+<keyword
+>opus</keyword>
+</keywordset>
+</articleinfo>
+
+<sect1 id="audiocd-page">
+<title
+>ضبط عاملة كيو آي أو للقرص الصوتي</title>
+<para
+>تنقسم صفحة الوحدة <guilabel
+>ضبط عاملة كيو آي أو للقرص الصوتي</guilabel
+> إلى لسان <guilabel
+>عام</guilabel
+> ولسان <guilabel
+>أسماء</guilabel
+> وألسنة معاملات المشفر.</para>
+
+<sect2 id="general-tab">
+<title
+>لسان عام</title>
+<screenshot>
+<screeninfo
+>لسان <guilabel
+>عام</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="general.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>لسان <guilabel
+>عام</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>يحتوي هذا اللسان على المعاملات العامة التي تنطبق على كامل عملية قراءة البيانات من القرص المضغوط.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>استخدم تصحيح الأخطاء عند قراءة القرص المضغوط</guilabel
+></term>
+<listitem>
+<para
+>عند كتابة قرص مضغوط صوتي، تضيف العملية 64 بتًا من بيانات تصحيح الأخطاء إلى كل إطار. بعد ذلك، تُضاف 8 بتات من بيانات الرمز الفرعي أو القناة الفرعية إلى كل إطار مشفر، وتُستخدم للتحكم والعنونة عند تشغيل القرص المضغوط. قد يؤدي تجاهل تصحيح البيانات هذا إلى تسريع القراءة ولكنه قد يُنتج بعض الشوائب غير المرغوب فيها.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>تجاوز الأخطاء</guilabel
+></term>
+<listitem>
+<para
+>المبدئي هو عدم تجاوز أخطاء الوسيط أبدًا. هذا ضروري لضمان الجودة العالية للنتائج.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>أولوية المشفر</guilabel
+></term>
+<listitem>
+<para
+>من الممكن تحديد أولوية المشفر لضمان أن عملية التشفير لن تمنعك من أداء مهام أخرى بالتوازي (القيم الأقل) أو لتسريع التشفير (القيم الأعلى). </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="names-tab">
+<title
+>لسان الأسماء</title>
+
+<screenshot>
+<screeninfo
+>لسان <guilabel
+>أسماء</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="names.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>لسان <guilabel
+>أسماء</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>يمكن استخدام لسان <guilabel
+>أسماء</guilabel
+> لضبط أسماء ملفات البيانات المشفرة بدقة. من الممكن استخدام بعض وحدات الماكرو و <ulink url="https://en.wikipedia.org/wiki/Regular_expression"
+>التعبيرات النمطية</ulink
+> لإنتاج الأسماء حسب احتياجاتك تمامًا.</para>
+
+<para
+>يمكنك استخدام حقل الاختبار التفاعلي في الجزء السفلي من الصفحة للتحقق من إنتاج الأسماء الصحيحة.</para>
+
+</sect2>
+
+<sect2 id="flac-tab">
+<title
+>لسان مشفر FLAC</title>
+
+<screenshot>
+<screeninfo
+>لسان <guilabel
+>مشفر FLAC</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="flac.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>لسان <guilabel
+>مشفر FLAC</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>لسان مشفر FLAC متاح فقط إذا جُمعت عاملة كيو آي أو للقرص الصوتي مع libFLAC.</para>
+</note>
+
+<para
+>FLAC هو تنسيق صوتي مضغوط بلا فقدان وخالٍ من أي براءات اختراع أو رسوم ترخيص. يحافظ على جودة صوت القرص المضغوط المثالية مع تقليل حجم الملف بنحو 50%. عند استخدام هذا المرمّز، يكون حجم الملف أكبر بكثير من Opus أو Ogg Vorbis أو MP3.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>مستوى ضغط FLAC</guilabel
+></term>
+<listitem>
+<para
+>مستوى الضغط هو قيمة صحيحة بين 0 و8 تمثل المفاضلة بين حجم الملف وسرعة الضغط.</para>
+<para
+>يؤدي ضبط مستوى الضغط على 0 إلى أقصر وقت ضغط ولكنه يُنتج ملفًا كبيرًا نسبيًا.</para>
+<para
+>من ناحية أخرى، يجعل مستوى الضغط 8 الضغط بطيئًا جدًا ولكنه يُنتج أصغر ملف.</para>
+<para
+>لاحظ أنه بما أن FLAC هو بحكم تعريفه مرمّز بلا فقدان، فإن جودة صوت المخرجات هي نفسها تمامًا بغض النظر عن مستوى الضغط.</para>
+<para
+>أيضًا، تزيد المستويات فوق 5 وقت الضغط بشكل كبير ولكنها تُنشئ ملفًا أصغر قليلًا فقط، ولا يُوصى بها.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="mp3-tab">
+<title
+>لسان مشفر MP3</title>
+
+<screenshot>
+<screeninfo
+>لسان <guilabel
+>مشفر MP3</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="mp3.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>لسان <guilabel
+>مشفر MP3</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>لافتة مشفر MP3 متاحة فقط إذا كانت أدوات <ulink url="http://lame.sourceforge.net/"
+>LAME</ulink
+> مثبتة في النظام.</para>
+</note>
+
+<para
+>MP3 (أو MPEG-1 Audio Layer III) هو مرمز صوتي رقمي محمي ببراءة اختراع يستخدم ضغطًا مع فقدان البيانات. رغم عيوبه، فهو تنسيق شائع لتخزين الصوت الاستهلاكي، ومدعوم على نطاق واسع في مشغلات الموسيقى المحمولة.</para>
+
+<para
+>يستخدم عامل KIO للقرص الصوتي مشفر LAME لإنتاج ملفات <filename class="extension"
+>mp3</filename
+>. يُعتبر LAME أفضل مشفر MP3، بفضل العمل المتفاني لمطوريه ونموذج الترخيص مفتوح المصدر الذي سمح للمشروع بالاستفادة من الموارد الهندسية من جميع أنحاء العالم.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>طريقة الترميز</guilabel
+></term>
+<listitem>
+<para
+>معدل البت هو مقياس كمية البيانات المستخدمة لتمثيل ثانية من المقطع الصوتي. يمكن تحديد <guilabel
+>معدل بت ثابت</guilabel
+> لحجم ملف قابل للتنبؤ. يدعم مشفر MP3 أيضًا إعداد <guilabel
+>معدل بت متغير</guilabel
+>، مما يعني أن قيمة معدل البت تتقلب على طول المقطع بناءً على تعقيد المحتوى الصوتي. تُرمَّز الفترات الأكثر تعقيدًا من البيانات بمعدل بت أعلى من الفترات الأقل تعقيدًا؛ هذا النهج يحقق جودة أفضل بشكل عام وملفًا أصغر من وجود معدل بت ثابت طوال المقطع.</para>
+<para
+>يمكنك أيضًا تحديد جودة الترميز. الجودة المنخفضة قد تسرع عملية الترميز على حساب بعض فقدان البيانات.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>خيارات</guilabel
+></term>
+<listitem>
+<para
+>حدد العنصر <guilabel
+>محمي بحقوق الطبع</guilabel
+> إذا كانت البيانات المنتجة محمية بحقوق الطبع.</para>
+<para
+>حدد العنصر <guilabel
+>أصلي</guilabel
+> إذا كان استخراج البيانات من &CD; الأصلي.</para>
+<para
+>عند تحديد العنصر <guilabel
+>ترميز ISO</guilabel
+>، سيفرض LAME حد 7680 بت على حجم الإطار الكلي. قد يكون التوافق مع ISO مهمًا لمشغلات الأجهزة.</para>
+<para
+>يمكن استخدام العنصر <guilabel
+>حماية من الأخطاء</guilabel
+> CRC لإضافة مجموع اختباري لكل إطار بيانات. هذه الحماية يمكن أن تعزز استقرار تخزين بيانات MP3.</para>
+<para
+>يُستخدم العنصر <guilabel
+>كتابة وسم ID3</guilabel
+> لإجبار LAME على كتابة <ulink url="https://en.wikipedia.org/wiki/ID3"
+>بيانات وصفية ID3</ulink
+> لكل ملف MP3 منتج.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>إعدادات المرشح</guilabel
+></term>
+<listitem>
+<para
+>من الممكن تطبيق ترشيح عرض النطاق على البيانات. يُستخدم للحد من الترددات العالية أو المنخفضة التي تُرمَّز. معظمنا لا يستطيع سماع الترددات العالية على أي حال، وهي الأكثر <quote
+>تكلفة</quote
+> من حيث البتات، عندما يتعلق الأمر بالترميز. كما أنها تميل إلى أن تكون سببًا في التشوهات.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry
+><term
+><guilabel
+>إعدادات معدل البت المتغير</guilabel
+></term>
+<listitem>
+
+<para
+>يمكنك أيضًا اختيار <guilabel
+>معدل بت متوسط</guilabel
+>، وهو المبدئي، أو <guilabel
+>معدل بت أقصى</guilabel
+>، <guilabel
+>معدل بت أدنى</guilabel
+> وما إذا كان <guilabel
+>القيمة الدنيا حدًا صارمًا</guilabel
+>.</para>
+<para
+>160 كيلوبت/ث هو اختيار جيد للاستماع إلى الموسيقى على مشغل محمول. أي شيء أقل من 120 كيلوبت/ث قد يكون غير مرضٍ للموسيقى، وأي شيء أعلى من 256 كيلوبت/ث ربما يكون مبالغًا فيه.</para>
+<para
+>من الممكن أيضًا <guilabel
+>كتابة وسم Xing VBR</guilabel
+> في الملف. كانت Xing مسؤولة عن إنشاء مشفر معروف بوسم VBR الخاص به، الذي يتيح بحثًا أكثر دقة داخل ملفات معدل البت المتغير. من بين أشياء أخرى، يحتوي وسم VBR الخاص بـ Xing على معلومات حول المدة الإجمالية لملف MP3، وهو أمر غير متاح بسهولة من تيار MPEG.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="opus-tab">
+<title
+>لافتة مشفر Opus</title>
+
+<screenshot>
+<screeninfo
+>لافتة <guilabel
+>مشفر Opus</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="opus.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>لافتة <guilabel
+>مشفر Opus</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>لافتة مشفر Opus متاحة فقط إذا كانت أدوات <ulink url="https://opus-codec.org/"
+>opus-tools</ulink
+> مثبتة في النظام.</para>
+</note>
+
+<para
+>Opus هو مرمز صوتي مفتوح تمامًا، خالٍ من الإتاوات، وعالي التنوع. Opus لا يُضاهى في نقل الكلام والموسيقى التفاعلي عبر الإنترنت، ولكنه مخصص أيضًا لتطبيقات التخزين والبث.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>طريقة الترميز</guilabel
+></term>
+<listitem>
+<para
+>يسمح لك هذا الإعداد بالاختيار بين الترميز <guilabel
+>القائم على التعقيد</guilabel
+> و<guilabel
+>القائم على معدل البت</guilabel
+>. يستخدم الترميز القائم على التعقيد بعض الخوارزميات التخمينية على حساب حجم غير متوقع للنتائج.</para>
+<itemizedlist>
+<listitem>
+<para
+>هناك عدة أشياء تؤثر على اختيار مشفر Opus بين تعقيد وحدة المعالجة المركزية والجودة/معدل البت. يمكن تحديد تعقيد الترميز باستخدام عدد صحيح من 0 إلى 10، حيث 0 يعطي أدنى جودة و10 يعطي أعلى جودة.</para>
+</listitem>
+<listitem>
+<para
+>Opus أكثر كفاءة عند العمل بمعدل بت متغير (<guilabel
+>معدل بت متغير متوسط</guilabel
+>)، وهو المبدئي. من الممكن استخدام معدل بت متغير مقيد (<guilabel
+>معدل بت متغير مقيد</guilabel
+>، مماثل لمعدل البت الثابت لـ MP3) عندما يكون الإرسال منخفض الكمون مطلوبًا عبر اتصال بطيء نسبيًا. في بعض التطبيقات (النادرة)، يكون معدل البت الثابت (<guilabel
+>معدل بت ثابت</guilabel
+>) مطلوبًا.</para>
+<para
+>يُوصى باستخدام معدل بت 64-128 كيلوبت/ث للموسيقى الاستريو.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>أضف معلومات المقطع</guilabel
+></term>
+<listitem>
+<para
+>عند التحديد، أضف وصفًا للأغنية إلى رأس الملف. هذا يسهل على المستخدم الحصول على معلومات متقدمة عن الأغنية يعرضها مشغل الوسائط الخاص به. يمكنك الحصول على هذه المعلومات آليًا عبر الإنترنت. انظر إلى وحدة استرجاع CDDB في &systemsettings; للتفاصيل. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="ogg-tab">
+<title
+>لافتة مشفر Ogg Vorbis</title>
+
+<screenshot>
+<screeninfo
+>لسان <guilabel
+>مرمّز Ogg Vorbis</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+> <imagedata fileref="ogg.png" format="PNG"/> </imageobject>
+<textobject
+><phrase
+>لسان <guilabel
+>مرمّز Ogg Vorbis</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<note>
+<para
+>تبويب مرمّز Ogg Vorbis متاح فقط إذا جُمّع عامل KIO للقرص الصوتي مع <ulink url="https://xiph.org/vorbis/"
+>libvorbis</ulink
+>.</para>
+</note>
+
+<para
+>Ogg Vorbis هو مرمّز صوتي مفتوح وخالٍ من حقوق الملكية لضغط الصوت مع فقدان. يُنتج ملفات أصغر من MP3 بجودة مكافئة أو أعلى.</para>
+
+<variablelist>
+<varlistentry
+><term
+><guilabel
+>طريقة الترميز</guilabel
+></term>
+<listitem>
+<para
+>يتيح لك هذا الإعداد الاختيار بين الترميز <guilabel
+>القائم على الجودة</guilabel
+> و<guilabel
+>القائم على معدل البت</guilabel
+>. يستخدم الترميز القائم على الجودة خوارزميات تخمينية على حساب حجم غير متوقع للنتائج.</para>
+<itemizedlist>
+<listitem>
+<para
+>يمكن اختيار جودة ترميز Ogg Vorbis باستخدام عدد صحيح من 0 إلى 10، حيث يُعطي 0 أدنى جودة ويُعطي 10 أعلى جودة.</para>
+</listitem>
+<listitem>
+<para
+>كبديل، يمكن استخدام معدل بت متغير. من الممكن اختيار <guilabel
+>معدل بت وسطي</guilabel
+>، وهو المبدئي، أو <guilabel
+>معدل بت أقصى</guilabel
+> و<guilabel
+>معدل بت أدنى</guilabel
+>.</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry
+><term
+><guilabel
+>أضف معلومات المقطع</guilabel
+></term>
+<listitem>
+<para
+>عند التحديد، أضف وصفًا للأغنية إلى رأس الملف. هذا يسهل على المستخدم الحصول على معلومات متقدمة عن الأغنية يعرضها مشغل الوسائط الخاص به. يمكنك الحصول على هذه المعلومات آليًا عبر الإنترنت. انظر إلى وحدة استرجاع CDDB في &systemsettings; للتفاصيل. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
