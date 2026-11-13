@@ -1,0 +1,335 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Arabic "INCLUDE"
+> <!-- change language only here -->
+]>
+	
+<article lang="&language;" id="audiocd">
+<title
+>audiocd</title>
+<articleinfo>
+<authorgroup>
+<author
+>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
+<author
+><personname
+><firstname
+>Benjamin</firstname
+><surname
+>Meyer</surname
+></personname
+></author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<date
+>2004-09-16</date>
+<releaseinfo
+>2.30.00</releaseinfo>
+
+</articleinfo>
+
+<para
+>يتيح معالجة الأقراص الصوتية <acronym
+>CD</acronym
+> كنظام ملفات <quote
+>حقيقي</quote
+>، حيث تُعرض المسارات كملفات، وعند نسخها من المجلد، تُستخرج رقميًا من القرص <acronym
+>CD</acronym
+>. يضمن ذلك نسخة مثالية من البيانات الصوتية.</para>
+
+<para
+>لرؤية كيفية عمل عامل KIO هذا، أدخل قرصًا صوتيًا <acronym
+>CD</acronym
+> في مشغل &CD-ROM; واكتب <userinput
+>audiocd:/</userinput
+> في &konqueror;. في غضون ثوانٍ قليلة، سترى قائمة بالمسارات وبعض المجلدات.</para>
+
+<para
+>لا تحتوي الأقراص الصوتية <acronym
+>CD</acronym
+> على مجلدات فعلية، لكن عامل KIO audiocd يوفرها كتسهيل. إذا نظرت داخل هذه المجلدات، سترى أنها تحتوي جميعها على نفس عدد المسارات. إذا كنت متصلًا بالإنترنت، فستظهر في بعض المجلدات عناوين المسارات الفعلية كأسماء ملفات.</para>
+
+<para
+>سبب وجود هذه المجلدات المنفصلة هو لتتمكن من اختيار الصيغة التي ترغب في الاستماع بها (أو نسخ) المسارات على القرص <acronym
+>CD</acronym
+>.</para>
+
+<para
+>إذا سحبت مسارًا من مجلد <filename class="directory"
+>Ogg Vorbis</filename
+> وأسقطته على نافذة &konqueror; أخرى مفتوحة في مجلد منزلك، فسترى نافذة تقدم تُظهر أن المسار يُستخرج من القرص <acronym
+>CD</acronym
+> ويُحفظ في ملف. لاحظ أن Ogg Vorbis هي صيغة مضغوطة، لذا سيظهر الملف في مجلد منزلك أصغر بكثير مما لو كنت نسخت البيانات الخام.</para>
+
+<para
+>الآلية وراء ذلك بسيطة جدًا. عندما يُطلب من عامل KIO audiocd استرداد مسار من مجلد <filename class="directory"
+>Ogg Vorbis</filename
+>، يبدأ في استخراج البيانات الصوتية الرقمية من القرص <acronym
+>CD</acronym
+>. وأثناء إرسال البيانات إلى الملف في مجلد منزلك، يُرمّزها في الوقت نفسه بصيغة Ogg Vorbis (الصوت على القرص <acronym
+>CD</acronym
+> يكون بصيغة غير مضغوطة في البداية).</para>
+
+<para
+>يمكنك أيضًا محاولة سحب ملف ينتهي بـ <literal role="extension"
+>.wav</literal
+> وإسقاطه على مشغل الوسائط &kde;، &juk;. في هذه الحالة، الإجراء الذي يحدث خلف الكواليس مشابه، باستثناء أنه بدلًا من ترميز البيانات الصوتية بصيغة Ogg Vorbis، تُمرّر عبر تحويل بسيط جدًا، من البيانات الثنائية الخام (التي تمثلها ملفات <literal role="extension"
+>.cda</literal
+> في المجلد الأعلى) إلى صيغة <quote
+>RIFF WAV</quote
+>، وهي صيغة غير مضغوطة تفهمها معظم مشغلات الوسائط.</para>
+
+<para
+>يجب أن يشغل &juk; ملف <literal role="extension"
+>.wav</literal
+> بسهولة، لكن إذا واجه مشكلة، يمكنك التفكير في استخدام خيار <option
+>paranoia_level</option
+>، المُوضّح أدناه.</para>
+
+<variablelist>
+<title
+>خيارات</title>
+
+<varlistentry>
+<term
+><option
+>جهاز</option
+></term>
+<listitem>
+<para
+>اضبط المسار إلى جهاز القرص الصوتي <acronym
+>CD</acronym
+>، مثل <userinput
+>audiocd:/<option
+>?device</option
+>=<parameter
+>/dev/sdc</parameter
+></userinput
+>. عادةً، سيحاول عامل KIO العثور على مشغل أقراص <acronym
+>CD</acronym
+> يحتوي على قرص صوتي <acronym
+>CD</acronym
+>، لكن إذا فشل أو كان لديك أكثر من مشغل أقراص <acronym
+>CD</acronym
+>، فقد ترغب في تجربة هذا الخيار. لاحظ أن حوار الضبط يتيح لك تعيين قيمة مبدئية لهذا الخيار.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>fileNameTemplate</option
+></term>
+<listitem>
+<para
+>اضبط قالب اسم الملف، مثل <userinput
+>audiocd:/<option
+>?fileNameTemplate</option
+>=<parameter
+>Track %{number}</parameter
+></userinput
+>. لاحظ أن حوار الضبط يتيح لك تعيين قيمة مبدئية لهذا الخيار. تحذير: إذا ضبطته على سلسلة فارغة، فلن تظهر أي ملفات.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>albumNameTemplate</option
+></term>
+<listitem>
+<para
+>اضبط قالب اسم الألبوم، مثل <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>%{albumartist} %{albumtitle}</parameter
+></userinput
+>. لاحظ أن حوار الضبط يتيح لك تعيين قيمة مبدئية لهذا الخيار.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>niceLevel</option
+></term>
+<listitem>
+<para
+>يضبط مستوى nice للعملية للمُرمّزات، مثل <userinput
+>audiocd:/<option
+>?albumNameTemplate</option
+>=<parameter
+>niceLevel=10</parameter
+></userinput
+>. لاحظ أن حوار الضبط يتيح لك تعيين قيمة مبدئية لهذا الخيار.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>paranoia_level</option
+></term>
+<listitem>
+<para
+>اضبط مقدار اكتشاف الأخطاء وتصحيحها المستخدم عند استخراج البيانات.</para>
+
+<variablelist>
+<varlistentry>
+<term
+>المستوى 0</term>
+<listitem>
+<para
+>لا اكتشاف أو تصحيح. مفيد فقط إذا كان لديك مشغل أقراص <acronym
+>CD</acronym
+> مثالي (غير مرجح).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>المستوى 1</term>
+<listitem>
+<para
+>فعّل الفحص الأساسي للأخطاء وتصحيحها.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>المستوى 2</term>
+<listitem>
+<para
+>مبدئي. يُحدد أنه لن يُقبل إلا استخراج مثالي.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>لاحظ أن هناك عيبًا في المستوى 2. قد يكون الاستخراج بطيئًا جدًا، لذا قد لا يعمل التشغيل الرقمي في الوقت الفعلي بشكل صحيح. إذا كان لديك محرك <acronym
+>قرص مضغوط</acronym
+> جيد الجودة (لاحظ أن الأغلى ثمنًا لا يعني بالضرورة جودة أفضل)، فمن المحتمل ألا تواجه استخراجًا بطيئًا جدًا، لكن المحرك الرديء قد يستغرق أيامًا (!) لاستخراج الصوت من <acronym
+>قرص مضغوط</acronym
+> واحد.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>اختيارCDDB</option
+></term>
+<listitem>
+
+<para
+>حدد أي مدخل لقاعدة بيانات <acronym
+>الأقراص المضغوطة</acronym
+> على الإنترنت تريد استخدامه. لا تحتوي <acronym
+>الأقراص المضغوطة</acronym
+> الصوتية على أسماء مسارات، لكن قاعدة بيانات <acronym
+>الأقراص المضغوطة</acronym
+> على الإنترنت هي نظام ذكي يستخدم معرّفًا فريدًا خاصًا يُنشأ من عدد وأطوال المسارات على كل <acronym
+>قرص مضغوط</acronym
+> للإسناد الترافقي لقائمة المسارات. تُساهم مجتمع الإنترنت بقوائم المسارات وتُتاح للجميع. أحيانًا ستكون هناك مدخلات متعددة. يمكنك تحديد أي منها تريد استخدامه.</para>
+
+<para
+>يمكنك إرسال قوائم المسارات الخاصة بك باستخدام &kscd;، مشغل <acronym
+>الأقراص المضغوطة</acronym
+> في &kde;.</para>
+
+<para
+>افتراضيًا، يحاول audiocd اختيار الأفضل.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<variablelist>
+<title
+>أمثلة</title>
+<varlistentry>
+<term
+><userinput
+>audiocd:/?device=/dev/scd0&amp;paranoia_level=0&amp;cddbChoice=0</userinput
+></term>
+<listitem>
+<para
+>يعطي قائمة بالمسارات على <acronym
+>القرص المضغوط</acronym
+> الصوتي المُدخل في <filename class="devicefile"
+>/dev/scd0</filename
+>، والذي يحدد في &Linux; أول جهاز &CD-ROM; <acronym
+>SCSI</acronym
+>. إذا نسخت مسارات من <acronym
+>القرص المضغوط</acronym
+>، فسيُجرى الاستخراج الرقمي دون تصحيح أو كشف أخطاء. سيُستخدم مدخل قاعدة بيانات <acronym
+>CDDB</acronym
+> 0.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<qandaset>
+<title
+>سؤال متكرر</title>
+<qandaentry>
+<question>
+<para
+>أحصل على <errorname
+>الملف أو المجلد / غير موجود</errorname
+>. كيف أصلح ذلك؟ لدي <acronym
+>قرص مضغوط</acronym
+> صوتي في محرك الأقراص!</para>
+</question>
+
+<answer>
+<para
+>حاول تشغيل <userinput
+><command
+>cdparanoia</command
+> <option
+>-vsQ</option
+></userinput
+> كمستخدم عادي (ليس <systemitem class="username"
+>الجذر</systemitem
+>). هل ترى قائمة مسارات؟ إذا لم ترَها، تأكد من أن لديك صلاحية الوصول إلى جهاز <acronym
+>القرص المضغوط</acronym
+>. إذا كنت تستخدم محاكاة <acronym
+>SCSI</acronym
+> (ممكن إذا كان لديك كاتب <acronym
+>أقراص مضغوطة</acronym
+> <acronym
+>IDE</acronym
+>)، فتأكد من التحقق من أن لديك أذون القراءة والكتابة على جهاز <acronym
+>SCSI</acronym
+> العام، والذي هو غالبًا <filename class="devicefile"
+>/dev/sg0</filename
+> أو <filename class="devicefile"
+>/dev/sg1</filename
+>، إلخ… إذا لم يعمل بعد، حاول كتابة <userinput
+>audiocd:/?device=/dev/sg0</userinput
+> (أو ما شابه) لإخبار kio_audiocd أي جهاز هو &CD-ROM; الخاص بك.</para
+> 
+</answer>
+</qandaentry>
+</qandaset>
+
+
+</article>
