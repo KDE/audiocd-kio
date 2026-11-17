@@ -1,5 +1,5 @@
 # translation of kcmaudiocd.po to
-# Version: $Revision: 1750746 $
+# Version: $Revision$
 # SPDX-FileCopyrightText: 2012, 2016, 2019, 2022, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Norbert Popiołek <norbert@kde.com.pl>\n"
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
